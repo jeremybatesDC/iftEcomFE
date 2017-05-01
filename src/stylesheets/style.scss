@@ -6,10 +6,10 @@
 @import 'base/helpers';
 @import 'base/flexboxgrid';
 @import 'vars/typography';
+@import 'vars/mixins';
 
 
 // MODULES
-@import 'modules/mixins';
 @import 'modules/buttons';
 @import 'modules/content';
 @import 'modules/navRevised';
