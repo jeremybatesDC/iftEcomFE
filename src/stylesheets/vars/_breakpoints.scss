@@ -33,37 +33,3 @@ $breakpoint-min-1920: 120em; /*equals 1920px, fullscreen on a 1080p monitor */
 
 
 $content-max-width: $breakpoint-min-xxl;
-
-
-
-
-/*testing*/
-/*body {
-	&:after {
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		background: yellow;
-		@include break(max, $breakpoint-max-mobile) {
-			content: '$breakpoint-max-mobile: 47.9999em;';
-		}
-		@include break(min, $breakpoint-min-tablet) {
-			content: '$breakpoint-min-tablet: 48em;';
-		}
-		@include break(min, $breakpoint-min-md) {
-			content: '$breakpoint-min-md: 64em';
-		}
-		@include break(min, $breakpoint-min-lg) {
-			content: '$breakpoint-min-lg: 80em;';
-		}
-		@include break(min, $breakpoint-min-xl) {
-			content: '$breakpoint-min-xl: 90em;';
-		}
-		@include break(min, $breakpoint-min-xxl) {
-			content: '$breakpoint-min-xxl: 96em';
-		}
-		@include break(min, $breakpoint-min-1920) {
-			content: '$breakpoint-min-1920: 120em;';
-		}
-	}
-}*/
