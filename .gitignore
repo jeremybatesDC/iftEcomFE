@@ -1,0 +1,16 @@
+.DS_Store
+.sass-cache
+.publish
+Desktop.ini
+public
+node_modules
+**/generated/_icons.sass
+npm-debug.log
+ift.sublime-workspace
+public/stylesheets/style.css
+
+public/stylesheets/style.css
+
+public/stylesheets/style.css.map
+
+public/javascripts/shared.js.map

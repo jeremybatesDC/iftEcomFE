@@ -1,0 +1,48 @@
+<head>
+	<meta charset="utf-8">
+	<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	
+	<!--critical typography path-->
+	<style>
+		h1,h2,h3,h4,h5,h6, .button {
+			visibility: hidden;
+		}
+		.wf-active h1,
+		.wf-active h2,
+		.wf-active h3,
+		.wf-active h4,
+		.wf-active h5,
+		.wf-active h6,
+		.wf-active .button {
+			visibility: visible;
+		}
+	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.26/webfontloader.js"></script>
+	<!--the Roboto CSS includes multiple languages. Specifiying Latin does nothing-->
+	<script>
+		(function criticalFontsModule(){
+			WebFont.load({
+		    google: {
+		      families: ['Roboto:400,700']
+		    }
+		  });
+		})();
+	</script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+
+	<meta name="theme-color" content="#5786C7">
+	<title>IFT</title>
+ 	<link rel="stylesheet" href="stylesheets/style.css">
+	<link rel="icon" sizes="32x32" href="/img/iftFavicon.png">
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-6125465-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+</head>
+

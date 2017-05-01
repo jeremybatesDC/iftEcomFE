@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-sm-4">
+        {% set cardBlock = {image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=640x640&w=640&h=640', heading: "Lorem Ipsum", text: 'long', button: true } %}
+
+        {% include './_components/card-individual.html'%}
+    </div>
+
+    <div class="col-sm-4">
+       {% set cardBlock = {image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=640x640&w=640&h=640', heading: "Lorem Ipsum", text: 'short', button: false } %}
+        {% include './_components/card-individual.html'%}
+    </div>
+
+    <div class="col-sm-4">
+        {% set cardBlock = {image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=640x640&w=640&h=640', heading: "Lorem Ipsum", text: false, button: true } %}
+        {% include './_components/card-individual.html'%}
+    </div>
+</div>
+
+
+{% set cardBlock = {headline: true} %}
+{% include './_components/card-sink.html'%}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+	{% include "./_shared/head.html" %}
+	<body id="bodyTop">
+		{% include "./_shared/svgDefs.html" %}
+		{% include "./_shared/logo.html" %}
+		{% include "./_shared/nav_combined.html" %}
+		<main class="template-404">
+			{% block content %}
+			{% endblock %}
+
+		        <label for="number1">Multiply: </label>    
+		        <input type="text" id="number1" value="0">
+
+		        <label for="number2">By </label>   
+		        <input type="text" id="number2" value="0">
+
+
+		    <p class="result"></p>
+
+
+		</main>
+		{% include "./_shared/backToTop.html" %}
+		{% include "./_shared/footerAuto.html" %}
+		<!--overlay-->
+		{% include "./_shared/nav_overlay.html" %}
+		{% include "./_shared/scriptsList.html" %}
+
+		<script>
+			var first = document.querySelector('#number1');
+			var second = document.querySelector('#number2');
+			var result = document.querySelector('.result');
+
+			if (window.Worker) { // Check if Browser supports the Worker api.
+				// Requries script name as input
+				var myWorker = new Worker("javascripts/vendor/worker.js");
+
+				second.onchange = function() {
+				  myWorker.postMessage([first.value,second.value]);
+				};
+
+				myWorker.onmessage = function(e) {
+					result.textContent = e.data;
+				};
+			}
+		</script>
+	</body>
+</html>

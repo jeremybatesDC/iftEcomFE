@@ -1,0 +1,322 @@
+.twitter-block-component {
+	position: relative;
+	display: flex;
+	flex-direction:column;
+	flex-grow:1;
+	height:calc(100% - 3rem) ;
+	//this needs to match bricks
+	//margin-bottom: 3rem;
+}
+
+.twitter-block-component__header {
+
+	.social-link {
+		background: $ift-blue;		
+	}
+	.social-link-image {
+		width: 2.4rem;
+		height: 2.4rem;
+	}
+
+	.twitter-block-component__headline {
+		display: inline-block;
+		width: calc(100% - 3rem);
+	}
+
+}
+
+.twitter-block-component__tweet-single {
+	color: $ift-grey-medium;
+	margin-bottom:$p-bottom-margin;
+	a {
+		color: $ift-blue;
+	}
+}
+
+.twitter-block-component__footer {
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	text-align:center;
+}
+
+
+.social-link__group {
+	display:flex;
+	align-items:flex-start;
+	[href*="snapchat"]{
+		@include break(min, $breakpoint-min-md){
+			//hides snapchat link & icon on desktop
+			display: none;
+		}	
+	}
+	//demo only
+	@include break(max, $breakpoint-max-mobile){
+		.footer-main & {
+			display: block;
+			text-align: center;
+		}
+	}
+
+	.nav-utility & {
+		display: inline-block;
+		padding-top:.75em;
+		//background-color:rgba($white, .1);
+		@include break(max, $breakpoint-max-mobile){
+			display: none;
+			position:fixed;
+			top:9rem;
+			left: 0;
+			box-shadow:1px 0 rgba($white,.3333);
+		}
+	}
+	a {
+		transition:$ift-timing;
+		&:hover,
+		&:active,
+		&:focus {
+			opacity: .75;
+		}
+	}
+}
+
+.has-nav--ACTIVE .nav-utility .social-link__group {
+	@include break(max, $breakpoint-max-mobile){
+
+			display: flex;
+			flex-direction: column;
+			z-index: 5;
+			padding:0 1em 0 .5em;
+			.social-link__individual-wrapper {
+				width:2.4rem;
+				height: 2.4rem;
+				margin-top: 1.6rem;
+				opacity: .5;
+				&:first-child {
+					margin-top: 0;
+				}
+			}
+		}
+}
+
+
+
+.social-link__group--share {
+	position:absolute;
+	top:0;
+	background:rgba($ift-grey-medium,.3333);
+	flex-direction:column;
+	
+	//margin-top: 1rem;
+	margin-bottom: 0;
+	//demo only -- there's a discrepancy with rem & em here
+	padding-top: .5rem;
+	padding-bottom: .5em;
+
+	@include break(max, $breakpoint-max-mobile){
+		position:fixed;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		width: 100%;
+		top: auto;
+		bottom:0;
+		left:0;
+		background:rgba($ift-grey-medium,.75);
+		z-index: 1;
+
+		//do not like js thinking about screen width. So preferbaly to override greensock here
+		&[style] {
+			transform: none !important;
+			//opacity: 1 !important;
+		}
+	}
+
+	@include break(min, $breakpoint-min-tablet, max, $breakpoint-max-1023){
+		right: -$gutter-width/1.25;
+		z-index: 1;
+	}
+
+	@include break(min, $breakpoint-min-md){
+		left:-$gutter-width;
+	}
+		
+	.social-link__individual-wrapper {
+		display: block;
+		width: 2.4rem;
+		height:2.4rem;
+		margin:.5em;
+
+		@include break(max, $breakpoint-max-mobile){
+			display: flex;
+
+		}
+		@include break(min, $breakpoint-min-tablet, max, $breakpoint-max-1023){
+			margin:.5em .25em;
+		}
+		.social-link {
+			display: block;
+			width: 2.4rem;
+			height:2.4rem;
+			@include break(max, $breakpoint-max-mobile){
+				display: flex;
+			}
+		}
+		&:hover,
+		&:active,
+		&:focus {
+			background:rgba($ift-blue, 1);
+			border-radius: 50%;
+			//opacity: .6666;
+			
+			//padding:1em;
+			.social-link-image {
+				transform: scale(.75);
+			}
+		}
+	}
+	.social-link-image {
+		width: 2.4rem;
+		height: 2.4rem;
+	}
+}
+
+
+.sublayout__contentBlock + .social-link__group--share {
+	margin-bottom:$gutter-width * 3;
+}
+
+.social-link__individual-wrapper {
+	display:inline-block;
+	//display:flex;
+	width:1.4rem;
+	//need to set explicit height sometimes for IE
+	height:1.4rem;
+	margin-left:.5em;
+	// &:first-child {
+	// 	margin-left: 0;
+	// }
+	transition: $ift-timing;
+	
+	.footer-main & {
+		width:2.4rem;
+		height:2.4rem;
+		margin-left: 1em;
+		@include break(max, $breakpoint-max-mobile){
+			&:first-child {
+				margin-left: 0;
+			}
+			
+		}
+	}
+}
+
+
+.tweet__profile-pic {
+	float:left;
+	width:4.8rem;
+	margin-right:$gutter-width / 4;
+	.twitter--vertical & {
+		width:3.2rem;
+		margin-right:$gutter-width / 4;
+	}
+}
+
+.tweet-meta {
+	padding-top:$gutter-width / 2;
+	pointer-events:none;
+	cursor: default;
+	.twitter--vertical & {
+		padding-top: $gutter-width / 8;
+		font-size: .8em;
+	}
+}
+
+.twitter--horizontal {
+	
+	//needed some extra specificity
+	&.sublayout {
+
+		.template-homepage & {
+			padding-bottom:0;
+			padding-top:0;
+		}
+	}
+	
+}
+
+.twitter--vertical {
+	padding-bottom:0;
+	//margin-bottom:$gutter-width*2;
+	.tweet {
+		padding-bottom:$gutter-width/2;
+		box-shadow:0 1px $ift-grey-200;
+	}
+	.row {
+		display: block;
+	}
+	.tweet-deck {
+		[class^="col"] {
+			display: block;
+			max-width: none;
+			padding:0;
+			.card-component__content-wrapper {
+				padding:0;
+			}
+		}
+	}
+	.card-component__button--group {
+		text-align: center;
+	}
+}
+
+
+.tweet-deck {
+	.twitter-horizontal & {
+		padding-top:$gutter-width;
+	}
+	
+	> [class^="col"] {
+		background:$white;
+		@include break(min, $breakpoint-min-tablet){
+			margin-bottom: $gutter-width;
+		}
+	}
+}
+
+.tweet-deck {
+	.card-component {
+		//fake borders
+		&:first-child {
+			.twitter--vertical & {
+				padding-top:0;
+			}
+		}
+		.twitter--vertical & {
+			// box-shadow: 0 1px $ift-grey-200;
+			// padding-bottom:1.6rem;
+		}
+		&:last-child {
+			.twitter--vertical & {
+				padding-bottom:0;
+			}
+		}
+		.twitter--horizontal & {
+			box-shadow: 16px 0 #f2f2f2, 0 16px #f2f2f2, -16px 0 #f2f2f2, 0 -16px #f2f2f2;
+		}
+		.tweet__profile-pic {
+			margin-bottom: 0;
+		}
+	}
+	// a[href*="dev.twitter.com"]{
+	// 	display: none;
+	// }
+}
+
+.twitter--horizontal {
+	.card-component__button--group {
+		text-align:center;
+	}
+}
+

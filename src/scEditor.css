@@ -1,0 +1,8 @@
+.nav-combined--wrapper,
+.logo-container--main {
+	z-index:-1 !important;
+}
+
+.scChromeDropDown img {
+	max-width: 16px !important;
+}

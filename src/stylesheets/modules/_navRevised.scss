@@ -1,0 +1,316 @@
+//for mobile&tablet styles, see navMobile
+.nav-trigger-wrapper {
+	display:none;
+}
+
+.nav-combined--wrapper {
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	//for mobile and tablet, but doesn't need own query
+	min-height:5rem;
+	//background: linear-gradient(to bottom, rgba(0,0,0,.66) 0%,rgba(0,0,0,1) 100%);
+	background-color:rgba($ift-green, .925);
+	z-index:8;
+	.body-home & {
+		background-color: transparent;
+		
+	}
+	&.scrolled--STATE {
+		background-color:rgba($ift-green, .925);
+		//transform:translateY(-40%);
+	}
+}
+
+
+
+.nav-main {
+	//width:100%;
+	position: relative;
+	display:flex;
+	justify-content:center;
+	margin-top:1.5em;
+	margin-bottom:1.25em;
+	z-index:4;
+	@include break(min, $breakpoint-min-md){
+		//width of logo
+		padding-left:15rem;
+	}
+	ul,li,a,span {
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		&::selection {
+			background-color: transparent;
+			
+		}	
+	}
+	ul {
+		list-style: none;
+	}
+}
+
+
+.caretDown {
+	position: absolute;
+	top:0;
+	width: 12px;
+	height: 12px;
+	fill:transparent;
+	margin-left:.3rem;
+	//transition: opacity .3333s ease-in-out;
+	
+	@include break(min, $breakpoint-min-tablet){
+		transform: rotate(180deg) scale(3) translateY(-95%);
+		left:calc(50% - 8px);
+		fill:transparent;
+		&.caretMorphed {	
+			//height: 12px;
+			fill:$ift-grey-darker;
+			transform: rotate(180deg) scale(3) translateY(-87.5%);
+			
+			.body-home & {
+				fill:transparent;
+			}
+			.scrolled--STATE & {
+				fill:$ift-grey-darker;
+			}
+		}
+		
+		
+	}
+
+	
+}
+
+
+
+.nav-list-top-level {
+	position:relative;
+	//width:100%;
+	margin: 0;
+	display:flex;
+	
+	
+	@include break(min, $breakpoint-min-tablet){
+		//padding-right:6.6666vw;
+		//text-align:right;
+		flex-direction: row;
+		justify-content:center;
+	}
+	> li {
+		display: inline-block;
+		vertical-align: top;
+		padding-top:.3rem;
+		margin-left: 3vw;
+		//box-shadow:0 -3px transparent;
+		background-image: linear-gradient(to top,rgba($white, 0) 50%,rgba($white, 0) 50%);
+		background-size:0 5px;
+		background-position:0 0;
+		background-repeat:no-repeat;
+		a {
+			font-family: $headlineFont;
+		}
+		> a {
+			position:relative;
+			font-size: 1.4rem;
+			font-weight: 700;
+			color: $white;
+			text-transform: uppercase;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			&::selection {
+				background-color:transparent;
+			}
+			span {
+				transition:$ift-timing;
+				//text-shadow:1px 1px rgba($black,.5);
+				&:hover,
+				&:active,
+				&:focus{
+				 	color: $ift-grey-darker;
+					//text-shadow:2px 2px 2px rgba($black,1);
+					.body-home & {
+						color: $ift-green;
+						//text-shadow:-2px -2px 1px rgba($ift-green,1), 2px 2px 1px rgba($black,1) ;
+					}
+					.body-home .scrolled--STATE & {
+						color: $ift-grey-darker;
+						//text-shadow:2px 2px 2px rgba($black,1);
+					}
+				}
+			}
+			
+
+		}
+		&:first-child {
+			margin-left:0;
+		
+		}
+		&.nav-list-level-1--ACTIVE {
+			@include break(min, $breakpoint-min-tablet){
+				background-image: linear-gradient(to top,$white 50%,$white 50%);
+				background-size:100% 5px;
+				//box-shadow: 0 -6px $white;
+
+
+
+				> a {
+					.body-home .scrolled--STATE & {
+						color: $white;
+					}
+					> span {
+						&:hover {
+							color: $white;
+							.body-home .scrolled--STATE & {
+								color: $white;
+							}
+						}
+					}
+				}
+
+			}
+		}
+	}
+
+}
+
+.nav-list-level-2 {
+	visibility:hidden;
+	position:absolute;
+	overflow:hidden;
+	width: 100%;
+
+	text-align:left;
+	opacity: 0;
+	@include break(min, $breakpoint-min-tablet){
+		min-height:10rem;
+		left:0;
+		padding-top:3em;
+		//for animation
+		transform:translate(-2vw);
+		li {
+			margin-bottom: $gutter-width / 2;
+		}
+
+	}
+	&.nav-list-level-2--ACTIVE {
+		visibility: visible;
+		opacity: 1;
+		z-index: 2;
+		@include break(min, $breakpoint-min-tablet){
+			transform:translateX(0);
+		}
+	}
+	li {
+		list-style: none;
+		display: block;
+		font-size: 3.2rem;
+		line-height: 1.1111;
+		font-weight: 400;
+		
+		a {
+			display: inline-block;
+			color: $white;
+			padding-top:.25em;
+			padding-bottom:.25em;
+			background-image: linear-gradient(to top,rgba($ift-green, 0) 50%,rgba($ift-green, 0) 50%);
+			background-size:0 5px;
+			background-position:0 95%;
+			background-repeat:no-repeat;
+			transition: $ift-timing;
+			span {
+				transition: $ift-timing;
+			}
+			@include break(min, $breakpoint-min-tablet){
+			&:hover,
+			&:active,
+			&:focus  {
+				background-image: linear-gradient(to top,$ift-green 50%,$ift-green 50%);
+				background-size:100% 5px;
+				span {
+					color: $ift-green;
+				}
+				
+			}
+		}
+
+		}
+	}
+}
+
+
+//display logic
+.nav-level-2-close-button__wrapper {
+	position:absolute;
+	top:4em;
+	right:0;
+	// width:32px;
+	// height:32px;
+	z-index:2;
+	span {
+		display:none;
+	}
+	
+}		
+	
+
+#navLevel2CloseButton {
+	//visibility: hidden;
+	position:relative;
+	background:transparent;
+	width:0;
+	height:0;
+	//padding:1em;
+	line-height: 1;
+	box-shadow:none;
+	opacity: 0;
+	border-radius:50%;
+	border:1px solid rgba($white, .3333);
+	//transition: all .3333s ease-in-out; 
+	svg {
+		width:24px;
+		height:24px;
+		fill:none;
+		stroke:rgba($white, .3333);
+		stroke-width:1px;
+		transition: $ift-timing;
+		
+	}
+	&:hover,
+	&:active,
+	&:focus {
+		background-color:rgba($white,.1);
+		border-color:rgba($white,.1);
+		svg {
+			stroke:$white;
+		}
+
+	}
+	&.navLevel2CloseButton--ACTIVE {
+		visibility: visible;
+		opacity: 1;
+		width: 48px;
+		height:48px;
+	}
+}
+
+
+#navOverlayCloseTarget {
+	position:fixed;
+	top:0;
+	left:0;
+	width:100vw;
+	height: 0;
+	background: linear-gradient(to bottom, rgba($ift-grey-darker, 1) 33%,rgba($ift-grey-darker, .75) 100%);
+	z-index:2;
+	&.overlayACTIVE {
+		height:100vh;
+	}
+}

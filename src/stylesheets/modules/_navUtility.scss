@@ -1,0 +1,155 @@
+.nav-utility {
+	//display:flex;
+	//flex-direction:row;
+	position:relative;
+	font-size:1.2rem;
+
+	//needs more specificity, hence extra nesting here
+	a {
+		.nav-combined--wrapper & {
+			color: $white;
+		}
+	}
+	.button {
+		min-width: auto;
+		font-size: .9rem;
+		border-width:2px;
+		span {
+			position:relative;
+			bottom:-1px;
+		}
+		@include break(max, $breakpoint-max-mobile){
+			.has-nav--ACTIVE & {
+				display: none;
+			}
+		}
+		
+	}
+	.social-link-group {
+		padding-left:2em;
+	}
+	&:after {
+    	content:'';
+    	display:block;
+    	clear:both;
+	}
+
+
+	@include break(max, $breakpoint-max-mobile){
+		.button {
+			
+			font-size: 1rem;
+			position:fixed;
+			top:.6rem;
+			right: 6rem;
+			padding: 1em 0em;
+			//margin-left: 1em;
+
+			//if you want it to show when mobile menu is open
+			//z-index: 5;
+			span {
+				position:relative;
+				//visibility: hidden;
+				color: transparent;
+				&:after {
+					content:'REGISTER';
+					position: absolute;
+					width:100%;
+					height: 100%;
+					top: 0;
+					left: 0;
+					text-align:center;
+					color: $white;
+					text-transform: uppercase;
+					//transform:translateX(-125%);
+
+				}
+			}
+			
+		}
+	}
+
+	//can't animate height, because that alters scroll position calculations
+	@include break(min, $breakpoint-min-tablet){
+		//but the hard edge looks like a mistake on homepage before scroll
+		//background:rgba($black, .033);
+		//.body-home & {
+			background: linear-gradient(to bottom, rgba($ift-grey-darker, .6666) 0%,rgba($ift-grey-darker, 0) 100%);
+		//}
+		.button {
+			padding: 1rem;
+			margin-top: .3333em;
+			//margin-bottom: .3333em;
+			margin-left: 1em;
+		}
+
+		&.nav-utility--SCROLLED-STATE {
+			margin-top: -4em;
+			.body-home & {
+				background: rgba($black, .033);
+			}
+		}
+
+	}
+
+
+	&.contained {
+		max-width: 100%;
+		
+		@include break(min, $breakpoint-min-tablet, max, $breakpoint-max-1023){
+			padding-right:$gutter-width / 8;
+			padding-left:$gutter-width / 2;
+		}
+		@include break(min, $breakpoint-min-md){
+			padding-right:5vw;
+			padding-left:5vw;
+		}
+
+	}
+}
+
+.nav-utility__list {
+	display:inline-block;
+	//align-items:center;
+	list-style:none;
+	@include break(max, $breakpoint-max-mobile){
+		display: none;
+	}
+
+	li {
+		display: inline-block;
+		padding-right:1em;
+
+		a {
+			background-image: linear-gradient(to top,rgba($ift-blue, 0) 50%,rgba($ift-blue, 0) 50%);
+			background-size:0 2px;
+			background-position:0 95%;
+			background-repeat:no-repeat;
+			transition: $ift-timing;
+			&:hover,
+			&:active,
+			&:focus {
+				opacity: .8;
+				background-image: linear-gradient(to top,currentColor 50%,currentColor 50%);
+				background-size:100% 2px;
+			}
+		}
+	}
+}
+
+
+.nav-utility__reg-search-wrapper {
+	
+	display:inline-block;
+	// display:flex;
+	// flex-direction:column;
+	// flex-grow:1;
+	// align-items:flex-end;
+	@include break(min, $breakpoint-min-tablet){
+		float:right;
+	}
+}
+
+// .nav-utility__reg-search-wrapper--inner{
+// 	display:flex;
+// }

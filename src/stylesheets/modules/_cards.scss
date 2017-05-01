@@ -1,0 +1,829 @@
+/*
+Component Context determines STRUCTURE
+- Default is vertical (implicit)
+- Horizontal (news items, banner)
+
+//what about square vs 16to9?
+
+Themes determine "skin"
+- background-image
+- overlay
+- invert colors
+- borders (although horizontal items need a bottom border)
+
+*/
+
+// CONTEXTS
+
+
+//it's ok to put shared in its own thing -- no need to nest everything
+.card-component {
+	display:flex;
+	//cards can get inline background images
+	position:relative;
+	background-size: cover;
+	background-repeat:no-repeat;
+	&:after {
+		content: '';
+		display: table;
+		float: none;
+		clear: both;
+	}
+}
+
+.card-component {
+	&.horizontal-component {
+		+ .horizontal-component {
+			margin-top: $gutter-width / 2;
+		}
+		.card-component__media--wrapper {
+			max-width:10rem;
+			padding-right:$gutter-width / 4;
+			.sublayout__list & {
+				max-width: none;
+			}
+		}
+	}
+	&.vertical-component {
+		//direction does not seem to matter
+		//flex-direction:row;
+		//flex-grow:1;
+		height:100%;
+		//align-items: stretch;
+
+		.card-component__text--wrapper {
+			display: flex;
+			flex-direction: column;
+			flex-grow: 1;
+			padding-bottom:$gutter-width;
+		}
+		// &:hover,
+		// &:active,
+		// &:focus {
+		// 	box-shadow: 0 1rem 2em rgba(151,151,151,.1);
+		// }
+	}
+
+	//chnage bricks grid to 16/32 gutter width
+	&.brick {
+		//can't allow to get wider than instagram resolution
+		height: 0;
+		margin-bottom: 3rem;
+	}
+
+	//these need exact heights
+	&.brick--square {
+		padding-bottom:100%;
+	}
+	&.brick--rectangle {
+		padding-bottom:50%;
+	}
+	&.brick--square-small {
+		display: inline-block;
+		vertical-align: top;
+		width:calc(50% - 1.5rem);
+		padding-bottom:50%;
+		+ .brick--square-small {
+			//there's a slight gap because of the inline block, so this isn't quite 3rem
+			margin-left: 2.5rem;
+		}
+	}
+}
+
+
+.vertical-component,
+.sublayout__testimonials {
+	.card-component__content-wrapper {
+		padding:$gutter-width;
+	}
+}
+
+//first use of important 
+.has-horizontal-component {
+	padding:3.2rem !important;
+	.horizontal-component {
+		html body main & {
+			padding-right:0;
+			padding-left:0;
+		}
+	}
+}
+
+.theme--trading-card {
+	//should use variable
+	//background-color:$white;
+	//border:1px solid rgba(200,200,200,.3333);
+	text-align:center;
+}
+
+.theme--darkBackground-whiteText {
+	color:$white;
+}
+
+
+.theme--feature-text {
+	.card-component__headline {
+		font-size: 2.4rem;
+	}
+	.card-component__text {
+		font-size:1.8rem;
+		@include break(min, $breakpoint-min-lg){
+			font-size:2.2rem;
+		}
+	}
+}
+
+
+//this needs a max value perhaps
+.card-component__wrapper-inner {
+	width:100%;
+	.vertical-component & {
+		display:flex;
+		flex-direction:column;
+		flex-grow:1;
+		height: 100%;
+	}
+}
+
+//if there are mutliple vertical cards inside 1 column
+//don't affect horizontal cards, which are already fine
+//may want the hook to be "promo" instead of vertical (which I'm not sure will always be set)
+
+// .column-auto .vertical-component:nth-last-child(n+2):nth-last-child(-n+2):first-child,
+// .column-auto .vertical-component:nth-last-child(n+2):nth-last-child(-n+2):first-child ~ .vertical-component {
+// 	height:calc(50% - 1.6rem);
+// }
+
+
+
+// .column-auto .vertical-component:nth-last-child(n+3):nth-last-child(-n+3):first-child,
+// .column-auto .vertical-component:nth-last-child(n+3):nth-last-child(-n+3):first-child ~ .vertical-component {
+// 	height:33.3333%;
+// }
+
+@include break(min, $breakpoint-min-tablet){
+	.sublayout__autoColGrid .column-auto .card-component:nth-last-child(n+2):nth-last-child(-n+2):first-child,
+	.sublayout__autoColGrid .column-auto .card-component:nth-last-child(n+2):nth-last-child(-n+2):first-child ~ .card-component { 
+		//height:calc(50% - 1.6rem);
+		height: 50%;
+	}
+
+	// .sublayout__autoColGrid {
+	// 	.column-auto {
+	// 		.card-component {
+	// 			&:nth-child(2){
+	// 				position:absolute;
+	// 				bottom:0;
+	// 			}
+	// 		}
+	// 	}
+	// }
+}
+
+
+
+
+
+//if this simply goes on top, no need to absolutely position it
+.card-component__label--wrapper {
+	position:relative;
+	top:-($gutter-width/2);
+	margin-bottom:$gutter-width/2;
+	//left:0;
+	//width:100%;
+	text-align:center;
+	font-weight:$headlineFontWeight;
+	line-height:1;
+	letter-spacing:1px;
+}
+
+//it should default to one or the other
+.card-component__media--image--wrapper {
+	background-size:cover;
+	background-position: center;
+	height: 0;
+	padding-bottom:56.25%;
+	&.card-component__media--image--wrapper--square {
+		padding-bottom:100%;
+	}
+}
+
+.card-component__content-wrapper {
+	display:flex;
+	flex-direction:column;
+	flex-grow:1;
+	position:relative;
+	z-index:2;
+	//this piece isn't BEMed quite right, so I'm nesting it for clarity
+	.card-component__text--wrapper {
+		padding-bottom:$gutter-width;
+		.card-component--searchResult & {
+			padding-bottom: .5em;
+		}
+		.card-component--list & {
+			padding-bottom:$gutter-width / 2;
+		}
+	}
+	@include break(min, $breakpoint-min-tablet){
+		.card-component--list--half & {
+			width: 50%;
+			flex-grow: 0;
+		}
+	}
+}
+
+//surgical update from vince
+.body-home {
+	.parallaxPeople {
+		+ .card-component--list--half {
+			.card-component__text {
+				@include break(min, $breakpoint-min-tablet){
+				padding-right:$gutter-width * 2;
+			}
+			}
+			
+		}
+	}
+	
+}
+
+
+.card-component__date--wrapper {
+	font-size:1.2rem;
+	text-transform:uppercase;
+	padding-bottom:$headline-bottom-padding;
+}
+
+.card-component__tags--wrapper {
+	padding-bottom:$headline-bottom-padding * 2;
+}
+
+
+.card-component__tag {
+	display:inline-block;
+	font-size:1.1rem;
+	//need variables
+	color:$white;
+	background:$ift-blue;
+	padding:.2rem .5rem;
+	//box-shadow:1px 1px 1px rgba(200,200,200,1);
+	.template-search & {
+		color: $white;
+		background:$ift-blue;
+		
+	}
+	// a {
+	// 	.template-search & {
+	// 		&:hover {
+	// 			cursor: default;
+	// 		}
+	// 	}
+	// }
+
+
+}
+
+/*special exception to match exactly the design*/
+.card-component__headline {
+	font-size: 2rem;
+	padding-bottom:.6666em;
+	//line-height:$base-line-height;
+}
+
+.card-component__author--wrapper {
+	padding-bottom:$headline-bottom-padding * 4;
+}
+
+.card-component__author--image--wrapper {
+	display:inline-block;
+	width:4.8rem;
+	height:4.8rem;
+	vertical-align:top;
+}
+
+.card-component__author--image {
+	width:4.8rem;
+	height:4.8rem;
+	border-radius:50%;
+}
+
+.card-component__author--text--wrapper {
+	display:inline-block;
+	font-size:1.2rem;
+	width: calc(100% - 6rem);
+	padding-left:.5em;
+	vertical-align:middle;
+}
+
+
+.sublayout__testimonials {
+	// .column-auto {
+	// 	background:rgba($white,.85);
+	// }
+	.card-component--testimonial {
+		display: flex;
+		flex-direction: column;
+		//background:blue;
+		text-align:center;
+		height:100%;
+		padding-bottom:$gutter-width / 2;
+		
+		//align-items: stretch;
+		.card-component__headline {
+			font-size: 2rem;
+		}
+	}
+
+	@include break(max, $breakpoint-max-mobile){
+		.card-component__content-wrapper {
+			background:rgba(255,255,255,.85);
+		}
+	}
+
+	@include break(min, $breakpoint-min-tablet){
+		.row {
+			padding:0;
+		}
+		.column-auto {
+			position:relative;
+			margin:$gutter-width;
+			padding:0;
+		
+		}
+		// .card-component__headline--wrapper {
+		// 	display: flex;
+		// 	flex-direction: column;
+		// 	flex: 1 0;
+		// }
+		.card-component__content-wrapper {
+			padding:$gutter-width/1.5;
+		}
+		.card-component__wrapper-inner {
+			display: flex;
+			flex-direction: column;
+			flex: 1 0 auto;
+		}
+
+		.card-component__text--wrapper {
+			display: flex;
+			flex:1 0 auto;
+			flex-direction: column;
+		}
+			
+		.card-component__text{
+			display: flex;
+			flex-direction: column;
+			flex: 1 0 auto;
+		}
+
+		.card-component__button--group {
+			display: flex;
+			align-self:center;
+		}
+	}
+}
+
+
+
+
+
+.card-component__overlay {
+	position:absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	width:100%;
+	z-index:1;
+}
+
+
+.theme--green {
+	background-color: $ift-green;
+}
+
+.theme--purple {
+	background-color: $ift-purple;
+}
+
+
+//are there some overlays with dark text colors
+.card-component__overlay {
+	+ .card-component__content-wrapper {
+		color: $white;
+	}
+}
+
+.card-component__overlay--green {
+	background-color: $ift-green;
+	opacity:.5;
+}
+
+.card-component__overlay--blue {
+	background-color:$ift-blue-dark;
+	opacity:.5;
+}
+
+.card-component__overlay--orange {
+	background-color:$ift-orange;
+	opacity:.5;
+}
+
+.card-component__overlay--black {
+	background-color:$black;
+	opacity:1;
+}
+
+.card-component__overlay--white {
+	background-color:$white;
+	opacity:1;
+}
+
+
+
+.image__overlay--white {
+	//filter: brightness(1.3333);
+}
+
+.image__overlay--black {
+	background: rgba($black, 1);
+	//filter: brightness(.6666);
+
+}
+
+
+
+//revisit
+.card-component--list {
+	width:100%;
+	.card-component__headline {
+		padding-bottom:$headline-bottom-padding / 2;
+	}
+	.card-component__media--wrapper {
+		display: inline-block;
+		width: 24.5%;
+		max-width: 10rem;
+		.sublayout__list & {
+			max-width: none;
+		}
+		vertical-align: top;
+		+ .card-component__content-wrapper {
+			display: inline-block;
+			width:74.25%;
+			//give it slightly more room
+			max-width: calc(100% - 10.5rem);
+
+		}
+	}
+}
+
+
+
+//that's a theme
+.card-component--banner {
+	padding-top:$gutter-width * 2;
+	padding-right:20%;
+	padding-bottom:$gutter-width * 2;
+	padding-left:20%;
+	//does that text presentation need to be separated into a theme?
+	text-align:center;
+	background-attachment: fixed;
+	.card-component__headline {
+		font-size: 3.2rem;
+		padding-bottom:$gutter-width / 2;
+	}
+	@include break(max,$breakpoint-max-mobile){
+		padding-right:10%;
+		padding-left:10%;
+		//background-color:$ift-green;
+		//blazy kicks in here -- has hardcoded blank image for small
+		//background:linear-gradient(135deg, rgba(247,140,44,0.5) 0%,rgba(87,134,199,0.75) 100%);
+		&[style]{
+			background-image:linear-gradient(135deg, rgba($ift-purple, 1) 0%,rgba($black,1) 100%) !important;
+		}
+
+		.card-component__headline {
+			font-size: 2.8rem;
+			padding-bottom:$gutter-width / 2;
+		}
+	}
+}
+
+.sublayout__banner {
+	.row {
+		margin-bottom: 0;
+	}
+}
+
+
+
+.card-component__share--wrapper {
+	position:absolute;
+	bottom:0;
+	right:0;
+	//align-self:flex-end;
+}
+
+
+//cannot hover because gave fake border
+.sublayout__registrationGrid {
+	padding-bottom:$gutter-width;
+	[class^="col"]{
+		margin-bottom: $gutter-width;
+	}
+	.card-registration__header {
+		[class^="col"]{
+			display: inline-block;
+			margin-bottom: 0;
+			width: 49%;
+		}
+	}
+	.card-component__button--group {
+		text-align:center;
+	}
+}
+
+.sublayout__waysToRegister {
+	.row {
+		padding-bottom:$gutter-width/2;
+		&:first-of-type {
+			.column-auto {
+				padding-bottom:0;
+			}
+		}
+	}
+}
+ 
+.card-component--registration {
+	//border: 1px solid red;
+	//transition: $ift-timing;
+	box-shadow: 0 1rem 2em rgba(151,151,151,.1);
+	.card-component__label--wrapper {
+		position:absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		font-size: 1.2rem;
+		font-weight: 400;
+		padding-top:$gutter-width/8;
+		padding-bottom:$gutter-width/8;
+		background:$ift-blue-dark;
+		color:$white;
+		text-transform: uppercase;
+	}
+	.card-component__headline {
+		font-size: 2.4rem;
+		font-weight: 400;
+		padding-bottom: 1rem;
+	}
+	.card-component__content-wrapper {
+		padding:0;
+		html body main & {
+			padding-left:0;
+		}
+	}
+	.card-component__text--wrapper {
+		background:$white;
+		padding: $gutter-width / 2;
+		html body main & {
+			//second use of important
+			padding-bottom: $gutter-width / 2 !important;
+		}
+		
+		ul {
+			margin-top: 0;
+			margin-left: $gutter-width / 2;
+			padding-bottom:0;
+			li {
+				line-height: 1.25;
+				margin-bottom: .25em;
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+	.price-number {
+		font-size: 2rem;
+		font-weight: bold;
+	}
+	[class^="price"]{
+		line-height: 1.25;
+	}
+
+	&.best-value {
+		//box-sizing: content-box;
+		//border: 10px solid red;
+		box-shadow:8px -16px $ift-blue-darker,-8px 8px $ift-blue-darker, 8px 8px $ift-blue-darker, -8px -16px $ift-blue-darker, 0 -16px $ift-blue-darker;
+		&:after {
+			content: 'Best Value';
+			position:absolute;
+			top: -14px;
+			left: 0;
+			width: 100%;
+			height:16px;
+			font-size:1.2rem;
+			color: $white;
+			background:$ift-blue-darker;
+			z-index: 3;
+			text-align:center;
+			text-transform: uppercase;
+		}
+	}
+	@include break(max, $breakpoint-max-1023){
+		max-width: 30rem;
+		margin:0 auto;
+	}
+	// &:hover,
+	// &:active,
+	// &:focus {
+	// 	box-shadow: 0 1rem 2em rgba(151,151,151,.1);
+	// }
+	
+
+}
+
+
+
+.card-registration__header {
+	background:$ift-green;
+	color: $white;
+	text-align:center;
+	padding: $gutter-width/2 $gutter-width/4;
+	.row {
+		padding-bottom:0;
+	}
+	p {
+		padding-bottom:0;
+		margin-bottom: 0;
+	}
+	[class^="col"]{
+		position:relative;
+		&:first-child {
+			&:after {
+				content: '/';
+				position:absolute;
+				top: 0;
+				right: 0;
+				opacity: .5;
+			}
+		}
+	}
+}
+
+
+
+.sublayout__autoColGrid {
+	.card-component--list {
+		padding-right: $gutter-width;
+		padding-left: $gutter-width;
+		&:first-child {
+			padding-top: $gutter-width / 1.5; 
+		}
+		.card-component__wrapper-inner {
+			box-shadow: 0 1px $ift-grey-200;
+		}
+		&:last-of-type {
+			.card-component__wrapper-inner {
+				box-shadow: none;
+			} 
+		}
+		.card-component__headline--wrapper {
+			padding-bottom:$gutter-width/8;
+		}
+		.card-component__content-wrapper {
+			> [class^="card-component__"] {
+				&:last-child {
+					//REM is cleaner
+					padding-bottom: 1.6rem;
+				}
+			}
+		}
+		+ .card-component__button--group {
+			
+				width: 100%;
+				padding-top:5rem;
+				padding-bottom:$gutter-width;
+				text-align: center;
+
+				.card-component__button {
+					@include break(min, $breakpoint-min-tablet){
+						position:absolute;
+						width:calc(100% - #{$gutter-width * 2});
+						max-width:18rem;
+						bottom:$gutter-width;
+						left: 50%;
+						transform: translateX(-50%);
+					}
+				}
+			
+			
+		}
+
+	}
+	//may need to revisit
+	&.sublayout__newsArea {
+		.card-component--list {
+			+ .card-component__button--group {
+				@include break(min, $breakpoint-min-tablet){
+					padding-top:0;
+				}
+			}
+		}
+	}
+	&.sublayout__list {
+		.card-component--list {
+			box-shadow:0 1px $ift-grey-200;
+			.card-component__wrapper-inner {
+				box-shadow:none;
+			}
+		}
+	}
+
+}
+
+.card-component--event {
+	// .card-component__wrapper-inner {
+	// 	box-shadow: 0 1px $ift-grey-200;
+	// }
+	.card-component__content-wrapper {
+		//override flexbox
+		display: block;
+	}
+	// .card-component__headline--wrapper {
+	// 	padding-bottom:$gutter-width/4;
+	// }
+	.card-component__date--wrapper {
+		font-family: $headlineFont;
+		font-weight: 700;
+		float:left;
+		width: 8.4rem;
+		padding-top:$gutter-width / 2;
+		padding-bottom:$gutter-width / 2;
+		margin-right: $gutter-width / 2;
+		margin-top: $gutter-width / 8;
+		margin-bottom: $gutter-width;
+		background-color: $ift-grey-light;
+		box-shadow:1px 0 $ift-blue, 0 1px $ift-blue, -1px 0 $ift-blue, 0 -1px $ift-blue;
+		border-top:16px solid $ift-blue;
+		text-align: center;
+		line-height: 1.5;
+		@include break(min, $breakpoint-min-tablet, max, $breakpoint-max-1023){
+			float: none;
+			margin: 0 auto $gutter-width/2 auto;
+		}
+	}
+
+
+	.card-component__headline {
+		padding-bottom:$gutter-width/4;
+	}
+
+	.card-component__button--group {
+		clear: left;
+		text-align: right;
+	}
+	
+}
+
+.card-component--list .card-component__button:nth-last-child(n+2):nth-last-child(-n+2):first-child,
+.card-component--list .card-component__button:nth-last-child(n+2):nth-last-child(-n+2):first-child ~ .card-component__button {
+	
+	// @include break(max, $breakpoint-max-mobile){
+	// 	max-width:12rem;
+	// 	margin: 0 0 $gutter-width/4 auto;
+	// }
+
+	@include break(max, $breakpoint-max-mobile){
+		width: 49.25%;
+	}
+	@include break(min, $breakpoint-min-tablet){
+		width: calc(49% - #{$gutter-width}/6);
+		margin:0;
+		&:first-child {
+			margin-right: $gutter-width/4;
+		}
+	}
+	@include break(min, $breakpoint-min-lg){
+		width: calc(49% - #{$gutter-width}/8);
+	}
+
+
+	@include break(min, $breakpoint-min-tablet, max, $breakpoint-max-1179){
+		font-size:1rem;
+		min-width:auto;
+		margin-left:0;
+		padding-right:.75em;
+		padding-left:.75em;
+		letter-spacing:0;
+	}
+
+	
+
+
+	
+}
+
+.cardList__header {
+	padding: 0 0 $gutter-width/2 0;
+}

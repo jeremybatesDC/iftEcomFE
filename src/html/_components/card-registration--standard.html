@@ -1,0 +1,46 @@
+<div data-link="{{cardComponent.dataLink}}" class="card-component card-component--registration vertical-component card-component__theme--default {{cardComponent.themeClass}}">
+    <div class="card-component__wrapper-inner">
+        <div class="card-component__content-wrapper">
+            {% if cardComponent.bestValuelabel%}
+            <div class="card-component__label--wrapper">
+                <span class="card-component__label"><a>Best Value</a></span>
+            </div>
+            {% endif %} {% if cardComponent.headline%}
+            <header class="card-registration__header">
+                <div class="card-component__headline--wrapper">
+                    <h6 class="card-component__headline"><span>{{cardComponent.headline}}</span></h6>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p class="price-number"><span>$480</span></p>
+                            <p class="price-label"><span>Member</span></p>
+                        </div>
+                        <div class="col-xs-6">
+                            <p class="price-number"><span>$720</span></p>
+                            <p class="price-label"><span>Non-Member</span></p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            {% endif %} {% if cardComponent.text%}
+            <div class="card-component__text--wrapper">
+                <div class="card-component__text">
+                    <!-- can't count on p tags -->
+                    <strong>Includes</strong>
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Lorem ipsum dolor sit amet</li>
+                    </ul>
+                </div>
+            </div>
+            {% endif %} {% if cardComponent.buttons %}
+            <div class="card-component__button--group {{cardComponent.buttonGroupTheme}}">
+                <a class="card-component__button button"><span>Register Now</span></a>
+            </div>
+            {% endif %}
+        </div>
+        <!--ends content wrapper (sibling of media wrapper) -->
+    </div>
+    <!--end card card-component__wrapper-inner">-->
+</div>

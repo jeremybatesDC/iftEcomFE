@@ -1,0 +1,77 @@
+<div class="sublayout sublayout__registrationGrid">
+	<div class="row-wrapper contained">
+		<div class="row">
+			<div class="col-sm-12 col-md-6 col-lg-4">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--registration'
+					,themeClass: 'best-value'
+					,headline: 'Total Access'
+					,text: true
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-registration--standard.html'%}
+			</div>
+			<div class="col-sm-12 col-md-6 col-lg-4">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--registration'
+					,headline: 'Emeritus'
+					,text: true
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-registration--standard.html'%}
+			</div>
+			<div class="col-sm-12 col-md-6 col-lg-4">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--registration'
+					,headline: 'Student'
+					,text: true
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-registration--standard.html'%}
+			</div>
+			<div class="col-sm-12 col-md-6 col-lg-4">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--registration'
+					,headline: 'Package Name Here'
+					,text: true
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-registration--standard.html'%}
+			</div>
+			<div class="col-sm-12 col-md-6 col-lg-4">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--registration'
+					,headline: 'Expo Only'
+					,text: true
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-registration--standard.html'%}
+			</div>
+			<div class="col-sm-12 col-md-6 col-lg-4">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--registration'
+					,headline: 'Family Member'
+					,text: true
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-registration--standard.html'%}
+			</div>
+
+		</div>
+		<div class="card-component__button--group button-group--default-theme">
+		    <a class="card-component__button button"><span>Register Now</span></a>
+		</div>
+	</div>
+</div>

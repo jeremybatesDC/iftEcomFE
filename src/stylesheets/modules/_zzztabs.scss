@@ -1,0 +1,115 @@
+//$transition--slow: all 400ms;
+
+
+.bf_tabs {
+    overflow:hidden;
+    .bf_tabs__list {
+        list-style: none;
+        margin:0;
+        padding: 0;
+    }
+    .bf_tabs__listItem {
+        display: inline-block;
+    }
+    .tab__clickTarget {
+        display: block;
+        cursor: pointer;
+        &.selected {
+            color: $ift-blue;
+            pointer-events: none;
+            cursor: default;
+        }
+    }
+    .tab__item {
+        display: none;
+        z-index: 1;
+        &.selected {      
+            display: block;
+        }
+    }
+}
+
+.bf_tabs__contentWrapper {
+    position: relative;
+}
+
+.filteredOut {
+    //height:0;
+    // max-height:0;
+    // padding:0;
+    // margin:0;
+    // line-height: 0;
+    opacity: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.sessionInfoSpan {
+    display: block;
+}
+
+.conf_day{
+    display: block;
+}
+
+
+
+
+.session__time-wrapper{
+  line-height: 1;
+  padding-top:$gutter-width / 2;
+}
+
+.session__speaker-name,
+.session__location {
+  font-weight: 400;
+  font-size: 1.6rem;
+  padding-top:$gutter-width / 4;
+}
+
+
+// .dayDate {
+//     display: block;
+// }
+
+/*
+██████╗ ██╗  ██╗ ██████╗ ███╗   ██╗███████╗
+██╔══██╗██║  ██║██╔═══██╗████╗  ██║██╔════╝
+██████╔╝███████║██║   ██║██╔██╗ ██║█████╗  
+██╔═══╝ ██╔══██║██║   ██║██║╚██╗██║██╔══╝  
+██║     ██║  ██║╚██████╔╝██║ ╚████║███████╗
+╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
+*/
+
+// @include break(max, $screen-xs-max) {
+    
+//     .accordion .accordion__item.accordion__item--selected {
+//         .accordion__panel {
+//             max-height: 100rem;
+//             transition: none;
+//         }
+//     }
+// }
+
+// @include break(max, $screen-sm-max) {
+//     .accordion .accordion__item{
+//         transition: none;
+//     }
+//     .accordion .accordion__item.accordion__item--selected {
+//         .accordion__panel {
+//             max-height: 140rem;
+//             transition: none;
+//         }
+//     }
+// }
+
+
+/*
+██████╗ ███████╗███████╗██╗  ██╗████████╗ ██████╗ ██████╗ 
+██╔══██╗██╔════╝██╔════╝██║ ██╔╝╚══██╔══╝██╔═══██╗██╔══██╗
+██║  ██║█████╗  ███████╗█████╔╝    ██║   ██║   ██║██████╔╝
+██║  ██║██╔══╝  ╚════██║██╔═██╗    ██║   ██║   ██║██╔═══╝ 
+██████╔╝███████╗███████║██║  ██╗   ██║   ╚██████╔╝██║     
+╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝     
+*/
+

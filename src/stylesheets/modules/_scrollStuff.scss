@@ -1,0 +1,123 @@
+@include break(max, $breakpoint-max-mobile){
+	.parallaxPeople,
+	.pixelsContainer:last-child{
+		display: none;
+	}
+}
+.pixelsContainer {
+	position: fixed;
+	top:0;
+	left:5%;
+	height:100vh;
+	width:100%;
+	background-image:url(/img/squares/pixelsRaster_white.svg);
+	background-repeat: repeat-y;
+	background-size:7.5%;
+	pointer-events:none;
+	opacity:.25;
+	+ .pixelsContainer {
+		opacity:.15;
+		@include break(max, $breakpoint-max-mobile){
+			display: none;
+		}
+	}
+}
+
+
+//these are going away in edge
+.parallaxPeople {
+	@include break(max, $breakpoint-max-mobile){
+		display: none;
+	}
+	position: absolute;
+	top: 0;
+	right:0;
+	width:auto;
+	pointer-events:none;
+	//z-index:0;
+	figure {
+		margin-bottom:$gutter-width / 2;
+	}
+	img {		
+		width: 100%;
+		min-width: auto;
+		pointer-events:none;
+		box-shadow: 2px 2px 1px rgba($ift-grey-dark, .3333);
+		border:1px solid transparent;
+		border-right-color:rgba($ift-grey-dark, .2);
+		border-bottom-color:rgba($ift-grey-dark, .2);
+	}
+	.column-auto {
+		position:relative;
+		padding: 0;
+		&:first-child {
+			opacity: 1;	
+			//z-index: 1;	
+		}
+		&:nth-child(2) {
+			opacity: .6666;
+			//z-index: 0;	
+		}
+		html body main & {
+			background-color:transparent !important;
+		}
+	}
+	
+	@include break(min, $breakpoint-min-tablet){
+		right:0;
+		//this is for edge
+		min-width: 40rem;
+		.column-auto {
+			&:first-child{
+				img {
+					max-width: 24rem;
+				}
+			}
+			&:nth-child(2){
+				img {
+					max-width: 16rem;
+				}
+				
+			}
+		}
+
+	}
+
+	@include break(min, $breakpoint-min-md){
+		right: 2.5vw;
+		min-width: 50rem;
+		.column-auto {
+			&:first-child{
+				img {
+					max-width: 27rem;
+				}
+			}
+			&:nth-child(2){
+				img {
+					max-width: 18rem;
+				}
+				
+			}
+		}
+	}
+	@include break(min, $breakpoint-min-lg){
+		right: 5vw;
+		.column-auto {
+			&:first-child{
+				img {
+					max-width: 33rem;
+				}
+			}
+			&:nth-child(2){
+				img {
+					max-width: 22rem;
+				}
+				
+			}
+		}
+	}
+	@include break(min, $breakpoint-min-xl){
+		right: 7.5vw;
+	}
+
+}

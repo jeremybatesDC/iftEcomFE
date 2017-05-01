@@ -1,0 +1,49 @@
+<!-- Extent this master layout -->
+{% extends '_layouts/content-template.html' %}
+{% set page = {title:"Sample Content Title: Lorem Ipsum Dolor Sit Amet que Coruscant Nam Faucibus"} %}
+
+
+
+{% block content %}
+{% include "./_shared/breadcrumb.html" %}
+
+<!--backend developer expressed this wrapper as common, meaning a common parent of containers for sublayout-->
+<div class="common-container">
+	<div class="row-wrapper contained">
+		
+		<div class="row">
+			<div class="column-auto containerFOrSublayouts">
+				<!-- a content block is just a sublayout -->
+				<header class="page-title__header">
+					<h1 class="page-title__headline">{{page.title}}</h1>
+				</header>
+
+				{% include './_sublayouts/sublayout__share.html'%}
+				{% include "./_sublayouts/sublayout__contentBlock.html" %}
+				
+				{#
+				% include './_sublayouts/sublayout__accordion.html'%
+				#}
+				{% include './_sublayouts/sublayout__autoColumnGrid.html'%}
+			</div>
+			<!--end of autocolumn-->
+			<div class="column-ads">
+				{% include './_sublayouts/sublayout__ads.html'%}
+			</div>
+			<!--end of column-ads-->
+		</div>
+		<!--end of row-->
+	</div>
+	<!--end of row-wrapper contained-->
+	
+</div><!--end common container-->
+
+
+<!-- Or is it better to have additonal sublayouts B) go here (sibling of common-container) -->
+{% include './_sublayouts/sublayout__banner.html'%}
+{% include './_sublayouts/sublayout__autoColumnGrid.html'%}
+{% include './_sublayouts/sublayout__accordion.html'%}
+
+
+{% endblock %}
+

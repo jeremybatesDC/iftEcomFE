@@ -1,0 +1,17 @@
+
+.session__time-wrapper{
+  line-height: 1;
+  padding-top:$gutter-width / 2;
+}
+
+.session__speaker-name,
+.session__location {
+  font-weight: 400;
+  font-size: 1.6rem;
+  padding-top:$gutter-width / 4;
+}
+
+
+// accordion__openCloseAllWrapper--outer">
+//             <div class="accordion__openCloseAllWrapper">
+//                 <div class="accordion__openCloseAllWrapper--inner">

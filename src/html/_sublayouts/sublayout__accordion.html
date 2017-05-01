@@ -1,0 +1,70 @@
+<div class="sublayout sublayout__accordion">
+  <div class="row-wrapper contained">
+    <header class="theme--centered">
+      <h2>Accordion Sublayout</h2>
+    </header>
+    <div class="row">
+      <div class="accordion">
+        <div class="accordion__openCloseAllWrapper--outer">
+            <div class="accordion__openCloseAllWrapper">
+                <div class="accordion__openCloseAllWrapper--inner">
+                    <span id="accordionOpenAllSpan">Expand All</span> / <span id="accordionCloseAllSpan">Collapse All</span>
+                </div>
+            </div>
+        </div>
+        <ul class="accordion__list">
+          <li class="accordion__item">
+            <div class="accordion__itemTitleWrap">
+              <h5 class="accordion__itemTitle"><span>Accordion Item<span></h5>
+              
+            </div>
+            <div class="accordion__itemContent">
+              {% set cardComponent = {
+                cardTypeClass: 'card-component--list'
+                ,orientationClass: 'horizontal-component'
+                ,media: true
+                ,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+                ,text: 'long'
+                ,dataLink: 'http://yahoo.com'
+              }
+              %}
+              {% include './_components/card-sink.html'%} 
+            </div>
+          </li>
+          <li class="accordion__item">
+            <div class="accordion__itemTitleWrap">
+              <h5 class="accordion__itemTitle"><span>Accordion Item</span></h5>
+              
+            </div>
+            <div class="accordion__itemContent">
+              {% set cardComponent = {
+                cardTypeClass: 'card-component--list'
+                ,orientationClass: 'horizontal-component'
+                ,text: 'long'
+                ,dataLink: 'http://yahoo.com'
+              }
+              %}
+              {% include './_components/card-sink.html'%} 
+            </div>
+          </li>
+          <li class="accordion__item">
+            <div class="accordion__itemTitleWrap">
+              <h5 class="accordion__itemTitle"><span>Accordion Item</span></h5>
+              
+            </div>
+            <div class="accordion__itemContent">
+              {% set cardComponent = {
+                cardTypeClass: 'card-component--list'
+                ,orientationClass: 'horizontal-component'
+                ,text: 'long'
+                ,dataLink: 'http://yahoo.com'
+              }
+              %}
+              {% include './_components/card-sink.html'%} 
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

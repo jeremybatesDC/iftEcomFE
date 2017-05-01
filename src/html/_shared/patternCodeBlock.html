@@ -1,0 +1,44 @@
+<code>
+	<p><u>This annotation describes the last item in the row above</u></p>
+	<ul>
+		<!--looping through/displaying all fields shows unneccessary options like media true text true-->
+		<!--<li><b></b> </li>-->
+		<!--{% for propName, item in cardComponent%}
+			<li><b>{{propName}}</b>: {{item}}</li>
+		{% endfor %}-->
+		<li><b>cardTypeClass</b>: {{cardComponent.cardTypeClass}}</li>
+		<li><b>orientationClass</b>: {{cardComponent.orientationClass}}</li>
+		<li><b>themeClass(es)</b>: {{cardComponent.themeClass}}</li>
+		<li><b>backgroundImage</b>: {{cardComponent.backgroundImage}}</li>
+		<li><b>mediaAspectRatio</b>: {{cardComponent.mediaAspectRatio}}</li>
+		<li><b>overlayColor</b>: {{cardComponent.overlayColor}}</li>
+		<li><b>buttonGroupTheme (if buttons)</b>: {{cardComponent.buttonGroupTheme}} </li>
+		<li><b>share [defaults to false]</b>: {{cardComponent.share}}</li>
+		<li><b>label [defaults to false]</b>: {{cardComponent.label}}</li>
+		<li><b>author [defaults to false]</b>: {{cardComponent.author}}</li>
+		<li><b>date [defaults to false]</b>: {{cardComponent.date}}</li>
+		<li><b>location [defaults to false]</b>: {{cardComponent.location}}</li>
+		<li><b>tags [defaults to false]</b>: {{cardComponent.tags}}</li>
+		<li><b>data-link</b>: {{cardComponent.dataLink}}</li>
+
+	</ul>
+
+
+
+	<!--cardTypeClass: 'card-component--promo'
+					,orientationClass: 'horizontal-component'
+					,backgroundImage:'https://unsplash.it/720/405'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,overlayColor: 'orange'
+					,label: true
+					,author: true
+					,headline: 'Kitchen Sink'
+					,location: true
+					,date: true
+					,tags: true
+					,text: 'long'
+					,buttons: true
+					,share: true
+					,mediaAfter: true -->
+</code>

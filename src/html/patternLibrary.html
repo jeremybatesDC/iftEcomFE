@@ -1,0 +1,771 @@
+<!-- Extent this master layout -->
+{% extends '_layouts/main-application.html' %}
+{% set page = {title:"IFT17 Pattern Library"} %}
+
+
+
+
+{% block content %}
+{% include "./_shared/breadcrumb.html" %}
+
+<div class="row-wrapper contained">
+	<header class="page-title__header theme--centered">
+		<h1 class="page-title__headline">{{page.title}}</h1>
+	</header>
+</div>
+
+
+
+{% include "_sublayouts/sublayout__video.html" %}
+
+
+
+
+<div class="row-wrapper contained">
+	{% include './_sublayouts/sublayout__twitter--horizontal.html'%}
+</div>
+
+
+<div class="sublayout sublayout__autoColGrid">
+	<div class="row-wrapper contained">
+		<div class="row">
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'horizontal-component'
+					,themeClass: 'theme--feature-text'
+					,headline: 'Select theme--feature-text for enlarged text'
+					,text: 'long'
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+{% include './_shared/patternCodeBlock.html'%}
+
+
+
+<br>
+<br>
+<br>
+
+{% include './_sublayouts/sublayout__registrationGrid.html'%}
+
+{% include './_shared/patternCodeBlock.html'%}
+
+
+{% include './_sublayouts/sublayout__newsFeatured.html'%}
+{% include './_shared/patternCodeBlock.html'%}
+
+
+<div class="sublayout sublayout__autoColGrid">
+	
+	<div class="row-wrapper contained">
+	<header class="theme--centered">
+		<h2>Related Items</h2>
+	</header>
+		<div class="row">
+			<!--auto width columns?-->
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--promo'
+					,themeClass: 'theme--trading-card'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Promo Card, Square Media, Trading Card Theme'
+					,text: 'short'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--promo'
+					,themeClass: 'theme--trading-card'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Promo Card, Square Media, Trading Card Theme'
+					,text: 'short'
+					,buttons: false
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--promo'
+					,themeClass: 'theme--trading-card'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Promo Card, Square Media, Trading Card Theme'
+					,text: 'medium'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+		</div>
+		<!--end row-->
+	</div>
+</div>
+<!--end chunk -->
+{% include './_shared/patternCodeBlock.html'%}
+
+
+<div class="sublayout sublayout__autoColGrid">
+	
+	<div class="row-wrapper contained">
+	<header class="theme--centered">
+		<h2>Related Items split last column</h2>
+	</header>
+		<div class="row">
+			<!--auto width columns?-->
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--promo'
+					,themeClass: 'theme--trading-card'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Promo Card, Square Media, Trading Card Theme'
+					,text: 'short'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--promo'
+					,themeClass: 'theme--trading-card'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Promo Card, Square Media, Trading Card Theme'
+					,text: 'short'
+					,buttons: false
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--promo'
+					,themeClass: 'theme--trading-card'
+					,headline: 'Promo Card, Square Media, Trading Card Theme'
+					,text: 'short'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+				
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--promo'
+					,themeClass: 'theme--trading-card'
+					,headline: 'Promo Card, Square Media, Trading Card Theme'
+					,text: 'short'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+		</div>
+		<!--end row-->
+	</div>
+</div>
+<!--end chunk -->
+{% include './_shared/patternCodeBlock.html'%}
+
+
+
+
+<div class="sublayout sublayout__autoColGrid">
+	<div class="row-wrapper contained">
+		<header class="theme--centered">
+			<h2>50/50 Vertical &amp; Horizontal cards</h2>
+		</header>
+		<div class="row">
+			<!--auto width columns?-->
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: ''
+					,media: true
+					,headline: 'Any card can go in 1, 2, or 3 columns'
+					,text: 'short'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'horizontal-component'
+					,cardTypeClass: 'card-component--list'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Any card can go in 1, 2, or 3 columns'
+					,text: 'shortest'
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+				{% set cardComponent = {
+					orientationClass: 'horizontal-component'
+					,cardTypeClass: 'card-component--list'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Any card can go in 1, 2, or 3 columns'
+					,text: 'shortest'
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+				{% set cardComponent = {
+					orientationClass: 'horizontal-component'
+					,cardTypeClass: 'card-component--list'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Any card can go in 1, 2, or 3 columns'
+					,text: 'shortest'
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+				{% set cardComponent = {
+					orientationClass: 'horizontal-component'
+					,cardTypeClass: 'card-component--list'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Any card can go in 1, 2, or 3 columns'
+					,text: 'shortest'
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+
+		</div>
+		<!--end row-->
+	</div>
+</div>
+<!--end sublayout -->
+
+{% include './_shared/patternCodeBlock.html'%}
+
+<div class="sublayout sublayout__autoColGrid">
+	
+
+	<div class="row-wrapper contained">
+		<header class="theme--centered">
+			<h2>2 verticals &amp;  1 horizontal card</h2>
+		</header>
+		<div class="row">
+			<!--auto width columns?-->
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: ''
+					,backgroundImage:'https://unsplash.it/720/405'
+					,overlayColor: 'blue'
+					,label: true
+					,author: true
+					,headline: 'Vertical Card Overlay'
+					,date: true
+					,tags: true
+					,text: 'short'
+					,share: true
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: ''
+					,media: true
+					,headline: '16to9 images are the default'
+					,date: true
+					,tags: true
+					,text: 'short'
+					,share: true
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+
+			<div class="column-auto">
+
+				{% set cardComponent = {
+					orientationClass: 'horizontal-component'
+					,cardTypeClass: 'card-component--list'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'News Item Title Max Char Count?'
+					,text: 'shortest'
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+				{% set cardComponent = {
+					orientationClass: 'horizontal-component'
+					,cardTypeClass: 'card-component--list'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'News Item Title Max Char Count?'
+					,text: 'shortest'
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+				{% set cardComponent = {
+					orientationClass: 'horizontal-component'
+					,cardTypeClass: 'card-component--list'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'News Item Title Max Char Count?'
+					,text: 'shortest'
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+				
+			</div>
+
+		</div>
+		<!--end row-->
+	</div>
+</div>
+<!--end chunk -->
+
+
+{% include './_shared/patternCodeBlock.html'%}
+
+
+<div class="sublayout sublayout__autoColGrid">
+	
+
+	<div class="row-wrapper contained">
+		<header class="theme--centered">
+			<h2>2 verticals &amp;  1 horizontal card</h2>
+		</header>
+		<div class="row">
+			<!--auto width columns?-->
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: ''
+					,media: true
+					,headline: '16to9 images are the default'
+					,date: true
+					,tags: true
+					,text: 'short'
+					,share: true
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'horizontal-component'
+					,cardTypeClass: 'card-component--list'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'News Item Title Max Char Count?'
+					,text: 'shortest'
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+				{% set cardComponent = {
+					orientationClass: 'horizontal-component'
+					,cardTypeClass: 'card-component--list'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'News Item Title Max Char Count?'
+					,text: 'shortest'
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+				{% set cardComponent = {
+					orientationClass: 'horizontal-component'
+					,cardTypeClass: 'card-component--list'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'News Item Title Max Char Count?'
+					,text: 'shortest'
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: ''
+					,backgroundImage:'https://unsplash.it/720/405'
+					,overlayColor: 'blue'
+					,label: true
+					,author: true
+					,headline: 'Vertical Card Overlay'
+					,date: true
+					,tags: true
+					,text: 'short'
+					,share: true
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+
+		</div>
+		<!--end row-->
+	</div>
+</div>
+<!--end chunk -->
+
+
+{% include './_shared/patternCodeBlock.html'%}
+
+
+<div class="sublayout sublayout__autoColGrid">
+	<div class="row-wrapper contained">
+		<header class="theme--centered">
+			<h2>Promo cards with vertically split column</h2>
+		</header>
+		<div class="row">
+			<!--auto width columns?-->
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--promo'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Promo Card, Square Theme'
+					,text: 'short'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--promo'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Promo Card, Square Theme Lorem ipsum dolor'
+					,text: 'short'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+
+			</div>
+
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--promo'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Promo Card, Square Theme Lorem ipsum dolor'
+					,text: 'short'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: 'http://yahoo.com'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+
+			</div>
+
+			<!--can use quantity query here -->
+			
+		</div>
+		<!--end row-->
+	</div>
+</div>
+<!--end chunk -->
+
+
+{% include './_shared/patternCodeBlock.html'%}
+
+<!--full width component doesn't be the row-wrapper div -->
+
+{% include "_sublayouts/sublayout__banner.html" %}
+
+{% include './_shared/patternCodeBlock.html'%}
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+	
+<div class="sublayout sublayout__autoColGrid sublayout--has-bg-image b-lazy" data-src-sm="/img/people/yearbookWide_1024.jpg" data-src="/img/people/yearbookWide_1536.jpg">
+  <div class="row-wrapper contained">
+    <header class="header-contained--default-theme theme--darkBackground-whiteText">
+      <h2>Why Attend IFT<span class="ift-title-year-highlight">17</span>?</h2>
+    </header>
+    <div class="row">
+      <div class="column-auto">
+        {% set cardComponent = {
+        orientationClass: 'horizontal-component'
+        ,cardTypeClass: 'card-component--list--half'
+        ,themeClass: 'theme--darkBackground-whiteText theme--feature-text'
+        ,text: 'long'
+        ,buttons: true
+        ,buttonGroupTheme: 'button-group--ghost-theme'
+        ,dataLink: 'http://yahoo.com'
+        }
+        %}
+        {% include './_components/card-sink.html'%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include './_shared/patternCodeBlock.html'%}
+
+{% include "_sublayouts/sublayout__accordion.html" %}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% include "_sublayouts/sublayout__videoSIMPLE.html" %}
+
+{% include './_shared/patternCodeBlock.html'%}
+
+
+
+{% include "./_components/newsArea.html" %}
+{% include './_shared/patternCodeBlock.html'%}
+
+
+<div class="sublayout sublayout__autoColGrid">
+	<div class="row-wrapper contained">
+		<header>
+			<h2>Headline Typographic Grid w/ calculated line-heights</h2>
+		</header>
+
+		<hr>
+
+		<div class="row">
+			<div class="column-auto">
+				<!--<h1>H1 font-size 80px &amp;
+				<br>
+				line-height 100px</h1>
+				<p>This paragraph shows the headline margin-bottom</p>-->
+				[h1 shouldn't be used by content admins. That is set at the page level, and there should only ever be 1 h1 on page.]
+			</div>
+		</div>
+		<div class="row">
+			<div class="column-auto">
+				<h2>H2 font-size 60px &amp;
+
+				<br>
+
+				line-height 75px</h2>
+				<p>This paragraph shows the headline margin-bottom</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column-auto">
+				<h3>H3 font-size 48px &amp;
+
+				<br>
+
+				line-height 60px</h3>
+				<p>This paragraph shows the headline margin-bottom</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="column-auto">
+				<h4>H4 font-size 36px &amp;
+
+				<br>
+
+				line-height 45px</h4>
+				<p>This paragraph shows the headline margin-bottom</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="column-auto">
+				<h5>H5 font-size 24px &amp;
+
+				<br>
+
+				line-height 30px</h5>
+				<p>This paragraph shows the headline margin-bottom</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="column-auto">
+				<h6>H6 font-size 18px &amp;
+
+				<br>
+				
+				line-height 22.5px</h6>
+				<p>This paragraph shows the headline margin-bottom</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% include "./_sublayouts/sublayout__sponsorGrid.html" %}
+
+{% include './_shared/patternCodeBlock.html'%}
+
+
+
+<div class="row-wrapper contained">
+	<header class="theme--centered">
+		<h2>IFT Grid</h2>
+	</header>
+</div>
+{% include "./_components/gridBlank.html" %}
+
+<!--
+
+					cardTypeClass: 'card-component--promo'
+					,orientationClass: 'horizontal-component'
+					,backgroundImage:'https://unsplash.it/720/405'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,overlayColor: 'orange'
+					,label: true
+					,author: true
+					,headline: 'Kitchen Sink Card (currently Allows Media AND Background image)'
+					,location: true
+					,date: true
+					,tags: true
+					,text: 'long'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--default-theme'
+					,share: true
+					,mediaAfter: false
+					,dataLink: 'http://yahoo.com'
+				}
+				
+				cardComponent = {
+					cardTypeClass: 'card-component--promo'
+					,orientationClass: 'horizontal-component'
+					,backgroundImage:'https://unsplash.it/720/405'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,overlayColor: 'orange'
+					,label: true
+					,author: true
+					,headline: 'Kitchen Sink'
+					,location: true
+					,date: true
+					,tags: true
+					,text: 'long'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--default-theme'
+					,share: true
+					,dataLink: 'http://yahoo.com'
+				}
+
+
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+-->
+
+<hr>
+
+<header>
+	<h3>Below is a card configured for speakers</h3>
+</header>
+
+
+<hr>
+
+
+{% set cardComponent = {
+		cardTypeClass: 'card-component--list'
+		,orientationClass:'horizontal-component'
+		,themeClass: 'theme--speaker'
+		,author: true
+		,headline: 'Speaker Card'
+		,media: true
+		,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+		,text: 'long'
+		,buttons: true
+		,buttonGroupTheme: 'button-group--default-theme'
+		,dataLink: 'http://yahoo.com'
+	}
+	%}
+{% include './_components/card-sink.html'%}
+
+{% include './_shared/patternCodeBlock.html'%}
+
+
+
+
+
+
+
+{% endblock %}
+

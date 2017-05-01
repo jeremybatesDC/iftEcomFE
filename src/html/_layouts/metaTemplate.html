@@ -1,0 +1,35 @@
+<!-- on the front end now, there is no difference between template-content and template-category-->
+<main class="template-interior">
+
+	<!--backend developer expressed this wrapper as common, meaning a common parent of containers for sublayout-->
+	<div class="common-container">
+		<div class="row-wrapper contained">
+			<div class="row">
+
+				<div class="column-auto containerForSublayouts">
+					<!-- a content block is just a sublayout -->
+					{% include "__sublayouts/sublayout__contentBlock.html" %}
+					
+					{% include './_sublayouts/sublayout__accordion.html'%}
+					{% include './_sublayouts/sublayout__autoColumnGrid.html'%}
+				</div><!--end of autocolumn-->
+
+				<!--this ads column is optional-->
+				<div class="column-ads">
+					{% include './_sublayouts/sublayout__ads.html'%}
+				</div><!--end of column-ads-->
+
+			</div><!--end of row-->
+		</div><!--end of row-wrapper contained-->
+
+	</div><!--end common container-->
+
+
+	<!-- Regarding additional sublayouts, backend expressed preference for them to be siblings of common-container (not children) -->
+	{% include './_sublayouts/sublayout__banner.html'%}
+	{% include './_sublayouts/sublayout__bricks.html'%}
+	{% include './_sublayouts/sublayout__video.html'%}
+	{% include './_sublayouts/sublayout__accordion.html'%}
+
+
+</main>

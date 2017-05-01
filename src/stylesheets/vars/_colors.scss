@@ -1,0 +1,64 @@
+// **********
+// COLORS & GRADIENTS
+// **********
+// Base Colors
+$white: #fff;
+$off_white: #f1f1f1;
+$black: #000;
+$white_translucent: rgba(255,255,255,0.8);
+$grey_translucent: rgba(99,99,99,.66);
+$black_translucent: rgba(0,0,0,0.95);
+
+
+/* Blue Hex
+#5786C7
+*/
+$ift-blue: rgba(87,134,199,1);
+$ift-blue-dark: rgba(44,91,153,1);
+$ift-blue-darker: darken($ift-blue, 45%);
+
+/* Orange Hex
+#F78C2C;
+*/
+$ift-orange: rgba(247,140,44,1);
+
+
+/* Green Hex
+#76A120
+*/
+$ift-green:rgba(118,161,32,1);
+$ift-green-light:rgba(174,207,67,1);
+
+/* Purple Hex
+#7B2981
+*/
+$ift-purple:rgba(123,41,129,1);
+/* Red Hex #A92323*/
+$ift-red:rgba(169,35,35, 1);
+
+//#F2F2F2
+$ift-grey-light: rgba(242,242,242,1);
+
+$ift-grey-230: rgba(230,230,230,1);
+
+$ift-grey-medium-lighter: rgba(224,224,224,1);
+$ift-grey-200: rgba(200,200,200,1);
+
+$ift-grey-medium-light: rgba(177,177,177,1);
+
+$ift-grey-medium: rgba(128,128,128,1);
+$ift-grey-dark: rgba(99,99,99,1);
+$ift-grey-75: rgba(75,75,75,1);
+$ift-grey-darker: rgba(51,51,51,1);
+$ift-grey-33:rgba(33,33,33,1);
+//this is also used as the body font color
+$body-text-color: $ift-grey-darker;
+
+
+
+
+
+//GRADIENTS
+$gradient--orangeToBlue: linear-gradient(to right, rgba(247,140,44,0.55) 0%,rgba(87,134,199,0.75) 100%); 
+$gradient--blueToOrange: linear-gradient(to left, rgba(247,140,44,0.55) 0%,rgba(87,134,199,0.75) 100%);
+//background: linear-gradient(to right, rgba(247,140,44,0.9) 0%,rgba(87,134,199,0.9) 100%); 

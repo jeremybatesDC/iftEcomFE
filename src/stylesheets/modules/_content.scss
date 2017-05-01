@@ -1,0 +1,239 @@
+.sublayout {
+    &.sublayout__breadcrumb {
+        padding-bottom: 0;
+        @include break(min, $breakpoint-min-tablet) {
+            .row {
+                padding-bottom: $gutter-width / 2;
+            }
+            .column-auto {
+                padding-left: 0;
+                // &:first-child {
+                // 	padding-left:$gutter-width / 2;
+                // }
+            }
+        }
+        @include break(min, $breakpoint-min-md) {
+            .row-wrapper {
+                margin-left: 5%;
+            }
+        }
+        font-size: 1.3rem;
+        color: $ift-blue;
+        a {
+            display: inline-block;
+
+            transition: $ift-timing;
+            span {
+                &:before {
+                    display: none;
+                }
+            }
+            // &:hover,
+            // &:active,
+            // &:focus {
+            //     background-image: linear-gradient(to top, currentColor 50%, currentColor 50%);
+            //     background-size: 100% 2px;
+            // }
+            + a {
+            	//sometimes the breadcrumb has a second actual link, and we want the psuedo content then, as well
+            	//background:none;
+				&:before {
+					content: '> ';
+					//background-image:none;
+				}
+                &:hover,
+                &:active,
+                &:focus {
+                    background:none;
+                }
+
+
+            }
+        }
+        span {
+            display: inline-block;
+            transition: $ift-timing;
+            &:before {
+                content: '> ';
+            }
+        }
+    }
+}
+
+
+
+.sublayout__contentBlock {
+    padding-bottom: $gutter-width * 2;
+}
+
+//not sure if I should generalize this...
+.common-container > .row-wrapper > .row > [class^="column"] {
+    position: relative;
+}
+
+.template-content,
+.template-interior,
+.template-search {
+    padding-top: 8rem;
+    @include break(min, $breakpoint-min-tablet) {
+        padding-top: 8.4em;
+    }
+}
+
+.template-content,
+.template-interior,
+.card-component__text {
+    p {
+        margin-bottom: 1em;
+        br {
+            height: auto;
+            margin-bottom: 0;
+        }
+    }
+    br {
+        height: 0;
+        margin-bottom: .5em;
+    }
+    > .sublayout {
+        padding-top: 0;
+        padding-bottom: 0;
+        [class^="col"] {
+            position: relative;
+        }
+        .col-sm-9 {
+            > .card-component {
+                margin-top: $gutter-width * 2;
+                margin-top: $gutter-width * 2;
+                .card-component__media--wrapper {
+                    max-width: none;
+                    width: 33%;
+                    padding-right: $gutter-width / 2;
+                    +.card-component__content-wrapper {
+                        width: 66%;
+                    }
+                }
+            }
+        }
+    }
+    ul,
+    ol {
+        //list-style: inside;
+        //text-indent: -($gutter-width);
+        margin-top: 1em;
+        padding-bottom: 1em;
+        margin-left: $gutter-width;
+        ol,
+        ul {
+            padding-left: 1em;
+            margin-top: 0;
+            padding-bottom: 0;
+        }
+    }
+    ol {
+        //text-indent: .2rem;
+        list-style-type: decimal;
+        > li {
+            padding-bottom: 1em;
+        }
+    }
+}
+
+.card-component__text {
+    p {
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.content__header {
+    font-size: 1.4rem;
+    padding-bottom: 1em;
+    color: $ift-grey-medium;
+    svg {
+        width: 1em;
+        height: 1em;
+        stroke: $ift-grey-darker;
+    }
+}
+
+.content-header--row {
+    padding-bottom: .2em;
+    &:last-child {
+        padding-bottom: 0;
+    }
+}
+
+.content-header--byline__authorname {
+    font-weight: $headlineFontWeight;
+    color: $ift-grey-dark;
+}
+
+.content__header--date {
+    .content__header__span--info {
+        font-size: 1.2rem;
+        color: $ift-grey-medium;
+        text-transform: uppercase;
+    }
+}
+
+.content__header__span--info {
+    line-height: 1;
+    padding-left: $gutter-width / 6;
+}
+
+//avoiding classes here because client may add these as pure html and may need easiest possible formatting 
+blockquote {
+    font-family: $headlineFont;
+    font-size: 2.4rem;
+    //background:$white;
+    margin: $gutter-width 0;
+    border-left: 10px solid $ift-green;
+    padding: $gutter-width;
+    footer {
+        font-size: 1.4rem;
+        margin-top: 1em;
+    }
+}
+
+figcaption {
+    font-family: $headlineFont;
+    font-size: 1.2rem;
+}
+
+.theme--image-50percent {
+    @include break(min, $breakpoint-min-tablet) {
+        width: 50%;
+    }
+}
+
+//don't factor out common styles -- want user to just pick one
+.theme--image-float-left {
+    padding-top: $gutter-width / 2;
+    padding-bottom: $gutter-width / 2;
+    @include break(min, $breakpoint-min-tablet) {
+        float: left;
+        padding-right: $gutter-width;
+    }
+}
+
+.theme--image-float-right {
+    padding-top: $gutter-width / 2;
+    padding-bottom: $gutter-width / 2;
+    @include break(min, $breakpoint-min-tablet) {
+        float: right;
+        padding-left: $gutter-width;
+    }
+}
+
+//might not be needed -- 100% width is default
+.theme--image-fullWidth {
+    padding-top: $gutter-width / 2;
+    padding-bottom: $gutter-width / 2;
+}
+
+.showImageAltText {
+    &:after {
+        content: 'alt text';
+    }
+}

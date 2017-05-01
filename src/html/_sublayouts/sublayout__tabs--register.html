@@ -1,0 +1,39 @@
+<div class="bf_tabs bf_tabs--registration contained">
+
+    <div class="bf_tabs__clickTargetsWrapper">
+        <ul class="bf_tabs__list">
+            <li class="bf_tabs__listItem">
+                <div class="tab__clickTarget selected" data-tabset="EarlyBird">
+                    <span class="conf_day dayName">Early Bird</span>
+                    <span class="conf_day dayDate">Through June, 2017</span>
+                </div>
+            </li>
+            <li class="bf_tabs__listItem">
+                <div class="tab__clickTarget" data-tabset="Standard">
+                    <span class="conf_day dayName">Standard</span>
+                    <span class="conf_day dayDate">After June 3, 2017</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="bf_tabs__contentWrapper">
+        <div class="bf_tabs__contentWrapper--inner">
+
+            <div class="tab__item selected" data-tabset="EarlyBird">
+              <div class="tab__item--inner">
+                {% include './_sublayouts/sublayout__registrationGrid.html'%} 
+              </div>
+            </div>
+            <div class="tab__item" data-tabset="Standard">
+              <div class="tab__item--inner" >
+                {% include './_sublayouts/sublayout__registrationGrid--standard.html'%}
+              </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+

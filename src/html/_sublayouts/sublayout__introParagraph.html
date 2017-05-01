@@ -1,0 +1,16 @@
+<div class="sublayout sublayout__autoColGrid">
+	<div class="row-wrapper contained">
+		<div class="row">
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'horizontal-component'
+					,themeClass: 'theme--feature-text'
+					,text: 'medium'
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+		</div>
+	</div>
+</div>

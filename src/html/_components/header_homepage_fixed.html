@@ -1,0 +1,126 @@
+<header class="page-header header-homepage">
+	
+
+	<!-- this is a good candidate for art direction -->
+	<div class="header-background-image b-lazy" data-src="/img/homepageHero/homepageHeroPeople_1536.jpg" data-src-sm="/img/homepageHero/homepageHero_768.jpg"></div>
+
+	<!--if overlay-->
+	<div class="ift-overlay ift-overlay--black"></div>
+
+	<section class="page-header__content animate__pageHeaderContent--INITIAL-STATE">
+		<h1><span class="headline--top-line">Go</span><strong class="headline--featured-word"><span>With Purpose</span></strong></h1>
+		<div class="event-detail__wrapper">
+			<div class="event-detail event-detail__date"><time>June 25-28, 2017</time></div><span class="event-detail__separator">&bull;</span>
+			<div class="event-detail event-detail__location">Las Vegas, Nevada</div>
+		</div>
+	</section>
+
+
+
+	<div class="row-wrapper contained rowHasCounters">
+		<div class="row">
+			<div class="col-xs-4">
+				<div data-link="" class="card-component counter   card-component__theme--default">
+				    <div class="card-component__wrapper-inner">
+				        <div class="card-component__content-wrapper">
+				            <!-- backend doesn't have to worry about our text lengths -->
+				            <div class="counter-component animate__counter--INITIAL-STATE">
+				                <div class="counter-component__circle">
+				                    <span class="counter-component__number" data-numberToCountTo="1000">
+				                    0
+				                </span>
+				                </div>
+				                <div class="counter-component__label"><span>Sessions</span></div>
+				            </div>
+				        </div>
+				        <!--ends content wrapper (sibling of media wrapper) -->
+				    </div>
+				    <!--end card card-component__wrapper-inner">-->
+				</div>
+			</div>
+
+			<div class="col-xs-4">
+				<div data-link="" class="card-component counter   card-component__theme--default">
+				    <div class="card-component__wrapper-inner">
+				        <div class="card-component__content-wrapper">
+				            <!-- backend doesn't have to worry about our text lengths -->
+				            <div class="counter-component animate__counter--INITIAL-STATE">
+				                <div class="counter-component__circle">
+				                    <span class="counter-component__number" data-numberToCountTo="20000">
+				                    0
+				                </span>
+				                </div>
+				                <div class="counter-component__label"><span>Exhibits</span></div>
+				            </div>
+				        </div>
+				        <!--ends content wrapper (sibling of media wrapper) -->
+				    </div>
+				    <!--end card card-component__wrapper-inner">-->
+				</div>
+			</div>
+
+			<div class="col-xs-4">
+				<div data-link="" class="card-component counter   card-component__theme--default">
+				    <div class="card-component__wrapper-inner">
+				        <div class="card-component__content-wrapper">
+				            <!-- backend doesn't have to worry about our text lengths -->
+				            <div class="counter-component animate__counter--INITIAL-STATE">
+				                <div class="counter-component__circle">
+				                    <span class="counter-component__number" data-numberToCountTo="300">
+				                    0
+				                </span>
+				                </div>
+				                <div class="counter-component__label"><span>Sponsors</span></div>
+				            </div>
+				        </div>
+				        <!--ends content wrapper (sibling of media wrapper) -->
+				    </div>
+				    <!--end card card-component__wrapper-inner">-->
+				</div>
+			</div>
+		</div>
+		<!--end row-->
+	</div>
+
+	<!--Three CTAs -->
+	<div class="row-wrapper contained rowHasHeroButtons">
+		<div class="row">
+			<!--auto width columns?-->
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'horizontal-component'
+					,themeClass: 'homePageHeroButton animate__button--INITIAL-STATE'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--ghost-theme'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'horizontal-component'
+					,themeClass: 'homePageHeroButton animate__button--INITIAL-STATE'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--ghost-theme'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+
+			</div>
+
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'horizontal-component'
+					,themeClass: 'homePageHeroButton animate__button--INITIAL-STATE'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--ghost-theme'
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+		</div>
+		<!--end row-->
+	</div>
+
+</header>

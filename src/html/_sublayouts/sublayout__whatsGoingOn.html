@@ -1,0 +1,23 @@
+<div class="sublayout sublayout__autoColGrid">
+    <div class="row-wrapper contained">
+        <header class="theme--centered">
+            <h2>What's Going on Now at IFT<span class="ift-title-year-highlight">17</span></h2>
+        </header>
+        <div class="row">
+            <div class="column-auto">
+                {% set cardComponent = { orientationClass: 'vertical-component' ,cardTypeClass: '' ,media: true ,headline: 'Cooking Up Science 2016 Recipes &amp; Videos' ,date: true ,tags: true ,text: 'short' ,buttons: true ,buttonGroupTheme: 'button-group--default-theme' ,dataLink: 'http://yahoo.com' } %} {% include './_components/card-sink.html'%}
+            </div>
+            <div class="column-auto">
+                {% set cardComponent = { orientationClass: 'horizontal-component' ,cardTypeClass: 'card-component--list' ,media: true ,mediaAspectRatio: 'card-component__media--image--wrapper--square' ,headline: 'Sed varius tortor eu neque egestas fringilla praesent id nisi massa' ,date: true ,tags: true, buttons: true, buttonGroupTheme: 'button-group--link-theme' } %} {% include './_components/card-sink.html'%}
+
+                {% set cardComponent = { orientationClass: 'horizontal-component' ,cardTypeClass: 'card-component--list' ,media: true ,mediaAspectRatio: 'card-component__media--image--wrapper--square' ,headline: 'Eget commodo orci pulvinar vel, Pellentesque hosnian morbi tristique' ,date: true ,tags: true, buttons: true, buttonGroupTheme: 'button-group--link-theme'  } %} {% include './_components/card-sink.html'%}
+
+                {% set cardComponent = { orientationClass: 'horizontal-component' ,cardTypeClass: 'card-component--list' ,media: true ,mediaAspectRatio: 'card-component__media--image--wrapper--square' ,headline: 'Vivamus at risus quam morbi venenatis' ,date: true ,tags: true, buttons: true, buttonGroupTheme: 'button-group--link-theme'  } %} {% include './_components/card-sink.html'%}
+
+                <div class="card-component__button--group button-group--default-theme">
+                    <a class="card-component__button button"><span>View All Latest News</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

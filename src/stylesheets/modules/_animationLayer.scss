@@ -1,0 +1,109 @@
+
+//homepage
+//being very specific here because we may do different things to different elements.
+//and greensock will tween all the properties, so put them all in the same class
+//even if we only do opacity, it's still probably better to set it up this way and repeat ourselves
+.body-home {
+	// .animate__logo--INITIAL-STATE {
+	// 	opacity: .1;
+	// }
+	// .animate__logo--END-STATE {
+	// 	opacity:1;
+	// }
+
+
+	.animate__navCombined--INITIAL-STATE {
+		@include break(min, $breakpoint-min-tablet){
+			opacity: .1;
+		}
+		
+	}
+	.animate__navCombined--END-STATE {
+		opacity: 1;
+	}
+
+
+
+	//the fly-ins were way too distracting
+	.animate__counter--INITIAL-STATE {
+		opacity: .1;
+		//transform:translateY(75vh);
+	}
+	.animate__counter--END-STATE {
+		opacity:1;
+		//transform:translateY(0);
+	}
+
+
+
+	.animate__pageHeaderContent--INITIAL-STATE {
+		opacity: .1;
+	}
+	.animate__pageHeaderContent--END-STATE {
+		opacity: 1;
+	}
+
+
+
+
+	.animate__button--INITIAL-STATE {
+		transform:translateY(75vh);
+	}
+	.animate__button--END-STATE {
+		transform:translateY(0);
+	} 
+
+
+
+	.animate--max-height999 {
+		max-height:999px;
+	}
+
+	.animate__testimonial--INITIAL-STATE {
+		opacity:0;
+		//margin-top:-200px;
+		transform:translateY(-100px);
+		//height:0;
+		//overflow:hidden;
+	}
+
+	.animate__testimonial--INTERIM-STATE_1 {
+		height: 100%;
+	}
+
+	.animate__testimonial--END-STATE {
+		opacity:1;
+		//margin-top:0;
+		transform:translateY(0);
+		//overflow:visible;
+		//height:100%;
+	}
+	.logo__top__svg__g__leaf {
+		&.animate__logo__leaf--INITIAL-STATE {
+			transform:translate(0, -500px);
+		}
+		&.animate__logo__leaf--END-STATE {
+			transform:translate(0, 0);
+		}
+	}
+	.logo__top__svg__g__words {
+		&.animate__logo__words--INITIAL-STATE {
+			transform:translate(-500px, 0);
+		}
+		&.animate__logo__words--END-STATE {
+			transform:translate(0, 0);
+		}
+	}
+	.logo__top__svg__g__year {
+		&.animate__logo__year--INITIAL-STATE {
+			opacity: 0;
+		}
+		&.animate__logo__year--END-STATE {
+			opacity: 1;
+		}
+	}
+}
+
+.chef {
+	transform:scale(2);
+}

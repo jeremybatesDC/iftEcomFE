@@ -1,0 +1,29 @@
+<div class="card-component">
+    {% if cardBlock.image %}
+    <div class="card-component__image--wrapper">
+        <img alt="alt text is required" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{cardBlock.image}}"/>
+    </div>
+    {% endif %}
+
+    <div class="card-component__content">
+        {% if cardBlock.heading %}
+            <h2>{{ cardBlock.heading }}</h2>
+        {% endif %}
+
+        {% if cardBlock.text == 'long' %}
+            <p>Pellentesque habitant morbi tristiqueVestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        {% endif %}
+
+        {% if cardBlock.text == 'short' %}
+            <p>Pellentesque habitant morbi tristiqueVestibulum tortor quam, feugiat vitae.</p>
+        {% endif %}
+
+    </div>
+
+    {% if cardBlock.button == true %}
+    
+    <div class="card-component__button--wrapper">
+        <a href="#" class="button card-component__button">CTA</a>
+    </div>
+    {% endif %}
+</div>

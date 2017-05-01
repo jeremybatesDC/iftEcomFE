@@ -1,0 +1,91 @@
+<!-- sublayout__autoColGrid -->
+<!-- has a background-image (bg image class plus blazy stuff) -->
+<!-- has an overlay, orange to blue  -->
+<!-- has a header -->
+
+
+<div class="sublayout sublayout__autoColGrid sublayout__testimonials sublayout--has-bg-image" style="background-image: url(/img/convention/crowd_1536.jpg)">
+
+	<!-- optional overlay-->
+	<div class="ift-overlay ift-overlay--orangeToBlue"></div>
+
+	<div class="row-wrapper contained">
+
+		<!-- <header class="sublayout__header theme--darkBackground-whiteText theme--centered">
+			<h2>Get Ready to Experience IFT17<span class="ift-title-year-highlight"></span></h2>
+			<h4>This is an optional subheader</h4>
+		</header> -->
+
+		<header class="theme--darkBackground-whiteText theme--centered">
+        	<h2>More than an event &mdash;
+         		<strong class="headline--featured-word">IFT17 is game changing.<span class="ift-title-year-highlight"></span></strong>
+        	</h2>
+      	</header>
+		<div class="row">
+
+			<div class="column-auto">
+				{% set cardComponent = {
+					cardTypeClass: 'card-component--testimonial'
+					,themeClass: 'animate__testimonial--INITIAL-STATE'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Promo Card, Square Theme'
+					,text: 'short'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+
+			<div class="column-auto">
+				{% set cardComponent = {
+					cardTypeClass: 'card-component--testimonial'
+					,themeClass: 'animate__testimonial--INITIAL-STATE'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Promo Card, Square Theme'
+					,text: 'short'
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+
+			</div>
+
+			<div class="column-auto">
+				{% set cardComponent = {
+					cardTypeClass: 'card-component--testimonial'
+					,themeClass: 'animate__testimonial--INITIAL-STATE'
+					,headline: 'Promo Card, Square Theme'
+					,text: 'medium'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+
+				<!--commenting out 2nd card-->
+				
+				{% set cardComponent = {
+					cardTypeClass: 'card-component--testimonial'
+					,themeClass: 'animate__testimonial--INITIAL-STATE'	
+					,headline: '2 small cards must fit in 1 column'
+					,text: 'medium'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+				
+				<!--commenting out 2nd card-->
+
+				<!-- can't just put another card here // not sure how to handle this aspect of the grid-->
+			</div>
+		</div>
+		<!--end row-->
+	</div>
+</div>

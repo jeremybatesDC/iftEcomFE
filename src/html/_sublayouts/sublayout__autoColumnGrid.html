@@ -1,0 +1,64 @@
+<div class="sublayout sublayout__autoColGrid">
+	<div class="row-wrapper contained">
+		<header class="theme--centered">
+			<h2>Cards</h2>
+		</header>
+		<div class="row">
+			<!--auto width columns?-->
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--promo'
+					,themeClass: 'theme--trading-card'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Promo Card, Square Media, Trading Card Theme'
+					,text: 'short'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--promo'
+					,themeClass: 'theme--trading-card'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Promo Card, Square Media, Trading Card Theme'
+					,text: 'medium'
+					,buttons: true
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+
+			</div>
+
+			<div class="column-auto">
+				{% set cardComponent = {
+					orientationClass: 'vertical-component'
+					,cardTypeClass: 'card-component--promo'
+					,themeClass: 'theme--trading-card'
+					,media: true
+					,mediaAspectRatio: 'card-component__media--image--wrapper--square'
+					,headline: 'Promo Card, Square Media, Trading Card Theme'
+					,text: 'short'
+					,buttons: false
+					,buttonGroupTheme: 'button-group--default-theme'
+					,dataLink: ''
+				}
+				%}
+				{% include './_components/card-sink.html'%}
+			</div>
+		</div>
+		<!--end row-->
+	</div>
+	<!-- end row-wrapper contained -->
+</div>
+<!--end sublayout -->

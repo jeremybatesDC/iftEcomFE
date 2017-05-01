@@ -1,0 +1,188 @@
+//phone (tablet TBA)
+@include break(max, $breakpoint-max-mobile){
+	//this isn't fading correctly
+	#navOverlayCloseTarget {display: none;}
+	.nav-combined--wrapper{
+		box-shadow:0 1px 1px rgba($black, .1);
+		&.scrolled--STATE {
+			background-color:$ift-green;
+		}
+		.has-nav--ACTIVE &{
+			background-color:$ift-green;
+		}
+	}
+	.has-nav--ACTIVE {
+		header,
+		main,
+		footer {
+			overflow:hidden;
+		}
+	}
+
+//this is hidden on tablet and above
+	.button__nav-trigger {
+		font-size:1.1rem;
+		color:$black;
+		background-color: $white;
+		border:1px solid $white;
+		box-shadow:none;
+		text-transform:uppercase;
+		//demo-only
+		padding:1em .5em;
+		line-height: 1;
+		span {
+			transition:$ift-timing;
+		}
+		&:hover,
+		&:active {
+			span {
+				color: $ift-green;
+			}
+		}
+
+		&:after {
+			display: none;
+		}
+		.has-nav--ACTIVE & {
+			background-color:transparent;
+			border-radius:50%;
+			border:1px solid rgba($white,.3333);
+			width:4.8rem;
+			height:4.8rem;
+			line-height: 0;
+			transform: translateX(-5%) translateY(5%);
+			&:hover,
+			&:active
+			{
+				background-color:rgba($black,.25);
+			}
+			span {
+				display: none;
+				+ span {
+					display: block;
+				}
+			}
+		}
+	}
+
+	.nav-trigger-wrapper {
+		display:inline-block;
+		position:fixed;
+		top:.6rem;
+		right:.6rem;
+		z-index:5;
+		span {
+			+ span {
+				color:rgba($white,.2);
+				//font-size: 2.4rem;
+				display: none;
+			}
+		}
+		svg {
+			width:18px;
+			height:18px;
+			fill:none;
+			stroke:rgba($white, 1);
+			stroke-width:1px;
+		}
+	}
+
+
+	.nav-main {
+		position:fixed;
+		visibility: hidden;
+		top: 5rem;
+		right: 0;
+		width: 100vw;
+		height: 100vh;
+		margin-top: 0;
+		padding-top: 2rem;
+		background-color: transparent;
+		color: transparent;
+		opacity: 0;
+		z-index: -9;
+		&.main-nav-on-canvas {
+			visibility: visible;
+			color: $white;
+			background-color:$ift-green;
+			box-shadow:0 50em $ift-green;
+			opacity: 1;
+			z-index: 4;
+			overflow-y: scroll;
+		}
+	}
+
+	.nav-list-top-level {
+		width: 100%;
+		margin:0;
+		padding-left:2em;
+		flex-direction: column;
+		> li {
+			display: block;
+			width: 80%;
+			margin:0 7.5% 0 auto;
+			padding:0;
+			border-bottom:1px solid rgba(255,255,255,.5);
+			> a {
+				display: block;
+				width: 100%;
+				font-size: 1.8rem;
+				padding-top:.6666em;
+				padding-bottom:.6666em;
+				&:after {
+					right:1em;
+				}
+			}
+			//override
+			&:first-child {
+				margin:0 7.5% 0 auto;
+			}
+		}
+	}
+	
+	.nav-list-level-2 {
+		padding-top:0;
+		position:relative;
+		//top:0;
+		max-height:0px;
+		overflow:hidden;
+		&.nav-list-level-2--ACTIVE {
+			position:static;
+			max-height: 9999px;
+			padding-bottom:1em;
+		}
+		li {
+			
+			a {
+				font-size: 1.6rem;
+				padding-bottom:1em;
+				padding-left:1em;
+				&:hover,
+				&:active,
+				&:focus {
+					span {
+						color:$ift-blue;
+						box-shadow:none;
+					}
+					
+				}
+			}
+		}
+	}
+
+	.nav-level-2-close-button__wrapper {
+		display: none;
+	}
+
+	.caretDown {
+		top:1.8rem;
+		right: 1rem;
+		fill: white;
+		&.caretMorphed {
+			transform: rotateX(180deg);
+			fill: white;
+			//left: 0;
+		}
+	}
+
+}

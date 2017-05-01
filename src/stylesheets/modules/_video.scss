@@ -1,0 +1,93 @@
+//tween to -- get rid of the css transforms
+
+.video-area {
+	position: relative;
+	height:0;
+	padding-bottom:56.25%;
+	background-repeat:no-repeat;
+	background-size:100%;
+	//need this up here to preserve space in DOM before image loads
+	@include break(max, $breakpoint-max-mobile) {
+		display: none;
+	}
+}
+
+.video-player-holder {
+	position: absolute;
+	width:100%;
+	//height:0;
+	//padding-bottom:56.25%;
+	top:0;
+	left:0;
+	opacity:0;
+	transition: 1s opacity ease-in-out;
+	z-index:1;
+	.video-playing--STATE & {
+		opacity: 1;
+	}
+	//styling the video element itself is tricky because of the DOM manipulation that brightcove is doing
+}
+
+.video-overlay {
+	background-size:100%;
+	opacity:1;
+	transition: 1s opacity ease-in-out;
+	padding-top:$gutter-width * 2;
+
+	.card-component__headline {
+		color: $white;
+	}
+	.card-component__text {
+		color: $white;
+	}
+	//to properly tween, needs to be on same class that greensock is tweening
+	.video-playing--STATE & {
+		opacity: 0;
+		
+	}
+}
+
+.video-overlay-content__playButton--faux {
+	position:absolute;
+	width:10rem;
+	height:10rem;
+	top:calc(50% - 5rem);
+	left:calc(50% - 5rem);
+	color:$white;
+	text-align:center;
+	border:10px solid $white;
+	border-radius:50%;
+	svg {
+		width:100%;
+		height: 100%;
+		fill: $white;
+	}
+}
+
+
+.video-overlay-content__playButton--faux--innerWrap {
+}
+
+.video-overlay-content__playButton--faux--innerWrap {}
+
+
+.overlay-content--inverted {
+	color: $white;
+}
+
+.video-overlay-cta {
+	display: inline-block;
+	position:absolute;
+	bottom:33%;
+	left:0;
+	width:100%;
+	z-index:2;
+	.row-wrapper--contained {
+		position:relative;
+	}
+}
+
+.video-overlay-cta__button{
+	color:$white;
+}
+

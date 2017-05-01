@@ -1,0 +1,89 @@
+<!-- Extent this master layout -->
+{% extends '_layouts/search-template.html' %}
+{% set page = {
+	title:"Search Results"
+	,subtitle:"Optional Subhead"
+} %}
+
+{% block content %}
+
+
+<div class="row-wrapper contained">
+	<header class="page-title__header">
+		<h1 class="page-title__headline">{{page.title}}</h1>
+	</header>
+	<div class="row row-has-searchBox">
+		<div class="column-auto">
+			{% include './_components/search/searchBoxSearchPage.html'%}
+		</div>
+	</div>
+
+	<div class="row searchRowWithItAll">
+		<div class="filterToggle__wrapper">
+				<button id="filterToggleButton" class="filterToggle__button"><svg class="filterIcon__svg" viewBox="0 0 24 24"><use xlink:href="#iconFilter"/></svg><span>Filters</span><svg class="filterClose__svg" viewBox="0 0 32 32"><use xlink:href="#iconClose"/></svg></button>
+		</div>
+		<div class="column-searchFilters animate__searchFiltersMobile--INITIAL-STATE">
+			
+			
+			{% include './_components/search/searchFilters.html'%}
+		</div>
+		<!--end column-searchFilters-->
+
+		<div class="column-auto searchColumnWithMostStuff">
+			<!--start nested row-->
+			<div class="row">
+				<div class="column-auto">
+					{% include './_components/search/searchFiltersActive.html'%}
+					{% include './_components/search/searchSort.html'%}
+                    {% include './_components/search/searchPagination.html'%}
+					
+					{% include './_components/search/searchTotals.html'%}
+				</div>
+			</div>
+			<!--end nested row-->
+
+			<!--start nested row-->
+			<div class="row">
+				<div class="column-auto">
+					<div class="containerForSearchResults containerForSearchResults--recommended">
+						<header>
+							<h5>IFT Recommends</h5>
+						</header>
+						{% include './_components/search/card-searchResult.html'%}
+						{% include './_components/search/card-searchResult.html'%}
+					</div>
+					<div class="containerForSearchResults">
+						{% include './_components/search/card-searchResult.html'%}
+						{% include './_components/search/card-searchResult.html'%}
+						{% include './_components/search/card-searchResult.html'%}
+						{% include './_components/search/card-searchResult.html'%}
+						{% include './_components/search/card-searchResult.html'%}
+						{% include './_components/search/card-searchResult.html'%}
+					</div>
+					<!--end containerForSearchResults-->
+					<!-- second pagination needs to go here-->
+					{% include './_components/search/searchPagination.html'%}
+				</div>
+				<!--end column-auto-->
+
+				<div class="column-ads">
+					{% include './_sublayouts/sublayout__ads.html'%}
+				</div>
+				<!--end column-ads-->
+
+			</div>
+			<!--end nested row-->
+		</div>
+		<!--end column-auto-->
+	</div>
+	<!--end row-->
+</div>
+<!--end row-wrapper-->
+
+
+
+	
+
+
+{% endblock %}
+

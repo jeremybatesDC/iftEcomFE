@@ -1,0 +1,8 @@
+// IMPORTS
+//import countDown from 'lib/countDown';
+
+// FUNCTION
+(function() {
+	'use strict';
+	// ...code
+})();

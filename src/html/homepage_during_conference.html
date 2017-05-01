@@ -1,0 +1,21 @@
+<!-- Extent this master layout -->
+{% extends '_layouts/homepage-template.html' %}
+{% set page = {title:"Homepage"} %}
+
+{% block content %}
+
+
+
+
+{% include "./_sublayouts/sublayout__whatsGoingOn.html" %}
+
+{% include './_sublayouts/sublayout__twitter--horizontal.html'%}
+
+{% include "./_sublayouts/sublayout__instafeedMasonry.html" %}
+
+{% include "./_sublayouts/sublayout__sponsorGrid.html" %}
+    
+
+
+{% endblock %}
+

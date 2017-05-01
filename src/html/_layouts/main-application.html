@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+	{% include "./_shared/head.html" %}
+	<body id="bodyTop">
+		{% include "./_shared/svgDefs.html" %}
+		{% include "./_shared/logo.html" %}
+		{% include "./_shared/nav_combined.html" %}
+		
+		<main class="template-interior">
+			{% block content %}
+			{% endblock %}
+		</main>
+		{% include "./_shared/backToTop.html" %}
+		{% include "./_shared/footerAuto.html" %}
+		<!--overlay-->
+		{% include "./_shared/nav_overlay.html" %}
+		{% include "./_shared/scriptsList.html" %}
+	</body>
+</html>

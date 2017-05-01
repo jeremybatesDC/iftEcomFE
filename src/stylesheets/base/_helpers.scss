@@ -1,0 +1,64 @@
+//helpers
+//repeat for emphasis rather than use important (yes, it works)
+.b-lazy {
+	background-repeat:no-repeat;
+}
+
+.transparent.transparent {
+	opacity: 0;
+}
+
+.opaque.opaque{
+	opacity:1;
+}
+
+.has-background-image {
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.sublayout--has-bg-image {
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+
+.background-cutout {
+	@include break(min, $breakpoint-min-lg){
+		background-attachment: fixed;
+	}
+}
+
+
+.responsive-container--16_9 {
+	height:0;
+	padding-bottom:56.25%;
+}
+
+.ift-blue {
+	color:$ift-blue;
+}
+
+.ift-orange {
+	color:$ift-orange;
+}
+
+.ift-purple {
+	color:$ift-purple;
+}
+
+.ift-green {
+	color:$ift-green;
+}
+
+.ift-red {
+	color:$ift-red;
+}
+
+.ift-title-year-highlight {
+	color:$ift-green;
+}
+
+code {
+	font-size:1rem;
+}

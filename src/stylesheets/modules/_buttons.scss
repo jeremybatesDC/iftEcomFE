@@ -1,0 +1,251 @@
+
+//try to animate with greensock rather than with CSS?
+
+//there are some specificitty
+
+.button {
+	display:inline-block;
+	position:relative;
+	font-family:$headlineFont;
+	font-weight:400;
+	font-size:1.2rem;
+	line-height:1.1111;
+	border-width: 1px;
+	border-style: solid;
+	border-radius:0;
+	padding:1.25em 2em;
+	text-align:center;
+	text-transform:uppercase;
+	letter-spacing:1px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	overflow:hidden;
+	transition: $ift-timing;
+	
+	&:after {
+		content: '';
+		position: absolute;
+		width:100%;
+		height:100%;
+		bottom:-100%;
+		left:0;
+		//unless we're super clever about it, this pseudo element will go on top of the button
+		background-image:linear-gradient(to bottom, rgba(174,207,67,.3) 0%,rgba(118,161,32,.2) 55%, rgba(118,161,32,0) 100%);
+		transition: $ift-timing;
+	}
+
+	&:hover,
+	&:active,
+	&:focus {
+		&:after {
+			bottom:0;
+		}
+		box-shadow:10px 10px 20px rgba($black, .05), -10px 10px 20px rgba($black, .05) ;
+	}
+	::selection {
+		background-color:transparent;	
+	}
+
+	&.button--default-theme, 
+	&.button--ghost-theme,
+	.button-group--default-theme &,
+	,.button-group--ghost-theme & {
+		color:$white;
+		min-width: 12rem;
+	}
+
+
+
+	&.button--default-theme, 
+	.button-group--default-theme & {
+		
+		background-image:linear-gradient(to bottom, rgba(174,207,67,1) 0%,rgba(118,161,32,1) 100%);
+		background-size:100%;
+		background-position:center;
+		border:none;
+		
+	}
+
+	&.button--ghost-theme,
+	.button-group--ghost-theme & {
+		background-color: transparent;
+		//background-image:linear-gradient(to bottom, rgba(174,207,67,1) 0%,rgba(118,161,32,1) 100%);
+		background-size:800px;
+		border-color:$white;
+		&:after {
+			transition:none;
+		}
+		&:hover,
+		&:active,
+		&:focus {
+			background-image:linear-gradient(to bottom, rgba(174,207,67,1) 0%,rgba(118,161,32,1) 100%);
+			border-color:transparent;
+		}
+	}
+	.button-group--link-theme & {
+		font-family: $bodyFont;
+		font-size: 1em;
+		border:none;
+		padding:0;
+		margin-top: $gutter-width/4;
+		margin-bottom: $gutter-width/4;
+		letter-spacing: 0;
+		text-transform: none;
+		//text-decoration: underline;
+		transition: $ift-timing;
+		background-size:100% 1em;
+		background-image: linear-gradient(to bottom,currentColor 100%,currentColor 100%);
+		//background-size:0 1em;
+		//background-image: linear-gradient(to bottom,rgba($ift-blue, 0) 50%,rgba($ift-blue, 0) 50%);
+		background-position:0 .925em;
+		background-repeat:no-repeat;
+		box-shadow:none;
+		overflow:visible;
+		&:hover,
+		&:active,
+		&:focus  {
+			background-image: linear-gradient(to bottom,currentColor 100%,currentColor 100%);
+			//background-size:100% 1em;
+			background-size:0 1em;
+			box-shadow:none;			
+		}
+		&:after {
+			content:'';
+			top:55%;
+			right:-10px;
+			left:auto;
+			background:none;
+			width: 0; 
+  			height: 0; 
+  			border-top: 5px solid transparent;
+  			border-bottom: 5px solid transparent;
+  			border-left: 5px solid currentColor;
+  			transform: translateY(-50%);
+		}
+		// span {
+		// 	&:after {
+		// 		content:'';
+		// 		top:0;
+		// 		right:-1em;
+		// 		left:auto;
+		// 		background:none;
+		// 		width: 0; 
+	 //  			height: 0; 
+	 //  			border-top: 8px solid transparent;
+	 //  			border-bottom: 8px solid transparent;
+	 //  			border-left: 8px solid currentColor;
+		// 	}
+		// }
+		
+	}
+}
+
+
+
+
+.back-to-top__button {
+	font-size:1.1rem;
+	width:32px;
+	height: 32px;
+	color: $black;
+	background: rgba(grey,.5);
+	border:1px solid rgba($white,.5);
+	border-radius:50%;
+	box-shadow:none;
+	//text-shadow:0 1px 1px $white, 0 -1px 1px $white, 1px 0 1px $white, -1px 0 1px $white;
+	text-align: center;
+	text-transform:uppercase;
+	transition:opacity $ift-timing;
+	span {
+		display:block;
+	}
+	svg {
+		stroke:rgba($white,.5);
+		transition:stroke .3333s ease-in-out;
+	}
+	&:hover,
+	&:active,
+	&:focus {
+		//opacity: .6666;
+		//background: rgba(grey,.5);
+		svg {
+			stroke:$ift-green;
+		}
+	}
+
+	.has-nav--ACTIVE & {
+		display: none;
+	}
+}
+
+.card-component__share--button {
+	background: transparent;
+	border:none;
+	box-shadow:none;
+}
+
+.card-component__button--group {
+	.button {
+		+ .button {
+			@include break (min, $breakpoint-min-tablet){
+				margin-left: $gutter-width / 2;
+			}
+			
+		}
+	}
+	@include break(max, $breakpoint-max-mobile){
+		.button:nth-last-child(n+2), .button:nth-last-child(n+2) ~ .button {
+			display: block;
+			margin: 0 auto 1em auto;
+			max-width: 18rem;
+			.card-component--event & {
+				display: inline-block;
+				max-width: none;
+			}
+		}
+	}
+
+	
+
+}
+
+//freeman button
+.card-component__button {
+	&.create-account {
+		padding:0;
+		input {
+			position:relative;
+			padding:1em;
+			background:transparent;
+			border:none;
+			box-shadow:none;
+			//inherits now from button
+			font-family: inherit;
+			font-size: inherit;
+			color: inherit;
+			text-transform: inherit;
+			letter-spacing: inherit;
+			-webkit-appearance: none;
+			cursor: pointer;
+			z-index: 1;
+			&:hover {
+				cursor: pointer;
+			}
+			// &:after {
+			// 	display: none;
+			// }
+
+
+		}
+	}
+}
+
+
+
+
+.hideRegisterButton {
+	display:none;
+}

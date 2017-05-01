@@ -1,0 +1,71 @@
+<!-- Extent this master layout -->
+{% extends '_layouts/homepage-template.html' %}
+{% set page = {title:"Homepage"} %}
+
+{% block content %}
+
+
+  <!--need a theme to contain text to the left-->
+  <!--that content box is repeated in the video overlay. It's identical-->
+
+
+<!--,backgroundImage: '/img/people/yearbookWide_1536.jpg'
+,backgroundImageSmall: '/img/people/yearbookWide_1024.jpg'-->
+
+
+  <div class="sublayout sublayout__whyAttend">
+    <div class="row-wrapper contained">
+      <header class="header-contained--default-theme">
+        <!-- <h2>Why Attend 
+          <strong class="headline--featured-word">IFT<span class="ift-title-year-highlight">17</span>?</strong>
+        </h2> -->
+         <h2>Be a part of
+         <strong class="headline--featured-word">something big.</strong>
+        </h2>
+      </header>
+
+      <div class="row">
+        <div class="column-auto">
+        
+          {% include "./_shared/scroll__people.html" %}
+
+          {% set cardComponent = {
+              orientationClass: 'horizontal-component'
+              ,cardTypeClass: 'card-component--list--half'
+              ,themeClass: 'theme--feature-text'
+              ,text: 'multiParagraph'
+              ,buttons: true
+              ,buttonGroupTheme: 'button-group--default-theme'
+              ,dataLink: ''
+            }
+            %}
+            {% include './_components/card-sink.html'%}
+        </div>
+      </div> <!--end row-->   
+  </div> <!--end row wrapper-->
+</div>
+
+
+<!-- <svg>
+  <use xlink:href="#ift-pixel-group" x="0" y="0"/>
+</svg> -->
+
+
+
+<!--not for launch-->      
+{# {% include "./_components/newsArea.html" %} #}
+    
+    
+{% include "./_sublayouts/sublayout__testimonials.html" %}
+
+
+<!--not for launch-->
+{# {% include "./_components/bricksManual.html" %} #}
+
+<!--not for launch-->
+{# {% include "./_components/gridAuto.html" %} #}    
+    
+
+
+{% endblock %}
+

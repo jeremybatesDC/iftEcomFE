@@ -1,0 +1,144 @@
+<!-- contained class needs to go on the row, not the row wrapper in this instance-->
+<!-- the reason is that we have 3 stripes-->
+
+
+<div class="sublayout sublayout__footer">
+	
+	<footer class="footer-main">
+
+		<div class="row-wrapper footer__top">
+			<div class="row contained">
+
+				<div class="col-sm-2">
+					<img class="logo--footer" src="/img/logo/ift_process_tag_vector.svg">
+				</div>
+
+				<div class="col-sm-10">
+					<div class="row">
+						<div class="col-sm-9">
+							{% set cardComponent = {
+								headline: 'Download the Free Conference App!'
+								,text: 'medium'
+								,buttons: 2
+								,buttonGroupTheme: 'button-group--default-theme'
+							}
+							%}
+							{% include './_components/card-sink.html'%}
+						</div>
+						<div class="col-sm-3">
+							{% set cardComponent = {
+								headline: 'Contact Us'
+								,text: 'short'
+							}
+							%}
+							{% include './_components/card-sink.html'%}
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row-wrapper">
+			{% include './_sublayouts/sublayout__signUp.html'%}
+		</div>
+
+		<!-- footer links shouldn't be cards-->
+		<div class="row-wrapper footer__middle">
+			<div class="row">
+				<div class="column-auto">
+					<header class="footer__links-header">
+						<h6 class="footer__links-headline"><span>Register</span></h6>
+					</header>
+					<ul class="footer__linksList">
+						<li><a><span>Registration</span></a></li>
+						<li><a><span>Why IFT?</span></a></li>
+						<li><a><span>Tips for Attending</span></a></li>
+					</ul>
+				</div>
+				<div class="column-auto">
+					<header class="footer__links-header">
+						<h6 class="footer__links-headline"><span>Sessions</span></h6>
+					</header>
+					<ul class="footer__linksList">
+						<li><a><span>Sessions</span></a></li>
+						<li><a><span>IFT Next</span></a></li>
+						<li><a><span>Highlights</span></a></li>
+						<li><a><span>Posters</span></a></li>
+						<li><a><span>Courses</span></a></li>
+						<li><a><span>Calls for Proposals</span></a></li>
+					</ul>
+				</div>
+				<div class="column-auto">
+					<header class="footer__links-header">
+						<h6 class="footer__links-headline"><span>Hotel &amp; Travel</span></h6>
+					</header>
+					<ul class="footer__linksList">
+						<li><a><span>Hotels</span></a></li>
+						<li><a><span>Travel</span></a></li>
+						<li><a><span>Venue</span></a></li>
+						<li><a><span>Global Travellers</span></a></li>
+					</ul>
+				</div>
+				<div class="column-auto">
+					<header class="footer__links-header">
+						<h6 class="footer__links-headline"><span>Food Expo</span></h6>
+					</header>
+					<ul class="footer__linksList">
+						<li><a><span>Exhibitors</span></a></li>
+						<li><a><span>Highlights</span></a></li>
+						<li><a><span>Secure Your Stand</span></a></li>
+						<li><a><span>Promotional Opportunities</span></a></li>
+						<li><a><span>Promotional Opportunities</span></a></li>
+					</ul>
+				</div>
+				<div class="column-auto">
+					<header class="footer__links-header">
+						<h6 class="footer__links-headline"><span>Schedule &amp; Events</span></h6>
+					</header>
+					<ul class="footer__linksList">
+						<li><a><span>Schedule</span></a></li>
+						<li><a><span>Fun Run</span></a></li>
+						<li><a><span>Competitions</span></a></li>
+						<li><a><span>Awards</span></a></li>
+						<li><a><span>Future Dates &amp; Locations</span></a></li>
+						<li><a><span>Career Center Live</span></a></li>
+					</ul>
+				</div>
+				<!-- <div class="column-auto">
+					<header class="footer__links-header">
+						<h6 class="footer__links-headline"><span>News</span></h6>
+					</header>
+					<ul class="footer__linksList">
+						<li><a><span>News</span></a></li>
+						<li><a><span>Press</span></a></li>
+					</ul>
+				</div> -->
+			</div>
+		</div>
+
+		<div class="row-wrapper footer__bottom">
+			<div class="row">
+				<div class="col-sm-8">
+					<ul class="footer__linksList footer__linksList--utility">
+						<li><a><span>Contact Us</span></a></li>
+						<li><a><span>Privacy Policy</span></a></li>
+						<li><a><span>Terms of Use</span></a></li>
+						<li><span>&copy; 2017 Institute of Food Technologists. All Rights Reserved.</span></li>
+					</ul>
+				</div>
+				<div class="col-sm-4">
+					
+				{% include "./_shared/social_links.html" %}
+
+				</div>
+			</div>
+		</div>
+
+
+	</footer>
+
+
+
+</div>

@@ -1,0 +1,69 @@
+// PointBreak Mixin
+@mixin break($var...){	
+	@if length($var) == 4{
+		@media (#{nth($var,1)}-width : (#{nth($var,2)})) and (#{nth($var,3)}-width : (#{nth($var,4)})){
+			@content;
+		}
+	}
+	@if length($var) == 2{
+		@media (#{nth($var,1)}-width : (#{nth($var,2)})){
+			@content;
+		}
+	}
+}
+
+//breakpoints in EMs for best support & accessibility
+$breakpoint-max-mobile: 47.9999em; /*equals max 767px*/
+$breakpoint-min-tablet: 48em; /*equals min 768px*/
+
+$breakpoint-960: 60em;
+
+$breakpoint-min-md: 64em; /*equals min 1024px*/
+$breakpoint-max-1023: 63.9999em;
+//72em
+
+
+$breakpoint-sandwichMinMedMinLarge:72em;/*equals 1152px*/
+
+$breakpoint-max-1179: 79.9999em;
+$breakpoint-min-lg: 80em; /*equals min 1280px*/
+$breakpoint-min-xl: 90em; /*equals min 1440px*/
+$breakpoint-min-xxl: 96em; /* equals min 1536px*/
+$breakpoint-min-1920: 120em; /*equals 1920px, fullscreen on a 1080p monitor */
+
+
+$content-max-width: $breakpoint-min-xxl;
+
+
+
+
+/*testing*/
+/*body {
+	&:after {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		background: yellow;
+		@include break(max, $breakpoint-max-mobile) {
+			content: '$breakpoint-max-mobile: 47.9999em;';
+		}
+		@include break(min, $breakpoint-min-tablet) {
+			content: '$breakpoint-min-tablet: 48em;';
+		}
+		@include break(min, $breakpoint-min-md) {
+			content: '$breakpoint-min-md: 64em';
+		}
+		@include break(min, $breakpoint-min-lg) {
+			content: '$breakpoint-min-lg: 80em;';
+		}
+		@include break(min, $breakpoint-min-xl) {
+			content: '$breakpoint-min-xl: 90em;';
+		}
+		@include break(min, $breakpoint-min-xxl) {
+			content: '$breakpoint-min-xxl: 96em';
+		}
+		@include break(min, $breakpoint-min-1920) {
+			content: '$breakpoint-min-1920: 120em;';
+		}
+	}
+}*/

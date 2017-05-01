@@ -1,0 +1,135 @@
+<!--<div id="instafeed"></div>-->
+<!--design shows 12 -->
+
+
+<!--class bricks componenet-->
+
+<div class="sublayout sublayout--bricks">
+
+<!--these can be different-->
+
+<!--bricks must cap an individual column at 300px so 900 and then some is max width -->
+<div class="row-wrapper contained">
+  <header class="header-contained--default-theme">
+    <h2>The Latest <span class="ift-title-year-highlight">Buzz</span></h2>
+  </header>
+  <div class="row">
+    <div class="col-sm-4">
+      {% set cardComponent = {
+          cardTypeClass: 'brick'
+          ,orientationClass: 'brick--square'
+          ,backgroundImage: 'https://unsplash.it/720/405'
+          ,dataLink: ''
+        }
+        %}
+        {% include './_components/card-sink.html'%}
+
+        {% set cardComponent = {
+          cardTypeClass: 'brick'
+          ,orientationClass: 'brick--square'
+          ,overlayColor: 'orange'
+          ,backgroundImage: 'https://unsplash.it/720/405'
+          ,dataLink: ''
+        }
+        %}
+        {% include './_components/card-sink.html'%}
+
+        {% set cardComponent = {
+          cardTypeClass: 'brick'
+          ,orientationClass: 'brick--rectangle'
+          ,backgroundImage: 'https://unsplash.it/720/405'
+          ,dataLink: ''
+        }
+        %}
+        {% include './_components/card-sink.html'%}
+
+        {% set cardComponent = {
+          cardTypeClass: 'brick'
+          ,orientationClass: 'brick--square-small'
+          ,backgroundImage: 'https://unsplash.it/720/405'
+          ,dataLink: ''
+        }
+        %}
+        {% include './_components/card-sink.html'%}
+
+        {% set cardComponent = {
+          cardTypeClass: 'brick'
+          ,orientationClass: 'brick--square-small'
+          ,backgroundImage: 'https://unsplash.it/720/405'
+          ,dataLink: ''
+        }
+        %}
+        {% include './_components/card-sink.html'%}
+        
+    </div>
+    <div class="col-sm-4">
+        {% set cardComponent = {
+          cardTypeClass: 'brick'
+          ,orientationClass: 'brick--square-small'
+          ,backgroundImage: 'https://unsplash.it/720/405'
+          ,dataLink: ''
+        }
+        %}
+        {% include './_components/card-sink.html'%}
+
+        {% set cardComponent = {
+          cardTypeClass: 'brick'
+          ,orientationClass: 'brick--square-small'
+          ,overlayColor:'black'
+          ,backgroundImage: 'https://unsplash.it/720/405'
+          ,dataLink: ''
+        }
+        %}
+        {% include './_components/card-sink.html'%}
+
+        {% set cardComponent = {
+          cardTypeClass: 'brick'
+          ,orientationClass: 'brick--square'
+          ,backgroundImage: 'https://unsplash.it/720/405'
+          ,dataLink: ''
+        }
+        %}
+        {% include './_components/card-sink.html'%}
+        
+        {% set cardComponent = {
+          cardTypeClass: 'brick'
+          ,orientationClass: 'brick--square-small'
+          ,backgroundImage: 'https://unsplash.it/720/405'
+          ,dataLink: ''
+        }
+        %}
+        {% include './_components/card-sink.html'%}
+
+        {% set cardComponent = {
+          cardTypeClass: 'brick'
+          ,orientationClass: 'brick--square-small'
+          ,backgroundImage: 'https://unsplash.it/720/405'
+          ,dataLink: ''
+        }
+        %}
+        {% include './_components/card-sink.html'%}
+
+        {% set cardComponent = {
+          cardTypeClass: 'brick'
+          ,orientationClass: 'brick--square'
+          ,overlayColor: 'blue'
+          ,backgroundImage: 'https://unsplash.it/720/405'
+          ,dataLink: ''
+        }
+        %}
+        {% include './_components/card-sink.html' %}
+
+    </div>
+
+    <div class="col-sm-4">
+
+    {% include './_components/twitterBlock.html' %}
+
+
+    </div>
+
+  </div>
+</div>
+
+
+</div>
