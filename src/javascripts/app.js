@@ -8,16 +8,10 @@
 // Except for the example below
 
 import 'modules/lazySettings'
-import 'modules/social_instagram';
-import 'modules/masonryConfig';
-import 'modules/video';
 import 'modules/navUPDATED';
 import 'modules/navMobile';
 import 'modules/scrollStuff';
-import 'modules/accordionRevised';
 import 'modules/search';
-import 'modules/bfTabs';
-import 'modules/tweetDeck';
 import 'lib/animationLayer';
 
 //import 'lib/init'
