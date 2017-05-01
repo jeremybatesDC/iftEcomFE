@@ -7,6 +7,154 @@ body {
 	background:$ift-grey-light;
 }
 
+
+
+
+html {
+	font-size: 10px;
+	//
+	// @include break(max, $breakpoint-max-mobile){
+	// 	font-size: 8px;
+	// }
+}
+body{
+	font-family: $bodyFont;
+	font-size: 1.6rem;
+	font-weight:$bodyFontWeight;
+	line-height:$base-line-height;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: $headlineFont;
+	font-weight:$headlineFontWeight;
+	line-height:$headline-line-height;
+	padding-bottom: $headline-bottom-padding;
+	.sublayout__contentBlock & {
+		padding-top: $gutter-width / 2;
+		padding-bottom:$gutter-width / 4;
+		margin-bottom:0;
+	}
+
+}
+
+
+//oct 16: need to adjust typograpic grid based on client feedback
+
+
+//
+
+
+
+h1 {
+	.header-homepage & {
+		font-size: 9.6rem;
+		line-height: 1;
+		padding-bottom:.175em;
+		//text-transform:uppercase;
+	}
+	.header-interior & {
+		font-size: 6rem;
+	}
+	//line height of 1.25 = 100px
+	.template-content &, 
+	.template-category &,
+	.template-interior &,
+	.template-search & {
+		font-size: 5.4rem;
+		//line-height: 1.1111;
+		//font-weight:700;
+		@include break(max, $breakpoint-max-mobile){
+			font-size: 3.2rem;
+		}
+	}
+
+
+}
+
+
+@include break(max, $breakpoint-max-mobile){
+	h1 {font-size: 3.6rem;}
+	h2 {font-size: 3.2rem;}
+	h3 {font-size: 2.8rem;}
+	h4 {font-size: 2.4rem;}
+	h5 {font-size: 2rem;}
+	h6 {font-size: 1.6rem;}
+}
+
+//let's just do tablet plus
+
+@include break(min, $breakpoint-min-tablet){
+	h1 {font-size: 5.6rem;}
+	h2 {font-size: 4.8rem;
+		.body-home & {
+			font-size: 6rem;
+		}
+	}
+	h3 {font-size: 4.0rem;}
+	h4 {font-size: 3.2rem;}
+	h5 {font-size: 2.4rem;}
+	h6 {font-size: 1.8rem;}
+}
+
+
+h2 {
+	.sublayout__contentBlock & {
+		padding-top: $gutter-width / 2;
+
+	}
+}
+
+
+
+.headline--featured-word {
+	display:block;
+	line-height:1;
+	font-weight:700;
+	font-size:1.4em;
+	color:$ift-grey-darker;
+	.header-homepage & {
+		font-size:6.4rem;
+		line-height: 1;
+		color:$white;
+		@include break(max, $breakpoint-max-mobile){
+			font-size:4.2rem;
+		}
+	}
+
+	@include break(max, $breakpoint-max-mobile){
+		font-size:1.2em;
+	}
+	@include break(min, $breakpoint-min-tablet){
+		font-size:1.25em;
+	}
+	@include break(min, $breakpoint-min-md){
+		font-size:1.3333em;
+	}
+	@include break(min, $breakpoint-min-lg){
+		font-size:1.4em;
+	}
+}
+
+
+
+.sublayout__autoColGrid {
+	&.sublayout--has-bg-image {
+		//because there's an overlay sometimes
+		header {
+			position:relative;
+			z-index:1;
+			h2 {
+				color:$white;
+				.headline--featured-word {
+					margin-top: .125em;
+					color:$white;
+				}
+			}
+		}
+	}
+}
+
+
 a {
 	color: $ift-blue;
 
