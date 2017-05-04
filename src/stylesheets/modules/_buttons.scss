@@ -2,29 +2,34 @@
 //try to animate with greensock rather than with CSS?
 
 //there are some specificitty
-
-.button {
-	display:inline-block;
-	position:relative;
-	font-family:$headlineFont;
-	font-weight:400;
-	font-size:1.2rem;
-	line-height:1.1111;
+@mixin button{
+	display: inline-block;
+	position: relative;
+	font-family: $headlineFont;
+	font-weight: 400;
+	font-size: 1.2rem;
+	line-height: 1.1111;
 	border-width: 1px;
 	border-style: solid;
-	border-radius:0;
-	padding:1.25em 2em;
-	text-align:center;
-	text-transform:uppercase;
-	letter-spacing:1px;
+	border-radius: 0;
+	padding: 1.25em 2em;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	overflow:hidden;
+	overflow: hidden;
 	transition: $ift-timing;
-	
+	background-image: linear-gradient(to bottom, rgba(174,207,67,1) 0%,rgba(118,161,32,1) 100%);
+	background-size:100%;
+	background-position: center;
+	border: none;
+	color: $white;
+	min-width: 12rem;
+
 	&:after {
 		content: '';
 		position: absolute;
@@ -46,13 +51,18 @@
 		box-shadow:10px 10px 20px rgba($black, .05), -10px 10px 20px rgba($black, .05) ;
 	}
 	::selection {
-		background-color:transparent;	
+		background-color:transparent;
 	}
+}
+
+.button, .btn {
+
+	@include button();
 
 	&.button--default-theme, 
 	&.button--ghost-theme,
 	.button-group--default-theme &,
-	,.button-group--ghost-theme & {
+	.button-group--ghost-theme & {
 		color:$white;
 		min-width: 12rem;
 	}
@@ -62,7 +72,7 @@
 	&.button--default-theme, 
 	.button-group--default-theme & {
 		
-		background-image:linear-gradient(to bottom, rgba(174,207,67,1) 0%,rgba(118,161,32,1) 100%);
+		background-image: linear-gradient(to bottom, rgba(174,207,67,1) 0%,rgba(118,161,32,1) 100%);
 		background-size:100%;
 		background-position:center;
 		border:none;
@@ -73,51 +83,50 @@
 	.button-group--ghost-theme & {
 		background-color: transparent;
 		//background-image:linear-gradient(to bottom, rgba(174,207,67,1) 0%,rgba(118,161,32,1) 100%);
-		background-size:800px;
-		border-color:$white;
+		background-size: 800px;
+		border-color: $white;
 		&:after {
-			transition:none;
+			transition: none;
 		}
 		&:hover,
 		&:active,
 		&:focus {
-			background-image:linear-gradient(to bottom, rgba(174,207,67,1) 0%,rgba(118,161,32,1) 100%);
+			background-image: linear-gradient(to bottom, rgba(174,207,67,1) 0%,rgba(118,161,32,1) 100%);
 			border-color:transparent;
 		}
 	}
 	.button-group--link-theme & {
 		font-family: $bodyFont;
 		font-size: 1em;
-		border:none;
-		padding:0;
+		border: none;
+		padding: 0;
 		margin-top: $gutter-width/4;
 		margin-bottom: $gutter-width/4;
 		letter-spacing: 0;
 		text-transform: none;
-		//text-decoration: underline;
 		transition: $ift-timing;
-		background-size:100% 1em;
+		background-size: 100% 1em;
 		background-image: linear-gradient(to bottom,currentColor 100%,currentColor 100%);
 		//background-size:0 1em;
 		//background-image: linear-gradient(to bottom,rgba($ift-blue, 0) 50%,rgba($ift-blue, 0) 50%);
-		background-position:0 .925em;
-		background-repeat:no-repeat;
-		box-shadow:none;
-		overflow:visible;
+		background-position: 0 .925em;
+		background-repeat: no-repeat;
+		box-shadow: none;
+		overflow: visible;
 		&:hover,
 		&:active,
 		&:focus  {
 			background-image: linear-gradient(to bottom,currentColor 100%,currentColor 100%);
 			//background-size:100% 1em;
-			background-size:0 1em;
-			box-shadow:none;			
+			background-size: 0 1em;
+			box-shadow: none;
 		}
 		&:after {
 			content:'';
-			top:55%;
-			right:-10px;
-			left:auto;
-			background:none;
+			top: 55%;
+			right: -10px;
+			left: auto;
+			background: none;
 			width: 0; 
   			height: 0; 
   			border-top: 5px solid transparent;
@@ -147,24 +156,24 @@
 
 
 .back-to-top__button {
-	font-size:1.1rem;
-	width:32px;
+	font-size: 1.1rem;
+	width: 32px;
 	height: 32px;
 	color: $black;
 	background: rgba(grey,.5);
-	border:1px solid rgba($white,.5);
-	border-radius:50%;
-	box-shadow:none;
+	border: 1px solid rgba($white,.5);
+	border-radius: 50%;
+	box-shadow: none;
 	//text-shadow:0 1px 1px $white, 0 -1px 1px $white, 1px 0 1px $white, -1px 0 1px $white;
 	text-align: center;
-	text-transform:uppercase;
-	transition:opacity $ift-timing;
+	text-transform: uppercase;
+	transition: opacity $ift-timing;
 	span {
-		display:block;
+		display: block;
 	}
 	svg {
-		stroke:rgba($white,.5);
-		transition:stroke .3333s ease-in-out;
+		stroke: rgba($white,.5);
+		transition: stroke .3333s ease-in-out;
 	}
 	&:hover,
 	&:active,
@@ -172,7 +181,7 @@
 		//opacity: .6666;
 		//background: rgba(grey,.5);
 		svg {
-			stroke:$ift-green;
+			stroke: $ift-green;
 		}
 	}
 
@@ -183,8 +192,8 @@
 
 .card-component__share--button {
 	background: transparent;
-	border:none;
-	box-shadow:none;
+	border: none;
+	box-shadow: none;
 }
 
 .card-component__button--group {
@@ -217,11 +226,11 @@
 	&.create-account {
 		padding:0;
 		input {
-			position:relative;
-			padding:1em;
-			background:transparent;
-			border:none;
-			box-shadow:none;
+			position: relative;
+			padding: 1em;
+			background: transparent;
+			border: none;
+			box-shadow: none;
 			//inherits now from button
 			font-family: inherit;
 			font-size: inherit;
@@ -237,8 +246,6 @@
 			// &:after {
 			// 	display: none;
 			// }
-
-
 		}
 	}
 }
@@ -247,5 +254,5 @@
 
 
 .hideRegisterButton {
-	display:none;
+	display: none;
 }
