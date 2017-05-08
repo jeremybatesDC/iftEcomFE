@@ -1,1 +1,0 @@
-{"version":3,"sources":["CustomControls/Profile/_profileFormsAndContent.scss"],"names":[],"mappings":"iBAEY,oDACA,QAAA,OAAA","file":"customOverrides.css","sourcesContent":[".profile-control-view-mode {\n    .buttonRow {\n        .btn.btn-link {\n            padding: $btn-base-padding;\n        }\n    }\n}"]}
