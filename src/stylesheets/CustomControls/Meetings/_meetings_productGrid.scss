@@ -23,4 +23,15 @@
 		width: 100% !important;
 		max-width: 100% !important;
 	}
+
+	.PriceDisplayControl_PersonifyDefault {
+		font-weight: bold;
+		box-shadow: 0 -1px $ift-grey-medium-lighter;
+	}
+	.PriceTextLabel {
+		color: $ift-grey-medium-lighter;
+	}
+	.PriceValueLabel {
+		color: $black;
+	}
 }
