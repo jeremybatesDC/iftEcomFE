@@ -5,3 +5,55 @@
         }
     }
 }
+
+h3.heading3.ctrlTitle.h-color-primary.bord-low {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.content > .RadAjaxPanel,
+.content > .Profile_PersonifyDefault.Base_PersonifyDefault {
+    padding: 2rem;
+    background: white;
+    margin-bottom:2rem;
+}
+
+h3.heading3.bord-low {
+    border-bottom: 1px solid #eee;
+}
+
+div#MainContent_ctl00_PhotoControl_pnlContainer h3 {
+    display: none;
+}
+
+.section.profile-pic {
+    border-radius: 0;
+}
+
+.PhotoControl_PersonifyDefault.Profile_PersonifyDefault .photoImgView,
+.PhotoControl_PersonifyDefault.Profile_PersonifyDefault .edit-row {
+    border: 0;
+    margin-bottom:.6rem;
+    padding-right: 3rem;
+}
+
+.MyContactInformation_PersonifyDefault.Profile_PersonifyDefault .section.title-address{
+	border-bottom: none;
+}
+
+
+.MyMeetingsControl_PersonifyDefault.Profile_PersonifyDefault .ctrl-form-row:nth-of-type(3n+1), .MySubscriptionsControl_PersonifyDefault.Profile_PersonifyDefault .ctrl-form-row:nth-of-type(4n+1) {
+    background: blue;
+    color: white;
+    border: none;
+    .ctrl-row-item a{
+			color: white;
+    }
+    .ctrl-row-action-item.ctrl-row-item-button {
+			border: 1px solid;
+			padding: 2px 8px;
+			a{
+				color:white;
+			}
+		}
+}
