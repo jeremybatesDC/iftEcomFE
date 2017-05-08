@@ -1,27 +1,14 @@
-// * {
-// 	background-attachment: fixed !important;
-// }
-
-body {
-	color: $body-text-color;
-	background:$ift-grey-light;
-}
-
-
-
-
 html {
 	font-size: 10px;
-	//
-	// @include break(max, $breakpoint-max-mobile){
-	// 	font-size: 8px;
-	// }
 }
 body{
 	font-family: $bodyFont;
 	font-size: 1.6rem;
+	color: $body-text-color;
 	font-weight:$bodyFontWeight;
 	line-height:$base-line-height;
+
+	background:$ift-grey-light;
 }
 
 h1,h2,h3,h4,h5,h6 {
