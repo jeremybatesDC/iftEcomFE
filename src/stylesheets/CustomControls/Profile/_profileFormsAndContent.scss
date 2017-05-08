@@ -7,13 +7,22 @@ $ecomm-blue:#1489ec;
 	}
 }
 
+.page-title + p {
+	display: none;
+}
+
+// Main Info Box
+#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel h3 {
+	border-bottom: 1px solid rgba(242, 242, 242, 1);
+}
+
 h3.heading3.ctrlTitle.h-color-primary.bord-low {
 	font-size: 1.6rem;
 	margin-bottom: 1rem;
 }
 
-.MyContactInformation_PersonifyDefault.Profile_PersonifyDefault.Base_PersonifyDefault{
-	border-bottom: 1px solid rgba(242,242,242,1);
+.MyContactInformation_PersonifyDefault.Profile_PersonifyDefault.Base_PersonifyDefault {
+	border-bottom: 1px solid rgba(242, 242, 242, 1);
 }
 
 // Information Boxes
@@ -47,17 +56,18 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 	ul.membershipValues li {
 		border: none;
 	}
-
 }
-.Profile_PersonifyDefault.Base_PersonifyDefault{
+
+.Profile_PersonifyDefault.Base_PersonifyDefault {
 	.buttonRow .btn {
 		padding: 1rem;
 		margin: auto;
 		display: block;
-		min-width: 15rem;
+		width: 16rem;
 		margin-bottom: 1rem;
 	}
 }
+
 // My Meeting
 #MainContent_ctl01_pnlContainer .ctrl-form-row,
 #MainContent_ctl01_pnlContainer .ctrl-form-row a,
@@ -69,7 +79,7 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 }
 
 #MainContent_ctl01_pnlContainer .ctrl-form-row:nth-of-type(3n+1) {
-	border-top: 1px solid rgba(242,242,242,1);
+	border-top: 1px solid rgba(242, 242, 242, 1);
 }
 
 #MainContent_ctl00_PhotoControl_pnlContainer h3 {
@@ -107,4 +117,24 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 			color: white;
 		}
 	}
+}
+
+// Ad Space on Right
+#MainContent_ctl05_NextButton {
+	border: none;
+}
+
+#MainContent_ctl05_ControlPanel {
+	background-color: white;
+}
+
+#MainContent_ctl05_ContainerPanelProducts,
+#MainContent_ctl05_ControlPanel {
+	min-width: 100%;
+	text-align: center;
+}
+
+#MainContent_ctl05_ScrollingPanel {
+	margin: auto;
+	min-width: 100%;
 }
