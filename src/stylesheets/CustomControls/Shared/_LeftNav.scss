@@ -1,0 +1,14 @@
+// Side bar Nav
+.sidebar {
+  padding: 2rem;
+  background-color: white;
+  ul {
+    list-style: none
+  }
+  .sidebar__nav {
+    padding-left: 2rem;
+    ul {
+      padding-left: 2rem;
+    }
+  }
+}
