@@ -1,4 +1,3 @@
-$ecomm-blue:#1489ec;
 .profile-control-view-mode {
 	.buttonRow {
 		.btn.btn-link {
@@ -13,7 +12,7 @@ $ecomm-blue:#1489ec;
 
 // Main Info Box
 #ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel h3 {
-	border-bottom: 1px solid rgba(242, 242, 242, 1);
+	border-bottom: 1px solid $ift-grey-light;
 }
 
 h3.heading3.ctrlTitle.h-color-primary.bord-low {
@@ -22,7 +21,7 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 }
 
 .MyContactInformation_PersonifyDefault.Profile_PersonifyDefault.Base_PersonifyDefault {
-	border-bottom: 1px solid rgba(242, 242, 242, 1);
+	border-bottom: 1px solid $ift-grey-light;
 }
 
 // Information Boxes
@@ -73,13 +72,13 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 #MainContent_ctl01_pnlContainer .ctrl-form-row a,
 #MainContent_ctl01_pnlContainer .ctrl-row-item.ctrl-row-label,
 #MainContent_ctl01_pnlContainer .ctrl-row-action-item.ctrl-row-item-button {
-	color: $ecomm-blue;
+	color: $ift-blue;
 	background-color: transparent;
 	border: none;
 }
 
 #MainContent_ctl01_pnlContainer .ctrl-form-row:nth-of-type(3n+1) {
-	border-top: 1px solid rgba(242, 242, 242, 1);
+	border-top: 1px solid $ift-grey-light;
 }
 
 #MainContent_ctl00_PhotoControl_pnlContainer h3 {
@@ -103,7 +102,7 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 .MyMeetingsControl_PersonifyDefault.Profile_PersonifyDefault .ctrl-form-row:nth-of-type(3n+1),
 .MySubscriptionsControl_PersonifyDefault.Profile_PersonifyDefault .ctrl-form-row:nth-of-type(4n+1) {
 	// Need to add real Blue
-	background: $ecomm-blue;
+	background: $ift-blue;
 	color: white;
 	border: none;
 	.ctrl-row-item,
