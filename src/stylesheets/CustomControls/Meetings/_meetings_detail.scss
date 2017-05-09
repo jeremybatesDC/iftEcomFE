@@ -7,7 +7,10 @@
 	.MTGDetailPresenter,
 	.MTGDetailValue,
 	.MTGDetailShortDescription {
+		display: block;
 		overflow:hidden;
+		float:none;
+		clear: both;
 		@include betterClearFix;
 	}
 	.MTGDetailLeftNav {
@@ -17,11 +20,18 @@
 	}
 	.MTGDetailContent {
 		width: auto;
+		padding:0;
 	}
 	.MTGDetailRotatingImage {
 		float: none;
+		position:relative;
 	}
 	.dvAdditionalInformation {
 		clear:both;
+	}
+	.MTGDetailRibbonBadgeCredit {
+		position: absolute;
+		top: 0;
+		right: 0;
 	}
 }
