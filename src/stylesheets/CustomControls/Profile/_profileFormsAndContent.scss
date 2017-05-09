@@ -6,13 +6,13 @@
 	}
 }
 
-.page-title + p {
-	display: none;
+.profile-control-main{
+	background-size: 1.4rem;
+	background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTcuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDE5MS42NjcgMTkxLjY2NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTkxLjY2NyAxOTEuNjY3OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxwYXRoIGQ9Ik05NS44MzMsMEM0Mi45OTEsMCwwLDQyLjk5LDAsOTUuODMzczQyLjk5MSw5NS44MzQsOTUuODMzLDk1LjgzNHM5NS44MzMtNDIuOTkxLDk1LjgzMy05NS44MzRTMTQ4LjY3NiwwLDk1LjgzMywweiAgIE0xNTAuODYyLDc5LjY0NmwtNjAuMjA3LDYwLjIwN2MtMi41NiwyLjU2LTUuOTYzLDMuOTY5LTkuNTgzLDMuOTY5Yy0zLjYyLDAtNy4wMjMtMS40MDktOS41ODMtMy45NjlsLTMwLjY4NS0zMC42ODUgIGMtMi41Ni0yLjU2LTMuOTctNS45NjMtMy45Ny05LjU4M2MwLTMuNjIxLDEuNDEtNy4wMjQsMy45Ny05LjU4NGMyLjU1OS0yLjU2LDUuOTYyLTMuOTcsOS41ODMtMy45N2MzLjYyLDAsNy4wMjQsMS40MSw5LjU4MywzLjk3MSAgbDIxLjEwMSwyMS4xbDUwLjYyMy01MC42MjNjMi41Ni0yLjU2LDUuOTYzLTMuOTY5LDkuNTgzLTMuOTY5YzMuNjIsMCw3LjAyMywxLjQwOSw5LjU4MywzLjk2OSAgQzE1Ni4xNDYsNjUuNzY1LDE1Ni4xNDYsNzQuMzYyLDE1MC44NjIsNzkuNjQ2eiIgZmlsbD0iIzkxREM1QSIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K);
 }
 
-// Main Info Box
-#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel h3 {
-	border-bottom: 1px solid $ift-grey-light;
+.page-title + p {
+	display: none;
 }
 
 h3.heading3.ctrlTitle.h-color-primary.bord-low {
@@ -62,22 +62,21 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 		padding: 1rem;
 		margin: auto;
 		display: block;
-		width: 16rem;
+		min-width: 16rem;
 		margin-bottom: 1rem;
 	}
 }
 
 // My Meeting
 #MainContent_ctl01_pnlContainer .ctrl-form-row,
-#MainContent_ctl01_pnlContainer .ctrl-form-row a,
+#MainContent_ctl01_pnlContainer .ctrl-form-row:first-child a,
 #MainContent_ctl01_pnlContainer .ctrl-row-item.ctrl-row-label,
-#MainContent_ctl01_pnlContainer .ctrl-row-action-item.ctrl-row-item-button {
+#MainContent_ctl01_pnlContainer .ctrl-row-action-item.ctrl-row-item-button{
 	color: $ift-blue;
 	background-color: transparent;
 	border: none;
 }
-
-#MainContent_ctl01_pnlContainer .ctrl-form-row:nth-of-type(3n+1) {
+.ctrl-form-row:nth-of-type(3n+1) {
 	border-top: 1px solid $ift-grey-light;
 }
 
@@ -100,7 +99,8 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 }
 
 .MyMeetingsControl_PersonifyDefault.Profile_PersonifyDefault .ctrl-form-row:nth-of-type(3n+1),
-.MySubscriptionsControl_PersonifyDefault.Profile_PersonifyDefault .ctrl-form-row:nth-of-type(4n+1) {
+.MySubscriptionsControl_PersonifyDefault.Profile_PersonifyDefault .ctrl-form-row:nth-of-type(4n+1),
+.ctrl-form-row:first-child{
 	// Need to add real Blue
 	background: $ift-blue;
 	color: white;
