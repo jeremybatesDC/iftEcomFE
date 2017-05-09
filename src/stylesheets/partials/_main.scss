@@ -233,13 +233,13 @@ main {
 	> .sublayout {
 		padding-top: $gutter-width * 2;
 	}
-	// a {
-	// 	&:hover,
-	// 	&:active,
-	// 	&:focus {
-	// 		text-decoration:underline;
-	// 	}
-	// }
+	&:after {
+		content: '';
+		display: table;
+		clear: both;
+		width: 0;
+		height:0
+	}
 }
 
 
