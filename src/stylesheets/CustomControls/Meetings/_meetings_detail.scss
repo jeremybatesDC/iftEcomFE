@@ -1,7 +1,12 @@
 .meeting-detail-control {
 	.meeting-detail-container,
 	.meeting-event-details,
-	.meeting-name-and-image {
+	.meeting-name-and-image,
+	.MTGDetailRotatingImage,
+	.MTGDetailMeetingInfo,
+	.MTGDetailPresenter,
+	.MTGDetailValue,
+	.MTGDetailShortDescription {
 		overflow:hidden;
 		@include betterClearFix;
 	}
@@ -15,5 +20,8 @@
 	}
 	.MTGDetailRotatingImage {
 		float: none;
+	}
+	.dvAdditionalInformation {
+		clear:both;
 	}
 }
