@@ -6,13 +6,15 @@
 	}
 }
 
-.page-title + p {
-	display: none;
+.profile-control-main,
+.formLayout .formRow.checkedValue,
+.formLayout .specialNeedDisplayMode .formRow{
+	background-size: 1.4rem;
+	background-image: $icon-checkmark;
 }
 
-// Main Info Box
-#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel h3 {
-	border-bottom: 1px solid $ift-grey-light;
+.page-title + p {
+	display: none;
 }
 
 h3.heading3.ctrlTitle.h-color-primary.bord-low {
@@ -62,22 +64,27 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 		padding: 1rem;
 		margin: auto;
 		display: block;
-		width: 16rem;
+		min-width: 16rem;
 		margin-bottom: 1rem;
+	}
+}
+#MainContent_ctl03_ContainerPanel,
+#MainContent_ctl04_pnlContainer{
+	.btn{
+		width: 100%;
 	}
 }
 
 // My Meeting
 #MainContent_ctl01_pnlContainer .ctrl-form-row,
-#MainContent_ctl01_pnlContainer .ctrl-form-row a,
+#MainContent_ctl01_pnlContainer .ctrl-form-row:first-child a,
 #MainContent_ctl01_pnlContainer .ctrl-row-item.ctrl-row-label,
-#MainContent_ctl01_pnlContainer .ctrl-row-action-item.ctrl-row-item-button {
+#MainContent_ctl01_pnlContainer .ctrl-row-action-item.ctrl-row-item-button{
 	color: $ift-blue;
 	background-color: transparent;
 	border: none;
 }
-
-#MainContent_ctl01_pnlContainer .ctrl-form-row:nth-of-type(3n+1) {
+.ctrl-form-row:nth-of-type(3n+1) {
 	border-top: 1px solid $ift-grey-light;
 }
 
@@ -100,7 +107,8 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 }
 
 .MyMeetingsControl_PersonifyDefault.Profile_PersonifyDefault .ctrl-form-row:nth-of-type(3n+1),
-.MySubscriptionsControl_PersonifyDefault.Profile_PersonifyDefault .ctrl-form-row:nth-of-type(4n+1) {
+.MySubscriptionsControl_PersonifyDefault.Profile_PersonifyDefault .ctrl-form-row:nth-of-type(4n+1),
+.ctrl-form-row:first-child{
 	// Need to add real Blue
 	background: $ift-blue;
 	color: white;
@@ -136,4 +144,24 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 #MainContent_ctl05_ScrollingPanel {
 	margin: auto;
 	min-width: 100%;
+}
+
+// Special Needs
+.CustomerSpecialNeedControl_PersonifyDefault .ctrlContent, .CommunicationPreferencesControl_PersonifyDefault .ctrlContent .ctrlContent, .OptInOutControl_PersonifyDefault .ctrlContent .ctrlContent{
+	border: 1px solid  $ift-grey-light;
+  background-color:transparent;
+  padding: 2rem 1rem;
+  .fieldLabel{
+  	background-color: transparent;
+  }
+}
+
+// Membership Details
+#ctl00_ctl00_MainContent_ctl02_ContainerPanelPanel{
+	.heading4.h-color-secondary{
+		font-weight: normal;
+	}
+	.btn{
+		margin: 1rem 0;
+	}
 }

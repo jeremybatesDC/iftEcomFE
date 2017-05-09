@@ -2,13 +2,23 @@
 .sidebar {
   padding: 2rem;
   background-color: white;
-  ul {
-    list-style: none
+  border-top: 6rem solid $ift-blue;
+  position: relative;
+  &:before{
+    content: "My Account";
+    position: absolute;
+    top: -40px;
+    left: 2rem;
+    color: white;
   }
-  .sidebar__nav {
-    padding-left: 2rem;
-    ul {
+  ul {
+    list-style: none;
+    .sidebar__submenu{
       padding-left: 2rem;
     }
+  }
+  a[href="#"]{
+    pointer-events: none;
+    color: black;
   }
 }
