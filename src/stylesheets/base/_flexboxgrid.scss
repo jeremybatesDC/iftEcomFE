@@ -120,7 +120,8 @@
 //$content-max-width: $breakpoint-min-xxl;
 
 
-.contained {
+.contained,
+.container {
 	max-width:$content-max-width;
 	margin:0 auto;
 	//don't need a max width here, just need margins
