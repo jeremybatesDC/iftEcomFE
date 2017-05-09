@@ -1,5 +1,9 @@
-.footer-main {
+.sublayout__footer {
 	box-shadow: 0 -4px $ift-green;
+}
+
+.footer-main {
+	
 	background-color:$white;
 	.row {
 		margin-bottom: 0;
@@ -48,7 +52,7 @@
 }
 .footer__middle {
 	font-size:1.3rem;
-	background-color:$ift-grey-light;
+	background-color:$white;
 	padding:$gutter-width $gutter-width 0 $gutter-width;
 	
 	@include break(max, $breakpoint-max-mobile){
