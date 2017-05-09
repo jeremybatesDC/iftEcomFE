@@ -6,7 +6,8 @@
 	.MTGDetailMeetingInfo,
 	.MTGDetailPresenter,
 	.MTGDetailValue,
-	.MTGDetailShortDescription {
+	.MTGDetailShortDescription,
+	.MTGDetailCaption {
 		display: block;
 		overflow:hidden;
 		float:none;
@@ -33,5 +34,22 @@
 		position: absolute;
 		top: 0;
 		right: 0;
+		float: none !important;
+		z-index: 1;
+	}
+	.MTGDetailPresenter {
+		font-weight: bold;
+		.relatedCustomerDisplayName {
+			font-weight: normal;
+		}
+	}
+	.MTGDetailCaption {
+		padding:0 !important;
+	}
+	.MTGDetailValue {
+		padding:0 !important;
+	}
+	.MTGDetailCredit {
+		padding:0 !important;
 	}
 }
