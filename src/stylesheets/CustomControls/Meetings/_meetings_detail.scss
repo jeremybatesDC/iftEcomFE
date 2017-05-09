@@ -1,0 +1,55 @@
+.meeting-detail-control {
+	.meeting-detail-container,
+	.meeting-event-details,
+	.meeting-name-and-image,
+	.MTGDetailRotatingImage,
+	.MTGDetailMeetingInfo,
+	.MTGDetailPresenter,
+	.MTGDetailValue,
+	.MTGDetailShortDescription,
+	.MTGDetailCaption {
+		display: block;
+		overflow:hidden;
+		float:none;
+		clear: both;
+		@include betterClearFix;
+	}
+	.MTGDetailLeftNav {
+		display: none;
+		float: none;
+		clear: both;
+	}
+	.MTGDetailContent {
+		width: auto;
+		padding:0;
+	}
+	.MTGDetailRotatingImage {
+		float: none;
+		position:relative;
+	}
+	.dvAdditionalInformation {
+		clear:both;
+	}
+	.MTGDetailRibbonBadgeCredit {
+		position: absolute;
+		top: 0;
+		right: 0;
+		float: none !important;
+		z-index: 1;
+	}
+	.MTGDetailPresenter {
+		font-weight: bold;
+		.relatedCustomerDisplayName {
+			font-weight: normal;
+		}
+	}
+	.MTGDetailCaption {
+		padding:0 !important;
+	}
+	.MTGDetailValue {
+		padding:0 !important;
+	}
+	.MTGDetailCredit {
+		padding:0 !important;
+	}
+}

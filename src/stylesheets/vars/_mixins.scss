@@ -44,6 +44,14 @@ Just use ths folloing to get font-awesome icons in content
 		}
 }
 
+@mixin betterClearFix{
+	&:after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+
 
 /*
  ██████╗ ██████╗  █████╗ ██████╗ ██╗███████╗███╗   ██╗████████╗███████╗

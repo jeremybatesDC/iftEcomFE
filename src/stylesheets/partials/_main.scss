@@ -230,16 +230,17 @@ img {
 main {
 	position:relative;
 	background:$ift-grey-light;
+	padding-bottom:$gutter-width * 2;
 	> .sublayout {
 		padding-top: $gutter-width * 2;
 	}
-	// a {
-	// 	&:hover,
-	// 	&:active,
-	// 	&:focus {
-	// 		text-decoration:underline;
-	// 	}
-	// }
+	&:after {
+		content: '';
+		display: table;
+		clear: both;
+		width: 0;
+		height:0
+	}
 }
 
 
