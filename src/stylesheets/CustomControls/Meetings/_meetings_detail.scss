@@ -1,0 +1,19 @@
+.meeting-detail-control {
+	.meeting-detail-container,
+	.meeting-event-details,
+	.meeting-name-and-image {
+		overflow:hidden;
+		@include betterClearFix;
+	}
+	.MTGDetailLeftNav {
+		display: none;
+		float: none;
+		clear: both;
+	}
+	.MTGDetailContent {
+		width: auto;
+	}
+	.MTGDetailRotatingImage {
+		float: none;
+	}
+}
