@@ -5,10 +5,10 @@
 	.nav-combined--wrapper{
 		box-shadow:0 1px 1px rgba($black, .1);
 		&.scrolled--STATE {
-			background-color:$ift-green;
+			background-color:$ift-blue;
 		}
 		.has-nav--ACTIVE &{
-			background-color:$ift-green;
+			background-color:$ift-blue;
 		}
 	}
 	.has-nav--ACTIVE {
@@ -36,7 +36,7 @@
 		&:hover,
 		&:active {
 			span {
-				color: $ift-green;
+				color: $ift-blue;
 			}
 		}
 
@@ -104,8 +104,8 @@
 		&.main-nav-on-canvas {
 			visibility: visible;
 			color: $white;
-			background-color:$ift-green;
-			box-shadow:0 50em $ift-green;
+			background-color:$ift-blue;
+			box-shadow:0 50em $ift-blue;
 			opacity: 1;
 			z-index: 4;
 			overflow-y: scroll;
