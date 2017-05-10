@@ -128,6 +128,7 @@
 
 
 	@include break(min,$breakpoint-min-tablet) {
+		margin:0 auto;
 		max-width: calc(100% - #{$gutter-width});
 		.page-header & {
 			max-width: 42em;

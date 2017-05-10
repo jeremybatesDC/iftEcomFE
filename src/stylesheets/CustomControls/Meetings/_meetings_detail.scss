@@ -2,6 +2,7 @@
 	.meeting-detail-container,
 	.meeting-event-details,
 	.meeting-name-and-image,
+	.MTGDetailTop,
 	.MTGDetailRotatingImage,
 	.MTGDetailMeetingInfo,
 	.MTGDetailPresenter,
@@ -14,6 +15,7 @@
 		clear: both;
 		@include betterClearFix;
 	}
+
 	.MTGDetailLeftNav {
 		display: none;
 		float: none;
@@ -55,5 +57,9 @@
 	.MTGDetailContentEventSchedule {
 		float: none;
 		margin-top: 0;
+	}
+	.MTGDetailBottom {
+		width: 100% !important;
+		max-width: 100% !important
 	}
 }
