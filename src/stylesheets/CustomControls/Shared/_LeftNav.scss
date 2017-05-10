@@ -1,16 +1,12 @@
 // Side bar Nav
+.sidebar__header{
+  padding: 2rem;
+  color: white;
+  background-color: $ift-blue;
+}
 .sidebar {
   padding: 2rem;
   background-color: white;
-  border-top: 6rem solid $ift-blue;
-  position: relative;
-  &:before{
-    content: "My Account";
-    position: absolute;
-    top: -40px;
-    left: 2rem;
-    color: white;
-  }
   ul {
     list-style: none;
     .sidebar__submenu{
