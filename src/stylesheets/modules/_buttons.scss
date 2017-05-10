@@ -1,63 +1,12 @@
 //try to animate with greensock rather than with CSS?
 
 //there are some specificitty
-@mixin button{
-	display: inline-block;
-	position: relative;
-	font-family: $headlineFont;
-	font-weight: 400;
-	font-size: 1.2rem;
-	line-height: 1.1111;
-	border-width: 1px;
-	border-style: solid;
-	border-radius: 0;
-	padding: $btn-base-padding;
-	text-align: center;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	overflow: hidden;
-	transition: $ift-timing;
-	background-image: linear-gradient(to bottom, rgba(174,207,67,1) 0%,rgba(118,161,32,1) 100%);
-	background-size:100%;
-	background-position: center;
-	border: none;
-	color: $white;
-	min-width: 12rem;
 
-	&:after {
-		content: '';
-		position: absolute;
-		width:100%;
-		height:100%;
-		bottom:-100%;
-		left:0;
-		//unless we're super clever about it, this pseudo element will go on top of the button
-		background-image:linear-gradient(to bottom, rgba(174,207,67,.3) 0%,rgba(118,161,32,.2) 55%, rgba(118,161,32,0) 100%);
-		transition: $ift-timing;
-	}
 
-	&:hover,
-	&:active,
-	&:focus {
-		&:after {
-			bottom:0;
-		}
-		box-shadow:10px 10px 20px rgba($black, .05), -10px 10px 20px rgba($black, .05) ;
-	}
-	::selection {
-		background-color:transparent;
-	}
-}
 
-.button, .btn {
-
+.button,
+.btn {
 	@include button();
-
 	&.button--default-theme, 
 	&.button--ghost-theme,
 	.button-group--default-theme &,
@@ -65,8 +14,6 @@
 		color:$white;
 		min-width: 12rem;
 	}
-
-
 
 	&.button--default-theme, 
 	.button-group--default-theme & {
@@ -133,25 +80,25 @@
   			border-left: 5px solid currentColor;
   			transform: translateY(-50%);
 		}
-		// span {
-		// 	&:after {
-		// 		content:'';
-		// 		top:0;
-		// 		right:-1em;
-		// 		left:auto;
-		// 		background:none;
-		// 		width: 0; 
-	 //  			height: 0; 
-	 //  			border-top: 8px solid transparent;
-	 //  			border-bottom: 8px solid transparent;
-	 //  			border-left: 8px solid currentColor;
-		// 	}
-		// }
 		
 	}
 }
 
 
+[id$="_btnCancel"]{
+    background:none !important;
+    text-transform: capitalize !important;
+    text-decoration: underline !important;
+    padding: 0 !important;
+    &:after {
+    	display: none !important;
+    }
+    &:hover {
+    	&:after {
+    		display: none !important;
+    	}
+    }
+}
 
 
 .back-to-top__button {
