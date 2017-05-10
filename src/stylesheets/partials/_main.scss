@@ -231,6 +231,12 @@ main {
 	position:relative;
 	background:$ift-grey-light;
 	padding-bottom:$gutter-width * 2;
+	@include break(max, $breakpoint-max-mobile){
+		padding-top: 75px;
+	}
+	@include break(min, $breakpoint-min-tablet){
+		padding-top: 150px;
+	}
 	> .sublayout {
 		padding-top: $gutter-width * 2;
 	}
@@ -241,6 +247,8 @@ main {
 		width: 0;
 		height:0
 	}
+
+
 }
 
 

@@ -65,7 +65,17 @@
 	}
 }
 
+.header__utility-auth {
+	display:inline-block;
+	> .btn {
+		background: transparent !important;
+		border:2px solid $white !important;
+	}
+}
 
+.header__utility-cart {
+	display:inline-block;
+}
 
 
 .headline--top-line {
