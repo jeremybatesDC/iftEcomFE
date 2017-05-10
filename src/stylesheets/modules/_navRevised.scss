@@ -130,19 +130,15 @@
 			}
 			span {
 				transition:$ift-timing;
-				//text-shadow:1px 1px rgba($black,.5);
 				&:hover,
 				&:active,
 				&:focus{
 				 	color: $ift-grey-darker;
-					//text-shadow:2px 2px 2px rgba($black,1);
 					.body-home & {
-						color: $ift-green;
-						//text-shadow:-2px -2px 1px rgba($ift-green,1), 2px 2px 1px rgba($black,1) ;
+						color: $ift-blue;
 					}
 					.body-home .scrolled--STATE & {
 						color: $ift-grey-darker;
-						//text-shadow:2px 2px 2px rgba($black,1);
 					}
 				}
 			}
@@ -157,10 +153,6 @@
 			@include break(min, $breakpoint-min-tablet){
 				background-image: linear-gradient(to top,$white 50%,$white 50%);
 				background-size:100% 5px;
-				//box-shadow: 0 -6px $white;
-
-
-
 				> a {
 					.body-home .scrolled--STATE & {
 						color: $white;
@@ -220,7 +212,7 @@
 			color: $white;
 			padding-top:.25em;
 			padding-bottom:.25em;
-			background-image: linear-gradient(to top,rgba($ift-green, 0) 50%,rgba($ift-green, 0) 50%);
+			background-image: linear-gradient(to top,rgba($ift-blue, 0) 50%,rgba($ift-blue, 0) 50%);
 			background-size:0 5px;
 			background-position:0 95%;
 			background-repeat:no-repeat;
@@ -232,10 +224,10 @@
 			&:hover,
 			&:active,
 			&:focus  {
-				background-image: linear-gradient(to top,$ift-green 50%,$ift-green 50%);
+				background-image: linear-gradient(to top,$ift-blue 50%,$ift-blue 50%);
 				background-size:100% 5px;
 				span {
-					color: $ift-green;
+					color: $ift-blue;
 				}
 				
 			}
