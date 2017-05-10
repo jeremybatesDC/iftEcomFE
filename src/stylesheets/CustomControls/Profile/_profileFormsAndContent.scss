@@ -8,7 +8,8 @@
 
 .profile-control-main,
 .formLayout .formRow.checkedValue,
-.formLayout .specialNeedDisplayMode .formRow {
+.formLayout .specialNeedDisplayMode .formRow,
+span.checked {
   background-size: 1.4rem;
   background-image: $icon-checkmark;
 }
