@@ -1,0 +1,34 @@
+.MtgRegWizard_PersonifyDefault 
+//,MeetingsMtgReg_PersonifyDefault
+{
+	.ctrlContent
+	//,mtgSelectRate
+	//,formLayout
+	{
+
+	}
+	.mtgDescAndLocation,
+	.mtgRate {
+		float:none !important;
+		clear: both !important;
+		@include betterClearFix;
+		@include break(max, $breakpoint-max-mobile) {
+			display: block !important;
+			width: 100% !important;
+			max-width: 100% !important;
+		}
+	}
+
+	@include break(min, $breakpoint-min-tablet){
+		.mtgDescAndLocation {
+			display:inline-block !important;
+			width: 60% !important;
+		}
+
+		.mtgRate {
+			display:inline-block !important;
+			width: 39.5% !important;
+			vertical-align: top;
+		}
+	}
+}
