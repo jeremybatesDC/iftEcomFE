@@ -48,7 +48,9 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 .ctrl-form-row .ctrl-row-item-button input, .ctrl-form-row .ctrl-row-item-button input.btn {
     padding: 4px 8px;
 }
-
+.ctrl-emergency-contacts-form-row-priority .ctrl-row-item-button .inactive input {
+    background: transparent;
+}
 // Membership Summary
 #MainContent_ctl03_ContainerPanel {
   .ctrlContent {
@@ -110,14 +112,26 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 
 .MyMeetingsControl_PersonifyDefault.Profile_PersonifyDefault .ctrl-form-row:nth-of-type(3n+1),
 .MySubscriptionsControl_PersonifyDefault.Profile_PersonifyDefault .ctrl-form-row:nth-of-type(4n+1),
+.EducationControl_PersonifyDefault.Base_PersonifyDefault .ctrl-form-row.ctrl-row-header-colored,
+.ctrl-form-row.ctrl-emergency-contacts-form-row-priority,
+.ctrl-form-row.order-item,
 .ctrl-form-row:first-child {
   // Need to add real Blue
   background: $ift-blue;
   color: white;
   border: none;
+  padding: 0.6rem;
   .ctrl-row-item,
   .ctrl-row-item a {
     color: white;
+    text-shadow: none;
+  }
+  .btn {
+    background: $ift-blue;
+    color: white;
+    border: 1px solid;
+    display: inline-block;
+    text-shadow: none;
   }
   .ctrl-row-action-item.ctrl-row-item-button {
     border: 1px solid;
@@ -170,19 +184,6 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
   }
 }
 
-// Emergancy Contact
-.ctrl-form-row.ctrl-emergency-contacts-form-row-priority {
-  background: $ift-blue;
-  color: white;
-  border: none;
-  padding: 0.6rem;
-  .btn {
-    background: $ift-blue;
-    color: white;
-    border: 1px solid;
-    display: inline-block;
-  }
-}
 .ctrl-form-row.ctrl-emergency-contacts-form-row-priority .EmergencyContact_PersonifyDefault .ctrl-form-row {
   border: none;
   border-bottom: 1px solid $ift-grey-light;
