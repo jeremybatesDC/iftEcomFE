@@ -90,10 +90,21 @@
     text-transform: capitalize !important;
     text-decoration: underline !important;
     padding: 0 !important;
+    color: $ift-blue !important;
+    box-shadow:none	!important;
+    &:hover,
+    &:active,
+    &:focus {
+    	background:none !important;
+    	color: $ift-blue !important;
+    	box-shadow:none	!important;
+    }
     &:after {
     	display: none !important;
     }
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
     	&:after {
     		display: none !important;
     	}
