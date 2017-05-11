@@ -1,0 +1,95 @@
+$border-radius: 3px;
+
+input,
+.formRow input[type="text"] {
+    border: 1px solid #eee;
+    background-color: transparent;
+    padding: .6rem .8rem;
+    margin: .6rem 0;
+    transition: 300ms all; 
+}
+input:focus,
+.formRow input[type="text"]:focus {
+    border: 1px solid $ift-blue;
+    box-shadow: 0 0 $border-radius #cbd0ef;
+    background-color: transparent;
+    padding: .6rem .8rem;
+    margin: .6rem 0;
+}
+
+// Dropdown
+
+// Reset
+.RadComboBox, .RadComboBox table, .RadComboBox tbody, .RadComboBox tr {
+    display: block;
+    cursor: pointer;
+}
+.formRow .RadComboBox .rcbReadOnly input[type="text"],
+.formRow .RadComboBox .rcbReadOnly input[type="text"]:focus,{
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+.RadComboBox_PersonifyDefault .rcbInputCellLeft, .RadComboBox_PersonifyDefault .rcbInputCellRight, .RadComboBox_PersonifyDefault .rcbArrowCellLeft, .RadComboBox_PersonifyDefault .rcbArrowCellRight{
+    background-image:none !important;
+    background: 0 0 !important;
+}
+// Left
+.RadComboBox table td.rcbInputCell {
+    border: 1px solid #aaa;
+    border-radius: $border-radius 0 0 $border-radius;
+    display: inline-block;
+    padding: .4rem .8rem !important;
+    height: 3rem;
+    width: calc(100% - 2.6rem) !important;
+}
+// Right Arrow
+.RadComboBox_PersonifyDefault .rcbReadOnly td.rcbArrowCellRight {
+    border: 1px solid #aaa;
+    border-left: none;
+    border-radius: 0 $border-radius $border-radius 0;
+    display: inline-block;
+    width: 2.6rem;
+    height: 3rem;
+    position: relative;
+    // Arrows
+    &:before,
+    &:after{
+        display: block;
+        position: absolute;
+        content: "";
+        left: 7px;
+        height: 0;
+        border: 5px solid transparent;
+    }
+    // Up Arrow
+    &:before{
+        top: 2px;
+        border-bottom-color: #555;
+    }
+    // Down Arrow
+     &:after{
+        bottom: 2px;
+        border-top-color: #555;
+    }
+    // Trigger
+    a {
+        width: 2.6rem !important;
+        background: transparent;
+        height: 3rem;
+        cursor: pointer;
+        z-index: 999;
+    }
+}
+// List
+.RadComboBoxDropDown li {
+    font-size: 14px;
+}
+// Disabled Table
+table.rcbDisabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
