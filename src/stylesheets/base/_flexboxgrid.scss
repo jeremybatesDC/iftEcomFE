@@ -120,14 +120,15 @@
 //$content-max-width: $breakpoint-min-xxl;
 
 
-.contained {
+.contained,
+.container {
 	max-width:$content-max-width;
-	margin:0 auto;
+	margin:0 $gutter-width / 2;
 	//don't need a max width here, just need margins
 
-	
 
 	@include break(min,$breakpoint-min-tablet) {
+		margin:0 auto;
 		max-width: calc(100% - #{$gutter-width});
 		.page-header & {
 			max-width: 42em;
@@ -145,15 +146,10 @@
 	@include break(min,$breakpoint-min-lg) {
 		max-width: $breakpoint-sandwichMinMedMinLarge;
 	}
+	//does it get too wide?
 	@include break(min,$breakpoint-min-xl) {
 		max-width: $breakpoint-min-lg;
 	}
-	// @include break(min,$breakpoint-min-xxl) {
-	// 	max-width: $breakpoint-min-xl;
-	// }
-	// @include break(min,$breakpoint-min-1920) {
-	// 	max-width: $breakpoint-min-xxl;
-	// }
 }
 
 @include break(min,$breakpoint-min-tablet, max,$breakpoint-max-1023 ){

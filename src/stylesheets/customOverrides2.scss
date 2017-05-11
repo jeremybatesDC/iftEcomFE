@@ -5,6 +5,7 @@
 @import 'vars/typography';
 @import 'vars/mixins';
 
-//JeremyS modules
-@import 'CustomControls/Shared/LeftNav';
+// JeremyS modules
 @import 'CustomControls/Meetings/_meetings_productGrid.scss';
+@import 'CustomControls/Meetings/_meetings_detail';
+@import 'CustomControls/Meetings/_meetings_registration';

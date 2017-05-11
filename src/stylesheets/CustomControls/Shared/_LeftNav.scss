@@ -1,14 +1,20 @@
 // Side bar Nav
+.sidebar__header{
+  padding: 2rem;
+  color: white;
+  background-color: $ift-blue;
+}
 .sidebar {
   padding: 2rem;
   background-color: white;
   ul {
-    list-style: none
-  }
-  .sidebar__nav {
-    padding-left: 2rem;
-    ul {
+    list-style: none;
+    .sidebar__submenu{
       padding-left: 2rem;
     }
+  }
+  a[href="#"]{
+    pointer-events: none;
+    color: black;
   }
 }

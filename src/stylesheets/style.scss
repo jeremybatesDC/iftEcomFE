@@ -8,8 +8,8 @@
 @import 'vars/typography';
 @import 'vars/mixins';
 
-
 // MODULES
+@import 'modules/icons';
 @import 'modules/buttons';
 @import 'modules/content';
 @import 'modules/navRevised';
@@ -20,6 +20,7 @@
 @import 'modules/social';
 @import 'modules/scrollStuff';
 @import 'modules/search';
+@import 'modules/pagination';
 
 // PARTIALS
 @import 'partials/main';
@@ -32,3 +33,5 @@
 // Shared
 @import 'CustomControls/Shared/LeftNav';
 @import 'CustomControls/Shared/Breadcrumb';
+@import 'CustomControls/Shared/Modal';
+@import 'CustomControls/Shared/Forms';

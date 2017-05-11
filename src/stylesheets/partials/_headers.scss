@@ -1,36 +1,37 @@
-.header__logo {
-	img {
-		max-width: 200px;
-	}
-}
-
 .logo-container--main{
 	position: fixed;
-	top:2.6666em;
+	top:2.4rem;
 	z-index:9;
-	
-	//will need to tween the logo itself
-	svg {
-		width: 12rem;
-		height:5.4rem;
-		opacity: 1;
-		transition: .5s all ease-in-out;
-		
-		&:hover,
-		&:active,
-		&:focus {
-			
-			filter:contrast(50%) brightness(30%);
-
-		}
-		.body-home & {
-			&:hover,
-			&:active,
-			&:focus {	
-				filter:none;
-			}
+	//link
+	> .header__logo {
+		display: block;
+		> img {
+			width: 10rem;
 		}
 	}
+
+	//hover on event site uses css filters
+
+
+	//will need to tween the logo itself
+	// svg {
+	// 	width: 12rem;
+	// 	height:5.4rem;
+	// 	opacity: 1;
+	// 	transition: .5s all ease-in-out;
+	// 	&:hover,
+	// 	&:active,
+	// 	&:focus {
+	// 		filter:contrast(50%) brightness(30%);
+	// 	}
+	// 	.body-home & {
+	// 		&:hover,
+	// 		&:active,
+	// 		&:focus {	
+	// 			filter:none;
+	// 		}
+	// 	}
+	// }
 
 	//better to make it z-index when refactoring
 	//or at least use greensock tweening
@@ -64,7 +65,17 @@
 	}
 }
 
+.header__utility-auth {
+	display:inline-block;
+	> .btn {
+		background: transparent !important;
+		border:2px solid $white !important;
+	}
+}
 
+.header__utility-cart {
+	display:inline-block;
+}
 
 
 .headline--top-line {
