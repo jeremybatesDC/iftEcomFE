@@ -1,0 +1,29 @@
+
+.rwNormalWindow.rwTransparentWindow {
+    border: none;
+    background-color: white;
+}
+
+.RadWindow_PersonifyDefault .rwTopLeft, .RadWindow_PersonifyDefault .rwTopRight, .RadWindow_PersonifyDefault .rwTitlebar, .RadWindow_PersonifyDefault .rwFooterLeft, .RadWindow_PersonifyDefault .rwFooterRight, .RadWindow_PersonifyDefault .rwFooterCenter, .RadWindow_PersonifyDefault .rwTopResize, .RadWindow_PersonifyDefault .rwStatusbar div, .RadWindow_PersonifyDefault .rwStatusbar, .RadWindow_PersonifyDefault .rwBodyLeft, .RadWindow_PersonifyDefault .rwBodyRight, .RadWindow_PersonifyDefault .rwStatusbarRow .rwCorner{
+    background: white;
+}
+
+.rwWindowContent {
+    border: none;
+    border-top: 1px solid #eee;
+}
+
+.RadWindow_PersonifyDefault .rwControlButtons a.rwCloseButton {
+    height: 24px;
+    width: 24px;
+    background-image: $icon-chevron-right;
+    background-position: top left;
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.RadWindow .rwTitleRow em {
+    font-size: 16px;
+    padding: 1rem 0;
+}
