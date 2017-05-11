@@ -37,9 +37,15 @@ input:focus,
     background-image:none !important;
     background: 0 0 !important;
 }
+.section.profile-ctrl-contact-info .address-control-panel label, .section.profile-ctrl-contact-info .address-control-panel input[type=text], .section.profile-ctrl-contact-info .address-control-panel .RadComboBox.RadComboBox_PersonifyDefault, .section.profile-ctrl-contact-info .emailDetails label, .section.profile-ctrl-contact-info .emailDetails input[type=text], .section.profile-ctrl-contact-info .emailDetails .RadComboBox.RadComboBox_PersonifyDefault{
+    display: block;
+    width: 100% !important;
+    border-color: #ccc;
+    border-radius: 4px;
+}
 // Left
 .RadComboBox table td.rcbInputCell {
-    border: 1px solid #aaa;
+    border: 1px solid #ccc;
     border-radius: $border-radius 0 0 $border-radius;
     display: inline-block;
     padding: .4rem .8rem !important;
@@ -48,7 +54,7 @@ input:focus,
 }
 // Right Arrow
 .RadComboBox_PersonifyDefault .rcbReadOnly td.rcbArrowCellRight {
-    border: 1px solid #aaa;
+    border: 1px solid #ccc;
     border-left: none;
     border-radius: 0 $border-radius $border-radius 0;
     display: inline-block;

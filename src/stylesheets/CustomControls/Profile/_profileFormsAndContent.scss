@@ -65,8 +65,8 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 .Profile_PersonifyDefault.Base_PersonifyDefault {
   .buttonRow .btn {
     padding: 1rem;
-    margin: auto;
-    display: block;
+    margin: 1rem;
+    display: inline-block;
     min-width: 16rem;
     margin-bottom: 1rem;
   }
@@ -142,7 +142,14 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
     }
   }
 }
+.exp-col-container.expanded {
+  .ctrl-form-row,
+  .ctrl-row-item.ctrl-row-item-name.ctrl-row-value{
+    background-color: transparent !important;
+    color: #777 !important;
+  }
 
+}
 // Ad Space on Right
 #MainContent_ctl05_NextButton {
   border: none;
@@ -188,4 +195,9 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 .ctrl-form-row.ctrl-emergency-contacts-form-row-priority .EmergencyContact_PersonifyDefault .ctrl-form-row {
   border: none;
   border-bottom: 1px solid $ift-grey-light;
+}
+
+.PurchaseHistory_PersonifyDefault.Profile_PersonifyDefault .exp-col-content.expanded{
+  background-color: transparent;
+
 }
