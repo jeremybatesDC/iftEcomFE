@@ -75,10 +75,14 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 #MainContent_ctl03_ContainerPanel,
 #MainContent_ctl04_pnlContainer {
   .btn {
+    margin: 1rem auto;
+    display: block;
     width: 100%;
   }
 }
-
+.formRow .RadComboBox .rcbReadOnly input[type="text"]{
+  padding: 0;
+}
 // My Meeting
 #MainContent_ctl01_pnlContainer .ctrl-form-row,
 #MainContent_ctl01_pnlContainer .ctrl-form-row:first-child a,
