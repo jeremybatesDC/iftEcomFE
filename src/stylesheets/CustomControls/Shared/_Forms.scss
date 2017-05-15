@@ -20,8 +20,8 @@ $border-radius: 3px;
 .RadComboBox, .RadComboBox table, .RadComboBox tbody, .RadComboBox tr {
     display: block;
 }
-.formRow .RadComboBox .rcbReadOnly input[type="text"],
-.formRow .RadComboBox .rcbReadOnly input[type="text"]:focus,{
+.formRow .RadComboBox input[type="text"],
+.formRow .RadComboBox input[type="text"]:focus,{
     border: none;
     box-shadow: none;
     background-color: transparent;
@@ -48,7 +48,7 @@ $border-radius: 3px;
     width: calc(100% - 2.6rem) !important;
 }
 // Right Arrow
-.RadComboBox_PersonifyDefault .rcbReadOnly td.rcbArrowCellRight {
+.RadComboBox_PersonifyDefault td.rcbArrowCellRight {
     border: 1px solid #ccc;
     border-left: none;
     border-radius: 0 $border-radius $border-radius 0;
