@@ -91,7 +91,10 @@
 }
 
 
-[id$="_btnCancel"]{
+[id$="_btnCancel"],
+[id$="CancelButton"],
+[value="Cancel"],
+[value="cancel"] {
     background:none !important;
     text-transform: capitalize !important;
     text-decoration: underline !important;
