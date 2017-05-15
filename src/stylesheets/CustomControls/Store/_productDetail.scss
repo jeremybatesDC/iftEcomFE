@@ -1,0 +1,127 @@
+// Detail Box
+#ctl00_ctl00_MainContent_ctl00_ProductINVBuyBoxControl_ProductDetailActionButtonControl1_ContainerPanelPanel {
+  .productbuttons {
+    margin: 0;
+    padding: 0;
+    background: 0 0;
+  }
+  .btn {
+		width: 20rem;
+		max-width: none;
+		margin: 1rem auto;
+		display: block;
+  }
+}
+
+// Ribbon
+#ctl00_MainContent_ctl00_CartSavingsControls1_Container {
+  border: none;
+}
+
+// Header
+.ProductDetailControl_PersonifyDefault .ProductDetailNameDisplay {
+  border: none;
+}
+
+// Layout
+.ProductDetailControl_PersonifyDefault {
+  .ProductDetailImageCell {
+    .productImages {
+      margin: auto;
+      margin-top: 1.5rem;
+    }
+  }
+  .ProductDetailImageCell {
+    width: 25%;
+    max-width: none;
+    margin: 0;
+    padding: 0 1.5rem;
+  }
+  .ProductDetailContentCell {
+    width: 50%;
+    max-width: none;
+    margin: 0;
+    padding: 0 1.5rem;
+  }
+  .productThumb {
+    margin: 0;
+    width: 33.333%;
+    border: none;
+    padding: 1rem;
+  }
+  .productThumb a {
+    border: none;
+  }
+  .mainProductImage {
+    border: none;
+  }
+  .ProductDetailLeftCell {
+    width: 25%;
+    margin: 0;
+  }
+  .ProductDetailBlockCell {
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.5rem;
+  }
+  .productActions {
+    border: none;
+    max-width: none;
+    padding: 1.5rem;
+    min-width: 0;
+    width: 100%;
+    .quantityContainer .quantity {
+	    padding: .4rem;
+	    height: auto;
+	    border-color: $ift-blue;
+	    border-radius: 4px;
+	    transition: 300ms all;
+	    &:focus {
+	    	transition: 300ms all;
+				box-shadow: 0 0 4px #cbd0ef;
+			}
+		}
+  }
+  .savingsHeader{
+  	position: relative;
+  	background-color: $ift-green-light;
+		margin: 0 auto;
+    padding: 1rem;
+    height: 4rem;
+    max-width: 20rem;
+  	&:before,&:after{
+  		content: "";
+  		position: absolute;
+  		border: 2rem solid transparent;
+  		left: -2rem;
+  	}
+  	&:before{
+  		top: 0;
+  		border-top-color: $ift-green-light;
+
+  	}
+  	&:after{
+  		bottom: 0;
+  		border-bottom-color: $ift-green-light;
+
+  	}
+  	.decore{
+  		display:none;
+		}
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .ProductDetailControl_PersonifyDefault {
+    .ProductDetailImageCell {
+      width: 100%;
+    }
+    .ProductDetailContentCell {
+      width: 100%;
+    }
+    .ProductDetailLeftCell {
+      width: 100%;
+    }
+  }
+}
