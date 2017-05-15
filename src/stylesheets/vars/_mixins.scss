@@ -11,13 +11,13 @@
 @mixin button{
 	display: inline-block;
 	position: relative;
-	font-family: $headlineFont;
-	font-weight: 400;
+	font-family: $headlineFont !important;
+	font-weight: 400 !important;
 	font-size: 1.2rem;
 	line-height: 1.1111;
 	border-width: 1px;
 	border-style: solid;
-	border-radius: 0;
+	border-radius: 0 !important;
 	padding: $btn-base-padding;
 	text-align: center;
 	text-transform: uppercase;
