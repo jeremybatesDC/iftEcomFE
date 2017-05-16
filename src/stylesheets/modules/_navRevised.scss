@@ -36,6 +36,7 @@
 	@include break(min, $breakpoint-min-md){
 		//width of logo
 		padding-left:15rem;
+		justify-content:flex-end;
 	}
 	ul,li,a,span {
 		-webkit-touch-callout: none;
@@ -104,8 +105,9 @@
 	> li {
 		display: inline-block;
 		vertical-align: top;
+		line-height: 1;
 		padding-top:.3rem;
-		margin-left: 3vw;
+		margin-left: $gutter-width;
 		//box-shadow:0 -3px transparent;
 		background-image: linear-gradient(to top,rgba($white, 0) 50%,rgba($white, 0) 50%);
 		background-size:0 5px;
@@ -116,7 +118,8 @@
 		}
 		> a {
 			position:relative;
-			font-size: 1.4rem;
+			font-size: 1.2rem;
+			line-height: 1;
 			font-weight: 700;
 			color: $white;
 			text-transform: uppercase;
@@ -203,7 +206,7 @@
 	li {
 		list-style: none;
 		display: block;
-		font-size: 3.2rem;
+		font-size: 1.6rem;
 		line-height: 1.1111;
 		font-weight: 400;
 		
@@ -304,5 +307,22 @@
 	z-index:2;
 	&.overlayACTIVE {
 		height:100vh;
+	}
+}
+
+//if there are 8 top level menu items
+@include break(min, $breakpoint-min-tablet){
+	.nav-list-top-level > li:nth-last-child(n+8), .nav-list-top-level > li:nth-last-child(n+8) ~ li {
+		width:12.5%
+	}
+}
+
+.nav-list-level-3 {
+	li {
+		a {
+			span {
+				color: red !important;
+			}
+		}
 	}
 }
