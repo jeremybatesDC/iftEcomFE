@@ -17,9 +17,13 @@
 .CheckoutControl_PersonifyDefault {
 	.addressButtonsDiv {
 		input {
+			font-size: 1rem;
+			background-color: $ift-blue;
+			margin-bottom: 0;
 			+ input {
 				display: block;
-				margin-top: 0;
+				margin-top: 1rem;
+				margin-left: 0;
 			}
 		}
 	}
