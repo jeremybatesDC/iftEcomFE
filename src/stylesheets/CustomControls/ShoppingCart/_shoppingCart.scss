@@ -13,3 +13,57 @@
 		background-color: $ift-blue-dark;
 	}
 }
+
+.CheckoutControl_PersonifyDefault {
+	.addressButtonsDiv {
+		input {
+			+ input {
+				display: block;
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+
+
+.WizardHeaderControl_PersonifyDefault {
+	// .wizardHeader {
+		
+	// }
+	.step {
+		text-align: center;
+		
+
+
+		&.active {
+			background-color: $ift-blue;
+			.stepLabel {
+				color: $white;
+			}
+			.step-number {
+				background-color: $ift-blue;
+			}
+		}
+	}
+}
+
+@include break(min, $breakpoint-min-tablet){
+
+	//if 3, then 33%
+	.wizardHeader .step:nth-last-child(n+3):nth-last-child(-n+3):first-child, .wizardHeader .step:nth-last-child(n+3):nth-last-child(-n+3):first-child ~ .step {
+		width: 33.1%;
+	}
+	//if 4, then 25%
+	.wizardHeader .step:nth-last-child(n+4):nth-last-child(-n+4):first-child, .wizardHeader .step:nth-last-child(n+4):nth-last-child(-n+4):first-child ~ .step {
+		width: 24%;
+	}
+
+}
+
+.checkoutHeader {
+	&.heading2 {
+		font-size: 2rem;
+	}
+}
+
