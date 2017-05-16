@@ -19,6 +19,8 @@
 		input {
 			font-size: 1rem;
 			background-color: $ift-blue;
+			background-image: none;
+			padding: .8rem;
 			margin-bottom: 0;
 			+ input {
 				display: block;
