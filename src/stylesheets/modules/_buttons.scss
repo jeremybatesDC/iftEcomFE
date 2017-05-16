@@ -95,10 +95,19 @@
 [id$="CancelButton"],
 [value="Cancel"],
 [value="cancel"],
+[id$="ButtonUpdate"],
+[value="Update"],
+[value="update"],
+[value="UPDATE"],
 .productControlSection [type="button"]{
     @include unButton();
 }
 
+.productControlSection [type="button"]{
+	html body & {
+		font-size:1rem;
+	}
+}
 
 .back-to-top__button {
 	font-size: 1.1rem;

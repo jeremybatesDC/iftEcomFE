@@ -5,3 +5,11 @@
 	}
 }
 
+.segmentsListTabs .rlbSelected {
+	background-color: $ift-blue !important;
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: $ift-blue-dark;
+	}
+}
