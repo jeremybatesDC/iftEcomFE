@@ -185,4 +185,17 @@
 		}
 	}
 
+	.nav-list-level-3 {
+		height: 0;
+		overflow:hidden;
+		> li {
+			> a {
+				html body & {
+					font-size: 1.2rem;
+				}
+				
+			}
+			
+		}
+	}
 }

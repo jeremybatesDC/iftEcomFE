@@ -331,18 +331,7 @@
 // }
 
 .nav-list-level-3 {
-	@include break(max, $breakpoint-max-mobile){
-		> li {
-			> a {
-				html body & {
-					font-size: 1.2rem;
-				}
-				
-			}
-			
-		}
-	}
-
+	
 	@include break(min, $breakpoint-min-tablet){
 		li {
 			font-size: 1.2rem;
