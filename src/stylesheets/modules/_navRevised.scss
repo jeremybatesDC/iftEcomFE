@@ -65,13 +65,14 @@
 	//transition: opacity .3333s ease-in-out;
 	
 	@include break(min, $breakpoint-min-tablet){
-		transform: rotate(180deg) scale(3) translateY(-95%);
+		//temporary -- must decrease height of nav on tablet
+		transform: rotate(180deg) scale(3) translateY(-150%);
 		left:calc(50% - 8px);
 		fill:transparent;
 		&.caretMorphed {	
 			//height: 12px;
 			fill:$ift-grey-darker;
-			transform: rotate(180deg) scale(3) translateY(-87.5%);
+			transform: rotate(180deg) scale(3) translateY(-105%);
 			
 			.body-home & {
 				fill:transparent;
@@ -101,6 +102,11 @@
 		//text-align:right;
 		flex-direction: row;
 		justify-content:center;
+		align-items:center;
+		
+		> li {
+			height: 100%;
+		}
 	}
 	> li {
 		display: inline-block;
@@ -190,8 +196,11 @@
 		padding-top:3em;
 		//for animation
 		transform:translate(-2vw);
-		li {
+		> li {
+			display: inline-block;
+			width: 24%;
 			margin-bottom: $gutter-width / 2;
+			vertical-align: top;
 		}
 
 	}
@@ -205,7 +214,7 @@
 	}
 	li {
 		list-style: none;
-		display: block;
+		//display: block;
 		font-size: 1.6rem;
 		line-height: 1.1111;
 		font-weight: 400;
@@ -224,17 +233,17 @@
 				transition: $ift-timing;
 			}
 			@include break(min, $breakpoint-min-tablet){
-			&:hover,
-			&:active,
-			&:focus  {
-				background-image: linear-gradient(to top,$ift-blue 50%,$ift-blue 50%);
-				background-size:100% 5px;
-				span {
-					color: $ift-blue;
+				&:hover,
+				&:active,
+				&:focus  {
+					background-image: linear-gradient(to top,$ift-blue 50%,$ift-blue 50%);
+					background-size:100% 5px;
+					span {
+						color: $ift-blue;
+					}
+					
 				}
-				
 			}
-		}
 
 		}
 	}
@@ -255,7 +264,7 @@
 	
 }		
 	
-
+// only shows on desktop
 #navLevel2CloseButton {
 	//visibility: hidden;
 	position:relative;
@@ -268,13 +277,17 @@
 	opacity: 0;
 	border-radius:50%;
 	border:1px solid rgba($white, .3333);
-	//transition: all .3333s ease-in-out; 
+	//text-align:center;
 	svg {
+		position:absolute;
+		top:50%;
+		left: 50%;
 		width:24px;
 		height:24px;
 		fill:none;
 		stroke:rgba($white, .3333);
 		stroke-width:1px;
+		transform: translate(-50%, -50%);
 		transition: $ift-timing;
 		
 	}
@@ -311,18 +324,33 @@
 }
 
 //if there are 8 top level menu items
-@include break(min, $breakpoint-min-tablet){
-	.nav-list-top-level > li:nth-last-child(n+8), .nav-list-top-level > li:nth-last-child(n+8) ~ li {
-		width:12.5%
-	}
-}
+// @include break(min, $breakpoint-min-tablet){
+// 	.nav-list-top-level > li:nth-last-child(n+8), .nav-list-top-level > li:nth-last-child(n+8) ~ li {
+// 		width:12.5%
+// 	}
+// }
 
 .nav-list-level-3 {
-	li {
-		a {
-			span {
-				color: red !important;
+	@include break(max, $breakpoint-max-mobile){
+		> li {
+			> a {
+				html body & {
+					font-size: 1.2rem;
+				}
+				
+			}
+			
+		}
+	}
+
+	@include break(min, $breakpoint-min-tablet){
+		li {
+			font-size: 1.2rem;
+			a {
+				color: $ift-blue;
 			}
 		}
 	}
+
+	
 }
