@@ -85,8 +85,7 @@
 }
 
 .showHideAllContainer,
-.btnFilterClear
-{
+.btnFilterClear {
     line-height: 1.1111 !important;
 }
 
@@ -108,6 +107,27 @@
 		font-size:1rem;
 	}
 }
+
+//yes, this has proven necessary in the past
+[id$="SaveAddress"],
+[id$="saveAddress"],
+[id$="saveaddress"] {
+	@include buttonBlueSmall();
+}
+
+
+.ChangeLinkButton {
+	text-decoration: underline;
+}
+
+.continueShopping {
+	html .segmentsListPanel & {
+		@include buttonBlue();
+		top:0 !important
+	}
+	
+}
+
 
 .back-to-top__button {
 	font-size: 1.1rem;

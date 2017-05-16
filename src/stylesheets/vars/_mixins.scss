@@ -61,13 +61,108 @@
 	}
 }
 
+@mixin buttonBlue{
+	display: inline-block;
+	position: relative;
+	font-family: $headlineFont !important;
+	font-weight: 400 !important;
+	font-size: 1.2rem;
+	line-height: 1.1111;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 0 !important;
+	padding: $btn-base-padding;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	overflow: hidden;
+	transition: $ift-timing;
+
+	background-color: $ift-blue;
+	background-image:none;
+	background-size:100%;
+	background-position: center;
+	border: none;
+	color: $white;
+	min-width: 12rem;
+
+	
+
+	&:hover,
+	&:active,
+	&:focus {
+		&:after {
+			bottom:0;
+		}
+		box-shadow:10px 10px 20px rgba($black, .05), -10px 10px 20px rgba($black, .05) ;
+	}
+	::selection {
+		background-color:transparent;
+	}
+}
+
+
+@mixin buttonBlueSmall{
+	display: inline-block;
+	position: relative;
+	font-family: $headlineFont !important;
+	font-weight: 400 !important;
+	font-size: 1rem;
+	line-height: 1;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 0 !important;
+	padding: .8rem;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	overflow: hidden;
+	transition: $ift-timing;
+
+	background-color: $ift-blue;
+	background-image:none;
+	background-size:100%;
+	background-position: center;
+	border: none;
+	color: $white;
+	min-width: 12rem;
+
+	
+
+	&:hover,
+	&:active,
+	&:focus {
+		&:after {
+			bottom:0;
+		}
+		box-shadow:10px 10px 20px rgba($black, .05), -10px 10px 20px rgba($black, .05) ;
+	}
+	::selection {
+		background-color:transparent;
+	}
+}
+
 @mixin unButton{
+	//width: auto;
+	min-width:auto;
 	background:none !important;
     text-transform: capitalize !important;
     text-decoration: underline !important;
+    text-align: left !important;
     padding: 0 !important;
     color: $ift-blue !important;
     box-shadow:none	!important;
+    letter-spacing: 0 !important;
     &:hover,
     &:active,
     &:focus {

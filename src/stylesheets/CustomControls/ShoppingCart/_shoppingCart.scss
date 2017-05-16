@@ -17,9 +17,10 @@
 .CheckoutControl_PersonifyDefault {
 	.addressButtonsDiv {
 		input {
-			font-size: 1rem;
-			background-color: $ift-blue;
-			background-image: none;
+			// font-size: 1rem;
+			// background-color: $ift-blue;
+			// background-image: none;
+			@include unButton();
 			padding: .8rem;
 			margin-bottom: 0;
 			+ input {
@@ -34,12 +35,19 @@
 
 
 .WizardHeaderControl_PersonifyDefault {
-	// .wizardHeader {
-		
-	// }
+	span {
+		//personify override
+		span {
+			width: auto !important;
+		}
+	}
 	.step {
 		text-align: center;
-		
+		.step-number {
+			width:24px !important;
+			height: 24px !important;
+			border-radius: 0 !important;
+		}
 
 
 		&.active {
@@ -58,13 +66,28 @@
 
 	//if 3, then 33%
 	.wizardHeader .step:nth-last-child(n+3):nth-last-child(-n+3):first-child, .wizardHeader .step:nth-last-child(n+3):nth-last-child(-n+3):first-child ~ .step {
-		width: 33.1%;
+		width: 33%;
 	}
 	//if 4, then 25%
 	.wizardHeader .step:nth-last-child(n+4):nth-last-child(-n+4):first-child, .wizardHeader .step:nth-last-child(n+4):nth-last-child(-n+4):first-child ~ .step {
 		width: 24%;
 	}
 
+}
+
+[id$="AddAddressControl_ContainerPanelPanel"] {
+	.formLayout {
+		.RadAjaxPanel & {
+			margin-top: $gutter-width / 2;
+			background-color:$white;
+		}
+	}
+	//should generalize this style
+	.buttonRow {
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
 }
 
 .checkoutHeader {
