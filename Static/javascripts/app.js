@@ -1,13 +1,13 @@
 webpackJsonp([0,1],[
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(1);
 
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// *********************
 	//    Modules scripts
@@ -19,10 +19,12 @@ webpackJsonp([0,1],[
 	__webpack_require__(3);
 	
 	__webpack_require__(5);
+	
+	__webpack_require__(6);
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -35,9 +37,9 @@ webpackJsonp([0,1],[
 		}]
 	});
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	//if menu is open, and there's a hash change, close the menu
 	//that gives us back functionality
@@ -264,9 +266,9 @@ webpackJsonp([0,1],[
 		navLevel2CloseButton.addEventListener('click', forceCloseAll, false);
 	})();
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/*function testForTemplate(templateToTestFor){
 		if(document.querySelector(`.$templateToTestFor`){
@@ -318,9 +320,9 @@ webpackJsonp([0,1],[
 	
 	module.exports = utilFunctions;
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -341,6 +343,24 @@ webpackJsonp([0,1],[
 	
 	navTrigger.addEventListener('click', mobileNavHideReveal, false);
 
-/***/ }
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	var currentPathName = window.location.pathname;
+	var leftNavLinkElements = document.querySelectorAll('.sidebar__submenu-link');
+	var hashArray = [];
+	for (var i = 0; i < leftNavLinkElements.length; i++) {
+		hashArray.push(leftNavLinkElements[i].pathname);
+	};
+	hashArray.find(function (paths) {
+		if (paths == currentPathName) {
+			document.querySelector('[href="' + currentPathName + '"]').classList += ' selected';
+		};
+	});
+
+/***/ })
 ]);
 //# sourceMappingURL=app.js.map

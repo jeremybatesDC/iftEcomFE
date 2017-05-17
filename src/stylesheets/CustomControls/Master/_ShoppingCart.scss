@@ -13,7 +13,9 @@
 		background-color: $ift-blue-dark;
 	}
 }
-
+#ctl00_MainContent_ctl00_CheckoutItemSummaryControl_ShoppingCartSummaryControl_ButtonCouponApply{
+	@include unButton()
+}
 .CheckoutControl_PersonifyDefault {
 	.addressButtonsDiv {
 		input {
@@ -33,7 +35,6 @@
 }
 
 
-
 .WizardHeaderControl_PersonifyDefault {
 	span {
 		//personify override
@@ -44,19 +45,31 @@
 	.step {
 		text-align: center;
 		.step-number {
-			width:24px !important;
-			height: 24px !important;
-			border-radius: 0 !important;
+			width: 30px!important;
+			height: 30px!important;
+			border-radius: 100% !important;
+			border: 1px solid white;
+			box-shadow: none;
+			position: absolute;
+			left: 20px;
+			text-shadow: none !important;
+			top: 9px;
+			padding: 5px 0;
+			background-color:$ift-grey-medium-light;
+		}
+		.stepLabel{
+			color: $ift-grey-medium-light;
 		}
 
 
 		&.active {
-			background-color: $ift-blue;
+			background-color: $ift-green !important;
+			border-bottom-color: $ift-green !important;
 			.stepLabel {
 				color: $white;
 			}
 			.step-number {
-				background-color: $ift-blue;
+				background-color: transparent;
 			}
 		}
 	}
@@ -67,6 +80,9 @@
 	//if 3, then 33%
 	.wizardHeader .step:nth-last-child(n+3):nth-last-child(-n+3):first-child, .wizardHeader .step:nth-last-child(n+3):nth-last-child(-n+3):first-child ~ .step {
 		width: 33%;
+		background: transparent;
+    border-bottom-color: $ift-grey-230;
+    color:$ift-grey-medium-light;
 	}
 	//if 4, then 25%
 	.wizardHeader .step:nth-last-child(n+4):nth-last-child(-n+4):first-child, .wizardHeader .step:nth-last-child(n+4):nth-last-child(-n+4):first-child ~ .step {
