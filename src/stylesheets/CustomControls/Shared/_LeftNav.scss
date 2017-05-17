@@ -11,6 +11,8 @@
     list-style: none;
     .sidebar__submenu{
       padding-left: 2rem;
+      margin-top: .5rem;
+      margin-bottom: 2rem;
       a.selected{
         color: $ift-green;
       }

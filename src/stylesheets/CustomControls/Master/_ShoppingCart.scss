@@ -13,9 +13,11 @@
 		background-color: $ift-blue-dark;
 	}
 }
-#ctl00_MainContent_ctl00_CheckoutItemSummaryControl_ShoppingCartSummaryControl_ButtonCouponApply{
+
+#ctl00_MainContent_ctl00_CheckoutItemSummaryControl_ShoppingCartSummaryControl_ButtonCouponApply {
 	@include unButton()
 }
+
 .CheckoutControl_PersonifyDefault {
 	.addressButtonsDiv {
 		input {
@@ -34,8 +36,22 @@
 	}
 }
 
+// Warning: Extends to mimic grid
+.mainCheckoutDiv {
+	@extends .row;
+	.itemsList{
+		@extends .col-md-4;
+	}
+	.summaryControl {
+		@extends .col-md-6;
+		.header {
+			color: white;
+			background: $ift-blue;
+		}
+	}
+}
 
-.WizardHeaderControl_PersonifyDefault {
+.itemsList .WizardHeaderControl_PersonifyDefault {
 	span {
 		//personify override
 		span {
@@ -43,7 +59,11 @@
 		}
 	}
 	.step {
-		text-align: center;
+		background: transparent;
+		border-bottom-color: $ift-grey-230;
+		color: $ift-grey-medium-light;
+		text-align: left;
+		padding-left: 6rem;
 		.step-number {
 			width: 30px!important;
 			height: 30px!important;
@@ -55,13 +75,11 @@
 			text-shadow: none !important;
 			top: 9px;
 			padding: 5px 0;
-			background-color:$ift-grey-medium-light;
+			background-color: $ift-grey-medium-light;
 		}
-		.stepLabel{
+		.stepLabel {
 			color: $ift-grey-medium-light;
 		}
-
-
 		&.active {
 			background-color: $ift-green !important;
 			border-bottom-color: $ift-green !important;
@@ -75,27 +93,24 @@
 	}
 }
 
-@include break(min, $breakpoint-min-tablet){
-
+@include break(min, $breakpoint-min-tablet) {
 	//if 3, then 33%
-	.wizardHeader .step:nth-last-child(n+3):nth-last-child(-n+3):first-child, .wizardHeader .step:nth-last-child(n+3):nth-last-child(-n+3):first-child ~ .step {
+	.wizardHeader .step:nth-last-child(n+3):nth-last-child(-n+3):first-child,
+	.wizardHeader .step:nth-last-child(n+3):nth-last-child(-n+3):first-child ~ .step {
 		width: 33%;
-		background: transparent;
-    border-bottom-color: $ift-grey-230;
-    color:$ift-grey-medium-light;
 	}
 	//if 4, then 25%
-	.wizardHeader .step:nth-last-child(n+4):nth-last-child(-n+4):first-child, .wizardHeader .step:nth-last-child(n+4):nth-last-child(-n+4):first-child ~ .step {
+	.wizardHeader .step:nth-last-child(n+4):nth-last-child(-n+4):first-child,
+	.wizardHeader .step:nth-last-child(n+4):nth-last-child(-n+4):first-child ~ .step {
 		width: 24%;
 	}
-
 }
 
 [id$="AddAddressControl_ContainerPanelPanel"] {
 	.formLayout {
 		.RadAjaxPanel & {
 			margin-top: $gutter-width / 2;
-			background-color:$white;
+			background-color: $white;
 		}
 	}
 	//should generalize this style
@@ -111,4 +126,3 @@
 		font-size: 2rem;
 	}
 }
-
