@@ -5,16 +5,18 @@
     padding: 0;
     background: 0 0;
   }
-  .savingsHeader{
-    margin: 0 auto;
-  }
   .btn {
 		width: 20rem;
 		max-width: none;
 		margin: 1rem auto;
-    margin: 0 auto;
+    margin-left:1.5rem;
 		display: block;
   }
+}
+
+#ctl00_MainContent_ctl00_dvMemberSavings .savingsHeader{
+  margin-left:1.5rem;
+  max-width: 21.5rem;
 }
 
 #ctl00_MainContent_ctl00_ProductINVBuyBoxControl_ProductDetailActionButtonControl1_AddWishlistButton{
@@ -92,31 +94,35 @@
 		}
   }
   .savingsHeader{
-  	position: relative;
-  	background-color: $ift-green-light;
-		margin: 0 auto;
-    padding: 1rem;
-    height: 4rem;
     max-width: 20rem;
-  	&:before,&:after{
-  		content: "";
-  		position: absolute;
-  		border: 2rem solid transparent;
-  		left: -2rem;
-  	}
-  	&:before{
-  		top: 0;
-  		border-top-color: $ift-green-light;
+  }
 
-  	}
-  	&:after{
-  		bottom: 0;
-  		border-bottom-color: $ift-green-light;
+}
+.savingsHeader{
+  position: relative;
+  background-color: $ift-green-light;
+  margin: 1rem auto;
+  padding: 1rem;
+  height: 4rem;
+  max-width: 20rem;
+  &:before,&:after{
+    content: "";
+    position: absolute;
+    border: 1rem solid transparent;
+    left: -1rem;
+  }
+  &:before{
+    top: 0;
+    border-top: 2rem solid $ift-green-light;
 
-  	}
-  	.decore{
-  		display:none;
-		}
+  }
+  &:after{
+    bottom: 0;
+    border-bottom: 2rem solid $ift-green-light;
+
+  }
+  .decore{
+    display:none;
   }
 }
 
