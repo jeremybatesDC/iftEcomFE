@@ -5,12 +5,20 @@
     padding: 0;
     background: 0 0;
   }
+  .savingsHeader{
+    margin: 0 auto;
+  }
   .btn {
 		width: 20rem;
 		max-width: none;
 		margin: 1rem auto;
+    margin: 0 auto;
 		display: block;
   }
+}
+
+#ctl00_MainContent_ctl00_ProductINVBuyBoxControl_ProductDetailActionButtonControl1_AddWishlistButton{
+  @include unButton()
 }
 
 // Ribbon

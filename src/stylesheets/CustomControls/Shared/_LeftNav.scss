@@ -11,10 +11,19 @@
     list-style: none;
     .sidebar__submenu{
       padding-left: 2rem;
+      a.selected{
+        color: $ift-green;
+      }
     }
   }
   a[href="#"]{
     pointer-events: none;
     color: black;
+  }
+}
+// Hide on Print
+@media print {
+  .sidebar {
+    display: none;
   }
 }
