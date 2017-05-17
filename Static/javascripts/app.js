@@ -1,13 +1,13 @@
 webpackJsonp([0,1],[
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(1);
 
 
-/***/ }),
+/***/ },
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	// *********************
 	//    Modules scripts
@@ -22,9 +22,9 @@ webpackJsonp([0,1],[
 	
 	__webpack_require__(6);
 
-/***/ }),
+/***/ },
 /* 2 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	'use strict';
 	
@@ -37,9 +37,9 @@ webpackJsonp([0,1],[
 		}]
 	});
 
-/***/ }),
+/***/ },
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	//if menu is open, and there's a hash change, close the menu
 	//that gives us back functionality
@@ -67,7 +67,7 @@ webpackJsonp([0,1],[
 		var navListLevel1ClassString = 'nav-list-level-1--ACTIVE';
 		var navTopLevelItemLinks = document.querySelectorAll('.nav-list-top-level > li > a');
 		var navListLevel2ClassString = 'nav-list-level-2';
-		var arrayOfSubnavs = document.querySelectorAll('.' + navListLevel2ClassString);
+		var nodeListOfSubnavs = document.querySelectorAll('.' + navListLevel2ClassString);
 		var navListLevel2ClassStringACTIVE = 'nav-list-level-2--ACTIVE';
 	
 		//if it has children, give it a listener. This allows top level items to behave like normal links if they have no children
@@ -78,37 +78,9 @@ webpackJsonp([0,1],[
 					thisItem.addEventListener('click', decideCase, false);
 				}
 			}
-			//add hover handlers for all top level items
-			// for (let i = 0; i < navTopLevelItems.length; i++){
-			// 	let thisIteration = navTopLevelItems[i];
-			// 	thisIteration.addEventListener('mouseenter', navTopLevelItemsMouseEnter, false);
-			// 	thisIteration.addEventListener('mouseleave', navTopLevelItemsMouseLeave, false);
-			// }
-		}
 	
-		//do not impact things that are already active to avoid conflicts
-		function navTopLevelItemsMouseEnter(event) {
-			var theTopLevelLIinQuestion = event.currentTarget;
-			if (!theTopLevelLIinQuestion.classList.contains(navListLevel1ClassString)) {
-				TweenMax.to(theTopLevelLIinQuestion, .25, {
-					className: '+=nav-list-level-1--HOVER',
-					ease: Power1.easeInOut
-				});
-			}
+			//need to add click handlers for nested arrows
 		}
-	
-		//do not impact things that are already active to avoid conflicts
-		function navTopLevelItemsMouseLeave(event) {
-			var theTopLevelLIinQuestion = event.currentTarget;
-			if (!theTopLevelLIinQuestion.classList.contains(navListLevel1ClassString)) {
-				TweenMax.to(theTopLevelLIinQuestion, .25, {
-					className: '-=nav-list-level-1--HOVER',
-					ease: Power1.easeInOut
-				});
-			}
-		}
-	
-		//if active
 	
 		//make this a pure decider, not a doer, so move overlay manipulation?
 		function decideCase(event) {
@@ -139,7 +111,6 @@ webpackJsonp([0,1],[
 			//greensock timeline
 			var level2NavsTimeline = new TimelineMax({ paused: true });
 			var theLIinQuestion = theSubnavOfTheItemThatHasBeenClicked.parentNode;
-	
 			level2NavsTimeline.to(theLIinQuestion, .1, {
 				className: '+=nav-list-level-1--ACTIVE',
 				ease: Power1.easeInOut
@@ -151,40 +122,9 @@ webpackJsonp([0,1],[
 				ease: Power1.easeInOut
 			});
 	
-			//this is necessary because brute force close all interferes with animation timelines
+			//wrapping this timeline play in a function gives an added layer of control here
 			function caseSibilingOpenOnCompleteFunction() {
 				level2NavsTimeline.play();
-			}
-	
-			//locally overriding theSubNavInQuestion
-			function forceCloseLevel2Navs(caseSibilingOpenOnCompleteFunction) {
-				//unintutively hard to make this a reverse
-				for (var i = 0; i < arrayOfSubnavs.length; i++) {
-					var subnavIteration = arrayOfSubnavs[i];
-					var svgIteration = theNavSVGS[i];
-					var activeTopLevelIteration = navTopLevelItems[i];
-					TweenMax.to(subnavIteration, .1, {
-						className: '-=nav-list-level-2--ACTIVE',
-						ease: Power1.easeOut
-					});
-					TweenMax.to(svgIteration, .1, {
-						className: '-=caretMorphed',
-						ease: Power1.easeOut
-					});
-	
-					if (caseSibilingOpenOnCompleteFunction) {
-						TweenMax.to(activeTopLevelIteration, .1, {
-							className: '-=nav-list-level-1--ACTIVE',
-							ease: Power1.easeOut,
-							onComplete: caseSibilingOpenOnCompleteFunction
-						});
-					} else {
-						TweenMax.to(activeTopLevelIteration, .1, {
-							className: '-=nav-list-level-1--ACTIVE',
-							ease: Power1.easeOut
-						});
-					}
-				}
 			}
 	
 			//now, based on the scenario, play or pause
@@ -193,7 +133,7 @@ webpackJsonp([0,1],[
 			switch (theScenario) {
 				case 'iWasOpenWhenClicked':
 					//console.log('case:iWasOpenWhenClicked');
-					forceCloseLevel2Navs();
+					forceCloseStuff(event);
 					showHideCloseTimeline.reverse();
 					overlayTimeline.reverse();
 	
@@ -202,7 +142,7 @@ webpackJsonp([0,1],[
 				case 'sibilingOpenWhenClicked':
 					//in this case, the overlay & close button stay put
 					//console.log('case:sibilingOpenWhenClicked');
-					forceCloseLevel2Navs(caseSibilingOpenOnCompleteFunction);
+					forceCloseStuff(event, 'closeJustLevel2', caseSibilingOpenOnCompleteFunction);
 					break;
 	
 				case 'nobodyOpenWhenClicked':
@@ -229,46 +169,57 @@ webpackJsonp([0,1],[
 			ease: Power4.easeInOut
 		});
 	
-		//var caretDown = document.querySelector('.caretDown');
+		function forceCloseStuff(event, whatToClose, caseSibilingOpenOnCompleteFunction) {
 	
-		//i want these to happen simultaneously so I should remove them from timeline
+			unMorphAllCarets();
+			closeAllLevel2Navs();
 	
-		function forceCloseAll(event) {
+			if (whatToClose === 'closeJustLevel2') {
+				closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction);
+			} else {
+				overlayTimeline.reverse();
+				closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction);
+				showHideCloseTimeline.reverse();
+			}
+		}
 	
-			overlayTimeline.reverse();
-			//function isn't easily accessible
-			//forceCloseLevel2Nav();
+		function unMorphAllCarets() {
+			TweenMax.to(theNavSVGS, .01, {
+				className: '-=caretMorphed'
+			});
+		}
 	
-			//but maybe brute force of closing all isn't necessary, since there's only one open
+		function closeAllLevel2Navs() {
+			TweenMax.to(nodeListOfSubnavs, .1, {
+				className: '-=nav-list-level-2--ACTIVE',
+				ease: Power1.easeOut
+			});
+		}
 	
-			for (var i = 0; i < arrayOfSubnavs.length; i++) {
-				var subnavIteration = arrayOfSubnavs[i];
-				TweenMax.to(subnavIteration, .2, {
-					className: '-=nav-list-level-2--ACTIVE',
-					ease: Power1.easeOut
+		function closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction) {
+			if (caseSibilingOpenOnCompleteFunction) {
+				TweenMax.to(navTopLevelItems, .1, {
+					className: '-=nav-list-level-1--ACTIVE',
+					ease: Power1.easeOut,
+					onComplete: caseSibilingOpenOnCompleteFunction
 				});
-				TweenMax.to(theTopLevelItemThatHasBeenClicked, .1, {
+			} else {
+				TweenMax.to(navTopLevelItems, .1, {
 					className: '-=nav-list-level-1--ACTIVE',
 					ease: Power1.easeOut
 				});
-				TweenMax.to(theSVGOfTheItemThatHasBeenClicked, .1, {
-					className: '-=caretMorphed'
-				});
 			}
-	
-			//navLevel2CloseButton.remove();
-			showHideCloseTimeline.reverse();
 		}
 	
 		//EVENTS GO HERE
 		document.addEventListener('DOMContentLoaded', iterateThroughNavItems);
-		navOverlayCloseTarget.addEventListener('click', forceCloseAll, false);
-		navLevel2CloseButton.addEventListener('click', forceCloseAll, false);
+		navOverlayCloseTarget.addEventListener('click', forceCloseStuff, false);
+		navLevel2CloseButton.addEventListener('click', forceCloseStuff, false);
 	})();
 
-/***/ }),
+/***/ },
 /* 4 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	/*function testForTemplate(templateToTestFor){
 		if(document.querySelector(`.$templateToTestFor`){
@@ -320,9 +271,9 @@ webpackJsonp([0,1],[
 	
 	module.exports = utilFunctions;
 
-/***/ }),
+/***/ },
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -338,14 +289,14 @@ webpackJsonp([0,1],[
 	var navMain = document.getElementById('navMain');
 	function mobileNavHideReveal() {
 		document.body.classList.toggle('has-nav--ACTIVE');
-		_libUtilFunctionsRevisedJs2['default'].toggleTween(.25, navMain, 'main-nav-on-canvas');
+		_libUtilFunctionsRevisedJs2['default'].toggleTween(.1, navMain, 'main-nav-on-canvas');
 	}
 	
 	navTrigger.addEventListener('click', mobileNavHideReveal, false);
 
-/***/ }),
+/***/ },
 /* 6 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	'use strict';
 	
@@ -361,6 +312,6 @@ webpackJsonp([0,1],[
 		};
 	});
 
-/***/ })
+/***/ }
 ]);
 //# sourceMappingURL=app.js.map
