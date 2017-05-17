@@ -18,7 +18,7 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 	const navListLevel1ClassString = 'nav-list-level-1--ACTIVE';
 	const navTopLevelItemLinks = document.querySelectorAll('.nav-list-top-level > li > a');
 	const navListLevel2ClassString = 'nav-list-level-2';
-	const arrayOfSubnavs = document.querySelectorAll(`.${navListLevel2ClassString}`);
+	const nodeListOfSubnavs = document.querySelectorAll(`.${navListLevel2ClassString}`);
 	const navListLevel2ClassStringACTIVE = 'nav-list-level-2--ACTIVE';
 	
 	//if it has children, give it a listener. This allows top level items to behave like normal links if they have no children
@@ -29,42 +29,10 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 				thisItem.addEventListener('click', decideCase, false);
 			}			
 		}
-		//add hover handlers for all top level items
-		// for (let i = 0; i < navTopLevelItems.length; i++){
-		// 	let thisIteration = navTopLevelItems[i];
-		// 	thisIteration.addEventListener('mouseenter', navTopLevelItemsMouseEnter, false);
-		// 	thisIteration.addEventListener('mouseleave', navTopLevelItemsMouseLeave, false);
-		// }
+
+		//need to add click handlers for nested arrows
 
 	}
-
-
-	//do not impact things that are already active to avoid conflicts
-	function navTopLevelItemsMouseEnter(event){
-		let theTopLevelLIinQuestion = event.currentTarget;
-		if (!theTopLevelLIinQuestion.classList.contains(navListLevel1ClassString)) {
-			TweenMax.to(theTopLevelLIinQuestion, .25, {
-				className: '+=nav-list-level-1--HOVER',
-				ease: Power1.easeInOut
-			}
-			);
-		}
-	}
-
-	//do not impact things that are already active to avoid conflicts
-	function navTopLevelItemsMouseLeave(event){
-		let theTopLevelLIinQuestion = event.currentTarget;
-		if (!theTopLevelLIinQuestion.classList.contains(navListLevel1ClassString)) {
-			TweenMax.to(theTopLevelLIinQuestion, .25, {
-				className: '-=nav-list-level-1--HOVER',
-				ease: Power1.easeInOut
-			}
-			);
-		}
-	}
-
-	//if active
-
 
 	//make this a pure decider, not a doer, so move overlay manipulation?
 	function decideCase(event){
@@ -100,7 +68,6 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 		//greensock timeline
 		var level2NavsTimeline = new TimelineMax({paused:true});
 		var theLIinQuestion = theSubnavOfTheItemThatHasBeenClicked.parentNode;
-
 		level2NavsTimeline.to(theLIinQuestion, .1, {
 				className: '+=nav-list-level-1--ACTIVE',
 				ease: Power1.easeInOut
@@ -117,59 +84,18 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 		)
 		;
 
-
-		//this is necessary because brute force close all interferes with animation timelines
+		//wrapping this timeline play in a function gives an added layer of control here
 		function caseSibilingOpenOnCompleteFunction(){
 			level2NavsTimeline.play();
 		}
 
-
-		//locally overriding theSubNavInQuestion
-		function forceCloseLevel2Navs(caseSibilingOpenOnCompleteFunction){
-			//unintutively hard to make this a reverse
-			for(let i=0; i < arrayOfSubnavs.length; i++){
-				let subnavIteration = arrayOfSubnavs[i];
-				let svgIteration =  theNavSVGS[i];
-				let activeTopLevelIteration = navTopLevelItems[i];
-				TweenMax.to(subnavIteration, .1, {
-					className: '-=nav-list-level-2--ACTIVE',
-					ease: Power1.easeOut
-				});
-				TweenMax.to(svgIteration, .1, {
-					className: '-=caretMorphed',
-					ease: Power1.easeOut
-				});
-
-				if(caseSibilingOpenOnCompleteFunction){
-					TweenMax.to(activeTopLevelIteration, .1, {
-						className: '-=nav-list-level-1--ACTIVE',
-						ease: Power1.easeOut,
-						onComplete: caseSibilingOpenOnCompleteFunction
-					});
-				}
-				else {
-					TweenMax.to(activeTopLevelIteration, .1, {
-						className: '-=nav-list-level-1--ACTIVE',
-						ease: Power1.easeOut
-					});
-				}
-
-
-			}
-		}
-
-
-
-
-
 		//now, based on the scenario, play or pause
-
 
 		//this needs access to the timeline
 		switch(theScenario) {
 			case 'iWasOpenWhenClicked':
 				//console.log('case:iWasOpenWhenClicked');
-				forceCloseLevel2Navs();	
+				forceCloseStuff(event);	
 				showHideCloseTimeline.reverse();
 				overlayTimeline.reverse();
 
@@ -178,7 +104,7 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 			case 'sibilingOpenWhenClicked':
 				//in this case, the overlay & close button stay put
 				//console.log('case:sibilingOpenWhenClicked');
-				forceCloseLevel2Navs(caseSibilingOpenOnCompleteFunction);
+				forceCloseStuff(event, 'closeJustLevel2', caseSibilingOpenOnCompleteFunction);
 				break;
 
 			case 'nobodyOpenWhenClicked':
@@ -212,43 +138,56 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 
 
 
-	//var caretDown = document.querySelector('.caretDown');
+	function forceCloseStuff(event, whatToClose, caseSibilingOpenOnCompleteFunction){
 
-	//i want these to happen simultaneously so I should remove them from timeline
-	
-
-	function forceCloseAll(event){
+		unMorphAllCarets();
+		closeAllLevel2Navs();
 		
-		overlayTimeline.reverse();
-		//function isn't easily accessible
-		//forceCloseLevel2Nav();
+		if(whatToClose === 'closeJustLevel2'){
+			closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction);
+		}
 
-		//but maybe brute force of closing all isn't necessary, since there's only one open
+		else {
+			overlayTimeline.reverse();
+			closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction);
+			showHideCloseTimeline.reverse();
+		}
 
-		for(let i=0; i < arrayOfSubnavs.length; i++){
-			var subnavIteration = arrayOfSubnavs[i];
-			TweenMax.to(subnavIteration, .2, {
-				className: '-=nav-list-level-2--ACTIVE',
-				ease: Power1.easeOut
+	}
+
+	function unMorphAllCarets(){
+		TweenMax.to(theNavSVGS, .01, {
+			className: '-=caretMorphed'
+		});
+	}
+
+	function closeAllLevel2Navs(){
+		TweenMax.to(nodeListOfSubnavs, .1, {
+			className: '-=nav-list-level-2--ACTIVE',
+			ease: Power1.easeOut
+		});
+	}
+
+	function closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction){
+		if(caseSibilingOpenOnCompleteFunction){
+			TweenMax.to(navTopLevelItems, .1, {
+				className: '-=nav-list-level-1--ACTIVE',
+				ease: Power1.easeOut,
+				onComplete: caseSibilingOpenOnCompleteFunction
 			});
-			TweenMax.to(theTopLevelItemThatHasBeenClicked, .1, {
+		}
+		else {
+			TweenMax.to(navTopLevelItems, .1, {
 				className: '-=nav-list-level-1--ACTIVE',
 				ease: Power1.easeOut
 			});
-			TweenMax.to(theSVGOfTheItemThatHasBeenClicked, .1, {
-				className: '-=caretMorphed'
-			});
 		}
-
-		//navLevel2CloseButton.remove();
-		showHideCloseTimeline.reverse();
 	}
-
 
 
 	//EVENTS GO HERE
 	document.addEventListener('DOMContentLoaded', iterateThroughNavItems);
-	navOverlayCloseTarget.addEventListener('click', forceCloseAll, false);
-	navLevel2CloseButton.addEventListener('click', forceCloseAll, false );
+	navOverlayCloseTarget.addEventListener('click', forceCloseStuff, false);
+	navLevel2CloseButton.addEventListener('click', forceCloseStuff, false );
 
 })();

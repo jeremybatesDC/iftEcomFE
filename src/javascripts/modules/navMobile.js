@@ -7,7 +7,7 @@ const navTrigger = document.getElementById('navTrigger');
 const navMain = document.getElementById('navMain');
 function mobileNavHideReveal(){
 	document.body.classList.toggle('has-nav--ACTIVE');
-	utilFunctions.toggleTween(.25, navMain, 'main-nav-on-canvas');
+	utilFunctions.toggleTween(.1, navMain, 'main-nav-on-canvas');
 }
 
 
