@@ -6,6 +6,10 @@
   }
 }
 
+#MainContent_ctl03_ContainerPanel a.btn{
+  @include unButton()
+}
+
 .profile-control-main,
 .formLayout .formRow.checkedValue,
 .formLayout .specialNeedDisplayMode .formRow,
