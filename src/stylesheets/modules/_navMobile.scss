@@ -200,9 +200,9 @@
 			left:0;
 			fill: white;
 			//need rotateX for greensock stuff but can maybe avoid here
-			transform: rotate(-90deg);
+			//transform: rotate(-90deg);
 			&.caretMorphed {
-				transform: rotate(0deg);
+				transform: rotate(180deg);
 				fill: white;
 				//left: 0;
 			}
