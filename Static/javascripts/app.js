@@ -60,14 +60,10 @@ webpackJsonp([0,1],[
 	
 		var navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
 		var navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
-	
-		var arrayOfNavTopLevelItems = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-top-level > li')));
-	
 		var arrayOftheNavSVGS = [].concat(_toConsumableArray(document.querySelectorAll('.caretDown')));
-	
+		var arrayOfNavTopLevelItems = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-top-level > li')));
 		var arrayOfNavTopLevelItemLinks = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-top-level > li > a')));
 		var arrayOfSecondLevelItemLinks = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-2 > li > a')));
-	
 		var arrayOfL2subnavs = [].concat(_toConsumableArray(document.querySelectorAll('.' + navListLevel2ClassString)));
 		var arrayOfTertiaryNavs = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-3')));
 	
@@ -80,7 +76,6 @@ webpackJsonp([0,1],[
 				}
 			});
 	
-			//adding event listeners is faster with map
 			arrayOfSecondLevelItemLinks.map(function (theSecondLevelItemLink) {
 				if (theSecondLevelItemLink.parentNode.querySelector('.' + navListLevel3ClassString)) {
 					theSecondLevelItemLink.addEventListener('click', toggleMyTertiaryNav, false);
@@ -89,7 +84,6 @@ webpackJsonp([0,1],[
 			});
 		}
 	
-		//make this a pure decider, not a doer, so move overlay manipulation?
 		function decideCase(event) {
 			var theScenario;
 			//I am open?
@@ -135,8 +129,6 @@ webpackJsonp([0,1],[
 			}
 	
 			//now, based on the scenario, play or pause
-	
-			//this needs access to the timeline
 			switch (theScenario) {
 				case 'iWasOpenWhenClicked':
 					//console.log('case:iWasOpenWhenClicked');
@@ -161,17 +153,6 @@ webpackJsonp([0,1],[
 			}
 		}
 	
-		function toggleMyTertiaryNav(event) {
-			event.preventDefault();
-			the2ndLevelItemThatHasBeenClicked = event.currentTarget.parentNode;
-			the3rdLevelNavOfTheItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.' + navListLevel3ClassString);
-			theSVGOfTheL2ItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.caretDown');
-	
-			//remove all and do oncomplete if must then reopen
-	
-			the3rdLevelNavOfTheItemThatHasBeenClicked.classList.toggle('nav-list-level-3--ACTIVE');
-		}
-	
 		var overlayTimeline = new TimelineMax({ paused: true });
 		overlayTimeline.to(navOverlayCloseTarget, .25, {
 			className: '+=overlayACTIVE',
@@ -189,6 +170,7 @@ webpackJsonp([0,1],[
 	
 			unMorphAllCarets();
 			closeAllLevel2Navs();
+			forceCloseL3Navs();
 	
 			if (whatToClose === 'closeJustLevel2') {
 				closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction);
@@ -212,15 +194,37 @@ webpackJsonp([0,1],[
 			});
 		}
 	
-		function closeAllLevel3Navs() {
-			TweenMax.to(arrayOfTertiaryNavs, .1, {
-				className: '-=nav-list-level-2--ACTIVE',
-				onComplete: testL3function
-			});
+		//only 2 cases so we can skip the decider function
+		function toggleMyTertiaryNav(event) {
+			event.preventDefault();
+			the2ndLevelItemThatHasBeenClicked = event.currentTarget.parentNode;
+			the3rdLevelNavOfTheItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.' + navListLevel3ClassString);
+			theSVGOfTheL2ItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.caretDown');
+	
+			//remove all and do oncomplete if must then reopen
+	
+			if (the3rdLevelNavOfTheItemThatHasBeenClicked.classList.contains(navListLevel3ClassStringACTIVE)) {
+				console.log('i was open when clicked so just close it all, dawg');
+				forceCloseL3Navs();
+			} else {
+				console.log('i was NOT open when clicked');
+				//on complete timing wasNot working for some reason, so doing manual tweens here
+				TweenMax.to(arrayOfTertiaryNavs, .1, {
+					className: '-=nav-list-level-3--ACTIVE',
+					ease: Power1.easeInOut
+				});
+				TweenMax.to(the3rdLevelNavOfTheItemThatHasBeenClicked, .3333, {
+					className: '+=nav-list-level-3--ACTIVE',
+					ease: Power1.easeInOut
+				});
+			}
 		}
 	
-		function testL3function() {
-			console.log('testL3function');
+		function forceCloseL3Navs() {
+			TweenMax.to(arrayOfTertiaryNavs, .1, {
+				className: '-=nav-list-level-3--ACTIVE',
+				ease: Power1.easeInOut
+			});
 		}
 	
 		function closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction) {

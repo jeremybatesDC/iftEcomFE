@@ -206,14 +206,11 @@
 
 	.nav-list-level-3 {
 		height: 0;
+		visibility: hidden;
 		overflow:hidden;
 		padding-left:.5rem;
-		// &:before {
-		// 	content: '+';
-		// 	position:absolute;
-		// 	top:0;
-		// 	left: 0;
-		// }
+		transform:translateX(-3vw);
+
 		> li {
 			> a {
 				html body & {
@@ -224,10 +221,10 @@
 			
 		}
 		&.nav-list-level-3--ACTIVE {
+			visibility: visible;
 			height: auto;
-			// &:before {
-			// 	content: '-';
-			// }
+			transform:translateX(0);
+
 		}
 	}
 }
