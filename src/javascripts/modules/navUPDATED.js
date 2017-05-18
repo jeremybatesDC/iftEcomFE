@@ -9,29 +9,39 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 	var theTopLevelItemThatHasBeenClicked;
 
 	const navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
+	const navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
 
-	var navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
-
-	const navTopLevelItems = document.querySelectorAll('.nav-list-top-level > li');
-	const theNavSVGS = document.querySelectorAll('.caretDown');
-
-	const navListLevel1ClassString = 'nav-list-level-1--ACTIVE';
-	const navTopLevelItemLinks = document.querySelectorAll('.nav-list-top-level > li > a');
-	const navListLevel2ClassString = 'nav-list-level-2';
+	const nodeListOfNavTopLevelItems = document.querySelectorAll('.nav-list-top-level > li');
 	const nodeListOfSubnavs = document.querySelectorAll(`.${navListLevel2ClassString}`);
+	const nodeListOfNavSVGS = document.querySelectorAll('.caretDown');
+
+
+	const trueArrayOfNavTopLevelItemLinks = [...document.querySelectorAll('.nav-list-top-level > li > a')];
+	const trueArrayOfSecondLevelItemLinks = [...document.querySelectorAll('.nav-list-level-2 > li > a')];
+	const trueArrayOfTertiaryNavs = [...document.querySelectorAll('.nav-list-level-3')];
+
+	const navListLevel2ClassString = 'nav-list-level-2';
 	const navListLevel2ClassStringACTIVE = 'nav-list-level-2--ACTIVE';
+	const navListLevel3ClassString = 'nav-list-level-3';
+	const navListLevel3ClassStringACTIVE = 'nav-list-level-3--ACTIVE';
+
+	
 	
 	//if it has children, give it a listener. This allows top level items to behave like normal links if they have no children
 	function iterateThroughNavItems(){
-		for(let i = 0; i < navTopLevelItemLinks.length; i++){
-			let thisItem = navTopLevelItemLinks[i];
-			if(thisItem.parentNode.querySelector(`.${navListLevel2ClassString}`)){
-				thisItem.addEventListener('click', decideCase, false);
-			}			
-		}
+		
+		trueArrayOfNavTopLevelItemLinks.map(function(theTopLevelLink){
+			if(theTopLevelLink.parentNode.querySelector(`.${navListLevel2ClassString}`)){
+				theTopLevelLink.addEventListener('click', decideCase, false);
+			}
+		})
 
-		//need to add click handlers for nested arrows
-
+		trueArrayOfSecondLevelItemLinks.map(function(theSecondLevelItemLink){
+			if(theSecondLevelItemLink.parentNode.querySelector(`.${navListLevel3ClassString}`)){
+				theSecondLevelItemLink.addEventListener('click', closeAllLevel3Navs, false);
+				console.log('i am a secondary nav with tertiary children');
+			}	
+		})
 	}
 
 	//make this a pure decider, not a doer, so move overlay manipulation?
@@ -156,7 +166,7 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 	}
 
 	function unMorphAllCarets(){
-		TweenMax.to(theNavSVGS, .01, {
+		TweenMax.to(nodeListOfNavSVGS, .01, {
 			className: '-=caretMorphed'
 		});
 	}
@@ -168,16 +178,28 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 		});
 	}
 
+	function closeAllLevel3Navs(){
+		TweenMax.to(trueArrayOfTertiaryNavs, .1, {
+			className: '-=nav-list-level-2--ACTIVE',
+			onComplete: testL3function
+		});
+	}
+
+	function testL3function(){
+		console.log('testL3function');
+	}
+
+
 	function closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction){
 		if(caseSibilingOpenOnCompleteFunction){
-			TweenMax.to(navTopLevelItems, .1, {
+			TweenMax.to(nodeListOfNavTopLevelItems, .1, {
 				className: '-=nav-list-level-1--ACTIVE',
 				ease: Power1.easeOut,
 				onComplete: caseSibilingOpenOnCompleteFunction
 			});
 		}
 		else {
-			TweenMax.to(navTopLevelItems, .1, {
+			TweenMax.to(nodeListOfNavTopLevelItems, .1, {
 				className: '-=nav-list-level-1--ACTIVE',
 				ease: Power1.easeOut
 			});

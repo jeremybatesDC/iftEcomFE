@@ -48,6 +48,8 @@ webpackJsonp([0,1],[
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
+	
 	var _libUtilFunctionsRevisedJs = __webpack_require__(4);
 	
 	var _libUtilFunctionsRevisedJs2 = _interopRequireDefault(_libUtilFunctionsRevisedJs);
@@ -58,28 +60,36 @@ webpackJsonp([0,1],[
 		var theTopLevelItemThatHasBeenClicked;
 	
 		var navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
-	
 		var navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
 	
-		var navTopLevelItems = document.querySelectorAll('.nav-list-top-level > li');
-		var theNavSVGS = document.querySelectorAll('.caretDown');
-	
-		var navListLevel1ClassString = 'nav-list-level-1--ACTIVE';
-		var navTopLevelItemLinks = document.querySelectorAll('.nav-list-top-level > li > a');
-		var navListLevel2ClassString = 'nav-list-level-2';
+		var nodeListOfNavTopLevelItems = document.querySelectorAll('.nav-list-top-level > li');
 		var nodeListOfSubnavs = document.querySelectorAll('.' + navListLevel2ClassString);
+		var nodeListOfNavSVGS = document.querySelectorAll('.caretDown');
+	
+		var trueArrayOfNavTopLevelItemLinks = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-top-level > li > a')));
+		var trueArrayOfSecondLevelItemLinks = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-2 > li > a')));
+		var trueArrayOfTertiaryNavs = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-3')));
+	
+		var navListLevel2ClassString = 'nav-list-level-2';
 		var navListLevel2ClassStringACTIVE = 'nav-list-level-2--ACTIVE';
+		var navListLevel3ClassString = 'nav-list-level-3';
+		var navListLevel3ClassStringACTIVE = 'nav-list-level-3--ACTIVE';
 	
 		//if it has children, give it a listener. This allows top level items to behave like normal links if they have no children
 		function iterateThroughNavItems() {
-			for (var i = 0; i < navTopLevelItemLinks.length; i++) {
-				var thisItem = navTopLevelItemLinks[i];
-				if (thisItem.parentNode.querySelector('.' + navListLevel2ClassString)) {
-					thisItem.addEventListener('click', decideCase, false);
-				}
-			}
 	
-			//need to add click handlers for nested arrows
+			trueArrayOfNavTopLevelItemLinks.map(function (theTopLevelLink) {
+				if (theTopLevelLink.parentNode.querySelector('.' + navListLevel2ClassString)) {
+					theTopLevelLink.addEventListener('click', decideCase, false);
+				}
+			});
+	
+			trueArrayOfSecondLevelItemLinks.map(function (theSecondLevelItemLink) {
+				if (theSecondLevelItemLink.parentNode.querySelector('.' + navListLevel3ClassString)) {
+					theSecondLevelItemLink.addEventListener('click', closeAllLevel3Navs, false);
+					console.log('i am a secondary nav with tertiary children');
+				}
+			});
 		}
 	
 		//make this a pure decider, not a doer, so move overlay manipulation?
@@ -184,7 +194,7 @@ webpackJsonp([0,1],[
 		}
 	
 		function unMorphAllCarets() {
-			TweenMax.to(theNavSVGS, .01, {
+			TweenMax.to(nodeListOfNavSVGS, .01, {
 				className: '-=caretMorphed'
 			});
 		}
@@ -196,15 +206,26 @@ webpackJsonp([0,1],[
 			});
 		}
 	
+		function closeAllLevel3Navs() {
+			TweenMax.to(trueArrayOfTertiaryNavs, .1, {
+				className: '-=nav-list-level-2--ACTIVE',
+				onComplete: testL3function
+			});
+		}
+	
+		function testL3function() {
+			console.log('testL3function');
+		}
+	
 		function closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction) {
 			if (caseSibilingOpenOnCompleteFunction) {
-				TweenMax.to(navTopLevelItems, .1, {
+				TweenMax.to(nodeListOfNavTopLevelItems, .1, {
 					className: '-=nav-list-level-1--ACTIVE',
 					ease: Power1.easeOut,
 					onComplete: caseSibilingOpenOnCompleteFunction
 				});
 			} else {
-				TweenMax.to(navTopLevelItems, .1, {
+				TweenMax.to(nodeListOfNavTopLevelItems, .1, {
 					className: '-=nav-list-level-1--ACTIVE',
 					ease: Power1.easeOut
 				});
