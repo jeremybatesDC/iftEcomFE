@@ -36,7 +36,7 @@
 		&:hover,
 		&:active {
 			span {
-				color: $ift-blue;
+				color: $black;
 			}
 		}
 
@@ -115,34 +115,45 @@
 	.nav-list-top-level {
 		width: 100%;
 		margin:0;
-		padding-left:2em;
+		//not needed if social links are hidden
+		//padding-left:2em;
 		flex-direction: column;
+		// > a {
+		// 	padding-left: $gutter-width/2;
+		// }
+		// > ul {
+		// }
 		> li {
 			display: block;
-			width: 80%;
-			margin:0 7.5% 0 auto;
+			width: 100%;
+			margin:0;
 			padding:0;
 			border-bottom:1px solid rgba(255,255,255,.5);
 			> a {
 				display: block;
 				width: 100%;
 				font-size: 1.8rem;
-				padding-top:.6666em;
-				padding-bottom:.6666em;
+				padding: .6666em $gutter-width;
+				//border-bottom:1px solid rgba(255,255,255,.5);
 				&:after {
 					right:1em;
 				}
 			}
 			//override
 			&:first-child {
-				margin:0 7.5% 0 auto;
+				margin:0 $gutter-width 0 auto;
 			}
 		}
+	}
+
+	.nav-list-level-1--ACTIVE {
+		background-color:lighten($ift-blue, 5);
+
 	}
 	
 	.caretDown {
 		top:1.8rem;
-		right: 1rem;
+		right: $gutter-width;
 		fill: white;
 		&.caretMorphed {
 			transform: rotateX(180deg);
@@ -152,28 +163,38 @@
 	}
 
 	.nav-list-level-2 {
-		padding-top:0;
+		
 		position:relative;
-		//top:0;
+		padding-top:0;
+		padding-right: $gutter-width/2;
+		padding-left: $gutter-width/2;
 		max-height:0px;
 		overflow:hidden;
 		&.nav-list-level-2--ACTIVE {
 			position:static;
 			max-height: 9999px;
 			padding-bottom:1em;
+			//background-color:$ift-blue-dark;
+			// > li {
+			// 	> a {
+			// 		color: $body-text-color;
+			// 	}
+			// }
+
 		}
 		li {
 			
 			a {
+				display: block;
 				position:relative;
-				font-size: 1.6rem;
+				font-size: 1.8rem;
 				padding-bottom:1em;
-				padding-left:1em;
+				padding-left:4rem;
 				&:hover,
 				&:active,
 				&:focus {
 					span {
-						color:$ift-blue;
+						color:$black;
 						box-shadow:none;
 					}
 					
@@ -181,17 +202,18 @@
 			}
 		}
 		> li {
+			display: block;
 			position:relative;
 		}
 		.caretDown {
 			top:.8rem;
 			right: auto;
-			left:0;
+			left:1.4rem;
 			fill: white;
 			//need rotateX for greensock stuff but can maybe avoid here
-			transform: rotate(-90deg);
-			&.caretMorphed {
-				transform: rotate(0deg);
+			transform: rotate(0deg);
+			&.caretMorphed--l3 {
+				transform: rotate(180deg);
 				fill: white;
 				//left: 0;
 			}
@@ -206,28 +228,30 @@
 
 	.nav-list-level-3 {
 		height: 0;
+		visibility: hidden;
 		overflow:hidden;
-		padding-left:.5rem;
-		// &:before {
-		// 	content: '+';
-		// 	position:absolute;
-		// 	top:0;
-		// 	left: 0;
-		// }
+		//padding-left:1rem;
+		//transform:translateX(-2vw);
+
 		> li {
 			> a {
 				html body & {
-					font-size: 1.2rem;
+					font-size: 1.4rem;
+					//color: $body-text-color;
+					color: $black;
+					font-weight: bold;
 				}
 				
 			}
 			
 		}
 		&.nav-list-level-3--ACTIVE {
+			visibility: visible;
 			height: auto;
-			// &:before {
-			// 	content: '-';
-			// }
+			//transform:translateX(0);
+
 		}
 	}
+
+	
 }
