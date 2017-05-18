@@ -172,6 +172,12 @@
 			max-height: 9999px;
 			padding-bottom:1em;
 			//background-color:$ift-blue-dark;
+			// > li {
+			// 	> a {
+			// 		color: $body-text-color;
+			// 	}
+			// }
+
 		}
 		li {
 			
@@ -226,6 +232,8 @@
 			> a {
 				html body & {
 					font-size: 1.3rem;
+					color: $body-text-color;
+					font-weight: bold;
 				}
 				
 			}
