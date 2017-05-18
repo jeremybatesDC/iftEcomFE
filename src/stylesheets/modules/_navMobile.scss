@@ -117,11 +117,16 @@
 		margin:0;
 		padding-left:2em;
 		flex-direction: column;
+		// > a {
+		// 	padding-left: $gutter-width/2;
+		// }
+		// > ul {
+		// }
 		> li {
 			display: block;
 			width: 80%;
 			margin:0 7.5% 0 auto;
-			padding:0;
+			padding:0 0 0 $gutter-width/2;
 			border-bottom:1px solid rgba(255,255,255,.5);
 			> a {
 				display: block;
@@ -138,6 +143,11 @@
 				margin:0 7.5% 0 auto;
 			}
 		}
+	}
+
+	.nav-list-level-1--ACTIVE {
+		background-color:$ift-blue-dark;
+
 	}
 	
 	.caretDown {
@@ -161,14 +171,15 @@
 			position:static;
 			max-height: 9999px;
 			padding-bottom:1em;
+			//background-color:$ift-blue-dark;
 		}
 		li {
 			
 			a {
 				position:relative;
-				font-size: 1.6rem;
+				font-size: 1.8rem;
 				padding-bottom:1em;
-				padding-left:1em;
+				padding-left:$gutter-width;
 				&:hover,
 				&:active,
 				&:focus {
@@ -208,13 +219,13 @@
 		height: 0;
 		visibility: hidden;
 		overflow:hidden;
-		padding-left:.5rem;
-		transform:translateX(-3vw);
+		padding-left:1rem;
+		//transform:translateX(-2vw);
 
 		> li {
 			> a {
 				html body & {
-					font-size: 1.2rem;
+					font-size: 1.3rem;
 				}
 				
 			}
@@ -223,7 +234,7 @@
 		&.nav-list-level-3--ACTIVE {
 			visibility: visible;
 			height: auto;
-			transform:translateX(0);
+			//transform:translateX(0);
 
 		}
 	}

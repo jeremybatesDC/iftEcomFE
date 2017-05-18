@@ -178,9 +178,9 @@
 		else {
 			console.log('i was NOT open when clicked');
 			//on complete timing wasNot working for some reason, so doing manual tweens here
-			TweenMax.to(arrayOfTertiaryNavs, .1, {
+			TweenMax.to(arrayOfTertiaryNavs, .25, {
 				className: '-=nav-list-level-3--ACTIVE',
-				ease: Power1.easeInOut
+				ease: Power1.easeOut
 			});
 			TweenMax.to(the3rdLevelNavOfTheItemThatHasBeenClicked, .3333, {
 				className: '+=nav-list-level-3--ACTIVE',

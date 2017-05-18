@@ -18,7 +18,7 @@ webpackJsonp([0,1],[
 	
 	__webpack_require__(3);
 	
-	__webpack_require__(5);
+	__webpack_require__(4);
 	
 	__webpack_require__(6);
 
@@ -209,9 +209,9 @@ webpackJsonp([0,1],[
 			} else {
 				console.log('i was NOT open when clicked');
 				//on complete timing wasNot working for some reason, so doing manual tweens here
-				TweenMax.to(arrayOfTertiaryNavs, .1, {
+				TweenMax.to(arrayOfTertiaryNavs, .25, {
 					className: '-=nav-list-level-3--ACTIVE',
-					ease: Power1.easeInOut
+					ease: Power1.easeOut
 				});
 				TweenMax.to(the3rdLevelNavOfTheItemThatHasBeenClicked, .3333, {
 					className: '+=nav-list-level-3--ACTIVE',
@@ -250,6 +250,29 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _libUtilFunctionsRevisedJs = __webpack_require__(5);
+	
+	var _libUtilFunctionsRevisedJs2 = _interopRequireDefault(_libUtilFunctionsRevisedJs);
+	
+	//var timeline_navArrows = new TimelineMax({paused:true});
+	
+	var navTrigger = document.getElementById('navTrigger');
+	var navMain = document.getElementById('navMain');
+	function mobileNavHideReveal() {
+		document.body.classList.toggle('has-nav--ACTIVE');
+		_libUtilFunctionsRevisedJs2['default'].toggleTween(.1, navMain, 'main-nav-on-canvas');
+	}
+	
+	navTrigger.addEventListener('click', mobileNavHideReveal, false);
+
+/***/ },
+/* 5 */
 /***/ function(module, exports) {
 
 	/*function testForTemplate(templateToTestFor){
@@ -301,29 +324,6 @@ webpackJsonp([0,1],[
 	var utilFunctions = { toggleTween: toggleTween, pureTweenTo: pureTweenTo, pureTweenArrayTo: pureTweenArrayTo };
 	
 	module.exports = utilFunctions;
-
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _libUtilFunctionsRevisedJs = __webpack_require__(4);
-	
-	var _libUtilFunctionsRevisedJs2 = _interopRequireDefault(_libUtilFunctionsRevisedJs);
-	
-	//var timeline_navArrows = new TimelineMax({paused:true});
-	
-	var navTrigger = document.getElementById('navTrigger');
-	var navMain = document.getElementById('navMain');
-	function mobileNavHideReveal() {
-		document.body.classList.toggle('has-nav--ACTIVE');
-		_libUtilFunctionsRevisedJs2['default'].toggleTween(.1, navMain, 'main-nav-on-canvas');
-	}
-	
-	navTrigger.addEventListener('click', mobileNavHideReveal, false);
 
 /***/ },
 /* 6 */
