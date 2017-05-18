@@ -18,7 +18,7 @@ webpackJsonp([0,1],[
 	
 	__webpack_require__(3);
 	
-	__webpack_require__(5);
+	__webpack_require__(4);
 	
 	__webpack_require__(6);
 
@@ -39,50 +39,51 @@ webpackJsonp([0,1],[
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-	//if menu is open, and there's a hash change, close the menu
-	//that gives us back functionality
-	
 	'use strict';
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _libUtilFunctionsRevisedJs = __webpack_require__(4);
-	
-	var _libUtilFunctionsRevisedJs2 = _interopRequireDefault(_libUtilFunctionsRevisedJs);
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
 	
 	(function navModule() {
 		var theSubnavOfTheItemThatHasBeenClicked;
 		var theSVGOfTheItemThatHasBeenClicked;
 		var theTopLevelItemThatHasBeenClicked;
+		var the2ndLevelItemThatHasBeenClicked;
+		var the3rdLevelNavOfTheItemThatHasBeenClicked;
+		var theSVGOfTheL2ItemThatHasBeenClicked;
+	
+		var navListLevel2ClassString = 'nav-list-level-2';
+		var navListLevel3ClassString = 'nav-list-level-3';
+		var navListLevel2ClassStringACTIVE = 'nav-list-level-2--ACTIVE';
+		var navListLevel3ClassStringACTIVE = 'nav-list-level-3--ACTIVE';
 	
 		var navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
-	
 		var navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
-	
-		var navTopLevelItems = document.querySelectorAll('.nav-list-top-level > li');
-		var theNavSVGS = document.querySelectorAll('.caretDown');
-	
-		var navListLevel1ClassString = 'nav-list-level-1--ACTIVE';
-		var navTopLevelItemLinks = document.querySelectorAll('.nav-list-top-level > li > a');
-		var navListLevel2ClassString = 'nav-list-level-2';
-		var nodeListOfSubnavs = document.querySelectorAll('.' + navListLevel2ClassString);
-		var navListLevel2ClassStringACTIVE = 'nav-list-level-2--ACTIVE';
+		var arrayOftheNavSVGS = [].concat(_toConsumableArray(document.querySelectorAll('.caretDown')));
+		var arrayOfNavTopLevelItems = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-top-level > li')));
+		var arrayOfNavTopLevelItemLinks = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-top-level > li > a')));
+		var arrayOfSecondLevelItemLinks = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-2 > li > a')));
+		var arrayOfL2subnavs = [].concat(_toConsumableArray(document.querySelectorAll('.' + navListLevel2ClassString)));
+		var arrayOfTertiaryNavs = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-3')));
 	
 		//if it has children, give it a listener. This allows top level items to behave like normal links if they have no children
 		function iterateThroughNavItems() {
-			for (var i = 0; i < navTopLevelItemLinks.length; i++) {
-				var thisItem = navTopLevelItemLinks[i];
-				if (thisItem.parentNode.querySelector('.' + navListLevel2ClassString)) {
-					thisItem.addEventListener('click', decideCase, false);
-				}
-			}
 	
-			//need to add click handlers for nested arrows
+			arrayOfNavTopLevelItemLinks.map(function (theTopLevelLink) {
+				if (theTopLevelLink.parentNode.querySelector('.' + navListLevel2ClassString)) {
+					theTopLevelLink.addEventListener('click', decideCase, false);
+				}
+			});
+	
+			arrayOfSecondLevelItemLinks.map(function (theSecondLevelItemLink) {
+				if (theSecondLevelItemLink.parentNode.querySelector('.' + navListLevel3ClassString)) {
+					theSecondLevelItemLink.addEventListener('click', toggleMyTertiaryNav, false);
+					console.log('i am a secondary nav with tertiary children');
+				}
+			});
 		}
 	
-		//make this a pure decider, not a doer, so move overlay manipulation?
 		function decideCase(event) {
 			var theScenario;
 			//I am open?
@@ -128,8 +129,6 @@ webpackJsonp([0,1],[
 			}
 	
 			//now, based on the scenario, play or pause
-	
-			//this needs access to the timeline
 			switch (theScenario) {
 				case 'iWasOpenWhenClicked':
 					//console.log('case:iWasOpenWhenClicked');
@@ -154,8 +153,6 @@ webpackJsonp([0,1],[
 			}
 		}
 	
-		//this keeps adding multiple
-	
 		var overlayTimeline = new TimelineMax({ paused: true });
 		overlayTimeline.to(navOverlayCloseTarget, .25, {
 			className: '+=overlayACTIVE',
@@ -173,6 +170,7 @@ webpackJsonp([0,1],[
 	
 			unMorphAllCarets();
 			closeAllLevel2Navs();
+			forceCloseL3Navs();
 	
 			if (whatToClose === 'closeJustLevel2') {
 				closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction);
@@ -184,27 +182,62 @@ webpackJsonp([0,1],[
 		}
 	
 		function unMorphAllCarets() {
-			TweenMax.to(theNavSVGS, .01, {
+			TweenMax.to(arrayOftheNavSVGS, .01, {
 				className: '-=caretMorphed'
 			});
 		}
 	
 		function closeAllLevel2Navs() {
-			TweenMax.to(nodeListOfSubnavs, .1, {
+			TweenMax.to(arrayOfL2subnavs, .1, {
 				className: '-=nav-list-level-2--ACTIVE',
 				ease: Power1.easeOut
 			});
 		}
 	
+		//only 2 cases so we can skip the decider function
+		function toggleMyTertiaryNav(event) {
+			event.preventDefault();
+			the2ndLevelItemThatHasBeenClicked = event.currentTarget.parentNode;
+			the3rdLevelNavOfTheItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.' + navListLevel3ClassString);
+			theSVGOfTheL2ItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.caretDown');
+	
+			//remove all and do oncomplete if must then reopen
+	
+			if (the3rdLevelNavOfTheItemThatHasBeenClicked.classList.contains(navListLevel3ClassStringACTIVE)) {
+				//console.log('i was open when clicked so just close it all, dawg')
+				forceCloseL3Navs();
+			} else {
+				//console.log('i was NOT open when clicked');
+				//on complete timing wasNot working for some reason, so doing manual tweens here
+				TweenMax.to(arrayOfTertiaryNavs, .25, {
+					className: '-=nav-list-level-3--ACTIVE',
+					ease: Power1.easeInOut
+				});
+				TweenMax.to(the3rdLevelNavOfTheItemThatHasBeenClicked, .25, {
+					className: '+=nav-list-level-3--ACTIVE',
+					ease: Power1.easeInOut
+				});
+	
+				//must do other stuff like carets and active state for the LI
+			}
+		}
+	
+		function forceCloseL3Navs() {
+			TweenMax.to(arrayOfTertiaryNavs, .1, {
+				className: '-=nav-list-level-3--ACTIVE',
+				ease: Power1.easeInOut
+			});
+		}
+	
 		function closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction) {
 			if (caseSibilingOpenOnCompleteFunction) {
-				TweenMax.to(navTopLevelItems, .1, {
+				TweenMax.to(arrayOfNavTopLevelItems, .1, {
 					className: '-=nav-list-level-1--ACTIVE',
 					ease: Power1.easeOut,
 					onComplete: caseSibilingOpenOnCompleteFunction
 				});
 			} else {
-				TweenMax.to(navTopLevelItems, .1, {
+				TweenMax.to(arrayOfNavTopLevelItems, .1, {
 					className: '-=nav-list-level-1--ACTIVE',
 					ease: Power1.easeOut
 				});
@@ -219,6 +252,29 @@ webpackJsonp([0,1],[
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _libUtilFunctionsRevisedJs = __webpack_require__(5);
+	
+	var _libUtilFunctionsRevisedJs2 = _interopRequireDefault(_libUtilFunctionsRevisedJs);
+	
+	//var timeline_navArrows = new TimelineMax({paused:true});
+	
+	var navTrigger = document.getElementById('navTrigger');
+	var navMain = document.getElementById('navMain');
+	function mobileNavHideReveal() {
+		document.body.classList.toggle('has-nav--ACTIVE');
+		_libUtilFunctionsRevisedJs2['default'].toggleTween(.1, navMain, 'main-nav-on-canvas');
+	}
+	
+	navTrigger.addEventListener('click', mobileNavHideReveal, false);
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports) {
 
 	/*function testForTemplate(templateToTestFor){
@@ -270,29 +326,6 @@ webpackJsonp([0,1],[
 	var utilFunctions = { toggleTween: toggleTween, pureTweenTo: pureTweenTo, pureTweenArrayTo: pureTweenArrayTo };
 	
 	module.exports = utilFunctions;
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _libUtilFunctionsRevisedJs = __webpack_require__(4);
-	
-	var _libUtilFunctionsRevisedJs2 = _interopRequireDefault(_libUtilFunctionsRevisedJs);
-	
-	//var timeline_navArrows = new TimelineMax({paused:true});
-	
-	var navTrigger = document.getElementById('navTrigger');
-	var navMain = document.getElementById('navMain');
-	function mobileNavHideReveal() {
-		document.body.classList.toggle('has-nav--ACTIVE');
-		_libUtilFunctionsRevisedJs2['default'].toggleTween(.1, navMain, 'main-nav-on-canvas');
-	}
-	
-	navTrigger.addEventListener('click', mobileNavHideReveal, false);
 
 /***/ }),
 /* 6 */

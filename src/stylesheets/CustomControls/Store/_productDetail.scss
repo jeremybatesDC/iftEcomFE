@@ -100,27 +100,31 @@
 }
 .savingsHeader{
   position: relative;
-  background-color: $ift-green-light;
+  background-color: white;
   margin: 1rem auto;
   padding: 1rem;
   height: 4rem;
   max-width: 20rem;
-  &:before,&:after{
-    content: "";
-    position: absolute;
-    border: 1rem solid transparent;
-    left: -1rem;
+  color: #333;
+  .savingsLink{
+    color: #333;
   }
-  &:before{
-    top: 0;
-    border-top: 2rem solid $ift-green-light;
+  // &:before,&:after{
+  //   content: "";
+  //   position: absolute;
+  //   border: 1rem solid transparent;
+  //   left: -1rem;
+  // }
+  // &:before{
+  //   top: 0;
+  //   border-top: 2rem solid $ift-green-light;
 
-  }
-  &:after{
-    bottom: 0;
-    border-bottom: 2rem solid $ift-green-light;
+  // }
+  // &:after{
+  //   bottom: 0;
+  //   border-bottom: 2rem solid $ift-green-light;
 
-  }
+  // }
   .decore{
     display:none;
   }
