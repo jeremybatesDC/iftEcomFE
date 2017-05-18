@@ -61,30 +61,28 @@ webpackJsonp([0,1],[
 		var navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
 		var navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
 	
-		var trueArrayOfNavTopLevelItems = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-top-level > li')));
+		var arrayOfNavTopLevelItems = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-top-level > li')));
 	
-		var trueArrayOftheNavSVGS = [].concat(_toConsumableArray(document.querySelectorAll('.caretDown')));
+		var arrayOftheNavSVGS = [].concat(_toConsumableArray(document.querySelectorAll('.caretDown')));
 	
-		var trueArrayOfNavTopLevelItemLinks = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-top-level > li > a')));
-		var trueArrayOfL2subnavs = [].concat(_toConsumableArray(document.querySelectorAll('.' + navListLevel2ClassString)));
+		var arrayOfNavTopLevelItemLinks = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-top-level > li > a')));
+		var arrayOfL2subnavs = [].concat(_toConsumableArray(document.querySelectorAll('.' + navListLevel2ClassString)));
 	
-		var nodeListOfSecondLevelItemLinks = document.querySelectorAll('.nav-list-level-2 > li > a');
+		var arrayOfSecondLevelItemLinks = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-2 > li > a')));
 	
-		var trueArrayOfSecondLevelItemLinks = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-2 > li > a')));
-	
-		var trueArrayOfTertiaryNavs = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-3')));
+		var arrayOfTertiaryNavs = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-3')));
 	
 		//if it has children, give it a listener. This allows top level items to behave like normal links if they have no children
 		function iterateThroughNavItems() {
 	
-			trueArrayOfNavTopLevelItemLinks.map(function (theTopLevelLink) {
+			arrayOfNavTopLevelItemLinks.map(function (theTopLevelLink) {
 				if (theTopLevelLink.parentNode.querySelector('.' + navListLevel2ClassString)) {
 					theTopLevelLink.addEventListener('click', decideCase, false);
 				}
 			});
 	
 			//adding event listeners is faster with map
-			trueArrayOfSecondLevelItemLinks.map(function (theSecondLevelItemLink) {
+			arrayOfSecondLevelItemLinks.map(function (theSecondLevelItemLink) {
 				if (theSecondLevelItemLink.parentNode.querySelector('.' + navListLevel3ClassString)) {
 					theSecondLevelItemLink.addEventListener('click', closeAllLevel3Navs, false);
 					console.log('i am a secondary nav with tertiary children');
@@ -194,20 +192,20 @@ webpackJsonp([0,1],[
 		}
 	
 		function unMorphAllCarets() {
-			TweenMax.to(trueArrayOftheNavSVGS, .01, {
+			TweenMax.to(arrayOftheNavSVGS, .01, {
 				className: '-=caretMorphed'
 			});
 		}
 	
 		function closeAllLevel2Navs() {
-			TweenMax.to(trueArrayOfL2subnavs, .1, {
+			TweenMax.to(arrayOfL2subnavs, .1, {
 				className: '-=nav-list-level-2--ACTIVE',
 				ease: Power1.easeOut
 			});
 		}
 	
 		function closeAllLevel3Navs() {
-			TweenMax.to(trueArrayOfTertiaryNavs, .1, {
+			TweenMax.to(arrayOfTertiaryNavs, .1, {
 				className: '-=nav-list-level-2--ACTIVE',
 				onComplete: testL3function
 			});
@@ -219,13 +217,13 @@ webpackJsonp([0,1],[
 	
 		function closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction) {
 			if (caseSibilingOpenOnCompleteFunction) {
-				TweenMax.to(trueArrayOfNavTopLevelItems, .1, {
+				TweenMax.to(arrayOfNavTopLevelItems, .1, {
 					className: '-=nav-list-level-1--ACTIVE',
 					ease: Power1.easeOut,
 					onComplete: caseSibilingOpenOnCompleteFunction
 				});
 			} else {
-				TweenMax.to(trueArrayOfNavTopLevelItems, .1, {
+				TweenMax.to(arrayOfNavTopLevelItems, .1, {
 					className: '-=nav-list-level-1--ACTIVE',
 					ease: Power1.easeOut
 				});
