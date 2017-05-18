@@ -7,6 +7,11 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 	var theSubnavOfTheItemThatHasBeenClicked;
 	var theSVGOfTheItemThatHasBeenClicked;
 	var theTopLevelItemThatHasBeenClicked;
+	var the2ndLevelItemThatHasBeenClicked;
+	var the3rdLevelNavOfTheItemThatHasBeenClicked;
+	var theSVGOfTheL2ItemThatHasBeenClicked;
+
+
 
 	const navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
 	const navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
@@ -38,7 +43,7 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 
 		trueArrayOfSecondLevelItemLinks.map(function(theSecondLevelItemLink){
 			if(theSecondLevelItemLink.parentNode.querySelector(`.${navListLevel3ClassString}`)){
-				theSecondLevelItemLink.addEventListener('click', closeAllLevel3Navs, false);
+				theSecondLevelItemLink.addEventListener('click', toggleMyTertiaryNav, false);
 				console.log('i am a secondary nav with tertiary children');
 			}	
 		})
@@ -126,6 +131,21 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 		}
 	}
 
+	function toggleMyTertiaryNav(event){
+		event.preventDefault();
+		the2ndLevelItemThatHasBeenClicked = event.currentTarget.parentNode;
+		the3rdLevelNavOfTheItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector(`.${navListLevel3ClassString}`);
+		theSVGOfTheL2ItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.caretDown');
+
+		//remove all and do oncomplete if must then reopen
+
+
+		the3rdLevelNavOfTheItemThatHasBeenClicked.classList.toggle('nav-list-level-3--ACTIVE');
+
+
+
+	}
+
 
 	//this keeps adding multiple
 
@@ -179,6 +199,7 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 	}
 
 	function closeAllLevel3Navs(){
+		//try using array rather than node list
 		TweenMax.to(trueArrayOfTertiaryNavs, .1, {
 			className: '-=nav-list-level-2--ACTIVE',
 			onComplete: testL3function
