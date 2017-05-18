@@ -124,8 +124,8 @@
 		// }
 		> li {
 			display: block;
-			width: 80%;
-			margin:0 7.5% 0 auto;
+			width: 89%;
+			margin:0 $gutter-width 0 auto;
 			padding:0 0 0 $gutter-width/2;
 			border-bottom:1px solid rgba(255,255,255,.5);
 			> a {
@@ -134,19 +134,20 @@
 				font-size: 1.8rem;
 				padding-top:.6666em;
 				padding-bottom:.6666em;
+				//border-bottom:1px solid rgba(255,255,255,.5);
 				&:after {
 					right:1em;
 				}
 			}
 			//override
 			&:first-child {
-				margin:0 7.5% 0 auto;
+				margin:0 $gutter-width 0 auto;
 			}
 		}
 	}
 
 	.nav-list-level-1--ACTIVE {
-		background-color:darken($ift-blue, 2);
+		background-color:lighten($ift-blue, 5);
 
 	}
 	
