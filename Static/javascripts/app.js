@@ -66,10 +66,9 @@ webpackJsonp([0,1],[
 		var arrayOftheNavSVGS = [].concat(_toConsumableArray(document.querySelectorAll('.caretDown')));
 	
 		var arrayOfNavTopLevelItemLinks = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-top-level > li > a')));
-		var arrayOfL2subnavs = [].concat(_toConsumableArray(document.querySelectorAll('.' + navListLevel2ClassString)));
-	
 		var arrayOfSecondLevelItemLinks = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-2 > li > a')));
 	
+		var arrayOfL2subnavs = [].concat(_toConsumableArray(document.querySelectorAll('.' + navListLevel2ClassString)));
 		var arrayOfTertiaryNavs = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-3')));
 	
 		//if it has children, give it a listener. This allows top level items to behave like normal links if they have no children
@@ -84,7 +83,7 @@ webpackJsonp([0,1],[
 			//adding event listeners is faster with map
 			arrayOfSecondLevelItemLinks.map(function (theSecondLevelItemLink) {
 				if (theSecondLevelItemLink.parentNode.querySelector('.' + navListLevel3ClassString)) {
-					theSecondLevelItemLink.addEventListener('click', closeAllLevel3Navs, false);
+					theSecondLevelItemLink.addEventListener('click', toggleMyTertiaryNav, false);
 					console.log('i am a secondary nav with tertiary children');
 				}
 			});
@@ -162,7 +161,16 @@ webpackJsonp([0,1],[
 			}
 		}
 	
-		//this keeps adding multiple
+		function toggleMyTertiaryNav(event) {
+			event.preventDefault();
+			the2ndLevelItemThatHasBeenClicked = event.currentTarget.parentNode;
+			the3rdLevelNavOfTheItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.' + navListLevel3ClassString);
+			theSVGOfTheL2ItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.caretDown');
+	
+			//remove all and do oncomplete if must then reopen
+	
+			the3rdLevelNavOfTheItemThatHasBeenClicked.classList.toggle('nav-list-level-3--ACTIVE');
+		}
 	
 		var overlayTimeline = new TimelineMax({ paused: true });
 		overlayTimeline.to(navOverlayCloseTarget, .25, {

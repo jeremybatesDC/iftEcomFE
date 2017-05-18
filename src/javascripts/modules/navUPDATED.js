@@ -21,15 +21,9 @@
 	const arrayOftheNavSVGS = [...document.querySelectorAll('.caretDown')];
 
 	const arrayOfNavTopLevelItemLinks = [...document.querySelectorAll('.nav-list-top-level > li > a')];
-	const arrayOfL2subnavs = [...document.querySelectorAll(`.${navListLevel2ClassString}`)];
-	
-
-	
-
-
-
 	const arrayOfSecondLevelItemLinks = [...document.querySelectorAll('.nav-list-level-2 > li > a')];
 
+	const arrayOfL2subnavs = [...document.querySelectorAll(`.${navListLevel2ClassString}`)];
 	const arrayOfTertiaryNavs = [...document.querySelectorAll('.nav-list-level-3')];
 
 
@@ -47,7 +41,7 @@
 		//adding event listeners is faster with map
 		arrayOfSecondLevelItemLinks.map(function(theSecondLevelItemLink){
 			if(theSecondLevelItemLink.parentNode.querySelector(`.${navListLevel3ClassString}`)){
-				theSecondLevelItemLink.addEventListener('click', closeAllLevel3Navs, false);
+				theSecondLevelItemLink.addEventListener('click', toggleMyTertiaryNav, false);
 				console.log('i am a secondary nav with tertiary children');
 			}
 			
@@ -139,7 +133,20 @@
 	}
 
 
-	//this keeps adding multiple
+	function toggleMyTertiaryNav(event){
+		event.preventDefault();
+		the2ndLevelItemThatHasBeenClicked = event.currentTarget.parentNode;
+		the3rdLevelNavOfTheItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector(`.${navListLevel3ClassString}`);
+		theSVGOfTheL2ItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.caretDown');
+
+		//remove all and do oncomplete if must then reopen
+
+
+		the3rdLevelNavOfTheItemThatHasBeenClicked.classList.toggle('nav-list-level-3--ACTIVE');
+
+
+
+	}
 
 
 	var overlayTimeline = new TimelineMax({paused:true});
