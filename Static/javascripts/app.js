@@ -204,10 +204,10 @@ webpackJsonp([0,1],[
 			//remove all and do oncomplete if must then reopen
 	
 			if (the3rdLevelNavOfTheItemThatHasBeenClicked.classList.contains(navListLevel3ClassStringACTIVE)) {
-				console.log('i was open when clicked so just close it all, dawg');
+				//console.log('i was open when clicked so just close it all, dawg')
 				forceCloseL3Navs();
 			} else {
-				console.log('i was NOT open when clicked');
+				//console.log('i was NOT open when clicked');
 				//on complete timing wasNot working for some reason, so doing manual tweens here
 				TweenMax.to(arrayOfTertiaryNavs, .25, {
 					className: '-=nav-list-level-3--ACTIVE',
@@ -217,6 +217,8 @@ webpackJsonp([0,1],[
 					className: '+=nav-list-level-3--ACTIVE',
 					ease: Power1.easeInOut
 				});
+	
+				//must do other stuff like carets and active state for the LI
 			}
 		}
 	

@@ -36,7 +36,7 @@
 		&:hover,
 		&:active {
 			span {
-				color: $ift-blue;
+				color: $black;
 			}
 		}
 
@@ -146,7 +146,7 @@
 	}
 
 	.nav-list-level-1--ACTIVE {
-		background-color:darken($ift-blue, 3.3333);
+		background-color:darken($ift-blue, 2);
 
 	}
 	
@@ -190,7 +190,7 @@
 				&:active,
 				&:focus {
 					span {
-						color:$ift-blue;
+						color:$black;
 						box-shadow:none;
 					}
 					
@@ -206,8 +206,8 @@
 			left:0;
 			fill: white;
 			//need rotateX for greensock stuff but can maybe avoid here
-			//transform: rotate(-90deg);
-			&.caretMorphed {
+			transform: rotate(0deg);
+			&.caretMorphed--l3 {
 				transform: rotate(180deg);
 				fill: white;
 				//left: 0;
@@ -232,7 +232,8 @@
 			> a {
 				html body & {
 					font-size: 1.4rem;
-					color: $body-text-color;
+					//color: $body-text-color;
+					color: $black;
 					font-weight: bold;
 				}
 				
@@ -246,4 +247,6 @@
 
 		}
 	}
+
+	
 }
