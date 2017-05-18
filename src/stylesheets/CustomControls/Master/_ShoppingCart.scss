@@ -66,7 +66,27 @@
 		flex-basis: 100%;
 		max-width: 100%;
 	}
-	.summaryControl {
+	
+	@media only screen and (min-width: $breakpoint-min-md) {
+		.itemsList{
+			flex-basis: calc(75% - 30px);
+			max-width: calc(75% - 30px);
+		}
+		.summaryControl {
+			flex-basis: calc(25% - 30px);
+			max-width: calc(25% - 30px);
+			.header {
+				color: white;
+				background: $ift-blue;
+			}
+		}
+	}
+}
+#ctl00_MainContent_ctl01_ButtonEstimate{
+	@include unButton();
+	border:none;
+}
+.ShoppingCartSummaryControl_PersonifyDefault.ShoppingCart_PersonifyDefault.Base_PersonifyDefault{
 		background-color: white;
 		border: none;
 		margin-top: 17px;
@@ -94,24 +114,8 @@
 			background-color: white;
 
 		}
-	}
-	@media only screen and (min-width: $breakpoint-min-md) {
-		.itemsList{
-			flex-basis: calc(75% - 30px);
-			max-width: calc(75% - 30px);
-		}
-		.summaryControl {
-			flex-basis: calc(25% - 30px);
-			max-width: calc(25% - 30px);
-			.header {
-				color: white;
-				background: $ift-blue;
-			}
-		}
-	}
-}
- 
-div.WizardHeaderControl_PersonifyDefault {
+	} 
+div.WizardHeaderControl_PersonifyDefault{
 	margin-bottom: 4rem;
 	span {
 		//personify override
