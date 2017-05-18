@@ -1,8 +1,3 @@
-//if menu is open, and there's a hash change, close the menu
-//that gives us back functionality
-
-import utilFunctions from 'lib/utilFunctions-revised.js';
-
 (function navModule(){
 	var theSubnavOfTheItemThatHasBeenClicked;
 	var theSVGOfTheItemThatHasBeenClicked;
@@ -11,26 +6,35 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 	var the3rdLevelNavOfTheItemThatHasBeenClicked;
 	var theSVGOfTheL2ItemThatHasBeenClicked;
 
+	const navListLevel2ClassString = 'nav-list-level-2';
+	const navListLevel3ClassString = 'nav-list-level-3';
+	const navListLevel2ClassStringACTIVE = 'nav-list-level-2--ACTIVE';
+	const navListLevel3ClassStringACTIVE = 'nav-list-level-3--ACTIVE';
 
 
 	const navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
 	const navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
 
-	const nodeListOfNavTopLevelItems = document.querySelectorAll('.nav-list-top-level > li');
-	const nodeListOfSubnavs = document.querySelectorAll(`.${navListLevel2ClassString}`);
-	const nodeListOfNavSVGS = document.querySelectorAll('.caretDown');
+	const trueArrayOfNavTopLevelItems = [...document.querySelectorAll('.nav-list-top-level > li')];
 
+
+	const trueArrayOftheNavSVGS = [...document.querySelectorAll('.caretDown')];
 
 	const trueArrayOfNavTopLevelItemLinks = [...document.querySelectorAll('.nav-list-top-level > li > a')];
-	const trueArrayOfSecondLevelItemLinks = [...document.querySelectorAll('.nav-list-level-2 > li > a')];
-	const trueArrayOfTertiaryNavs = [...document.querySelectorAll('.nav-list-level-3')];
-
-	const navListLevel2ClassString = 'nav-list-level-2';
-	const navListLevel2ClassStringACTIVE = 'nav-list-level-2--ACTIVE';
-	const navListLevel3ClassString = 'nav-list-level-3';
-	const navListLevel3ClassStringACTIVE = 'nav-list-level-3--ACTIVE';
+	const trueArrayOfL2subnavs = [...document.querySelectorAll(`.${navListLevel2ClassString}`)];
+	
 
 	
+
+
+	const nodeListOfSecondLevelItemLinks = document.querySelectorAll('.nav-list-level-2 > li > a');
+
+	const trueArrayOfSecondLevelItemLinks = [...document.querySelectorAll('.nav-list-level-2 > li > a')];
+
+	const trueArrayOfTertiaryNavs = [...document.querySelectorAll('.nav-list-level-3')];
+
+
+
 	
 	//if it has children, give it a listener. This allows top level items to behave like normal links if they have no children
 	function iterateThroughNavItems(){
@@ -41,12 +45,16 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 			}
 		})
 
+		//adding event listeners is faster with map
 		trueArrayOfSecondLevelItemLinks.map(function(theSecondLevelItemLink){
 			if(theSecondLevelItemLink.parentNode.querySelector(`.${navListLevel3ClassString}`)){
-				theSecondLevelItemLink.addEventListener('click', toggleMyTertiaryNav, false);
+				theSecondLevelItemLink.addEventListener('click', closeAllLevel3Navs, false);
 				console.log('i am a secondary nav with tertiary children');
-			}	
+			}
+			
 		})
+
+
 	}
 
 	//make this a pure decider, not a doer, so move overlay manipulation?
@@ -131,21 +139,6 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 		}
 	}
 
-	function toggleMyTertiaryNav(event){
-		event.preventDefault();
-		the2ndLevelItemThatHasBeenClicked = event.currentTarget.parentNode;
-		the3rdLevelNavOfTheItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector(`.${navListLevel3ClassString}`);
-		theSVGOfTheL2ItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.caretDown');
-
-		//remove all and do oncomplete if must then reopen
-
-
-		the3rdLevelNavOfTheItemThatHasBeenClicked.classList.toggle('nav-list-level-3--ACTIVE');
-
-
-
-	}
-
 
 	//this keeps adding multiple
 
@@ -186,20 +179,19 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 	}
 
 	function unMorphAllCarets(){
-		TweenMax.to(nodeListOfNavSVGS, .01, {
+		TweenMax.to(trueArrayOftheNavSVGS, .01, {
 			className: '-=caretMorphed'
 		});
 	}
 
 	function closeAllLevel2Navs(){
-		TweenMax.to(nodeListOfSubnavs, .1, {
+		TweenMax.to(trueArrayOfL2subnavs, .1, {
 			className: '-=nav-list-level-2--ACTIVE',
 			ease: Power1.easeOut
 		});
 	}
 
 	function closeAllLevel3Navs(){
-		//try using array rather than node list
 		TweenMax.to(trueArrayOfTertiaryNavs, .1, {
 			className: '-=nav-list-level-2--ACTIVE',
 			onComplete: testL3function
@@ -213,14 +205,14 @@ import utilFunctions from 'lib/utilFunctions-revised.js';
 
 	function closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction){
 		if(caseSibilingOpenOnCompleteFunction){
-			TweenMax.to(nodeListOfNavTopLevelItems, .1, {
+			TweenMax.to(trueArrayOfNavTopLevelItems, .1, {
 				className: '-=nav-list-level-1--ACTIVE',
 				ease: Power1.easeOut,
 				onComplete: caseSibilingOpenOnCompleteFunction
 			});
 		}
 		else {
-			TweenMax.to(nodeListOfNavTopLevelItems, .1, {
+			TweenMax.to(trueArrayOfNavTopLevelItems, .1, {
 				className: '-=nav-list-level-1--ACTIVE',
 				ease: Power1.easeOut
 			});
