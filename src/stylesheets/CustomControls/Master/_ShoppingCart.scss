@@ -5,6 +5,10 @@
 	}
 }
 
+.RadInput_PersonifyDefault .riTextBox{
+	@include inputText()
+}
+
 .segmentsListTabs .rlbSelected {
 	background-color: $ift-blue !important;
 	&:hover,
@@ -17,7 +21,9 @@
 #ctl00_MainContent_ctl00_CheckoutItemSummaryControl_ShoppingCartSummaryControl_ButtonCouponApply {
 	@include unButton()
 }
-
+.segmentsListPanel .RadListBox .rlbGroup ul li.rlbItem:hover {
+	text-shadow: none;
+}
 .CheckoutControl_PersonifyDefault {
 	.addressButtonsDiv {
 		input {
@@ -35,7 +41,18 @@
 		}
 	}
 }
-
+.ShoppingCartSavingsControl_PersonifyDefault {
+    border: none;
+    background: $ift-green;
+    padding: 4px;
+    color: white;
+}
+.summary .item {
+    margin-bottom: 10px;
+}
+#ctl00_MainContent_ctl00_SegmentTabList .rlbGroup{
+	background-color: transparent;
+}
 // Warning: Attempts to mimic grid
 .mainCheckoutDiv {
 	box-sizing: border-box;
@@ -66,35 +83,7 @@
 		flex-basis: 100%;
 		max-width: 100%;
 	}
-	.summaryControl {
-		background-color: white;
-		border: none;
-		margin-top: 17px;
-		.header {
-			color: white;
-			background: $ift-blue;
-		}
-		.summaryData{
-			padding: 6px 10px;
-		}
-		.summaryData,
-		.checkout-panel,
-		.ShoppingCartSavingsControl_PersonifyDefault{
-			border: none;
-			background-color: white;
-		}
-	}
-	.itemsList{
-		.centerSection,
-		.borderTop{
-			border-color: #eee
-		}
-		.contentSection{
-			border:none;
-			background-color: white;
-
-		}
-	}
+	
 	@media only screen and (min-width: $breakpoint-min-md) {
 		.itemsList{
 			flex-basis: calc(75% - 30px);
@@ -110,8 +99,61 @@
 		}
 	}
 }
- 
-div.WizardHeaderControl_PersonifyDefault {
+#ctl00_MainContent_ctl01_ButtonEstimate,#ctl00_MainContent_ctl00_SegmentTabList_i0{
+	@include unButton();
+}
+.segmentsListPanel .RadListBox_PersonifyDefault .rlbGroup .rlbList .rlbItem .rlbText {
+    color:$ift-blue !important;
+    display: block;
+    margin: 13px;
+}
+#MainContent_ctl00_ButtonContinueShopping{
+	@include button()
+}
+.ShoppingCartSummaryControl_PersonifyDefault.ShoppingCart_PersonifyDefault.Base_PersonifyDefault{
+	background-color: white;
+	border: none;
+	margin-top: 17px;
+	.header {
+		color: white;
+		background: $ift-blue;
+		border: none;
+	}
+	.summaryData{
+		padding: 6px 10px;
+	}
+	.summaryData,
+	.checkout-panel,
+	.ShoppingCartSavingsControl_PersonifyDefault{
+		border: none;
+		background-color: white;
+	}
+}
+.panelShoppingCart{
+	.controlPanel{
+		border:none;
+	}
+}
+.ShoppingCartItemListControl_PersonifyDefault.ShoppingCart_PersonifyDefault.Base_PersonifyDefault{
+	.centerSection,
+	.borderTop{
+		border-color: #eee
+	}
+	.contentSection{
+		border:none;
+		background-color: white;
+
+	}
+	.productControlSection {
+	  background: white;
+	  border: none;
+	  border-top: 1px solid #eee;
+	  a{
+	  	font-size: 12px;
+	  }
+	}
+} 
+div.WizardHeaderControl_PersonifyDefault{
 	margin-bottom: 4rem;
 	span {
 		//personify override

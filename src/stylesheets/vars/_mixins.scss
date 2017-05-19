@@ -17,6 +17,10 @@
 	line-height: 1.1111;
 	border-width: 1px;
 	border-style: solid;
+	text-decoration: none;
+	a{
+		text-decoration: none;
+	}
 	border-radius: 0 !important;
 	padding: $btn-base-padding;
 	text-align: center;
@@ -155,6 +159,7 @@
 @mixin unButton{
 	//width: auto;
 	min-width:auto;
+	border:none;
 	background:none !important;
     text-transform: capitalize !important;
     text-decoration: underline !important;
@@ -182,7 +187,22 @@
     }
 }
 	
-
+@mixin inputText{
+	border: 1px solid #ddd!important;
+	background-color: transparent!important;
+	padding: .6rem .8rem!important;
+	margin: .6rem 0!important;
+	transition: 300ms all!important; 
+	border-radius: 4px!important;
+	height: 30px!important;
+	&:focus {
+		border: 1px solid $ift-blue!important;
+		box-shadow: 0 0 3px #cbd0ef!important;
+		background-color: transparent!important;
+		padding: .6rem .8rem!important;
+		margin: .6rem 0!important;
+	}
+}
 /*
 ██╗ ██████╗ ██████╗ ███╗   ██╗███████╗
 ██║██╔════╝██╔═══██╗████╗  ██║██╔════╝
