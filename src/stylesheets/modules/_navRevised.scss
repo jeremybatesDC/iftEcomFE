@@ -24,7 +24,6 @@
 }
 
 
-
 .nav-main {
 	//width:100%;
 	position: relative;
@@ -33,24 +32,16 @@
 	margin-top:1.5em;
 	margin-bottom:1.25em;
 	z-index:4;
+	@include break(min, $breakpoint-min-tablet){
+		.chevronDown {
+			display: none;
+		}
+	}
+
 	@include break(min, $breakpoint-min-md){
 		//width of logo
 		padding-left:15rem;
 		justify-content:flex-end;
-
-
-		.chevronDown {
-			
-			display: none;
-			// position: absolute;
-			// top:0;
-			// width: 12px;
-			// height: 12px;
-			// fill:transparent;
-			// 	stroke:$white;
-			// }
-
-		}
 
 	}
 	ul,li,a,span {
@@ -122,6 +113,7 @@
 		
 		> li {
 			height: 100%;
+			text-align: center;
 		}
 	}
 	> li {
