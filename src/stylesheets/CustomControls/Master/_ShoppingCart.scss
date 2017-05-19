@@ -5,7 +5,8 @@
 	}
 }
 
-.RadInput_PersonifyDefault .riTextBox{
+.RadInput_PersonifyDefault .riTextBox,
+.coupon .couponInput{
 	@include inputText()
 }
 
@@ -20,6 +21,8 @@
 
 #ctl00_MainContent_ctl00_CheckoutItemSummaryControl_ShoppingCartSummaryControl_ButtonCouponApply {
 	@include unButton()
+	margin-top: 1.2rem;
+	margin-left: 2rem !important;
 }
 .segmentsListPanel .RadListBox .rlbGroup ul li.rlbItem:hover {
 	text-shadow: none;
@@ -43,7 +46,7 @@
 }
 .ShoppingCartSavingsControl_PersonifyDefault {
     border: none;
-    background: $ift-green;
+    background: $ift-green!important;
     padding: 4px;
     color: white;
 }
@@ -110,6 +113,43 @@
 #MainContent_ctl00_ButtonContinueShopping{
 	@include button()
 }
+
+.billingAddress {
+    float: left;
+    width: 350px;
+    margin: 0;
+    padding: 2rem;
+    background: white;
+}
+
+.summaryControl {			
+		background-color: transparent;		
+		border: none;		
+		margin-top: 17px;		
+		.header {		
+			color: white;		
+			background: $ift-blue;		
+		}		
+		.summaryData{		
+			padding: 6px 10px;		
+		}		
+		.summaryData,		
+		.checkout-panel,		
+		.ShoppingCartSavingsControl_PersonifyDefault{		
+			border: none;		
+			background-color: white;		
+		}		
+	}		
+	.itemsList{		
+		.centerSection,		
+		.borderTop{		
+			border-color: #eee		
+		}		
+		.contentSection{		
+			border:none;		
+			background-color: white;		
+		}		
+	}
 .ShoppingCartSummaryControl_PersonifyDefault.ShoppingCart_PersonifyDefault.Base_PersonifyDefault{
 	background-color: white;
 	border: none;
@@ -152,7 +192,10 @@
 	  	font-size: 12px;
 	  }
 	}
-} 
+}
+.prevNextCancelButtons {
+    padding-top: 2rem;
+}
 div.WizardHeaderControl_PersonifyDefault{
 	margin-bottom: 4rem;
 	span {
