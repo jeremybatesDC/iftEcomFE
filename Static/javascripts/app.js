@@ -1,13 +1,13 @@
 webpackJsonp([0,1],[
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(1);
 
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// *********************
 	//    Modules scripts
@@ -22,9 +22,9 @@ webpackJsonp([0,1],[
 	
 	__webpack_require__(5);
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -37,9 +37,9 @@ webpackJsonp([0,1],[
 		}]
 	});
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -286,9 +286,9 @@ webpackJsonp([0,1],[
 		navLevel2CloseButton.addEventListener('click', forceCloseStuff, false);
 	})();
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -324,9 +324,9 @@ webpackJsonp([0,1],[
 		navTrigger.addEventListener('click', mobileNavHideReveal, false);
 	})();
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -342,6 +342,6 @@ webpackJsonp([0,1],[
 		};
 	});
 
-/***/ }
+/***/ })
 ]);
 //# sourceMappingURL=app.js.map

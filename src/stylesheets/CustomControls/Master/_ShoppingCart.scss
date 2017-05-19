@@ -5,7 +5,8 @@
 	}
 }
 
-.RadInput_PersonifyDefault .riTextBox{
+.RadInput_PersonifyDefault .riTextBox,
+.coupon .couponInput{
 	@include inputText()
 }
 
@@ -20,6 +21,8 @@
 
 #ctl00_MainContent_ctl00_CheckoutItemSummaryControl_ShoppingCartSummaryControl_ButtonCouponApply {
 	@include unButton()
+	margin-top: 12px;
+	margin-left: 20px !important;
 }
 .segmentsListPanel .RadListBox .rlbGroup ul li.rlbItem:hover {
 	text-shadow: none;
@@ -27,15 +30,15 @@
 .CheckoutControl_PersonifyDefault {
 	.addressButtonsDiv {
 		input {
-			// font-size: 1rem;
+			// font-size: 10px;
 			// background-color: $ift-blue;
 			// background-image: none;
 			@include unButton();
-			padding: .8rem;
+			padding: 8px;
 			margin-bottom: 0;
 			+ input {
 				display: block;
-				margin-top: 1rem;
+				margin-top: 10px;
 				margin-left: 0;
 			}
 		}
@@ -43,7 +46,7 @@
 }
 .ShoppingCartSavingsControl_PersonifyDefault {
     border: none;
-    background: $ift-green;
+    background: $ift-green!important;
     padding: 4px;
     color: white;
 }
@@ -102,6 +105,12 @@
 #ctl00_MainContent_ctl01_ButtonEstimate,#ctl00_MainContent_ctl00_SegmentTabList_i0{
 	@include unButton();
 }
+table.totals * {
+    border-color: #eee !important;
+		.ShareControl_PersonifyDefault {
+			float: right;
+		}
+}
 .segmentsListPanel .RadListBox_PersonifyDefault .rlbGroup .rlbList .rlbItem .rlbText {
     color:$ift-blue !important;
     display: block;
@@ -110,6 +119,48 @@
 #MainContent_ctl00_ButtonContinueShopping{
 	@include button()
 }
+.OrderSummaryControl_PersonifyDefault .orderNumber {
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #333;
+}
+.billingAddress {
+    float: left;
+    min-width: 350px;
+    margin: 0;
+    padding: 20px;
+    background: white;
+}
+
+.summaryControl {			
+		background-color: transparent;		
+		border: none;		
+		margin-top: 17px;		
+		.header {		
+			color: white;		
+			background: $ift-blue;		
+		}		
+		.summaryData{		
+			padding: 6px 10px;		
+		}		
+		.summaryData,		
+		.checkout-panel,		
+		.ShoppingCartSavingsControl_PersonifyDefault{		
+			border: none;		
+			background-color: white;		
+		}		
+	}		
+	.itemsList{		
+		.centerSection,		
+		.borderTop{		
+			border-color: #eee		
+		}		
+		.contentSection{		
+			border:none;		
+			background-color: white;		
+		}		
+	}
 .ShoppingCartSummaryControl_PersonifyDefault.ShoppingCart_PersonifyDefault.Base_PersonifyDefault{
 	background-color: white;
 	border: none;
@@ -152,9 +203,34 @@
 	  	font-size: 12px;
 	  }
 	}
-} 
+}
+// Thank you
+#ctl00_ctl00_MainContent_ctl01_EmailInfoControlPanel {
+    background-color: transparent;
+}
+
+#MainContent_ctl01_ContainerPanel {
+    padding: 15px;
+    background: white;
+}
+.OrderSummaryControl_PersonifyDefault {
+	.OrdSummaryAddressHeader,.OrdSummaryHeader {
+    color: #333;
+    font-size: 22px;
+	}
+	.billingAddress {
+    display: inline;
+    float: left;
+    padding: 10px;
+    border: 1px solid #eee;
+    margin: 10px 0;
+  }
+}
+.prevNextCancelButtons {
+    padding-top: 20px;
+}
 div.WizardHeaderControl_PersonifyDefault{
-	margin-bottom: 4rem;
+	margin-bottom: 40px;
 	span {
 		//personify override
 		span {
@@ -166,7 +242,7 @@ div.WizardHeaderControl_PersonifyDefault{
 		border-color: $ift-grey-230;
 		color: $ift-grey-medium-light;
 		text-align: left;
-		padding-left: 6rem !important;
+		padding-left: 60px !important;
 		.step-number {
 			width: 30px!important;
 			height: 30px!important;
@@ -226,6 +302,6 @@ div.WizardHeaderControl_PersonifyDefault{
 
 .checkoutHeader {
 	&.heading2 {
-		font-size: 2rem;
+		font-size: 20px;
 	}
 }
