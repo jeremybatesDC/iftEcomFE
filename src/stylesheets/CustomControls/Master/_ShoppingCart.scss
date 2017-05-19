@@ -34,7 +34,7 @@
 			// background-color: $ift-blue;
 			// background-image: none;
 			@include unButton();
-			padding: .80px;
+			padding: 8px;
 			margin-bottom: 0;
 			+ input {
 				display: block;
@@ -121,7 +121,7 @@ table.totals * {
 }
 .OrderSummaryControl_PersonifyDefault .orderNumber {
     margin-bottom: 15px;
-    font-size: 1.4rem;
+    font-size: 14px;
     font-weight: normal;
     color: #333;
 }
