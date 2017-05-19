@@ -1,13 +1,13 @@
 webpackJsonp([0,1],[
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(1);
 
 
-/***/ }),
+/***/ },
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	// *********************
 	//    Modules scripts
@@ -22,9 +22,9 @@ webpackJsonp([0,1],[
 	
 	__webpack_require__(6);
 
-/***/ }),
+/***/ },
 /* 2 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	'use strict';
 	
@@ -37,9 +37,9 @@ webpackJsonp([0,1],[
 		}]
 	});
 
-/***/ }),
+/***/ },
 /* 3 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	'use strict';
 	
@@ -55,13 +55,17 @@ webpackJsonp([0,1],[
 	
 		var navListLevel2ClassString = 'nav-list-level-2';
 		var navListLevel3ClassString = 'nav-list-level-3';
-		var navListLevel2ClassStringACTIVE = 'nav-list-level-2--ACTIVE';
+		var navListLevel2ITEMClassStringACTIVE = 'nav-list-level-2-item-ACTIVE';
 		var navListLevel3ClassStringACTIVE = 'nav-list-level-3--ACTIVE';
 	
 		var navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
 		var navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
 		var arrayOftheNavSVGS = [].concat(_toConsumableArray(document.querySelectorAll('.caretDown')));
+		var arrayOftheL2NavSVGS = [].concat(_toConsumableArray(document.querySelectorAll('.chevronDown')));
+	
 		var arrayOfNavTopLevelItems = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-top-level > li')));
+		var arrayOfL2items = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-2 > li')));
+	
 		var arrayOfNavTopLevelItemLinks = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-top-level > li > a')));
 		var arrayOfSecondLevelItemLinks = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-2 > li > a')));
 		var arrayOfL2subnavs = [].concat(_toConsumableArray(document.querySelectorAll('.' + navListLevel2ClassString)));
@@ -79,7 +83,7 @@ webpackJsonp([0,1],[
 			arrayOfSecondLevelItemLinks.map(function (theSecondLevelItemLink) {
 				if (theSecondLevelItemLink.parentNode.querySelector('.' + navListLevel3ClassString)) {
 					theSecondLevelItemLink.addEventListener('click', toggleMyTertiaryNav, false);
-					console.log('i am a secondary nav with tertiary children');
+					//console.log('i am a secondary nav with tertiary children');
 				}
 			});
 		}
@@ -160,7 +164,6 @@ webpackJsonp([0,1],[
 		});
 	
 		var showHideCloseTimeline = new TimelineMax({ paused: true });
-	
 		showHideCloseTimeline.to(navLevel2CloseButton, .3333, {
 			className: '+=navLevel2CloseButton--ACTIVE',
 			ease: Power4.easeInOut
@@ -181,9 +184,17 @@ webpackJsonp([0,1],[
 			}
 		}
 	
+		function unMorphAllL2Chevrons() {
+			TweenMax.to(arrayOftheL2NavSVGS, .1, {
+				className: '-=chevronMorphed',
+				ease: Power1.easeInOut
+			});
+		}
+	
 		function unMorphAllCarets() {
 			TweenMax.to(arrayOftheNavSVGS, .01, {
-				className: '-=caretMorphed'
+				className: '-=caretMorphed',
+				ease: Power1.easeInOut
 			});
 		}
 	
@@ -199,7 +210,7 @@ webpackJsonp([0,1],[
 			event.preventDefault();
 			the2ndLevelItemThatHasBeenClicked = event.currentTarget.parentNode;
 			the3rdLevelNavOfTheItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.' + navListLevel3ClassString);
-			theSVGOfTheL2ItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.caretDown');
+			theSVGOfTheL2ItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.chevronDown');
 	
 			//remove all and do oncomplete if must then reopen
 	
@@ -208,23 +219,48 @@ webpackJsonp([0,1],[
 				forceCloseL3Navs();
 			} else {
 				//console.log('i was NOT open when clicked');
-				//on complete timing wasNot working for some reason, so doing manual tweens here
-				TweenMax.to(arrayOfTertiaryNavs, .25, {
+				//on complete timing wasNot working for some reason, so doing manually sequenced tweens here
+				TweenMax.to(arrayOftheL2NavSVGS, .4, {
+					className: '-=chevronMorphed',
+					ease: Power1.easeInOut
+				});
+				TweenMax.to(theSVGOfTheL2ItemThatHasBeenClicked, .4, {
+					className: '+=chevronMorphed',
+					ease: Power1.easeInOut
+				});
+	
+				TweenMax.to(arrayOfTertiaryNavs, .4, {
 					className: '-=nav-list-level-3--ACTIVE',
 					ease: Power1.easeInOut
 				});
-				TweenMax.to(the3rdLevelNavOfTheItemThatHasBeenClicked, .25, {
+				TweenMax.to(the3rdLevelNavOfTheItemThatHasBeenClicked, .4, {
 					className: '+=nav-list-level-3--ACTIVE',
 					ease: Power1.easeInOut
 				});
 	
-				//must do other stuff like carets and active state for the LI
+				TweenMax.to(arrayOfL2items, .4, {
+					className: '-=nav-list-level-2-item-ACTIVE',
+					ease: Power1.easeInOut
+				});
+				TweenMax.to(the2ndLevelItemThatHasBeenClicked, .4, {
+					className: '+=nav-list-level-2-item-ACTIVE',
+					ease: Power1.easeInOut
+				});
 			}
 		}
 	
 		function forceCloseL3Navs() {
+			//consider making timeline
+			TweenMax.to(arrayOftheL2NavSVGS, .01, {
+				className: '-=chevronMorphed',
+				ease: Power1.easeInOut
+			});
 			TweenMax.to(arrayOfTertiaryNavs, .1, {
 				className: '-=nav-list-level-3--ACTIVE',
+				ease: Power1.easeInOut
+			});
+			TweenMax.to(arrayOfL2items, .1, {
+				className: '-=nav-list-level-2-item-ACTIVE',
 				ease: Power1.easeInOut
 			});
 		}
@@ -250,9 +286,9 @@ webpackJsonp([0,1],[
 		navLevel2CloseButton.addEventListener('click', forceCloseStuff, false);
 	})();
 
-/***/ }),
+/***/ },
 /* 4 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -273,9 +309,9 @@ webpackJsonp([0,1],[
 	
 	navTrigger.addEventListener('click', mobileNavHideReveal, false);
 
-/***/ }),
+/***/ },
 /* 5 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	/*function testForTemplate(templateToTestFor){
 		if(document.querySelector(`.$templateToTestFor`){
@@ -327,9 +363,9 @@ webpackJsonp([0,1],[
 	
 	module.exports = utilFunctions;
 
-/***/ }),
+/***/ },
 /* 6 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	'use strict';
 	
@@ -345,6 +381,6 @@ webpackJsonp([0,1],[
 		};
 	});
 
-/***/ })
+/***/ }
 ]);
 //# sourceMappingURL=app.js.map

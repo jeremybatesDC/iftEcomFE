@@ -15,6 +15,7 @@ $black_translucent: rgba(0,0,0,0.95);
 */
 $ift-blue: rgba(87,134,199,1);
 $ift-blue-dark: rgba(44,91,153,1);
+$ift-blue-slightlyDarker: darken($ift-blue, 33.3333%);
 $ift-blue-darker: darken($ift-blue, 45%);
 
 /* Orange Hex
