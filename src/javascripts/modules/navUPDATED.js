@@ -37,7 +37,7 @@
 		arrayOfSecondLevelItemLinks.map(function(theSecondLevelItemLink){
 			if(theSecondLevelItemLink.parentNode.querySelector(`.${navListLevel3ClassString}`)){
 				theSecondLevelItemLink.addEventListener('click', toggleMyTertiaryNav, false);
-				console.log('i am a secondary nav with tertiary children');
+				//console.log('i am a secondary nav with tertiary children');
 			}	
 		})
 	}
@@ -117,7 +117,6 @@
 	}
 
 	
-
 	var overlayTimeline = new TimelineMax({paused:true});
 	overlayTimeline.to(navOverlayCloseTarget, .25, {
 			className: '+=overlayACTIVE',
@@ -126,13 +125,11 @@
 	);
 
 	var showHideCloseTimeline = new TimelineMax({paused:true});
-
 	showHideCloseTimeline.to(navLevel2CloseButton, .3333, {
 			className: '+=navLevel2CloseButton--ACTIVE',
 			ease: Power4.easeInOut
 		}
 	);
-
 
 	function forceCloseStuff(event, whatToClose, caseSibilingOpenOnCompleteFunction){
 
@@ -149,7 +146,6 @@
 			closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction);
 			showHideCloseTimeline.reverse();
 		}
-
 	}
 
 	function unMorphAllL2Chevrons(){
@@ -174,8 +170,6 @@
 		});
 	}
 
-	console.log(arrayOftheL2NavSVGS.length);
-
 
 	//only 2 cases so we can skip the decider function
 	function toggleMyTertiaryNav(event){
@@ -189,7 +183,6 @@
 		if(the3rdLevelNavOfTheItemThatHasBeenClicked.classList.contains(navListLevel3ClassStringACTIVE)){
 			//console.log('i was open when clicked so just close it all, dawg')
 			forceCloseL3Navs();
-
 		}
 
 		else {
@@ -221,19 +214,12 @@
 				className: '+=nav-list-level-2-item-ACTIVE',
 				ease: Power1.easeInOut
 			});
-
-			//must do other stuff like carets and active state for the LI
-
-
 			
 		}
-
-
-
 	}
 	
 	function forceCloseL3Navs(){
-
+		//consider making timeline
 		TweenMax.to(arrayOftheL2NavSVGS, .01, {
 			className: '-=chevronMorphed',
 			ease: Power1.easeInOut
@@ -248,7 +234,6 @@
 		});
 	}
 	
-
 	function closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction){
 		if(caseSibilingOpenOnCompleteFunction){
 			TweenMax.to(arrayOfNavTopLevelItems, .1, {
