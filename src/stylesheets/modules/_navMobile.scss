@@ -110,6 +110,22 @@
 			z-index: 4;
 			overflow-y: scroll;
 		}
+		.chevronDown {
+			
+			display: inline-block;;
+			position: absolute;
+			top:8px;
+			left:$gutter-width / 2;
+			width: 12px;
+			height: 12px;
+			fill:transparent;
+			stroke:$white;
+			stroke-width:3px;
+			opacity: 1;
+			transform: rotate(180deg);
+
+		}
+
 	}
 
 	.nav-list-top-level {
@@ -148,6 +164,7 @@
 
 	.nav-list-level-1--ACTIVE {
 		background-color:lighten($ift-blue, 5);
+		//background-color:$ift-blue-dark;
 
 	}
 	
@@ -238,7 +255,7 @@
 				html body & {
 					font-size: 1.4rem;
 					//color: $body-text-color;
-					color: $black;
+					color: $ift-blue-slightlyDarker;
 					font-weight: bold;
 				}
 				
