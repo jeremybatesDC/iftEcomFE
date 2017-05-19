@@ -6,20 +6,15 @@
     background: 0 0;
   }
   .btn {
-		width: 20rem;
-		max-width: none;
-		margin: 1rem auto;
-    margin-left:1.5rem;
-		display: block;
+    width: 20rem;
+    max-width: none;
+    margin: 1rem auto;
+    margin-left: 1.5rem;
+    display: block;
   }
 }
 
-#ctl00_MainContent_ctl00_dvMemberSavings .savingsHeader{
-  margin-left:1.5rem;
-  max-width: 21.5rem;
-}
-
-#ctl00_MainContent_ctl00_ProductINVBuyBoxControl_ProductDetailActionButtonControl1_AddWishlistButton{
+#ctl00_MainContent_ctl00_ProductINVBuyBoxControl_ProductDetailActionButtonControl1_AddWishlistButton {
   @include unButton()
 }
 
@@ -82,23 +77,55 @@
     min-width: 0;
     width: 100%;
     .quantityContainer .quantity {
-	    padding: .4rem;
-	    height: auto;
-	    border-color: $ift-blue;
-	    border-radius: 4px;
-	    transition: 300ms all;
-	    &:focus {
-	    	transition: 300ms all;
-				box-shadow: 0 0 4px #cbd0ef;
-			}
-		}
+      padding: .4rem;
+      height: auto;
+      border-color: $ift-blue;
+      border-radius: 4px;
+      transition: 300ms all;
+      &:focus {
+        transition: 300ms all;
+        box-shadow: 0 0 4px #cbd0ef;
+      }
+    }
   }
-  .savingsHeader{
+  .savingsHeader {
     max-width: 20rem;
   }
-
 }
-.savingsHeader{
+
+// View More/Less Icon
+.showMore.action-hyperlink,
+.showLess.action-hyperlink {
+  padding-left: 2.4rem !important;
+  display: block;
+  position: relative;
+
+  &:before {
+    font-family: monospace;
+    font-size: 2rem;
+    height: 2rem;
+    left: 0;
+    top: -4;
+    padding: 0px;
+    width: 2rem;
+    position: absolute;
+    border: 1px solid;
+    border-radius: 100%;
+    text-align: center;
+  }
+}
+
+.showLess.action-hyperlink:before {
+   content: "-";
+   line-height: .8;
+}
+
+.showMore.action-hyperlink:before {
+   content: "+";
+}
+
+// Savings Block
+.savingsHeader {
   position: relative;
   background-color: white;
   margin: 1rem auto;
@@ -106,7 +133,7 @@
   height: 4rem;
   max-width: 20rem;
   color: #333;
-  .savingsLink{
+  .savingsLink {
     color: #333;
   }
   // &:before,&:after{
@@ -118,15 +145,13 @@
   // &:before{
   //   top: 0;
   //   border-top: 2rem solid $ift-green-light;
-
   // }
   // &:after{
   //   bottom: 0;
   //   border-bottom: 2rem solid $ift-green-light;
-
   // }
-  .decore{
-    display:none;
+  .decore {
+    display: none;
   }
 }
 
