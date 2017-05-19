@@ -123,6 +123,10 @@
 			stroke-width:3px;
 			opacity: 1;
 			transform: rotate(180deg);
+			&.chevronMorphed {
+				transform: rotate(0);
+				stroke:$ift-blue-slightlyDarker;
+			}
 
 		}
 
@@ -200,6 +204,12 @@
 
 		}
 		li {
+			&.nav-list-level-2-item-ACTIVE {
+				> a {
+					color: $ift-blue-slightlyDarker;
+				}
+				
+			}
 			
 			a {
 				display: block;

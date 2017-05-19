@@ -8,13 +8,17 @@
 
 	const navListLevel2ClassString = 'nav-list-level-2';
 	const navListLevel3ClassString = 'nav-list-level-3';
-	const navListLevel2ClassStringACTIVE = 'nav-list-level-2--ACTIVE';
+	const navListLevel2ITEMClassStringACTIVE = 'nav-list-level-2-item-ACTIVE';
 	const navListLevel3ClassStringACTIVE = 'nav-list-level-3--ACTIVE';
 
 	const navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
 	const navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
 	const arrayOftheNavSVGS = [...document.querySelectorAll('.caretDown')];
+	const arrayOftheL2NavSVGS = [...document.querySelectorAll('.chevronDown')];
+
 	const arrayOfNavTopLevelItems = [...document.querySelectorAll('.nav-list-top-level > li')];
+	const arrayOfL2items = [...document.querySelectorAll('.nav-list-level-2 > li')];
+
 	const arrayOfNavTopLevelItemLinks = [...document.querySelectorAll('.nav-list-top-level > li > a')];
 	const arrayOfSecondLevelItemLinks = [...document.querySelectorAll('.nav-list-level-2 > li > a')];
 	const arrayOfL2subnavs = [...document.querySelectorAll(`.${navListLevel2ClassString}`)];
@@ -148,9 +152,18 @@
 
 	}
 
+	function unMorphAllL2Chevrons(){
+		TweenMax.to(arrayOftheL2NavSVGS, .1, {
+			className: '-=chevronMorphed',
+			ease: Power1.easeInOut
+		})
+	}
+
+
 	function unMorphAllCarets(){
 		TweenMax.to(arrayOftheNavSVGS, .01, {
-			className: '-=caretMorphed'
+			className: '-=caretMorphed',
+			ease: Power1.easeInOut
 		});
 	}
 
@@ -161,29 +174,51 @@
 		});
 	}
 
+	console.log(arrayOftheL2NavSVGS.length);
+
+
 	//only 2 cases so we can skip the decider function
 	function toggleMyTertiaryNav(event){
 		event.preventDefault();
 		the2ndLevelItemThatHasBeenClicked = event.currentTarget.parentNode;
 		the3rdLevelNavOfTheItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector(`.${navListLevel3ClassString}`);
-		theSVGOfTheL2ItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.caretDown');
+		theSVGOfTheL2ItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.chevronDown');
 
 		//remove all and do oncomplete if must then reopen
 
 		if(the3rdLevelNavOfTheItemThatHasBeenClicked.classList.contains(navListLevel3ClassStringACTIVE)){
 			//console.log('i was open when clicked so just close it all, dawg')
 			forceCloseL3Navs();
+
 		}
 
 		else {
 			//console.log('i was NOT open when clicked');
-			//on complete timing wasNot working for some reason, so doing manual tweens here
-			TweenMax.to(arrayOfTertiaryNavs, .25, {
+			//on complete timing wasNot working for some reason, so doing manually sequenced tweens here
+			TweenMax.to(arrayOftheL2NavSVGS, .4, {
+				className: '-=chevronMorphed',
+				ease: Power1.easeInOut
+			});
+			TweenMax.to(theSVGOfTheL2ItemThatHasBeenClicked, .4, {
+				className: '+=chevronMorphed',
+				ease: Power1.easeInOut
+			});
+
+			TweenMax.to(arrayOfTertiaryNavs, .4, {
 				className: '-=nav-list-level-3--ACTIVE',
 				ease: Power1.easeInOut
 			});
-			TweenMax.to(the3rdLevelNavOfTheItemThatHasBeenClicked, .25, {
+			TweenMax.to(the3rdLevelNavOfTheItemThatHasBeenClicked, .4, {
 				className: '+=nav-list-level-3--ACTIVE',
+				ease: Power1.easeInOut
+			});
+
+			TweenMax.to(arrayOfL2items, .4, {
+				className: '-=nav-list-level-2-item-ACTIVE',
+				ease: Power1.easeInOut
+			});
+			TweenMax.to(the2ndLevelItemThatHasBeenClicked, .4, {
+				className: '+=nav-list-level-2-item-ACTIVE',
 				ease: Power1.easeInOut
 			});
 
@@ -198,8 +233,17 @@
 	}
 	
 	function forceCloseL3Navs(){
+
+		TweenMax.to(arrayOftheL2NavSVGS, .01, {
+			className: '-=chevronMorphed',
+			ease: Power1.easeInOut
+		});
 		TweenMax.to(arrayOfTertiaryNavs, .1, {
 			className: '-=nav-list-level-3--ACTIVE',
+			ease: Power1.easeInOut
+		});
+		TweenMax.to(arrayOfL2items, .1, {
+			className: '-=nav-list-level-2-item-ACTIVE',
 			ease: Power1.easeInOut
 		});
 	}
