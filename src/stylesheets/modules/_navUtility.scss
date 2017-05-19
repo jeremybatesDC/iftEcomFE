@@ -19,6 +19,9 @@
 			bottom:-1px;
 		}
 		@include break(max, $breakpoint-max-mobile){
+			//temporary
+			display: none;
+			
 			.has-nav--ACTIVE & {
 				display: none;
 			}
