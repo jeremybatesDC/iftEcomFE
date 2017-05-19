@@ -20,7 +20,7 @@ webpackJsonp([0,1],[
 	
 	__webpack_require__(4);
 	
-	__webpack_require__(6);
+	__webpack_require__(5);
 
 /***/ }),
 /* 2 */
@@ -288,83 +288,44 @@ webpackJsonp([0,1],[
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	(function navMobile() {
+		var docBody = document.body;
+		var navTrigger = document.getElementById('navTrigger');
+		var navMain = document.getElementById('navMain');
+		var navMainActiveString = 'main-nav-on-canvas--STATE';
+		var navTriggerActiveString = 'navTrigger--ACTIVE';
+		var activeMobileNavClassString = 'has-nav--ACTIVE';
 	
-	var _libUtilFunctionsRevisedJs = __webpack_require__(5);
+		var mobileNavTimeline = new TimelineMax({ paused: true });
+		mobileNavTimeline.to(navTrigger, .1, {
+			className: '+=' + navTriggerActiveString,
+			ease: Power1.easeInOut
+		}).to(docBody, .1, {
+			className: '+=' + activeMobileNavClassString,
+			ease: Power1.easeInOut
+		}).to(navMain, .1, {
+			className: '+=' + navMainActiveString,
+			ease: Power1.easeInOut
+		});
 	
-	var _libUtilFunctionsRevisedJs2 = _interopRequireDefault(_libUtilFunctionsRevisedJs);
+		function mobileNavHideReveal(event) {
 	
-	//var timeline_navArrows = new TimelineMax({paused:true});
+			if (navMain.classList.contains(navMainActiveString)) {
+				mobileNavTimeline.reverse();
+			} else {
+				mobileNavTimeline.play();
+			}
+		}
 	
-	var navTrigger = document.getElementById('navTrigger');
-	var navMain = document.getElementById('navMain');
-	function mobileNavHideReveal() {
-		document.body.classList.toggle('has-nav--ACTIVE');
-		_libUtilFunctionsRevisedJs2['default'].toggleTween(.1, navMain, 'main-nav-on-canvas');
-	}
-	
-	navTrigger.addEventListener('click', mobileNavHideReveal, false);
+		navTrigger.addEventListener('click', mobileNavHideReveal, false);
+	})();
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports) {
-
-	/*function testForTemplate(templateToTestFor){
-		if(document.querySelector(`.$templateToTestFor`){
-			//do something
-		}
-	}*/
-	
-	// you can also reate a timeline and play/reverse
-	
-	'use strict';
-	
-	function toggleTween(tweenSpeed, thingToTween, classNameString, optionalFunction1, optionalFunction2) {
-		var addOpString = '+=';
-		var removeOpString = '-=';
-		if (thingToTween.classList.contains(classNameString)) {
-			TweenMax.to(thingToTween, tweenSpeed, {
-				className: '' + removeOpString + classNameString,
-				ease: Power1.ease
-			});
-			if (optionalFunction2) {
-				optionalFunction2();
-			}
-		} else {
-			TweenMax.to(thingToTween, tweenSpeed, {
-				className: '' + addOpString + classNameString,
-				ease: Power1.ease
-			});
-			if (optionalFunction1) {
-				optionalFunction1();
-			}
-		}
-	}
-	
-	function pureTweenTo(tweenSpeed, thingToTween, plusOrMinus, classNameString, optionalFunction1) {
-		TweenMax.to(thingToTween, tweenSpeed, {
-			className: '' + plusOrMinus + classNameString,
-			ease: Power1.ease
-		});
-	}
-	
-	function pureTweenArrayTo(tweenSpeed, thingToLoop, plusOrMinus, classNameString) {
-		for (var i = 0; i < thingToLoop.length; i++) {
-			var itemIteration = thingToLoop[i];
-			pureTweenThingTo(tweenSpeed, itemIteration, plusOrMinus, classNameString);
-		}
-	}
-	
-	var utilFunctions = { toggleTween: toggleTween, pureTweenTo: pureTweenTo, pureTweenArrayTo: pureTweenArrayTo };
-	
-	module.exports = utilFunctions;
-
-/***/ }),
-/* 6 */
 /***/ (function(module, exports) {
 
 	'use strict';
