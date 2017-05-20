@@ -54,9 +54,9 @@
 		//.has-nav--ACTIVE & {
 			background-color:transparent;
 			border:1px solid rgba($white,.3333);
-			width:4.8rem;
+			width:4.2rem;
 			min-width: 0;
-			height:4.8rem;
+			height:4.2rem;
 			line-height: 0;
 			//transform: translateX(-5%) translateY(5%);
 			border-radius: 50%;
@@ -89,12 +89,12 @@
 			}
 		}
 		svg {
-			width:18px;
-			height:18px;
+			width:16px;
+			height:16px;
 			fill:none;
 			stroke:rgba($white, 1);
 			stroke-width:1px;
-			margin-top: 3px;
+			margin-top: 2px;
 		}
 	}
 

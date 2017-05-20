@@ -44,10 +44,10 @@
 	;
 
 	function mobileNavHideReveal(event){
-
 		//this should also close l2 and l3 navs
 		if(navMain.classList.contains(navMainActiveString)){
 			mobileNavTimeline.reverse();
+			forceCloseStuff(event);
 		}
 		else {
 			mobileNavTimeline.play();
@@ -56,19 +56,17 @@
 
 	//if it has children, give it a listener. This allows top level items to behave like normal links if they have no children
 	function iterateThroughNavItems(){
-		
 		arrayOfNavTopLevelItemLinks.map(function(theTopLevelLink){
 			if(theTopLevelLink.parentNode.querySelector(`.${navListLevel2ClassString}`)){
 				theTopLevelLink.addEventListener('click', decideCase, false);
 			}
-		})
-
+		});
 		arrayOfSecondLevelItemLinks.map(function(theSecondLevelItemLink){
 			if(theSecondLevelItemLink.parentNode.querySelector(`.${navListLevel3ClassString}`)){
 				theSecondLevelItemLink.addEventListener('click', toggleMyTertiaryNav, false);
 				//console.log('i am a secondary nav with tertiary children');
 			}	
-		})
+		});
 	}
 
 	function decideCase(event){
@@ -159,7 +157,7 @@
 		closeAllLevel2Navs();
 		forceCloseL3Navs();
 
-		if(whatToClose === 'closeJustLevel2'){
+		if(whatToClose !== null && whatToClose === 'closeJustLevel2'){
 			closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction);
 		}
 
@@ -210,6 +208,7 @@
 		else {
 			//console.log('i was NOT open when clicked');
 			//on complete timing wasNot working for some reason, so doing manually sequenced tweens here
+
 			TweenMax.to(arrayOftheL2NavSVGS, .4, {
 				className: '-=chevronMorphed',
 				ease: Power1.easeInOut
