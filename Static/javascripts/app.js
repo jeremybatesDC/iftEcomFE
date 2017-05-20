@@ -54,17 +54,17 @@ webpackJsonp([0,1],[
 		var docBody = document.body;
 		var navTrigger = document.getElementById('navTrigger');
 		var navMain = document.getElementById('navMain');
+		var navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
+		var navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
+	
 		var navMainActiveString = 'main-nav-on-canvas--STATE';
 		var navTriggerActiveString = 'navTrigger--ACTIVE';
 		var bodyHasActiveMobileNavClassString = 'has-nav--ACTIVE';
-	
 		var navListLevel2ClassString = 'nav-list-level-2';
 		var navListLevel3ClassString = 'nav-list-level-3';
 		var navListLevel2ITEMClassStringACTIVE = 'nav-list-level-2-item-ACTIVE';
 		var navListLevel3ClassStringACTIVE = 'nav-list-level-3--ACTIVE';
 	
-		var navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
-		var navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
 		var arrayOftheNavSVGS = [].concat(_toConsumableArray(document.querySelectorAll('.caretDown')));
 		var arrayOftheL2NavSVGS = [].concat(_toConsumableArray(document.querySelectorAll('.chevronDown')));
 	
@@ -188,7 +188,6 @@ webpackJsonp([0,1],[
 			className: '+=overlayACTIVE',
 			ease: Power4.easeInOut
 		});
-	
 		var showHideCloseTimeline = new TimelineMax({ paused: true });
 		showHideCloseTimeline.to(navLevel2CloseButton, .3333, {
 			className: '+=navLevel2CloseButton--ACTIVE',

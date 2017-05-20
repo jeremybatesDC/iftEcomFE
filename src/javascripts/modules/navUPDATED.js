@@ -6,21 +6,20 @@
 	var the3rdLevelNavOfTheItemThatHasBeenClicked;
 	var theSVGOfTheL2ItemThatHasBeenClicked;
 
-
 	const docBody = document.body;
 	const navTrigger = document.getElementById('navTrigger');
 	const navMain = document.getElementById('navMain');
+	const navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
+	const navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
+
 	const navMainActiveString = 'main-nav-on-canvas--STATE';
 	const navTriggerActiveString = 'navTrigger--ACTIVE';
 	const bodyHasActiveMobileNavClassString = 'has-nav--ACTIVE';
-
 	const navListLevel2ClassString = 'nav-list-level-2';
 	const navListLevel3ClassString = 'nav-list-level-3';
 	const navListLevel2ITEMClassStringACTIVE = 'nav-list-level-2-item-ACTIVE';
 	const navListLevel3ClassStringACTIVE = 'nav-list-level-3--ACTIVE';
-
-	const navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
-	const navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
+	
 	const arrayOftheNavSVGS = [...document.querySelectorAll('.caretDown')];
 	const arrayOftheL2NavSVGS = [...document.querySelectorAll('.chevronDown')];
 
@@ -32,22 +31,17 @@
 	const arrayOfL2subnavs = [...document.querySelectorAll(`.${navListLevel2ClassString}`)];
 	const arrayOfTertiaryNavs = [...document.querySelectorAll('.nav-list-level-3')];
 
-
 	const mobileNavTimeline = new TimelineMax({paused:true});
 	mobileNavTimeline.set(docBody, {
 			className: `+=${bodyHasActiveMobileNavClassString}`
-		}
-	).to(navTrigger, .1, {
+		}).to(navTrigger, .1, {
 			className: `+=${navTriggerActiveString}`,
 			ease: Power1.easeInOut
-		}
-	).to(navMain, .1, {
+		}).to(navMain, .1, {
 			className: `+=${navMainActiveString}`,
 			ease: Power1.easeOut
-		}
-	)
+		})
 	;
-
 
 	function mobileNavHideReveal(event){
 
@@ -59,7 +53,6 @@
 			mobileNavTimeline.play();
 		}
 	}
-
 
 	//if it has children, give it a listener. This allows top level items to behave like normal links if they have no children
 	function iterateThroughNavItems(){
@@ -109,17 +102,13 @@
 		level2NavsTimeline.to(theLIinQuestion, .1, {
 				className: '+=nav-list-level-1--ACTIVE',
 				ease: Power1.easeInOut
-			}
-		).to(theSVGOfTheItemThatHasBeenClicked, .1, {
+			}).to(theSVGOfTheItemThatHasBeenClicked, .1, {
 				className: '+=caretMorphed',
 				ease: Power1.easeInOut
-			}
-		)
-		.to(theSubnavOfTheItemThatHasBeenClicked, .1, {
+			}).to(theSubnavOfTheItemThatHasBeenClicked, .1, {
 				className: '+=nav-list-level-2--ACTIVE',
 				ease: Power1.easeInOut
-			}
-		)
+			})
 		;
 
 		//wrapping this timeline play in a function gives an added layer of control here
@@ -155,17 +144,14 @@
 	
 	var overlayTimeline = new TimelineMax({paused:true});
 	overlayTimeline.to(navOverlayCloseTarget, .25, {
-			className: '+=overlayACTIVE',
-			ease: Power4.easeInOut
-		}
-	);
-
+		className: '+=overlayACTIVE',
+		ease: Power4.easeInOut
+	});
 	var showHideCloseTimeline = new TimelineMax({paused:true});
 	showHideCloseTimeline.to(navLevel2CloseButton, .3333, {
-			className: '+=navLevel2CloseButton--ACTIVE',
-			ease: Power4.easeInOut
-		}
-	);
+		className: '+=navLevel2CloseButton--ACTIVE',
+		ease: Power4.easeInOut
+	});
 
 	function forceCloseStuff(event, whatToClose, caseSibilingOpenOnCompleteFunction){
 
