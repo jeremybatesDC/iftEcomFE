@@ -1,13 +1,13 @@
 webpackJsonp([0,1],[
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(1);
 
 
-/***/ }),
+/***/ },
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	// *********************
 	//    Modules scripts
@@ -19,12 +19,10 @@ webpackJsonp([0,1],[
 	__webpack_require__(3);
 	
 	__webpack_require__(4);
-	
-	__webpack_require__(5);
 
-/***/ }),
+/***/ },
 /* 2 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	'use strict';
 	
@@ -37,9 +35,9 @@ webpackJsonp([0,1],[
 		}]
 	});
 
-/***/ }),
+/***/ },
 /* 3 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	'use strict';
 	
@@ -52,6 +50,13 @@ webpackJsonp([0,1],[
 		var the2ndLevelItemThatHasBeenClicked;
 		var the3rdLevelNavOfTheItemThatHasBeenClicked;
 		var theSVGOfTheL2ItemThatHasBeenClicked;
+	
+		var docBody = document.body;
+		var navTrigger = document.getElementById('navTrigger');
+		var navMain = document.getElementById('navMain');
+		var navMainActiveString = 'main-nav-on-canvas--STATE';
+		var navTriggerActiveString = 'navTrigger--ACTIVE';
+		var bodyHasActiveMobileNavClassString = 'has-nav--ACTIVE';
 	
 		var navListLevel2ClassString = 'nav-list-level-2';
 		var navListLevel3ClassString = 'nav-list-level-3';
@@ -70,6 +75,27 @@ webpackJsonp([0,1],[
 		var arrayOfSecondLevelItemLinks = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-2 > li > a')));
 		var arrayOfL2subnavs = [].concat(_toConsumableArray(document.querySelectorAll('.' + navListLevel2ClassString)));
 		var arrayOfTertiaryNavs = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-3')));
+	
+		var mobileNavTimeline = new TimelineMax({ paused: true });
+		mobileNavTimeline.set(docBody, {
+			className: '+=' + bodyHasActiveMobileNavClassString
+		}).to(navTrigger, .1, {
+			className: '+=' + navTriggerActiveString,
+			ease: Power1.easeInOut
+		}).to(navMain, .1, {
+			className: '+=' + navMainActiveString,
+			ease: Power1.easeOut
+		});
+	
+		function mobileNavHideReveal(event) {
+	
+			//this should also close l2 and l3 navs
+			if (navMain.classList.contains(navMainActiveString)) {
+				mobileNavTimeline.reverse();
+			} else {
+				mobileNavTimeline.play();
+			}
+		}
 	
 		//if it has children, give it a listener. This allows top level items to behave like normal links if they have no children
 		function iterateThroughNavItems() {
@@ -284,49 +310,12 @@ webpackJsonp([0,1],[
 		document.addEventListener('DOMContentLoaded', iterateThroughNavItems);
 		navOverlayCloseTarget.addEventListener('click', forceCloseStuff, false);
 		navLevel2CloseButton.addEventListener('click', forceCloseStuff, false);
-	})();
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	(function navMobile() {
-		var docBody = document.body;
-		var navTrigger = document.getElementById('navTrigger');
-		var navMain = document.getElementById('navMain');
-		var navMainActiveString = 'main-nav-on-canvas--STATE';
-		var navTriggerActiveString = 'navTrigger--ACTIVE';
-		var activeMobileNavClassString = 'has-nav--ACTIVE';
-	
-		var mobileNavTimeline = new TimelineMax({ paused: true });
-		mobileNavTimeline.to(navTrigger, .1, {
-			className: '+=' + navTriggerActiveString,
-			ease: Power1.easeInOut
-		}).to(docBody, .1, {
-			className: '+=' + activeMobileNavClassString,
-			ease: Power1.easeInOut
-		}).to(navMain, .1, {
-			className: '+=' + navMainActiveString,
-			ease: Power1.easeInOut
-		});
-	
-		function mobileNavHideReveal(event) {
-	
-			if (navMain.classList.contains(navMainActiveString)) {
-				mobileNavTimeline.reverse();
-			} else {
-				mobileNavTimeline.play();
-			}
-		}
-	
 		navTrigger.addEventListener('click', mobileNavHideReveal, false);
 	})();
 
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
+/***/ },
+/* 4 */
+/***/ function(module, exports) {
 
 	'use strict';
 	
@@ -342,6 +331,6 @@ webpackJsonp([0,1],[
 		};
 	});
 
-/***/ })
+/***/ }
 ]);
 //# sourceMappingURL=app.js.map

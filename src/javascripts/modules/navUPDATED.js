@@ -6,6 +6,14 @@
 	var the3rdLevelNavOfTheItemThatHasBeenClicked;
 	var theSVGOfTheL2ItemThatHasBeenClicked;
 
+
+	const docBody = document.body;
+	const navTrigger = document.getElementById('navTrigger');
+	const navMain = document.getElementById('navMain');
+	const navMainActiveString = 'main-nav-on-canvas--STATE';
+	const navTriggerActiveString = 'navTrigger--ACTIVE';
+	const bodyHasActiveMobileNavClassString = 'has-nav--ACTIVE';
+
 	const navListLevel2ClassString = 'nav-list-level-2';
 	const navListLevel3ClassString = 'nav-list-level-3';
 	const navListLevel2ITEMClassStringACTIVE = 'nav-list-level-2-item-ACTIVE';
@@ -23,6 +31,34 @@
 	const arrayOfSecondLevelItemLinks = [...document.querySelectorAll('.nav-list-level-2 > li > a')];
 	const arrayOfL2subnavs = [...document.querySelectorAll(`.${navListLevel2ClassString}`)];
 	const arrayOfTertiaryNavs = [...document.querySelectorAll('.nav-list-level-3')];
+
+
+	const mobileNavTimeline = new TimelineMax({paused:true});
+	mobileNavTimeline.set(docBody, {
+			className: `+=${bodyHasActiveMobileNavClassString}`
+		}
+	).to(navTrigger, .1, {
+			className: `+=${navTriggerActiveString}`,
+			ease: Power1.easeInOut
+		}
+	).to(navMain, .1, {
+			className: `+=${navMainActiveString}`,
+			ease: Power1.easeOut
+		}
+	)
+	;
+
+
+	function mobileNavHideReveal(event){
+
+		//this should also close l2 and l3 navs
+		if(navMain.classList.contains(navMainActiveString)){
+			mobileNavTimeline.reverse();
+		}
+		else {
+			mobileNavTimeline.play();
+		}
+	}
 
 
 	//if it has children, give it a listener. This allows top level items to behave like normal links if they have no children
@@ -254,5 +290,6 @@
 	document.addEventListener('DOMContentLoaded', iterateThroughNavItems);
 	navOverlayCloseTarget.addEventListener('click', forceCloseStuff, false);
 	navLevel2CloseButton.addEventListener('click', forceCloseStuff, false );
+	navTrigger.addEventListener('click', mobileNavHideReveal, false);
 
 })();
