@@ -25,14 +25,18 @@
 
 
 .nav-main {
-	//width:100%;
+	max-width:100%;
+	&.container,
+	&.contained {
+		max-width:100%;
+	}
 	position: relative;
 	display:flex;
 	justify-content:center;
 	margin-top:1.5em;
 	margin-bottom:1.25em;
 	z-index:4;
-	@include break(min, $breakpoint-min-tablet){
+	@include break(min, $breakpoint-min-md){
 		.chevronDown {
 			display: none;
 		}
@@ -70,7 +74,7 @@
 	margin-left:.3rem;
 	//transition: opacity .3333s ease-in-out;
 	
-	@include break(min, $breakpoint-min-tablet){
+	@include break(min, $breakpoint-min-md){
 		//temporary -- must decrease height of nav on tablet
 		transform: rotate(180deg) scale(3) translateY(-150%);
 		left:calc(50% - 8px);
@@ -104,7 +108,7 @@
 	display:flex;
 	
 	
-	@include break(min, $breakpoint-min-tablet){
+	@include break(min, $breakpoint-min-md){
 		//padding-right:6.6666vw;
 		//text-align:right;
 		flex-direction: row;
@@ -167,7 +171,7 @@
 		
 		}
 		&.nav-list-level-1--ACTIVE {
-			@include break(min, $breakpoint-min-tablet){
+			@include break(min, $breakpoint-min-md){
 				background-image: linear-gradient(to top,$white 50%,$white 50%);
 				background-size:100% 5px;
 				> a {
@@ -198,7 +202,7 @@
 
 	text-align:left;
 	opacity: 0;
-	@include break(min, $breakpoint-min-tablet){
+	@include break(min, $breakpoint-min-md){
 		min-height:10rem;
 		left:0;
 		padding-top:3em;
@@ -216,7 +220,7 @@
 		visibility: visible;
 		opacity: 1;
 		z-index: 2;
-		@include break(min, $breakpoint-min-tablet){
+		@include break(min, $breakpoint-min-md){
 			transform:translateX(0);
 		}
 	}
@@ -240,7 +244,7 @@
 			span {
 				transition: $ift-timing;
 			}
-			@include break(min, $breakpoint-min-tablet){
+			@include break(min, $breakpoint-min-md){
 				&:hover,
 				&:active,
 				&:focus  {
@@ -339,7 +343,7 @@
 // }
 
 .nav-list-level-3 {
-	@include break(max, $breakpoint-max-mobile){
+	@include break(max, $breakpoint-max-1023){
 		> li {
 			> a {
 				html body & {
@@ -351,7 +355,7 @@
 		}
 	}
 
-	@include break(min, $breakpoint-min-tablet){
+	@include break(min, $breakpoint-min-md){
 		li {
 			font-size: 1.2rem;
 			a {

@@ -9,7 +9,7 @@
 		margin-bottom: 0;
 		padding-bottom:0;
 	}
-	@include break(max, $breakpoint-max-mobile){
+	@include break(max, $breakpoint-max-1023){
 		.row {
 			padding-bottom:0;
 		}
@@ -30,7 +30,7 @@
 }
 
 .logo--footer {
-	@include break(max, $breakpoint-max-mobile){
+	@include break(max, $breakpoint-max-1023){
 		max-width:10rem;
 		margin-left: $gutter-width / 2;
 	}
@@ -55,7 +55,7 @@
 	background-color:$white;
 	padding:$gutter-width $gutter-width 0 $gutter-width;
 	
-	@include break(max, $breakpoint-max-mobile){
+	@include break(max, $breakpoint-max-1023){
 		display: none;
 		.column-auto {
 			padding-left: $gutter-width/2;
@@ -64,8 +64,9 @@
 			}
 		}
 	}
-	@include break(min, $breakpoint-min-tablet){
-		
+	@include break(min, $breakpoint-min-md){
+		//padding-right:5vw;
+		//padding-left:5vw;
 		.column-auto {
 			padding-left: $gutter-width/2;
 			&:first-child {
@@ -74,10 +75,7 @@
 
 		}
 	}
-	@include break(min, $breakpoint-min-md){
-		padding-right:5vw;
-		padding-left:5vw;
-	}
+
 	@include break(min, $breakpoint-min-xxl){
 		
 		padding-right:0;
@@ -97,7 +95,7 @@
 
 .footer__linksList {
 	list-style: none;
-	@include break(max, $breakpoint-max-mobile){
+	@include break(max, $breakpoint-max-1023){
 		//padding-left: $gutter-width;
 		text-align: center;
 		margin-bottom: $gutter-width / 2;
@@ -142,7 +140,7 @@
 		text-align: center;
 	}
 	
-	@include break(max, $breakpoint-max-mobile) {
+	@include break(max, $breakpoint-max-1023) {
 		background-size:333%;
 		[class^="col"]{
 			align-self: center;

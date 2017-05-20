@@ -231,11 +231,11 @@ main {
 	position:relative;
 	background:$ift-grey-light;
 	padding-bottom:$gutter-width * 2;
-	@include break(max, $breakpoint-max-mobile){
+	@include break(max, $breakpoint-max-1023){
 		//temporary approximate value
 		padding-top: 75px;
 	}
-	@include break(min, $breakpoint-min-tablet){
+	@include break(min, $breakpoint-min-md){
 		//temporary approximate value
 		padding-top: 150px;
 	}

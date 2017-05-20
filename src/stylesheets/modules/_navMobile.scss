@@ -1,5 +1,5 @@
 //phone (tablet TBA)
-@include break(max, $breakpoint-max-mobile){
+@include break(max, $breakpoint-max-1023){
 	//this isn't fading correctly
 	#navOverlayCloseTarget {display: none;}
 	.nav-combined--wrapper{
