@@ -94,7 +94,7 @@
 			fill:none;
 			stroke:rgba($white, 1);
 			stroke-width:1px;
-			margin-top: 2px;
+			margin-top: 1px;
 		}
 	}
 
@@ -108,15 +108,17 @@
 		height: 100vh;
 		margin:0;
 		padding-top: 2rem;
-		background-color: transparent;
+		color: $white;
+		background-color: $ift-blue;
 		color: transparent;
 		opacity: 0;
-		z-index: -9;
+		z-index: 4;
+		box-shadow:0 50em $ift-blue;
 		&.main-nav-on-canvas--STATE {
 			visibility: visible;
-			color: $white;
-			background-color:$ift-blue;
-			box-shadow:0 50em $ift-blue;
+			//color: $white;
+			//background-color:$ift-blue;
+			
 			opacity: 1;
 			z-index: 4;
 			overflow-y: scroll;

@@ -79,12 +79,12 @@ webpackJsonp([0,1],[
 		var mobileNavTimeline = new TimelineMax({ paused: true });
 		mobileNavTimeline.set(docBody, {
 			className: '+=' + bodyHasActiveMobileNavClassString
-		}).to(navTrigger, .1, {
-			className: '+=' + navTriggerActiveString,
-			ease: Power1.easeInOut
-		}).to(navMain, .1, {
+		}).to(navMain, .2, {
 			className: '+=' + navMainActiveString,
 			ease: Power1.easeOut
+		}).to(navTrigger, .2, {
+			className: '+=' + navTriggerActiveString,
+			ease: Power1.easeInOut
 		});
 	
 		function mobileNavHideReveal(event) {
