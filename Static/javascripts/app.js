@@ -82,10 +82,10 @@ webpackJsonp([0,1],[
 		}).to(navMain, .2, {
 			className: '+=' + navMainActiveString,
 			ease: Power1.easeOut
-		}).to(navTrigger, .2, {
+		}).to(navTrigger, .125, {
 			className: '+=' + navTriggerActiveString,
-			ease: Power1.easeInOut
-		});
+			ease: Power1.easeOut
+		}, 0);
 	
 		function mobileNavHideReveal(event) {
 			//this should also close l2 and l3 navs
@@ -125,7 +125,6 @@ webpackJsonp([0,1],[
 				//man, i guess nobody is open.
 				else {
 						theScenario = 'nobodyOpenWhenClicked';
-						//addOverlayForOustideClick();
 					}
 	
 			toggleMySubnav(event, theScenario);
@@ -234,8 +233,6 @@ webpackJsonp([0,1],[
 			the2ndLevelItemThatHasBeenClicked = event.currentTarget.parentNode;
 			the3rdLevelNavOfTheItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.' + navListLevel3ClassString);
 			theSVGOfTheL2ItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.chevronDown');
-	
-			//remove all and do oncomplete if must then reopen
 	
 			if (the3rdLevelNavOfTheItemThatHasBeenClicked.classList.contains(navListLevel3ClassStringACTIVE)) {
 				//console.log('i was open when clicked so just close it all, dawg')

@@ -37,10 +37,10 @@
 		}).to(navMain, .2, {
 			className: `+=${navMainActiveString}`,
 			ease: Power1.easeOut
-		}).to(navTrigger, .2, {
+		}).to(navTrigger, .125, {
 			className: `+=${navTriggerActiveString}`,
-			ease: Power1.easeInOut
-		})
+			ease: Power1.easeOut
+		}, 0)
 	;
 
 	function mobileNavHideReveal(event){
@@ -82,7 +82,6 @@
 		//man, i guess nobody is open.
 		else {
 			theScenario = 'nobodyOpenWhenClicked';
-			//addOverlayForOustideClick();
 		}
 		
 		toggleMySubnav(event, theScenario);
@@ -138,7 +137,6 @@
 				break;
 		}
 	}
-
 	
 	var overlayTimeline = new TimelineMax({paused:true});
 	overlayTimeline.to(navOverlayCloseTarget, .25, {
@@ -175,7 +173,6 @@
 		})
 	}
 
-
 	function unMorphAllCarets(){
 		TweenMax.to(arrayOftheNavSVGS, .01, {
 			className: '-=caretMorphed',
@@ -190,7 +187,6 @@
 		});
 	}
 
-
 	//only 2 cases so we can skip the decider function
 	function toggleMyTertiaryNav(event){
 		event.preventDefault();
@@ -198,7 +194,6 @@
 		the3rdLevelNavOfTheItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector(`.${navListLevel3ClassString}`);
 		theSVGOfTheL2ItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.chevronDown');
 
-		//remove all and do oncomplete if must then reopen
 
 		if(the3rdLevelNavOfTheItemThatHasBeenClicked.classList.contains(navListLevel3ClassStringACTIVE)){
 			//console.log('i was open when clicked so just close it all, dawg')
@@ -235,7 +230,6 @@
 				className: '+=nav-list-level-2-item-ACTIVE',
 				ease: Power1.easeInOut
 			});
-			
 		}
 	}
 	

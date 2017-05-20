@@ -6,7 +6,7 @@
 	> .header__logo {
 		display: block;
 		> img {
-			width: 10rem;
+			width: 8.5rem;
 		}
 	}
 
@@ -38,9 +38,14 @@
 	
 	@include break(max, $breakpoint-max-mobile){
 		top:.25rem;
-		width: 10rem;
-		height:4.5rem;
+		width: 6rem;
+		height:4.4rem;
 		left:.5rem;
+		background-image:url(/img/logo/ift_logo_NOTAG_mobile.svg);
+		background-size:contain;
+		img {
+			display: none;
+		}
 		svg {
 			width: 10rem;
 			height:4.5rem;
