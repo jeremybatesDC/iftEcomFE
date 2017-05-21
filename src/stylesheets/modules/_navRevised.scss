@@ -25,10 +25,10 @@
 
 
 .nav-main {
-	max-width:100%;
+	max-width:$breakpoint-min-md;
 	&.container,
 	&.contained {
-		max-width:100%;
+		max-width:$breakpoint-min-md;
 	}
 	position: relative;
 	display:flex;
@@ -71,18 +71,18 @@
 	width: 12px;
 	height: 12px;
 	fill:transparent;
-	margin-left:.3rem;
+	//margin-left:.3rem;
 	//transition: opacity .3333s ease-in-out;
 	
 	@include break(min, $breakpoint-min-md){
 		//temporary -- must decrease height of nav on tablet
-		transform: rotate(180deg) scale(3) translateY(-150%);
-		left:calc(50% - 8px);
+		transform: rotate(180deg) scale(3) translateX(50%) translateY(-150%);
+		left:calc(50% + 12px);
 		fill:transparent;
 		&.caretMorphed {	
 			//height: 12px;
 			fill:$ift-grey-darker;
-			transform: rotate(180deg) scale(3) translateY(-105%);
+			transform: rotate(180deg) scale(3) translateX(50%) translateY(-105%);
 			
 			.body-home & {
 				fill:transparent;
@@ -122,7 +122,7 @@
 	}
 	> li {
 		display: inline-block;
-		vertical-align: top;
+		vertical-align: middle;
 		line-height: 1;
 		padding-top:.3rem;
 		margin-left: $gutter-width;
@@ -135,6 +135,7 @@
 			font-family: $headlineFont;
 		}
 		> a {
+			display: inline-block;
 			position:relative;
 			font-size: 1.2rem;
 			line-height: 1;
@@ -150,6 +151,8 @@
 				background-color:transparent;
 			}
 			span {
+				display: inline-block;
+				vertical-align: middle;
 				transition:$ift-timing;
 				&:hover,
 				&:active,
@@ -172,18 +175,20 @@
 		}
 		&.nav-list-level-1--ACTIVE {
 			@include break(min, $breakpoint-min-md){
-				background-image: linear-gradient(to top,$white 50%,$white 50%);
-				background-size:100% 5px;
+				//background-image: linear-gradient(to top,$white 50%,$white 50%);
+				//background-size:100% 5px;
+				//the top overline looks bad when top level nav item text wraps
 				> a {
-					.body-home .scrolled--STATE & {
-						color: $white;
-					}
+					color: $ift-blue-slightlyDarker;
+					// .body-home .scrolled--STATE & {
+					// 	color: $white;
+					// }
 					> span {
 						&:hover {
-							color: $white;
-							.body-home .scrolled--STATE & {
-								color: $white;
-							}
+							color: $ift-blue-slightlyDarker;
+							// .body-home .scrolled--STATE & {
+							// 	color: $white;
+							// }
 						}
 					}
 				}
