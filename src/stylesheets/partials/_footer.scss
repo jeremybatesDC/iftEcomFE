@@ -58,15 +58,25 @@
 	@include break(max, $breakpoint-max-1023){
 		display: none;
 		.column-auto {
-			padding-left: $gutter-width/2;
+			padding-left: $gutter-width/4;
 			&:first-child {
-				padding-left: $gutter-width/2;
+				padding-left: $gutter-width/4;
 			}
 		}
 	}
 	@include break(min, $breakpoint-min-md){
 		//padding-right:5vw;
 		//padding-left:5vw;
+		.column-auto {
+			padding-left: $gutter-width/4;
+			&:first-child {
+				padding-left: $gutter-width/4;
+			}
+
+		}
+	}
+
+	@include break(min, $breakpoint-min-lg){
 		.column-auto {
 			padding-left: $gutter-width/2;
 			&:first-child {

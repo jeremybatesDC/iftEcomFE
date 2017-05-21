@@ -76,6 +76,8 @@
 	
 	@include break(min, $breakpoint-min-md){
 		//temporary -- must decrease height of nav on tablet
+		width: 12px;
+		height: 12px;
 		transform: rotate(180deg) scale(3) translateX(50%) translateY(-150%);
 		left:calc(50% + 12px);
 		fill:transparent;
@@ -254,7 +256,7 @@
 				&:active,
 				&:focus  {
 					background-image: linear-gradient(to top,$ift-blue 50%,$ift-blue 50%);
-					background-size:100% 5px;
+					background-size:100% 3px;
 					span {
 						color: $ift-blue;
 					}
@@ -295,34 +297,37 @@
 	border-radius:50%;
 	border:1px solid rgba($white, .3333);
 	//text-align:center;
+	cursor: pointer;
 	svg {
 		position:absolute;
 		top:50%;
 		left: 50%;
-		width:24px;
-		height:24px;
+		width:18px;
+		height:18px;
 		fill:none;
 		stroke:rgba($white, .3333);
 		stroke-width:1px;
 		transform: translate(-50%, -50%);
 		transition: $ift-timing;
-		
+		cursor: pointer;
 	}
 	&:hover,
 	&:active,
 	&:focus {
 		background-color:rgba($white,.1);
 		border-color:rgba($white,.1);
+		cursor: pointer;
 		svg {
 			stroke:$white;
+			cursor: pointer;
 		}
 
 	}
 	&.navLevel2CloseButton--ACTIVE {
 		visibility: visible;
 		opacity: 1;
-		width: 48px;
-		height:48px;
+		width: 3.6rem;
+		height:3.6rem;
 	}
 }
 
@@ -333,7 +338,7 @@
 	left:0;
 	width:100vw;
 	height: 0;
-	background: linear-gradient(to bottom, rgba($ift-grey-darker, 1) 33%,rgba($ift-grey-darker, .75) 100%);
+	background: linear-gradient(to bottom, rgba($ift-grey-darker, 1) 33%,rgba($ift-grey-darker, .85) 100%);
 	z-index:2;
 	&.overlayACTIVE {
 		height:100vh;
