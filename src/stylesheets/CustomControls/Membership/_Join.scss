@@ -1,0 +1,94 @@
+// Restes
+#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
+	background-color: transparent;
+}
+
+.RegistrationControl_PersonifyDefault.Base_PersonifyDefault.Base_PersonifyDefault {
+	background: white;
+	padding: 20px;
+	margin: 0;
+	width: auto;
+}
+#MainContent_ctl00_MembershipDetail_ContainerPanel{
+	width: 100%;
+}
+.productDetails.ctrl-memb-prd-detail {
+	display: block;
+	margin-left: 0;
+	.productName {
+		font-size: 24px;
+		padding-top: 20px;
+	}
+}
+.MembershipDetailControl_PersonifyDefault .productImage.ctrl-memb-img {
+		margin: 20px;
+		position: static;
+		float: left;
+	}
+#MainContent_ctl00_UserRegistrationControl_UserAlreadyLoggedInPanel {
+	.memberName,.regContactsTitle{
+		padding-bottom: 10px;
+	}
+	.welcomeBack {
+		display: block;
+		margin-left: 0;
+		margin-top: 0;
+	}
+}
+
+// Nav
+.WizardBannerControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
+	margin-bottom: 40px;
+	display: flex;
+	span {
+		//personify override
+		span {
+			width: auto !important;
+		}
+	}
+	span.step {
+		flex-grow: 1;
+		position: relative;
+		background: transparent;
+		border-bottom: 3px solid $ift-grey-230;
+		color: $ift-grey-medium-light;
+		text-align: left;
+		padding-left: 60px !important;
+		.prefix,
+		.sep,
+		.divider {
+			display: none;
+		}
+		.stepLabel {
+			font-size: 14px;
+		}
+		.number {
+			width: 30px!important;
+			height: 30px!important;
+			border-radius: 100% !important;
+			border: 1px solid white;
+			box-shadow: none;
+			color: white;
+			position: absolute;
+			left: 20px;
+			text-shadow: none !important;
+			top: 9px;
+			padding: 5px 0;
+			text-align: center;
+			background-color: $ift-grey-medium-light;
+		}
+		.stepLabel {
+			color: $ift-grey-medium-light;
+		}
+		&.active {
+			background-color: $ift-green !important;
+			border-bottom-color: $ift-green !important;
+			.stepLabel {
+				color: $white;
+			}
+			.number {
+				background-color: transparent;
+			}
+		}
+	}
+}

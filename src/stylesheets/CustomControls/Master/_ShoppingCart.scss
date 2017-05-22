@@ -230,7 +230,12 @@ table.totals * {
     padding-top: 20px;
 }
 div.WizardHeaderControl_PersonifyDefault{
+	display: flex;
 	margin-bottom: 40px;
+	// Remove Clearfix
+	&:before,&:after{
+		display: none;
+	}
 	span {
 		//personify override
 		span {
@@ -238,6 +243,7 @@ div.WizardHeaderControl_PersonifyDefault{
 		}
 	}
 	span.step {
+		flex-grow: 1;
 		background: transparent;
 		border-color: $ift-grey-230;
 		color: $ift-grey-medium-light;
