@@ -13,7 +13,9 @@
     display: block;
   }
 }
-
+.ProductDetailBlockCell a.action-hyperlink:last-child {
+    display: none;
+}
 #ctl00_MainContent_ctl00_ProductINVBuyBoxControl_ProductDetailActionButtonControl1_AddWishlistButton {
   @include unButton()
 }
