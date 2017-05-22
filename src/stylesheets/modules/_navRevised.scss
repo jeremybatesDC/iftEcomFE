@@ -25,14 +25,18 @@
 
 
 .nav-main {
-	//width:100%;
+	max-width:$breakpoint-min-md;
+	&.container,
+	&.contained {
+		max-width:$breakpoint-min-md;
+	}
 	position: relative;
 	display:flex;
 	justify-content:center;
 	margin-top:1.5em;
 	margin-bottom:1.25em;
 	z-index:4;
-	@include break(min, $breakpoint-min-tablet){
+	@include break(min, $breakpoint-min-md){
 		.chevronDown {
 			display: none;
 		}
@@ -67,18 +71,20 @@
 	width: 12px;
 	height: 12px;
 	fill:transparent;
-	margin-left:.3rem;
+	//margin-left:.3rem;
 	//transition: opacity .3333s ease-in-out;
 	
-	@include break(min, $breakpoint-min-tablet){
+	@include break(min, $breakpoint-min-md){
 		//temporary -- must decrease height of nav on tablet
-		transform: rotate(180deg) scale(3) translateY(-150%);
-		left:calc(50% - 8px);
+		width: 12px;
+		height: 12px;
+		transform: rotate(180deg) scale(3) translateX(50%) translateY(-150%);
+		left:calc(50% + 12px);
 		fill:transparent;
 		&.caretMorphed {	
 			//height: 12px;
 			fill:$ift-grey-darker;
-			transform: rotate(180deg) scale(3) translateY(-105%);
+			transform: rotate(180deg) scale(3) translateX(50%) translateY(-105%);
 			
 			.body-home & {
 				fill:transparent;
@@ -104,7 +110,7 @@
 	display:flex;
 	
 	
-	@include break(min, $breakpoint-min-tablet){
+	@include break(min, $breakpoint-min-md){
 		//padding-right:6.6666vw;
 		//text-align:right;
 		flex-direction: row;
@@ -118,7 +124,7 @@
 	}
 	> li {
 		display: inline-block;
-		vertical-align: top;
+		vertical-align: middle;
 		line-height: 1;
 		padding-top:.3rem;
 		margin-left: $gutter-width;
@@ -131,6 +137,7 @@
 			font-family: $headlineFont;
 		}
 		> a {
+			display: inline-block;
 			position:relative;
 			font-size: 1.2rem;
 			line-height: 1;
@@ -146,6 +153,8 @@
 				background-color:transparent;
 			}
 			span {
+				display: inline-block;
+				vertical-align: middle;
 				transition:$ift-timing;
 				&:hover,
 				&:active,
@@ -167,19 +176,21 @@
 		
 		}
 		&.nav-list-level-1--ACTIVE {
-			@include break(min, $breakpoint-min-tablet){
-				background-image: linear-gradient(to top,$white 50%,$white 50%);
-				background-size:100% 5px;
+			@include break(min, $breakpoint-min-md){
+				//background-image: linear-gradient(to top,$white 50%,$white 50%);
+				//background-size:100% 5px;
+				//the top overline looks bad when top level nav item text wraps
 				> a {
-					.body-home .scrolled--STATE & {
-						color: $white;
-					}
+					color: $ift-blue-slightlyDarker;
+					// .body-home .scrolled--STATE & {
+					// 	color: $white;
+					// }
 					> span {
 						&:hover {
-							color: $white;
-							.body-home .scrolled--STATE & {
-								color: $white;
-							}
+							color: $ift-blue-slightlyDarker;
+							// .body-home .scrolled--STATE & {
+							// 	color: $white;
+							// }
 						}
 					}
 				}
@@ -198,12 +209,12 @@
 
 	text-align:left;
 	opacity: 0;
-	@include break(min, $breakpoint-min-tablet){
+	@include break(min, $breakpoint-min-md){
 		min-height:10rem;
 		left:0;
 		padding-top:3em;
 		//for animation
-		transform:translate(-2vw);
+		transform:translateX(-2vw);
 		> li {
 			display: inline-block;
 			width: 24.3333%;
@@ -216,7 +227,7 @@
 		visibility: visible;
 		opacity: 1;
 		z-index: 2;
-		@include break(min, $breakpoint-min-tablet){
+		@include break(min, $breakpoint-min-md){
 			transform:translateX(0);
 		}
 	}
@@ -240,12 +251,12 @@
 			span {
 				transition: $ift-timing;
 			}
-			@include break(min, $breakpoint-min-tablet){
+			@include break(min, $breakpoint-min-md){
 				&:hover,
 				&:active,
 				&:focus  {
 					background-image: linear-gradient(to top,$ift-blue 50%,$ift-blue 50%);
-					background-size:100% 5px;
+					background-size:100% 3px;
 					span {
 						color: $ift-blue;
 					}
@@ -286,34 +297,37 @@
 	border-radius:50%;
 	border:1px solid rgba($white, .3333);
 	//text-align:center;
+	cursor: pointer;
 	svg {
 		position:absolute;
 		top:50%;
 		left: 50%;
-		width:24px;
-		height:24px;
+		width:18px;
+		height:18px;
 		fill:none;
 		stroke:rgba($white, .3333);
 		stroke-width:1px;
 		transform: translate(-50%, -50%);
 		transition: $ift-timing;
-		
+		cursor: pointer;
 	}
 	&:hover,
 	&:active,
 	&:focus {
 		background-color:rgba($white,.1);
 		border-color:rgba($white,.1);
+		cursor: pointer;
 		svg {
 			stroke:$white;
+			cursor: pointer;
 		}
 
 	}
 	&.navLevel2CloseButton--ACTIVE {
 		visibility: visible;
 		opacity: 1;
-		width: 48px;
-		height:48px;
+		width: 3.6rem;
+		height:3.6rem;
 	}
 }
 
@@ -324,7 +338,7 @@
 	left:0;
 	width:100vw;
 	height: 0;
-	background: linear-gradient(to bottom, rgba($ift-grey-darker, 1) 33%,rgba($ift-grey-darker, .75) 100%);
+	background: linear-gradient(to bottom, rgba($ift-grey-darker, 1) 33%,rgba($ift-grey-darker, .85) 100%);
 	z-index:2;
 	&.overlayACTIVE {
 		height:100vh;
@@ -339,7 +353,7 @@
 // }
 
 .nav-list-level-3 {
-	@include break(max, $breakpoint-max-mobile){
+	@include break(max, $breakpoint-max-1023){
 		> li {
 			> a {
 				html body & {
@@ -351,7 +365,7 @@
 		}
 	}
 
-	@include break(min, $breakpoint-min-tablet){
+	@include break(min, $breakpoint-min-md){
 		li {
 			font-size: 1.2rem;
 			a {

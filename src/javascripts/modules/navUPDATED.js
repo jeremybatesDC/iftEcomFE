@@ -6,13 +6,20 @@
 	var the3rdLevelNavOfTheItemThatHasBeenClicked;
 	var theSVGOfTheL2ItemThatHasBeenClicked;
 
+	const docBody = document.body;
+	const navTrigger = document.getElementById('navTrigger');
+	const navMain = document.getElementById('navMain');
+	const navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
+	const navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
+
+	const navMainActiveString = 'main-nav-on-canvas--STATE';
+	const navTriggerActiveString = 'navTrigger--ACTIVE';
+	const bodyHasActiveMobileNavClassString = 'has-nav--ACTIVE';
 	const navListLevel2ClassString = 'nav-list-level-2';
 	const navListLevel3ClassString = 'nav-list-level-3';
 	const navListLevel2ITEMClassStringACTIVE = 'nav-list-level-2-item-ACTIVE';
 	const navListLevel3ClassStringACTIVE = 'nav-list-level-3--ACTIVE';
-
-	const navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
-	const navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
+	
 	const arrayOftheNavSVGS = [...document.querySelectorAll('.caretDown')];
 	const arrayOftheL2NavSVGS = [...document.querySelectorAll('.chevronDown')];
 
@@ -24,22 +31,42 @@
 	const arrayOfL2subnavs = [...document.querySelectorAll(`.${navListLevel2ClassString}`)];
 	const arrayOfTertiaryNavs = [...document.querySelectorAll('.nav-list-level-3')];
 
+	const mobileNavTimeline = new TimelineMax({paused:true});
+	mobileNavTimeline.set(docBody, {
+			className: `+=${bodyHasActiveMobileNavClassString}`
+		}).to(navMain, .2, {
+			className: `+=${navMainActiveString}`,
+			ease: Power1.easeOut
+		}).to(navTrigger, .125, {
+			className: `+=${navTriggerActiveString}`,
+			ease: Power1.easeOut
+		}, 0)
+	;
+
+	function mobileNavHideReveal(event){
+		//this should also close l2 and l3 navs
+		if(navMain.classList.contains(navMainActiveString)){
+			mobileNavTimeline.reverse();
+			forceCloseStuff(event);
+		}
+		else {
+			mobileNavTimeline.play();
+		}
+	}
 
 	//if it has children, give it a listener. This allows top level items to behave like normal links if they have no children
 	function iterateThroughNavItems(){
-		
 		arrayOfNavTopLevelItemLinks.map(function(theTopLevelLink){
 			if(theTopLevelLink.parentNode.querySelector(`.${navListLevel2ClassString}`)){
 				theTopLevelLink.addEventListener('click', decideCase, false);
 			}
-		})
-
+		});
 		arrayOfSecondLevelItemLinks.map(function(theSecondLevelItemLink){
 			if(theSecondLevelItemLink.parentNode.querySelector(`.${navListLevel3ClassString}`)){
 				theSecondLevelItemLink.addEventListener('click', toggleMyTertiaryNav, false);
 				//console.log('i am a secondary nav with tertiary children');
 			}	
-		})
+		});
 	}
 
 	function decideCase(event){
@@ -55,7 +82,6 @@
 		//man, i guess nobody is open.
 		else {
 			theScenario = 'nobodyOpenWhenClicked';
-			//addOverlayForOustideClick();
 		}
 		
 		toggleMySubnav(event, theScenario);
@@ -73,17 +99,13 @@
 		level2NavsTimeline.to(theLIinQuestion, .1, {
 				className: '+=nav-list-level-1--ACTIVE',
 				ease: Power1.easeInOut
-			}
-		).to(theSVGOfTheItemThatHasBeenClicked, .1, {
+			}).to(theSVGOfTheItemThatHasBeenClicked, .1, {
 				className: '+=caretMorphed',
 				ease: Power1.easeInOut
-			}
-		)
-		.to(theSubnavOfTheItemThatHasBeenClicked, .1, {
+			}).to(theSubnavOfTheItemThatHasBeenClicked, .1, {
 				className: '+=nav-list-level-2--ACTIVE',
 				ease: Power1.easeInOut
-			}
-		)
+			})
 		;
 
 		//wrapping this timeline play in a function gives an added layer of control here
@@ -115,21 +137,17 @@
 				break;
 		}
 	}
-
 	
 	var overlayTimeline = new TimelineMax({paused:true});
 	overlayTimeline.to(navOverlayCloseTarget, .25, {
-			className: '+=overlayACTIVE',
-			ease: Power4.easeInOut
-		}
-	);
-
+		className: '+=overlayACTIVE',
+		ease: Power4.easeInOut
+	});
 	var showHideCloseTimeline = new TimelineMax({paused:true});
 	showHideCloseTimeline.to(navLevel2CloseButton, .3333, {
-			className: '+=navLevel2CloseButton--ACTIVE',
-			ease: Power4.easeInOut
-		}
-	);
+		className: '+=navLevel2CloseButton--ACTIVE',
+		ease: Power4.easeInOut
+	});
 
 	function forceCloseStuff(event, whatToClose, caseSibilingOpenOnCompleteFunction){
 
@@ -137,7 +155,7 @@
 		closeAllLevel2Navs();
 		forceCloseL3Navs();
 
-		if(whatToClose === 'closeJustLevel2'){
+		if(whatToClose !== null && whatToClose === 'closeJustLevel2'){
 			closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction);
 		}
 
@@ -155,7 +173,6 @@
 		})
 	}
 
-
 	function unMorphAllCarets(){
 		TweenMax.to(arrayOftheNavSVGS, .01, {
 			className: '-=caretMorphed',
@@ -170,7 +187,6 @@
 		});
 	}
 
-
 	//only 2 cases so we can skip the decider function
 	function toggleMyTertiaryNav(event){
 		event.preventDefault();
@@ -178,7 +194,6 @@
 		the3rdLevelNavOfTheItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector(`.${navListLevel3ClassString}`);
 		theSVGOfTheL2ItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.chevronDown');
 
-		//remove all and do oncomplete if must then reopen
 
 		if(the3rdLevelNavOfTheItemThatHasBeenClicked.classList.contains(navListLevel3ClassStringACTIVE)){
 			//console.log('i was open when clicked so just close it all, dawg')
@@ -188,6 +203,7 @@
 		else {
 			//console.log('i was NOT open when clicked');
 			//on complete timing wasNot working for some reason, so doing manually sequenced tweens here
+
 			TweenMax.to(arrayOftheL2NavSVGS, .4, {
 				className: '-=chevronMorphed',
 				ease: Power1.easeInOut
@@ -214,7 +230,6 @@
 				className: '+=nav-list-level-2-item-ACTIVE',
 				ease: Power1.easeInOut
 			});
-			
 		}
 	}
 	
@@ -254,5 +269,6 @@
 	document.addEventListener('DOMContentLoaded', iterateThroughNavItems);
 	navOverlayCloseTarget.addEventListener('click', forceCloseStuff, false);
 	navLevel2CloseButton.addEventListener('click', forceCloseStuff, false );
+	navTrigger.addEventListener('click', mobileNavHideReveal, false);
 
 })();

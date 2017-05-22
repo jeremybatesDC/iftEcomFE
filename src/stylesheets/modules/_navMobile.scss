@@ -1,5 +1,5 @@
 //phone (tablet TBA)
-@include break(max, $breakpoint-max-mobile){
+@include break(max, $breakpoint-max-1023){
 	//this isn't fading correctly
 	#navOverlayCloseTarget {display: none;}
 	.nav-combined--wrapper{
@@ -32,6 +32,7 @@
 		//demo-only
 		padding:1em .5em;
 		width: 4.8rem;
+		height: 3.2rem;
 		text-align: center;
 		line-height: 1;
 		//transition:$ift-timing;
@@ -53,11 +54,11 @@
 		//.has-nav--ACTIVE & {
 			background-color:transparent;
 			border:1px solid rgba($white,.3333);
-			width:4.8rem;
+			width:4.2rem;
 			min-width: 0;
-			height:4.8rem;
+			height:4.2rem;
 			line-height: 0;
-			transform: translateX(-5%) translateY(5%);
+			//transform: translateX(-5%) translateY(5%);
 			border-radius: 50%;
 			&:hover,
 			&:active
@@ -80,6 +81,7 @@
 		top:.6rem;
 		right:.6rem;
 		z-index:5;
+		cursor: pointer;
 		span {
 			+ span {
 				color:rgba($white,.2);
@@ -88,12 +90,12 @@
 			}
 		}
 		svg {
-			width:18px;
-			height:18px;
+			width:16px;
+			height:16px;
 			fill:none;
 			stroke:rgba($white, 1);
 			stroke-width:1px;
-			margin-top: 3px;
+			margin-top: 1px;
 		}
 	}
 
@@ -106,16 +108,18 @@
 		width: 100vw;
 		height: 100vh;
 		margin:0;
-		padding-top: 2rem;
-		background-color: transparent;
+		padding-top: $gutter-width/4;
+		color: $white;
+		background-color: $ift-blue;
 		color: transparent;
 		opacity: 0;
-		z-index: -9;
+		z-index: 4;
+		box-shadow:0 50em $ift-blue;
 		&.main-nav-on-canvas--STATE {
 			visibility: visible;
-			color: $white;
-			background-color:$ift-blue;
-			box-shadow:0 50em $ift-blue;
+			//color: $white;
+			//background-color:$ift-blue;
+			
 			opacity: 1;
 			z-index: 4;
 			overflow-y: scroll;

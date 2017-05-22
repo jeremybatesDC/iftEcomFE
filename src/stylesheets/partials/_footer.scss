@@ -9,7 +9,7 @@
 		margin-bottom: 0;
 		padding-bottom:0;
 	}
-	@include break(max, $breakpoint-max-mobile){
+	@include break(max, $breakpoint-max-1023){
 		.row {
 			padding-bottom:0;
 		}
@@ -24,13 +24,13 @@
 		font-size: 1.4rem;
 	}
 	.footer__links-headline {
-		font-size: 1.8rem;
+		font-size: 1.6rem;
 	}
 
 }
 
 .logo--footer {
-	@include break(max, $breakpoint-max-mobile){
+	@include break(max, $breakpoint-max-1023){
 		max-width:10rem;
 		margin-left: $gutter-width / 2;
 	}
@@ -51,21 +51,32 @@
 
 }
 .footer__middle {
-	font-size:1.3rem;
+	font-size:1.2rem;
 	background-color:$white;
 	padding:$gutter-width $gutter-width 0 $gutter-width;
 	
-	@include break(max, $breakpoint-max-mobile){
+	@include break(max, $breakpoint-max-1023){
 		display: none;
 		.column-auto {
-			padding-left: $gutter-width/2;
+			padding-left: $gutter-width/4;
 			&:first-child {
-				padding-left: $gutter-width/2;
+				padding-left: $gutter-width/4;
 			}
 		}
 	}
-	@include break(min, $breakpoint-min-tablet){
-		
+	@include break(min, $breakpoint-min-md){
+		//padding-right:5vw;
+		//padding-left:5vw;
+		.column-auto {
+			padding-left: $gutter-width/4;
+			&:first-child {
+				padding-left: $gutter-width/4;
+			}
+
+		}
+	}
+
+	@include break(min, $breakpoint-min-lg){
 		.column-auto {
 			padding-left: $gutter-width/2;
 			&:first-child {
@@ -74,10 +85,7 @@
 
 		}
 	}
-	@include break(min, $breakpoint-min-md){
-		padding-right:5vw;
-		padding-left:5vw;
-	}
+
 	@include break(min, $breakpoint-min-xxl){
 		
 		padding-right:0;
@@ -97,7 +105,7 @@
 
 .footer__linksList {
 	list-style: none;
-	@include break(max, $breakpoint-max-mobile){
+	@include break(max, $breakpoint-max-1023){
 		//padding-left: $gutter-width;
 		text-align: center;
 		margin-bottom: $gutter-width / 2;
@@ -142,7 +150,7 @@
 		text-align: center;
 	}
 	
-	@include break(max, $breakpoint-max-mobile) {
+	@include break(max, $breakpoint-max-1023) {
 		background-size:333%;
 		[class^="col"]{
 			align-self: center;

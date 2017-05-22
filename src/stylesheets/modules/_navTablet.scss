@@ -1,12 +1,12 @@
 //tablet
-@include break(min, $breakpoint-min-tablet, max, $breakpoint-max-1023){
-	.nav-main {
-		justify-content: flex-end;
-		padding-right: $gutter-width/2;
-		&.contained {
-			max-width: 100%;
-			margin-right: 0;
-			margin-left: 0;
-		}
-	}
-}
+// @include break(max, $breakpoint-max-1023){
+// 	.nav-main {
+// 		justify-content: flex-end;
+// 		padding-right: $gutter-width/2;
+// 		&.contained {
+// 			max-width: 100%;
+// 			margin-right: 0;
+// 			margin-left: 0;
+// 		}
+// 	}
+// }

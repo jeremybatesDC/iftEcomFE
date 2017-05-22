@@ -6,40 +6,16 @@
 	> .header__logo {
 		display: block;
 		> img {
-			width: 10rem;
+			width: 8.5rem;
 		}
 	}
 
-	//hover on event site uses css filters
-
-
-	//will need to tween the logo itself
-	// svg {
-	// 	width: 12rem;
-	// 	height:5.4rem;
-	// 	opacity: 1;
-	// 	transition: .5s all ease-in-out;
-	// 	&:hover,
-	// 	&:active,
-	// 	&:focus {
-	// 		filter:contrast(50%) brightness(30%);
-	// 	}
-	// 	.body-home & {
-	// 		&:hover,
-	// 		&:active,
-	// 		&:focus {	
-	// 			filter:none;
-	// 		}
-	// 	}
-	// }
-
-	//better to make it z-index when refactoring
-	//or at least use greensock tweening
 	
-	@include break(max, $breakpoint-max-mobile){
+	
+	@include break(max, $breakpoint-max-1023){
 		top:.25rem;
-		width: 10rem;
-		height:4.5rem;
+		width: 6rem;
+		height:4.4rem;
 		left:.5rem;
 		svg {
 			width: 10rem;
@@ -49,7 +25,16 @@
 		}
 	}
 
-	@include break(min, $breakpoint-min-tablet) {
+	@include break(max, $breakpoint-max-1023) {
+		background-image:url(/img/logo/ift_logo_NOTAG_mobile.svg);
+		background-size:contain;
+		background-repeat: no-repeat;
+		img {
+			visibility: hidden;
+		}
+	}
+	
+	@include break(min, $breakpoint-min-md) {
 		left:$gutter-width / 2;
 	}
 	@include break(min, $breakpoint-min-md) {
@@ -57,7 +42,7 @@
 	}
 	
 	&.logo-container--main--SCROLLED-STATE {
-		@include break(min, $breakpoint-min-tablet){
+		@include break(min, $breakpoint-min-md){
 			transform:translateY(-2.5em);
 
 		}

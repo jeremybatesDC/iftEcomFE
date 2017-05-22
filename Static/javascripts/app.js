@@ -1,13 +1,13 @@
 webpackJsonp([0,1],[
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(1);
 
 
-/***/ }),
+/***/ },
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	// *********************
 	//    Modules scripts
@@ -19,12 +19,10 @@ webpackJsonp([0,1],[
 	__webpack_require__(3);
 	
 	__webpack_require__(4);
-	
-	__webpack_require__(5);
 
-/***/ }),
+/***/ },
 /* 2 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	'use strict';
 	
@@ -37,9 +35,9 @@ webpackJsonp([0,1],[
 		}]
 	});
 
-/***/ }),
+/***/ },
 /* 3 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	'use strict';
 	
@@ -53,13 +51,20 @@ webpackJsonp([0,1],[
 		var the3rdLevelNavOfTheItemThatHasBeenClicked;
 		var theSVGOfTheL2ItemThatHasBeenClicked;
 	
+		var docBody = document.body;
+		var navTrigger = document.getElementById('navTrigger');
+		var navMain = document.getElementById('navMain');
+		var navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
+		var navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
+	
+		var navMainActiveString = 'main-nav-on-canvas--STATE';
+		var navTriggerActiveString = 'navTrigger--ACTIVE';
+		var bodyHasActiveMobileNavClassString = 'has-nav--ACTIVE';
 		var navListLevel2ClassString = 'nav-list-level-2';
 		var navListLevel3ClassString = 'nav-list-level-3';
 		var navListLevel2ITEMClassStringACTIVE = 'nav-list-level-2-item-ACTIVE';
 		var navListLevel3ClassStringACTIVE = 'nav-list-level-3--ACTIVE';
 	
-		var navOverlayCloseTarget = document.getElementById('navOverlayCloseTarget');
-		var navLevel2CloseButton = document.getElementById('navLevel2CloseButton');
 		var arrayOftheNavSVGS = [].concat(_toConsumableArray(document.querySelectorAll('.caretDown')));
 		var arrayOftheL2NavSVGS = [].concat(_toConsumableArray(document.querySelectorAll('.chevronDown')));
 	
@@ -71,15 +76,34 @@ webpackJsonp([0,1],[
 		var arrayOfL2subnavs = [].concat(_toConsumableArray(document.querySelectorAll('.' + navListLevel2ClassString)));
 		var arrayOfTertiaryNavs = [].concat(_toConsumableArray(document.querySelectorAll('.nav-list-level-3')));
 	
+		var mobileNavTimeline = new TimelineMax({ paused: true });
+		mobileNavTimeline.set(docBody, {
+			className: '+=' + bodyHasActiveMobileNavClassString
+		}).to(navMain, .2, {
+			className: '+=' + navMainActiveString,
+			ease: Power1.easeOut
+		}).to(navTrigger, .125, {
+			className: '+=' + navTriggerActiveString,
+			ease: Power1.easeOut
+		}, 0);
+	
+		function mobileNavHideReveal(event) {
+			//this should also close l2 and l3 navs
+			if (navMain.classList.contains(navMainActiveString)) {
+				mobileNavTimeline.reverse();
+				forceCloseStuff(event);
+			} else {
+				mobileNavTimeline.play();
+			}
+		}
+	
 		//if it has children, give it a listener. This allows top level items to behave like normal links if they have no children
 		function iterateThroughNavItems() {
-	
 			arrayOfNavTopLevelItemLinks.map(function (theTopLevelLink) {
 				if (theTopLevelLink.parentNode.querySelector('.' + navListLevel2ClassString)) {
 					theTopLevelLink.addEventListener('click', decideCase, false);
 				}
 			});
-	
 			arrayOfSecondLevelItemLinks.map(function (theSecondLevelItemLink) {
 				if (theSecondLevelItemLink.parentNode.querySelector('.' + navListLevel3ClassString)) {
 					theSecondLevelItemLink.addEventListener('click', toggleMyTertiaryNav, false);
@@ -101,7 +125,6 @@ webpackJsonp([0,1],[
 				//man, i guess nobody is open.
 				else {
 						theScenario = 'nobodyOpenWhenClicked';
-						//addOverlayForOustideClick();
 					}
 	
 			toggleMySubnav(event, theScenario);
@@ -162,7 +185,6 @@ webpackJsonp([0,1],[
 			className: '+=overlayACTIVE',
 			ease: Power4.easeInOut
 		});
-	
 		var showHideCloseTimeline = new TimelineMax({ paused: true });
 		showHideCloseTimeline.to(navLevel2CloseButton, .3333, {
 			className: '+=navLevel2CloseButton--ACTIVE',
@@ -175,7 +197,7 @@ webpackJsonp([0,1],[
 			closeAllLevel2Navs();
 			forceCloseL3Navs();
 	
-			if (whatToClose === 'closeJustLevel2') {
+			if (whatToClose !== null && whatToClose === 'closeJustLevel2') {
 				closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction);
 			} else {
 				overlayTimeline.reverse();
@@ -212,14 +234,13 @@ webpackJsonp([0,1],[
 			the3rdLevelNavOfTheItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.' + navListLevel3ClassString);
 			theSVGOfTheL2ItemThatHasBeenClicked = event.currentTarget.parentNode.querySelector('.chevronDown');
 	
-			//remove all and do oncomplete if must then reopen
-	
 			if (the3rdLevelNavOfTheItemThatHasBeenClicked.classList.contains(navListLevel3ClassStringACTIVE)) {
 				//console.log('i was open when clicked so just close it all, dawg')
 				forceCloseL3Navs();
 			} else {
 				//console.log('i was NOT open when clicked');
 				//on complete timing wasNot working for some reason, so doing manually sequenced tweens here
+	
 				TweenMax.to(arrayOftheL2NavSVGS, .4, {
 					className: '-=chevronMorphed',
 					ease: Power1.easeInOut
@@ -284,49 +305,12 @@ webpackJsonp([0,1],[
 		document.addEventListener('DOMContentLoaded', iterateThroughNavItems);
 		navOverlayCloseTarget.addEventListener('click', forceCloseStuff, false);
 		navLevel2CloseButton.addEventListener('click', forceCloseStuff, false);
-	})();
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	(function navMobile() {
-		var docBody = document.body;
-		var navTrigger = document.getElementById('navTrigger');
-		var navMain = document.getElementById('navMain');
-		var navMainActiveString = 'main-nav-on-canvas--STATE';
-		var navTriggerActiveString = 'navTrigger--ACTIVE';
-		var activeMobileNavClassString = 'has-nav--ACTIVE';
-	
-		var mobileNavTimeline = new TimelineMax({ paused: true });
-		mobileNavTimeline.to(navTrigger, .1, {
-			className: '+=' + navTriggerActiveString,
-			ease: Power1.easeInOut
-		}).to(docBody, .1, {
-			className: '+=' + activeMobileNavClassString,
-			ease: Power1.easeInOut
-		}).to(navMain, .1, {
-			className: '+=' + navMainActiveString,
-			ease: Power1.easeInOut
-		});
-	
-		function mobileNavHideReveal(event) {
-	
-			if (navMain.classList.contains(navMainActiveString)) {
-				mobileNavTimeline.reverse();
-			} else {
-				mobileNavTimeline.play();
-			}
-		}
-	
 		navTrigger.addEventListener('click', mobileNavHideReveal, false);
 	})();
 
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
+/***/ },
+/* 4 */
+/***/ function(module, exports) {
 
 	'use strict';
 	
@@ -342,6 +326,6 @@ webpackJsonp([0,1],[
 		};
 	});
 
-/***/ })
+/***/ }
 ]);
 //# sourceMappingURL=app.js.map
