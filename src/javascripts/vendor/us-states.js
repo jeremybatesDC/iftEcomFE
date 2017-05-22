@@ -4,7 +4,7 @@ var map = d3.geomap.choropleth()
     .column('State')
     //cannot seem to manipulate ID correctly
     .unitId('fips')
-    .scale(700)
+    .scale(1)
     .zoomFactor(1)
     .legend(false);
 
