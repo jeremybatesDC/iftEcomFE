@@ -1,0 +1,19 @@
+.iftMap__wrapper--outer {
+  max-width: $breakpoint-min-md;
+}
+
+.background {
+  fill: none;
+  pointer-events: all;
+}
+
+.unit {
+  cursor: pointer;
+  fill: #ddd;
+  stroke: #666666;
+  stroke-width: 0.4px;
+}
+
+.unit.active {
+  fill:rgba(87,134,199,1);
+}
