@@ -6,7 +6,8 @@
 	> .header__logo {
 		display: block;
 		> img {
-			width: 8.5rem;
+			width: 7.2rem;
+			height: auto;
 		}
 	}
 
@@ -53,8 +54,26 @@
 .header__utility-auth {
 	display:inline-block;
 	> .btn {
+		//font-weight: normal;
 		background: transparent !important;
 		border:2px solid $white !important;
+		padding: .5rem 1rem;
+		min-width: auto;
+		&:before,
+		&:after {
+			display: none;
+		}
+		&:hover,
+		&:active,
+		&:focus {
+			background-image:none;
+			background-color: $white !important;
+			color: $ift-blue-dark;
+			&:before,
+			&:after {
+				display: none;
+			}
+		}
 	}
 }
 
