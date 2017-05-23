@@ -3,15 +3,18 @@
 	background-color: transparent;
 }
 
-.RegistrationControl_PersonifyDefault.Base_PersonifyDefault.Base_PersonifyDefault {
+.RegistrationControl_PersonifyDefault.Base_PersonifyDefault.Base_PersonifyDefault,
+.MembershipJoinOptionsControl_PersonifyDefault .ctrlContent {
 	background: white;
 	padding: 20px;
 	margin: 0;
 	width: auto;
 }
-#MainContent_ctl00_MembershipDetail_ContainerPanel{
+
+#MainContent_ctl00_MembershipDetail_ContainerPanel {
 	width: 100%;
 }
+
 .productDetails.ctrl-memb-prd-detail {
 	display: block;
 	margin-left: 0;
@@ -20,13 +23,16 @@
 		padding-top: 20px;
 	}
 }
+
 .MembershipDetailControl_PersonifyDefault .productImage.ctrl-memb-img {
-		margin: 20px;
-		position: static;
-		float: left;
-	}
+	margin: 20px;
+	position: static;
+	float: left;
+}
+
 #MainContent_ctl00_UserRegistrationControl_UserAlreadyLoggedInPanel {
-	.memberName,.regContactsTitle{
+	.memberName,
+	.regContactsTitle {
 		padding-bottom: 10px;
 	}
 	.welcomeBack {
@@ -90,5 +96,109 @@
 				background-color: transparent;
 			}
 		}
+	}
+}
+
+// Step 2
+.MembershipJoinOptionsControl_PersonifyDefault .ctrlContent {
+	.heading2,
+	.buyBox h3 {
+		font-size: 16px;
+	}
+	.buyBox h3 {
+		margin: 15px;
+	}
+	.totalAmountSection {
+		text-align: right;
+		min-width: 0;
+		margin-right: 15px;
+		border-bottom: none;
+	}
+}
+
+.MembershipZipLinkedChapterControl_PersonifyDefault.Membership_PersonifyDefault .chapterPanel,
+.MembershipBenefitsControl_PersonifyDefault.Membership_PersonifyDefault .memOptions {
+	border-bottom: 1px solid $ift-grey-230;
+}
+
+.buyBox {
+	margin: 0;
+	border-color: $ift-grey-230;
+	width: 230px;
+	.rateCodeItem input,
+	.rateCodes .rateCodeItem span,
+	.rateCodeItem label {
+		float: none;
+	}
+	.MembershipBuyBoxControl_PersonifyDefault .memberDetails > div {
+		border-top: none;
+	}
+}
+
+.memOptions {
+	border: 1px solid $ift-grey-230;
+}
+
+.MembershipRenewalControl_PersonifyDefault div.fillSectionBlock,
+.MembershipJoinOptionsControl_PersonifyDefault div.benefits,
+.MembershipJoinOptionsControl_PersonifyDefault .detailsPanel,
+.MembershipJoinOptionsControl_PersonifyDefault .buttonRow {
+	margin-left: 0;
+	display: block;
+}
+
+#ctl00_MainContent_ctl00_MembershipDetail_ContainerPanel {
+	.productImage.ctrl-memb-img {
+		margin: 0;
+		margin-right: 20px;
+		margin-bottom: 20px;
+	}
+	.productName {
+		padding-top: 0;
+	}
+}
+
+.step2Left,
+.step3Left {
+	float: left;
+	width: calc(100% - 250px);
+}
+
+.MembershipBenefitsControl_PersonifyDefault.Membership_PersonifyDefault .memOptions {
+	background-color: #f7f7f7;
+	border: 1px solid #e7e7e7;
+	border-radius: 2px;
+	min-height: 8.6em;
+	margin-bottom: 2em;
+	padding: 1em;
+}
+
+// Step 3
+.MembershipJoinBiggerImpactControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault .ctrlContent{
+	background-color: white;
+	padding: 20px;
+	margin:0;
+	width: auto;
+}
+
+.MembershipJoinBiggerImpactControl_PersonifyDefault .benefits h2,
+.buyBox h3{
+	font-size: 16px;
+	margin-bottom: 10px;
+
+}
+
+@include break(max, 42em) {
+	.MembershipJoinOptionsControl_PersonifyDefault.Membership_PersonifyDefault .step2Left,
+	.MembershipJoinOptionsControl_PersonifyDefault.Membership_PersonifyDefault .step3Left {
+		padding: 12px;
+	}
+	.buyBox {
+		margin: 0;
+		border: none;
+		width: 100%;
+	}
+	.rateCodeItem {
+    padding-left: 26px;
 	}
 }

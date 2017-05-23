@@ -15,6 +15,29 @@ $border-radius: 3px;
     margin: .6rem 0;
 }
 
+// View More/Less Icon
+.showMore.action-hyperlink,
+.showLess.action-hyperlink {
+  padding-left: 2.4rem !important;
+  display: block;
+  position: relative;
+
+  &:before {
+    font-family: monospace;
+    font-size: 2rem;
+    height: 2rem;
+    left: 0;
+    top: -4px;
+    padding: 0;
+    width: 2rem;
+    line-height: .9;
+    position: absolute;
+    border: 1px solid;
+    border-radius: 100%;
+    text-align: center;
+  }
+}
+
 // Dropdown
 // Reset
 .RadComboBox, .RadComboBox table, .RadComboBox tbody, .RadComboBox tr {
