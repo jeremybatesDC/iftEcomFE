@@ -1,15 +1,18 @@
 .iftMap__wrapper--outer {
   max-width: $breakpoint-min-md;
+  .row {
+  	padding-bottom: 0;
+  }
 }
 
-.background {
+.iftMap__svg__rect--background {
   fill: none;
   pointer-events: all;
 }
 
 .usState {
   cursor: pointer;
-  fill: #ddd;
+  fill: #dddddd;
   stroke: #666666;
   stroke-width: 0.4px;
 }
