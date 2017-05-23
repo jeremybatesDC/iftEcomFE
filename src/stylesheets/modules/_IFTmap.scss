@@ -7,13 +7,13 @@
   pointer-events: all;
 }
 
-.unit {
+.usState {
   cursor: pointer;
   fill: #ddd;
   stroke: #666666;
   stroke-width: 0.4px;
 }
 
-.unit.active {
+.usState.activeState {
   fill:rgba(87,134,199,1);
 }
