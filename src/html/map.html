@@ -12,10 +12,68 @@
 
 		</header>
 
-		<div class="col-md-7">
-			<div id="iftMap"></div>
+		<div class="col-xs-12">
+
+			<!-- <div id="iftMap"></div> -->
+			<style>
+
+.states :hover {
+  fill: red;
+}
+
+.state-borders {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 0.5px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+</style>
+
+<svg id="iftMap" width="1200" height="800"></svg>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.1/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.0/topojson.min.js"></script>
+<script>
+
+var svg = d3.select("#iftMap");
+var path = d3.geoPath();
+
+//https://d3js.org/us-10m.v1.json
+
+d3.json("javascripts/data/topoJSONusCustom.json", function(error, data) {
+  if (error) throw error;
+
+  console.log(data.objects.states.geometries[0].id);
+
+  svg.append("g")
+    .attr("class", "states iftMap__svg__g")
+    .selectAll("path")
+    .data(topojson.feature(data, data.objects.states).features)
+    .enter()
+    .append("path")
+    .attr('id', function(thisState){
+    	//this isn't accessing properties in json -- this is just adding a numeric id, which is really
+    	return thisState.id
+    })
+    // .attr('data-stateName', function(thisState){
+    // 	//return thisState.geometries
+    // 	return thisState.stateName
+    // })
+    .attr("class", "usState iftMap__svg__path")
+    .attr("d", path);
+
+  	svg.append("path")
+      .attr("class", "state-borders")
+      .attr("d", path(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; })));
+});
+
+</script>
+
 		</div>
-		<div class="col-md-5">
+		<div class="col-xs-12">
 			<div class="iftMap__additionalItemsBox iftMap__mobile__selectMenu">
 				<div class="iftMap__additionalItemsBox__wrapper--inner">
 					<label>
@@ -161,13 +219,5 @@
 </div>
 
     
-<!-- d3 4.0 breaks this map-->    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-geo-projection/2.1.1/d3-geo-projection.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.0/topojson.min.js"></script>
-<!--edit click functionality here-->
-<!-- <script src="/javascripts/vendor/d3.geomap.custom.init.js"></script> -->
-
-<script src="https://jeremy.brightfind.com/iftEbiz/d3.geomap.custom.init.REMOTE.js"></script>
 
 {% endblock %}
