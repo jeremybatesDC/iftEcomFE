@@ -151,9 +151,8 @@ var _createClass = function() {
                     //if I populate the titles differently
                     .on("click", e.clicked.bind(e))
                     .append("title")
-                    .text(e.properties.unitTitle),
-                    
-                    e.update()
+                    .text(e.properties.unitTitle)
+                    ,e.update()
                 })
                 //end d3.json
 
@@ -257,6 +256,7 @@ d3.geomap.choropleth = function() {return new Choropleth};
 
 
 var map = d3.geomap.choropleth()
+    //json used to draw the map
     .geofile('https://d3-geomap.github.io/d3-geomap/topojson/countries/USA.json')
     .projection(d3.geo.albersUsa)
     .column('StateAbbr')
@@ -264,6 +264,7 @@ var map = d3.geomap.choropleth()
     .scale(600)
     .zoomFactor(1)
     .legend(false);
+    //data to bind to the map
 
     d3.csv('/javascripts/data/dataFile.csv', 
         function(error, data) {
