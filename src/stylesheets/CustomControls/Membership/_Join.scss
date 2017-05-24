@@ -129,6 +129,9 @@
 	.MembershipBuyBoxControl_PersonifyDefault .memberDetails > div {
 		border-top: none;
 	}
+	.memberDetails{
+		margin: 15px;
+	}
 }
 
 .memOptions {
@@ -168,22 +171,61 @@
 	margin-bottom: 2em;
 	padding: 1em;
 }
-
+.totalAmountSection {
+    min-width: 0;
+    margin: 0;
+}
 // Step 3
-.MembershipJoinBiggerImpactControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault .ctrlContent{
-	background-color: white;
-	padding: 20px;
-	margin:0;
-	width: auto;
+.MembershipJoinBiggerImpactControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
+	#ctl00_MainContent_ctl00_BuyBox_AddToCartButton {
+		@include unButton()
+	}
+	#ctl00_ctl00_MainContent_ctl00_ButtonPanelPanel {
+		width: calc(100% - 230px);
+	}
+	.ctrlContent {
+		background-color: white;
+		padding: 20px;
+		margin: 0;
+		width: auto;
+	}
+	#ctl00_MainContent_ctl00_BuyBox_ButtonPanel .buttonRow{
+		margin: 15px;
+	}
+}
+#ctl00_ctl00_MainContent_ctl00_MembershipContributionsControl1_ContainerPanelPanel input[type="text"]{
+	@include inputText()
+	margin-left: 10px !important;
+}
+.MembershipContributionsControl_PersonifyDefault .ctrbPriceOption label{
+	margin-left: 10px;
+}
+.MembershipSIGControl_PersonifyDefault .sigRow {
+    padding: 10px 0;
+    margin: 10px 0;
+    border-color: #eee;
 }
 
-.MembershipJoinBiggerImpactControl_PersonifyDefault .benefits h2,
-.buyBox h3{
+.MembershipContributionsControl_PersonifyDefault .ctrbProdRow {
+    border-bottom: 1px solid #eee;
+}
+.buyBox h3 {
 	font-size: 16px;
+	margin: 15px;
 	margin-bottom: 10px;
-
 }
-
+.MembershipJoinBiggerImpactControl_PersonifyDefault .benefits h2{
+	font-size: 16px;
+	margin: 15px 0;
+	margin-bottom: 10px;
+}
+.MembershipSIGControl_PersonifyDefault.Membership_PersonifyDefault{
+	border: none;
+}
+.chapterPrice, .sigPrice {
+    float: right;
+    margin-left: 10px;
+}
 @include break(max, 42em) {
 	.MembershipJoinOptionsControl_PersonifyDefault.Membership_PersonifyDefault .step2Left,
 	.MembershipJoinOptionsControl_PersonifyDefault.Membership_PersonifyDefault .step3Left {
@@ -195,6 +237,6 @@
 		width: 100%;
 	}
 	.rateCodeItem {
-    padding-left: 26px;
+		padding-left: 26px;
 	}
 }
