@@ -833,10 +833,11 @@
 		if (selectedItem !== null){
 			selectedItem.classList.remove('usState--SELECTED');
 			//optional
-			if(thenAdd){
-				document.getElementById(thisStateID).classList.add('usState--SELECTED');
-			}
 		}
+		if(thenAdd && thisStateID){
+			document.getElementById(thisStateID).classList.add('usState--SELECTED');
+		}
+		//else if ()
 		
 		
 
@@ -844,12 +845,14 @@
 
 	function mapHandlerFunction(event, thisStateID){
 		
-		removeAddActiveState('thenAdd', thisStateID);
-		
-		if(thisStateID){
+		if(event.type === "click") {
+			removeAddActiveState('thenAdd', thisStateID);
 			console.log(thisStateID);
+			stateSelectMenu.value = thisStateID;
 		}
 		
+		
+	
 		//display data here
 
 		//also make sure there's hover
@@ -857,9 +860,10 @@
 		//also make sure there are tooltips
 
 		if(event.type === "change") {
-			
-			var valueOfSelectMenu = stateSelectMenu.options[stateSelectMenu.selectedIndex].value
-			console.log(valueOfSelectMenu);
+			var stateAbbrSelected = stateSelectMenu.options[stateSelectMenu.selectedIndex].value;
+
+			removeAddActiveState('thenAdd', stateAbbrSelected);
+			console.log(stateAbbrSelected);
 		}
 	}
 
