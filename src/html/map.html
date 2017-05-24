@@ -128,7 +128,7 @@
 	    .attr("d", path)
 	    .on("click", function(thisState){
 
-	    	mapHandlerFunction(thisState.id);
+	    	mapHandlerFunction(event, thisState.id);
 
 
 	    });
@@ -143,24 +143,39 @@
 		//if there is an active item, remove itS active class
 		if (selectedItem !== null){
 			selectedItem.classList.remove('usState--SELECTED');
+			//optional
+			if(thenAdd){
+				document.getElementById(thisStateID).classList.add('usState--SELECTED');
+			}
 		}
-		//optional
-		if(thenAdd){
-			document.getElementById(thisStateID).classList.add('usState--SELECTED');
-		}
+		
+		
 
 	}
 
-	function mapHandlerFunction(thisStateID){
+	function mapHandlerFunction(event, thisStateID){
 		
 		removeAddActiveState('thenAdd', thisStateID);
-		console.log(thisStateID);
+		
+		if(thisStateID){
+			console.log(thisStateID);
+		}
+		
 		//display data here
 
 		//also make sure there's hover
 
 		//also make sure there are tooltips
+
+		if(event.type === "change") {
+			
+			var valueOfSelectMenu = stateSelectMenu.options[stateSelectMenu.selectedIndex].value
+			console.log(valueOfSelectMenu);
+		}
 	}
+
+	stateSelectMenu.addEventListener('change', mapHandlerFunction);
+
 
 
 
