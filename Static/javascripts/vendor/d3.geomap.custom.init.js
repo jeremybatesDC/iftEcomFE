@@ -1,7 +1,5 @@
 "use strict";
 
-console.log('may 23');
-
 var seletedStateDisplay = document.getElementById('seletedStateDisplay');
 var stateSelectMenu = document.getElementById('stateSelectMenu');
 
@@ -16,10 +14,6 @@ function addAccessor(f, e, d) {
     f[e] = function(c) {
         return "undefined" == typeof c ? f.properties[e] || d : (f.properties[e] = c, f)
     }
-}
-
-function _classCallCheck(f, e) {
-    if (!(f instanceof e)) throw new TypeError("Cannot call a class as a function")
 }
 
 function _classCallCheck(f, e) {
@@ -59,7 +53,7 @@ var _createClass = function() {
                 scale: null,
                 translate: null,
                 unitId: "iso3",
-                unitPrefix: "unit-",
+                unitPrefix: "usState-",
                 units: "units",
                 unitTitle: function(f) {
                     return f.properties.name
@@ -79,43 +73,91 @@ var _createClass = function() {
                     a = this.properties.height / 2,
                     b = c,
                     t = a;
-                if (f && f.hasOwnProperty("geometry") && this._.centered !== f) {
-                    var r = this.path.centroid(f);
-                    b = r[0], t = r[1], d = this.properties.zoomFactor, this._.centered = f
-                } else 
-                this._.centered = null;
+                
+                this._.centered = f;
+                
 
-                this.svg.selectAll("path.unit").classed("active", this._.centered && function(f) {
+                this.svg.selectAll("path.usState").classed("activeState", this._.centered && function(f) {
                     return f === e._.centered
                 })
 
                 //click function here
                 //,this.svg.selectAll("g.zoom").transition().duration(750).attr("transform", "translate(" + c + ", " + a + ")scale(" + d + ")translate(-" + b + ", -" + t + ")")
-                seletedStateDisplay.innerHTML = event.currentTarget.querySelector('title').innerHTML;
-
+                //console.log(event.currentTarget)
+                seletedStateDisplay.innerHTML = event.currentTarget.getAttribute('data-stateName');
+                console.log(seletedStateDisplay.innerHTML);
 
                 //this should also update the select menu selection
-                stateSelectMenu.value = 'DC';
+                
             }
         }, {
             key: "draw",
             value: function(f, e) {
-                e.properties.width || (e.properties.width = 640), 
-                e.properties.height || (e.properties.height = 400), 
+
+
+                e.properties.width || (e.properties.width = 480), 
+                e.properties.height || (e.properties.height = 300), 
                 e.properties.scale || (e.properties.scale = e.properties.width / 5.8), 
                 e.properties.translate || (e.properties.translate = [
                     e.properties.width / 2,
                     e.properties.height / 2
                 ]),
-                e.svg = f.append("svg").attr("width", e.properties.width).attr("height", e.properties.height), 
-                e.svg.append("rect").attr("class", "background").attr("width", e.properties.width).attr("height", e.properties.height).on("click", e.clicked.bind(e));
-                var d = e.properties.projection().scale(e.properties.scale).translate(e.properties.translate).precision(.1);
+                e.svg = f.append("svg")
+                    .attr("width", e.properties.width)
+                    .attr("height", e.properties.height), 
+                e.svg.append("rect")
+                    .attr("class", "iftMap__svg__rect--background")
+                    .attr("width", e.properties.width)
+                    .attr("height", e.properties.height)
+                ;
 
-                d.hasOwnProperty("rotate") && e.properties.rotate && d.rotate(e.properties.rotate), e.path = d3.geo.path().projection(d), d3.json(e.properties.geofile, function(f, d) {
-                    e.geo = d, e.svg.append("g").attr("class", "units zoom").selectAll("path").data(topojson.feature(d, d.objects[e.properties.units]).features).enter().append("path").attr("class", function(f) {
-                        return "unit " + e.properties.unitPrefix + f.id
-                    }).attr("d", e.path).on("click", e.clicked.bind(e)).append("title").text(e.properties.unitTitle), e.update()
+                var d = e.properties.projection()
+                    .scale(e.properties.scale)
+                    .translate(e.properties.translate)
+                    .precision(.1);
+
+                d.hasOwnProperty("rotate") && e.properties.rotate && d.rotate(e.properties.rotate),
+                e.path = d3.geo.path().projection(d),
+                
+                d3.json(e.properties.geofile, function(f, d) {
+                    e.geo = d,
+                    e.svg.append("g")
+                    .attr("class", "iftMap__svg__g")
+                    .selectAll("path")
+                    .data(topojson.feature(d, d.objects[e.properties.units])
+                        .features)
+                    .enter()
+                    .append("path")
+                    .attr("class", function(f) {
+                        return "usState iftMap__svg__path " + e.properties.unitPrefix + f.id
+                    }).attr("data-stateName", function(f){
+                        return f.properties.name
+                    }).attr("data-stateCode", function(f){
+                        return f.id;
+                    }).attr("data-stateID", function(f){
+                        var theIDtoClean = f.id;
+                        //remove string to get pure digits
+                        var theCleanID = theIDtoClean.replace(/\D/g,'');
+                        return theCleanID;
+                    }).attr("title", function(f){
+                        return f.properties.name
+                    }
+                    ).attr("d", e.path)
+                    //trying to modularize this function
+                    //if I populate the titles differently
+                    .on("click", e.clicked.bind(e))
+                    .append("title")
+                    .text(e.properties.unitTitle)
+                    ,e.update()
                 })
+                //end d3.json
+
+
+                function dataBindFunction(e){
+                    e.clicked.bind(e);
+                    console.log('clicked');
+                    //stateSelectMenu.value = 'DC';
+                }
             }
         }, {
             key: "update",
@@ -188,16 +230,7 @@ var _createClass = function() {
             key: "update",
             value: function() {
                 var f = this;
-                f.extent = d3.extent(f.data, f.columnVal.bind(f)), f.colorScale = f.properties.valueScale().domain(f.properties.domain || f.extent).range(f.properties.colors), f.svg.selectAll("path.unit").style("fill", null), f.data.forEach(function(e) {
-                    var d = e[f.properties.unitId].trim(),
-                        c = e[f.properties.column].trim(),
-                        a = f.svg.selectAll("." + f.properties.unitPrefix + d);
-                    if (!a.empty() && f.defined(c)) {
-                        var b = f.colorScale(c),
-                            t = f.properties.unitTitle(a.datum());
-                        f.properties.duration ? a.transition().duration(f.properties.duration).style("fill", b) : a.style("fill", b), c = f.properties.format(c), a.select("title").text(t + "\n\n" + f.properties.column + ": " + c)
-                    }
-                })
+                f.extent = d3.extent(f.data, f.columnVal.bind(f))
             }
         }
 
@@ -217,7 +250,9 @@ var map = d3.geomap.choropleth()
     .zoomFactor(1)
     .legend(false);
 
-    d3.csv('https://jeremy.brightfind.com/iftEbiz/dataFile.csv', 
+    //data-file that contains zipcodes and member prices although really no
+    //allows a lot of data to be bound 
+    d3.csv('/javascripts/data/dataFile.csv', 
         function(error, data) {
             d3.select('#iftMap')
                 .datum(data)

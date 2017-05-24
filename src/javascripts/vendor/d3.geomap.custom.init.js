@@ -20,10 +20,6 @@ function _classCallCheck(f, e) {
     if (!(f instanceof e)) throw new TypeError("Cannot call a class as a function")
 }
 
-function _classCallCheck(f, e) {
-    if (!(f instanceof e)) throw new TypeError("Cannot call a class as a function")
-}
-
 function _inherits(f, e) {
     if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function, not " + typeof e);
     f.prototype = Object.create(e && e.prototype, {
@@ -77,11 +73,9 @@ var _createClass = function() {
                     a = this.properties.height / 2,
                     b = c,
                     t = a;
-                if (f && f.hasOwnProperty("geometry") && this._.centered !== f) {
-                    var r = this.path.centroid(f);
-                    b = r[0], t = r[1], d = this.properties.zoomFactor, this._.centered = f
-                } else 
-                this._.centered = null;
+                
+                this._.centered = f;
+                
 
                 this.svg.selectAll("path.usState").classed("activeState", this._.centered && function(f) {
                     return f === e._.centered
@@ -100,7 +94,6 @@ var _createClass = function() {
             key: "draw",
             value: function(f, e) {
 
-                
 
                 e.properties.width || (e.properties.width = 480), 
                 e.properties.height || (e.properties.height = 300), 
@@ -146,7 +139,10 @@ var _createClass = function() {
                         //remove string to get pure digits
                         var theCleanID = theIDtoClean.replace(/\D/g,'');
                         return theCleanID;
-                    }).attr("d", e.path)
+                    }).attr("title", function(f){
+                        return f.properties.name
+                    }
+                    ).attr("d", e.path)
                     //trying to modularize this function
                     //if I populate the titles differently
                     .on("click", e.clicked.bind(e))
@@ -234,17 +230,7 @@ var _createClass = function() {
             key: "update",
             value: function() {
                 var f = this;
-                f.extent = d3.extent(f.data, f.columnVal.bind(f)),
-                f.colorScale = f.properties.valueScale().domain(f.properties.domain || f.extent).range(f.properties.colors), f.svg.selectAll("path.usState").style("fill", null), f.data.forEach(function(e) {
-                    var d = e[f.properties.unitId].trim(),
-                        c = e[f.properties.column].trim(),
-                        a = f.svg.selectAll("." + f.properties.unitPrefix + d);
-                    if (!a.empty() && f.defined(c)) {
-                        var b = f.colorScale(c),
-                            t = f.properties.unitTitle(a.datum());
-                        f.properties.duration ? a.transition().duration(f.properties.duration).style("fill", b) : a.style("fill", b), c = f.properties.format(c), a.select("title").text(t + "\n\n" + f.properties.column + ": " + c)
-                    }
-                })
+                f.extent = d3.extent(f.data, f.columnVal.bind(f))
             }
         }
 
@@ -256,7 +242,6 @@ d3.geomap.choropleth = function() {return new Choropleth};
 
 
 var map = d3.geomap.choropleth()
-    //json used to draw the map
     .geofile('https://d3-geomap.github.io/d3-geomap/topojson/countries/USA.json')
     .projection(d3.geo.albersUsa)
     .column('StateAbbr')
@@ -264,8 +249,9 @@ var map = d3.geomap.choropleth()
     .scale(600)
     .zoomFactor(1)
     .legend(false);
-    //data to bind to the map
 
+    //data-file that contains zipcodes and member prices although really no
+    //allows a lot of data to be bound 
     d3.csv('/javascripts/data/dataFile.csv', 
         function(error, data) {
             d3.select('#iftMap')
