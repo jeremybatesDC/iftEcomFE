@@ -99,67 +99,67 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.0/topojson.min.js"></script>
 <script>
 
-"use strict";
+	"use strict";
 
-var svg = d3.select("#iftMap");
-var path = d3.geoPath();
-var seletedStateDisplay = document.getElementById('seletedStateDisplay');
-var stateSelectMenu = document.getElementById('stateSelectMenu');
+	var svg = d3.select("#iftMap");
+	var path = d3.geoPath();
 
-   
-//https://d3js.org/us-10m.v1.json
+	var seletedStateDisplay = document.getElementById('seletedStateDisplay');
+	var stateSelectMenu = document.getElementById('stateSelectMenu');
 
-d3.json("javascripts/data/topoJSONusCustom.json", function(error, data) {
-  if (error) throw error;
+	d3.json("javascripts/data/topoJSONusCustom.json", function(error, data) {
+	  if (error) throw error;
 
-  svg.append("g")
-    .attr("class", "states iftMap__svg__g")
-    .selectAll("path")
-    .data(topojson.feature(data, data.objects.states).features)
-    .enter()
-    .append("path")
-    .attr('id', function(thisState){
-    	//accessing other properties isNotWorkingAsExpected
-    	return thisState.id
-    })
-    .attr('data-stateName', function(z){
-    	//return z.stateName
-    	return 'placeholderStateName'
-    })
-    .attr("class", "usState iftMap__svg__path")
-    .attr("d", path)
-    .on("click", function(thisState){
+	  svg.append("g")
+	    .attr("class", "states iftMap__svg__g")
+	    .selectAll("path")
+	    .data(topojson.feature(data, data.objects.states).features)
+	    .enter()
+	    .append("path")
+	    .attr('id', function(thisState){
+	    	//accessing other properties isNotWorkingAsExpected
+	    	return thisState.id
+	    })
+	    .attr('data-stateName', function(z){
+	    	//return z.stateName
+	    	return 'placeholderStateName'
+	    })
+	    .attr("class", "usState iftMap__svg__path")
+	    .attr("d", path)
+	    .on("click", function(thisState){
 
-    	mapHandlerFunction(thisState.id);
+	    	mapHandlerFunction(thisState.id);
 
 
-    });
+	    });
 
-  	svg.append("path")
-      .attr("class", "state-borders")
-      .attr("d", path(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; })));
-});
+	  	svg.append("path")
+	      .attr("class", "state-borders")
+	      .attr("d", path(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; })));
+	});
 
+	function removeAddActiveState(thenAdd, thisStateID){
+		var selectedItem = document.querySelector('.usState--SELECTED');
+		//if there is an active item, remove itS active class
+		if (selectedItem !== null){
+			selectedItem.classList.remove('usState--SELECTED');
+		}
+		//optional
+		if(thenAdd){
+			document.getElementById(thisStateID).classList.add('usState--SELECTED');
+		}
 
-
-
-
-function removeAddActiveState(thenAdd, thisStateID){
-	console.log(thisStateID);
-	var selectedItem = document.querySelector('.usState--SELECTED');
-	if (selectedItem !== null){
-		selectedItem.classList.remove('usState--SELECTED');
-	}
-	if(thenAdd){
-		document.getElementById(thisStateID).classList.add('usState--SELECTED');
 	}
 
-}
+	function mapHandlerFunction(thisStateID){
+		
+		removeAddActiveState('thenAdd', thisStateID);
+		//display data here
 
-function mapHandlerFunction(thisStateID){
-	
-	removeAddActiveState('thenAdd', thisStateID)
-}
+		//also make sure there's hover
+
+		//also make sure there are tooltips
+	}
 
 
 
