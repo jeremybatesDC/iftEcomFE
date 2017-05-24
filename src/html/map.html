@@ -129,9 +129,8 @@ d3.json("javascripts/data/topoJSONusCustom.json", function(error, data) {
     .attr("class", "usState iftMap__svg__path")
     .attr("d", path)
     .on("click", function(thisState){
-    	var thisStateID = thisState.id;
-    	
-    	mapHandlerFunction(thisStateID);
+
+    	mapHandlerFunction(thisState.id);
 
 
     });
