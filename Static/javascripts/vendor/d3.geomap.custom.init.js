@@ -10,6 +10,8 @@
     d3.json("javascripts/data/topoJSONusCustom.json", function(error, data) {
       if (error) throw error;
 
+      console.log(data);
+
       svg.append("g")
         .attr("class", "states iftMap__svg__g")
         .selectAll("path")
@@ -18,11 +20,15 @@
         .append("path")
         .attr('id', function(thisState){
             //accessing other properties isNotWorkingAsExpected
+            console.log(thisState.id)
             return thisState.id
+
         })
-        .attr('data-stateName', function(z){
-            //return data.objects.states[z].stateName
+        .attr('data-stateName', function(thisState){
             return 'placeholderStateName'
+            console.log(thisState)
+            //return data.objects.states.geometries[z].stateName
+            //only works on arrays
         })
         .attr("class", "usState iftMap__svg__path")
         .attr("d", path)
@@ -39,22 +45,6 @@
     });
 
 
-    function removeAddActiveState(thenAdd, thisStateID){
-        var selectedItem = document.querySelector('.usState--SELECTED');
-        //if there is an active item, remove itS active class
-        if (selectedItem !== null){
-            selectedItem.classList.remove('usState--SELECTED');
-            //optional
-        }
-        if(thenAdd && thisStateID){
-            document.getElementById(thisStateID).classList.add('usState--SELECTED');
-        }
-        //else if ()
-        
-        
-
-    }
-
     function mapHandlerFunction(event, thisStateID){
             
         //display data here
@@ -65,6 +55,7 @@
             removeAddActiveState('thenAdd', thisStateID);
             console.log(thisStateID);
             stateSelectMenu.value = thisStateID;
+            writeStateNameToHeadline(thisStateID);
         }
         
         if(event.type === "change") {
@@ -72,7 +63,35 @@
 
             removeAddActiveState('thenAdd', stateAbbrSelected);
             console.log(stateAbbrSelected);
+            writeStateNameToHeadline(stateAbbrSelected);
         }
+
+
+
+
+    }
+
+    function writeStateNameToHeadline(thisStateID){
+        seletedStateDisplay.innerHTML = thisStateID
+    }
+
+    function removeAddActiveState(thenAdd, thisStateID){
+        var selectedItem = document.querySelector('.usState--SELECTED');
+        //if there is an active item, remove itS active class
+        if (selectedItem !== null){
+            selectedItem.classList.remove('usState--SELECTED');
+        }
+
+        if(thenAdd && thisStateID){
+            document.getElementById(thisStateID).classList.add('usState--SELECTED');
+        }
+        
+    }
+
+    //backend developer edit this function
+    function getStateData(thisStateID) {
+        //go get some data from backend
+
     }
 
     stateSelectMenu.addEventListener('change', mapHandlerFunction);

@@ -3,6 +3,13 @@
   > .iftMap__svg__path--stateBorders {
      transform:scale(.5);
     transform-origin: 0 0;
+    @include break(max, $breakpoint-max-mobile){
+      transform:scale(.275);
+    }
+  }
+  @include break(max, $breakpoint-max-mobile){
+    width: 300px;
+    height:200px;
   }
 }
 
@@ -41,6 +48,25 @@
   // .row {
   // 	padding-bottom: 0;
   // }
+}
+
+.iftMap__stateSelectMenu {
+  @include break(max, $breakpoint-max-mobile){
+    margin-bottom: $gutter-width / 2;
+  }
+  @include break(min, $breakpoint-min-tablet){
+    display: none;
+  }
+}
+
+.iftMap__internationalSelectMenu {
+  overflow: auto;
+  background: transparent;
+  border: none;
+  @include break(max, $breakpoint-max-mobile){
+    font-size: 1.2rem;
+      //transform:scale(.275);
+    }
 }
 
 // .iftMap__svg__rect--background {
