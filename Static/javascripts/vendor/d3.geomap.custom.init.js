@@ -1,3 +1,4 @@
+(function iftMapFunction(){
     "use strict";
 
     var svg = d3.select("#iftMap");
@@ -20,7 +21,7 @@
             return thisState.id
         })
         .attr('data-stateName', function(z){
-            //return z.stateName
+            //return data.objects.states[z].stateName
             return 'placeholderStateName'
         })
         .attr("class", "usState iftMap__svg__path")
@@ -36,6 +37,7 @@
           .attr("class", "state-borders iftMap__svg__path--stateBorders")
           .attr("d", path(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; })));
     });
+
 
     function removeAddActiveState(thenAdd, thisStateID){
         var selectedItem = document.querySelector('.usState--SELECTED');
@@ -54,21 +56,17 @@
     }
 
     function mapHandlerFunction(event, thisStateID){
-        
+            
+        //display data here
+        //also make sure there's hover
+        //also make sure there are tooltips
+
         if(event.type === "click") {
             removeAddActiveState('thenAdd', thisStateID);
             console.log(thisStateID);
             stateSelectMenu.value = thisStateID;
         }
         
-        
-    
-        //display data here
-
-        //also make sure there's hover
-
-        //also make sure there are tooltips
-
         if(event.type === "change") {
             var stateAbbrSelected = stateSelectMenu.options[stateSelectMenu.selectedIndex].value;
 
@@ -79,5 +77,4 @@
 
     stateSelectMenu.addEventListener('change', mapHandlerFunction);
 
-
-
+})();
