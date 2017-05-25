@@ -134,10 +134,19 @@
 
 }
 
+
+.iftMap__row--hasMap {
+  @include break(max, $breakpoint-max-mobile){
+    padding-bottom: $gutter-width/2;
+  }
+}
+
 .dataDisplay__row {
   padding-bottom:$gutter-width/2;
   text-align:left;
 } 
+
+
 
 .dataDisplay__header {
   border-bottom: 1px solid $ift-grey-200;
@@ -179,6 +188,10 @@
 
 .iftMap__internationalSelectMenu__footer {
   font-size: 1.2rem;
+  line-height: 1;
+  @include break(max, $breakpoint-max-mobile){
+    font-size:1rem;
+  }
 }
 
 
