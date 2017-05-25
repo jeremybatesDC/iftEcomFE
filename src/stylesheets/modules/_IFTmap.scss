@@ -152,6 +152,9 @@
   font-size: 1.2rem;
   line-height: 1;
   padding-right:$gutter-width;
+  @include break(max, $breakpoint-max-mobile){
+    padding-bottom: $gutter-width;
+  }
 }
 
 .iftMap__sectionData__detail {
