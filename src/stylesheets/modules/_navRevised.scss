@@ -33,7 +33,7 @@
 	position: relative;
 	display:flex;
 	justify-content:center;
-	margin-top:1.5em;
+	margin-top:$gutter-width/4;
 	margin-bottom:1.25em;
 	z-index:4;
 	@include break(min, $breakpoint-min-md){
@@ -81,11 +81,12 @@
 		transform: rotate(180deg) scale(3) translateX(50%) translateY(-150%);
 		left:calc(50% + 12px);
 		fill:transparent;
+		z-index: -9;
 		&.caretMorphed {	
 			//height: 12px;
 			fill:$ift-grey-darker;
 			transform: rotate(180deg) scale(3) translateX(50%) translateY(-105%);
-			
+			z-index: 1;
 			.body-home & {
 				fill:transparent;
 			}
