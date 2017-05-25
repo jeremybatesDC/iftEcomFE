@@ -157,6 +157,8 @@
 }
 
 
+
+
 .iftMap__sectionData__wrapper {
   font-size: 1.2rem;
   line-height: 1;
@@ -177,6 +179,11 @@
 }
 
 
+.iftMap__additionalItemsBox__headline {
+  @include break(max, $breakpoint-max-mobile){
+    font-size: 1.4rem;
+  }
+}
 
 
 
