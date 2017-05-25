@@ -165,6 +165,7 @@
 .iftMap__additionalItemsBox__wrapper--inner {
   background: $ift-grey-medium-lighter;
   padding: $gutter-width / 2;
+  position:relative;
 }
 
 .iftMap__internationalSelectMenu__footer {
@@ -186,15 +187,44 @@
   //disallow highlight and actual click
 }
 
+
+//tooltip
 .iftMap__sectionData__footer {
+  position:absolute;
+  background: $ift-grey-medium-lighter;
+  padding:$gutter-width/4;
+  font-size: 1rem;
+  line-height: 1;
+  //top:$gutter-width;
+  // left: 0;
+  // z-index: 9;
+
+  //demoOnly
+  margin-top: -25px;
+  max-width: 300px;
+
   .row {
-    padding-bottom:$gutter-width/4;
+    padding-bottom:$gutter-width/8;
   }
   //default to hidden state in the html
   &.iftMap__sectionData__footer--HIDDEN-STATE{
     display: none;
   }
 
+}
+
+.iconInfo {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  stroke-width: 3px;
+  stroke: $white;
+  fill:$ift-blue-dark;
+  
+}
+
+.iftMap__sectionData__footer__column--label {
+  font-weight: bold;
 }
 
 // .iftMap__svg__rect--background {

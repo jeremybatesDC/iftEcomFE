@@ -68,6 +68,7 @@
 					<input type="checkbox"/>
 					<span>Central Valley Sub-Section Membership</span>
 				</label>
+				<svg class="iconInfo" viewBox="0 0 32 32"><use xlink:href="#iconInfo"/></svg>
 				<div class="iftMap__memberPrice">
 					Member Price: <span>$20.00</span>
 				</div>
@@ -79,32 +80,8 @@
 								 <span>90212-90213</span>
 								 <span>90214-90215</span>
 				</div>
-				<footer class="iftMap__sectionData__footer iftMap__sectionData__footer--HIDDEN-STATE">
-					<div class="row">
-						<div class="col-sm-3">
-							Nearby Section 1: Minnestota, Great Plains
-						</div>
-						<div class="col-sm-9">
-							Nearby Section 1 Text: By joining this section or that srciont, membership is complementary to the other
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-3">
-							Nearby Section 2: Minnestota, Great Plains
-						</div>
-						<div class="col-sm-9">
-							Nearby Section 2 Text: By joining this section or that srciont, membership is complementary to the other
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-3">
-							Nearby Section 3: Minnestota, Great Plains
-						</div>
-						<div class="col-sm-9">
-							Nearby Section 3 Text: By joining this section or that srciont, membership is complementary to the other
-						</div>
-					</div>
-				</footer>
+
+				{% include "./_components/map/map__hiddenTooltipHTML.html" %}
 				
 			</div>
 		</div>
@@ -114,6 +91,7 @@
 					<input type="checkbox"/>
 					<span>Another Section Membership</span>
 				</label>
+				<svg class="iconInfo" viewBox="0 0 32 32"><use xlink:href="#iconInfo"/></svg>
 				<div class="iftMap__memberPrice">
 					Member Price: <span>$20.00</span>
 				</div>
@@ -125,6 +103,8 @@
 								 <span>20817-20818</span>
 								 <span>20819-20820</span>
 				</div>
+
+				{% include "./_components/map/map__hiddenTooltipHTML.html" %}
 				
 			</div>
 		</div>
