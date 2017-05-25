@@ -135,7 +135,7 @@
 }
 
 .dataDisplay__row {
-  padding-bottom:$gutter-width/4;
+  padding-bottom:$gutter-width/2;
   text-align:left;
 } 
 
@@ -155,7 +155,7 @@
 }
 
 .iftMap__sectionData__detail {
-  padding-bottom: $gutter-width / 4;
+  padding-bottom: $gutter-width / 2;
 }
 
 .iftMap__zipCodes {
@@ -180,12 +180,27 @@
 
 
 .iftMap__sectionData__wrapper--DISABLED-STATE {
-  pointer-events:none;
-  opacity: .5;
-  cursor: not-allowed;
+  //pointer-events:none;
+  opacity: .3333;
   position: relative;
+  cursor: not-allowed;
+  &:hover {
+    cursor: not-allowed;
+  }
+  label {
+    cursor: not-allowed;
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
   input {
     //prevent click somehow;
+    //pointer-events:none;
+    cursor: not-allowed;
+    &:hover {
+      cursor: not-allowed;
+    }
+
 
   }
   //z-index: 0;
@@ -206,7 +221,8 @@
   // z-index: 9;
 
   //demoOnly
-  margin-top: -25px;
+  margin-top: -65px;
+  margin-left: 150px;
   max-width: 300px;
 
   .row {
