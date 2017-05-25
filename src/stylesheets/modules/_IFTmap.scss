@@ -72,6 +72,9 @@
 
 .iftMap__additionalItemsBox__wrapper--outer {
   text-align: left;
+  @include break(min, $breakpoint-min-md){
+    padding-top:$gutter-width/2;
+  }
 }
 
 .iftMap__mobile__selectMenu__wrapper--outer {
@@ -166,6 +169,32 @@
 
 .iftMap__internationalSelectMenu__footer {
   font-size: 1.2rem;
+}
+
+
+.iftMap__sectionData__wrapper--DISABLED-STATE {
+  pointer-events:none;
+  opacity: .5;
+  cursor: not-allowed;
+  position: relative;
+  input {
+    //prevent click somehow;
+
+  }
+  //z-index: 0;
+
+  //disallow highlight and actual click
+}
+
+.iftMap__sectionData__footer {
+  .row {
+    padding-bottom:$gutter-width/4;
+  }
+  //default to hidden state in the html
+  &.iftMap__sectionData__footer--HIDDEN-STATE{
+    display: none;
+  }
+
 }
 
 // .iftMap__svg__rect--background {
