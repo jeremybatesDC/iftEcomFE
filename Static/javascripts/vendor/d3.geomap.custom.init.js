@@ -76,17 +76,7 @@
 
 
 
-    //these are for backend developer
-
-    function getStateData(thisStateID) {
-        //go get some data from backend
-    }
-    function writeDataToPage(thisStateID){
-        seletedStateDisplay.innerHTML = thisStateID
-    }
-
-    //end for backend developer
-
+    
 
 
 
@@ -106,6 +96,38 @@
         theHiddenTooltipContent[1].classList.remove('iftMap__sectionData__footer--HIDDEN-STATE');
 
     }
+
+
+
+
+
+
+
+
+    //these are for backend developer
+
+    function getStateData(thisStateID) {
+        //go get some data from backend
+    }
+    function writeDataToPage(thisStateID){
+        seletedStateDisplay.innerHTML = thisStateID
+    }
+
+    //end for backend developer
+
+
+
+
+
+
+
+
+
+
+
+
+    //EVENTS
+
     //demoOnlyToolTip
     theToolTips[1].addEventListener('click', iftMapTooltips)
     stateSelectMenu.addEventListener('change', mapHandlerFunction);
