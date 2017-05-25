@@ -64,9 +64,25 @@
   background: transparent;
   border: none;
   @include break(max, $breakpoint-max-mobile){
-    font-size: 1.2rem;
+    font-size: 1rem;
+    option {
+      font-size: 1rem
       //transform:scale(.275);
     }
+  }
+  @include break(min, $breakpoint-min-tablet){
+    font-size: 1.2rem;
+    option {
+      font-size: 1.2rem
+      //transform:scale(.275);
+    }
+  }
+
+
+}
+
+.iftMap__sectionData__wrapper {
+  font-size: 1.2rem;
 }
 
 // .iftMap__svg__rect--background {
