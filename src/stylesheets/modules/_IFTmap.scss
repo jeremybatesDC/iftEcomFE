@@ -136,6 +136,7 @@
 
 .dataDisplay__row {
   padding-bottom:$gutter-width/4;
+  text-align:left;
 } 
 
 .dataDisplay__header {
@@ -149,7 +150,12 @@
 
 .iftMap__sectionData__wrapper {
   font-size: 1.2rem;
+  line-height: 1;
   padding-right:$gutter-width;
+}
+
+.iftMap__sectionData__detail {
+  padding-bottom: $gutter-width / 4;
 }
 
 .iftMap__zipCodes {
