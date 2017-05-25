@@ -13,61 +13,66 @@
 		</header>
 
 		<div class="col-md-7">
-		<div class="iftMap__wrapper--outer">
-			<svg id="iftMap" class="iftMap__svg" width="500" height="300"></svg>
-
-
-
-	</div>
+			<div class="iftMap__wrapper--outer">
+				<svg id="iftMap" class="iftMap__svg" width="500" height="300"></svg>
+			</div>
 		</div>
+
 		<div class="col-md-5">
-			{% include "./_components/map/map__stateSelectMenu.html" %}
-
-
-			<div class="iftMap__additionalItemsBox iftMap__mobile__selectMenu">
-				<div class="iftMap__additionalItemsBox__wrapper--inner">
-					
+			<div class="iftMap__additionalItemsBox__wrapper--outer">
+				<div class="iftMap__additionalItemsBox iftMap__mobile__selectMenu__wrapper--outer">
+					<div class="iftMap__additionalItemsBox__wrapper--inner">
+						{% include "./_components/map/map__stateSelectMenu.html" %}
+					</div>
 				</div>
-			</div>
-			<div class="iftMap__additionalItemsBox iftMap__additionalItemsBox--internationalSections">
-				<div class="iftMap__additionalItemsBox__wrapper--inner"> 
-					<header>
-						<h6><span>International Sections<span></h6>
-					</header>
+				<div class="iftMap__additionalItemsBox iftMap__additionalItemsBox--internationalSections">
+					<div class="iftMap__additionalItemsBox__wrapper--inner"> 
+						<header>
+							<h6><span>International Sections<span></h6>
+						</header>
 
 
-					<label class="internationalSelectMenu__wrapper--outer">
+						<label class="internationalSelectMenu__wrapper--outer">
 
-					<!-- choosing an international section must a) clear map b) clear state dropdown c) call for international data -->
+						<!-- choosing an international section must a) clear map b) clear state dropdown c) call for international data -->
 
-						<select id="internationalSelectMenu" size="3" class="iftMap__internationalSelectMenu">
-							<option value="BC">British Colombia Section (Canada)</option>
-							<option value="BS">British Section (International)</option>
-							<option value="JP">Japan Section</option>
-						</select>
+							<select id="internationalSelectMenu" size="3" class="iftMap__internationalSelectMenu">
+								<option value="BC">British Colombia Section (Canada)</option>
+								<option value="BS">British Section (International)</option>
+								<option value="JP">Japan Section**</option>
+							</select>
+							<footer class="iftMap__internationalSelectMenu__footer">
+								**Please contact IFT Central at info@ift.org for information on joining this section
+							</footer>
 
-					</label>
+						</label>
 
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row dataDisplay__row">
 		<div class="col-xs-12">
-			<header>
+			<header class="dataDisplay__header">
 				<h5>Selected: 
 					<span id="seletedStateDisplay" class="seletedStateDisplay__headline__span"></span>
 				</h5>
 			</header>
 		</div>
-		<div class="col-md-3">
+	</div>
+	<div class="row dataDisplay__row">
+		<div class="col-sm-3">
 			<div class="iftMap__sectionData__wrapper">
 				<label>
 					<input type="checkbox"/>
 					<span>Central Valley Sub-Section Membership</span>
 				</label>
 				<div class="iftMap__memberPrice">
-					Included in Selection:
+					Member Price: <span>$20.00</span>
+				</div>
+				<div class="iftMap__included">
+					Included in Selection: <span>Northern California Section Membership</span>
 				</div>
 				<div class="iftMap__zipCodes">
 					Zip Code(s): <span>90210-90211</span>
@@ -77,14 +82,17 @@
 				
 			</div>
 		</div>
-		<div class="col-md-3">
+		<div class="col-sm-3">
 			<div class="iftMap__sectionData__wrapper">
 				<label>
 					<input type="checkbox"/>
 					<span>Another Section Membership</span>
 				</label>
 				<div class="iftMap__memberPrice">
-					Included in Selection:
+					Member Price: <span>$20.00</span>
+				</div>
+				<div class="iftMap__included">
+					Included in Selection: <span>Valley Sub-Section Membership</span>
 				</div>
 				<div class="iftMap__zipCodes">
 					Zip Code(s): <span>20815-20816</span>
@@ -94,19 +102,23 @@
 				
 			</div>
 		</div>
-		<div class="col-md-3">
+		<div class="col-sm-3">
 			<div class="iftMap__sectionData__wrapper"></div>
 		</div>
-		<div class="col-md-3">
+		<div class="col-sm-3">
 			<div class="iftMap__sectionData__wrapper"></div>
 		</div>
 	</div>
-	<footer>
-		<div>
-			<a>Save</a>
-			<a>Cancel</a>
+	<div class="row">
+		<div class="col-xs-12">
+			<footer>
+				<div>
+					<a>Save</a>
+					<a>Cancel</a>
+				</div>
+			</footer>
 		</div>
-	</footer>
+	</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.1/d3.min.js"></script>

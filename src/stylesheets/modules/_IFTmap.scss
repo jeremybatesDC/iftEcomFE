@@ -44,9 +44,15 @@
 
 
 .iftMap__wrapper--outer {
+
+  @include break(max, $breakpoint-max-1023){
+    text-align: center;
+  }
   @include break(min, $breakpoint-min-lg){
     max-width: $breakpoint-min-md;
   }
+
+
   header {
     @include break(max, $breakpoint-max-mobile){
       font-size: 1.2rem;
@@ -56,12 +62,27 @@
     }
   }
   .row {
-  	padding-bottom: 0;
+  	//padding-bottom: 0;
   }
   [class^="col-"]{
     padding-left: 0;
     padding-right: 0;
   }
+}
+
+.iftMap__additionalItemsBox__wrapper--outer {
+  text-align: left;
+}
+
+.iftMap__mobile__selectMenu__wrapper--outer {
+
+  @include break(min, $breakpoint-min-tablet){
+    display: none;
+  }
+  .iftMap__additionalItemsBox__wrapper--inner {
+    padding-bottom:0;
+  }
+
 }
 
 .iftMap__stateSelectMenu {
@@ -73,18 +94,24 @@
       //transform:scale(.275);
     }
   }
-  @include break(min, $breakpoint-min-tablet){
-    display: none;
+}
+
+.iftMap__additionalItemsBox--internationalSections {
+  .iftMap__additionalItemsBox__wrapper--inner {
+    @include break(max, $breakpoint-max-mobile){
+      padding-top:0;
+    }
   }
 }
 
 .iftMap__internationalSelectMenu {
   color:$ift-blue;
   overflow: auto;
-  background: transparent;
+  background-color: transparent;
   border: none;
   option {
     color: $ift-blue;
+    background-color: transparent !important;
   }
   @include break(max, $breakpoint-max-mobile){
     font-size: 1rem;
@@ -104,8 +131,12 @@
 
 }
 
-.iftMap__sectionData__wrapper {
-  font-size: 1.2rem;
+.dataDisplay__row {
+  padding-bottom:$gutter-width/4;
+} 
+
+.dataDisplay__header {
+  border-bottom: 1px solid $ift-grey-200;
 }
 
 .seletedStateDisplay__headline__span {
@@ -113,6 +144,29 @@
 }
 
 
+.iftMap__sectionData__wrapper {
+  font-size: 1.2rem;
+  padding-right:$gutter-width;
+}
+
+.iftMap__zipCodes {
+  padding:$gutter-width / 8;
+  font-size: 1.1rem;
+  border: 1px solid $ift-grey-200;
+}
+
+
+
+
+
+.iftMap__additionalItemsBox__wrapper--inner {
+  background: $ift-grey-medium-lighter;
+  padding: $gutter-width / 2;
+}
+
+.iftMap__internationalSelectMenu__footer {
+  font-size: 1.2rem;
+}
 
 // .iftMap__svg__rect--background {
 //   fill: none;
