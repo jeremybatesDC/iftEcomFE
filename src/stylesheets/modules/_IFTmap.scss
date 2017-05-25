@@ -44,15 +44,34 @@
 
 
 .iftMap__wrapper--outer {
-  max-width: $breakpoint-min-md;
-  // .row {
-  // 	padding-bottom: 0;
-  // }
+  @include break(min, $breakpoint-min-lg){
+    max-width: $breakpoint-min-md;
+  }
+  header {
+    @include break(max, $breakpoint-max-mobile){
+      font-size: 1.2rem;
+      p {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .row {
+  	padding-bottom: 0;
+  }
+  [class^="col-"]{
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .iftMap__stateSelectMenu {
   @include break(max, $breakpoint-max-mobile){
     margin-bottom: $gutter-width / 2;
+    font-size: 1.2rem;
+    option {
+      font-size: 1.4rem
+      //transform:scale(.275);
+    }
   }
   @include break(min, $breakpoint-min-tablet){
     display: none;
@@ -84,6 +103,12 @@
 .iftMap__sectionData__wrapper {
   font-size: 1.2rem;
 }
+
+.seletedStateDisplay__headline__span {
+  color: $ift-blue;
+}
+
+
 
 // .iftMap__svg__rect--background {
 //   fill: none;

@@ -57,7 +57,7 @@
             removeAddActiveState('thenAdd', thisStateID);
             console.log(thisStateID);
             stateSelectMenu.value = thisStateID;
-            writeStateNameToHeadline(thisStateID);
+            writeDataToPage(thisStateID);
         }
         
         if(event.type === "change") {
@@ -65,7 +65,7 @@
 
             removeAddActiveState('thenAdd', stateAbbrSelected);
             console.log(stateAbbrSelected);
-            writeStateNameToHeadline(stateAbbrSelected);
+            writeDataToPage(stateAbbrSelected);
         }
 
     }
@@ -74,12 +74,19 @@
         stateSelectMenu.value = '';
         var internationalAbbrSelected = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].value;
         removeAddActiveState();
-        writeStateNameToHeadline(internationalAbbrSelected);
+        writeDataToPage(internationalAbbrSelected);
     }
 
-    function writeStateNameToHeadline(thisStateID){
+
+    //this is for backend developer
+    function writeDataToPage(thisStateID){
         seletedStateDisplay.innerHTML = thisStateID
     }
+
+
+
+
+    
 
     function removeAddActiveState(thenAdd, thisStateID){
         var selectedItem = document.querySelector('.usState--SELECTED');
