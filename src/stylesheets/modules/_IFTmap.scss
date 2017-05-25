@@ -79,20 +79,24 @@
 }
 
 .iftMap__internationalSelectMenu {
+  color:$ift-blue;
   overflow: auto;
   background: transparent;
   border: none;
+  option {
+    color: $ift-blue;
+  }
   @include break(max, $breakpoint-max-mobile){
     font-size: 1rem;
     option {
-      font-size: 1rem
+      font-size: 1rem;
       //transform:scale(.275);
     }
   }
   @include break(min, $breakpoint-min-tablet){
     font-size: 1.2rem;
     option {
-      font-size: 1.2rem
+      font-size: 1.2rem;
       //transform:scale(.275);
     }
   }
