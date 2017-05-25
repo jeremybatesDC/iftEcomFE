@@ -6,6 +6,8 @@
 
     var seletedStateDisplay = document.getElementById('seletedStateDisplay');
     var stateSelectMenu = document.getElementById('stateSelectMenu');
+    var internationalSelectMenu = document.getElementById('internationalSelectMenu');
+
 
     d3.json("javascripts/data/topoJSONusCustom.json", function(error, data) {
       if (error) throw error;
@@ -66,9 +68,13 @@
             writeStateNameToHeadline(stateAbbrSelected);
         }
 
+    }
 
-
-
+    function mapHandlerFunctionInternational(event, thisInternationalID){
+        stateSelectMenu.value = '';
+        var internationalAbbrSelected = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].value;
+        removeAddActiveState();
+        writeStateNameToHeadline(internationalAbbrSelected);
     }
 
     function writeStateNameToHeadline(thisStateID){
@@ -95,5 +101,5 @@
     }
 
     stateSelectMenu.addEventListener('change', mapHandlerFunction);
-
+    internationalSelectMenu.addEventListener('change', mapHandlerFunctionInternational);
 })();
