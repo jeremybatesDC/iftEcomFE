@@ -8,11 +8,28 @@
   height: 100%;
   padding-top:$gutter-width;
   background:$white;
+  overflow-y: scroll;
   z-index: 999999;
   &.iftMapWrapperOuter--ACTIVE-STATE {
     display: block;
   }
 }
+
+.iftMap__header {
+  position:absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  background:$ift-grey-medium-lighter; 
+}
+// .iftMap__wrapper--inner {
+//   position:relative;
+// }
+
+.iftMap__headline {
+  
+}
+
 
 .iftMap__svg {
   > .iftMap__svg__g,

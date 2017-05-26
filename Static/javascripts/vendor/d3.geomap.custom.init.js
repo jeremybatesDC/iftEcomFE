@@ -4,7 +4,7 @@
     var iftMapWrapperOuter = document.getElementById('iftMapWrapperOuter');
     var iftMapButtonOpen = document.getElementById('iftMapButtonOpen');
     var iftMapButtonClose = document.getElementById('iftMapButtonCloseWrapper');
-
+    var iftMapButtonCancel = document.getElementById('iftMapButtonCancel');
 
     var svg = d3.select("#iftMap");
     var path = d3.geoPath();
@@ -163,11 +163,10 @@
         if(event.currentTarget === iftMapButtonOpen) {
             iftMapWrapperOuter.classList.add('iftMapWrapperOuter--ACTIVE-STATE');
         }
-        if(event.currentTarget === iftMapButtonClose) {
+        if(event.currentTarget === iftMapButtonClose || event.currentTarget === iftMapButtonCancel) {
             //this should also close any open tooltip
             closeActiveTooltip();
             iftMapWrapperOuter.classList.remove('iftMapWrapperOuter--ACTIVE-STATE');
-
         }
     }
 
@@ -177,6 +176,7 @@
     stateSelectMenu.addEventListener('change', mapHandlerFunction);
     internationalSelectMenu.addEventListener('change', mapHandlerFunctionInternational);
     iftMapButtonOpen.addEventListener('click', showHideWholeMap, false);
-    iftMapButtonClose.addEventListener('click', showHideWholeMap, false)
+    iftMapButtonClose.addEventListener('click', showHideWholeMap, false);
+    iftMapButtonCancel.addEventListener('click', showHideWholeMap, false);
 
 })();

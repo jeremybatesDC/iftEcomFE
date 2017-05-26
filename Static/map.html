@@ -702,16 +702,18 @@
 
 	<div class="iftMap__wrapper--inner contained">
 
-		<div id="iftMapButtonCloseWrapper" class="iftMap__wrapper--outer__closeButton__wrapper">
-			<svg class="iftMap__wrapper--outer__closeButton__svg" viewBox="0 0 32 32"><use xlink:href="#iconClose"/></svg>
-		</div>
+		
 		
 		<div class="row iftMap__row--hasMap">
-			<header>
-
-				<p>Join Additional Sections: Click on an area of the US map or International sections below, then select additional section(s) to join.</p>
-
+			<header class="iftMap__header">
+				<h6 class="iftMap__headline contained"><span>Add Sections</span></h6>
+				<div id="iftMapButtonCloseWrapper" class="iftMap__wrapper--outer__closeButton__wrapper">
+					<svg class="iftMap__wrapper--outer__closeButton__svg" viewBox="0 0 32 32"><use xlink:href="#iconClose"/></svg>
+				</div>
 			</header>
+
+			<p class="iftMap__header__paragraph">Join Additional Sections: Click on an area of the US map or International sections below, then select additional section(s) to join.</p>
+
 
 			<div class="col-md-8 iftMap__column--hasMap">
 				<div class="iftMap__wrapper--outer">
@@ -931,16 +933,16 @@
 				<div class="iftMap__sectionData__wrapper"></div>
 			</div>
 		</div>
-		<!-- <div class="row">
+		<div class="row iftMap__row--saveCancel">
 			<div class="col-xs-12">
-				<footer>
+				<footer class="iftMap__footer--saveCancel">
 					<div>
-						<a class=""><span>Cancel<span></a>
+						<a id="iftMapButtonCancel" class="iftMap__button--cancel"><span>Cancel<span></a>
 						<a class="button"><span>Save</span></a>
 					</div>
 				</footer>
 			</div>
-		</div> -->
+		</div>
 	</div>
 </div>
 
