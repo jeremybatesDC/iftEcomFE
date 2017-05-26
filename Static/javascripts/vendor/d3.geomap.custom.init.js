@@ -77,12 +77,6 @@
     }
 
 
-
-
-    
-
-
-
     function removeAddActiveState(thenAdd, thisStateID){
         var selectedItem = document.querySelector('.usState--SELECTED');
         //if there is an active item, remove itS active class
@@ -99,22 +93,20 @@
 
 
 
-
-//just toggle class, yah?
-
-
-
-
     //these are for backend developer
 
     function getStateData(thisStateID) {
         //go get some data from backend
     }
     function writeDataToPage(thisStateID){
+        //this is just one example of writing the data
         seletedStateDisplay.innerHTML = thisStateID
     }
 
     //end for backend developer
+
+
+
 
 
     //this must be called each time new data is put on the page to get a fresh nodelist
@@ -122,7 +114,6 @@
         var toolTipIcons = document.querySelectorAll('.iconInfo');
         var toolTipsCloseButtons = document.querySelectorAll('.iftMap__tooltip__closeButton__wrapper');
         //add listeners
-
         for (var i = 0; i < toolTipIcons.length; i++) {
             toolTipIcons[i].addEventListener('click', openThisTooltip, false)
         }
@@ -130,8 +121,9 @@
             toolTipsCloseButtons[j].addEventListener('click', closeActiveTooltip, false)
         }
     }
-
     collectTooltipsAndAttachListeners();
+
+
 
     function closeActiveTooltip(event){
         var nodeListOfHiddenTooltipContent = document.querySelectorAll('.iftMap__sectionData__footer');
@@ -139,21 +131,13 @@
         if (visibleTooltip !== null) {
             visibleTooltip.classList.remove('iftMap__sectionData__footer--VISIBLE-STATE');
             visibleTooltip.classList.add('iftMap__sectionData__footer--HIDDEN-STATE');
-
         }
-
-        //could split this by target since cannot pass arguments
-        //if(event.currentTarget.classList.contains('iconInfo')){}
-        
-
     }
 
 
     function openThisTooltip(event){
         var theContentToReveal = event.currentTarget.parentNode.querySelector('.iftMap__sectionData__footer');
-        
         closeActiveTooltip(event);
-        
         theContentToReveal.classList.remove('iftMap__sectionData__footer--HIDDEN-STATE');
         theContentToReveal.classList.add('iftMap__sectionData__footer--VISIBLE-STATE');
 
@@ -169,7 +153,7 @@
             iftMapWrapperOuter.classList.remove('iftMapWrapperOuter--ACTIVE-STATE');
         }
         if(event.currentTarget === iftMapButtonCancel){
-            //this might be
+            //this might be a link
             event.preventDefault();
             closeActiveTooltip();
             iftMapWrapperOuter.classList.remove('iftMapWrapperOuter--ACTIVE-STATE');
