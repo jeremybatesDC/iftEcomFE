@@ -8,8 +8,11 @@
     var stateSelectMenu = document.getElementById('stateSelectMenu');
     var internationalSelectMenu = document.getElementById('internationalSelectMenu');
 
-    var theHiddenTooltipContent = document.querySelectorAll('.iftMap__sectionData__footer');
-    var theToolTips = document.querySelectorAll('.iconInfo');
+    
+
+    
+
+
 
     d3.json("javascripts/data/topoJSONusCustom.json", function(error, data) {
       if (error) throw error;
@@ -91,15 +94,13 @@
         }
     }
 
-    function iftMapTooltips(){
-        console.log('tooltip');
-        theHiddenTooltipContent[1].classList.remove('iftMap__sectionData__footer--HIDDEN-STATE');
-
-    }
+    
+    
 
 
 
 
+//just toggle class, yah?
 
 
 
@@ -128,8 +129,7 @@
 
     //EVENTS
 
-    //demoOnlyToolTip
-    theToolTips[1].addEventListener('click', iftMapTooltips)
+   
     stateSelectMenu.addEventListener('change', mapHandlerFunction);
     internationalSelectMenu.addEventListener('change', mapHandlerFunctionInternational);
 })();
