@@ -63,19 +63,23 @@
 	}
 }
 
-form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
-	background: transparent;
-	input#ctl00_MainContent_ctl00_SearchControl_SearchBox {
-		background: white !important;
-	}
-	.PersonifyPagerControl_PersonifyDefault .personifypager {
-		padding-bottom: 22px;
-	}
-	#MainContent_ctl00_PagerControl_ContainerPanel {
-    background: white;
-	}
+form[action="./LearningProductsListing"],
+form[class$="roductsListing"],
+form[class$="roductslisting"] {
+	#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
+		background: transparent;
+		input#ctl00_MainContent_ctl00_SearchControl_SearchBox {
+			background: white !important;
+		}
+		.PersonifyPagerControl_PersonifyDefault .personifypager {
+			padding-bottom: 22px;
+		}
+		#MainContent_ctl00_PagerControl_ContainerPanel {
+	    background: white;
+		}
 
-	#MainContent_ctl00_SearchControl_SearchPanel {
-    padding: 10px 20px;
+		#MainContent_ctl00_SearchControl_SearchPanel {
+	    padding: 10px 20px;
+		}
 	}
 }
