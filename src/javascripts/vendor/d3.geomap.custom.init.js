@@ -5,15 +5,14 @@
     var iftMapButtonOpen = document.getElementById('iftMapButtonOpen');
     var iftMapButtonClose = document.getElementById('iftMapButtonCloseWrapper');
     var iftMapButtonCancel = document.getElementById('iftMapButtonCancel');
-
-    var svg = d3.select("#iftMap");
-    var path = d3.geoPath();
-
+    
     var seletedStateDisplay = document.getElementById('seletedStateDisplay');
     var stateSelectMenu = document.getElementById('stateSelectMenu');
     var internationalSelectMenu = document.getElementById('internationalSelectMenu');
-    
+
     //DRAW THE MAP
+    var svg = d3.select("#iftMap");
+    var path = d3.geoPath();
     d3.json("javascripts/data/topoJSONusCustom.json", function(error, data) {
       if (error) throw error;
 
@@ -24,21 +23,17 @@
         .enter()
         .append("path")
         .attr('id', function(thisState){
-            //accessing other properties isNotWorkingAsExpected
-            console.log(thisState.id)
+            console.log(thisState.id);
             return thisState.id
-
         })
         .attr('data-stateName', function(thisState){
+            //this is giving me the whole array...accessing other properties isNotWorkingAsExpected
+            //console.log(thisState)
             return 'placeholderStateName'
-            console.log(thisState)
-            //return data.objects.states.geometries[z].stateName
-            //only works on arrays
         })
         .attr("class", "usState iftMap__svg__path")
         .attr("d", path)
         .on("click", function(thisState){
-
             //this adds events the d3 way -- the program already has reference to each path, so we use it to add handler(s)
             mapHandlerFunction(event, thisState.id);
         });
@@ -51,7 +46,7 @@
     function mapHandlerFunction(event, thisStateID){
             
         //display data here
-        //also make sure there's hover titles [damn]
+        //must add hover titles
 
         if(event.type === "click") {
             removeAddActiveState('thenAdd', thisStateID);
@@ -75,7 +70,6 @@
         removeAddActiveState();
         writeDataToPage(internationalAbbrSelected);
     }
-
 
     function removeAddActiveState(thenAdd, thisStateID){
         var selectedItem = document.querySelector('.usState--SELECTED');
@@ -124,7 +118,6 @@
     collectTooltipsAndAttachListeners();
 
 
-
     function closeActiveTooltip(event){
         var nodeListOfHiddenTooltipContent = document.querySelectorAll('.iftMap__sectionData__footer');
         var visibleTooltip = document.querySelector('.iftMap__sectionData__footer--VISIBLE-STATE');
@@ -133,7 +126,6 @@
             visibleTooltip.classList.add('iftMap__sectionData__footer--HIDDEN-STATE');
         }
     }
-
 
     function openThisTooltip(event){
         var theContentToReveal = event.currentTarget.parentNode.querySelector('.iftMap__sectionData__footer');
@@ -162,8 +154,6 @@
 
 
     //EVENTS
-
-   
     stateSelectMenu.addEventListener('change', mapHandlerFunction);
     internationalSelectMenu.addEventListener('change', mapHandlerFunctionInternational);
     iftMapButtonOpen.addEventListener('click', showHideWholeMap, false);
