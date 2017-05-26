@@ -4,16 +4,15 @@
     var iftMapWrapperOuter = document.getElementById('iftMapWrapperOuter');
     var iftMapButtonOpen = document.getElementById('iftMapButtonOpen');
     var iftMapButtonClose = document.getElementById('iftMapButtonCloseWrapper');
-
-
-    var svg = d3.select("#iftMap");
-    var path = d3.geoPath();
-
+    var iftMapButtonCancel = document.getElementById('iftMapButtonCancel');
+    
     var seletedStateDisplay = document.getElementById('seletedStateDisplay');
     var stateSelectMenu = document.getElementById('stateSelectMenu');
     var internationalSelectMenu = document.getElementById('internationalSelectMenu');
-    
+
     //DRAW THE MAP
+    var svg = d3.select("#iftMap");
+    var path = d3.geoPath();
     d3.json("javascripts/data/topoJSONusCustom.json", function(error, data) {
       if (error) throw error;
 
@@ -24,21 +23,17 @@
         .enter()
         .append("path")
         .attr('id', function(thisState){
-            //accessing other properties isNotWorkingAsExpected
-            console.log(thisState.id)
+            console.log(thisState.id);
             return thisState.id
-
         })
         .attr('data-stateName', function(thisState){
+            //this is giving me the whole array...accessing other properties isNotWorkingAsExpected
+            //console.log(thisState)
             return 'placeholderStateName'
-            console.log(thisState)
-            //return data.objects.states.geometries[z].stateName
-            //only works on arrays
         })
         .attr("class", "usState iftMap__svg__path")
         .attr("d", path)
         .on("click", function(thisState){
-
             //this adds events the d3 way -- the program already has reference to each path, so we use it to add handler(s)
             mapHandlerFunction(event, thisState.id);
         });
@@ -51,7 +46,7 @@
     function mapHandlerFunction(event, thisStateID){
             
         //display data here
-        //also make sure there's hover titles [damn]
+        //must add hover titles
 
         if(event.type === "click") {
             removeAddActiveState('thenAdd', thisStateID);
@@ -76,13 +71,6 @@
         writeDataToPage(internationalAbbrSelected);
     }
 
-
-
-
-    
-
-
-
     function removeAddActiveState(thenAdd, thisStateID){
         var selectedItem = document.querySelector('.usState--SELECTED');
         //if there is an active item, remove itS active class
@@ -99,22 +87,20 @@
 
 
 
-
-//just toggle class, yah?
-
-
-
-
     //these are for backend developer
 
     function getStateData(thisStateID) {
         //go get some data from backend
     }
     function writeDataToPage(thisStateID){
+        //this is just one example of writing the data
         seletedStateDisplay.innerHTML = thisStateID
     }
 
     //end for backend developer
+
+
+
 
 
     //this must be called each time new data is put on the page to get a fresh nodelist
@@ -122,7 +108,6 @@
         var toolTipIcons = document.querySelectorAll('.iconInfo');
         var toolTipsCloseButtons = document.querySelectorAll('.iftMap__tooltip__closeButton__wrapper');
         //add listeners
-
         for (var i = 0; i < toolTipIcons.length; i++) {
             toolTipIcons[i].addEventListener('click', openThisTooltip, false)
         }
@@ -130,8 +115,8 @@
             toolTipsCloseButtons[j].addEventListener('click', closeActiveTooltip, false)
         }
     }
-
     collectTooltipsAndAttachListeners();
+
 
     function closeActiveTooltip(event){
         var nodeListOfHiddenTooltipContent = document.querySelectorAll('.iftMap__sectionData__footer');
@@ -139,21 +124,12 @@
         if (visibleTooltip !== null) {
             visibleTooltip.classList.remove('iftMap__sectionData__footer--VISIBLE-STATE');
             visibleTooltip.classList.add('iftMap__sectionData__footer--HIDDEN-STATE');
-
         }
-
-        //could split this by target since cannot pass arguments
-        //if(event.currentTarget.classList.contains('iconInfo')){}
-        
-
     }
-
 
     function openThisTooltip(event){
         var theContentToReveal = event.currentTarget.parentNode.querySelector('.iftMap__sectionData__footer');
-        
         closeActiveTooltip(event);
-        
         theContentToReveal.classList.remove('iftMap__sectionData__footer--HIDDEN-STATE');
         theContentToReveal.classList.add('iftMap__sectionData__footer--VISIBLE-STATE');
 
@@ -167,16 +143,21 @@
             //this should also close any open tooltip
             closeActiveTooltip();
             iftMapWrapperOuter.classList.remove('iftMapWrapperOuter--ACTIVE-STATE');
-
+        }
+        if(event.currentTarget === iftMapButtonCancel){
+            //this might be a link
+            event.preventDefault();
+            closeActiveTooltip();
+            iftMapWrapperOuter.classList.remove('iftMapWrapperOuter--ACTIVE-STATE');
         }
     }
 
-    //EVENTS
 
-   
+    //EVENTS
     stateSelectMenu.addEventListener('change', mapHandlerFunction);
     internationalSelectMenu.addEventListener('change', mapHandlerFunctionInternational);
     iftMapButtonOpen.addEventListener('click', showHideWholeMap, false);
-    iftMapButtonClose.addEventListener('click', showHideWholeMap, false)
+    iftMapButtonClose.addEventListener('click', showHideWholeMap, false);
+    iftMapButtonCancel.addEventListener('click', showHideWholeMap, false);
 
 })();
