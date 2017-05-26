@@ -129,3 +129,67 @@ form[class$="roductslisting"] {
 		}
 	}
 }
+.MtgWizStepCustomerName{
+	color: #333;
+}
+.MtgWizStepTitleContainer {
+    border: none;
+}
+#MainContent_ctl00_cMtgRegWizContactInfo_MtgRegWizStepTitle_ContainerPanel + .ctrlContent.mtgRegContacts {
+    background: white;
+    padding: 20px;    
+}
+#MainContent_ctl00_dvExhibitorInfo,div#MainContent_ctl00_dvAttendeeList {
+    background: transparent
+}
+// Nav
+.MtgRegWizContainer{
+	.WizardWith5Steps{
+		display: flex;
+		margin-bottom: 40px;
+		// Remove Clearfix
+		&:before,&:after{
+			display: none;
+		}
+		span {
+			//personify override
+			span {
+				width: auto !important;
+			}
+		}
+		li {
+			flex-grow: 1;
+			background: transparent;
+			border-color: $ift-grey-230;
+			color: $ift-grey-medium-light;
+			text-align: left;
+			padding-left: 40px !important;
+			.step-number {
+				width: 30px!important;
+				height: 30px!important;
+				border-radius: 100% !important;
+				border: 1px solid white;
+				box-shadow: none;
+				position: absolute;
+				left: 20px;
+				text-shadow: none !important;
+				top: 9px;
+				padding: 5px 0;
+				background-color: $ift-grey-medium-light;
+			}
+			a {
+				color: $ift-grey-medium-light;
+			}
+			&.MtgRegWizstepSelected {
+				background-color: $ift-green !important;
+				border-bottom-color: $ift-green !important;
+				a {
+					color: $white;
+				}
+				.step-number {
+					background-color: transparent;
+				}
+			}
+		}
+	}
+}
