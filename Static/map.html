@@ -695,26 +695,35 @@
 		<main class="template-interior">
 			
 
+<!--ideally this wouldNT be a link, but in personify it probably is-->
+<a id="iftMapButtonOpen" class="iftMap__button--open">Add Section</a>
 
-<div class="iftMap__wrapper--outer contained">
-	<div class="row iftMap__row--hasMap">
-		<header>
+<div id="iftMapWrapperOuter" class="iftMap__wrapper--outer">
 
-			<p>Join Additional Sections: Click on an area of the US map or International sections below, then select additional section(s) to join.</p>
+	<div class="iftMap__wrapper--inner contained">
 
-		</header>
-
-		<div class="col-md-8 iftMap__column--hasMap">
-			<div class="iftMap__wrapper--outer">
-				<svg id="iftMap" class="iftMap__svg" width="500" height="300"></svg>
-			</div>
+		<div id="iftMapButtonCloseWrapper" class="iftMap__wrapper--outer__closeButton__wrapper">
+			<svg class="iftMap__wrapper--outer__closeButton__svg" viewBox="0 0 32 32"><use xlink:href="#iconClose"/></svg>
 		</div>
+		
+		<div class="row iftMap__row--hasMap">
+			<header>
 
-		<div class="col-md-4">
-			<div class="iftMap__additionalItemsBox__wrapper--outer">
-				<div class="iftMap__additionalItemsBox iftMap__mobile__selectMenu__wrapper--outer">
-					<div class="iftMap__additionalItemsBox__wrapper--inner">
-						<label class="stateSelectMenu__wrapper--outer">	
+				<p>Join Additional Sections: Click on an area of the US map or International sections below, then select additional section(s) to join.</p>
+
+			</header>
+
+			<div class="col-md-8 iftMap__column--hasMap">
+				<div class="iftMap__wrapper--outer">
+					<svg id="iftMap" class="iftMap__svg" width="500" height="300"></svg>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="iftMap__additionalItemsBox__wrapper--outer">
+					<div class="iftMap__additionalItemsBox iftMap__mobile__selectMenu__wrapper--outer">
+						<div class="iftMap__additionalItemsBox__wrapper--inner">
+							<label class="stateSelectMenu__wrapper--outer">	
 	<select id="stateSelectMenu" class="iftMap__stateSelectMenu">
 		<option value="" selected="selected">Select a US State</option>
 		<option value="AL">Alabama</option>
@@ -770,70 +779,69 @@
 		<option value="WY">Wyoming</option>
 	</select>
 </label>
+						</div>
 					</div>
-				</div>
-				<div class="iftMap__additionalItemsBox iftMap__additionalItemsBox--internationalSections">
-					<div class="iftMap__additionalItemsBox__wrapper--inner"> 
-						<header class="iftMap__additionalItemsBox__header">
-							<h6 class="iftMap__additionalItemsBox__headline"><span>International Sections<span></h6>
-						</header>
+					<div class="iftMap__additionalItemsBox iftMap__additionalItemsBox--internationalSections">
+						<div class="iftMap__additionalItemsBox__wrapper--inner"> 
+							<header class="iftMap__additionalItemsBox__header">
+								<h6 class="iftMap__additionalItemsBox__headline"><span>International Sections<span></h6>
+							</header>
 
 
-						<label class="internationalSelectMenu__wrapper--outer">
+							<label class="internationalSelectMenu__wrapper--outer">
 
-						<!-- choosing an international section must a) clear map b) clear state dropdown c) call for international data -->
+							<!-- choosing an international section must a) clear map b) clear state dropdown c) call for international data -->
 
-							<select id="internationalSelectMenu" size="3" class="iftMap__internationalSelectMenu">
-								<option value="BC">British Colombia Section (Canada)</option>
-								<option value="BS">British Section (International)</option>
-								<option value="JP">Japan Section**</option>
-							</select>
-							<footer class="iftMap__internationalSelectMenu__footer">
-								**Please contact IFT Central at info@ift.org for information on joining this section
-							</footer>
+								<select id="internationalSelectMenu" size="3" class="iftMap__internationalSelectMenu">
+									<option value="BC">British Colombia Section (Canada)</option>
+									<option value="BS">British Section (International)</option>
+									<option value="JP">Japan Section**</option>
+								</select>
+								<footer class="iftMap__internationalSelectMenu__footer">
+									**Please contact IFT Central at info@ift.org for information on joining this section
+								</footer>
 
-						</label>
+							</label>
 
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row dataDisplay__row">
-		<div class="col-xs-12">
-			<header class="dataDisplay__header">
-				<h5>Selected: 
-					<span id="seletedStateDisplay" class="seletedStateDisplay__headline__span"></span>
-				</h5>
-			</header>
+		<div class="row dataDisplay__row">
+			<div class="col-xs-12">
+				<header class="dataDisplay__header">
+					<h5>Selected: 
+						<span id="seletedStateDisplay" class="seletedStateDisplay__headline__span"></span>
+					</h5>
+				</header>
+			</div>
 		</div>
+		<div class="row dataDisplay__row">
+			<div class="col-sm-3">
+				<div class="iftMap__sectionData__wrapper iftMap__sectionData__wrapper--DISABLED-STATE">
+	<label>
+		<input type="checkbox"/>
+		<span>Central Valley Sub-Section Membership</span>
+	</label>
+	<svg class="iconInfo" viewBox="0 0 32 32"><use xlink:href="#iconInfo"/></svg>
+	<div class="iftMap__memberPrice iftMap__sectionData__detail">
+		Member Price: <span>$20.00</span>
 	</div>
-	<div class="row dataDisplay__row">
-		<div class="col-sm-3">
-			<div class="iftMap__sectionData__wrapper iftMap__sectionData__wrapper--DISABLED-STATE">
-				<label>
-					<input type="checkbox"/>
-					<span>Central Valley Sub-Section Membership</span>
-				</label>
-				<svg class="iconInfo" viewBox="0 0 32 32"><use xlink:href="#iconInfo"/></svg>
-				<div class="iftMap__memberPrice iftMap__sectionData__detail">
-					Member Price: <span>$20.00</span>
-				</div>
-				<div class="iftMap__included iftMap__sectionData__detail">
-					Included in Selection: <span>Northern California Section Membership</span>
-				</div>
-				<div class="iftMap__zipCodes iftMap__sectionData__detail">
-					Zip Code(s): <span>90210-90211</span>
-								 <span>90212-90213</span>
-								 <span>90214-90215</span>
-				</div>
+	<div class="iftMap__included iftMap__sectionData__detail">
+		Included in Selection: <span>Northern California Section Membership</span>
+	</div>
+	<div class="iftMap__zipCodes iftMap__sectionData__detail">
+		Zip Code(s): <span>90210-90211</span>
+					 <span>90212-90213</span>
+					 <span>90214-90215</span>
+	</div>
 
-				<footer class="iftMap__sectionData__footer iftMap__sectionData__footer--HIDDEN-STATE">
-	<!-- <div class="iftMap__tooltip__closeButton__wrapper--outer">
-		<div class="iftMap__tooltip__closeButton__wrapper--inner">
-			<svg class="" viewBox="0 0 32 32"><use xlink:href="#iconClose"/></svg>
-		</div>
-	</div> -->
+	<footer class="iftMap__sectionData__footer iftMap__sectionData__footer--HIDDEN-STATE">
+	
+	<div class="iftMap__tooltip__closeButton__wrapper">
+		<svg class="iftMap__tooltip__closeButton__svg" viewBox="0 0 32 32"><use xlink:href="#iconClose"/></svg>
+	</div>
 
 	<div class="row">
 		<div class="col-sm-3 iftMap__sectionData__footer__column--label">
@@ -860,34 +868,33 @@
 		</div>
 	</div>
 </footer>
-				
+	
+</div>
 			</div>
-		</div>
-		<div class="col-sm-3">
-			<div class="iftMap__sectionData__wrapper">
-				<label>
-					<input type="checkbox"/>
-					<span>Another Section Membership</span>
-				</label>
-				<svg class="iconInfo" viewBox="0 0 32 32"><use xlink:href="#iconInfo"/></svg>
-				<div class="iftMap__memberPrice iftMap__sectionData__detail">
-					Member Price: <span>$20.00</span>
-				</div>
-				<div class="iftMap__included iftMap__sectionData__detail">
-					Included in Selection: <span>Valley Sub-Section Membership</span>
-				</div>
-				<div class="iftMap__zipCodes iftMap__sectionData__detail">
-					Zip Code(s): <span>20815-20816</span>
-								 <span>20817-20818</span>
-								 <span>20819-20820</span>
-				</div>
+			<div class="col-sm-3">
+				<div class="iftMap__sectionData__wrapper">
+	<label>
+		<input type="checkbox"/>
+		<span>Another Section Membership</span>
+	</label>
+	<svg class="iconInfo" viewBox="0 0 32 32"><use xlink:href="#iconInfo"/></svg>
+	<div class="iftMap__memberPrice iftMap__sectionData__detail">
+		Member Price: <span>$20.00</span>
+	</div>
+	<div class="iftMap__included iftMap__sectionData__detail">
+		Included in Selection: <span>Valley Sub-Section Membership</span>
+	</div>
+	<div class="iftMap__zipCodes iftMap__sectionData__detail">
+		Zip Code(s): <span>20815-20816</span>
+					 <span>20817-20818</span>
+					 <span>20819-20820</span>
+	</div>
 
-				<footer class="iftMap__sectionData__footer iftMap__sectionData__footer--HIDDEN-STATE">
-	<!-- <div class="iftMap__tooltip__closeButton__wrapper--outer">
-		<div class="iftMap__tooltip__closeButton__wrapper--inner">
-			<svg class="" viewBox="0 0 32 32"><use xlink:href="#iconClose"/></svg>
-		</div>
-	</div> -->
+	<footer class="iftMap__sectionData__footer iftMap__sectionData__footer--HIDDEN-STATE">
+	
+	<div class="iftMap__tooltip__closeButton__wrapper">
+		<svg class="iftMap__tooltip__closeButton__svg" viewBox="0 0 32 32"><use xlink:href="#iconClose"/></svg>
+	</div>
 
 	<div class="row">
 		<div class="col-sm-3 iftMap__sectionData__footer__column--label">
@@ -914,26 +921,27 @@
 		</div>
 	</div>
 </footer>
-				
+	
+</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="iftMap__sectionData__wrapper"></div>
+			</div>
+			<div class="col-sm-3">
+				<div class="iftMap__sectionData__wrapper"></div>
 			</div>
 		</div>
-		<div class="col-sm-3">
-			<div class="iftMap__sectionData__wrapper"></div>
-		</div>
-		<div class="col-sm-3">
-			<div class="iftMap__sectionData__wrapper"></div>
-		</div>
+		<!-- <div class="row">
+			<div class="col-xs-12">
+				<footer>
+					<div>
+						<a class=""><span>Cancel<span></a>
+						<a class="button"><span>Save</span></a>
+					</div>
+				</footer>
+			</div>
+		</div> -->
 	</div>
-	<!-- <div class="row">
-		<div class="col-xs-12">
-			<footer>
-				<div>
-					<a class=""><span>Cancel<span></a>
-					<a class="button"><span>Save</span></a>
-				</div>
-			</footer>
-		</div>
-	</div> -->
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.1/d3.min.js"></script>

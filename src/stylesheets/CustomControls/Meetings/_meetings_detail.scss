@@ -21,8 +21,9 @@
 		clear: both;
 	}
 	.MTGDetailContent {
-		width: auto;
-		padding: 0;
+		    width: calc(100% - 240px);
+    padding: 20px;
+    background: white;
 	}
 	.MTGDetailRotatingImage {
 		float: none;
@@ -61,8 +62,18 @@
 		width: 100% !important;
 		max-width: 100% !important
 	}
+	.MTGDetailRightContent {
+		padding: 20px;
+		width: 230px;
+		float: right;
+		background: white;
+	}
 }
 
+#MainContent_ctl00_btnRegisterGroup,
+#MainContent_ctl00_btnRapidGroupRegistration{
+	@include unButton()
+}
 form[action="./LearningProductsListing"],
 form[class$="roductsListing"],
 form[class$="roductslisting"] {
