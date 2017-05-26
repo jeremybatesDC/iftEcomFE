@@ -164,7 +164,10 @@
             iftMapWrapperOuter.classList.add('iftMapWrapperOuter--ACTIVE-STATE');
         }
         if(event.currentTarget === iftMapButtonClose) {
+            //this should also close any open tooltip
+            closeActiveTooltip();
             iftMapWrapperOuter.classList.remove('iftMapWrapperOuter--ACTIVE-STATE');
+
         }
     }
 
