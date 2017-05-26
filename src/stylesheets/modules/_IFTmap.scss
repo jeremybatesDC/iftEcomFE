@@ -1,3 +1,18 @@
+#iftMapWrapperOuter {
+  display: none;
+  position:fixed;
+  top:0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  padding-top:$gutter-width;
+  background:$white;
+  z-index: 999999;
+  &.iftMapWrapperOuter--ACTIVE-STATE {
+    display: block;
+  }
+}
+
 .iftMap__svg {
   > .iftMap__svg__g,
   > .iftMap__svg__path--stateBorders {
@@ -244,7 +259,7 @@
   // z-index: 9;
 
   //demoOnly
-  margin-top: -65px;
+  margin-top: -200px;
   margin-left: 150px;
   max-width: 300px;
 
@@ -298,6 +313,28 @@
   stroke: #000;
   stroke-width:2px;
 }
+
+.iftMap__wrapper--outer__closeButton__wrapper {
+  position:absolute;
+  top:0;
+  right: 0;
+  width: 3.2rem;
+  height: 3.2rem;
+  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
+
+}
+
+.iftMap__wrapper--outer__closeButton__svg {
+  width: 3.2rem;
+  height: 3.2rem;
+  stroke: #000;
+  stroke-width:4px;
+}
+
+
 
 // .iftMap__svg__rect--background {
 //   fill: none;

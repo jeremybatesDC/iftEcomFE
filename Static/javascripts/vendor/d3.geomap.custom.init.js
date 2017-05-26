@@ -1,5 +1,10 @@
 (function iftMapFunction(){
     "use strict";
+    //get reference to outermost wrapper to show/hide with modal
+    var iftMapWrapperOuter = document.getElementById('iftMapWrapperOuter');
+    var iftMapButtonOpen = document.getElementById('iftMapButtonOpen');
+    var iftMapButtonClose = document.getElementById('iftMapButtonCloseWrapper');
+
 
     var svg = d3.select("#iftMap");
     var path = d3.geoPath();
@@ -7,10 +12,8 @@
     var seletedStateDisplay = document.getElementById('seletedStateDisplay');
     var stateSelectMenu = document.getElementById('stateSelectMenu');
     var internationalSelectMenu = document.getElementById('internationalSelectMenu');
-
-    var theHiddenTooltipContent = document.querySelectorAll('.iftMap__sectionData__footer');
-    var theToolTips = document.querySelectorAll('.iconInfo');
-
+    
+    //DRAW THE MAP
     d3.json("javascripts/data/topoJSONusCustom.json", function(error, data) {
       if (error) throw error;
 
@@ -91,15 +94,13 @@
         }
     }
 
-    function iftMapTooltips(){
-        console.log('tooltip');
-        theHiddenTooltipContent[1].classList.remove('iftMap__sectionData__footer--HIDDEN-STATE');
-
-    }
+    
 
 
 
 
+
+//just toggle class, yah?
 
 
 
@@ -116,20 +117,63 @@
     //end for backend developer
 
 
+    //this must be called each time new data is put on the page to get a fresh nodelist
+    function collectTooltipsAndAttachListeners(){
+        var toolTipIcons = document.querySelectorAll('.iconInfo');
+        var toolTipsCloseButtons = document.querySelectorAll('.iftMap__tooltip__closeButton__wrapper');
+        //add listeners
+
+        for (var i = 0; i < toolTipIcons.length; i++) {
+            toolTipIcons[i].addEventListener('click', openThisTooltip, false)
+        }
+        for(var j = 0; j < toolTipsCloseButtons.length; j++){
+            toolTipsCloseButtons[j].addEventListener('click', closeActiveTooltip, false)
+        }
+    }
+
+    collectTooltipsAndAttachListeners();
+
+    function closeActiveTooltip(event){
+        var nodeListOfHiddenTooltipContent = document.querySelectorAll('.iftMap__sectionData__footer');
+        var visibleTooltip = document.querySelector('.iftMap__sectionData__footer--VISIBLE-STATE');
+        if (visibleTooltip !== null) {
+            visibleTooltip.classList.remove('iftMap__sectionData__footer--VISIBLE-STATE');
+            visibleTooltip.classList.add('iftMap__sectionData__footer--HIDDEN-STATE');
+
+        }
+
+        //could split this by target since cannot pass arguments
+        //if(event.currentTarget.classList.contains('iconInfo')){}
+        
+
+    }
 
 
+    function openThisTooltip(event){
+        var theContentToReveal = event.currentTarget.parentNode.querySelector('.iftMap__sectionData__footer');
+        
+        closeActiveTooltip(event);
+        
+        theContentToReveal.classList.remove('iftMap__sectionData__footer--HIDDEN-STATE');
+        theContentToReveal.classList.add('iftMap__sectionData__footer--VISIBLE-STATE');
 
+    }
 
-
-
-
-
-
+    function showHideWholeMap(event){
+        if(event.currentTarget === iftMapButtonOpen) {
+            iftMapWrapperOuter.classList.add('iftMapWrapperOuter--ACTIVE-STATE');
+        }
+        if(event.currentTarget === iftMapButtonClose) {
+            iftMapWrapperOuter.classList.remove('iftMapWrapperOuter--ACTIVE-STATE');
+        }
+    }
 
     //EVENTS
 
-    //demoOnlyToolTip
-    theToolTips[1].addEventListener('click', iftMapTooltips)
+   
     stateSelectMenu.addEventListener('change', mapHandlerFunction);
     internationalSelectMenu.addEventListener('change', mapHandlerFunctionInternational);
+    iftMapButtonOpen.addEventListener('click', showHideWholeMap, false);
+    iftMapButtonClose.addEventListener('click', showHideWholeMap, false)
+
 })();
