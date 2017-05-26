@@ -10,12 +10,11 @@
 	.MTGDetailShortDescription,
 	.MTGDetailCaption {
 		display: block;
-		overflow:hidden;
-		float:none;
+		overflow: hidden;
+		float: none;
 		clear: both;
 		@include betterClearFix;
 	}
-
 	.MTGDetailLeftNav {
 		display: none;
 		float: none;
@@ -23,14 +22,14 @@
 	}
 	.MTGDetailContent {
 		width: auto;
-		padding:0;
+		padding: 0;
 	}
 	.MTGDetailRotatingImage {
 		float: none;
-		position:relative;
+		position: relative;
 	}
 	.dvAdditionalInformation {
-		clear:both;
+		clear: both;
 	}
 	.MTGDetailRibbonBadgeCredit {
 		position: absolute;
@@ -46,13 +45,13 @@
 		}
 	}
 	.MTGDetailCaption {
-		padding:0 !important;
+		padding: 0 !important;
 	}
 	.MTGDetailValue {
-		padding:0 !important;
+		padding: 0 !important;
 	}
 	.MTGDetailCredit {
-		padding:0 !important;
+		padding: 0 !important;
 	}
 	.MTGDetailContentEventSchedule {
 		float: none;
@@ -61,5 +60,22 @@
 	.MTGDetailBottom {
 		width: 100% !important;
 		max-width: 100% !important
+	}
+}
+
+form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
+	background: transparent;
+	input#ctl00_MainContent_ctl00_SearchControl_SearchBox {
+		background: white !important;
+	}
+	.PersonifyPagerControl_PersonifyDefault .personifypager {
+		padding-bottom: 22px;
+	}
+	#MainContent_ctl00_PagerControl_ContainerPanel {
+    background: white;
+	}
+
+	#MainContent_ctl00_SearchControl_SearchPanel {
+    padding: 10px 20px;
 	}
 }
