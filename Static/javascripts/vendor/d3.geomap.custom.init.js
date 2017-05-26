@@ -10,6 +10,7 @@
     var stateSelectMenu = document.getElementById('stateSelectMenu');
     var internationalSelectMenu = document.getElementById('internationalSelectMenu');
 
+
     //DRAW THE MAP
     var svg = d3.select('#iftMap');
     var path = d3.geoPath();
@@ -44,42 +45,26 @@
     });
 
     function mapHandlerFunction(event, thisStateID){
-        var eventTargetID = event.currentTarget.id;
-        //display data here
-        //must add hover titles
-        //console.log();
 
-
-        if(event.type === 'click') {
+        if(event.currentTarget.tagName === 'path') {
             removeAddActiveState('thenAdd', thisStateID);
             console.log(thisStateID);
             stateSelectMenu.value = thisStateID;
             writeDataToPage(thisStateID);
         }
-        
-        if(eventTargetID === 'stateSelectMenu') {
+        if(event.currentTarget.id === 'stateSelectMenu') {
             var stateAbbrSelected = stateSelectMenu.options[stateSelectMenu.selectedIndex].value;
             removeAddActiveState('thenAdd', stateAbbrSelected);
             console.log(stateAbbrSelected);
             writeDataToPage(stateAbbrSelected);
         }
-        if(eventTargetID === 'internationalSelectMenu'){
+        if(event.currentTarget.id === 'internationalSelectMenu'){
             stateSelectMenu.value = '';
             var internationalAbbrSelected = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].value;
             removeAddActiveState();
             writeDataToPage(internationalAbbrSelected);
         }
-
     }
-
-    function mapHandlerFunctionInternational(event, thisInternationalID){
-        stateSelectMenu.value = '';
-        var internationalAbbrSelected = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].value;
-        removeAddActiveState();
-        writeDataToPage(internationalAbbrSelected);
-    }
-
-
 
     function removeAddActiveState(thenAdd, thisStateID){
         var selectedItem = document.querySelector('.usState--SELECTED');
@@ -92,8 +77,12 @@
         }
     }
 
-    
 
+    function makeColumnDisabled(theColumnToDisable){
+        //add class of DISABLED-STATE to the iftMap__sectionData__wrapper
+        //ALSO add disabled attribute to the input
+    }
+    
 
 
 
@@ -146,19 +135,20 @@
     }
 
     function showHideWholeMap(event){
+        var activeStateSting = 'iftMapWrapperOuter--ACTIVE-STATE';
         if(event.currentTarget === iftMapButtonOpen) {
-            iftMapWrapperOuter.classList.add('iftMapWrapperOuter--ACTIVE-STATE');
+            iftMapWrapperOuter.classList.add(activeStateSting);
         }
         if(event.currentTarget === iftMapButtonClose) {
             //this should also close any open tooltip
             closeActiveTooltip();
-            iftMapWrapperOuter.classList.remove('iftMapWrapperOuter--ACTIVE-STATE');
+            iftMapWrapperOuter.classList.remove(activeStateSting);
         }
         if(event.currentTarget === iftMapButtonCancel){
-            //this might be a link
+            //this might be a link, so be sure to prevent default
             event.preventDefault();
             closeActiveTooltip();
-            iftMapWrapperOuter.classList.remove('iftMapWrapperOuter--ACTIVE-STATE');
+            iftMapWrapperOuter.classList.remove(activeStateSting);
         }
     }
 
