@@ -163,12 +163,19 @@
         if(event.currentTarget === iftMapButtonOpen) {
             iftMapWrapperOuter.classList.add('iftMapWrapperOuter--ACTIVE-STATE');
         }
-        if(event.currentTarget === iftMapButtonClose || event.currentTarget === iftMapButtonCancel) {
+        if(event.currentTarget === iftMapButtonClose) {
             //this should also close any open tooltip
             closeActiveTooltip();
             iftMapWrapperOuter.classList.remove('iftMapWrapperOuter--ACTIVE-STATE');
         }
+        if(event.currentTarget === iftMapButtonCancel){
+            //this might be a link
+            event.preventDefault();
+            closeActiveTooltip();
+            iftMapWrapperOuter.classList.remove('iftMapWrapperOuter--ACTIVE-STATE');
+        }
     }
+
 
     //EVENTS
 
