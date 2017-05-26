@@ -5,25 +5,25 @@
     var iftMapButtonOpen = document.getElementById('iftMapButtonOpen');
     var iftMapButtonClose = document.getElementById('iftMapButtonCloseWrapper');
     var iftMapButtonCancel = document.getElementById('iftMapButtonCancel');
-    
+
     var seletedStateDisplay = document.getElementById('seletedStateDisplay');
     var stateSelectMenu = document.getElementById('stateSelectMenu');
     var internationalSelectMenu = document.getElementById('internationalSelectMenu');
 
     //DRAW THE MAP
-    var svg = d3.select("#iftMap");
+    var svg = d3.select('#iftMap');
     var path = d3.geoPath();
-    d3.json("javascripts/data/topoJSONusCustom.json", function(error, data) {
+    d3.json('javascripts/data/topoJSONusCustom.json', function(error, data) {
       if (error) throw error;
 
-      svg.append("g")
-        .attr("class", "states iftMap__svg__g")
-        .selectAll("path")
+      svg.append('g')
+        .attr('class', 'states iftMap__svg__g')
+        .selectAll('path')
         .data(topojson.feature(data, data.objects.states).features)
         .enter()
-        .append("path")
+        .append('path')
         .attr('id', function(thisState){
-            console.log(thisState.id);
+            //console.log(thisState.id);
             return thisState.id
         })
         .attr('data-stateName', function(thisState){
@@ -31,44 +31,41 @@
             //console.log(thisState)
             return 'placeholderStateName'
         })
-        .attr("class", "usState iftMap__svg__path")
-        .attr("d", path)
-        .on("click", function(thisState){
+        .attr('class', 'usState iftMap__svg__path')
+        .attr('d', path)
+        .on('click', function(thisState){
             //this adds events the d3 way -- the program already has reference to each path, so we use it to add handler(s)
             mapHandlerFunction(event, thisState.id);
         });
 
-        svg.append("path")
-          .attr("class", "state-borders iftMap__svg__path--stateBorders")
-          .attr("d", path(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; })));
+        svg.append('path')
+          .attr('class', 'state-borders iftMap__svg__path--stateBorders')
+          .attr('d', path(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; })));
     });
 
     function mapHandlerFunction(event, thisStateID){
-            
-        //display data here
-        //must add hover titles
+        var eventTargetID = event.currentTarget.id;
 
-        if(event.type === "click") {
+        if(event.type === 'click') {
             removeAddActiveState('thenAdd', thisStateID);
             console.log(thisStateID);
             stateSelectMenu.value = thisStateID;
             writeDataToPage(thisStateID);
         }
         
-        if(event.type === "change") {
+        if(eventTargetID === 'stateSelectMenu') {
             var stateAbbrSelected = stateSelectMenu.options[stateSelectMenu.selectedIndex].value;
             removeAddActiveState('thenAdd', stateAbbrSelected);
             console.log(stateAbbrSelected);
             writeDataToPage(stateAbbrSelected);
         }
+        if(eventTargetID === 'internationalSelectMenu'){
+            stateSelectMenu.value = '';
+            var internationalAbbrSelected = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].value;
+            removeAddActiveState();
+            writeDataToPage(internationalAbbrSelected);
+        }
 
-    }
-
-    function mapHandlerFunctionInternational(event, thisInternationalID){
-        stateSelectMenu.value = '';
-        var internationalAbbrSelected = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].value;
-        removeAddActiveState();
-        writeDataToPage(internationalAbbrSelected);
     }
 
     function removeAddActiveState(thenAdd, thisStateID){
@@ -154,8 +151,8 @@
 
 
     //EVENTS
-    stateSelectMenu.addEventListener('change', mapHandlerFunction);
-    internationalSelectMenu.addEventListener('change', mapHandlerFunctionInternational);
+    stateSelectMenu.addEventListener('change', mapHandlerFunction, false);
+    internationalSelectMenu.addEventListener('change', mapHandlerFunction, false);
     iftMapButtonOpen.addEventListener('click', showHideWholeMap, false);
     iftMapButtonClose.addEventListener('click', showHideWholeMap, false);
     iftMapButtonCancel.addEventListener('click', showHideWholeMap, false);
