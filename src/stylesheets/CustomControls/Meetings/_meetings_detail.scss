@@ -21,9 +21,9 @@
 		clear: both;
 	}
 	.MTGDetailContent {
-		    width: calc(100% - 240px);
-    padding: 20px;
-    background: white;
+				width: calc(100% - 240px);
+		padding: 20px;
+		background: white;
 	}
 	.MTGDetailRotatingImage {
 		float: none;
@@ -59,8 +59,9 @@
 		margin-top: 0;
 	}
 	.MTGDetailBottom {
-		width: 100% !important;
-		max-width: 100% !important
+		width: calc(100% - 240px)!important;
+		margin-bottom: 20px;
+		float: none;
 	}
 	.MTGDetailRightContent {
 		padding: 20px;
@@ -68,6 +69,40 @@
 		float: right;
 		background: white;
 	}
+	.MTGDetailRegistrations,
+	.MTGDetailPriceGroup {
+		border: none;
+		margin: 20px 0;
+		min-height: 0;
+		padding: 0;
+	}
+	#MainContent_ctl00_ProductDetailParagraphFullLabel {
+		padding: 10px 0;
+		max-width: calc(100% - 240px);
+	}
+}
+
+.ControlPanel_PromtionalProductListControl .items {
+	position: absolute;
+	text-align: center;
+	padding: 1em 2.6em;
+	background: white;
+}
+.ControlPanel_PromtionalProductListControl .PromotionalProductListControlButton-next-horizontal,
+.ControlPanel_PromtionalProductListControl .PromotionalProductListControlButton-next-horizontal:hover,
+.ControlPanel_PromtionalProductListControl .PromotionalProductListControlButton-prev-horizontal,
+.ControlPanel_PromtionalProductListControl .PromotionalProductListControlButton-prev-horizontal:hover {
+	border:  none;
+}
+.ControlPanel_PromtionalProductListControl {
+	margin-top: 20px;
+}
+#MainContent_ctl01_PromotionalHeaderLabel {
+	font-size: 16px;
+	font-weight: bold;
+	padding: 10px 0;
+	display: block;
+	text-align: center;
 }
 
 #MainContent_ctl00_btnRegisterGroup,
@@ -86,11 +121,11 @@ form[class$="roductslisting"] {
 			padding-bottom: 22px;
 		}
 		#MainContent_ctl00_PagerControl_ContainerPanel {
-	    background: white;
+			background: white;
 		}
 
 		#MainContent_ctl00_SearchControl_SearchPanel {
-	    padding: 10px 20px;
+			padding: 10px 20px;
 		}
 	}
 }

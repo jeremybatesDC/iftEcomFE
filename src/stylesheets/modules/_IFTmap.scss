@@ -8,11 +8,28 @@
   height: 100%;
   padding-top:$gutter-width;
   background:$white;
+  overflow-y: scroll;
   z-index: 999999;
   &.iftMapWrapperOuter--ACTIVE-STATE {
     display: block;
   }
 }
+
+.iftMap__header {
+  position:absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  background:$ift-grey-medium-lighter; 
+}
+// .iftMap__wrapper--inner {
+//   position:relative;
+// }
+
+.iftMap__headline {
+  
+}
+
 
 .iftMap__svg {
   > .iftMap__svg__g,
@@ -303,6 +320,7 @@
   width: 1.6rem;
   height: 1.6rem;
   cursor: pointer;
+  background:#000;
   &:hover {
     cursor: pointer;
   }
@@ -311,8 +329,8 @@
 .iftMap__tooltip__closeButton__svg {
   width: 1rem;
   height: 1rem;
-  stroke: #000;
-  stroke-width:2px;
+  stroke: #fff;
+  stroke-width:3px;
 }
 
 .iftMap__wrapper--outer__closeButton__wrapper {
