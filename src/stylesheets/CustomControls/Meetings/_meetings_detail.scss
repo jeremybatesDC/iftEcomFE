@@ -157,7 +157,7 @@ form[class$="roductslisting"] {
 }
 // Nav
 .MtgRegWizContainer{
-	[class*="WizardWith"]{
+	[class^="WizardWith"]{
 		display: flex;
 		margin-bottom: 40px;
 		// Remove Clearfix
