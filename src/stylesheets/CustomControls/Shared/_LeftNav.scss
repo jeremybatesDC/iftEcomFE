@@ -16,6 +16,7 @@
       margin-bottom: 2rem;
       a.selected{
         color: $ift-green;
+        pointer-events: none;
       }
     }
   }

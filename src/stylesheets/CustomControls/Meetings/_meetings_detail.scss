@@ -81,12 +81,22 @@
 		max-width: calc(100% - 240px);
 	}
 }
-
-.ControlPanel_PromtionalProductListControl .items {
-	position: absolute;
-	text-align: center;
-	padding: 1em 2.6em;
-	background: white;
+.ControlPanel_PromtionalProductListControl {
+	.scrollable{
+		background: white;
+	}
+	.items {
+		position: absolute;
+		text-align: center;
+		padding: 0;
+	}
+	.ControlPanel_PromtionalProductListControl .PromotionProductListItem li {
+    list-style: none;
+    line-height: 1;
+	}
+}
+.ProductDetailParagraphShortLabel.htmlContent {
+    padding-bottom: 10px;
 }
 .ControlPanel_PromtionalProductListControl .PromotionalProductListControlButton-next-horizontal,
 .ControlPanel_PromtionalProductListControl .PromotionalProductListControlButton-next-horizontal:hover,
@@ -128,6 +138,9 @@ form[class$="roductslisting"] {
 			padding: 10px 20px;
 		}
 	}
+	#MainContent_ctl00_SearchControl_AdvancedLink{
+		@include unButton()
+	}
 }
 .MtgWizStepCustomerName{
 	color: #333;
@@ -144,7 +157,7 @@ form[class$="roductslisting"] {
 }
 // Nav
 .MtgRegWizContainer{
-	.WizardWith5Steps{
+	[class*="WizardWith"]{
 		display: flex;
 		margin-bottom: 40px;
 		// Remove Clearfix
