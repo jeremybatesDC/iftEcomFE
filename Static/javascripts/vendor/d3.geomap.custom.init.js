@@ -169,5 +169,5 @@
     iftMapButtonOpen.addEventListener('click', showHideWholeMap, false);
     iftMapButtonClose.addEventListener('click', showHideWholeMap, false);
     iftMapButtonCancel.addEventListener('click', showHideWholeMap, false);
-    iftMapButtonSave.addEventListener('click', savePageData, false)
+    iftMapButtonSave.addEventListener('click', submitPageData, false)
 })();

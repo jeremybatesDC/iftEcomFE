@@ -10,27 +10,27 @@
 	.MTGDetailShortDescription,
 	.MTGDetailCaption {
 		display: block;
-		overflow:hidden;
-		float:none;
+		overflow: hidden;
+		float: none;
 		clear: both;
 		@include betterClearFix;
 	}
-
 	.MTGDetailLeftNav {
 		display: none;
 		float: none;
 		clear: both;
 	}
 	.MTGDetailContent {
-		width: auto;
-		padding:0;
+				width: calc(100% - 240px);
+		padding: 20px;
+		background: white;
 	}
 	.MTGDetailRotatingImage {
 		float: none;
-		position:relative;
+		position: relative;
 	}
 	.dvAdditionalInformation {
-		clear:both;
+		clear: both;
 	}
 	.MTGDetailRibbonBadgeCredit {
 		position: absolute;
@@ -46,20 +46,150 @@
 		}
 	}
 	.MTGDetailCaption {
-		padding:0 !important;
+		padding: 0 !important;
 	}
 	.MTGDetailValue {
-		padding:0 !important;
+		padding: 0 !important;
 	}
 	.MTGDetailCredit {
-		padding:0 !important;
+		padding: 0 !important;
 	}
 	.MTGDetailContentEventSchedule {
 		float: none;
 		margin-top: 0;
 	}
 	.MTGDetailBottom {
-		width: 100% !important;
-		max-width: 100% !important
+		width: calc(100% - 240px)!important;
+		margin-bottom: 20px;
+		float: none;
+	}
+	.MTGDetailRightContent {
+		padding: 20px;
+		width: 230px;
+		float: right;
+		background: white;
+	}
+	.MTGDetailRegistrations,
+	.MTGDetailPriceGroup {
+		border: none;
+		margin: 20px 0;
+		min-height: 0;
+		padding: 0;
+	}
+	#MainContent_ctl00_ProductDetailParagraphFullLabel {
+		padding: 10px 0;
+		max-width: calc(100% - 240px);
+	}
+}
+
+.ControlPanel_PromtionalProductListControl .items {
+	position: absolute;
+	text-align: center;
+	padding: 1em 2.6em;
+	background: white;
+}
+.ControlPanel_PromtionalProductListControl .PromotionalProductListControlButton-next-horizontal,
+.ControlPanel_PromtionalProductListControl .PromotionalProductListControlButton-next-horizontal:hover,
+.ControlPanel_PromtionalProductListControl .PromotionalProductListControlButton-prev-horizontal,
+.ControlPanel_PromtionalProductListControl .PromotionalProductListControlButton-prev-horizontal:hover {
+	border:  none;
+}
+.ControlPanel_PromtionalProductListControl {
+	margin-top: 20px;
+}
+#MainContent_ctl01_PromotionalHeaderLabel {
+	font-size: 16px;
+	font-weight: bold;
+	padding: 10px 0;
+	display: block;
+	text-align: center;
+}
+
+#MainContent_ctl00_btnRegisterGroup,
+#MainContent_ctl00_btnRapidGroupRegistration{
+	@include unButton()
+}
+form[action="./LearningProductsListing"],
+form[class$="roductsListing"],
+form[class$="roductslisting"] {
+	#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
+		background: transparent;
+		input#ctl00_MainContent_ctl00_SearchControl_SearchBox {
+			background: white !important;
+		}
+		.PersonifyPagerControl_PersonifyDefault .personifypager {
+			padding-bottom: 22px;
+		}
+		#MainContent_ctl00_PagerControl_ContainerPanel {
+			background: white;
+		}
+
+		#MainContent_ctl00_SearchControl_SearchPanel {
+			padding: 10px 20px;
+		}
+	}
+}
+.MtgWizStepCustomerName{
+	color: #333;
+}
+.MtgWizStepTitleContainer {
+    border: none;
+}
+#MainContent_ctl00_cMtgRegWizContactInfo_MtgRegWizStepTitle_ContainerPanel + .ctrlContent.mtgRegContacts {
+    background: white;
+    padding: 20px;    
+}
+#MainContent_ctl00_dvExhibitorInfo,div#MainContent_ctl00_dvAttendeeList {
+    background: transparent
+}
+// Nav
+.MtgRegWizContainer{
+	.WizardWith5Steps{
+		display: flex;
+		margin-bottom: 40px;
+		// Remove Clearfix
+		&:before,&:after{
+			display: none;
+		}
+		span {
+			//personify override
+			span {
+				width: auto !important;
+			}
+		}
+		li {
+			flex-grow: 1;
+			background: transparent;
+			border-color: $ift-grey-230;
+			color: $ift-grey-medium-light;
+			text-align: left;
+			padding-left: 40px !important;
+			.step-number {
+				width: 30px!important;
+				height: 30px!important;
+				border-radius: 100% !important;
+				border: 1px solid white;
+				box-shadow: none;
+				position: absolute;
+				left: 20px;
+				text-shadow: none !important;
+				top: 9px;
+				padding: 5px 0;
+				background-color: $ift-grey-medium-light;
+			}
+			a {
+				color: $ift-grey-medium-light;
+			}
+			&.MtgRegWizstepSelected {
+				background-color: $ift-green !important;
+				border-bottom-color: $ift-green !important;
+				a {
+					color: $white;
+				}
+				.step-number {
+					background-color: transparent;
+				}
+			}
+		}
 	}
 }
