@@ -5,6 +5,7 @@
     var iftMapButtonOpen = document.getElementById('iftMapButtonOpen');
     var iftMapButtonClose = document.getElementById('iftMapButtonCloseWrapper');
     var iftMapButtonCancel = document.getElementById('iftMapButtonCancel');
+    var iftMapButtonSave = document.getElementById('iftMapButtonSave');
 
     var seletedStateDisplay = document.getElementById('seletedStateDisplay');
     var stateSelectMenu = document.getElementById('stateSelectMenu');
@@ -44,6 +45,8 @@
           .attr('d', path(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; })));
     });
 
+
+
     function mapHandlerFunction(event, thisStateID){
 
         if(event.currentTarget.tagName === 'path') {
@@ -66,6 +69,8 @@
         }
     }
 
+
+
     function removeAddActiveState(thenAdd, thisStateID){
         var selectedItem = document.querySelector('.usState--SELECTED');
         //if there is an active item, remove itS active class
@@ -79,8 +84,9 @@
 
 
     function makeColumnDisabled(theColumnToDisable){
-        //add class of DISABLED-STATE to the iftMap__sectionData__wrapper
-        //ALSO add disabled attribute to the input
+        //1) add class of DISABLED-STATE to the iftMap__sectionData__wrapper
+        //2) add disabled=disabled attribute to the input
+        //3) add checked=checked attrubute to input
     }
     
 
@@ -91,13 +97,16 @@
     function getStateData(thisStateID) {
         //go get some data from backend
     }
+
+    //writeTheDataForThisState, id is just an example
     function writeDataToPage(thisStateID){
-        //this is just one example of writing the data
+        //this is just the example i used for the demo
         seletedStateDisplay.innerHTML = thisStateID
     }
 
-    //end for backend developer
-
+    function submitPageData(sampleArgument){
+        //submit page data
+    }
 
 
 
@@ -140,13 +149,14 @@
             iftMapWrapperOuter.classList.add(activeStateSting);
         }
         if(event.currentTarget === iftMapButtonClose) {
-            //this should also close any open tooltip
+            //this closes any open tooltip
             closeActiveTooltip();
             iftMapWrapperOuter.classList.remove(activeStateSting);
         }
         if(event.currentTarget === iftMapButtonCancel){
             //this might be a link, so be sure to prevent default
             event.preventDefault();
+
             closeActiveTooltip();
             iftMapWrapperOuter.classList.remove(activeStateSting);
         }
@@ -159,5 +169,5 @@
     iftMapButtonOpen.addEventListener('click', showHideWholeMap, false);
     iftMapButtonClose.addEventListener('click', showHideWholeMap, false);
     iftMapButtonCancel.addEventListener('click', showHideWholeMap, false);
-
+    iftMapButtonSave.addEventListener('click', savePageData, false)
 })();
