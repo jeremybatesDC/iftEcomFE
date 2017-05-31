@@ -1,5 +1,46 @@
+.DonationWizMain_PersonifyDefault {
+	//.RadAjaxPanel {
+		padding: $gutter-width / 2;
+		background:#fff;
+		margin-bottom: $gutter-width / 2;
+
+	//}
+	.donation-product-info {
+		padding-left: $gutter-width;
+		padding-bottom: $gutter-width;
+	}
+	.donation-price-info {
+		padding-left: $gutter-width;
+		padding-bottom: $gutter-width;
+	}
+	.donation-TriAckMatching-Info {
+		padding-left: $gutter-width;
+		padding-bottom: $gutter-width;
+	}
+	.section-title-question {
+		font-size:1.8rem;
+		font-family:$headlineFont;
+		font-weight: $headlineFontWeight;
+		line-height:$headline-line-height;
+		color:$ift-blue;
+		border: none;
+		box-shadow: 0 -1px $ift-grey-medium-light;
+		margin: 0 !important;
+		padding-top: $gutter-width;
+		padding-bottom: $gutter-width / 2;
+	}
+	.exp-col-content {
+		padding-bottom: $gutter-width;
+	}
+
+}
+
+
+
+
 .DonationWizHeader_PersonifyDefault {
 	display:block;
+
 	&.Donations_PersonifyDefault {
 		.wiz-top-bar {
 			display: block;
@@ -22,6 +63,7 @@
 		}
 	}
 	
+	
 	.wiz-menu {
 		display:flex;
 		margin-bottom: $gutter-width;
@@ -34,6 +76,7 @@
 			color: $ift-grey-medium-light;
 			background-color:transparent;
 			font-size: 1.4rem;
+			border-bottom: 3px solid $ift-grey-230;
 
 			[id$="_StepLabel"]{
 				//margin: 0 auto;
@@ -56,6 +99,7 @@
 			&.wiz-step-active {
 				color: white;
 				background-color:$ift-green;
+				border-bottom: 3px solid $ift-green;
 				.step-number {
 					background-color: transparent;
 				}
