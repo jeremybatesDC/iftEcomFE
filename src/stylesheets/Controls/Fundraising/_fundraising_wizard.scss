@@ -1,0 +1,84 @@
+.DonationWizHeader_PersonifyDefault {
+	display:block;
+	.wiz-top-bar {
+		display: block;
+		width: 100%;
+	}
+	.wiz-menu {
+		display:flex;
+		margin-bottom: $gutter-width;
+		.wiz-step {
+			display:flex;
+			position:relative;
+			float: none;
+			max-width: none;
+			[id$="_StepLabel"]{
+				//margin: 0 auto;
+			}
+			.step-number {
+				position:absolute;
+				top: 9px;
+				left: 20px;
+
+			}
+		}
+	}
+	
+}
+
+// Nav
+// .WizardBannerControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
+// 	margin-bottom: 40px;
+// 	display: flex;
+// 	span {
+// 		//personify override
+// 		span {
+// 			width: auto !important;
+// 		}
+// 	}
+// 	span.step {
+// 		flex-grow: 1;
+// 		position: relative;
+// 		background: transparent;
+// 		border-bottom: 3px solid $ift-grey-230;
+// 		color: $ift-grey-medium-light;
+// 		text-align: left;
+// 		padding-left: 60px !important;
+// 		.prefix,
+// 		.sep,
+// 		.divider {
+// 			display: none;
+// 		}
+// 		.stepLabel {
+// 			font-size: 14px;
+// 		}
+// 		.number {
+// 			width: 30px!important;
+// 			height: 30px!important;
+// 			border-radius: 100% !important;
+// 			border: 1px solid white;
+// 			box-shadow: none;
+// 			color: white;
+// 			position: absolute;
+// 			left: 20px;
+// 			text-shadow: none !important;
+// 			top: 9px;
+// 			padding: 5px 0;
+// 			text-align: center;
+// 			background-color: $ift-grey-medium-light;
+// 		}
+// 		.stepLabel {
+// 			color: $ift-grey-medium-light;
+// 		}
+// 		&.active {
+// 			background-color: $ift-green !important;
+// 			border-bottom-color: $ift-green !important;
+// 			.stepLabel {
+// 				color: $white;
+// 			}
+// 			.number {
+// 				background-color: transparent;
+// 			}
+// 		}
+// 	}
+// }
