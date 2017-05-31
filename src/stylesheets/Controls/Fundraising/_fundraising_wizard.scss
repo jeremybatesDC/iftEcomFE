@@ -19,7 +19,16 @@
 				position:absolute;
 				top: 9px;
 				left: 20px;
-
+				width: 30px!important;
+				height: 30px!important;
+				border-radius: 100% !important;
+				border: 1px solid white;
+				box-shadow: none;
+				color: white;
+				text-shadow: none !important;
+				padding: 5px 0;
+				text-align: center;
+				background-color: $ift-grey-medium-light;
 			}
 		}
 	}
@@ -52,21 +61,21 @@
 // 		.stepLabel {
 // 			font-size: 14px;
 // 		}
-// 		.number {
-// 			width: 30px!important;
-// 			height: 30px!important;
-// 			border-radius: 100% !important;
-// 			border: 1px solid white;
-// 			box-shadow: none;
-// 			color: white;
-// 			position: absolute;
-// 			left: 20px;
-// 			text-shadow: none !important;
-// 			top: 9px;
-// 			padding: 5px 0;
-// 			text-align: center;
-// 			background-color: $ift-grey-medium-light;
-// 		}
+		.number {
+			width: 30px!important;
+			height: 30px!important;
+			border-radius: 100% !important;
+			border: 1px solid white;
+			box-shadow: none;
+			color: white;
+			position: absolute;
+			left: 20px;
+			text-shadow: none !important;
+			top: 9px;
+			padding: 5px 0;
+			text-align: center;
+			background-color: $ift-grey-medium-light;
+		}
 // 		.stepLabel {
 // 			color: $ift-grey-medium-light;
 // 		}
