@@ -1,9 +1,27 @@
 .DonationWizHeader_PersonifyDefault {
 	display:block;
-	.wiz-top-bar {
-		display: block;
-		width: 100%;
+	&.Donations_PersonifyDefault {
+		.wiz-top-bar {
+			display: block;
+			width: 100%;
+			height: auto;
+			border:none;
+			background-color:$ift-grey-medium-light;
+			background-image:none;
+		}
+		#product_name {
+			h1 {
+				html body & {
+					font-size: 100% !important;
+					line-height: 1 !important;
+					text-shadow: none !important;
+					margin: $gutter-width/2 !important;
+					
+				}
+			}
+		}
 	}
+	
 	.wiz-menu {
 		display:flex;
 		margin-bottom: $gutter-width;
@@ -12,6 +30,11 @@
 			position:relative;
 			float: none;
 			max-width: none;
+			padding-left:$gutter-width * 2;
+			color: $ift-grey-medium-light;
+			background-color:transparent;
+			font-size: 1.4rem;
+
 			[id$="_StepLabel"]{
 				//margin: 0 auto;
 			}
@@ -30,10 +53,26 @@
 				text-align: center;
 				background-color: $ift-grey-medium-light;
 			}
+			&.wiz-step-active {
+				color: white;
+				background-color:$ift-green;
+				.step-number {
+					background-color: transparent;
+				}
+				
+			}
 		}
 	}
 	
 }
+
+.donation-navigation {
+	input[value="Add to Cart"]{
+		@include unButton;
+	}
+}
+
+
 
 // Nav
 // .WizardBannerControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
