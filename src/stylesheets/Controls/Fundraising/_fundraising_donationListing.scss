@@ -1,0 +1,25 @@
+.donation-listing {
+	padding-top: $gutter-width;
+	.heading2 {
+		//same size as H5
+		font-size: 2rem;
+	}
+	//consider generalizing
+	.h-color-primary {
+		color: $ift-blue;
+	}
+	.donation-listing-info-description {
+		padding-bottom: $gutter-width / 2;
+	}
+	.donation-listing-info-long-description {
+		padding-bottom: $gutter-width / 2;
+	}
+	.action-hyperlink {
+		padding-bottom: $gutter-width / 2;
+	}
+	[type="submit"] {
+		//overrides strange 130% on mobile;
+		font-size: 100% !important;
+		@include button;
+	}
+}
