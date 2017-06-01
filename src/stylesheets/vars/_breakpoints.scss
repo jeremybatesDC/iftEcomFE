@@ -12,7 +12,8 @@
 	}
 }
 
-$breakpoint-max-xs-override: 42em; /*equals max 767px*/
+$breakpoint-max-xs-override: 42em; /*equals max 640*/
+$breakpoint-min-xs-override: 42.0001em;
 
 //breakpoints in EMs for best support & accessibility
 $breakpoint-max-mobile: 47.9999em; /*equals max 767px*/

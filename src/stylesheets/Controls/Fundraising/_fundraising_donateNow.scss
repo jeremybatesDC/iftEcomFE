@@ -1,25 +1,42 @@
-.donation-listing {
-	padding-top: $gutter-width;
-	.heading2 {
-		//same size as H5
-		font-size: 2rem;
+.DonationWizMain_PersonifyDefault {
+	.recurringGiftFlag {
+		font-weight: bold;
 	}
-	//consider generalizing
-	.h-color-primary {
-		color: $ift-blue;
+	.formLayout {
+		fieldset {
+			label {
+				@include break(min, $breakpoint-min-xs-override){
+					//max-width: 120px !important;
+					font-weight: bold;
+					padding-top: 1rem;
+					&[for="cmbTributesType"]{
+						padding-top: .5rem !important;
+					}
+				}	
+			}
+		}
+		.rcbInput {
+			&.radPreventDecorate {
+				padding-bottom: 0 !important;
+			}
+		}
 	}
-	.donation-listing-info-description {
-		padding-bottom: $gutter-width / 2;
+	.donationProductDetailBlock {
+		padding-right: $gutter-width;
 	}
-	.donation-listing-info-long-description {
-		padding-bottom: $gutter-width / 2;
+	.donationProductDetailImageCell {
+		@include break(min, $breakpoint-min-xs-override){
+			width:29.9999%;
+		}
+		
 	}
-	.action-hyperlink {
-		padding-bottom: $gutter-width / 2;
+	.ShareControl_PersonifyDefault {
+		margin-left: 0;
+		padding-top: $gutter-width/2;
+		width: 100%;
+		text-align: right;
+
 	}
-	[type="submit"] {
-		//overrides strange 130% on mobile;
-		font-size: 100% !important;
-		@include button;
-	}
+
+	
 }

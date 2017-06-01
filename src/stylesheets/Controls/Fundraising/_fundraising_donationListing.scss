@@ -23,10 +23,14 @@
 	}
 	.action-hyperlink {
 		padding-bottom: $gutter-width / 2;
+		@include break(max, $breakpoint-max-xs-override){
+			padding-bottom: $gutter-width / 2 !important;
+		}
 	}
 	[type="submit"] {
 		//overrides strange 130% on mobile;
 		font-size: 100% !important;
 		@include button;
 	}
+
 }
