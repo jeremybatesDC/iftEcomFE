@@ -1,5 +1,12 @@
 .donation-listing {
 	padding-top: $gutter-width;
+	.buttonRow {
+		margin:0;
+	}
+	.full-container {
+		background: $white;
+		padding: $gutter-width/2;
+	}
 	.heading2 {
 		//same size as H5
 		font-size: 2rem;

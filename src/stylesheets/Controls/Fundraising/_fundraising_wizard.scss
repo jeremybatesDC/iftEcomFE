@@ -1,13 +1,15 @@
 .DonationWizMain_PersonifyDefault {
-	//.RadAjaxPanel {
-		padding: $gutter-width / 2;
-		background:#fff;
-		margin-bottom: $gutter-width / 2;
+	padding: $gutter-width / 2;
+	background:#fff;
+	margin-bottom: $gutter-width / 2;
 
-	//}
 	.donation-product-info {
 		padding-left: $gutter-width;
 		padding-bottom: $gutter-width;
+		margin-top: 0;
+	}
+	.donationProductDetailBlock {
+		padding-top:0;
 	}
 	.donation-price-info {
 		padding-left: $gutter-width;
@@ -16,6 +18,16 @@
 	.donation-TriAckMatching-Info {
 		padding-left: $gutter-width;
 		padding-bottom: $gutter-width;
+		> .exp-col-container {
+			&:last-child {
+				.exp-col-content {
+					&:last-child {
+						padding-bottom:0;
+					}
+				}
+			}
+		}
+
 	}
 	.section-title-question {
 		font-size:1.8rem;
@@ -24,7 +36,7 @@
 		line-height:$headline-line-height;
 		color:$ift-blue;
 		border: none;
-		box-shadow: 0 -1px $ift-grey-medium-light;
+		box-shadow: 0 -1px $ift-grey-230;
 		margin: 0 !important;
 		padding-top: $gutter-width;
 		padding-bottom: $gutter-width / 2;
@@ -32,6 +44,34 @@
 	.exp-col-content {
 		padding-bottom: $gutter-width;
 	}
+	.product-detail-box {
+		padding:0;
+		&.main {
+			padding:0;
+		}
+		> .row {
+			&:last-child {
+				padding-bottom:0;
+			}
+		}
+	}
+	.buttonRow {
+		&.donation-navigation {
+			padding-top:$gutter-width/2;
+			padding-bottom: 0;
+			margin-bottom: 0;
+		}
+	}
+
+
+	[type="checkbox"],
+	[type="radio"]{
+		margin-right: $gutter-width/4;
+	}
+	.gift-anonymous-msg {
+		padding:0;
+	}
+
 
 }
 
@@ -76,6 +116,7 @@
 			color: $ift-grey-medium-light;
 			background-color:transparent;
 			font-size: 1.4rem;
+			font-weight: normal;
 			border-bottom: 3px solid $ift-grey-230;
 
 			[id$="_StepLabel"]{
@@ -98,6 +139,7 @@
 			}
 			&.wiz-step-active {
 				color: white;
+				font-weight: bold;
 				background-color:$ift-green;
 				border-bottom: 3px solid $ift-green;
 				.step-number {
