@@ -14,6 +14,11 @@
 		.donation-price-info {
 			padding-left: $gutter-width;
 			padding-bottom: $gutter-width;
+			.exp-col-content {
+				&:last-child {
+					padding-bottom:0;
+				}
+			}
 		}
 		.donation-TriAckMatching-Info {
 			padding-left: $gutter-width;
@@ -34,9 +39,21 @@
 			.validationIssues {
 				margin-bottom: 0 
 			}
+			> .exp-col-container {
+				&:last-child {
+					.exp-col-content {
+						&:last-child {
+							padding-bottom:0;
+						}
+					}
+				}
+			}
 		}
+
 	}
 	
+
+
 
 	.section-title-question {
 		font-size:1.8rem;
@@ -59,9 +76,12 @@
 			padding: $gutter-width/2 !important;
 		}
 	}
+
 	.exp-col-content {
 		padding-bottom: $gutter-width;
 	}
+
+
 	.product-detail-box {
 		padding:0;
 		&.main {
@@ -78,6 +98,10 @@
 			padding-top:$gutter-width/2;
 			padding-bottom: 0;
 			margin-bottom: 0;
+			@include break(max, $breakpoint-max-xs-override) {
+				padding-right: 0;
+				padding-left:0;
+			}
 		}
 	}
 
@@ -88,6 +112,14 @@
 	}
 	.gift-anonymous-msg {
 		padding:0;
+		@include break(max, $breakpoint-max-xs-override) {
+			padding-left:$gutter-width/4;
+			label {
+				display: inline-block;
+				vertical-align: top;
+				padding-top: $gutter-width/8;
+			}
+		}
 	}
 
 	[id$="btnPayNow"] {
