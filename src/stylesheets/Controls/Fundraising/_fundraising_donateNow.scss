@@ -1,0 +1,42 @@
+.DonationWizMain_PersonifyDefault {
+	.recurringGiftFlag {
+		font-weight: bold;
+	}
+	.formLayout {
+		fieldset {
+			label {
+				@include break(min, $breakpoint-min-xs-override){
+					//max-width: 120px !important;
+					font-weight: bold;
+					padding-top: 1rem;
+					&[for="cmbTributesType"]{
+						padding-top: .5rem !important;
+					}
+				}	
+			}
+		}
+		.rcbInput {
+			&.radPreventDecorate {
+				padding-bottom: 0 !important;
+			}
+		}
+	}
+	.donationProductDetailBlock {
+		padding-right: $gutter-width;
+	}
+	.donationProductDetailImageCell {
+		@include break(min, $breakpoint-min-xs-override){
+			width:29.9999%;
+		}
+		
+	}
+	.ShareControl_PersonifyDefault {
+		margin-left: 0;
+		padding-top: $gutter-width/2;
+		width: 100%;
+		text-align: right;
+
+	}
+
+	
+}

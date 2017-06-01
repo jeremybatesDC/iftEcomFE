@@ -36,6 +36,15 @@ $border-radius: 3px;
     border-radius: 100%;
     text-align: center;
   }
+
+  @include break(max, $breakpoint-max-xs-override) {
+    //personify override
+    font-size: 100% !important;
+    margin: 0 !important;
+    padding-top: 0 !important;
+  }
+
+
 }
 
 // Dropdown
