@@ -74,7 +74,8 @@
 		display: block;
 	}
 	.itemsList,
-	.summaryControl {
+	.summaryControl,
+	.top-checkout-product-warning {
 		box-sizing: border-box;
 		flex: 0 0 auto;
 		margin: 0;
@@ -88,7 +89,8 @@
 	}
 	
 	@media only screen and (min-width: $breakpoint-min-md) {
-		.itemsList{
+		.itemsList,
+		.leftPane {
 			flex-basis: calc(75% - 30px);
 			max-width: calc(75% - 30px);
 		}
@@ -309,5 +311,12 @@ div.WizardHeaderControl_PersonifyDefault{
 .checkoutHeader {
 	&.heading2 {
 		font-size: 20px;
+	}
+}
+
+.we-honor-cards-container,
+.multi-cc-PayPal {
+	img {
+		width: auto;
 	}
 }
