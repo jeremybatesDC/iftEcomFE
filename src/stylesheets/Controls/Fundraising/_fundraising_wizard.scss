@@ -102,6 +102,12 @@
 		padding-top: 0;
 	}
 
+	#ctl00_MainContent_ctl00_DonationWizPaymentInfo_PayNowControl_CustomerPaymentsControl_TMAFormRow2_Label {
+		@include break(min, $breakpoint-min-xs-override){
+			padding-left:0;
+		}
+	}
+
 	[for="tbJustNameOnCard"]{
 		padding-top:0;
 	}
@@ -114,6 +120,8 @@
 	[for="tbJustCvv2"] {
 		padding-top: 0;
 	}
+
+
 
 	.add-items-in-cart-div {
 		margin-bottom: 10px;
