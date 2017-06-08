@@ -27,6 +27,13 @@
 .segmentsListPanel .RadListBox .rlbGroup ul li.rlbItem:hover {
 	text-shadow: none;
 }
+
+
+#PreviousButton {
+	@include unButton();
+}
+
+
 .CheckoutControl_PersonifyDefault {
 	.addressButtonsDiv {
 		input {
@@ -87,7 +94,24 @@
 		flex-basis: 100%;
 		max-width: 100%;
 	}
+	.top-checkout-product-warning {
+		//overriding above
+		margin-right:0;
+		margin-left:0;
+		.validationIssues {
+			width: 100%;
+		}
+	}
+	.summaryTopDiv {
+		float: none;
+		//this is inside of a flex element, but itself can just be a block
+		display: block;
+		margin: $gutter-width/2 0 $gutter-width/2 0;
+		width: 100%;
+	}
 	
+
+
 	@media only screen and (min-width: $breakpoint-min-md) {
 		.itemsList,
 		.leftPane {

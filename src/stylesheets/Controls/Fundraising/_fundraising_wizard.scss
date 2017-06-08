@@ -1,7 +1,22 @@
 .DonationWizMain_PersonifyDefault {
-	padding: $gutter-width / 2;
-	background:#fff;
 	margin-bottom: $gutter-width / 2;
+
+	//for step 1
+	> .RadAjaxPanel {
+		padding: $gutter-width / 2;
+		background:#fff;
+	}
+
+	.customer-payment-information {
+		background:#fff;
+		> .heading3 {
+			font-size: 1.4rem;
+			font-weight: bold;
+			padding:$gutter-width/2 $gutter-width/2 $gutter-width/2 $gutter-width;
+			background: #f9f9f9;
+		}
+	}
+
 	@include break(min, $breakpoint-min-xs-override){
 		.donation-product-info {
 			padding-left: $gutter-width;

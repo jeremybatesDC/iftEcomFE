@@ -37,6 +37,37 @@
 		text-align: right;
 
 	}
+}
 
-	
+form[action^="./DonateNow"]{
+	.multi-cc-row {
+		&.divTable {
+			display: table;
+			width: 100%;
+			> .divTableRow {
+				display: table-row;
+				width: 100%;
+				> div {
+					display: table-cell;
+					width: 50%;
+				}
+			}
+		}
+	}
+	.heading3 {
+		font-size: 2rem;
+	}
+	.DonationWizMain_PersonifyDefault {
+		.mainCheckoutDiv {
+
+		}
+	}
+
+}
+
+//there are actually nested panel add card forms, which is tricky
+.panel-add-card-form {
+	img {
+		width: auto;
+	}
 }
