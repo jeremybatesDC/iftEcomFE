@@ -96,6 +96,25 @@
 
 	}
 
+	#ctl00_MainContent_ctl00_DonationWizPaymentInfo_PayNowControl_CustomerPaymentsControl_tbJustNameOnCard {
+		height: 19px;
+		border-color: #aaa;
+		padding-top: 0;
+	}
+
+	[for="tbJustNameOnCard"]{
+		padding-top:0;
+	}
+
+	[for="tbJustCreditCardNumber"] {
+		width: auto;
+		max-width: none;
+	}
+
+	[for="tbJustCvv2"] {
+		padding-top: 0;
+	}
+
 	.add-items-in-cart-div {
 		margin-bottom: 10px;
 	}
