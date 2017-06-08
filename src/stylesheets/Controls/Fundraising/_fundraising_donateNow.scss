@@ -48,8 +48,10 @@ form[action^="./DonateNow"]{
 				display: table-row;
 				width: 100%;
 				> div {
-					display: table-cell;
-					width: 50%;
+					@include break(min, $breakpoint-min-xs-override){
+						display: table-cell;
+						width: 50%;
+					}
 				}
 			}
 		}

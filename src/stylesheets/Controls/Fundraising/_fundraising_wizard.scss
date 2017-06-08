@@ -3,8 +3,12 @@
 
 	//for step 1
 	> .RadAjaxPanel {
-		padding: $gutter-width / 2;
-		background:#fff;
+		//padding: $gutter-width / 2;
+		//background:#fff;
+	}
+
+	.donation-TriAckMatching-Info {
+		background: #fff;
 	}
 
 	.customer-payment-information {
@@ -15,6 +19,14 @@
 			padding:$gutter-width/2 $gutter-width/2 $gutter-width/2 $gutter-width;
 			background: #f9f9f9;
 		}
+	}
+
+	.panel-billing-address {
+		margin-right: 10px;
+	}
+
+	.donation-product-info {
+		background: #fff;
 	}
 
 	@include break(min, $breakpoint-min-xs-override){
@@ -287,3 +299,11 @@
 // 		}
 // 	}
 // }
+
+
+
+.DonationWizDonationInfo_PersonifyDefault {
+	.donation-product-info {
+		background:#fff;
+	}
+}
