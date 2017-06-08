@@ -27,7 +27,7 @@
 	}
 
 	@include break(max, $breakpoint-max-1023) {
-		background-image:url(/img/logo/ift_logo_NOTAG_mobile.svg);
+		background-image:url(/img/ift_logo_NOTAG_mobile.svg);
 		background-size:contain;
 		background-repeat: no-repeat;
 		img {
