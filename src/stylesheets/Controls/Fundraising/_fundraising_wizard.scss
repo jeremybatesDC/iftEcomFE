@@ -7,6 +7,8 @@
 		//background:#fff;
 	}
 
+
+
 	.donation-TriAckMatching-Info {
 		background: #fff;
 	}
@@ -23,10 +25,6 @@
 
 	.panel-billing-address {
 		margin-right: 10px;
-	}
-
-	.donation-product-info {
-		background: #fff;
 	}
 
 	@include break(min, $breakpoint-min-xs-override){
@@ -81,6 +79,26 @@
 	
 
 
+	.mainCheckoutDiv {
+		margin-right: 0;
+		margin-left: 0;
+		.CheckoutItemSummaryListControl_PersonifyDefault {
+			+ .heading3 {
+				font-size: 1.4rem;
+				font-weight: bold;
+				padding:$gutter-width/2 $gutter-width/2 $gutter-width/2 $gutter-width;
+				background: #f9f9f9;
+				+ .summaryTopDiv {
+					margin-top: 0;
+				}
+			}
+		}
+
+	}
+
+	.add-items-in-cart-div {
+		margin-bottom: 10px;
+	}
 
 	.section-title-question {
 		font-size:1.8rem;
@@ -303,7 +321,7 @@
 
 
 .DonationWizDonationInfo_PersonifyDefault {
-	.donation-product-info {
+	.donation-price-info {
 		background:#fff;
 	}
 }
