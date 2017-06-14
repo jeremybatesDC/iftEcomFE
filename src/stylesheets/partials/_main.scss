@@ -95,7 +95,6 @@ h2 {
 	}
 	&.page-title{
 		font-size: 3.6rem;
-		padding-left: 1.5rem;
 		margin-bottom: 1rem;
 	}
 }
@@ -131,7 +130,11 @@ h2 {
 	}
 }
 
-
+input[type="button"].btn:only-child,
+input[type="submit"].btn:only-child,
+input.btn:only-child{
+  padding: $btn-base-padding !important;
+}
 
 .sublayout__autoColGrid {
 	&.sublayout--has-bg-image {
