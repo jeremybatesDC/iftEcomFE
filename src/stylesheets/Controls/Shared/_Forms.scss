@@ -15,6 +15,19 @@ $border-radius: 3px;
     margin: .6rem 0;
 }
 
+.ctrl-form-row{
+  padding: 10px 6px;
+}
+
+.formLayout .formRow label + textarea {
+    vertical-align: top;
+    display: inline;
+    border: 1px solid #ddd;
+    background-color: transparent;
+    padding: .6rem .8rem;
+    margin: .6rem 0;
+}
+
 // View More/Less Icon
 .showMore.action-hyperlink,
 .showLess.action-hyperlink {

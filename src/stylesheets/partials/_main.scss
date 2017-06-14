@@ -130,7 +130,11 @@ h2 {
 	}
 }
 
-
+input[type="button"].btn:only-child,
+input[type="submit"].btn:only-child,
+input.btn:only-child{
+  padding: $btn-base-padding !important;
+}
 
 .sublayout__autoColGrid {
 	&.sublayout--has-bg-image {
