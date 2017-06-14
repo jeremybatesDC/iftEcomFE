@@ -88,7 +88,14 @@
 .productControlSection .linkButton, 
 .addressButtonsDiv .addressButton {
 	@include break(max, $breakpoint-max-xs-override) {
-		@include button();
+		//very tricky overrides
+		html & {
+			@include button();
+			//shorthand is beating normal button background
+			background: linear-gradient(to bottom, rgba(174,207,67,1) 0%,rgba(118,161,32,1) 100%);
+			
+		}
+
 	}
 }
 

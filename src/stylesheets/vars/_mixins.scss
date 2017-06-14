@@ -203,6 +203,28 @@
 		margin: .6rem 0!important;
 	}
 }
+
+@mixin animatedLink {
+	display: inline-block;
+	background-image: linear-gradient(to top,rgba($ift-blue, 0) 50%,rgba($ift-blue, 0) 50%);
+	background-size:0 2px;
+	background-position:0 95%;
+	background-repeat:no-repeat;
+	transition: $ift-timing;
+	// span {
+	// 	transition: $ift-timing;
+	// }
+	&:hover,
+	&:active,
+	&:focus {
+		color: $ift-blue;
+		background-image: linear-gradient(to top,currentColor 50%,currentColor 50%);
+			background-size:100% 2px;
+	}
+}
+
+
+
 /*
 ██╗ ██████╗ ██████╗ ███╗   ██╗███████╗
 ██║██╔════╝██╔═══██╗████╗  ██║██╔════╝

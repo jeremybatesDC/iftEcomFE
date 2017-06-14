@@ -56,3 +56,9 @@ div.RadWindow_PersonifyDefault .rwTitlebarControls em {
     background: transparent;
     border:none;
 }
+
+.RadWindow {
+    .cancel {
+        display: none;
+    }
+}

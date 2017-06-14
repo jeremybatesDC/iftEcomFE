@@ -59,12 +59,16 @@ form[action^="./DonateNow"]{
 	.heading3 {
 		font-size: 2rem;
 	}
-
 }
 
 //there are actually nested panel add card forms, which is tricky
 fieldset {
 	&.panel-add-card-form {
+
+		.CustomerPaymentsControl_PersonifyDefault & {
+			padding-left: $gutter-width;
+		}
+
 		img {
 			width: 3rem;
 			height: auto;
