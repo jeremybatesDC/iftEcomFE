@@ -116,9 +116,19 @@ $border-radius: 3px;
         z-index: 999;
     }
 }
+
+// Select
+select{
+    border: 1px solid #ccc;
+    border-radius: 3px 0 0 3px;
+    display: inline-block;
+    padding: .4rem .8rem!important;
+    height: 3rem;
+}
+
 // List
 .RadComboBoxDropDown li {
-    font-size: 14px;
+    font-size: 14px !important;
 }
 
 // Disabled

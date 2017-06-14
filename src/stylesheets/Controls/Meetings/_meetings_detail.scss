@@ -20,7 +20,7 @@
 		float: none;
 		clear: both;
 	}
-	.MTGDetailContent {
+	.MTGDetailContent#MainContent_ctl00_dvMainContent {
 				width: calc(100% - 240px);
 		padding: 20px;
 		background: white;
@@ -95,6 +95,38 @@
     line-height: 1;
 	}
 }
+
+.MtgRegWizard_PersonifyDefault div.badgeFields > div{
+	overflow: inherit;
+	margin: 20px 0;
+}
+.meetingBadgeFieldInputControlText{
+	@include inputText()
+}
+.MtgRegWizard_PersonifyDefault.MeetingsMtgReg_PersonifyDefault.Base_PersonifyDefault #btnCancel,
+#ctl00_MainContent_ctl00_cMtgRegWizSession_lbtnMtgSesClearAll{
+	@include unButton();
+}
+#MainContent_ctl00_MtgRegWizRegisterSomeoneElse_imgWorkflowNote {
+    width: 40px;
+}
+
+#ctl00_MainContent_ctl00_cMtgRegWizSession_txtMtgFilterKeyword{
+	@include inputText();
+}
+
+.mtgProductInformation{
+	background-color: white;
+}
+
+.dvMtgSesDetail input[type="button"][value="Remove"]{
+	@include unButton();
+}
+
+.MtgRegWizard_PersonifyDefault.MeetingsMtgReg_PersonifyDefault.Base_PersonifyDefault #MainContent_ctl00_cMtgRegWizRegInfo_btnNext{
+    margin-right: 20px;
+}
+
 .ProductDetailParagraphShortLabel.htmlContent {
     padding-bottom: 10px;
 }
@@ -113,6 +145,10 @@
 	padding: 10px 0;
 	display: block;
 	text-align: center;
+}
+
+#MainContent_ctl00_mtgDetailAddToCalendar_addToCalendar {
+    margin: 20px 0;
 }
 
 #MainContent_ctl00_btnRegisterGroup,
