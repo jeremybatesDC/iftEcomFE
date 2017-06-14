@@ -84,6 +84,14 @@
 	}
 }
 
+//selector taken stright from personfiy
+.productControlSection .linkButton, 
+.addressButtonsDiv .addressButton {
+	@include break(max, $breakpoint-max-xs-override) {
+		@include button();
+	}
+}
+
 .showHideAllContainer,
 .btnFilterClear {
     line-height: 1.1111 !important;

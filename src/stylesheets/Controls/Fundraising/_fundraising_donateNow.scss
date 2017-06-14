@@ -59,17 +59,32 @@ form[action^="./DonateNow"]{
 	.heading3 {
 		font-size: 2rem;
 	}
-	// .DonationWizMain_PersonifyDefault {
-	// 	.mainCheckoutDiv {
-
-	// 	}
-	// }
 
 }
 
 //there are actually nested panel add card forms, which is tricky
-.panel-add-card-form {
-	img {
-		width: auto;
+fieldset {
+	&.panel-add-card-form {
+		img {
+			width: 3rem;
+			height: auto;
+			&[alt="Security Code"]{
+				width: 3rem;
+				height: auto;
+			}
+		}
+		> div {
+			> label {
+				padding-top:0 !important;
+				padding-left: 0 !important;
+				+ input {
+					margin-top: 0 !important;
+				}
+			}
+		}
+		//needed?
+		.sec-type {
+			display: none;
+		}
 	}
 }
