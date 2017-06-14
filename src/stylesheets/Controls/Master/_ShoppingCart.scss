@@ -27,6 +27,13 @@
 .segmentsListPanel .RadListBox .rlbGroup ul li.rlbItem:hover {
 	text-shadow: none;
 }
+
+
+#PreviousButton {
+	@include unButton();
+}
+
+
 .CheckoutControl_PersonifyDefault {
 	.addressButtonsDiv {
 		input {
@@ -74,7 +81,8 @@
 		display: block;
 	}
 	.itemsList,
-	.summaryControl {
+	.summaryControl,
+	.top-checkout-product-warning {
 		box-sizing: border-box;
 		flex: 0 0 auto;
 		margin: 0;
@@ -86,9 +94,36 @@
 		flex-basis: 100%;
 		max-width: 100%;
 	}
+	.top-checkout-product-warning {
+		//overriding above
+		margin-right:0;
+		margin-left:0;
+		.validationIssues {
+			width: 100%;
+		}
+	}
+	.summaryTopDiv {
+		float: none;
+		//this is inside of a flex element, but itself can just be a block
+		display: block;
+		margin: $gutter-width/2 0 $gutter-width/2 0;
+		width: 100%;
+	}
+
+	img {
+		width: auto;
+	}
 	
+	[id$="freeShippingReminderControl_ContainerPanelPanel"] {
+		width: 100%;
+		padding-right: $gutter-width/2;
+		padding-left: $gutter-width/2;
+	}
+
+
 	@media only screen and (min-width: $breakpoint-min-md) {
-		.itemsList{
+		.itemsList,
+		.leftPane {
 			flex-basis: calc(75% - 30px);
 			max-width: calc(75% - 30px);
 		}
@@ -278,6 +313,12 @@ div.WizardHeaderControl_PersonifyDefault{
 	}
 }
 
+.productDescriptionSection {
+	.productName {
+		@include animatedLink();	
+	}
+}
+
 @include break(min, $breakpoint-min-tablet) {
 	//if 3, then 33%
 	.wizardHeader .step:nth-last-child(n+3):nth-last-child(-n+3):first-child,
@@ -309,5 +350,18 @@ div.WizardHeaderControl_PersonifyDefault{
 .checkoutHeader {
 	&.heading2 {
 		font-size: 20px;
+	}
+}
+
+.we-honor-cards-container,
+.multi-cc-PayPal {
+	img {
+		width: auto;
+	}
+}
+
+.CheckoutAddressInformationControl_PersonifyDefault {
+	html & {
+		max-width: none;
 	}
 }

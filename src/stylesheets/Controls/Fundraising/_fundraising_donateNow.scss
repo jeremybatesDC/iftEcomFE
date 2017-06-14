@@ -37,6 +37,58 @@
 		text-align: right;
 
 	}
+}
 
-	
+form[action^="./DonateNow"]{
+	.multi-cc-row {
+		&.divTable {
+			display: table;
+			width: 100%;
+			> .divTableRow {
+				display: table-row;
+				width: 100%;
+				> div {
+					@include break(min, $breakpoint-min-xs-override){
+						display: table-cell;
+						width: 50%;
+					}
+				}
+			}
+		}
+	}
+	.heading3 {
+		font-size: 2rem;
+	}
+}
+
+//there are actually nested panel add card forms, which is tricky
+fieldset {
+	&.panel-add-card-form {
+
+		.CustomerPaymentsControl_PersonifyDefault & {
+			padding-left: $gutter-width;
+		}
+
+		img {
+			width: 3rem;
+			height: auto;
+			&[alt="Security Code"]{
+				width: 3rem;
+				height: auto;
+			}
+		}
+		> div {
+			> label {
+				padding-top:0 !important;
+				padding-left: 0 !important;
+				+ input {
+					margin-top: 0 !important;
+				}
+			}
+		}
+		//needed?
+		.sec-type {
+			display: none;
+		}
+	}
 }

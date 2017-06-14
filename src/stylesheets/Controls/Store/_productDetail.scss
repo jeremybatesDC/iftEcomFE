@@ -20,6 +20,22 @@
   @include unButton()
 }
 
+.productbuttons {
+  .wishList {
+    @include unButton();
+    width: 100%;
+  }
+  .addToCart {
+    width: 100%;
+  }
+}
+
+#previewButton {
+  width: auto;
+}
+
+
+
 // Ribbon
 #ctl00_MainContent_ctl00_CartSavingsControls1_Container {
   border: none;
