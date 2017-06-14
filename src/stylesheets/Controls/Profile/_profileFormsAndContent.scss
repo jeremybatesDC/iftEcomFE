@@ -15,6 +15,10 @@
   padding:0;
 }
 
+#MainContent_ctl00_btnAddEducation{
+  padding: $btn-base-padding;
+}
+
 #ctl00_MainContent_ctl00_wndAddEditEducation_C_txtInstitutionName{
   @include inputText();
 }
