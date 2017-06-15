@@ -1,6 +1,7 @@
 .navFeedTmrw__wrapper--outer {
 	background-color: #000;
 	position: relative;
+	overflow: visible;
 }
 
 .logoFeedTmrw__wrapper {
@@ -20,6 +21,13 @@
 
 .navFeedTmrw__menuToggle__wrapper--outer {
 	color:#fff;
+	background-color:#333;
+	position:absolute;
+	left:0;
+	bottom: -32px;
+	width:100%;
+	z-index:1;
+	text-align:center;
 	@include break(min, $breakpoint-min-tablet){
 		display: none;
 	}
@@ -39,6 +47,7 @@
 .navFeedTmrw__menuToggle__button {
 	display:inline-block;
 	font-size:1.8rem;
+	cursor: pointer;
 }
 
 .hamburger {
