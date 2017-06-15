@@ -1,0 +1,147 @@
+.navFeedTmrw__wrapper--outer {
+	background-color: #000;
+	position: relative;
+}
+
+.logoFeedTmrw__wrapper {
+	position:absolute;
+	top:0;
+	left: 0;
+	width:100%;
+	text-align: center;
+
+}
+
+.logoFeedTmrw {
+	width: auto;
+	max-width:167px;
+	height: auto;
+}
+
+.navFeedTmrw__menuToggle__wrapper--outer {
+	color:#fff;
+	@include break(min, $breakpoint-min-tablet){
+		display: none;
+	}
+}
+
+.navFeedTmrw__menuToggle__wrapper--inner {
+
+}
+
+.navFeedTmrw__menuToggle__label {
+	display:inline-block;
+	vertical-align:top;
+	line-height:1;
+	padding-top:2px;
+}
+
+.navFeedTmrw__menuToggle__button {
+	display:inline-block;
+	font-size:1.8rem;
+}
+
+.hamburger {
+	width:20px;
+	height:20px;
+	stroke: #fff;
+	stroke-width: 3px;
+}
+
+.navFeedTmrw {
+	width:100%;
+	padding-top:6rem;
+	padding-bottom:$gutter-width/2;
+
+}
+
+.navFeedTmrw__row {
+	padding-bottom:0;
+}
+
+.navFeedTmrw__list {
+	position:relative;
+	list-style:none;
+	margin:0;
+	padding:0;
+
+	@include break(max, $breakpoint-max-mobile){
+		display: none;
+		&.navFeedTmrw__list--ACTIVE {
+			display: block;
+		}
+	}
+}
+
+
+
+.navFeedTmrw__item {
+
+	font-family: $headlineFont;
+	font-size:1.3rem;
+	text-transform: uppercase;
+
+	@include break(min, $breakpoint-min-tablet){
+		display:inline-block;
+	
+	
+		&:first-child {
+			margin-right: 100px;
+		}
+		&:nth-child(3){
+			position:absolute;
+			top: 0;
+			right: 200px;
+		}
+		&:last-child {
+			position:absolute;
+			top: 0;
+			right: 0;
+		}
+	}
+	
+
+	@include break(max, $breakpoint-max-mobile){
+		display: block;
+	}
+}
+
+.navFeedTmrw__link {
+	color:#fff;
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: underline;
+	}
+}
+
+
+.footerFeedTmrw {
+	background-color: #a6a6a6;
+	.footerFeedTmrw__row {
+		padding-bottom:0;
+	}
+}
+
+.footerFeedTmrw__text {
+	font-size: 1.1rem;
+	color:#fff;
+	padding-top: $gutter-width / 2;
+	padding-bottom: $gutter-width / 2;
+	a {
+		color: inherit;
+		&:hover,
+		&:active,
+		&:focus {
+			text-decoration: underline;
+		}
+	}
+	span {
+		display: inline-block;
+		padding-right: 1rem;
+	}
+}
+
+.footerFeedTmrw__link {
+	padding-left: 1rem;
+}
