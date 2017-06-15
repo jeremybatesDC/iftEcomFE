@@ -244,7 +244,7 @@
 			color: $white;
 			padding-top:.25em;
 			padding-bottom:.25em;
-			background-image: linear-gradient(to top,rgba($ift-blue, 0) 50%,rgba($ift-blue, 0) 50%);
+			background-image: linear-gradient(to top,rgba($white, 0) 50%,rgba($white, 0) 50%);
 			background-size:0 5px;
 			background-position:0 95%;
 			background-repeat:no-repeat;
@@ -256,10 +256,10 @@
 				&:hover,
 				&:active,
 				&:focus  {
-					background-image: linear-gradient(to top,$ift-blue 50%,$ift-blue 50%);
+					background-image: linear-gradient(to top,$white 50%,$white 50%);
 					background-size:100% 3px;
 					span {
-						color: $ift-blue;
+						color: $white;
 					}
 					
 				}
@@ -368,7 +368,7 @@
 
 	@include break(min, $breakpoint-min-md){
 		li {
-			font-size: 1.2rem;
+			font-size: 1.3rem;
 			a {
 				color: $ift-blue;
 			}
