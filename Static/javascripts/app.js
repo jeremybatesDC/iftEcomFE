@@ -18,9 +18,9 @@ webpackJsonp([0,1],[
 	
 	__webpack_require__(3);
 	
-	__webpack_require__(5);
-	
 	__webpack_require__(4);
+	
+	__webpack_require__(5);
 
 /***/ },
 /* 2 */
@@ -325,24 +325,6 @@ webpackJsonp([0,1],[
 
 	'use strict';
 	
-	var currentPathName = window.location.pathname;
-	var leftNavLinkElements = document.querySelectorAll('.sidebar__submenu-link');
-	var hashArray = [];
-	for (var i = 0; i < leftNavLinkElements.length; i++) {
-		hashArray.push(leftNavLinkElements[i].pathname);
-	};
-	hashArray.find(function (paths) {
-		if (paths == currentPathName) {
-			document.querySelector('[href="' + currentPathName + '"]').classList += ' selected';
-		};
-	});
-
-/***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
 	(function navFeedTmrwModule() {
 	
 		var navFeedTmrw__menuToggle__button = document.getElementById('navFeedTmrwMenuToggleButton');
@@ -358,6 +340,24 @@ webpackJsonp([0,1],[
 			}
 		}
 	})();
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	var currentPathName = window.location.pathname;
+	var leftNavLinkElements = document.querySelectorAll('.sidebar__submenu-link');
+	var hashArray = [];
+	for (var i = 0; i < leftNavLinkElements.length; i++) {
+		hashArray.push(leftNavLinkElements[i].pathname);
+	};
+	hashArray.find(function (paths) {
+		if (paths == currentPathName) {
+			document.querySelector('[href="' + currentPathName + '"]').classList += ' selected';
+		};
+	});
 
 /***/ }
 ]);

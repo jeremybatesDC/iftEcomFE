@@ -53,12 +53,15 @@
 
 .header__utility-auth {
 	display:inline-block;
+	padding-right:$gutter-width / 2;
 	> .btn {
 		//font-weight: normal;
 		background: transparent !important;
 		border:2px solid $white !important;
 		padding: .5rem 1rem;
+		height:3.2rem;
 		min-width: auto;
+		line-height: 1.5;
 		&:before,
 		&:after {
 			display: none;
@@ -81,6 +84,11 @@
 	display:inline-block;
 }
 
+.header__utility-cart-label {
+	@include break(max, $breakpoint-max-1023){
+		display: none;
+	}
+}
 
 .headline--top-line {
 	text-transform:uppercase;
