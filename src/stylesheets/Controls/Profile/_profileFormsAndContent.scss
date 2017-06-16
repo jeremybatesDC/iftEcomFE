@@ -6,26 +6,56 @@
   }
 }
 
-#MainContent_ctl03_ContainerPanel a.btn{
+#MainContent_ctl03_ContainerPanel a.btn {
   @include unButton()
 }
 
-.PurchaseHistory_PersonifyDefault.Profile_PersonifyDefault .searchContainer .buttonRow, .DonationHistoryControl_PersonifyDefault.Profile_PersonifyDefault .filter .buttonRow{
-  margin: 0;
-  padding:0;
+#MainContent_ctl03_ContainerPanel {
+  position: relative;
+  a.btn.btn-link.details {
+    position: absolute;
+    right: 0;
+    width: auto;
+    top: -8px;
+    z-index: 2;
+  }
 }
 
-#MainContent_ctl00_btnAddEducation{
+#MainContent_ctl01_pnlContainer .action-hyperlink {
+    @include unButton();
+}
+
+.PurchaseHistory_PersonifyDefault.Profile_PersonifyDefault .searchContainer .buttonRow,
+.DonationHistoryControl_PersonifyDefault.Profile_PersonifyDefault .filter .buttonRow {
+  margin: 0;
+  padding: 0;
+}
+
+#MainContent_ctl00_btnAddEducation {
   padding: $btn-base-padding;
 }
 
-#ctl00_MainContent_ctl00_wndAddEditEducation_C_txtInstitutionName{
+.PhotoControl {
+  .uploadPhotoContainer.clearfix {
+    padding: 1rem 0;
+  }
+  .uploadPhotoContainer .supportedFormats {
+    padding: 0;
+    margin: 0;
+    margin-right: 2rem;
+  }
+  .uploadRemovePhotoContainer {
+    padding-bottom: 1rem;
+  }
+}
+
+#ctl00_MainContent_ctl00_wndAddEditEducation_C_txtInstitutionName {
   @include inputText();
 }
 
 .showHideAllContainer {
-    width: 46.6%;
-    text-align: center;
+  width: 46.6%;
+  text-align: center;
 }
 
 .profile-control-main,
@@ -67,17 +97,21 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
     padding-bottom: 10px;
   }
   .address_PersonifyDefault .ctrlContent,
-  .name-demographics_PersonifyDefault .ctrlContent{
+  .name-demographics_PersonifyDefault .ctrlContent {
     margin-bottom: 20px
   }
 }
+
 // clear button
-.ctrl-form-row .ctrl-row-item-button input, .ctrl-form-row .ctrl-row-item-button input.btn {
-    padding: 4px 8px;
+.ctrl-form-row .ctrl-row-item-button input,
+.ctrl-form-row .ctrl-row-item-button input.btn {
+  padding: 4px 8px;
 }
+
 .ctrl-emergency-contacts-form-row-priority .ctrl-row-item-button .inactive input {
-    background: transparent;
+  background: transparent;
 }
+
 // Membership Summary
 #MainContent_ctl03_ContainerPanel {
   .ctrlContent {
@@ -89,18 +123,20 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 }
 
 .ctrl-form-row.ctrl-emergency-contacts-form-row-priority {
-    margin-bottom: 2em;
+  margin-bottom: 2em;
 }
 
-.CurrentMembership_PersonifyDefault.Profile_PersonifyDefault .exp-col-container, .FutureMembership_PersonifyDefault.Profile_PersonifyDefault .exp-col-container {
-    border: 1px solid #f3f3f3;
-    .exp-col-content{
-      padding: 1em 0;
-    }
-    .ctrl-row-item.ctrl-row-header.ctrl-row-label {
-      color: inherit;
-    }
+.CurrentMembership_PersonifyDefault.Profile_PersonifyDefault .exp-col-container,
+.FutureMembership_PersonifyDefault.Profile_PersonifyDefault .exp-col-container {
+  border: 1px solid #f3f3f3;
+  .exp-col-content {
+    padding: 1em 0;
+  }
+  .ctrl-row-item.ctrl-row-header.ctrl-row-label {
+    color: inherit;
+  }
 }
+
 .Profile_PersonifyDefault.Base_PersonifyDefault {
   .buttonRow .btn {
     padding: 10px;
@@ -108,7 +144,7 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
     display: inline-block;
     min-width: 160px;
     margin-bottom: 10px;
-    &:first-child{
+    &:first-child {
       margin-left: 0px;
     }
   }
@@ -124,11 +160,11 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 }
 
 #ctl00_ctl00_MainContent_ctl01_ContainerPanelPanel > #MainContent_ctl01_ContainerPanel {
-    padding: 0;
+  padding: 0;
 }
 
 .Profile_PersonifyDefault.Base_PersonifyDefault .buttonRow .btn:first-child {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 // My Meeting
@@ -176,7 +212,8 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
     color: white;
     text-shadow: none;
   }
-  .btn, {
+  .btn,
+  {
     background: $ift-blue;
     color: white;
     border: 1px solid;
@@ -192,22 +229,23 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
   }
 }
 
-.EducationControl_PersonifyDefault.Base_PersonifyDefault .ctrl-form-row.ctrl-row-header-colored .ctrl-row-item a{
-    background: $ift-blue;
-    color: white;
-    border: 1px solid;
-    display: inline-block;
-    text-shadow: none;
-    padding: 2px 10px;
+.EducationControl_PersonifyDefault.Base_PersonifyDefault .ctrl-form-row.ctrl-row-header-colored .ctrl-row-item a {
+  background: $ift-blue;
+  color: white;
+  border: 1px solid;
+  display: inline-block;
+  text-shadow: none;
+  padding: 2px 10px;
 }
+
 .exp-col-container.expanded {
   .ctrl-form-row,
-  .ctrl-row-item.ctrl-row-item-name.ctrl-row-value{
+  .ctrl-row-item.ctrl-row-item-name.ctrl-row-value {
     background-color: transparent !important;
     color: #777 !important;
   }
-
 }
+
 // Ad Space on Right
 #MainContent_ctl05_NextButton {
   border: none;
@@ -224,9 +262,9 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 }
 
 #MainContent_ctl05_ScrollingPanel {
-    margin: auto;
-    max-width: 200px;
-    float: none;
+  margin: auto;
+  max-width: 200px;
+  float: none;
 }
 
 // Special Needs
@@ -256,7 +294,6 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
   border-bottom: 1px solid $ift-grey-light;
 }
 
-.PurchaseHistory_PersonifyDefault.Profile_PersonifyDefault .exp-col-content.expanded{
+.PurchaseHistory_PersonifyDefault.Profile_PersonifyDefault .exp-col-content.expanded {
   background-color: transparent;
-
 }
