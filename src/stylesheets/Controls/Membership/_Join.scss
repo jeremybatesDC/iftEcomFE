@@ -1,3 +1,43 @@
+//since form actions are case sensitive, best to use these classes when possible
+
+main.membershipJoin,
+form[action$="Code=REG"]{
+	table {
+		overflow-x: scroll;
+	}
+}
+
+#MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate,
+#MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate[style],
+#ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdatePanel,
+#ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdatePanel[style] {
+	width:100% !important;
+	height: auto !important;
+	max-width: 100% !important;
+	float:none;
+}
+
+#MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_chkAttestation {
+	width: auto !important;
+}
+
+//datepicker
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dpBeginDate_wrapper {
+	overflow:hidden !important;
+}
+
+//this thing was hidden and was breaking page
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dpBeginDate,
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dpBeginDate[style] {
+	display:none !important;
+	float:none !important;
+	margin: 0 !important;
+	width: 0 !important;
+	height:0 !important;
+	clear: both;
+	line-height: 0;
+}
+
 // Resets
 .RegistrationControl_PersonifyDefault.Base_PersonifyDefault.Base_PersonifyDefault,
 .MembershipJoinOptionsControl_PersonifyDefault .ctrlContent {
@@ -37,6 +77,7 @@
 		margin-top: 0;
 	}
 }
+
 
 // Nav
 .WizardBannerControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
@@ -239,4 +280,13 @@
 	.rateCodeItem {
 		padding-left: 26px;
 	}
+}
+
+.MainContent_ctl00_ADARequiredInfo {
+	width:auto;
+}
+
+
+.MainContent_ctl00_WizardBanner_ContainerPanel {
+	overflow:hidden;
 }

@@ -1,0 +1,52 @@
+html .alreadyLoggedIn {
+	.education-details .formRow .RadComboBox.RadComboBox_PersonifyDefault,
+	.education-details .formRow textarea,
+	.emailDetails .formRow .RadComboBox.RadComboBox_PersonifyDefault,
+	.userDetails .formRow .RadComboBox.RadComboBox_PersonifyDefault,
+	.formLayout .formRow label,
+	.formLayout .formRow label + div,
+	.formLayout .formRow input:not([type="button"]),
+	.formLayout .formRow select {
+		
+	}
+} 
+
+// Resets
+.RegistrationControl_PersonifyDefault.Base_PersonifyDefault.Base_PersonifyDefault,
+.MembershipJoinOptionsControl_PersonifyDefault .ctrlContent {
+	background: white;
+	padding: 20px;
+	margin: 0;
+	width: auto;
+}
+
+#MainContent_ctl00_MembershipDetail_ContainerPanel {
+	width: 100%;
+}
+
+.productDetails.ctrl-memb-prd-detail {
+	display: block;
+	margin-left: 0;
+	.productName {
+		font-size: 24px;
+		padding-top: 20px;
+	}
+}
+
+.MembershipDetailControl_PersonifyDefault .productImage.ctrl-memb-img {
+	margin: 20px;
+	position: static;
+	float: left;
+}
+
+#MainContent_ctl00_UserRegistrationControl_UserAlreadyLoggedInPanel {
+	.memberName,
+	.regContactsTitle {
+		padding-bottom: 10px;
+	}
+	.welcomeBack {
+		display: block;
+		margin-left: 0;
+		margin-top: 0;
+	}
+}

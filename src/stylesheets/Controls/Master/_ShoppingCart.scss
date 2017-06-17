@@ -152,7 +152,7 @@ table.totals * {
     margin: 13px;
 }
 #MainContent_ctl00_ButtonContinueShopping{
-	@include button()
+	@include unButton()
 }
 .OrderSummaryControl_PersonifyDefault .orderNumber {
     margin-bottom: 15px;
@@ -219,6 +219,19 @@ table.totals * {
 	.controlPanel{
 		border:none;
 	}
+	@include break(max, $breakpoint-max-xs-override){
+		.rlbItem {
+			&:before {
+				//thereS already a display block important in default personfify css 
+				display: none !important;
+				//removes random blue dots
+				visibility: hidden;
+
+
+			}
+		}
+	}
+
 }
 .ShoppingCartItemListControl_PersonifyDefault.ShoppingCart_PersonifyDefault.Base_PersonifyDefault{
 	.centerSection,
@@ -364,4 +377,17 @@ div.WizardHeaderControl_PersonifyDefault{
 	html & {
 		max-width: none;
 	}
+}
+
+.multi-cc-addCard {
+	//needs specificity
+	&.row {
+		width:100% !important;
+		max-width:none !important;
+	}
+	.pnlAddProfileEditorRow {
+		width: 100%;
+		
+	}
+	
 }
