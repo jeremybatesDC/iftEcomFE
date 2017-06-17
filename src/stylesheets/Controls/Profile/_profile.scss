@@ -1,4 +1,38 @@
 form[action$="myaccount"],
+form[action$="educationalbackground"],
+form[action$="addresses"],
 main.myAccountProfile {
-	
+	#MainContent_ctl00_frAttestation {
+		text-align: left;
+	}
+	label[for="MainContent_ctl00_chkAttestation"] {
+		padding-left: 0;
+	}
+	#MainContent_ctl00_frAttestation_Label {
+		display: none;
+	}
+
+	#MainContent_ctl00_EditAddressControl_lblZipAdditionInfo {
+		display: block;
+	}
+}
+
+.formLayout fieldset.searchContainer input[type="checkbox"] {
+	margin-left:0;
+}
+
+form[action$="purchasehistory"]{
+
+
+	.PurchaseHistory_PersonifyDefault.Profile_PersonifyDefault .searchContainer label {
+		display: inline;
+	}
+	.filterSearchButtons {
+		display: block;
+		width: 100%;
+	}
+	#MainContent_ctl00_KeywordSearch {
+		display: block;
+	}
+
 }

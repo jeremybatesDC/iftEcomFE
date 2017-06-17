@@ -3,11 +3,11 @@ html .alreadyLoggedIn {
 	.education-details .formRow textarea,
 	.emailDetails .formRow .RadComboBox.RadComboBox_PersonifyDefault,
 	.userDetails .formRow .RadComboBox.RadComboBox_PersonifyDefault,
-	.formLayout .formRow label,
+	//.formLayout .formRow label,
 	.formLayout .formRow label + div,
 	.formLayout .formRow input:not([type="button"]),
 	.formLayout .formRow select {
-		
+		width: auto !important;
 	}
 } 
 
@@ -23,6 +23,13 @@ html .alreadyLoggedIn {
 #MainContent_ctl00_MembershipDetail_ContainerPanel {
 	width: 100%;
 }
+
+.step2Left,
+.step3Left {
+	float: left;
+	width: calc(100% - 250px);
+}
+
 
 .productDetails.ctrl-memb-prd-detail {
 	display: block;
