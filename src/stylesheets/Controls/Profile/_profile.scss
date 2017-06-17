@@ -33,6 +33,19 @@ form[action$="purchasehistory"]{
 	}
 	#MainContent_ctl00_KeywordSearch {
 		display: block;
+		+ br {
+			display: none;
+		}
+	}
+
+	table {
+		+ br {
+			display: none;
+		}
+	}
+	//table
+	#MainContent_ctl00_TypeSelect {
+		max-width: 320px;
 	}
 
 }
