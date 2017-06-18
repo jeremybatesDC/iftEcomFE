@@ -147,7 +147,7 @@ form[action$="JoinSurvey"] {
 					&:last-child {
 						text-align: right;
 						vertical-align: bottom;
-						border-bottom: 3px solid #eee;
+						box-shadow: inset 0 -3px #eee;
 					}
 				}
 			}
@@ -155,6 +155,13 @@ form[action$="JoinSurvey"] {
 	}
 }
 
+
+form[action$="JoinSummary"]{
+	.ctrbName.heading4 {
+		font-size: 	2rem;
+		padding-bottom:8px;
+	}
+}
 
 
 #MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate,

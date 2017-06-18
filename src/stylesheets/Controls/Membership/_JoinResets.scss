@@ -27,8 +27,21 @@ html .alreadyLoggedIn {
 	.RadPicker .rcCalPopup {
 		margin-top: 8px !important;
 	}
+	.ctrl-row-item .ctrl-row-item-button {
+		float: right !important;
+	}
+	.number {
+		padding: 5px 0 5px 12px !important;
+		text-align: center;
+		background-color: $ift-grey-medium-light;
+	}
 }
 
+[action*="oinRegistration2"]{
+	.number {
+		padding: 5px 0 5px 10px !important;
+	}
+}
 
 
 // Resets
