@@ -239,6 +239,7 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 	overflow:hidden;
 	span {
 		//personify override
+		display: flex;
 		span {
 			width: auto !important;
 		}
@@ -250,7 +251,8 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 		border-bottom: 3px solid $ift-grey-230;
 		color: $ift-grey-medium-light;
 		text-align: left;
-		padding-left: 60px !important;
+		padding-left: 4.5rem !important;
+		padding-bottom: 5px !important;
 		.prefix,
 		.sep,
 		.divider {
@@ -258,6 +260,7 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 		}
 		.stepLabel {
 			font-size: 14px;
+			padding-top: 5px;
 		}
 		.number {
 			width: 30px!important;
@@ -437,7 +440,12 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 
 .MainContent_ctl00_WizardBanner_ContainerPanel {
 	overflow:hidden;
+	//when there are 5, they should have less padding
+
+
 }
+
+
 
 
 #ctl00_MainContent_ctl00_MembershipDivisionControl_RefreshPanel {

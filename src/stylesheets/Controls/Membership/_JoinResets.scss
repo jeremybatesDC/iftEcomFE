@@ -11,6 +11,26 @@ html .alreadyLoggedIn {
 	}
 } 
 
+[action*="oinRegistration"]{
+	.formLayout .formRow label, 
+	.formLayout .formRow input:not([type="button"]), 
+	.formLayout .formRow select {
+		vertical-align: middle;
+	}
+	#MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_frAttestation_Label {
+		display: none;
+	}
+	.formRow .RadComboBox .rcbReadOnly input[type="text"] {
+		padding-bottom:0;
+		vertical-align: middle;
+	}
+	.RadPicker .rcCalPopup {
+		margin-top: 8px !important;
+	}
+}
+
+
+
 // Resets
 .RegistrationControl_PersonifyDefault.Base_PersonifyDefault.Base_PersonifyDefault,
 .MembershipJoinOptionsControl_PersonifyDefault .ctrlContent {
