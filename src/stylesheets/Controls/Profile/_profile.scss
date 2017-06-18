@@ -49,3 +49,78 @@ form[action$="purchasehistory"]{
 	}
 
 }
+
+
+form[action$="addresses"]{
+	.address_PersonifyDefault {
+		//padding-left: $gutter-width/2;
+		.ctrlTitle {
+			font-size: 1.3rem !important;
+			padding:10px;
+		}
+
+		.addressLinkContainer {
+			top:-39px;
+			right:5px;
+			color: #fff;
+			//padding-top:6px;
+			//padding-right:6px;
+			border: 1px solid;
+		}
+		.action-hyperlink {
+    		color: #fff;
+    		display: inline-block;
+    		text-shadow: none;
+    		padding: 2px 10px;
+		}
+	}
+}
+
+//thereS a weird nested table thing going on
+#RadWindowWrapper_ctl00_MainContent_ctl00_DeleteWindow_DeleteRadWindow {
+	position: relative;
+	overflow: hidden;
+	&[style]{
+		width: 280px !important;
+		height: 120px !important;
+	}
+	
+	.rwTitlebarControls {
+		position:absolute;
+		top: 0;
+		left: 0;
+	}
+	em {
+		display: none;
+	}
+	table {
+		&[style]{
+			height: auto !important;
+		}
+	}
+	p {
+		font-size: 1.2rem;
+		font-weight: bold;
+
+	}
+	.formlayout {
+		padding-top:0;
+		padding-bottom:0;
+	}
+	.buttonRow {
+		margin-top: 0 !important;
+		margin-bottom: 0 !important;
+		input {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+	}
+
+}
+
+form[action$="contactinformation"]{
+	.ctrl-row-item {
+		font-weight: bold;
+	}
+}
+
