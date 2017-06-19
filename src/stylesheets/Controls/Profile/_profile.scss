@@ -2,125 +2,127 @@ form[action$="myaccount"],
 form[action$="educationalbackground"],
 form[action$="addresses"],
 main.myAccountProfile {
-	#MainContent_ctl00_frAttestation {
-		text-align: left;
-	}
-	label[for="MainContent_ctl00_chkAttestation"] {
-		padding-left: 0;
-	}
-	#MainContent_ctl00_frAttestation_Label {
-		display: none;
-	}
-
-	#MainContent_ctl00_EditAddressControl_lblZipAdditionInfo {
-		display: block;
-	}
+  #MainContent_ctl00_frAttestation {
+    text-align: left;
+  }
+  label[for="MainContent_ctl00_chkAttestation"] {
+    padding-left: 0;
+  }
+  #MainContent_ctl00_frAttestation_Label {
+    display: none;
+  }
+  #MainContent_ctl00_EditAddressControl_lblZipAdditionInfo {
+    display: block;
+  }
 }
 
 .formLayout fieldset.searchContainer input[type="checkbox"] {
-	margin-left:0;
+  margin-left: 0;
 }
 
-form[action$="purchasehistory"]{
-
-
-	.PurchaseHistory_PersonifyDefault.Profile_PersonifyDefault .searchContainer label {
-		display: inline;
-	}
-	.filterSearchButtons {
-		display: block;
-		width: 100%;
-	}
-	#MainContent_ctl00_KeywordSearch {
-		display: block;
-		+ br {
-			display: none;
-		}
-	}
-
-	table {
-		+ br {
-			display: none;
-		}
-	}
-	//table
-	#MainContent_ctl00_TypeSelect {
-		max-width: 320px;
-	}
-
+form[action$="purchasehistory"] {
+  .PurchaseHistory_PersonifyDefault.Profile_PersonifyDefault .searchContainer label {
+    display: inline;
+  }
+  .filterSearchButtons {
+    display: block;
+    width: 100%;
+  }
+  #MainContent_ctl00_KeywordSearch {
+    display: block;
+    + br {
+      display: none;
+    }
+  }
+  table {
+    + br {
+      display: none;
+    }
+  }
+  //table
+  #MainContent_ctl00_TypeSelect {
+    max-width: 320px;
+  }
 }
 
-
-form[action$="addresses"]{
-	.address_PersonifyDefault {
-		//padding-left: $gutter-width/2;
-		.ctrlTitle {
-			font-size: 1.3rem !important;
-			padding:10px;
-		}
-
-		.addressLinkContainer {
-			top:-39px;
-			right:5px;
-			color: #fff;
-			//padding-top:6px;
-			//padding-right:6px;
-			border: 1px solid;
-		}
-		.action-hyperlink {
-    		color: #fff;
-    		display: inline-block;
-    		text-shadow: none;
-    		padding: 2px 10px;
-		}
-	}
+form[action$="addresses"] {
+  .address_PersonifyDefault {
+    //padding-left: $gutter-width/2;
+    .ctrlTitle {
+      font-size: 1.3rem !important;
+      padding: 10px;
+    }
+    .addressLinkContainer {
+      top: -39px;
+      right: 5px;
+      color: #fff;
+      //padding-top:6px;
+      //padding-right:6px;
+      border: 1px solid;
+    }
+    .action-hyperlink {
+      color: #fff;
+      display: inline-block;
+      text-shadow: none;
+      padding: 2px 10px;
+    }
+  }
 }
 
 //thereS a weird nested table thing going on
 #RadWindowWrapper_ctl00_MainContent_ctl00_DeleteWindow_DeleteRadWindow {
-	position: relative;
-	overflow: hidden;
-	&[style]{
-		width: 280px !important;
-		height: 120px !important;
-	}
-	
-	.rwTitlebarControls {
-		position:absolute;
-		top: 0;
-		left: 0;
-	}
-	em {
-		display: none;
-	}
-	table {
-		&[style]{
-			height: auto !important;
-		}
-	}
-	p {
-		font-size: 1.2rem;
-		font-weight: bold;
-
-	}
-	.formlayout {
-		padding-top:0;
-		padding-bottom:0;
-	}
-	.buttonRow {
-		margin-top: 0 !important;
-		margin-bottom: 0 !important;
-		input {
-			margin-top: 0;
-			margin-bottom: 0;
-		}
-	}
-
+  position: relative;
+  overflow: hidden;
+  &[style] {
+    width: 280px !important;
+    height: 120px !important;
+  }
+  .rwTitlebarControls {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  em {
+    display: none;
+  }
+  table {
+    &[style] {
+      height: auto !important;
+    }
+  }
+  p {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .formlayout {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .buttonRow {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    input {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
 }
 
-form[action$="contactinformation"]{
-	.ctrl-row-item {
-		font-weight: bold;
-	}
+form[action$="contactinformation"] {
+  .ctrl-row-item {
+    font-weight: bold;
+  }
 }
 
+form[action$="usernamepassword"] {
+  .UserNamePasswordControl_PersonifyDefault .formLayout fieldset .formRow input.ChangeLinkButton {
+    text-decoration: none;
+  }
+}
+
+form[action$="purchasehistory"] {
+  .Profile_PersonifyDefault.Base_PersonifyDefault .buttonRow .btn[value="Pay Now"] {
+    @include button() margin: 0;
+    padding: 10px;
+  }
+}
