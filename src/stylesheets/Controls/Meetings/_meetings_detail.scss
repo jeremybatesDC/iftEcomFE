@@ -91,8 +91,8 @@
 		padding: 0;
 	}
 	.ControlPanel_PromtionalProductListControl .PromotionProductListItem li {
-    list-style: none;
-    line-height: 1;
+		list-style: none;
+		line-height: 1;
 	}
 }
 
@@ -114,7 +114,7 @@
 	@include unButton();
 }
 #MainContent_ctl00_MtgRegWizRegisterSomeoneElse_imgWorkflowNote {
-    width: 40px;
+		width: 40px;
 }
 
 #ctl00_MainContent_ctl00_cMtgRegWizSession_txtMtgFilterKeyword{
@@ -130,11 +130,11 @@
 }
 
 .MtgRegWizard_PersonifyDefault.MeetingsMtgReg_PersonifyDefault.Base_PersonifyDefault #MainContent_ctl00_cMtgRegWizRegInfo_btnNext{
-    margin-right: 20px;
+		margin-right: 20px;
 }
 
 .ProductDetailParagraphShortLabel.htmlContent {
-    padding-bottom: 10px;
+		padding-bottom: 10px;
 }
 .ControlPanel_PromtionalProductListControl .PromotionalProductListControlButton-next-horizontal,
 .ControlPanel_PromtionalProductListControl .PromotionalProductListControlButton-next-horizontal:hover,
@@ -154,7 +154,7 @@
 }
 
 #MainContent_ctl00_mtgDetailAddToCalendar_addToCalendar {
-    margin: 20px 0;
+		margin: 20px 0;
 }
 
 #MainContent_ctl00_btnRegisterGroup,
@@ -188,14 +188,14 @@ form[class$="roductslisting"] {
 	color: #333;
 }
 .MtgWizStepTitleContainer {
-    border: none;
+		border: none;
 }
 #MainContent_ctl00_cMtgRegWizContactInfo_MtgRegWizStepTitle_ContainerPanel + .ctrlContent.mtgRegContacts {
-    background: white;
-    padding: 20px;    
+		background: white;
+		padding: 20px;    
 }
 #MainContent_ctl00_dvExhibitorInfo,div#MainContent_ctl00_dvAttendeeList {
-    background: transparent
+		background: transparent
 }
 // Nav
 .MtgRegWizContainer{
@@ -218,6 +218,8 @@ form[class$="roductslisting"] {
 			border-color: $ift-grey-230;
 			color: $ift-grey-medium-light;
 			text-align: left;
+			display: flex;
+			align-items: center;
 			padding-left: 40px !important;
 			.step-number {
 				width: 30px!important;
@@ -226,9 +228,9 @@ form[class$="roductslisting"] {
 				border: 1px solid white;
 				box-shadow: none;
 				position: absolute;
-				left: 20px;
+				left: 10px;
 				text-shadow: none !important;
-				top: 9px;
+				top: calc(50% - 15px);
 				padding: 5px 0;
 				background-color: $ift-grey-medium-light;
 			}

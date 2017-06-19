@@ -271,6 +271,7 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 		}
 		.number {
 			width: 30px!important;
+			display: block;
 			height: 30px!important;
 			border-radius: 100% !important;
 			border: 1px solid white;
@@ -452,8 +453,23 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 
 }
 
+form[action$="JoinSurvey"]{
+	#MainContent_ctl00_SurveyPanel{
+		h2.heading2{
+			color: rgb(51, 51, 51);
+			display: block;
+			font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 36px;
+			font-weight: bold;
+		}
+	}
+}
 
-
+#ctl00_MainContent_ctl00_MembershipJoinSection_ContainerPanel h3.heading3,
+.step2Left .yourMembership.heading3{
+	    color: #333;
+    font-size: 3.6rem;
+}
 
 #ctl00_MainContent_ctl00_MembershipDivisionControl_RefreshPanel {
 	table {
