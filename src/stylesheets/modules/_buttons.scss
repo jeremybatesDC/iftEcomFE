@@ -140,7 +140,16 @@
 		@include buttonBlue();
 		top:0 !important
 	}
-	
+}
+
+.segmentsListTabs {
+	+ .continueShopping {
+		font-size: 1.2rem;
+		line-height: 1;
+		@include break(min, $breakpoint-min-xs-override){
+			margin-top: 1.6rem;
+		}
+	}
 }
 
 
