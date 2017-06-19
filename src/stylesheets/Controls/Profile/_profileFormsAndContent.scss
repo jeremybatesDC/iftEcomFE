@@ -147,11 +147,6 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
     &:first-child {
       margin-left: 0px;
     }
-    &[value="Pay Now"] {
-      @include button()
-      margin: 0;
-      padding: 10px;
-    }
   }
 }
 
