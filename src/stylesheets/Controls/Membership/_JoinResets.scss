@@ -68,10 +68,16 @@ main.membershipJoin {
 		position: static;
 		float: left;
 	}
+	table[summary] {
+		overflow: visible;
+	}
 	.ctrlContent {
     padding: 0;
     margin-bottom: 10px;
-}
+	}
+	.alreadyLoggedIn .ctrlContent .ctrlContent {
+		background-color: white;
+	}
 	.productDetails .pricingCell.cell1 {
 		z-index: 1;
 	}
