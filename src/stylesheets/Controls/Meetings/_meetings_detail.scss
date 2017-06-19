@@ -21,7 +21,7 @@
 		clear: both;
 	}
 	.MTGDetailContent#MainContent_ctl00_dvMainContent {
-				width: calc(100% - 240px);
+		width: calc(100% - 240px);
 		padding: 20px;
 		background: white;
 	}
@@ -81,8 +81,9 @@
 		max-width: calc(100% - 240px);
 	}
 }
+
 .ControlPanel_PromtionalProductListControl {
-	.scrollable{
+	.scrollable {
 		background: white;
 	}
 	.items {
@@ -102,49 +103,55 @@
 	float: right;
 }
 
-.MtgRegWizard_PersonifyDefault div.badgeFields > div{
+.MtgRegWizard_PersonifyDefault div.badgeFields > div {
 	overflow: inherit;
 	margin: 20px 0;
 }
-.meetingBadgeFieldInputControlText{
+
+.meetingBadgeFieldInputControlText {
 	@include inputText()
 }
+
 .MtgRegWizard_PersonifyDefault.MeetingsMtgReg_PersonifyDefault.Base_PersonifyDefault #btnCancel,
-#ctl00_MainContent_ctl00_cMtgRegWizSession_lbtnMtgSesClearAll{
+#ctl00_MainContent_ctl00_cMtgRegWizSession_lbtnMtgSesClearAll {
 	@include unButton();
 }
+
 #MainContent_ctl00_MtgRegWizRegisterSomeoneElse_imgWorkflowNote {
-		width: 40px;
+	width: 40px;
 }
 
-#ctl00_MainContent_ctl00_cMtgRegWizSession_txtMtgFilterKeyword{
+#ctl00_MainContent_ctl00_cMtgRegWizSession_txtMtgFilterKeyword {
 	@include inputText();
 }
 
-.mtgProductInformation{
+.mtgProductInformation {
 	background-color: white;
 }
 
-.dvMtgSesDetail input[type="button"][value="Remove"]{
+.dvMtgSesDetail input[type="button"][value="Remove"] {
 	@include unButton();
 }
 
-.MtgRegWizard_PersonifyDefault.MeetingsMtgReg_PersonifyDefault.Base_PersonifyDefault #MainContent_ctl00_cMtgRegWizRegInfo_btnNext{
-		margin-right: 20px;
+.MtgRegWizard_PersonifyDefault.MeetingsMtgReg_PersonifyDefault.Base_PersonifyDefault #MainContent_ctl00_cMtgRegWizRegInfo_btnNext {
+	margin-right: 20px;
 }
 
 .ProductDetailParagraphShortLabel.htmlContent {
-		padding-bottom: 10px;
+	padding-bottom: 10px;
 }
+
 .ControlPanel_PromtionalProductListControl .PromotionalProductListControlButton-next-horizontal,
 .ControlPanel_PromtionalProductListControl .PromotionalProductListControlButton-next-horizontal:hover,
 .ControlPanel_PromtionalProductListControl .PromotionalProductListControlButton-prev-horizontal,
 .ControlPanel_PromtionalProductListControl .PromotionalProductListControlButton-prev-horizontal:hover {
-	border:  none;
+	border: none;
 }
+
 .ControlPanel_PromtionalProductListControl {
 	margin-top: 20px;
 }
+
 #MainContent_ctl01_PromotionalHeaderLabel {
 	font-size: 16px;
 	font-weight: bold;
@@ -154,13 +161,14 @@
 }
 
 #MainContent_ctl00_mtgDetailAddToCalendar_addToCalendar {
-		margin: 20px 0;
+	margin: 20px 0;
 }
 
 #MainContent_ctl00_btnRegisterGroup,
-#MainContent_ctl00_btnRapidGroupRegistration{
+#MainContent_ctl00_btnRapidGroupRegistration {
 	@include unButton()
 }
+
 form[action="./LearningProductsListing"],
 form[class$="roductsListing"],
 form[class$="roductslisting"] {
@@ -175,35 +183,41 @@ form[class$="roductslisting"] {
 		#MainContent_ctl00_PagerControl_ContainerPanel {
 			background: white;
 		}
-
 		#MainContent_ctl00_SearchControl_SearchPanel {
 			padding: 10px 20px;
 		}
 	}
-	#MainContent_ctl00_SearchControl_AdvancedLink{
+	#MainContent_ctl00_SearchControl_AdvancedLink {
 		@include unButton()
 	}
 }
-.MtgWizStepCustomerName{
+
+.MtgWizStepCustomerName {
 	color: #333;
 }
+
 .MtgWizStepTitleContainer {
-		border: none;
+	border: none;
 }
+
 #MainContent_ctl00_cMtgRegWizContactInfo_MtgRegWizStepTitle_ContainerPanel + .ctrlContent.mtgRegContacts {
-		background: white;
-		padding: 20px;    
+	background: white;
+	padding: 20px;
 }
-#MainContent_ctl00_dvExhibitorInfo,div#MainContent_ctl00_dvAttendeeList {
-		background: transparent
+
+#MainContent_ctl00_dvExhibitorInfo,
+div#MainContent_ctl00_dvAttendeeList {
+	background: transparent
 }
+
 // Nav
-.MtgRegWizContainer{
-	[class^="WizardWith"]{
+.MtgRegWizContainer {
+	[class^="WizardWith"] {
 		display: flex;
 		margin-bottom: 40px;
 		// Remove Clearfix
-		&:before,&:after{
+		&:before,
+		&:after {
 			display: none;
 		}
 		span {
