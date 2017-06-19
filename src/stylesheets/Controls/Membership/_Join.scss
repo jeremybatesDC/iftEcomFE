@@ -1,11 +1,210 @@
-// Resets
-.RegistrationControl_PersonifyDefault.Base_PersonifyDefault.Base_PersonifyDefault,
-.MembershipJoinOptionsControl_PersonifyDefault .ctrlContent {
-	background: white;
-	padding: 20px;
-	margin: 0;
-	width: auto;
+//since form actions are case sensitive, best to use these classes when possible
+
+main.membershipJoin,
+form[action$="Code=REG"],
+form[action$="JoinSummary"],
+form[action$="JoinSurvey"] {
+	table {
+		overflow-x: scroll;
+		//purely for readability
+		&#MainContent_ctl00_chkDivision {
+			width: 100%;
+			margin-top: $gutter-width/2;
+			border-spacing: 0 4px;
+			border-collapse: separate;
+		}
+	}
+	.education-details {
+
+	}
+
+	.hidden,
+	.hidden[style] {
+		width: 0 !important;
+
+	}
+
+	.ctrl-form-row {
+		display: block;
+		width: 100%;
+	}
+	
+	.content>.RadAjaxPanel {
+		//ottherwise empty divs show up with white background
+		padding:0;
+	}
+
+	//seems silly to scope IDs, but IDs are re-used on different pages :/
+
+	#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
+		padding:0;
+		background:transparent;
+
+	}
+
+	#MainContent_ctl00_RegistrationPanel {
+		padding:2rem;
+		background:#fff;
+		.formRow {
+			> label {
+				font-weight: bold;
+			}
+		}
+		#MainContent_ctl00_RadioButtonListADA {
+			display: block;
+			padding-bottom:$gutter-width/2;
+		}
+
+		#MainContent_ctl00_RadioButtonListGender {
+			display: block;
+		}
+		#MainContent_ctl00_RadioButtonListAboutIFT {
+			display: block;
+		}
+	}
+
+
+
+	.step2Left,
+	.step3Left {
+		float: none;
+		width: 100%;
+	}
+
+
+	.ctrlContent {
+		.step2Left,
+		.step3Left {
+			padding:2rem;
+			background:#fff;
+		}
+		.step3Left {
+			+ div {
+				padding:2rem;
+				background:#fff;
+				+ div:not(.buttonRow) {
+					padding:2rem;
+					background:#fff;
+				}
+			}
+		}
+	}
+
+
+	.buttonRow {
+		background:transparent !important;
+		padding:0 !important;
+	}
+
+
+
+	.productDetailDescription {
+		table {
+			p {
+				padding: $gutter-width/2;
+				+ p {
+					padding-top:0;
+				}
+			}
+		}
+	}
+
+	#ctl00_MainContent_ctl00_MembershipDetail_ContainerPanel {
+		float:none;
+		width: 100%;
+	}
+
+	#ctl00_MainContent_ctl00_MembershipDetail_ProductDetailParagraphshowLessLink {
+		margin-bottom: $gutter-width;
+	}
+
+	.MembershipJoinSummaryControl_PersonifyDefault {
+		.step3Left {
+			float: none;
+			width: 100%;
+			.RadAjaxPanel {
+				background:#fff;
+			}
+		}
+		
+	}
+
+	.RegistrationControl_PersonifyDefault.Base_PersonifyDefault.Base_PersonifyDefault,
+	.MembershipJoinOptionsControl_PersonifyDefault .ctrlContent {
+		padding:0;
+		background:transparent;
+	}
+
+
+	.LoginRequestControl_PersonifyDefault {
+		background:transparent;
+	}
+
+	#ctl00_MainContent_ctl00_MembershipDivisionControl_RefreshPanel {
+		tr {
+			&:first-child {
+				td {
+					&:last-child {
+						text-align: right;
+						vertical-align: bottom;
+						box-shadow: inset 0 -3px #eee;
+					}
+				}
+			}
+		}
+	}
 }
+
+
+form[action$="JoinSummary"]{
+	.ctrbName.heading4 {
+		font-size: 	2rem;
+		padding-bottom:8px;
+	}
+}
+
+
+#MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate,
+#MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate[style],
+#ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdatePanel,
+#ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdatePanel[style] {
+	width:100% !important;
+	height: auto !important;
+	max-width: 100% !important;
+	float:none;
+}
+
+#MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_chkAttestation {
+	width: auto !important;
+}
+
+//datepicker
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dpBeginDate_wrapper {
+	//overflow:hidden !important;
+	width: 160px !important;
+}
+
+html .education-details .formRow .RadPicker .rcTable.rcSingle {
+	width:160px !important;
+}
+
+//this thing was hidden and was breaking page
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dpBeginDate,
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dpBeginDate[style],
+#MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_txtSaveEducationId,
+#MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_txtSaveEducationId[style],
+[id^="#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dp"],
+[id^="#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dp"][style] {
+	display:none !important;
+	float:none !important;
+	margin: 0 !important;
+	width: 0 !important;
+	height:0 !important;
+	clear: both;
+	line-height: 0;
+}
+
+
 
 #MainContent_ctl00_MembershipDetail_ContainerPanel {
 	width: 100%;
@@ -38,12 +237,16 @@
 	}
 }
 
+
 // Nav
 .WizardBannerControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
 	margin-bottom: 40px;
 	display: flex;
+	//make sure it doesNot accidentally break page widths
+	overflow:hidden;
 	span {
 		//personify override
+		display: flex;
 		span {
 			width: auto !important;
 		}
@@ -55,7 +258,8 @@
 		border-bottom: 3px solid $ift-grey-230;
 		color: $ift-grey-medium-light;
 		text-align: left;
-		padding-left: 60px !important;
+		padding-left: 4.5rem !important;
+		padding-bottom: 5px !important;
 		.prefix,
 		.sep,
 		.divider {
@@ -63,6 +267,7 @@
 		}
 		.stepLabel {
 			font-size: 14px;
+			padding-top: 5px;
 		}
 		.number {
 			width: 30px!important;
@@ -157,11 +362,6 @@
 	}
 }
 
-.step2Left,
-.step3Left {
-	float: left;
-	width: calc(100% - 250px);
-}
 
 .MembershipBenefitsControl_PersonifyDefault.Membership_PersonifyDefault .memOptions {
 	background-color: #f7f7f7;
@@ -238,5 +438,41 @@
 	}
 	.rateCodeItem {
 		padding-left: 26px;
+	}
+}
+
+#MainContent_ctl00_ADARequiredInfo {
+	width:auto;
+}
+
+.MainContent_ctl00_WizardBanner_ContainerPanel {
+	overflow:hidden;
+	//when there are 5, they should have less padding
+
+
+}
+
+
+
+
+#ctl00_MainContent_ctl00_MembershipDivisionControl_RefreshPanel {
+	table {
+		width: 100%;
+	}
+}
+
+#MainContent_ctl00_SurveyPanel {
+	.ctrlContent {
+		> div {
+			background:#fff;
+			padding:10px $gutter-width;
+			table {
+				width: 100%;
+			}
+		}
+		#MainContent_ctl00_ButtonPanel {
+			background-color:transparent;
+			padding:0;
+		}
 	}
 }

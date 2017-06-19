@@ -1,0 +1,92 @@
+html .alreadyLoggedIn {
+	.education-details .formRow .RadComboBox.RadComboBox_PersonifyDefault,
+	.education-details .formRow textarea,
+	.emailDetails .formRow .RadComboBox.RadComboBox_PersonifyDefault,
+	.userDetails .formRow .RadComboBox.RadComboBox_PersonifyDefault,
+	//.formLayout .formRow label,
+	.formLayout .formRow label + div,
+	.formLayout .formRow input:not([type="button"]),
+	.formLayout .formRow select {
+		width: auto !important;
+	}
+} 
+
+[action*="oinRegistration"]{
+	.formLayout .formRow label, 
+	.formLayout .formRow input:not([type="button"]), 
+	.formLayout .formRow select {
+		vertical-align: middle;
+	}
+	#MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_frAttestation_Label {
+		display: none;
+	}
+	.formRow .RadComboBox .rcbReadOnly input[type="text"] {
+		padding-bottom:0;
+		vertical-align: middle;
+	}
+	.RadPicker .rcCalPopup {
+		margin-top: 8px !important;
+	}
+	.ctrl-row-item .ctrl-row-item-button {
+		float: right !important;
+	}
+	.number {
+		padding: 5px 0 5px 12px !important;
+		text-align: center;
+		background-color: $ift-grey-medium-light;
+	}
+}
+
+[action*="oinRegistration2"]{
+	.number {
+		padding: 5px 0 5px 10px !important;
+	}
+}
+
+
+// Resets
+.RegistrationControl_PersonifyDefault.Base_PersonifyDefault.Base_PersonifyDefault,
+.MembershipJoinOptionsControl_PersonifyDefault .ctrlContent {
+	background: white;
+	padding: 20px;
+	margin: 0;
+	width: auto;
+}
+
+#MainContent_ctl00_MembershipDetail_ContainerPanel {
+	width: 100%;
+}
+
+.step2Left,
+.step3Left {
+	float: left;
+	width: calc(100% - 250px);
+}
+
+
+.productDetails.ctrl-memb-prd-detail {
+	display: block;
+	margin-left: 0;
+	.productName {
+		font-size: 24px;
+		padding-top: 20px;
+	}
+}
+
+.MembershipDetailControl_PersonifyDefault .productImage.ctrl-memb-img {
+	margin: 20px;
+	position: static;
+	float: left;
+}
+
+#MainContent_ctl00_UserRegistrationControl_UserAlreadyLoggedInPanel {
+	.memberName,
+	.regContactsTitle {
+		padding-bottom: 10px;
+	}
+	.welcomeBack {
+		display: block;
+		margin-left: 0;
+		margin-top: 0;
+	}
+}
