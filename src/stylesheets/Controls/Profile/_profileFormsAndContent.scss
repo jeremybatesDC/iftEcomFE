@@ -21,6 +21,11 @@
   }
 }
 
+.myAccountProfile .col-lg-3 .MembershipSummary_PersonifyDefault h3.heading3.bord-low {
+    margin-right: 7rem;
+    display: block;
+}
+
 #MainContent_ctl01_pnlContainer .action-hyperlink {
     @include unButton();
 }
