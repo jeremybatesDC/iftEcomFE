@@ -15,6 +15,7 @@
   .iftMap__wrapper--inner{
     background-color: $white;
     padding: $gutter-width;
+    margin-top: $gutter-width;
     position: relative;
   }
 }
@@ -64,7 +65,7 @@
     fill:rgba(87,134,199,1);
   }
   .usState--SELECTED {
-    fill:rgba(87,134,199,1);;
+    fill:rgba(87,134,199,1);
   }
 }
 
