@@ -1,5 +1,4 @@
 //since form actions are case sensitive, best to use these classes when possible
-
 main.membershipJoin,
 form[action$="Code=REG"],
 form[action$="JoinSummary"],
@@ -14,37 +13,40 @@ form[action$="JoinSurvey"] {
 			border-collapse: separate;
 		}
 	}
-	.education-details {
-
-	}
-
+	.education-details {}
 	.hidden,
 	.hidden[style] {
 		width: 0 !important;
-
 	}
-
 	.ctrl-form-row {
 		display: block;
 		width: 100%;
 	}
-	
 	.content>.RadAjaxPanel {
 		//ottherwise empty divs show up with white background
-		padding:0;
+		padding: 0;
 	}
-
 	//seems silly to scope IDs, but IDs are re-used on different pages :/
-
 	#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
-		padding:0;
-		background:transparent;
-
+		padding: 0;
+		background: transparent;
 	}
-
+	.alreadyLoggedIn .ctrlContent {
+		min-height: 140px;
+		margin-bottom: 0;
+		#MainContent_ctl00_UserRegistrationControl_TMAFormRowStudentUserAlreadyLoggedIn {
+			margin-bottom: 10px;
+		}
+		#MainContent_ctl00_UserRegistrationControl_EducationTMAFormRowUserAlreadyLoggedIn > label {
+			font-size: 22px;
+			font-weight: bold;
+			padding: 0;
+			margin: 20px 0;
+		}
+	}
 	#MainContent_ctl00_RegistrationPanel {
-		padding:2rem;
-		background:#fff;
+		padding: 2rem;
+		background: #fff;
 		.formRow {
 			> label {
 				font-weight: bold;
@@ -52,9 +54,8 @@ form[action$="JoinSurvey"] {
 		}
 		#MainContent_ctl00_RadioButtonListADA {
 			display: block;
-			padding-bottom:$gutter-width/2;
+			padding-bottom: $gutter-width/2;
 		}
-
 		#MainContent_ctl00_RadioButtonListGender {
 			display: block;
 		}
@@ -62,84 +63,82 @@ form[action$="JoinSurvey"] {
 			display: block;
 		}
 	}
-
-
-
+	.EducationControl_PersonifyDefault.Base_PersonifyDefault .ctrl-form-row.ctrl-row-header-colored .ctrl-row-item.ctrl-row-item-button {
+		float: right;
+	}
+	#MainContent_ctl00_TMAFormRowADA {
+		position: relative;
+		margin-bottom: -10px;
+		.RadComboBox.RadComboBox_PersonifyDefault {
+			position: absolute;
+			left: 60px;
+			top: 22px;
+		}
+	}
 	.step2Left,
 	.step3Left {
 		float: none;
 		width: 100%;
 	}
-
-
 	.ctrlContent {
 		.step2Left,
 		.step3Left {
-			padding:2rem;
-			background:#fff;
+			padding: 2rem;
+			background: #fff;
 		}
 		.step3Left {
 			+ div {
-				padding:2rem;
-				background:#fff;
+				padding: 2rem;
+				background: #fff;
 				+ div:not(.buttonRow) {
-					padding:2rem;
-					background:#fff;
+					padding: 2rem;
+					background: #fff;
 				}
 			}
 		}
 	}
-
-
-	.buttonRow {
-		background:transparent !important;
-		padding:0 !important;
+	#iftMapButtonOpen {
+		@include button();
+		margin: 10px 0;
 	}
-
-
-
+	.buttonRow {
+		background: transparent !important;
+		padding: 0 !important;
+	}
 	.productDetailDescription {
 		table {
 			p {
 				padding: $gutter-width/2;
 				+ p {
-					padding-top:0;
+					padding-top: 0;
 				}
 			}
 		}
 	}
-
 	#ctl00_MainContent_ctl00_MembershipDetail_ContainerPanel {
-		float:none;
+		float: none;
 		width: 100%;
 	}
-
 	#ctl00_MainContent_ctl00_MembershipDetail_ProductDetailParagraphshowLessLink {
 		margin-bottom: $gutter-width;
 	}
-
 	.MembershipJoinSummaryControl_PersonifyDefault {
 		.step3Left {
 			float: none;
 			width: 100%;
 			.RadAjaxPanel {
-				background:#fff;
+				background: #fff;
 			}
 		}
-		
 	}
-
 	.RegistrationControl_PersonifyDefault.Base_PersonifyDefault.Base_PersonifyDefault,
 	.MembershipJoinOptionsControl_PersonifyDefault .ctrlContent {
-		padding:0;
-		background:transparent;
+		padding: 0;
+		background: transparent;
 	}
-
-
 	.LoginRequestControl_PersonifyDefault {
-		background:transparent;
+		background: transparent;
 	}
-
 	#ctl00_MainContent_ctl00_MembershipDivisionControl_RefreshPanel {
 		tr {
 			&:first-child {
@@ -155,23 +154,21 @@ form[action$="JoinSurvey"] {
 	}
 }
 
-
-form[action$="JoinSummary"]{
+form[action$="JoinSummary"] {
 	.ctrbName.heading4 {
-		font-size: 	2rem;
-		padding-bottom:8px;
+		font-size: 2rem;
+		padding-bottom: 8px;
 	}
 }
-
 
 #MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate,
 #MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate[style],
 #ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdatePanel,
 #ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdatePanel[style] {
-	width:100% !important;
+	width: 100% !important;
 	height: auto !important;
 	max-width: 100% !important;
-	float:none;
+	float: none;
 }
 
 #MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_chkAttestation {
@@ -185,7 +182,7 @@ form[action$="JoinSummary"]{
 }
 
 html .education-details .formRow .RadPicker .rcTable.rcSingle {
-	width:160px !important;
+	width: 160px !important;
 }
 
 //this thing was hidden and was breaking page
@@ -195,16 +192,14 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 #MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_txtSaveEducationId[style],
 [id^="#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dp"],
 [id^="#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dp"][style] {
-	display:none !important;
-	float:none !important;
+	display: none !important;
+	float: none !important;
 	margin: 0 !important;
 	width: 0 !important;
-	height:0 !important;
+	height: 0 !important;
 	clear: both;
 	line-height: 0;
 }
-
-
 
 #MainContent_ctl00_MembershipDetail_ContainerPanel {
 	width: 100%;
@@ -237,13 +232,12 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 	}
 }
 
-
 // Nav
 .WizardBannerControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
 	margin-bottom: 40px;
 	display: flex;
 	//make sure it doesNot accidentally break page widths
-	overflow:hidden;
+	overflow: hidden;
 	span {
 		//personify override
 		display: flex;
@@ -335,7 +329,7 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 	.MembershipBuyBoxControl_PersonifyDefault .memberDetails > div {
 		border-top: none;
 	}
-	.memberDetails{
+	.memberDetails {
 		margin: 15px;
 	}
 }
@@ -363,7 +357,6 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 	}
 }
 
-
 .MembershipBenefitsControl_PersonifyDefault.Membership_PersonifyDefault .memOptions {
 	background-color: #f7f7f7;
 	border: 1px solid #e7e7e7;
@@ -372,10 +365,12 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 	margin-bottom: 2em;
 	padding: 1em;
 }
+
 .totalAmountSection {
-    min-width: 0;
-    margin: 0;
+	min-width: 0;
+	margin: 0;
 }
+
 // Step 3
 .MembershipJoinBiggerImpactControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
 	#ctl00_MainContent_ctl00_BuyBox_AddToCartButton {
@@ -390,43 +385,51 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 		margin: 0;
 		width: auto;
 	}
-	#ctl00_MainContent_ctl00_BuyBox_ButtonPanel .buttonRow{
+	#ctl00_MainContent_ctl00_BuyBox_ButtonPanel .buttonRow {
 		margin: 15px;
 	}
 }
-#ctl00_ctl00_MainContent_ctl00_MembershipContributionsControl1_ContainerPanelPanel input[type="text"]{
-	@include inputText()
-	margin-left: 10px !important;
+
+#ctl00_ctl00_MainContent_ctl00_MembershipContributionsControl1_ContainerPanelPanel input[type="text"] {
+	@include inputText() margin-left: 10px !important;
 }
-.MembershipContributionsControl_PersonifyDefault .ctrbPriceOption label{
+
+.MembershipContributionsControl_PersonifyDefault .ctrbPriceOption label {
 	margin-left: 10px;
 }
+
 .MembershipSIGControl_PersonifyDefault .sigRow {
-    padding: 10px 0;
-    margin: 10px 0;
-    border-color: #eee;
+	padding: 10px 0;
+	margin: 10px 0;
+	border-color: #eee;
 }
 
 .MembershipContributionsControl_PersonifyDefault .ctrbProdRow {
-    border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #eee;
 }
+
 .buyBox h3 {
 	font-size: 16px;
 	margin: 15px;
 	margin-bottom: 10px;
 }
-.MembershipJoinBiggerImpactControl_PersonifyDefault .benefits h2{
+
+.MembershipJoinBiggerImpactControl_PersonifyDefault .benefits h2 {
 	font-size: 16px;
 	margin: 15px 0;
 	margin-bottom: 10px;
 }
-.MembershipSIGControl_PersonifyDefault.Membership_PersonifyDefault{
+
+.MembershipSIGControl_PersonifyDefault.Membership_PersonifyDefault {
 	border: none;
 }
-.chapterPrice, .sigPrice {
-    float: right;
-    margin-left: 10px;
+
+.chapterPrice,
+.sigPrice {
+	float: right;
+	margin-left: 10px;
 }
+
 @include break(max, 42em) {
 	.MembershipJoinOptionsControl_PersonifyDefault.Membership_PersonifyDefault .step2Left,
 	.MembershipJoinOptionsControl_PersonifyDefault.Membership_PersonifyDefault .step3Left {
@@ -443,32 +446,66 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 }
 
 #MainContent_ctl00_ADARequiredInfo {
-	width:auto;
+	width: auto;
+}
+
+#MainContent_ctl00_DivisionPanel h2.heading2 {
+	font-size: 3.2rem !important;
+	font-weight: bold;
 }
 
 .MainContent_ctl00_WizardBanner_ContainerPanel {
-	overflow:hidden;
+	overflow: hidden;
 	//when there are 5, they should have less padding
-
-
 }
 
-form[action$="JoinSurvey"]{
-	#MainContent_ctl00_SurveyPanel{
-		h2.heading2{
+// Join Summary; They want columns like BS
+form[action$="JoinSummary"] {
+	.MyAccountContactAddress_PersonifyDefault .ctrlContent {
+    padding: 6px;
+    border-radius: 4px;
+    margin-top: 1rem;
+    margin-bottom: 0;
+	}
+
+	.MembershipJoinSummaryControl_PersonifyDefault {
+		> .ctrlContent {
+			.step3Left{
+				float: left;
+				width: calc(60% - 1rem);
+				margin-right: 1rem;
+			}
+			.step3Left+div {
+				float: left;
+				width: calc(40% - 1rem);
+				margin-left: 1rem;
+				padding-bottom: 2rem
+			}
+			.step3Left+div+div:not(.buttonRow) {
+				float: left;
+				width: calc(40% - 1rem);
+				margin-left: 1rem;
+			}
+		}
+	}
+}
+
+form[action$="JoinSurvey"] {
+	#MainContent_ctl00_SurveyPanel {
+		h2.heading2 {
 			color: rgb(51, 51, 51);
 			display: block;
 			font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
-			font-size: 36px;
+			font-size: 3.6rem;
 			font-weight: bold;
 		}
 	}
 }
 
 #ctl00_MainContent_ctl00_MembershipJoinSection_ContainerPanel h3.heading3,
-.step2Left .yourMembership.heading3{
-	    color: #333;
-    font-size: 3.6rem;
+.step2Left .yourMembership.heading3 {
+	color: #333;
+	font-size: 3.2rem;
 }
 
 #ctl00_MainContent_ctl00_MembershipDivisionControl_RefreshPanel {
@@ -480,15 +517,15 @@ form[action$="JoinSurvey"]{
 #MainContent_ctl00_SurveyPanel {
 	.ctrlContent {
 		> div {
-			background:#fff;
-			padding:10px $gutter-width;
+			background: #fff;
+			padding: 10px $gutter-width;
 			table {
 				width: 100%;
 			}
 		}
 		#MainContent_ctl00_ButtonPanel {
-			background-color:transparent;
-			padding:0;
+			background-color: transparent;
+			padding: 0;
 		}
 	}
 }
