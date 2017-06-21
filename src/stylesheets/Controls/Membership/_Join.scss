@@ -445,7 +445,7 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 	}
 }
 
-#MainContent_ctl00_ADARequiredInfo {
+#ctl00_MainContent_ctl00_ADARequiredInfo{
 	width: auto;
 }
 
@@ -467,7 +467,11 @@ form[action$="JoinSummary"] {
     margin-top: 1rem;
     margin-bottom: 0;
 	}
-
+	fieldset.emailDetails h3 {
+		font-size: 3.2rem;
+		color: #333;
+		margin-bottom: 1rem;
+	}
 	.MembershipJoinSummaryControl_PersonifyDefault {
 		> .ctrlContent {
 			.step3Left{

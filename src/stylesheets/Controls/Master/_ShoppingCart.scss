@@ -155,7 +155,8 @@ table.totals * {
     display: block;
     margin: 13px;
 }
-#MainContent_ctl00_ButtonContinueShopping{
+#MainContent_ctl00_ButtonContinueShopping,
+html .segmentsListPanel .continueShopping{
 	@include unButton()
 }
 .OrderSummaryControl_PersonifyDefault .orderNumber {
