@@ -483,12 +483,33 @@ form[action$="JoinSummary"] {
 				float: left;
 				width: calc(40% - 1rem);
 				margin-left: 1rem;
-				padding-bottom: 2rem
+				padding-bottom: 2rem;
+				margin-bottom: 2rem;
 			}
 			.step3Left+div+div:not(.buttonRow) {
 				float: left;
 				width: calc(40% - 1rem);
 				margin-left: 1rem;
+			}
+		}
+	}
+	#ctl00_MainContent_ctl00_PopWindow_C_popuppanel{
+		padding: 1rem;
+	}
+	.authorize-container {
+		padding: 1rem;
+		input[type="checkbox"] {
+			display: inline-block;
+			margin-right: 2rem;
+		}
+		+ .buttonRow{
+			.CancelEditButton {
+				float: left;
+				margin-left: 1rem !important;
+				@include unButton()
+			}
+			.SaveEditButton {
+				float: left;
 			}
 		}
 	}
