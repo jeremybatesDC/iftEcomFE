@@ -6,7 +6,7 @@ form[action$="JoinSurvey"] {
 	table {
 		overflow-x: scroll;
 		//purely for readability
-		&#MainContent_ctl00_chkDivision {
+		&#ctl00_MainContent_ctl00_chkDivision {
 			width: 100%;
 			margin-top: $gutter-width/2;
 			border-spacing: 0 4px;
@@ -34,17 +34,17 @@ form[action$="JoinSurvey"] {
 	.alreadyLoggedIn .ctrlContent {
 		min-height: 140px;
 		margin-bottom: 0;
-		#MainContent_ctl00_UserRegistrationControl_TMAFormRowStudentUserAlreadyLoggedIn {
+		#ctl00_MainContent_ctl00_UserRegistrationControl_TMAFormRowStudentUserAlreadyLoggedIn {
 			margin-bottom: 10px;
 		}
-		#MainContent_ctl00_UserRegistrationControl_EducationTMAFormRowUserAlreadyLoggedIn > label {
+		#ctl00_MainContent_ctl00_UserRegistrationControl_EducationTMAFormRowUserAlreadyLoggedIn > label {
 			font-size: 22px;
 			font-weight: bold;
 			padding: 0;
 			margin: 20px 0;
 		}
 	}
-	#MainContent_ctl00_RegistrationPanel {
+	#ctl00_MainContent_ctl00_RegistrationPanel {
 		padding: 2rem;
 		background: #fff;
 		.formRow {
@@ -52,21 +52,21 @@ form[action$="JoinSurvey"] {
 				font-weight: bold;
 			}
 		}
-		#MainContent_ctl00_RadioButtonListADA {
+		#ctl00_MainContent_ctl00_RadioButtonListADA {
 			display: block;
 			padding-bottom: $gutter-width/2;
 		}
-		#MainContent_ctl00_RadioButtonListGender {
+		#ctl00_MainContent_ctl00_RadioButtonListGender {
 			display: block;
 		}
-		#MainContent_ctl00_RadioButtonListAboutIFT {
+		#ctl00_MainContent_ctl00_RadioButtonListAboutIFT {
 			display: block;
 		}
 	}
 	.EducationControl_PersonifyDefault.Base_PersonifyDefault .ctrl-form-row.ctrl-row-header-colored .ctrl-row-item.ctrl-row-item-button {
 		float: right;
 	}
-	#MainContent_ctl00_TMAFormRowADA {
+	#ctl00_MainContent_ctl00_TMAFormRowADA {
 		position: relative;
 		margin-bottom: -10px;
 		.RadComboBox.RadComboBox_PersonifyDefault {
@@ -161,8 +161,8 @@ form[action$="JoinSummary"] {
 	}
 }
 
-#MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate,
-#MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate[style],
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate,
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate[style],
 #ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdatePanel,
 #ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdatePanel[style] {
 	width: 100% !important;
@@ -171,7 +171,7 @@ form[action$="JoinSummary"] {
 	float: none;
 }
 
-#MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_chkAttestation {
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_chkAttestation {
 	width: auto !important;
 }
 
@@ -188,8 +188,8 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 //this thing was hidden and was breaking page
 #ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dpBeginDate,
 #ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dpBeginDate[style],
-#MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_txtSaveEducationId,
-#MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_txtSaveEducationId[style],
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_txtSaveEducationId,
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_txtSaveEducationId[style],
 [id^="#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dp"],
 [id^="#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dp"][style] {
 	display: none !important;
@@ -201,7 +201,7 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 	line-height: 0;
 }
 
-#MainContent_ctl00_MembershipDetail_ContainerPanel {
+#ctl00_MainContent_ctl00_MembershipDetail_ContainerPanel {
 	width: 100%;
 }
 
@@ -220,7 +220,7 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 	float: left;
 }
 
-#MainContent_ctl00_UserRegistrationControl_UserAlreadyLoggedInPanel {
+#ctl00_MainContent_ctl00_UserRegistrationControl_UserAlreadyLoggedInPanel {
 	.memberName,
 	.regContactsTitle {
 		padding-bottom: 10px;
@@ -449,7 +449,7 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 	width: auto;
 }
 
-#MainContent_ctl00_DivisionPanel h2.heading2 {
+#ctl00_MainContent_ctl00_DivisionPanel h2.heading2 {
 	font-size: 3.2rem !important;
 	font-weight: bold;
 }
@@ -495,7 +495,7 @@ form[action$="JoinSummary"] {
 }
 
 form[action$="JoinSurvey"] {
-	#MainContent_ctl00_SurveyPanel {
+	#ctl00_MainContent_ctl00_SurveyPanel {
 		h2.heading2 {
 			color: rgb(51, 51, 51);
 			display: block;
@@ -518,7 +518,7 @@ form[action$="JoinSurvey"] {
 	}
 }
 
-#MainContent_ctl00_SurveyPanel {
+#ctl00_MainContent_ctl00_SurveyPanel {
 	.ctrlContent {
 		> div {
 			background: #fff;
@@ -527,7 +527,7 @@ form[action$="JoinSurvey"] {
 				width: 100%;
 			}
 		}
-		#MainContent_ctl00_ButtonPanel {
+		#ctl00_MainContent_ctl00_ButtonPanel {
 			background-color: transparent;
 			padding: 0;
 		}

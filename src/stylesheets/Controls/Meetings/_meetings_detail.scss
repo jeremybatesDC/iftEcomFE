@@ -20,7 +20,7 @@
 		float: none;
 		clear: both;
 	}
-	.MTGDetailContent#MainContent_ctl00_dvMainContent {
+	.MTGDetailContent#ctl00_MainContent_ctl00_dvMainContent {
 		width: calc(100% - 240px);
 		padding: 20px;
 		background: white;
@@ -76,7 +76,7 @@
 		min-height: 0;
 		padding: 0;
 	}
-	#MainContent_ctl00_ProductDetailParagraphFullLabel {
+	#ctl00_MainContent_ctl00_ProductDetailParagraphFullLabel {
 		padding: 10px 0;
 		max-width: calc(100% - 240px);
 	}
@@ -117,7 +117,7 @@
 	@include unButton();
 }
 
-#MainContent_ctl00_MtgRegWizRegisterSomeoneElse_imgWorkflowNote {
+#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_imgWorkflowNote {
 	width: 40px;
 }
 
@@ -133,7 +133,7 @@
 	@include unButton();
 }
 
-.MtgRegWizard_PersonifyDefault.MeetingsMtgReg_PersonifyDefault.Base_PersonifyDefault #MainContent_ctl00_cMtgRegWizRegInfo_btnNext {
+.MtgRegWizard_PersonifyDefault.MeetingsMtgReg_PersonifyDefault.Base_PersonifyDefault #ctl00_MainContent_ctl00_cMtgRegWizRegInfo_btnNext {
 	margin-right: 20px;
 }
 
@@ -152,7 +152,7 @@
 	margin-top: 20px;
 }
 
-#MainContent_ctl01_PromotionalHeaderLabel {
+#ctl00_MainContent_ctl01_PromotionalHeaderLabel {
 	font-size: 16px;
 	font-weight: bold;
 	padding: 10px 0;
@@ -160,12 +160,12 @@
 	text-align: center;
 }
 
-#MainContent_ctl00_mtgDetailAddToCalendar_addToCalendar {
+#ctl00_MainContent_ctl00_mtgDetailAddToCalendar_addToCalendar {
 	margin: 20px 0;
 }
 
-#MainContent_ctl00_btnRegisterGroup,
-#MainContent_ctl00_btnRapidGroupRegistration {
+#ctl00_MainContent_ctl00_btnRegisterGroup,
+#ctl00_MainContent_ctl00_btnRapidGroupRegistration {
 	@include unButton()
 }
 
@@ -180,14 +180,14 @@ form[class$="roductslisting"] {
 		.PersonifyPagerControl_PersonifyDefault .personifypager {
 			padding-bottom: 22px;
 		}
-		#MainContent_ctl00_PagerControl_ContainerPanel {
+		#ctl00_MainContent_ctl00_PagerControl_ContainerPanel {
 			background: white;
 		}
-		#MainContent_ctl00_SearchControl_SearchPanel {
+		#ctl00_MainContent_ctl00_SearchControl_SearchPanel {
 			padding: 10px 20px;
 		}
 	}
-	#MainContent_ctl00_SearchControl_AdvancedLink {
+	#ctl00_MainContent_ctl00_SearchControl_AdvancedLink {
 		@include unButton()
 	}
 }
@@ -200,13 +200,13 @@ form[class$="roductslisting"] {
 	border: none;
 }
 
-#MainContent_ctl00_cMtgRegWizContactInfo_MtgRegWizStepTitle_ContainerPanel + .ctrlContent.mtgRegContacts {
+#ctl00_MainContent_ctl00_cMtgRegWizContactInfo_MtgRegWizStepTitle_ContainerPanel + .ctrlContent.mtgRegContacts {
 	background: white;
 	padding: 20px;
 }
 
-#MainContent_ctl00_dvExhibitorInfo,
-div#MainContent_ctl00_dvAttendeeList {
+#ctl00_MainContent_ctl00_dvExhibitorInfo,
+div#ctl00_MainContent_ctl00_dvAttendeeList {
 	background: transparent
 }
 
