@@ -155,7 +155,8 @@ table.totals * {
     display: block;
     margin: 13px;
 }
-#MainContent_ctl00_ButtonContinueShopping{
+#ctl00_MainContent_ctl00_ButtonContinueShopping,
+html .segmentsListPanel .continueShopping{
 	@include unButton()
 }
 .OrderSummaryControl_PersonifyDefault .orderNumber {
@@ -261,7 +262,7 @@ table.totals * {
     background-color: transparent;
 }
 
-#MainContent_ctl01_ContainerPanel {
+#ctl00_MainContent_ctl01_ContainerPanel {
     padding: 15px;
     background: white;
 }

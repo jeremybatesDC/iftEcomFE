@@ -2,16 +2,16 @@ form[action$="myaccount"],
 form[action$="educationalbackground"],
 form[action$="addresses"],
 main.myAccountProfile {
-  #MainContent_ctl00_frAttestation {
+  #ctl00_MainContent_ctl00_frAttestation {
     text-align: left;
   }
   label[for="MainContent_ctl00_chkAttestation"] {
     padding-left: 0;
   }
-  #MainContent_ctl00_frAttestation_Label {
+  #ctl00_MainContent_ctl00_frAttestation_Label {
     display: none;
   }
-  #MainContent_ctl00_EditAddressControl_lblZipAdditionInfo {
+  #ctl00_MainContent_ctl00_EditAddressControl_lblZipAdditionInfo {
     display: block;
   }
 }
@@ -28,7 +28,7 @@ form[action$="purchasehistory"] {
     display: block;
     width: 100%;
   }
-  #MainContent_ctl00_KeywordSearch {
+  #ctl00_MainContent_ctl00_KeywordSearch {
     display: block;
     + br {
       display: none;
@@ -40,7 +40,7 @@ form[action$="purchasehistory"] {
     }
   }
   //table
-  #MainContent_ctl00_TypeSelect {
+  #ctl00_MainContent_ctl00_TypeSelect {
     max-width: 320px;
   }
 }

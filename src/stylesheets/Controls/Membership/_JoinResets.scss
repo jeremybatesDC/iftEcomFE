@@ -16,7 +16,7 @@ html .alreadyLoggedIn {
 	.formLayout .formRow select {
 		vertical-align: middle;
 	}
-	#MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_frAttestation_Label {
+	#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_frAttestation_Label {
 		display: none;
 	}
 	.formRow .RadComboBox .rcbReadOnly input[type="text"] {
@@ -43,7 +43,7 @@ html .alreadyLoggedIn {
 	width: auto;
 }
 
-#MainContent_ctl00_MembershipDetail_ContainerPanel {
+#ctl00_MainContent_ctl00_MembershipDetail_ContainerPanel {
 	width: 100%;
 }
 
@@ -129,7 +129,7 @@ main.membershipJoin {
 	}
 }
 
-#MainContent_ctl00_UserRegistrationControl_UserAlreadyLoggedInPanel {
+#ctl00_MainContent_ctl00_UserRegistrationControl_UserAlreadyLoggedInPanel {
 	.memberName,
 	.regContactsTitle {
 		padding-bottom: 10px;
