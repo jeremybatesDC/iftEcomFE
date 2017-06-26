@@ -1,13 +1,12 @@
 (function iftMapFunction(){
     "use strict";
 
-    function mapFunctionInit(){
+    function iftMapFunctionInit(){
         //get reference to outermost wrapper to show/hide with modal
         var iftMapWrapperOuter = document.getElementById('iftMapWrapperOuter');
         var iftMapButtonOpen = document.getElementById('iftMapButtonOpen');
         var iftMapButtonClose = document.getElementById('iftMapButtonCloseWrapper');
         var iftMapButtonCancel = document.getElementById('iftMapButtonCancel');
-        //var iftMapButtonSave = document.getElementById('iftMapButtonSave');
 
         var seletedStateDisplay = document.getElementById('seletedStateDisplay');
         var stateSelectMenu = document.getElementById('stateSelectMenu');
@@ -17,7 +16,7 @@
         //DRAW THE MAP
         var svg = d3.select('#iftMap');
         var path = d3.geoPath();
-        d3.json('javascripts/data/topoJSONusCustom.json', function(error, data) {
+        d3.json('/Scripts/data/topoJSONusCustom.json', function(error, data) {
           if (error) throw error;
 
           svg.append('g')
@@ -171,9 +170,12 @@
         iftMapButtonOpen.addEventListener('click', showHideWholeMap, false);
         iftMapButtonClose.addEventListener('click', showHideWholeMap, false);
         iftMapButtonCancel.addEventListener('click', showHideWholeMap, false);
-        //iftMapButtonSave.addEventListener('click', submitPageData, false)
     
     }    
 
     document.addEventListener('DOMContentLoaded', iftMapFunctionInit);
+    //partial postBack
+    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(iftMapFunctionInit)
+
+
 })();
