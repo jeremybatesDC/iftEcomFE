@@ -5,7 +5,7 @@
     var iftMapButtonOpen = document.getElementById('iftMapButtonOpen');
     var iftMapButtonClose = document.getElementById('iftMapButtonCloseWrapper');
     var iftMapButtonCancel = document.getElementById('iftMapButtonCancel');
-    var iftMapButtonSave = document.getElementById('iftMapButtonSave');
+    //var iftMapButtonSave = document.getElementById('iftMapButtonSave');
 
     var seletedStateDisplay = document.getElementById('seletedStateDisplay');
     var stateSelectMenu = document.getElementById('stateSelectMenu');
@@ -169,5 +169,5 @@
     iftMapButtonOpen.addEventListener('click', showHideWholeMap, false);
     iftMapButtonClose.addEventListener('click', showHideWholeMap, false);
     iftMapButtonCancel.addEventListener('click', showHideWholeMap, false);
-    iftMapButtonSave.addEventListener('click', submitPageData, false)
+    //iftMapButtonSave.addEventListener('click', submitPageData, false)
 })();
