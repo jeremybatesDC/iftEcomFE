@@ -133,6 +133,12 @@ h2.page-title + p {
 	}
 }
 
+.RadWindow .validatedMessage {
+    background-color: #ffc;
+    padding: 1em 2em;
+    display: block;
+}
+
 .sublayout__autoColGrid {
 	&.sublayout--has-bg-image {
 		//because there's an overlay sometimes

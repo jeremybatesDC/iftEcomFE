@@ -445,7 +445,7 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 	}
 }
 
-#ctl00_MainContent_ctl00_ADARequiredInfo{
+#ctl00_MainContent_ctl00_ADARequiredInfo {
 	width: auto;
 }
 
@@ -462,10 +462,10 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 // Join Summary; They want columns like BS
 form[action$="JoinSummary"] {
 	.MyAccountContactAddress_PersonifyDefault .ctrlContent {
-    padding: 6px;
-    border-radius: 4px;
-    margin-top: 1rem;
-    margin-bottom: 0;
+		padding: 6px;
+		border-radius: 4px;
+		margin-top: 1rem;
+		margin-bottom: 0;
 	}
 	fieldset.emailDetails h3 {
 		font-size: 3.2rem;
@@ -474,7 +474,7 @@ form[action$="JoinSummary"] {
 	}
 	.MembershipJoinSummaryControl_PersonifyDefault {
 		> .ctrlContent {
-			.step3Left{
+			.step3Left {
 				float: left;
 				width: calc(60% - 1rem);
 				margin-right: 1rem;
@@ -493,7 +493,7 @@ form[action$="JoinSummary"] {
 			}
 		}
 	}
-	#ctl00_MainContent_ctl00_PopWindow_C_popuppanel{
+	#ctl00_MainContent_ctl00_PopWindow_C_popuppanel {
 		padding: 1rem;
 	}
 	.authorize-container {
@@ -502,7 +502,7 @@ form[action$="JoinSummary"] {
 			display: inline-block;
 			margin-right: 2rem;
 		}
-		+ .buttonRow{
+		+ .buttonRow {
 			.CancelEditButton {
 				float: left;
 				margin-left: 1rem !important;
@@ -551,6 +551,163 @@ form[action$="JoinSurvey"] {
 		#ctl00_MainContent_ctl00_ButtonPanel {
 			background-color: transparent;
 			padding: 0;
+		}
+	}
+}
+
+main.membershipRenewal {
+	.MembershipsRenewalControl_PersonifyDefault .ctrlContent .ctrlContent,
+	.MembershipRenewalWizardBannerControl_PersonifyDefault.Membership_PersonifyDefault .ctrlContent {
+		padding: 0;
+	}
+	.heading2,
+	.heading3.ctrlTitle,
+	{
+		color: #333;
+		display: block;
+		font-size: 2.6rem;
+		font-weight: bold;
+		margin-top: 1rem;
+	}
+	.ctrlContent {
+		padding: 0;
+	}
+	.step3Left {
+		background: white;
+		padding: 2rem;
+		width: calc(100% - 320px);
+		margin-right: 20px;
+	}
+	.fieldset {
+		padding: 2rem;
+		background: white;
+		min-height: 40rem
+	}
+	h3.customerName.heading3.h-color-primary {
+		color: #333;
+		margin: 2rem 0;
+		font-size: 2.6rem;
+	}
+	.heading3 {
+		color: #333;
+	}
+	.ctrl-row-header-colored {
+		text-shadow: none;
+	}
+	#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_AccountContactEmailControl_ContainerPanel .ctrlContent,
+	.MyAccountContactAddress_PersonifyDefault .ctrlContent {
+		margin: 2rem 0;
+		padding: 1rem !important;
+		border-radius: 3px;
+		background: white;
+	}
+	#ctl00_MainContent_ctl00_MembershipRenewalWizardBanner_ContainerPanel {
+		font-size: 1.6rem;
+		margin-bottom: 1rem;
+	}
+	.MembershipRenewalControl_PersonifyDefault .additionalBenefits {
+		margin: 0;
+		padding: 1rem;
+		background: white;
+	}
+	.MembershipRenewalControl_PersonifyDefault .membershipDetails .formRow:last-child {
+		background: white;
+		padding: 1rem;
+		margin: 0;
+	}
+	.heading3.bord-low {
+		border-bottom: 3px solid #eee;
+		border: none;
+	}
+	#ctl00_MainContent_ctl00_MembershipRenewalWizardBanner_ContainerPanel {
+		margin-bottom: 40px;
+		display: -ms-flexbox;
+		display: flex;
+		overflow: hidden;
+		min-height: 5rem;
+		@include break(max, 600px) {
+			flex-direction: column;
+		}
+		.step {
+			flex-grow: 1;
+			display: flex;
+			position: relative;
+			background: 0 0;
+			border-bottom: 3px solid #e6e6e6;
+			color: #b1b1b1;
+			text-align: left;
+			padding-left: 4.5rem!important;
+			padding-bottom: 5px!important;
+			align-items: center;
+			min-height: 5rem;
+			.stepLabel {
+				color: #b1b1b1;
+				font-size: 14px;
+			}
+			.prefix,
+			.sep,
+			.divider {
+				display: none;
+			}
+			.number {
+				width: 30px!important;
+				display: block;
+				margin-right: 1rem;
+				position: static;
+				height: 30px!important;
+				border-radius: 100%!important;
+				border: 1px solid #fff;
+				box-shadow: none;
+				color: #fff;
+				left: 20px;
+				text-shadow: none!important;
+				top: 9px;
+				padding: 5px 0;
+				text-align: center;
+				background-color: #b1b1b1;
+			}
+		}
+		.step.active {
+			background-color: #76a120!important;
+			border-bottom-color: #76a120!important;
+			.stepLabel {
+				color: white;
+			}
+			.number {
+				background: 0 0;
+			}
+		}
+	}
+}
+form[action$="RenewMembership"]{
+	// input#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_CancelDelButton {
+	// 	@include unButton();
+	// 	font-size: 1.4rem;
+	// }
+	// input#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_cbTermsConditions {
+	// 	margin-right: 20px;
+	// }
+	#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_lblTermsandConditions{
+		padding: 1rem;
+	}
+	#ctl00_MainContent_ctl00_PopWindow_C_popuppanel {
+		padding: 1rem;
+	}
+	.authorize-container {
+		padding: 1rem;
+		input[type="checkbox"] {
+			display: inline-block;
+			margin-right: 2rem;
+		}
+		+ .buttonRow {
+			.CancelEditButton {
+				float: left;
+				margin-left: 1rem !important;
+				@include unButton()
+			}
+			.SaveEditButton {
+				float: left;
+			}
 		}
 	}
 }
