@@ -1,3 +1,7 @@
+main.donation-fundraising {
+	padding-top:0;
+}
+
 .navFeedTmrw__wrapper--outer {
 	background-color: #000;
 	position: relative;
@@ -5,12 +9,13 @@
 }
 
 .logoFeedTmrw__wrapper {
-	position:absolute;
-	top:0;
-	left: 0;
-	width:100%;
 	text-align: center;
-
+	@include break(min, $breakpoint-min-tablet){
+		position:absolute;
+		top:0;
+		left: 0;
+		width:100%;
+	}
 }
 
 .logoFeedTmrw {
@@ -19,13 +24,15 @@
 	height: auto;
 }
 
+//only on mobile
 .navFeedTmrw__menuToggle__wrapper--outer {
 	color:#fff;
 	background-color:#333;
-	position:absolute;
+	//position:absolute;
 	left:0;
 	bottom: -32px;
-	width:100%;
+	width:95%;
+	margin: 0 auto;
 	z-index:1;
 	text-align:center;
 	@include break(min, $breakpoint-min-tablet){
@@ -45,9 +52,10 @@
 }
 
 .navFeedTmrw__menuToggle__button {
-	display:inline-block;
 	font-size:1.8rem;
+	padding-top:5px;
 	cursor: pointer;
+	-webkit-font-smoothing: antialiased;
 }
 
 .hamburger {
@@ -59,26 +67,43 @@
 
 .navFeedTmrw {
 	width:100%;
-	padding-top:6rem;
-	padding-bottom:$gutter-width/2;
+	@include break(max, $breakpoint-max-mobile){
+		position:relative;
+	}
+	@include break(min, $breakpoint-min-tablet){
+		padding-top:6rem;
+		padding-bottom:$gutter-width/2;
+	}
+	
 
 }
 
 .navFeedTmrw__row {
 	padding-bottom:0;
+	@include break(max, $breakpoint-max-mobile){}
 }
 
 .navFeedTmrw__list {
-	position:relative;
+	
 	list-style:none;
 	margin:0;
 	padding:0;
 
 	@include break(max, $breakpoint-max-mobile){
 		display: none;
+		position:absolute;
+		width: 100%;
+		left: 0;
+		top:0;
+		z-index: 1;
+		background-color: #333;
+		box-shadow:2px 2px 2px #000;
 		&.navFeedTmrw__list--ACTIVE {
 			display: block;
 		}
+	}
+	@include break(min, $breakpoint-min-tablet){
+		position:relative;
 	}
 }
 
@@ -86,13 +111,19 @@
 
 .navFeedTmrw__item {
 
-	font-family: $headlineFont;
 	font-size:1.3rem;
 	text-transform: uppercase;
+	-webkit-font-smoothing: antialiased;
+
+	@include break(max, $breakpoint-max-mobile){
+		display: block;
+		font-family: $bodyFont
+	}
+
 
 	@include break(min, $breakpoint-min-tablet){
 		display:inline-block;
-	
+		font-family: $headlineFont;
 	
 		&:first-child {
 			margin-right: 100px;
@@ -110,18 +141,26 @@
 	}
 	
 
-	@include break(max, $breakpoint-max-mobile){
-		display: block;
-	}
+
 }
 
 .navFeedTmrw__link {
 	color:#fff;
-	&:hover,
-	&:active,
-	&:focus {
-		text-decoration: underline;
+
+	@include break(min, $breakpoint-min-tablet){
+		&:hover,
+		&:active,
+		&:focus {
+			text-decoration: underline;
+		}
 	}
+	
+	@include break(max, $breakpoint-max-mobile){
+		display: block;
+		padding:1em 1em 1em 2em;
+		box-shadow: inset 0 1px rgba(white, .5);
+	}
+
 }
 
 

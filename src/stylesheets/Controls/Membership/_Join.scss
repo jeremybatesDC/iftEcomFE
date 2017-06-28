@@ -161,6 +161,17 @@ form[action$="JoinSummary"] {
 	}
 }
 
+.membershipJoin {
+	fieldset.userDetails {
+
+	}
+	#ctl00_MainContent_ctl00_UserRegistrationControl_RegistrationPanel {
+		background:#fff;
+		padding:2rem;
+	}
+}
+
+
 #ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate,
 #ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate[style],
 #ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdatePanel,
