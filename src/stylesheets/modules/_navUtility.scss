@@ -116,7 +116,10 @@
 	//align-items:center;
 	list-style:none;
 	@include break(max, $breakpoint-max-1023){
-		display: none;
+		// display: none;
+		position: absolute;
+		left: 0;
+		top: 6rem;
 	}
 
 	li {

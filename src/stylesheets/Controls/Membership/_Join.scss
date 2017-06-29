@@ -162,15 +162,19 @@ form[action$="JoinSummary"] {
 }
 
 .membershipJoin {
-	fieldset.userDetails {
-
+	.step3Left fieldset.emailDetails {
+		border-top: 20px solid #f2f2f2;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		margin-left: -2rem;
+		margin-right: -2rem;
+		padding-top: 4rem;
 	}
 	#ctl00_MainContent_ctl00_UserRegistrationControl_RegistrationPanel {
-		background:#fff;
-		padding:2rem;
+		background: #fff;
+		padding: 2rem;
 	}
 }
-
 
 #ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate,
 #ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate[style],
@@ -484,6 +488,15 @@ form[action$="JoinSummary"] {
 		margin-bottom: 1rem;
 	}
 	.MembershipJoinSummaryControl_PersonifyDefault {
+		a#ctl00_MainContent_ctl00_MembershipJoinDetailControl_EditButton {
+			display: inline-block;
+			top: 10px;
+			position: absolute;
+			right: 0;
+		}
+		div#ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel {
+			position: relative;
+		}
 		> .ctrlContent {
 			.step3Left {
 				float: left;
@@ -501,6 +514,17 @@ form[action$="JoinSummary"] {
 				float: left;
 				width: calc(40% - 1rem);
 				margin-left: 1rem;
+			}
+		}
+		@include break(max, $breakpoint-max-mobile) {
+			> .ctrlContent {
+				.step3Left,
+				.step3Left+div,
+				.step3Left+div+div:not(.buttonRow) {
+					float: none;
+					width: 100%;
+					margin-left: auto;
+				}
 			}
 		}
 	}
@@ -690,7 +714,8 @@ main.membershipRenewal {
 		}
 	}
 }
-form[action$="RenewMembership"]{
+
+form[action$="RenewMembership"] {
 	// input#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_CancelDelButton {
 	// 	@include unButton();
 	// 	font-size: 1.4rem;
@@ -698,7 +723,7 @@ form[action$="RenewMembership"]{
 	// input#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_cbTermsConditions {
 	// 	margin-right: 20px;
 	// }
-	#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_lblTermsandConditions{
+	#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_lblTermsandConditions {
 		padding: 1rem;
 	}
 	#ctl00_MainContent_ctl00_PopWindow_C_popuppanel {
