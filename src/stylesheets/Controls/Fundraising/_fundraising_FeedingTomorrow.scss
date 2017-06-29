@@ -6,6 +6,9 @@ main.donation-fundraising {
 	background-color: #000;
 	position: relative;
 	overflow: visible;
+	+ .main {
+    padding-top: 20px;
+	}
 }
 
 .logoFeedTmrw__wrapper {
