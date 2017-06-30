@@ -1128,10 +1128,7 @@ var outputObjectForBackend = {
             .attr('class', 'usState iftMap__svg__path')
             .attr('d', path)
             .on('click', function(thisState){
-                //what else can we do while we have a reference to the state?
-                //set status here BUT ALSO ON SELECT MENU
-                //mapStatusContainer.currentStateCode = thisState.id;
-                
+                //the id is the only automatically exposed property on a d3 feature
                 mapHandlerFunction(event, thisState.id);
                 
             });
@@ -1152,15 +1149,10 @@ var outputObjectForBackend = {
 
         function mapHandlerFunction(event, stateIDfromD3){
             
-
-            
-
-            
             //if a state on the map has been clicked
             if(event.currentTarget.tagName === 'path') {
-
+                //set status (maybe factor out)
                 mapStatusContainer.currentStateCode = stateIDfromD3;
-
                 console.log('state has been clicked to set ' + mapStatusContainer.currentStateCode);
                 removeAddActiveState('thenAdd');
                 stateSelectMenu.value = mapStatusContainer.currentStateCode;
@@ -1168,7 +1160,7 @@ var outputObjectForBackend = {
             //if a dropdown item has been selected (select menu visible only on mobile)
             if(event.currentTarget.id === 'stateSelectMenu') {
 
-                //set status 
+                //set status (maybe factor out)
                 mapStatusContainer.currentStateCode = stateSelectMenu.value;
 
                 removeAddActiveState('thenAdd');
@@ -1176,8 +1168,7 @@ var outputObjectForBackend = {
             }
             //if an international item has been selected
             if(event.currentTarget.id === 'internationalSelectMenu'){
-
-                //set status
+                //set status (maybe factor out)
                 mapStatusContainer.currentStateCode = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].value;
                 console.log('international menu has been used to set ' + mapStatusContainer.currentStateCode);
 
@@ -1192,14 +1183,12 @@ var outputObjectForBackend = {
 
 
         function removeAddActiveState(thenAdd){
-
             //query statecode
-
             var currentStateCode = mapStatusContainer.currentStateCode;
-            
 
             var selectedItem = document.querySelector('.usState--SELECTED');
-            //if there is an active item, remove itS active class
+            //if there is an active item, remove itS active class. Why not just strip all? Oh, because it was causing a timing issue
+
             if (selectedItem !== null){
                 selectedItem.classList.remove('usState--SELECTED');
             }
@@ -1237,13 +1226,21 @@ var outputObjectForBackend = {
             rawSectionData.SectionItems.map(function(sectionItem){
 
                 //console.log(sectionItem.StateCode)
+                if (sectionItem.hasOwnProperty('StateCode')) {
 
-                if(sectionItem.StateCode === 'hhh'){
-                    console.log('Maryland');
+                    if(sectionItem.StateCode === 'MD'){
+                        console.log('Maryland');
+                        console.log(rawSectionData.SectionItems.indexOf(sectionItem));
+                    }
+                    else {
+                        console.log('no match');
+                    }
+
                 }
                 else {
-                    console.log('no match');
+                    console.log('no propery?!')
                 }
+                
 
             })
 
