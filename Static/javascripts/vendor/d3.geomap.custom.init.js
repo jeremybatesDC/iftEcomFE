@@ -1098,9 +1098,6 @@ var outputObjectForBackend = {
 
     function iftMapFunctionInit(){
 
-        
-
-
         //get reference to outermost wrapper to show/hide with modal
         var iftMapWrapperOuter = document.getElementById('iftMapWrapperOuter');
         var iftMapButtonOpen = document.getElementById('iftMapButtonOpen');
@@ -1131,11 +1128,11 @@ var outputObjectForBackend = {
             .attr('class', 'usState iftMap__svg__path')
             .attr('d', path)
             .on('click', function(thisState){
-
-            //set status here BUT ALSO ON SELECT MENU
-            mapStatusContainer.currentStateCode = thisState.id;
-            
-            mapHandlerFunction(event);
+                //what else can we do while we have a reference to the state?
+                //set status here BUT ALSO ON SELECT MENU
+                //mapStatusContainer.currentStateCode = thisState.id;
+                
+                mapHandlerFunction(event, thisState.id);
                 
             });
 
@@ -1151,13 +1148,9 @@ var outputObjectForBackend = {
         //(function getJSONfromHiddenInput(){})();
 
 
-        function findMatch(thisStateID){
-            console.log(thisStateID);
-        }
+        
 
-
-
-        function mapHandlerFunction(event){
+        function mapHandlerFunction(event, stateIDfromD3){
             
 
             
@@ -1166,14 +1159,11 @@ var outputObjectForBackend = {
             //if a state on the map has been clicked
             if(event.currentTarget.tagName === 'path') {
 
-                //the d3 click function is already setting the statecode
-                //but it will still be handy to query here
+                mapStatusContainer.currentStateCode = stateIDfromD3;
 
                 console.log('state has been clicked to set ' + mapStatusContainer.currentStateCode);
-
-                removeAddActiveState('thenAdd', mapStatusContainer.currentStateCode);
+                removeAddActiveState('thenAdd');
                 stateSelectMenu.value = mapStatusContainer.currentStateCode;
-                writeDataToPage(mapStatusContainer.currentStateCode);
             }
             //if a dropdown item has been selected (select menu visible only on mobile)
             if(event.currentTarget.id === 'stateSelectMenu') {
@@ -1181,9 +1171,8 @@ var outputObjectForBackend = {
                 //set status 
                 mapStatusContainer.currentStateCode = stateSelectMenu.value;
 
-                removeAddActiveState('thenAdd', mapStatusContainer.currentStateCode);
+                removeAddActiveState('thenAdd');
                 console.log('select menu has been used to set ' + mapStatusContainer.currentStateCode);
-                writeDataToPage(mapStatusContainer.currentStateCode);
             }
             //if an international item has been selected
             if(event.currentTarget.id === 'internationalSelectMenu'){
@@ -1192,22 +1181,30 @@ var outputObjectForBackend = {
                 mapStatusContainer.currentStateCode = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].value;
                 console.log('international menu has been used to set ' + mapStatusContainer.currentStateCode);
 
+                //clear dropdown list since not usState
                 stateSelectMenu.value = '';
                 removeAddActiveState();
-                writeDataToPage(mapStatusContainer.currentStateCode);
             }
+
+            writeDataToPage();
         }
 
 
 
-        function removeAddActiveState(thenAdd, thisStateID){
+        function removeAddActiveState(thenAdd){
+
+            //query statecode
+
+            var currentStateCode = mapStatusContainer.currentStateCode;
+            
+
             var selectedItem = document.querySelector('.usState--SELECTED');
             //if there is an active item, remove itS active class
             if (selectedItem !== null){
                 selectedItem.classList.remove('usState--SELECTED');
             }
-            if(thenAdd && thisStateID){
-                document.getElementById(thisStateID).classList.add('usState--SELECTED');
+            if(thenAdd){
+                document.getElementById(currentStateCode).classList.add('usState--SELECTED');
             }
         }
 
@@ -1221,20 +1218,57 @@ var outputObjectForBackend = {
 
 
 
-        //these are for backend developer
+        function writeDataToPage(){
+            //query the statusObject
+            var currentStateCode = mapStatusContainer.currentStateCode;
+           
+
+            //and if i want index of, making this an array might be smart
+            //to get index of, iteration is required.
+            //can we do a MAP? Or must we do a loop?
+
+            //var indexOfTheStateCodeInPersonifySectionData = rawSectionData.SectionItems.indexOf(currentStateCode);
+
+            //console.log('this is the writeDataToPage function referencing a STATIC sectionitem in the personifydata file' + rawSectionData.SectionItems[7].StateCode);
+
+            console.log('the typeof the rawSectionData is: ' + typeof rawSectionData);
 
 
+            rawSectionData.SectionItems.map(function(sectionItem){
 
-        //writeTheDataForThisState, id is just an example
-        function writeDataToPage(thisStateID){
-            //this is just the example i used for the demo
-            seletedStateDisplay.innerHTML = thisStateID
+                //console.log(sectionItem.StateCode)
+
+                if(sectionItem.StateCode === 'hhh'){
+                    console.log('Maryland');
+                }
+                else {
+                    console.log('no match');
+                }
+
+            })
+
+
+            // for (var sectionItems in rawSectionData) {
+            //     if (rawSectionData.hasOwnProperty(StateCode)) {
+            //         // do stuff
+            //         console.log(StateCode);
+            //     }
+            // }
+
+            seletedStateDisplay.innerHTML = currentStateCode;
+
+
         }
 
-        function putOutputArrayInHiddenInput(){
-            //take the object of stuff the user has selected and stick it in a hidden input field for the backend
+
+        function findMatch(){
+
+
+            console.log();
         }
 
+
+        
 
 
 
@@ -1289,12 +1323,22 @@ var outputObjectForBackend = {
             }
         }
 
+
+        function putOutputArrayInHiddenInput(){
+            //take the object of stuff the user has selected and stick it in a hidden input field for the backend
+        }
+
+
+
         //EVENTS
         stateSelectMenu.addEventListener('change', mapHandlerFunction, false);
         internationalSelectMenu.addEventListener('change', mapHandlerFunction, false);
         iftMapButtonOpen.addEventListener('click', showHideWholeMap, false);
         iftMapButtonClose.addEventListener('click', showHideWholeMap, false);
         iftMapButtonCancel.addEventListener('click', showHideWholeMap, false);
+
+
+        // need another event on the CHECKBOXES to store the selected section
     
     }    
 
