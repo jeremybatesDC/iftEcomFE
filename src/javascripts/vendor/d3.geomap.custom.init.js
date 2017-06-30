@@ -1064,9 +1064,17 @@ var rawSectionData = {
 
 
 //using 'state' is the obvious word here, but that becomes confusing when dealing with a US State map... 
+//donT have to de-conflict vars -- may be cleaner to let namspacing do this
 var mapStatusContainer = {
-    currentStateCode: ''
+    numOfSectionsForCurrentState: 0
+    ,currentProductId: ''
+    ,currentStateCode: ''
     ,currentProductCode: ''
+    ,currentProductName: ''
+    ,currentComponentProductId: ''
+    ,currentComponentProductShortName: ''
+    ,currentMemberPrice: ''
+    ,currentZipCodes: ''
 
 }
 
@@ -1177,7 +1185,7 @@ var outputObjectForBackend = {
                 removeAddActiveState();
             }
 
-            writeDataToPage();
+            displayDataOnPage();
         }
 
 
@@ -1207,67 +1215,99 @@ var outputObjectForBackend = {
 
 
 
-        function writeDataToPage(){
+        function displayDataOnPage(){
             //query the statusObject
             var currentStateCode = mapStatusContainer.currentStateCode;
-           
-
-            //and if i want index of, making this an array might be smart. Could ideally observe it.
-            //to get index of, iteration is required.
-            //can we do a MAP? Or must we do a loop?
-
-            //var indexOfTheStateCodeInPersonifySectionData = rawSectionData.SectionItems.indexOf(currentStateCode);
-
-            //console.log('this is the writeDataToPage function referencing a STATIC sectionitem in the personifydata file' + rawSectionData.SectionItems[7].StateCode);
+            var theNumberOfSectionsCurrentStateHasCOUNTER = 0;
 
 
 
+            //the map list operation is superior to loops
             rawSectionData.SectionItems.map(function(sectionItem){
 
-
                 if(sectionItem.StateCode === currentStateCode){
-                    console.log(currentStateCode, rawSectionData.SectionItems.indexOf(sectionItem));
+                    //this is the KEY!
+                    var indexOfSectionItem = rawSectionData.SectionItems.indexOf(sectionItem);
+                    
+
+
+                    createPanel(theNumberOfSectionsCurrentStateHasCOUNTER);
+
+
+
+
+                    //do i need to count like this, or can i calculate the number more cheaply
+                    theNumberOfSectionsCurrentStateHasCOUNTER++;
+
+
+                    console.log(currentStateCode, indexOfSectionItem);
+
+                    //set multiple properties at once
+                    mapStatusContainer.currentProductId = rawSectionData.SectionItems[indexOfSectionItem].ProductId;
+                    mapStatusContainer.currentMemberPrice = rawSectionData.SectionItems[indexOfSectionItem].MemberPrice;
+                    mapStatusContainer.currentComponentProductShortName = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductShortName;
+                    mapStatusContainer.currentProductName = rawSectionData.SectionItems[indexOfSectionItem].ProductName;
+                    mapStatusContainer.currentComponentProductId = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductId;
+                    mapStatusContainer.currentZipCodes = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
+
+                    //sometimes these values can be null or undefined, so watch out
+                    console.log('ProductId is ' + mapStatusContainer.currentProductId)
+                    console.log('$' + mapStatusContainer.currentMemberPrice);
+                    console.log('ComponentProductShortName: ' + mapStatusContainer.currentComponentProductShortName);
+                    console.log('currentComponentProductId: ' + mapStatusContainer.currentComponentProductId);
+
+                    console.log(mapStatusContainer.currentProductName);
+                    console.log(mapStatusContainer.currentZipCodes);
                 }                
 
-            })
 
 
-            // for (var sectionItems in rawSectionData) {
-            //     if (rawSectionData.hasOwnProperty(StateCode)) {
-            //         // do stuff
-            //         console.log(StateCode);
-            //     }
-            // }
+            });
+
+            //need a function that takes an array of values and pumps them into a insertPanelHTML function
+
+            //need references to each panel's divs (knowing there are 0 to 4 panels)
+
+            //function writePanelInfo(array){
+                //elementX.innerHTML(array[iteratorMaybe])
+            //}
+
+            //after mapping function, display the results
+
+            //update the model
+            mapStatusContainer.numOfSectionsForCurrentState = theNumberOfSectionsCurrentStateHasCOUNTER;
 
             seletedStateDisplay.innerHTML = currentStateCode;
+            console.log('theNumberOfSectionsCurrentStateHas ' + mapStatusContainer.numOfSectionsForCurrentState);
 
+
+            //also, i could have 4 panels predrawn with 3 levels of visibility: hidden, disabled, and regular//
 
         }
 
-
-        function findMatch(){
-
-
-            console.log();
+        //does nothing yet
+        function createPanel(justACounterForIDs){
+            console.log('this panel should get the ID of ' + justACounterForIDs);
         }
 
 
-        
-
-
+        function putOutputArrayInHiddenInput(){
+            //take the object of stuff the user has selected and stick it in a hidden input field for the backend
+            //requested formatting is very specific
+        }
 
 
         //this must be called each time new data is put on the page to get a fresh nodelist
         (function collectTooltipsAndAttachListeners(){
-            var toolTipIcons = document.querySelectorAll('.iconInfo');
-            var toolTipsCloseButtons = document.querySelectorAll('.iftMap__tooltip__closeButton__wrapper');
+            var arrayOfToolTipIcons = Array.prototype.slice.call(document.querySelectorAll('.iconInfo'));
+            var arrayOfToolTipsCloseButtons = Array.prototype.slice.call(document.querySelectorAll('.iftMap__tooltip__closeButton__wrapper'));
             //add listeners
-            for (var i = 0; i < toolTipIcons.length; i++) {
-                toolTipIcons[i].addEventListener('click', openThisTooltip, false)
-            }
-            for(var j = 0; j < toolTipsCloseButtons.length; j++){
-                toolTipsCloseButtons[j].addEventListener('click', closeActiveTooltip, false)
-            }
+            arrayOfToolTipIcons.map(function(tooltipIcon){
+                tooltipIcon.addEventListener('click', openThisTooltip, false);
+            });
+            arrayOfToolTipsCloseButtons.map(function(toolTipCloseButton){
+                toolTipCloseButton.addEventListener('click', closeActiveTooltip, false);
+            });
         })();
 
 
@@ -1301,18 +1341,10 @@ var outputObjectForBackend = {
             if(event.currentTarget === iftMapButtonCancel){
                 //this might be a link, so be sure to prevent default
                 event.preventDefault();
-
                 closeActiveTooltip();
                 iftMapWrapperOuter.classList.remove(activeStateSting);
             }
         }
-
-
-        function putOutputArrayInHiddenInput(){
-            //take the object of stuff the user has selected and stick it in a hidden input field for the backend
-        }
-
-
 
         //EVENTS
         stateSelectMenu.addEventListener('change', mapHandlerFunction, false);
@@ -1323,12 +1355,15 @@ var outputObjectForBackend = {
 
 
         // need another event on the CHECKBOXES to store the selected section
+        // unchecking must un-store it
     
     }    
 
     document.addEventListener('DOMContentLoaded', iftMapFunctionInit);
-    //partial postBack
-    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(iftMapFunctionInit)
-
+    
+    if(window.hasOwnProperty('Sys')){
+        //partial postBack
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(iftMapFunctionInit)   
+    }
 
 })();
