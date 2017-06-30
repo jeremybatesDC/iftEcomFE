@@ -37,17 +37,30 @@
 
 
 .iftMap__svg {
-  > .iftMap__svg__g,
-  > .iftMap__svg__path--stateBorders {
-     transform:scale(.5);
-    transform-origin: 0 0;
-    @include break(max, $breakpoint-max-mobile){
-      transform:scale(.275);
-    }
-  }
+  transform:scale(.5);
+  transform-origin: 0 0;
+
+  //   transform-origin: 0 0;
+  //   @include break(max, $breakpoint-max-mobile){
+  //     transform:scale(.275);
+  //   }
+  // > .iftMap__svg__g,
+  // > .iftMap__svg__path--stateBorders {
+  //    transform:scale(.5);
+  //   transform-origin: 0 0;
+  //   @include break(max, $breakpoint-max-mobile){
+  //     transform:scale(.275);
+  //   }
+  // }
   @include break(max, $breakpoint-max-mobile){
-    width: 300px;
-    height:200px;
+    transform:scale(.5);
+    width: 100%;
+    height:auto;
+  }
+
+  @include break(min, $breakpoint-min-tablet){
+    //blame microsoft
+    margin-bottom: -300px;
   }
 }
 

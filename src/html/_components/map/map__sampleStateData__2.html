@@ -1,19 +1,18 @@
 <div class="iftMap__sectionData__wrapper">
 	<label>
 		<input type="checkbox"/>
-		<span>Another Section Membership</span>
+		<span>{{ProductName}} Great Plains Sub-Section - Unified Membership</span>
 	</label>
 	<svg class="iconInfo" viewBox="0 0 32 32"><use xlink:href="#iconInfo"/></svg>
+	
 	<div class="iftMap__memberPrice iftMap__sectionData__detail">
-		Member Price: <span>$20.00</span>
+		Member Price: <span>{{MemberPrice}}</span>
 	</div>
 	<div class="iftMap__included iftMap__sectionData__detail">
 		Included in Selection: <span>Valley Sub-Section Membership</span>
 	</div>
 	<div class="iftMap__zipCodes iftMap__sectionData__detail">
-		Zip Code(s): <span>20815-20816</span>
-					 <span>20817-20818</span>
-					 <span>20819-20820</span>
+		Zip Code(s): <span>(51000-51399, 56000-56299, 57000-57999)</span>
 	</div>
 
 	{% include "./_components/map/map__hiddenTooltipHTML.html" %}

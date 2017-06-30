@@ -1063,8 +1063,8 @@ var rawSectionData = {
 }
 
 
-//using 'state' is the obvious word here, but that becomes confusing when dealing with a US State map... 
-var mapStatusContainer = {
+
+var mapStateContainer = {
     currentStateCode: ''
     ,currentProductCode: ''
 
@@ -1126,16 +1126,100 @@ var outputObjectForBackend = {
             .enter()
             .append('path')
             .attr('id', function(thisState){
+                //console.log(thisState.id);
+
                 return thisState.id
             })
+            // .attr('name', function(statesFeaturesObject){
+            //     //this is giving me the whole array...accessing other properties isNotWorkingAsExpected
+            //     //console.log(thisState)
+            //     console.log(statesFeaturesObject); 
+            //     //Object {type: "Feature", id: "AR", properties: Object, geometry: Object}
+
+            //     //return thisState.name
+
+            // })
+            //.attr('name', 'joe')
             .attr('class', 'usState iftMap__svg__path')
             .attr('d', path)
             .on('click', function(thisState){
 
-            //set status here BUT ALSO ON SELECT MENU
-            mapStatusContainer.currentStateCode = thisState.id;
-            
-            mapHandlerFunction(event);
+                //console.lo
+                //this adds events the d3 way -- the program already has reference to each path, so we use it to add handler(s)
+
+                //loop over array looking for a state match
+
+
+                function findMatch(thisSectionItem){
+                    //it is logging all of them
+
+                    if(thisSectionItem.StateCode === thisState.id){
+
+                        //get index of matches
+
+                        console.log('match');
+                        console.log('this state has ' + '' + 'sections')
+                    }
+
+                    // else {
+                    //     console.log('blergh');
+                    // }
+
+                    //console.log(thisSectionItem.StateCode);
+
+
+
+                    // if(thisSectionItem.StateCode === 'MD'){
+                    //     console.log('hey Maryland');
+                    // }
+
+                    // for(var stateCounter = 0; stateCounter < rawSectionData.SectionItems.length; stateCounter++){
+                    //     // if(rawSectionData.SectionItems[stateCounter].StateCode === theValueToFind){
+                    //     //     console.log('match found');
+                    //     // }
+
+                    //     console.log(rawSectionData.SectionItems[stateCounter].StateCode);
+                    // }
+
+                   
+
+                    // var indexOfThisState = rawSectionData.SectionItems.StateCode.indexOf(thisState.id);
+                    // console.log(indexOfThisState)
+
+
+
+                }
+
+                //var theValueToFind = 'MD';
+                //this implictly passes each section item
+
+
+                rawSectionData.SectionItems.map(findMatch);
+
+
+                // for(var stateCounter = 0; stateCounter < rawSectionData.SectionItems.length; stateCounter++){
+                //     //console.log(rawSectionData.SectionItems[stateCounter].StateCode);
+                //     if(rawSectionData.SectionItems[stateCounter].StateCode === thisState.id){
+                //         //console.log(rawSectionData.SectionItems[5].StateCode);
+
+
+
+
+                //         console.log('zona');
+                //     }
+
+
+
+
+
+                //     //not unique
+                //     console.log(rawSectionData.SectionItems[stateCounter].StateCode.indexOf(thisState.id))
+                // }
+
+
+                // console.log(rawSectionData.SectionItems[stateCounter].StateCode.indexOf(thisState.id));
+
+                mapHandlerFunction(event, thisState.id);
                 
             });
 
@@ -1148,53 +1232,43 @@ var outputObjectForBackend = {
         //get the data
 
 
-        //(function getJSONfromHiddenInput(){})();
-
-
-        function findMatch(thisStateID){
-            console.log(thisStateID);
-        }
-
-
-
-        function mapHandlerFunction(event){
+        (function getJSONfromHiddenInput(){
+           
+            //parsedJSONSectionData = JSON.parse(rawSectionData);
             
-
+            //console.log(typeof rawSectionData);
+            //console.log(jsonDataHolder);
             
+            //for(var i = 0; i <  rawSectionData.SectionItems.length; i++){
+                //console.log(rawSectionData.SectionItems[0].ProductName);
+            //}
 
-            
-            //if a state on the map has been clicked
+            //console.log(mapStateContainer.currentStateCode);
+
+        })();
+
+
+
+
+        function mapHandlerFunction(event, thisStateID){
+
             if(event.currentTarget.tagName === 'path') {
-
-                //the d3 click function is already setting the statecode
-                //but it will still be handy to query here
-
-                console.log('state has been clicked to set ' + mapStatusContainer.currentStateCode);
-
-                removeAddActiveState('thenAdd', mapStatusContainer.currentStateCode);
-                stateSelectMenu.value = mapStatusContainer.currentStateCode;
-                writeDataToPage(mapStatusContainer.currentStateCode);
+                removeAddActiveState('thenAdd', thisStateID);
+                console.log(thisStateID);
+                stateSelectMenu.value = thisStateID;
+                writeDataToPage(thisStateID);
             }
-            //if a dropdown item has been selected (select menu visible only on mobile)
             if(event.currentTarget.id === 'stateSelectMenu') {
-
-                //set status 
-                mapStatusContainer.currentStateCode = stateSelectMenu.value;
-
-                removeAddActiveState('thenAdd', mapStatusContainer.currentStateCode);
-                console.log('select menu has been used to set ' + mapStatusContainer.currentStateCode);
-                writeDataToPage(mapStatusContainer.currentStateCode);
+                var stateAbbrSelected = stateSelectMenu.options[stateSelectMenu.selectedIndex].value;
+                removeAddActiveState('thenAdd', stateAbbrSelected);
+                console.log(stateAbbrSelected);
+                writeDataToPage(stateAbbrSelected);
             }
-            //if an international item has been selected
             if(event.currentTarget.id === 'internationalSelectMenu'){
-
-                //set status
-                mapStatusContainer.currentStateCode = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].value;
-                console.log('international menu has been used to set ' + mapStatusContainer.currentStateCode);
-
                 stateSelectMenu.value = '';
+                var internationalAbbrSelected = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].value;
                 removeAddActiveState();
-                writeDataToPage(mapStatusContainer.currentStateCode);
+                writeDataToPage(internationalAbbrSelected);
             }
         }
 
@@ -1288,6 +1362,7 @@ var outputObjectForBackend = {
                 iftMapWrapperOuter.classList.remove(activeStateSting);
             }
         }
+
 
         //EVENTS
         stateSelectMenu.addEventListener('change', mapHandlerFunction, false);
