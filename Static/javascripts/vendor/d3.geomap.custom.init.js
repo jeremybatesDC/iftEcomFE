@@ -1212,7 +1212,7 @@ var outputObjectForBackend = {
             var currentStateCode = mapStatusContainer.currentStateCode;
            
 
-            //and if i want index of, making this an array might be smart
+            //and if i want index of, making this an array might be smart. Could ideally observe it.
             //to get index of, iteration is required.
             //can we do a MAP? Or must we do a loop?
 
@@ -1220,27 +1220,14 @@ var outputObjectForBackend = {
 
             //console.log('this is the writeDataToPage function referencing a STATIC sectionitem in the personifydata file' + rawSectionData.SectionItems[7].StateCode);
 
-            console.log('the typeof the rawSectionData is: ' + typeof rawSectionData);
 
 
             rawSectionData.SectionItems.map(function(sectionItem){
 
-                //console.log(sectionItem.StateCode)
-                if (sectionItem.hasOwnProperty('StateCode')) {
 
-                    if(sectionItem.StateCode === 'MD'){
-                        console.log('Maryland');
-                        console.log(rawSectionData.SectionItems.indexOf(sectionItem));
-                    }
-                    else {
-                        console.log('no match');
-                    }
-
-                }
-                else {
-                    console.log('no propery?!')
-                }
-                
+                if(sectionItem.StateCode === currentStateCode){
+                    console.log(currentStateCode, rawSectionData.SectionItems.indexOf(sectionItem));
+                }                
 
             })
 
