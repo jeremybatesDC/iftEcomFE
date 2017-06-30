@@ -75,16 +75,20 @@
 		</div>
 		<div class="row dataDisplay__row">
 			<div class="col-sm-3">
-				{% include "./_components/map/map__sampleStateData__1__disabled.html" %}
+				{% include "./_components/map/map__sampleStateData__0__disabled__DUMMY.html" %}
 			</div>
 			<div class="col-sm-3">
-				{% include "./_components/map/map__sampleStateData__2.html" %}
+				{% include "./_components/map/map__sampleStateData__1.html" %}
 			</div>
 			<div class="col-sm-3">
-				<div class="iftMap__sectionData__wrapper"></div>
+				<div class="iftMap__sectionData__wrapper">
+					{% include "./_components/map/map__sampleStateData__2.html" %}
+				</div>
 			</div>
 			<div class="col-sm-3">
-				<div class="iftMap__sectionData__wrapper"></div>
+				<div class="iftMap__sectionData__wrapper">
+					{% include "./_components/map/map__sampleStateData__3__hidden.html" %}
+				</div>
 			</div>
 		</div>
 		<div class="row iftMap__row--saveCancel">

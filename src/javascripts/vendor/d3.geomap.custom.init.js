@@ -1086,13 +1086,6 @@ var outputObjectForBackend = {
     ,ComponentProductShortName: ''
     ,MemberPrice: ''
 }
-
-
-//var outputForBackend = [outputObjectForBackend.ProductId, outputObjectForBackend.ProductName, outputObjectForBackend.ComponentProductId, outputObjectForBackend.ComponentProductShortName, outputObjectForBackend.MemberPrice]
-
-
-
-//ProductId, ProductName, ComponentProductId , ComponentProductShortName ,MemberPrice
  
 //The fields should be comma separated and between two section selections separate with ‘|’ delimiter and these details frontend needs to save into another hidden field ‘IFTSavedSectionHiddenfield’
 
@@ -1146,8 +1139,6 @@ var outputObjectForBackend = {
               .attr('d', path(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; })));
         });
 
-
-        //get the data
 
 
         //(function getJSONfromHiddenInput(){})();
@@ -1243,21 +1234,42 @@ var outputObjectForBackend = {
                     console.log(currentStateCode, indexOfSectionItem);
 
                     //set multiple properties at once
-                    mapStatusContainer.currentProductId = rawSectionData.SectionItems[indexOfSectionItem].ProductId;
-                    mapStatusContainer.currentMemberPrice = rawSectionData.SectionItems[indexOfSectionItem].MemberPrice;
-                    mapStatusContainer.currentComponentProductShortName = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductShortName;
-                    mapStatusContainer.currentProductName = rawSectionData.SectionItems[indexOfSectionItem].ProductName;
-                    mapStatusContainer.currentComponentProductId = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductId;
-                    mapStatusContainer.currentZipCodes = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
+                    (function setAOTprops(){
+
+                       //map the model to these values
+                       //although the data shapes may not match 
+                        mapStatusContainer.currentProductId = rawSectionData.SectionItems[indexOfSectionItem].ProductId;
+                        mapStatusContainer.currentMemberPrice = rawSectionData.SectionItems[indexOfSectionItem].MemberPrice;
+                        mapStatusContainer.currentComponentProductShortName = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductShortName;
+                        mapStatusContainer.currentProductName = rawSectionData.SectionItems[indexOfSectionItem].ProductName;
+                        mapStatusContainer.currentComponentProductId = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductId;
+                        mapStatusContainer.currentZipCodes = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
+                    })();
+                   
 
                     //sometimes these values can be null or undefined, so watch out
-                    console.log('ProductId is ' + mapStatusContainer.currentProductId)
+                    console.log('ProductId is ' + mapStatusContainer.currentProductId);
+
+                    //just a test
+                    document.getElementById('iftPanel__1__MemberPrice').innerHTML = '$' + mapStatusContainer.currentMemberPrice;
                     console.log('$' + mapStatusContainer.currentMemberPrice);
-                    console.log('ComponentProductShortName: ' + mapStatusContainer.currentComponentProductShortName);
+
+
+                    //test
+                    document.getElementById('iftPanel__1__ProductName').innerHTML = mapStatusContainer.currentProductName;
+                    console.log('ProductName: ' + mapStatusContainer.currentProductName);
+
+
+
                     console.log('currentComponentProductId: ' + mapStatusContainer.currentComponentProductId);
 
                     console.log(mapStatusContainer.currentProductName);
+
+
+
+                    //just another test
                     console.log(mapStatusContainer.currentZipCodes);
+                    document.getElementById('iftPanel__1__ZipCodes').innerHTML = mapStatusContainer.currentZipCodes;
                 }                
 
 
