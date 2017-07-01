@@ -50,6 +50,8 @@ var outputObjectForBackend = {
 
         var arrayOfSpansToPopulateEmpty = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper span'));
 
+        var arrayOfCheckboxes = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper [type="checkbox"]'));
+
         var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
 
 
@@ -76,13 +78,9 @@ var outputObjectForBackend = {
             .attr('d', path)
             .on('click', function(thisState){
                 //the id is the only automatically exposed property on a d3 feature
-                //seems that there is a D3 way of accessing other properties 
-                //console.log('Attempt to access JSON property here: ' + thisState.properties.stateName);
-                console.log('Attempt to access JSON property here' + thisState.properties.stateName);
-
-                //can i just pass the whole state?
+                //for other properties, go into .properties 
+   
                 mapHandlerFunction(event, thisState);
-
                 
             });
 
@@ -303,6 +301,15 @@ var outputObjectForBackend = {
         function clearHiddenInput(){
             hiddenInputForBackend.value = '';
         }
+
+        
+        (function clearCheckBoxes(){
+            console.log(arrayOfCheckboxes.length);
+            arrayOfCheckboxes.map(function(thisCheckBox){
+                //console.log('trying to uncheck boxes');
+                thisCheckBox.checked = false;
+            })
+        })();
 
 
 
