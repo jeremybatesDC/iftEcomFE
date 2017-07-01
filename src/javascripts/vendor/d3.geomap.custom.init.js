@@ -13,6 +13,7 @@ var mapStatusContainer = {
     ,currentComponentProductShortName: ''
     ,currentMemberPrice: ''
     ,currentZipCodes: ''
+    ,currentStateName: ''
 
 }
 
@@ -99,10 +100,22 @@ var outputObjectForBackend = {
 
         function mapHandlerFunction(event, statefromD3){
             
+
+            //update model in a consistent way somehow
+            //mapStatusContainer.currentStateCode = statefromD3.properties.id;
+
+            
+
+            console.log(mapStatusContainer.currentStateName);
+
             //if a state on the map has been clicked
             if(event.currentTarget.tagName === 'path') {
                 //set status (maybe factor out)
+                
                 mapStatusContainer.currentStateCode = statefromD3.id;
+                mapStatusContainer.currentStateName = statefromD3.properties.stateName;
+                //THIS IS WHERE TO ADD STATE NAME TO MODEL
+
                 console.log('state has been clicked to set ' + mapStatusContainer.currentStateCode);
                 removeAddActiveState('thenAdd');
                 stateSelectMenu.value = mapStatusContainer.currentStateCode;
@@ -111,7 +124,11 @@ var outputObjectForBackend = {
             if(event.currentTarget.id === 'stateSelectMenu') {
 
                 //set status (maybe factor out)
-                mapStatusContainer.currentStateCode = stateSelectMenu.value;
+                mapStatusContainer.currentStateCode = stateSelectMenu.options[stateSelectMenu.selectedIndex].value;
+                 //update model
+                mapStatusContainer.currentStateName = stateSelectMenu.options[stateSelectMenu.selectedIndex].text;
+                //get state name from dropdown
+
 
                 removeAddActiveState('thenAdd');
                 console.log('select menu has been used to set ' + mapStatusContainer.currentStateCode);
@@ -120,6 +137,8 @@ var outputObjectForBackend = {
             if(event.currentTarget.id === 'internationalSelectMenu'){
                 //set status (maybe factor out)
                 mapStatusContainer.currentStateCode = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].value;
+                mapStatusContainer.currentStateName = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].text;
+
                 console.log('international menu has been used to set ' + mapStatusContainer.currentStateCode);
 
                 //clear dropdown list since not usState
@@ -156,6 +175,9 @@ var outputObjectForBackend = {
             var theNumberOfSectionsCurrentStateHasCOUNTER = 0;
 
 
+            (function displayAreaName(){
+                seletedStateDisplay.innerHTML = mapStatusContainer.currentStateName;
+            })();
 
             //the map list operation is superior to loops
 
@@ -236,13 +258,15 @@ var outputObjectForBackend = {
             //update the model
             mapStatusContainer.numOfSectionsForCurrentState = theNumberOfSectionsCurrentStateHasCOUNTER;
 
-
-            //display State Name
-            seletedStateDisplay.innerHTML = currentStateCode;
+            
 
             console.log('theNumberOfSectionsCurrentStateHas ' + mapStatusContainer.numOfSectionsForCurrentState);
 
         }
+
+        // function displayAreaName(){
+        //     seletedStateDisplay.innerHTML = mapStatusContainer.currentStateName;
+        // }
 
 
         //works as expected -- vue would be good for this
