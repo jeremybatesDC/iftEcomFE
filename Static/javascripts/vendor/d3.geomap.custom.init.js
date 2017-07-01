@@ -168,9 +168,8 @@ var outputObjectForBackend = {
             //query the statusObject
             var currentStateCode = mapStatusContainer.currentStateCode;
 
-            //if i properly use filter, i donT think i need this counter
-            var theNumberOfSectionsCurrentStateHasCOUNTER = 0;
-
+            //if i properly use filter, i donT need this counter
+            var dummyIteratorMax4 = 0;
 
             (function displayAreaName(){
                 seletedStateDisplay.innerHTML = mapStatusContainer.currentStateName;
@@ -178,19 +177,23 @@ var outputObjectForBackend = {
 
             //the map list operation is superior to loops
 
-            //but i think i want to FILTER.... YES
-            rawSectionData.SectionItems.map(function(sectionItem){
+            //FILTER SECTIONITEMS ARRAY TO MAKE SUBARRAY OF MATCHING STATEs SECTIONS (max 4)
+            var matchingSectionItems = rawSectionData.SectionItems.filter(function(sectionItem){
+                return sectionItem.StateCode === currentStateCode 
+            });
+            console.log('there are ' + matchingSectionItems.length + ' matching sections and here they are');
+            console.log(matchingSectionItems);
 
-                if(sectionItem.StateCode === currentStateCode){
-                    //this is the KEY!
-                    var indexOfSectionItem = rawSectionData.SectionItems.indexOf(sectionItem);
+            //now, map function to that new subarray
+            matchingSectionItems.map(function(matchingSectionItem){
+                var indexOfSectionItem = rawSectionData.SectionItems.indexOf(matchingSectionItem);
                     
 
 
-                    applyStatusToPanels(theNumberOfSectionsCurrentStateHasCOUNTER);
+                    applyStatusToPanels(dummyIteratorMax4);
 
-                    //do i need to count like this, or can i calculate the number more cheaply
-                    theNumberOfSectionsCurrentStateHasCOUNTER++;
+                    //use filter
+                    dummyIteratorMax4++;
 
                     //set multiple properties at once
                     (function setAOTprops(){
@@ -217,6 +220,9 @@ var outputObjectForBackend = {
                     //sometimes these values can be null or undefined, so watch out
                     //test
                     (function fieldPopulation(){
+                        //need a function that takes an array of values and pumps them into a insertPanelHTML function
+                        //make sure data is same shape
+
                          //just a test
                         document.getElementById('iftPanel__1__MemberPrice').innerHTML = '$' + mapStatusContainer.currentMemberPrice;
                         //test
@@ -225,16 +231,21 @@ var outputObjectForBackend = {
                         
                         document.getElementById('iftPanel__1__ZipCodes').innerHTML = mapStatusContainer.currentZipCodes;
                     })();
-                   
-                }                
-
-
-
             });
 
-            //need a function that takes an array of values and pumps them into a insertPanelHTML function
-            //make sure data is same shape
+            // rawSectionData.SectionItems.map(function(sectionItem){
 
+            //     if(sectionItem.StateCode === currentStateCode){
+            //         //this is the KEY!
+                    
+                   
+            //     }                
+
+
+
+            // });
+
+            
             //want references to each panel's divs (knowing there are 0 to 4 panels)
 
             //function writePanelInfo(array){
@@ -244,11 +255,11 @@ var outputObjectForBackend = {
             
 
             //update the model
-            mapStatusContainer.numOfSectionsForCurrentState = theNumberOfSectionsCurrentStateHasCOUNTER;
+            mapStatusContainer.numOfSectionsForCurrentState = dummyIteratorMax4;
 
             
 
-            console.log('theNumberOfSectionsCurrentStateHas ' + mapStatusContainer.numOfSectionsForCurrentState);
+            
 
         }
 
