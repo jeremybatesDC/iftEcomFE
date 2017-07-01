@@ -51,6 +51,10 @@ var outputObjectForBackend = {
 
         var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
 
+
+        var activeStateSting = 'iftMapWrapperOuter--ACTIVE-STATE';
+
+
         //DRAW THE MAP
         var svg = d3.select('#iftMap');
         var path = d3.geoPath();
@@ -72,7 +76,12 @@ var outputObjectForBackend = {
             .on('click', function(thisState){
                 //the id is the only automatically exposed property on a d3 feature
                 //seems that there is a D3 way of accessing other properties 
-                mapHandlerFunction(event, thisState.id);
+                //console.log('Attempt to access JSON property here: ' + thisState.properties.stateName);
+                console.log('Attempt to access JSON property here' + thisState.properties.stateName);
+
+                //can i just pass the whole state?
+                mapHandlerFunction(event, thisState);
+
                 
             });
 
@@ -88,12 +97,12 @@ var outputObjectForBackend = {
 
         
 
-        function mapHandlerFunction(event, stateIDfromD3){
+        function mapHandlerFunction(event, statefromD3){
             
             //if a state on the map has been clicked
             if(event.currentTarget.tagName === 'path') {
                 //set status (maybe factor out)
-                mapStatusContainer.currentStateCode = stateIDfromD3;
+                mapStatusContainer.currentStateCode = statefromD3.id;
                 console.log('state has been clicked to set ' + mapStatusContainer.currentStateCode);
                 removeAddActiveState('thenAdd');
                 stateSelectMenu.value = mapStatusContainer.currentStateCode;
@@ -137,15 +146,6 @@ var outputObjectForBackend = {
                 document.getElementById(currentStateCode).classList.add('usState--SELECTED');
             }
         }
-
-
-        function makeColumnDisabled(theColumnToDisable){
-            //1) add class of DISABLED-STATE to the iftMap__sectionData__wrapper
-            //2) add disabled=disabled attribute to the input
-            //3) add checked=checked attrubute to input
-        }
-        
-
 
 
         function displayDataOnPage(){
@@ -225,17 +225,19 @@ var outputObjectForBackend = {
             //need a function that takes an array of values and pumps them into a insertPanelHTML function
             //make sure data is same shape
 
-            //need references to each panel's divs (knowing there are 0 to 4 panels)
+            //want references to each panel's divs (knowing there are 0 to 4 panels)
 
             //function writePanelInfo(array){
                 //elementX.innerHTML(array[iteratorMaybe])
             //}
 
-            //after mapping function, display the results
+            
 
             //update the model
             mapStatusContainer.numOfSectionsForCurrentState = theNumberOfSectionsCurrentStateHasCOUNTER;
 
+
+            //display State Name
             seletedStateDisplay.innerHTML = currentStateCode;
 
             console.log('theNumberOfSectionsCurrentStateHas ' + mapStatusContainer.numOfSectionsForCurrentState);
@@ -254,6 +256,13 @@ var outputObjectForBackend = {
         function applyStatusToPanels(justACounterForIDs){
             console.log('this panel should get the ID of ' + justACounterForIDs);
         }
+
+        // function makeColumnDisabled(theColumnToDisable){
+        //     //1) add class of DISABLED-STATE to the iftMap__sectionData__wrapper
+        //     //2) add disabled=disabled attribute to the input
+        //     //3) add checked=checked attrubute to input
+        // }
+        
 
 
         //what do we do if the user chooses a different state AFTER selecting a checkbox? It should clear, i think.
@@ -306,7 +315,6 @@ var outputObjectForBackend = {
         }
 
         function showHideWholeMap(event){
-            var activeStateSting = 'iftMapWrapperOuter--ACTIVE-STATE';
             if(event.currentTarget === iftMapButtonOpen) {
                 iftMapWrapperOuter.classList.add(activeStateSting);
             }
