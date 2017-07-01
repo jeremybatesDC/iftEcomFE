@@ -14,7 +14,6 @@ var mapStatusContainer = {
     ,currentMemberPrice: ''
     ,currentZipCodes: ''
     ,currentStateName: ''
-
 }
 
 //needs to allow multiple
@@ -190,14 +189,8 @@ var outputObjectForBackend = {
 
                     applyStatusToPanels(theNumberOfSectionsCurrentStateHasCOUNTER);
 
-
-
-
                     //do i need to count like this, or can i calculate the number more cheaply
                     theNumberOfSectionsCurrentStateHasCOUNTER++;
-
-
-                    console.log(currentStateCode, indexOfSectionItem);
 
                     //set multiple properties at once
                     (function setAOTprops(){
@@ -212,39 +205,37 @@ var outputObjectForBackend = {
                         mapStatusContainer.currentZipCodes = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
                     })();
                    
+                   (function testLogAllProps(){
+                        console.log('ProductId is ' + mapStatusContainer.currentProductId);
+                        console.log('$' + mapStatusContainer.currentMemberPrice);
+                        console.log('ProductName: ' + mapStatusContainer.currentProductName);
+                        console.log('currentComponentProductId: ' + mapStatusContainer.currentComponentProductId);
+                        console.log(mapStatusContainer.currentZipCodes);
+                   })();
+
 
                     //sometimes these values can be null or undefined, so watch out
-                    console.log('ProductId is ' + mapStatusContainer.currentProductId);
-
-                    //just a test
-                    document.getElementById('iftPanel__1__MemberPrice').innerHTML = '$' + mapStatusContainer.currentMemberPrice;
-                    console.log('$' + mapStatusContainer.currentMemberPrice);
-
-
                     //test
-                    document.getElementById('iftPanel__1__ProductName').innerHTML = mapStatusContainer.currentProductName;
-                    console.log('ProductName: ' + mapStatusContainer.currentProductName);
+                    (function fieldPopulation(){
+                        //need a function that takes an array of values and pumps them into a insertPanelHTML function
+                        //make sure data is same shape
 
-
-
-                    console.log('currentComponentProductId: ' + mapStatusContainer.currentComponentProductId);
-
-                    console.log(mapStatusContainer.currentProductName);
-
-
-
-                    //just another test
-                    console.log(mapStatusContainer.currentZipCodes);
-                    document.getElementById('iftPanel__1__ZipCodes').innerHTML = mapStatusContainer.currentZipCodes;
+                         //just a test
+                        document.getElementById('iftPanel__1__MemberPrice').innerHTML = '$' + mapStatusContainer.currentMemberPrice;
+                        //test
+                        document.getElementById('iftPanel__1__ProductName').innerHTML = mapStatusContainer.currentProductName;
+                        //just another test
+                        
+                        document.getElementById('iftPanel__1__ZipCodes').innerHTML = mapStatusContainer.currentZipCodes;
+                    })();
+                   
                 }                
 
 
 
             });
 
-            //need a function that takes an array of values and pumps them into a insertPanelHTML function
-            //make sure data is same shape
-
+            
             //want references to each panel's divs (knowing there are 0 to 4 panels)
 
             //function writePanelInfo(array){
@@ -303,14 +294,12 @@ var outputObjectForBackend = {
         }
 
         
-        //works as expected
-        (function clearCheckBoxes(){
-            console.log(arrayOfCheckboxes.length);
+        function clearCheckBoxes(){
             arrayOfCheckboxes.map(function(thisCheckBox){
-                //console.log('trying to uncheck boxes');
                 thisCheckBox.checked = false;
             })
-        })();
+        }
+        //need a forceCheckThePreviousSection for includedSections
 
 
 

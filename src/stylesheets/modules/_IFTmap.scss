@@ -130,9 +130,9 @@
 
 .iftMap__mobile__selectMenu__wrapper--outer {
 
-  @include break(min, $breakpoint-min-tablet){
-    display: none;
-  }
+  // @include break(min, $breakpoint-min-tablet){
+  //   display: none;
+  // }
   .iftMap__additionalItemsBox__wrapper--inner {
     padding-bottom:0;
   }
