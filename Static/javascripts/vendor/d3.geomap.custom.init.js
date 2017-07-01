@@ -4,16 +4,16 @@ var rawSectionData = {"InternalKey":null,"NavigationKey":null,"TotalItems":88,"o
 //using 'state' is the obvious word here, but that becomes confusing when dealing with a US State map... 
 //donT have to de-conflict vars -- may be cleaner to let namspacing do this
 var mapStatusContainer = {
-    numOfSectionsForCurrentState: 0
-    ,currentProductId: ''
-    ,currentStateCode: ''
-    ,currentProductCode: ''
+    //first 5 required by backend
+    currentProductId: ''
     ,currentProductName: ''
     ,currentComponentProductId: ''
     ,currentComponentProductShortName: ''
     ,currentMemberPrice: ''
+    //other fields to display
     ,currentZipCodes: ''
     ,currentStateName: ''
+    ,currentStateCode: ''
 }
 
 //needs to allow multiple
@@ -97,14 +97,6 @@ var outputObjectForBackend = {
 
         function mapHandlerFunction(event, statefromD3){
             
-
-            //update model in a consistent way somehow
-            //mapStatusContainer.currentStateCode = statefromD3.properties.id;
-
-            
-
-            console.log(mapStatusContainer.currentStateName);
-
             //if a state on the map has been clicked
             if(event.currentTarget.tagName === 'path') {
                 //set status (maybe factor out)
@@ -113,7 +105,7 @@ var outputObjectForBackend = {
                 mapStatusContainer.currentStateName = statefromD3.properties.stateName;
                 //THIS IS WHERE TO ADD STATE NAME TO MODEL
 
-                console.log('state has been clicked to set ' + mapStatusContainer.currentStateCode);
+                console.log('state has been clicked to set ' + mapStatusContainer.currentStateName);
                 removeAddActiveState('thenAdd');
                 stateSelectMenu.value = mapStatusContainer.currentStateCode;
             }
@@ -128,7 +120,7 @@ var outputObjectForBackend = {
 
 
                 removeAddActiveState('thenAdd');
-                console.log('select menu has been used to set ' + mapStatusContainer.currentStateCode);
+                console.log('select menu has been used to set ' + mapStatusContainer.currentStateName);
             }
             //if an international item has been selected
             if(event.currentTarget.id === 'internationalSelectMenu'){
@@ -136,7 +128,7 @@ var outputObjectForBackend = {
                 mapStatusContainer.currentStateCode = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].value;
                 mapStatusContainer.currentStateName = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].text;
 
-                console.log('international menu has been used to set ' + mapStatusContainer.currentStateCode);
+                console.log('international menu has been used to set ' + mapStatusContainer.currentStateName);
 
                 //clear dropdown list since not usState
                 stateSelectMenu.value = '';
@@ -171,13 +163,11 @@ var outputObjectForBackend = {
             //if i properly use filter, i donT need this counter
             var dummyIteratorMax4 = 0;
 
-            (function displayAreaName(){
-                seletedStateDisplay.innerHTML = mapStatusContainer.currentStateName;
-            })();
+            //called without arguments becuase that function queries the model
+            displayAreaName();
 
-            //the map list operation is superior to loops
 
-            //FILTER SECTIONITEMS ARRAY TO MAKE SUBARRAY OF MATCHING STATEs SECTIONS (max 4)
+            //FILTER SectionItems array to make new subarray of matching state sections (max 4)
             var matchingSectionItems = rawSectionData.SectionItems.filter(function(sectionItem){
                 return sectionItem.StateCode === currentStateCode 
             });
@@ -189,34 +179,42 @@ var outputObjectForBackend = {
                 var indexOfSectionItem = rawSectionData.SectionItems.indexOf(matchingSectionItem);
                     
 
+                    //update the model IN -- try to set multiple properties at once and
+                    //IN THE ORDER IN WHICH I MUST OUTPUT THEM TO BACKEND
 
-                    applyStatusToPanels(dummyIteratorMax4);
-
-                    //use filter
-                    dummyIteratorMax4++;
-
-                    //set multiple properties at once
+                   
+   
                     (function setAOTprops(){
 
-                       //map the model to these values
-                       //although the data shapes may not match 
+                       //map the model to these values 
+                       //ensure same shape
+
+                       //donToverWriteTHEarray! just add to it... this might not be safe
+                       //mapStatusContainer = {}
+
+
                         mapStatusContainer.currentProductId = rawSectionData.SectionItems[indexOfSectionItem].ProductId;
-                        mapStatusContainer.currentMemberPrice = rawSectionData.SectionItems[indexOfSectionItem].MemberPrice;
-                        mapStatusContainer.currentComponentProductShortName = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductShortName;
                         mapStatusContainer.currentProductName = rawSectionData.SectionItems[indexOfSectionItem].ProductName;
                         mapStatusContainer.currentComponentProductId = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductId;
+                        mapStatusContainer.currentComponentProductShortName = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductShortName;
+                        mapStatusContainer.currentMemberPrice = rawSectionData.SectionItems[indexOfSectionItem].MemberPrice;
+
+                        //for display but not something the backend needs
                         mapStatusContainer.currentZipCodes = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
                     })();
-                   
-                   (function testLogAllProps(){
-                        console.log('ProductId is ' + mapStatusContainer.currentProductId);
-                        console.log('$' + mapStatusContainer.currentMemberPrice);
-                        console.log('ProductName: ' + mapStatusContainer.currentProductName);
-                        console.log('currentComponentProductId: ' + mapStatusContainer.currentComponentProductId);
-                        console.log(mapStatusContainer.currentZipCodes);
-                   })();
 
+                    
 
+                    //clear existing panel content
+                    clearPanelsOfContent();
+
+                    //activate/disable/hide number of panels
+                    applyStatusToPanels(matchingSectionItems.length);
+
+                    //how tightly coupled are statusAppliaction and fieldPopulation
+                    //also, do disable and hide status clear?
+
+                    //populate
                     //sometimes these values can be null or undefined, so watch out
                     //test
                     (function fieldPopulation(){
@@ -231,44 +229,27 @@ var outputObjectForBackend = {
                         
                         document.getElementById('iftPanel__1__ZipCodes').innerHTML = mapStatusContainer.currentZipCodes;
                     })();
+
+                    //log outputs in order backend expects
+                    (function testLogAllProps(){
+                        console.log('ProductId: ' + mapStatusContainer.currentProductId);
+                        console.log('ProductName: ' + mapStatusContainer.currentProductName);
+                        //often 0
+                        console.log('currentComponentProductId: ' + mapStatusContainer.currentComponentProductId);
+                        //often blank
+                        console.log('currentComponentProductShortName: ' + mapStatusContainer.currentComponentProductShortName);
+                        console.log('currentMemberPrice: $' + mapStatusContainer.currentMemberPrice);
+                   })();
             });
-
-            // rawSectionData.SectionItems.map(function(sectionItem){
-
-            //     if(sectionItem.StateCode === currentStateCode){
-            //         //this is the KEY!
-                    
-                   
-            //     }                
-
-
-
-            // });
-
-            
-            //want references to each panel's divs (knowing there are 0 to 4 panels)
-
-            //function writePanelInfo(array){
-                //elementX.innerHTML(array[iteratorMaybe])
-            //}
-
-            
-
-            //update the model
-            mapStatusContainer.numOfSectionsForCurrentState = dummyIteratorMax4;
-
-            
-
-            
 
         }
 
-        // function displayAreaName(){
-        //     seletedStateDisplay.innerHTML = mapStatusContainer.currentStateName;
-        // }
+        function displayAreaName(){
+            seletedStateDisplay.innerHTML = mapStatusContainer.currentStateName;
+        }
 
 
-        //works as expected -- vue would be good for this
+        //works as expected, but regression test this -- vue would be good for this
         function clearPanelsOfContent(){
             arrayOfSpansToPopulateEmpty.map(function(thisSpan){
                 thisSpan.innerHTML = '';
@@ -276,8 +257,9 @@ var outputObjectForBackend = {
         }
 
         //does nothing yet
-        function applyStatusToPanels(justACounterForIDs){
-            console.log('this panel should get the ID of ' + justACounterForIDs);
+        function applyStatusToPanels(numberOfPanels){
+            console.log('activating panel -- BEEP');
+            //then active the correct number to get the already-in-place markup to display
         }
 
         // function makeColumnDisabled(theColumnToDisable){
@@ -309,9 +291,9 @@ var outputObjectForBackend = {
                 thisCheckBox.checked = false;
             })
         }
+
+        //also, are tooltips married to this include? I think so. Whew.
         //need a forceCheckThePreviousSection for includedSections
-
-
 
 
         //this must be called each time new data is put on the page to get a fresh nodelist
