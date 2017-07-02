@@ -27,47 +27,59 @@ var mapStatusContainer = {
     ,currentZipCodes: ''
 }
 
+//will have to query this
 var mapStatusContainerDeepARRAY = [
     {
         currentProductId: '9999'
+        ,currentProductName: 'Yar, ProductName'
+        ,currentComponentProductId: ''
+        ,currentComponentProductShortName: 'short name is Groot'
+        ,currentMemberPrice: '$137'
+        //required by Panel View
+        ,currentZipCodes: '90210'
     },
     {
-        currentProductId: '666'
+        currentProductId: '121212'
+        ,currentProductName: 'Yar, ProductName'
+        ,currentComponentProductId: ''
+        ,currentComponentProductShortName: 'short name is Bob'
+        ,currentMemberPrice: '$137'
+        //required by Panel View
+        ,currentZipCodes: '55555'
     },
     {
-        currentProductId: '333'
+        currentProductId: '6666666'
+        ,currentProductName: 'Yar, ProductName'
+        ,currentComponentProductId: ''
+        ,currentComponentProductShortName: 'short name is Dan'
+        ,currentMemberPrice: '$137'
+        //required by Panel View
+        ,currentZipCodes: '20815'
     },
     {
-        currentProductId: '111'
+        currentProductId: '111999'
+        ,currentProductName: 'Yar, ProductName'
+        ,currentComponentProductId: ''
+        ,currentComponentProductShortName: 'short name is Jess'
+        ,currentMemberPrice: '$137'
+        //required by Panel View
+        ,currentZipCodes: '44444'
     }
 ]
 
 mapStatusContainerDeepARRAY.map(function(stateSection){
+    //for each stateSection, do something with its values
+    //for instance, grab values and create panels
     console.log(stateSection.currentProductId);
+    console.log(stateSection.currentProductName);
+    console.log(stateSection.currentComponentProductShortName);
+    console.log(stateSection.currentMemberPrice);
+    console.log(stateSection.currentZipCodes);
+    //this could set stuff
+    //this could RETURN SOMETHING
 });
 
-console.log(mapStatusContainerDeepARRAY[0].currentProductId);
 
-//could just make this have all 4, then worry about building it properly next
-var mapStatusContainerDeep = {
-    // 'sectionsForThisState': [{
-    //     {
-    //         currentProductId: '9999'
-    //     },
-    //     {
-    //         currentProductId: '777'
-    //     }
-    // }]
-    sectionsForThisState: {
-        section1: {
-            currentProductId: '9999'
-        }
-    }
-    
-};
-
-
-console.log(mapStatusContainerDeep.sectionsForThisState.section1.currentProductId);
 
 
 //these can be used later to filter mapStatusContainer at queryTime
@@ -227,11 +239,32 @@ var outputObjectForBackend = {
             console.log(matchingSectionItems);
 
             //now, map function to that new subarray
+            var iteratorNum = 0;
             matchingSectionItems.map(function(matchingSectionItem){
                 var indexOfSectionItem = rawSectionData.SectionItems.indexOf(matchingSectionItem);
                     
+                    
+                    
+                    (function setAOTprops(){
 
-                    (function setAOTprops(){//map the model to these values & ensure same shape
+                    //we have a deep array to push values into
+                    console.log('here is your stuff');
+
+                        mapStatusContainerDeepARRAY[iteratorNum].currentProductId = rawSectionData.SectionItems[indexOfSectionItem].ProductId;
+                        
+                        console.log('ProductId: ' + mapStatusContainerDeepARRAY[iteratorNum].currentProductId);
+
+                        mapStatusContainerDeepARRAY[iteratorNum].currentProductName = rawSectionData.SectionItems[indexOfSectionItem].ProductName;
+                        console.log('ProductName: ' + mapStatusContainerDeepARRAY[iteratorNum].currentProductName);
+
+                        mapStatusContainerDeepARRAY[iteratorNum].currentMemberPrice = rawSectionData.SectionItems[indexOfSectionItem].MemberPrice;
+                        console.log('MemberPrice: $' + mapStatusContainerDeepARRAY[iteratorNum].currentMemberPrice);
+
+                        iteratorNum++;
+
+                    //}
+
+                    //map the model to these values & ensure same shape
                         mapStatusContainer.currentProductId = rawSectionData.SectionItems[indexOfSectionItem].ProductId;
                         mapStatusContainer.currentProductName = rawSectionData.SectionItems[indexOfSectionItem].ProductName;
                         mapStatusContainer.currentComponentProductId = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductId;
@@ -311,7 +344,7 @@ var outputObjectForBackend = {
 
 
                    //CONSOLE HELPER 
-                   testLogAllProps();
+                   //testLogAllProps();
 
 
             });
