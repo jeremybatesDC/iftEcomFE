@@ -16,17 +16,6 @@ var singularViewOnlyStatusContainer = {
     ,currentStateName: ''
 }
 
-var mapStatusContainer = {
-    //first 5 required by backend
-    currentProductId: ''
-    ,currentProductName: ''
-    ,currentComponentProductId: ''
-    ,currentComponentProductShortName: ''
-    ,currentMemberPrice: ''
-    //required by Panel View
-    ,currentZipCodes: ''
-}
-
 //need this for when we must clear stuff
 /*
 var MapStatusContainerDeepARRAYprototype = [
@@ -117,17 +106,17 @@ var mapStatusContainerDeepARRAY = [
 
 
 
-mapStatusContainerDeepARRAY.map(function(stateSection){
-    //for each stateSection, do something with its values
-    //for instance, grab values and create panels
-    console.log(stateSection.currentProductId);
-    console.log(stateSection.currentProductName);
-    console.log(stateSection.currentComponentProductShortName);
-    console.log(stateSection.currentMemberPrice);
-    console.log(stateSection.currentZipCodes);
-    //this could set stuff
-    //this could RETURN SOMETHING
-});
+// mapStatusContainerDeepARRAY.map(function(stateSection){
+//     //for each stateSection, do something with its values
+//     //for instance, grab values and create panels
+//     console.log(stateSection.currentProductId);
+//     console.log(stateSection.currentProductName);
+//     console.log(stateSection.currentComponentProductShortName);
+//     console.log(stateSection.currentMemberPrice);
+//     console.log(stateSection.currentZipCodes);
+//     //this could set stuff
+//     //this could RETURN SOMETHING
+// });
 
 
 
@@ -192,8 +181,15 @@ var outputObjectForBackend = {
 
 
         //babysteps
-        var arrayOfArrayOfFieldsToPopulate_2_TEST = [arrayOfPanelsToPopulate[0],arrayOfPanelsToPopulate[1],arrayOfPanelsToPopulate[2],arrayOfPanelsToPopulate[3]];
-        console.log(arrayOfArrayOfFieldsToPopulate_2_TEST);
+        var arrayOfArrayOfFieldsToPopulate = Array.prototype.slice.call([arrayOfFieldsToPopulate_0_TEST, arrayOfFieldsToPopulate_1_TEST,arrayOfFieldsToPopulate_2_TEST,arrayOfFieldsToPopulate_3_TEST]);
+        
+        console.log('arrayOfArrayOfFieldsToPopulate is type: ' + typeof arrayOfArrayOfFieldsToPopulate + ' and is this long ' + arrayOfArrayOfFieldsToPopulate.length);
+        	//console.log(arrayOfArrayOfFieldsToPopulate);
+        //reduce can do this 
+        // arrayOfArrayOfFieldsToPopulate.map(function(arrayOfFieldsToPopulate){
+        	
+        // });
+        
 
 
         //DRAW THE MAP
@@ -307,31 +303,21 @@ var outputObjectForBackend = {
                 (function setAOTprops(){
 
                     //we have a deep array to push values into
-                    console.log('here is your stuff');
+                    //console.log('here is your stuff');
 
                     mapStatusContainerDeepARRAY[iteratorNum].currentProductId = rawSectionData.SectionItems[indexOfSectionItem].ProductId;
                     
-                    console.log('ProductId: ' + mapStatusContainerDeepARRAY[iteratorNum].currentProductId);
+                    //console.log('ProductId: ' + mapStatusContainerDeepARRAY[iteratorNum].currentProductId);
 
                     mapStatusContainerDeepARRAY[iteratorNum].currentProductName = rawSectionData.SectionItems[indexOfSectionItem].ProductName;
-                    console.log('ProductName: ' + mapStatusContainerDeepARRAY[iteratorNum].currentProductName);
+                    //console.log('ProductName: ' + mapStatusContainerDeepARRAY[iteratorNum].currentProductName);
 
                     mapStatusContainerDeepARRAY[iteratorNum].currentMemberPrice = rawSectionData.SectionItems[indexOfSectionItem].MemberPrice;
-                    console.log('MemberPrice: $' + mapStatusContainerDeepARRAY[iteratorNum].currentMemberPrice);
+                    //console.log('MemberPrice: $' + mapStatusContainerDeepARRAY[iteratorNum].currentMemberPrice);
 
                     iteratorNum++;
 
-                //}
-
-                //map the model to these values & ensure same shape
-                    mapStatusContainer.currentProductId = rawSectionData.SectionItems[indexOfSectionItem].ProductId;
-                    mapStatusContainer.currentProductName = rawSectionData.SectionItems[indexOfSectionItem].ProductName;
-                    mapStatusContainer.currentComponentProductId = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductId;
-                    mapStatusContainer.currentComponentProductShortName = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductShortName;
-                    mapStatusContainer.currentMemberPrice = rawSectionData.SectionItems[indexOfSectionItem].MemberPrice;
-
-                    //for display but not something the backend needs
-                    mapStatusContainer.currentZipCodes = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
+                
                 })();
 
                 //clear existing panel content
@@ -345,17 +331,13 @@ var outputObjectForBackend = {
                 //also, do disable and hide status clear?
 
 
-
-               
-
-            
-               
+                //just using for keys, which is awkward but easier in the short term than filtering against a differently shaped thing
 
                 var mapStatusContainer__forView = {
-                    currentProductName: mapStatusContainer.currentProductName
-                    ,currentMemberPrice: mapStatusContainer.currentMemberPrice
-                    ,currentComponentProductShortName: mapStatusContainer.currentComponentProductShortName
-                    ,currentZipCodes: mapStatusContainer.currentZipCodes
+                    currentProductName: ''
+                    ,currentMemberPrice: ''
+                    ,currentComponentProductShortName: ''
+                    ,currentZipCodes: ''
                 }
 
                 //try creating this with a list operation
@@ -373,112 +355,89 @@ var outputObjectForBackend = {
 
                     //baby steps
                     var theProductNameOfThisItem = mapStatusContainerDeepARRAYitem.currentProductName;
-                    console.log('theProductNameOfThisItem: ' + theProductNameOfThisItem);
+                    //console.log('theProductNameOfThisItem: ' + theProductNameOfThisItem);
                     //just return it if it passes the simpliest test of existing
                     return theProductNameOfThisItem > -1
                 });
 
 
-                console.log('fiteredStatusContainerForView_VALUES: ');
-                console.log(fiteredStatusContainerForView_VALUES);
-
-
-
-                //and this will be an array of arrays because there are up to 4
-
-                //THIS IS WORKING. So maybe put it in a function and call it for each
-                //works for that simple status container
-                // var aCounter = 0;
-                // arrayOfFieldsToPopulate_0_TEST.map(function(fieldToPopulate){
-                //     fieldToPopulate.innerHTML = mapStatusContainer[Object.keys(mapStatusContainer__forView)[aCounter]];
+                // arrayOfArrayOfFieldsToPopulate.map(function(thisSetOfFieldsToPopulate){}).map(function(thisFieldToPopulate){
+                // 	var aCounter = 0;
+                // 	thisFieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[jBcounter][Object.keys(mapStatusContainer__forView)[aCounter]];
                 //     aCounter++;
-                // });
-
-                var aCounter = 0;
-                arrayOfFieldsToPopulate_0_TEST.map(function(fieldToPopulate){
-                    fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[0][Object.keys(mapStatusContainer__forView)[aCounter]];
-                    aCounter++;
-                });
-
-                //now made one for the deepStatusContainer
-                var bCounter = 0;
-                arrayOfFieldsToPopulate_1_TEST.map(function(fieldToPopulate){
-                    fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[1][Object.keys(mapStatusContainer__forView)[bCounter]];
-                    bCounter++;
-                });
-
-                var cCounter = 0;
-                arrayOfFieldsToPopulate_2_TEST.map(function(fieldToPopulate){
-                    fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[2][Object.keys(mapStatusContainer__forView)[cCounter]];
-                    cCounter++;
-                });
-
-                var dCounter = 0;
-                arrayOfFieldsToPopulate_3_TEST.map(function(fieldToPopulate){
-                    fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[3][Object.keys(mapStatusContainer__forView)[dCounter]];
-                    dCounter++;
-                });
-
-
-
-                // arrayOfFieldsToPopulate_2_TEST.map(function(fieldToPopulate){
-                // 	var cCounter = 0;
-                //     fieldToPopulate.innerHTML = mapStatusContainer[Object.keys(mapStatusContainer__forView)[cCounter]];
-                //     cCounter++;
-                // });
-                // arrayOfFieldsToPopulate_3_TEST.map(function(fieldToPopulate){
-                // 	var dCounter = 0;
-
-                //     fieldToPopulate.innerHTML = mapStatusContainer[Object.keys(mapStatusContainer__forView)[dCounter]];
-                //     dCounter++;
-                // });
-
-                //function populatePanel(){}
-
-
-
-                // function populateAllPanels(arrayOfPanelsToPopulate){
-                // 	arrayOfPanelsToPopulate.map(function(thePanelToPopulate){
-
-                // 		//donTPopulateThePanels--populate the spans in them
-                // 		//will want to query them maybe. Here's a staic set
-                // 		var theSpansOfThePanelToPopulate = arrayOfFieldsToPopulate_2_TEST; // set this to 
-                		
-
-
-                // 		theSpansOfThePanelToPopulate.innerHTML = mapStatusContainer[Object.keys(mapStatusContainer__forView)[aCounter]];
-                //     aCounter++;
-                // 	});
+                //     jBcounter++;
                 // }
-
-                // populateAllPanels(arrayOfPanelsToPopulate);
-
-                //now make one that will take an array of arrays
-
-                // arrayOfArrayOfFieldsToPopulate_2_TEST.map(function(thisArrayOfFieldsToPopulate){
-
-                // 	populateFunction(thisArrayOfFieldsToPopulate);
-
-                // 	thisArrayOfFieldsToPopulate.map(function(thisFieldToPopulate){
-                // 		console.log('the field to populate is ' + thisFieldToPopulate + 'and its this type: ' + typeof thisFieldToPopulate)
-                // 		thisFieldToPopulate.innerHTML = mapStatusContainer[Object.keys(mapStatusContainer__forView)[aCounter]];
-                //     	aCounter++;
-                // 	})
-                    
-                //      //this is using the view keys to query - could do a filter inside here
-                    
-                // });
-
-                /*
-
-                function fieldPopulation(arrayOfFieldsToPopulate, arrayOfvaluesToInsert){
-                    //for each, loop, map, whatevs -- just brute force it
-                    //fieldToPopulate.innerHTML = valueToInsert;
-
-                }
+                // );
 
                 
-                */
+
+                var slowCounter = 0;
+
+				arrayOfArrayOfFieldsToPopulate.forEach(function(arrayOfFieldsToPopulate){
+					console.log('forEach test');
+					console.log(arrayOfFieldsToPopulate);
+
+					// var zCounter = 0;
+					// arrayOfFieldsToPopulate.map(function(fieldToPopulate){
+					// 	fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[slowCounter][Object.keys(mapStatusContainer__forView)[zCounter]];
+					// 		zCounter++;
+					// 		slowCounter++;
+					// });
+
+					var cheapIterator = 0;
+					arrayOfFieldsToPopulate.map(function(fieldToPopulate){
+						fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[slowCounter][Object.keys(mapStatusContainer__forView)[cheapIterator]];
+						cheapIterator++;
+					});
+					slowCounter++;
+
+
+
+				});
+				
+				
+				function jBTestFunction(){
+					console.log('yoyoyo');
+				}
+
+
+				// var jBcounter = 0;
+
+    //             var aCounter = 0;
+    //             arrayOfFieldsToPopulate_0_TEST.map(function(fieldToPopulate){
+    //             	//var deepArrayIterator = 0;
+    //                 fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[jBcounter][Object.keys(mapStatusContainer__forView)[aCounter]];
+    //                 aCounter++;
+    //             });
+
+    //             jBcounter++;
+
+    //             var bCounter = 0;
+    //             arrayOfFieldsToPopulate_1_TEST.map(function(fieldToPopulate){
+    //                 fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[jBcounter][Object.keys(mapStatusContainer__forView)[bCounter]];
+    //                 bCounter++;
+    //             });
+
+    //             jBcounter++;
+
+    //             var cCounter = 0;
+    //             arrayOfFieldsToPopulate_2_TEST.map(function(fieldToPopulate){
+    //                 fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[jBcounter][Object.keys(mapStatusContainer__forView)[cCounter]];
+    //                 cCounter++;
+    //             });
+
+    //             jBcounter++;
+
+    //             var dCounter = 0;
+    //             arrayOfFieldsToPopulate_3_TEST.map(function(fieldToPopulate){
+    //                 fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[jBcounter][Object.keys(mapStatusContainer__forView)[dCounter]];
+    //                 dCounter++;
+    //             });
+
+                
+
+
+
             });
 
         }
@@ -621,7 +580,4 @@ var outputObjectForBackend = {
         Sys.WebForms.PageRequestManager.getInstance().add_endRequest(iftMapFunctionInit)   
     }
 
-    //log outputs in order backend expects
-    function testLogAllProps(){console.log('ProductId: ' + mapStatusContainer.currentProductId);console.log('ProductName: ' + mapStatusContainer.currentProductName);console.log('currentComponentProductId: ' + mapStatusContainer.currentComponentProductId);console.log('currentComponentProductShortName: ' + mapStatusContainer.currentComponentProductShortName);console.log('currentMemberPrice: $' + mapStatusContainer.currentMemberPrice);
-   }
 })();
