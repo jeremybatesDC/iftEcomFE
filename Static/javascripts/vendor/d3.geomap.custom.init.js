@@ -207,7 +207,13 @@ var deepOutputObjectForBackend = [
 
         //already have a reference, but itS more general for etch-a-sketch reasons
 
-        var arrayOfPanelsToPopulate = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper'));
+        var nodelistOfPanelsToPopulate = document.querySelectorAll('.iftMap__sectionData__wrapper');
+
+        var arrayOfPanelsToPopulate = Array.prototype.slice.call(nodelistOfPanelsToPopulate);
+
+        //i suck at searching withing a selection
+        console.log(nodelistOfPanelsToPopulate.length);
+
 
         var arrayOfFieldsToPopulate_0_TEST = Array.prototype.slice.call(document.querySelectorAll('#iftPanel__0 span'));
         var arrayOfFieldsToPopulate_1_TEST = Array.prototype.slice.call(document.querySelectorAll('#iftPanel__1 span'));
@@ -215,17 +221,11 @@ var deepOutputObjectForBackend = [
         var arrayOfFieldsToPopulate_3_TEST = Array.prototype.slice.call(document.querySelectorAll('#iftPanel__3 span'));
 
 
-        //babysteps
+        //arrayOfArrayWhyNot -- this is dumb
         var arrayOfArrayOfFieldsToPopulate = Array.prototype.slice.call([arrayOfFieldsToPopulate_0_TEST, arrayOfFieldsToPopulate_1_TEST,arrayOfFieldsToPopulate_2_TEST,arrayOfFieldsToPopulate_3_TEST]);
         
-        console.log('arrayOfArrayOfFieldsToPopulate is type: ' + typeof arrayOfArrayOfFieldsToPopulate + ' and is this long ' + arrayOfArrayOfFieldsToPopulate.length);
-        	//console.log(arrayOfArrayOfFieldsToPopulate);
-        //reduce can do this 
-        // arrayOfArrayOfFieldsToPopulate.map(function(arrayOfFieldsToPopulate){
-        	
-        // });
-        
 
+    
 
         //DRAW THE MAP
         var svg = d3.select('#iftMap');
@@ -340,17 +340,10 @@ var deepOutputObjectForBackend = [
                 (function setAOTprops(){
 
                     //we have a deep array to push values into
-                    //console.log('here is your stuff');
 
                     mapStatusContainerDeepARRAY[iteratorNum].currentProductId = rawSectionData.SectionItems[indexOfSectionItem].ProductId;
-                    
-                    //console.log('ProductId: ' + mapStatusContainerDeepARRAY[iteratorNum].currentProductId);
-
                     mapStatusContainerDeepARRAY[iteratorNum].currentProductName = rawSectionData.SectionItems[indexOfSectionItem].ProductName;
-                    //console.log('ProductName: ' + mapStatusContainerDeepARRAY[iteratorNum].currentProductName);
-
                     mapStatusContainerDeepARRAY[iteratorNum].currentMemberPrice = rawSectionData.SectionItems[indexOfSectionItem].MemberPrice;
-                    //console.log('MemberPrice: $' + mapStatusContainerDeepARRAY[iteratorNum].currentMemberPrice);
 
                     iteratorNum++;
 
@@ -360,7 +353,7 @@ var deepOutputObjectForBackend = [
                 //clear existing panel content
                 clearPanelsOfContent();
 
-                //activate/disable/hide number of panels
+                //activate/disable/hide number of panels -- but maybe AFTER population?
                 applyStatusToPanels(matchingSectionItems.length);
 
 
