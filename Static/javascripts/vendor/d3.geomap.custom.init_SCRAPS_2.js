@@ -15,3 +15,5 @@
  
 //The fields should be comma separated and between two section selections separate with ‘|’ delimiter and these details frontend needs to save into another hidden field ‘IFTSavedSectionHiddenfield’
 
+ var arrayOfPanelsToPopulate = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper'));
+        var arrayOfSpansToPopulateEmpty = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper span'));
