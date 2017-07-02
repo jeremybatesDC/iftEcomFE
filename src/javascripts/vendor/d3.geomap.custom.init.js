@@ -122,12 +122,16 @@ var mapStatusContainerDeepARRAY = [
 
 
 //these can be used later to filter mapStatusContainer at queryTime
-var fieldsRequiredByPanelView = [
-    'currentProductName'
-    ,'currentMemberPrice'
-    ,'currentComponentProductShortName'
-    ,'currentZipCodes'
-]
+
+
+//just using for keys, which is awkward but easier in the short term than filtering against a differently shaped thing
+var fieldsRequiredByPanelView = {
+    currentProductName: ''
+    ,currentMemberPrice: ''
+    ,currentComponentProductShortName: ''
+    ,currentZipCodes: ''
+}
+
 //these can be used later to filter mapStatusContainer at queryTime
 var fieldsRequiredByBackend = [
     'currentProductId'
@@ -148,6 +152,37 @@ var outputObjectForBackend = {
     ,MemberPrice: ''
 }
 
+
+var deepOutputObjectForBackend = [
+	{
+		ProductId: ''
+	    ,ProductName: ''
+	    ,ComponentProductId: ''
+	    ,ComponentProductShortName: ''
+	    ,MemberPrice: ''
+	},
+	{
+		ProductId: ''
+	    ,ProductName: ''
+	    ,ComponentProductId: ''
+	    ,ComponentProductShortName: ''
+	    ,MemberPrice: ''
+	},
+	{
+		ProductId: ''
+	    ,ProductName: ''
+	    ,ComponentProductId: ''
+	    ,ComponentProductShortName: ''
+	    ,MemberPrice: ''
+	},
+	{
+		ProductId: ''
+	    ,ProductName: ''
+	    ,ComponentProductId: ''
+	    ,ComponentProductShortName: ''
+	    ,MemberPrice: ''
+	}
+]
 
 
 
@@ -300,6 +335,8 @@ var outputObjectForBackend = {
             var iteratorNum = 0;
             matchingSectionItems.map(function(matchingSectionItem){
                 var indexOfSectionItem = rawSectionData.SectionItems.indexOf(matchingSectionItem);
+                
+
                 (function setAOTprops(){
 
                     //we have a deep array to push values into
@@ -330,116 +367,20 @@ var outputObjectForBackend = {
                 //how tightly coupled are statusAppliaction and fieldPopulation
                 //also, do disable and hide status clear?
 
-
-                //just using for keys, which is awkward but easier in the short term than filtering against a differently shaped thing
-
-                var mapStatusContainer__forView = {
-                    currentProductName: ''
-                    ,currentMemberPrice: ''
-                    ,currentComponentProductShortName: ''
-                    ,currentZipCodes: ''
-                }
-
-                //try creating this with a list operation
-
-
-
-                var fiteredStatusContainerForView_VALUES = mapStatusContainerDeepARRAY.filter(function(mapStatusContainerDeepARRAYitem){
-                    //return items that pass test, which is whether it appears in view field array
-
-                    //just had an idea
-                    //currentProductId
-                    //oh, the KEY is needed -- like the maybe the object keys
-
-                    //only need to test 1 field
-
-                    //baby steps
-                    var theProductNameOfThisItem = mapStatusContainerDeepARRAYitem.currentProductName;
-                    //console.log('theProductNameOfThisItem: ' + theProductNameOfThisItem);
-                    //just return it if it passes the simpliest test of existing
-                    return theProductNameOfThisItem > -1
-                });
-
-
-                // arrayOfArrayOfFieldsToPopulate.map(function(thisSetOfFieldsToPopulate){}).map(function(thisFieldToPopulate){
-                // 	var aCounter = 0;
-                // 	thisFieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[jBcounter][Object.keys(mapStatusContainer__forView)[aCounter]];
-                //     aCounter++;
-                //     jBcounter++;
-                // }
-                // );
-
-                
-
                 var slowCounter = 0;
 
 				arrayOfArrayOfFieldsToPopulate.forEach(function(arrayOfFieldsToPopulate){
-					console.log('forEach test');
-					console.log(arrayOfFieldsToPopulate);
-
-					// var zCounter = 0;
-					// arrayOfFieldsToPopulate.map(function(fieldToPopulate){
-					// 	fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[slowCounter][Object.keys(mapStatusContainer__forView)[zCounter]];
-					// 		zCounter++;
-					// 		slowCounter++;
-					// });
-
 					var cheapIterator = 0;
+
 					arrayOfFieldsToPopulate.map(function(fieldToPopulate){
-						fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[slowCounter][Object.keys(mapStatusContainer__forView)[cheapIterator]];
+						//this is querying model for items that the View requires
+						fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[slowCounter][Object.keys(fieldsRequiredByPanelView)[cheapIterator]];
 						cheapIterator++;
 					});
+
 					slowCounter++;
-
-
-
 				});
-				
-				
-				function jBTestFunction(){
-					console.log('yoyoyo');
-				}
-
-
-				// var jBcounter = 0;
-
-    //             var aCounter = 0;
-    //             arrayOfFieldsToPopulate_0_TEST.map(function(fieldToPopulate){
-    //             	//var deepArrayIterator = 0;
-    //                 fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[jBcounter][Object.keys(mapStatusContainer__forView)[aCounter]];
-    //                 aCounter++;
-    //             });
-
-    //             jBcounter++;
-
-    //             var bCounter = 0;
-    //             arrayOfFieldsToPopulate_1_TEST.map(function(fieldToPopulate){
-    //                 fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[jBcounter][Object.keys(mapStatusContainer__forView)[bCounter]];
-    //                 bCounter++;
-    //             });
-
-    //             jBcounter++;
-
-    //             var cCounter = 0;
-    //             arrayOfFieldsToPopulate_2_TEST.map(function(fieldToPopulate){
-    //                 fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[jBcounter][Object.keys(mapStatusContainer__forView)[cCounter]];
-    //                 cCounter++;
-    //             });
-
-    //             jBcounter++;
-
-    //             var dCounter = 0;
-    //             arrayOfFieldsToPopulate_3_TEST.map(function(fieldToPopulate){
-    //                 fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[jBcounter][Object.keys(mapStatusContainer__forView)[dCounter]];
-    //                 dCounter++;
-    //             });
-
-                
-
-
-
             });
-
         }
 
         function displayAreaName(){
@@ -472,7 +413,7 @@ var outputObjectForBackend = {
 
         function putOutputArrayInHiddenInput(){
             //takes contents of outputObjectForBackend and populates #hiddenInputForBackend
-            var formattedOutput = JSON.stringify(outputObjectForBackend);
+            var formattedOutput = JSON.stringify(deepOutputObjectForBackend);
             //requested formatting is very specific
             hiddenInputForBackend.value = formattedOutput;
         }
