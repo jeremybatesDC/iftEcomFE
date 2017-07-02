@@ -207,26 +207,23 @@ var deepOutputObjectForBackend = [
 
         //already have a reference, but itS more general for etch-a-sketch reasons
 
-        var nodelistOfPanelsToPopulate = document.querySelectorAll('.iftMap__sectionData__wrapper');
+     
+        var arrayOfPanelsToPopulate = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper'));
 
-        var arrayOfPanelsToPopulate = Array.prototype.slice.call(nodelistOfPanelsToPopulate);
-
-        //i suck at searching withing a selection
-        console.log(nodelistOfPanelsToPopulate.length);
-
-
-        var arrayOfFieldsToPopulate_0_TEST = Array.prototype.slice.call(document.querySelectorAll('#iftPanel__0 span'));
-        var arrayOfFieldsToPopulate_1_TEST = Array.prototype.slice.call(document.querySelectorAll('#iftPanel__1 span'));
-        var arrayOfFieldsToPopulate_2_TEST = Array.prototype.slice.call(document.querySelectorAll('#iftPanel__2 span'));
-        var arrayOfFieldsToPopulate_3_TEST = Array.prototype.slice.call(document.querySelectorAll('#iftPanel__3 span'));
+        //there must be an easier way
+        var arrayOfArrayOfFieldsToPopulate = [];
 
 
-        //arrayOfArrayWhyNot -- this is dumb
-        var arrayOfArrayOfFieldsToPopulate = Array.prototype.slice.call([arrayOfFieldsToPopulate_0_TEST, arrayOfFieldsToPopulate_1_TEST,arrayOfFieldsToPopulate_2_TEST,arrayOfFieldsToPopulate_3_TEST]);
-        
+        //IMPORTANT!
+        arrayOfPanelsToPopulate.map(function(thisPanel){
+        	var arrayOfSpans = Array.prototype.slice.call(thisPanel.querySelectorAll('span'));
+        	arrayOfArrayOfFieldsToPopulate.push(arrayOfSpans);
+        });
 
-    
+      
 
+     
+     
         //DRAW THE MAP
         var svg = d3.select('#iftMap');
         var path = d3.geoPath();
