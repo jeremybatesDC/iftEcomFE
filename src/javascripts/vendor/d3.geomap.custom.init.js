@@ -5,6 +5,17 @@ var rawSectionData = {"InternalKey":null,"NavigationKey":null,"TotalItems":88,"o
 
 //using 'state' is the obvious word here, but that becomes confusing when dealing with a US State map... 
 //donT have to de-conflict vars -- may be cleaner to let namspacing do this
+//this has to be able to accept sub values and/or 
+
+
+
+//moving singular values here allows key/value pairs of mapStatusContainer to all be of the same shape (with up to 4);
+
+var singularViewOnlyStatusContainer = {
+    currentStateCode: ''
+    ,currentStateName: ''
+}
+
 var mapStatusContainer = {
     //first 5 required by backend
     currentProductId: ''
@@ -12,12 +23,52 @@ var mapStatusContainer = {
     ,currentComponentProductId: ''
     ,currentComponentProductShortName: ''
     ,currentMemberPrice: ''
-    //required by Main View
-    ,currentStateName: ''
     //required by Panel View
     ,currentZipCodes: ''
-    ,currentStateCode: ''
 }
+
+var mapStatusContainerDeepARRAY = [
+    {
+        currentProductId: '9999'
+    },
+    {
+        currentProductId: '666'
+    },
+    {
+        currentProductId: '333'
+    },
+    {
+        currentProductId: '111'
+    }
+]
+
+mapStatusContainerDeepARRAY.map(function(stateSection){
+    console.log(stateSection.currentProductId);
+});
+
+console.log(mapStatusContainerDeepARRAY[0].currentProductId);
+
+//could just make this have all 4, then worry about building it properly next
+var mapStatusContainerDeep = {
+    // 'sectionsForThisState': [{
+    //     {
+    //         currentProductId: '9999'
+    //     },
+    //     {
+    //         currentProductId: '777'
+    //     }
+    // }]
+    sectionsForThisState: {
+        section1: {
+            currentProductId: '9999'
+        }
+    }
+    
+};
+
+
+console.log(mapStatusContainerDeep.sectionsForThisState.section1.currentProductId);
+
 
 //these can be used later to filter mapStatusContainer at queryTime
 var fieldsRequiredByPanelView = [
@@ -107,34 +158,34 @@ var outputObjectForBackend = {
             if(event.currentTarget.tagName === 'path') {
                 //set status (maybe factor out)
                 
-                mapStatusContainer.currentStateCode = statefromD3.id;
-                mapStatusContainer.currentStateName = statefromD3.properties.stateName;
+                singularViewOnlyStatusContainer.currentStateCode = statefromD3.id;
+                singularViewOnlyStatusContainer.currentStateName = statefromD3.properties.stateName;
                 //THIS IS WHERE TO ADD STATE NAME TO MODEL
 
-                console.log('state has been clicked to set ' + mapStatusContainer.currentStateName);
+                console.log('state has been clicked to set ' + singularViewOnlyStatusContainer.currentStateName);
                 removeAddActiveState('thenAdd');
-                stateSelectMenu.value = mapStatusContainer.currentStateCode;
+                stateSelectMenu.value = singularViewOnlyStatusContainer.currentStateCode;
             }
             //if a dropdown item has been selected (select menu visible only on mobile)
             if(event.currentTarget.id === 'stateSelectMenu') {
 
                 //set status (maybe factor out)
-                mapStatusContainer.currentStateCode = stateSelectMenu.options[stateSelectMenu.selectedIndex].value;
+                singularViewOnlyStatusContainer.currentStateCode = stateSelectMenu.options[stateSelectMenu.selectedIndex].value;
                  //update model
-                mapStatusContainer.currentStateName = stateSelectMenu.options[stateSelectMenu.selectedIndex].text;
+                singularViewOnlyStatusContainer.currentStateName = stateSelectMenu.options[stateSelectMenu.selectedIndex].text;
                 //get state name from dropdown
 
 
                 removeAddActiveState('thenAdd');
-                console.log('select menu has been used to set ' + mapStatusContainer.currentStateName);
+                console.log('select menu has been used to set ' + singularViewOnlyStatusContainer.currentStateName);
             }
             //if an international item has been selected
             if(event.currentTarget.id === 'internationalSelectMenu'){
                 //set status (maybe factor out)
-                mapStatusContainer.currentStateCode = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].value;
-                mapStatusContainer.currentStateName = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].text;
+                singularViewOnlyStatusContainer.currentStateCode = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].value;
+                singularViewOnlyStatusContainer.currentStateName = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].text;
 
-                console.log('international menu has been used to set ' + mapStatusContainer.currentStateName);
+                console.log('international menu has been used to set ' + singularViewOnlyStatusContainer.currentStateName);
 
                 //clear dropdown list since not usState
                 stateSelectMenu.value = '';
@@ -156,7 +207,7 @@ var outputObjectForBackend = {
                 selectedItem.classList.remove('usState--SELECTED');
             }
             if(thenAdd){
-                document.getElementById(mapStatusContainer.currentStateCode).classList.add('usState--SELECTED');
+                document.getElementById(singularViewOnlyStatusContainer.currentStateCode).classList.add('usState--SELECTED');
             }
         }
 
@@ -170,7 +221,7 @@ var outputObjectForBackend = {
 
             //FILTER SectionItems array to make new subarray of matching state sections (max 4)
             var matchingSectionItems = rawSectionData.SectionItems.filter(function(sectionItem){
-                return sectionItem.StateCode === mapStatusContainer.currentStateCode 
+                return sectionItem.StateCode === singularViewOnlyStatusContainer.currentStateCode 
             });
             console.log('there are ' + matchingSectionItems.length + ' matching sections and here they are');
             console.log(matchingSectionItems);
@@ -178,15 +229,9 @@ var outputObjectForBackend = {
             //now, map function to that new subarray
             matchingSectionItems.map(function(matchingSectionItem){
                 var indexOfSectionItem = rawSectionData.SectionItems.indexOf(matchingSectionItem);
-                    //update the model IN -- try to set multiple properties at once and
-                    //IN THE ORDER IN WHICH I MUST OUTPUT THEM TO BACKEND
+                    
 
-                    (function setAOTprops(){
-                       //map the model to these values 
-                       //ensure same shape
-
-                       //donToverWriteTHEarray! just add to it... this might not be safe
-                       //mapStatusContainer = {}
+                    (function setAOTprops(){//map the model to these values & ensure same shape
                         mapStatusContainer.currentProductId = rawSectionData.SectionItems[indexOfSectionItem].ProductId;
                         mapStatusContainer.currentProductName = rawSectionData.SectionItems[indexOfSectionItem].ProductName;
                         mapStatusContainer.currentComponentProductId = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductId;
@@ -196,8 +241,6 @@ var outputObjectForBackend = {
                         //for display but not something the backend needs
                         mapStatusContainer.currentZipCodes = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
                     })();
-
-                    
 
                     //clear existing panel content
                     clearPanelsOfContent();
@@ -210,23 +253,11 @@ var outputObjectForBackend = {
                     //also, do disable and hide status clear?
 
 
-                    //test populate
-                    (function testPopulate(){
-                        document.getElementById('iftPanel__1__ProductName').innerHTML = mapStatusContainer.currentProductName;
-                        document.getElementById('iftPanel__1__MemberPrice').innerHTML = '$' + mapStatusContainer.currentMemberPrice;
-                            //test
-                        document.getElementById('iftPanel__1__Included').innerHTML = '$' + mapStatusContainer.currentComponentProductShortName;
-                            //just another test
-                        document.getElementById('iftPanel__1__ZipCodes').innerHTML = mapStatusContainer.currentZipCodes;
 
-                        //sometimes these values can be null or undefined, so watch out!!!
+                   
 
-                    })();
                 
-                    //skipping first section as demo
                     var aCounter = 0;
-
-                    //query the object to force create an array here [will need to have a list operation make this]
 
                     var mapStatusContainer__forView = {
                         currentProductName: mapStatusContainer.currentProductName
@@ -235,22 +266,29 @@ var outputObjectForBackend = {
                         ,currentZipCodes: mapStatusContainer.currentZipCodes
                     }
 
-                    arrayOfFieldsToPopulate_2.map(function(fieldToPopulate){
-                        //test. Really that property needs to be enumerated
+                    //try creating this with a list operation
+                    // var fiteredStatusContainerForView = fieldsRequiredByPanelView.filter(function(theFieldRequired){
+                    //     //we want to return an object, not an array
+                    //     return mapStatusContainer[Object.keys(theFieldRequired)]
 
-                        //instead of accessing mapStatusContainer, we want to access a filtered sub array for required for View
+                    // });
+
+                    // console.log('fiteredStatusContainerForView:');
+                    // console.log(fiteredStatusContainerForView);
+
+
+
+                    //and this will be an array of arrays because there are up to 4
+
+                    //THIS IS WORKING
+                    arrayOfFieldsToPopulate_2.map(function(fieldToPopulate){
 
                         console.log('the field to populate is ' + fieldToPopulate + 'and its this type: ' + typeof fieldToPopulate)
 
-                        //if (fieldsRequiredByPanelView.indexOf(fieldToPopulate) > -1) {
-                            fieldToPopulate.innerHTML = mapStatusContainer__forView[Object.keys(mapStatusContainer__forView)[aCounter]];
+                            //this is using the view keys to query - could do a filter inside here
+                            fieldToPopulate.innerHTML = mapStatusContainer[Object.keys(mapStatusContainer__forView)[aCounter]];
                             aCounter++;
-                        //}
-
-
-                        // fieldToPopulate.innerHTML = mapStatusContainer[Object.keys(mapStatusContainer)[aCounter]];
-                        //aCounter++;
-                        //Object.getOwnPropertyNames(mapStatusContainer)[0];
+    
                     });
 
                     
@@ -272,22 +310,16 @@ var outputObjectForBackend = {
 
 
 
-                    //log outputs in order backend expects
-                    ;(function testLogAllProps(){
-                        console.log('ProductId: ' + mapStatusContainer.currentProductId);
-                        console.log('ProductName: ' + mapStatusContainer.currentProductName);
-                        //often 0
-                        console.log('currentComponentProductId: ' + mapStatusContainer.currentComponentProductId);
-                        //often blank
-                        console.log('currentComponentProductShortName: ' + mapStatusContainer.currentComponentProductShortName);
-                        console.log('currentMemberPrice: $' + mapStatusContainer.currentMemberPrice);
-                   })();
+                   //CONSOLE HELPER 
+                   testLogAllProps();
+
+
             });
 
         }
 
         function displayAreaName(){
-            seletedStateDisplay.innerHTML = mapStatusContainer.currentStateName;
+            seletedStateDisplay.innerHTML = singularViewOnlyStatusContainer.currentStateName;
         }
 
 
@@ -417,4 +449,7 @@ var outputObjectForBackend = {
         Sys.WebForms.PageRequestManager.getInstance().add_endRequest(iftMapFunctionInit)   
     }
 
+    //log outputs in order backend expects
+    function testLogAllProps(){console.log('ProductId: ' + mapStatusContainer.currentProductId);console.log('ProductName: ' + mapStatusContainer.currentProductName);console.log('currentComponentProductId: ' + mapStatusContainer.currentComponentProductId);console.log('currentComponentProductShortName: ' + mapStatusContainer.currentComponentProductShortName);console.log('currentMemberPrice: $' + mapStatusContainer.currentMemberPrice);
+   }
 })();
