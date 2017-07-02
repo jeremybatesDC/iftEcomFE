@@ -222,9 +222,39 @@ var outputObjectForBackend = {
                         //sometimes these values can be null or undefined, so watch out!!!
 
                     })();
-                    
+                
+                    //skipping first section as demo
+                    var aCounter = 0;
+
+                    //query the object to force create an array here [will need to have a list operation make this]
+
+                    var mapStatusContainer__forView = {
+                        currentProductName: mapStatusContainer.currentProductName
+                        ,currentMemberPrice: mapStatusContainer.currentMemberPrice
+                        ,currentComponentProductShortName: mapStatusContainer.currentComponentProductShortName
+                        ,currentZipCodes: mapStatusContainer.currentZipCodes
+                    }
+
+                    arrayOfFieldsToPopulate_2.map(function(fieldToPopulate){
+                        //test. Really that property needs to be enumerated
+
+                        //instead of accessing mapStatusContainer, we want to access a filtered sub array for required for View
+
+                        console.log('the field to populate is ' + fieldToPopulate + 'and its this type: ' + typeof fieldToPopulate)
+
+                        //if (fieldsRequiredByPanelView.indexOf(fieldToPopulate) > -1) {
+                            fieldToPopulate.innerHTML = mapStatusContainer__forView[Object.keys(mapStatusContainer__forView)[aCounter]];
+                            aCounter++;
+                        //}
+
+
+                        // fieldToPopulate.innerHTML = mapStatusContainer[Object.keys(mapStatusContainer)[aCounter]];
+                        //aCounter++;
+                        //Object.getOwnPropertyNames(mapStatusContainer)[0];
+                    });
 
                     
+
                     /*
 
                     function fieldPopulation(arrayOfFieldsToPopulate, arrayOfvaluesToInsert){
@@ -243,7 +273,7 @@ var outputObjectForBackend = {
 
 
                     //log outputs in order backend expects
-                    (function testLogAllProps(){
+                    ;(function testLogAllProps(){
                         console.log('ProductId: ' + mapStatusContainer.currentProductId);
                         console.log('ProductName: ' + mapStatusContainer.currentProductName);
                         //often 0
