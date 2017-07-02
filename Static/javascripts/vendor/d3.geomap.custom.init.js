@@ -12,15 +12,28 @@ var mapStatusContainer = {
     ,currentComponentProductId: ''
     ,currentComponentProductShortName: ''
     ,currentMemberPrice: ''
-    //remaining only required by view
-    ,currentZipCodes: ''
+    //required by Main View
     ,currentStateName: ''
+    //required by Panel View
+    ,currentZipCodes: ''
     ,currentStateCode: ''
-    
 }
 
-//var mapStatusContainerFilteredByBackendNeeds mapStatusContainer.filter()
-//var mapStatusContainerFilteredByVIEWNeeds mapStatusContainer.filter()
+//these can be used later to filter mapStatusContainer at queryTime
+var fieldsRequiredByPanelView = [
+    'currentProductName'
+    ,'currentMemberPrice'
+    ,'currentComponentProductShortName'
+    ,'currentZipCodes'
+]
+//these can be used later to filter mapStatusContainer at queryTime
+var fieldsRequiredByBackend = [
+    'currentProductId'
+    ,'currentProductName'
+    ,'currentComponentProductId'
+    ,'currentComponentProductShortName'
+    ,'currentMemberPrice'
+]
 
 
 //needs to allow multiple sets
@@ -32,12 +45,6 @@ var outputObjectForBackend = {
     ,ComponentProductShortName: ''
     ,MemberPrice: ''
 }
-
-// I CAN FILTER BY FIELDS THAT THE BACKEND NEEDS AND FIELDS THAT THE VIEW NEEDS
-
- 
-//The fields should be comma separated and between two section selections separate with ‘|’ delimiter and these details frontend needs to save into another hidden field ‘IFTSavedSectionHiddenfield’
-
 
 
 
@@ -53,20 +60,16 @@ var outputObjectForBackend = {
         var iftMapButtonOpen = document.getElementById('iftMapButtonOpen');
         var iftMapButtonClose = document.getElementById('iftMapButtonCloseWrapper');
         var iftMapButtonCancel = document.getElementById('iftMapButtonCancel');
-
         var seletedStateDisplay = document.getElementById('seletedStateDisplay');
         var stateSelectMenu = document.getElementById('stateSelectMenu');
         var internationalSelectMenu = document.getElementById('internationalSelectMenu');
-
         var arrayOfSpansToPopulateEmpty = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper span'));
-
         var arrayOfCheckboxes = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper [type="checkbox"]'));
-
         var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
-
-
         var activeStateSting = 'iftMapWrapperOuter--ACTIVE-STATE';
 
+        //already have a reference, but itS more general for etch-a-sketch reasons
+        var arrayOfFieldsToPopulate_2 = Array.prototype.slice.call(document.querySelectorAll('#iftPanel__2 span'));
 
         //DRAW THE MAP
         var svg = d3.select('#iftMap');
@@ -74,7 +77,6 @@ var outputObjectForBackend = {
         d3.json('javascripts/data/topoJSONusCustom.json', function(error, data) {
         //d3.json('/Scripts/data/topoJSONusCustom.json', function(error, data) {
           if (error) throw error;
-
           svg.append('g')
             .attr('class', 'states iftMap__svg__g')
             .selectAll('path')
@@ -87,11 +89,7 @@ var outputObjectForBackend = {
             .attr('class', 'usState iftMap__svg__path')
             .attr('d', path)
             .on('click', function(thisState){
-                //the id is the only automatically exposed property on a d3 feature
-                //for other properties, go into .properties 
-   
                 mapHandlerFunction(event, thisState);
-                
             });
 
             svg.append('path')
@@ -99,13 +97,10 @@ var outputObjectForBackend = {
               .attr('d', path(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; })));
         });
 
-
-
         //(function getJSONfromHiddenInput(){})();
 
 
         
-
         function mapHandlerFunction(event, statefromD3){
             
             //if a state on the map has been clicked
@@ -214,37 +209,38 @@ var outputObjectForBackend = {
                     //how tightly coupled are statusAppliaction and fieldPopulation
                     //also, do disable and hide status clear?
 
-                    //populate
-                    //sometimes these values can be null or undefined, so watch out
 
-
-
-
-                    (function fieldPopulation(){
-                        //need a function that takes an array of values and pumps them into a insertPanelHTML function
-                        //make sure data is same shape
-
-
-                        //if there is a ComponentProduct (included product), that should goin the first panel
-
-                        /*ComponentParentProduct: "IFT"
-                        ComponentProductCode: "SEC02AC"
-                        ComponentProductId: 149
-                        ComponentProductShortName: "Northern California Section"
-                        */
-
-                         //also, are    TOOLTIPS    married to this include? I think so. Whew.
-                         
-                        //need a forceCheckThePreviousSection for includedSections
-
-                         //just a test
-                        document.getElementById('iftPanel__1__MemberPrice').innerHTML = '$' + mapStatusContainer.currentMemberPrice;
-                        //test
+                    //test populate
+                    (function testPopulate(){
                         document.getElementById('iftPanel__1__ProductName').innerHTML = mapStatusContainer.currentProductName;
-                        //just another test
-                        
+                        document.getElementById('iftPanel__1__MemberPrice').innerHTML = '$' + mapStatusContainer.currentMemberPrice;
+                            //test
+                        document.getElementById('iftPanel__1__Included').innerHTML = '$' + mapStatusContainer.currentComponentProductShortName;
+                            //just another test
                         document.getElementById('iftPanel__1__ZipCodes').innerHTML = mapStatusContainer.currentZipCodes;
+
+                        //sometimes these values can be null or undefined, so watch out!!!
+
                     })();
+                    
+
+                    
+                    /*
+
+                    function fieldPopulation(arrayOfFieldsToPopulate, arrayOfvaluesToInsert){
+                        //for each, loop, map, whatevs -- just brute force it
+                        //fieldToPopulate.innerHTML = valueToInsert;
+
+                    }
+
+                    fieldPopulation(arrayOfFieldsToPopulate_2, mapStatusContainer.keys.VALUES??);
+                    
+                    */
+
+
+
+
+
 
                     //log outputs in order backend expects
                     (function testLogAllProps(){

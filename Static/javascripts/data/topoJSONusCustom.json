@@ -762,7 +762,7 @@
             {
                 "idNumber": "30",
                 "stateName": "New Hampshire",
-                "id": "OK",
+                "id": "NH",
                 "type": "MultiPolygon",
                 "properties": {
                     "stateName": "New Hampshire"
