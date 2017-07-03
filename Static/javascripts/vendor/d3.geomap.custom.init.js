@@ -104,6 +104,17 @@ var mapStatusContainerDeepARRAY = [
     }
 ]
 
+//just manual for now
+function safeManualResetOfmapStatusContainerDeepARRAY(){
+	for(var i=0; i<mapStatusContainerDeepARRAY.length; i++){
+		mapStatusContainerDeepARRAY[i].currentProductId = '';
+		mapStatusContainerDeepARRAY[i].currentProductName = '';
+		mapStatusContainerDeepARRAY[i].currentComponentProductId = '';
+		mapStatusContainerDeepARRAY[i].currentComponentProductShortName = '';
+		mapStatusContainerDeepARRAY[i].currentMemberPrice = '';
+		mapStatusContainerDeepARRAY[i].currentZipCodes = '';
+	}	
+}
 
 
 // mapStatusContainerDeepARRAY.map(function(stateSection){
@@ -183,6 +194,7 @@ var deepOutputObjectForBackend = [
 	    ,MemberPrice: ''
 	}
 ]
+
 
 
 
@@ -314,12 +326,15 @@ var deepOutputObjectForBackend = [
         }
 
 
-        function displayDataOnPage(){            
+        function displayDataOnPage(){   
 
-   
+        	//start by clearing model?
+        	safeManualResetOfmapStatusContainerDeepARRAY();
+        	//then you can cheat and empty the spans as opposed to fetching from view
+        	clearPanelsOfContent();
+
             //called without arguments becuase that function queries the model
             displayAreaName();
-
 
             //FILTER SectionItems array to make new subarray of matching state sections (max 4)
             var matchingSectionItems = rawSectionData.SectionItems.filter(function(sectionItem){
@@ -334,21 +349,22 @@ var deepOutputObjectForBackend = [
                 var indexOfSectionItem = rawSectionData.SectionItems.indexOf(matchingSectionItem);
                 
 
-                (function setAOTprops(){
-
-                    //we have a deep array to push values into
-
+                (function setAllTheProperties(){
+                    //this is hardcoded, kinda. Better to do a list operation over properties
                     mapStatusContainerDeepARRAY[iteratorNum].currentProductId = rawSectionData.SectionItems[indexOfSectionItem].ProductId;
                     mapStatusContainerDeepARRAY[iteratorNum].currentProductName = rawSectionData.SectionItems[indexOfSectionItem].ProductName;
+                    mapStatusContainerDeepARRAY[iteratorNum].currentComponentProductId = rawSectionData.SectionItems[indexOfSectionItem].currentComponentProductId;
+                    mapStatusContainerDeepARRAY[iteratorNum].currentComponentProductShortName = rawSectionData.SectionItems[indexOfSectionItem].currentComponentProductShortName;
                     mapStatusContainerDeepARRAY[iteratorNum].currentMemberPrice = rawSectionData.SectionItems[indexOfSectionItem].MemberPrice;
+                    mapStatusContainerDeepARRAY[iteratorNum].currentZipCodes = rawSectionData.SectionItems[indexOfSectionItem].currentZipCodes;
 
                     iteratorNum++;
 
-                
                 })();
 
-                //clear existing panel content
-                clearPanelsOfContent();
+                //clear MODEL, THEN UPDATE PANEL CONTENT from clean modal
+
+                
 
                 //activate/disable/hide number of panels -- but maybe AFTER population?
                 applyStatusToPanels(matchingSectionItems.length);
