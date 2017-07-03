@@ -11,7 +11,8 @@ var singularViewOnlyStatusContainer = {
 }
 
 //YES, SHOWING THE FULL MODEL IS ANNOYING. BUT IT SHOWS THE SHAPE
-var mapStatusContainerDeepARRAY = [
+
+var mapStatusContainerDeepARRAYProto = [
     {
         currentProductId: ''
         ,currentProductName: ''
@@ -45,6 +46,8 @@ var mapStatusContainerDeepARRAY = [
         ,PostalCodeRange: ''
     }
 ]
+
+var mapStatusContainerDeepARRAY = Object.create(mapStatusContainerDeepARRAYProto);
 //just manual for now -- improve
 
 //CLEAR mapStatusContainerDeepARRAY
@@ -57,7 +60,26 @@ function safeManualResetOfmapStatusContainerDeepARRAY(){
 		item.currentMemberPrice = '';
 		item.PostalCodeRange = '';
 	});	
+
+	//below not working as expected
+	// console.log('before:');
+	// console.log(mapStatusContainerDeepARRAY);
+	// //recreate prototype
+	// mapStatusContainerDeepARRAY = Object.create(mapStatusContainerDeepARRAYProto);
+	// console.log('after:');
+	// console.log(mapStatusContainerDeepARRAY);
 }
+
+// function safeManualResetOfmapStatusContainerDeepARRAY__NEW__TEST(){
+// 	//recreate protoype 
+// 	console.log('safeManualResetOfmapStatusContainerDeepARRAY');
+// 	//wait, this is not in correct scope;
+// 	console.log('before:');
+// 	//why doest this say undefined?
+// 	console.log(mapStatusContainerDeepARRAY);
+// 	var mapStatusContainerDeepARRAY = Object.create(mapStatusContainerDeepARRAYProto);
+// 	console.log(mapStatusContainerDeepARRAYProto);
+// }
 
 function clearHiddenInputForBackend(){
     hiddenInputForBackend.value = '';
@@ -81,7 +103,7 @@ var fieldsRequiredByBackend = {
     ,currentMemberPrice: ''
 }
 
-var deepOutputObjectForBackend = [
+var DeepOutputObjectForBackendPROTO = [
 	{
 		ProductId: ''
 	    ,ProductName: ''
@@ -111,6 +133,10 @@ var deepOutputObjectForBackend = [
 	    ,MemberPrice: ''
 	}
 ]
+
+
+
+var deepOutputObjectForBackend = Object.create(DeepOutputObjectForBackendPROTO);
 
 var disposableDeepOutputObjectForBackend = Object.create(deepOutputObjectForBackend);
 console.log(disposableDeepOutputObjectForBackend);
@@ -131,7 +157,14 @@ var OutputObjectForBackend_1 =  Object.create(SinglePanelOutputObjectProto);
 var OutputObjectForBackend_2 =  Object.create(SinglePanelOutputObjectProto);
 var OutputObjectForBackend_3 =  Object.create(SinglePanelOutputObjectProto);
 
-
+//recreates the output object anew (consider that for view layer, as well)
+function unStageAll(){
+	//recreate protoype 
+	console.log('unStageAll');
+	//wait, this is not in correct scope;
+	var disposableDeepOutputObjectForBackend = Object.create(deepOutputObjectForBackend);
+	console.log(disposableDeepOutputObjectForBackend);
+}
 
 //CLEAR deepOutputObjectForBackend
 function safeManualResetOfdeepOutputObjectForBackend(){
@@ -487,14 +520,7 @@ function safeManualResetOfdeepOutputObjectForBackend(){
         }
 
 
-        //works as expected
-        //recreates the output object anew (consider that for view layer, as well)
-        function unStageAll(){
-        	//recreate protoype 
-        	console.log('unStageAll')
-        	var disposableDeepOutputObjectForBackend = Object.create(deepOutputObjectForBackend);
-			console.log(disposableDeepOutputObjectForBackend);
-        }
+
         
 
 
