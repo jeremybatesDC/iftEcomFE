@@ -159,7 +159,6 @@ function safeManualResetOfdeepOutputObjectForBackend(){
         var stateSelectMenu = document.getElementById('stateSelectMenu');
         var internationalSelectMenu = document.getElementById('internationalSelectMenu');
         var arrayOfSpansToPopulateEmpty = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper span'));
-        var arrayOfCheckboxes = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper [type="checkbox"]'));
         var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
         var activeStateSting = 'iftMapWrapperOuter--ACTIVE-STATE';
 
@@ -356,7 +355,7 @@ function safeManualResetOfdeepOutputObjectForBackend(){
             //then active the correct number to get the already-in-place markup to display
             //     1) add class of DISABLED-STATE to the iftMap__sectionData__wrapper
             //     2) add disabled=disabled attribute to the input
-            //     3) add checked=checked attrubute to input
+            //     3) add for component products, checked=checked attrubute to input
             // 
         }
         
@@ -459,31 +458,48 @@ function safeManualResetOfdeepOutputObjectForBackend(){
         // need another event on the CHECKBOXES to call putOutputArrayInHiddenInput() andOr emptyThat value
         // unchecking must un-store it
 
-        //conflicting references?
-        //var checkbox3Test = arrayOfCheckboxes[3];
 
-        //type error: node as opposed to array item
-        var checkbox3Test = document.getElementById('iftPanel__3__ProductName__Checkbox');
+
+
+        var nodeListOfCheckboxes = document.querySelectorAll('.iftMap__sectionData__wrapper [type="checkbox"]');
+        var arrayOfCheckboxes = Array.prototype.slice.call(nodeListOfCheckboxes);
 
         function stagePanelOfThisCheckbox(event){
 
         	//make this cleaner this is dirty knowledge -- looking for closest ancestor with wrapper class
-        	var referenceToParentPanel = checkbox3Test.parentElement.parentElement;
+        	var referenceToParentPanel = event.currentTarget.parentElement.parentElement;
+        	console.log(referenceToParentPanel);
 
-        	if(checkbox3Test.checked){        		
+        	if(event.currentTarget.checked){        		
         		stageOrUnstageThisPanel(event, referenceToParentPanel, 'stage');
         	}
         	else {
-        		stageOrUnstageThisPanel(event, referenceToParentPanel, 'uNstage');
+        		unStageAll();
+        		//stageOrUnstageThisPanel(event, referenceToParentPanel, 'uNstage');
         	}
 
         }
-        checkbox3Test.addEventListener('change', stagePanelOfThisCheckbox, false);
+
+        //attach listeners to checkboxes
+        //want to preserve this as a nodelist, so no list operations
+        for(var jB4601counter = 0; jB4601counter < nodeListOfCheckboxes.length; jB4601counter++){
+        	nodeListOfCheckboxes[jB4601counter].addEventListener('change', stagePanelOfThisCheckbox, false);
+        }
+
+
+        //works as expected
+        //recreates the output object anew (consider that for view layer, as well)
+        function unStageAll(){
+        	//recreate protoype 
+        	console.log('unStageAll')
+        	var disposableDeepOutputObjectForBackend = Object.create(deepOutputObjectForBackend);
+			console.log(disposableDeepOutputObjectForBackend);
+        }
+        
+
 
         //working As Expected
         function stageOrUnstageThisPanel(event, referenceToParentPanel, stageOrUnstage){
-
-        	console.log('the id of the panel passed to this function is :' + referenceToParentPanel.id);
 
         	if(stageOrUnstage==='stage'){
         		console.log('time To stage ' + referenceToParentPanel.id);
@@ -497,11 +513,22 @@ function safeManualResetOfdeepOutputObjectForBackend(){
 
         		console.log(OutputObjectForBackend_3);
 
-
         	}
+
         	else if(stageOrUnstage==='uNstage'){
-        		console.log('time To unStage This checkboxS panel');
-        		//that means removing its values from disposalable model (which will get thrown out only sometimes)
+        		console.log('time To unStage this panel ' + referenceToParentPanel.id);
+
+        		//manually clearing here. Will need a function
+
+
+        		OutputObjectForBackend_3.ProductId = '';
+        		OutputObjectForBackend_3.ProductName = '';
+        		OutputObjectForBackend_3.ComponentProductId = '';
+        		OutputObjectForBackend_3.ComponentProductShortName = '';
+        		OutputObjectForBackend_3.MemberPrice = '';
+        		
+        		console.log('which should now be blank');
+        		console.log(OutputObjectForBackend_3);
         	}
         	
         }
