@@ -298,9 +298,9 @@ function safeManualResetOfdeepOutputObjectForBackend(){
         	safeManualResetOfmapStatusContainerDeepARRAY();
 
         	//clear backendModel, as well, or else user can easily enter wrong state
-        	
+        	unStageAll();
 
-        	//clearCheckBoxes();
+        	clearCheckBoxes();
 
 
         	//then you can cheat and empty the spans as opposed to fetching from view
@@ -409,9 +409,9 @@ function safeManualResetOfdeepOutputObjectForBackend(){
 
         
         function clearCheckBoxes(){
-            // arrayOfCheckboxes.map(function(thisCheckBox){
-            //     thisCheckBox.checked = false;
-            // })
+            for(var yahLoopIt = 0; yahLoopIt < nodeListOfCheckboxes.length; yahLoopIt++){
+            	nodeListOfCheckboxes[yahLoopIt].checked = false;
+            }
             console.log('uncheck checkboxes');
         }
 
@@ -507,8 +507,7 @@ function safeManualResetOfdeepOutputObjectForBackend(){
         		stageOrUnstageThisPanel(event, referenceToParentPanel, 'stage');
         	}
         	else {
-        		unStageAll();
-        		//stageOrUnstageThisPanel(event, referenceToParentPanel, 'uNstage');
+        		stageOrUnstageThisPanel(event, referenceToParentPanel, 'uNstage');
         	}
 
         }
@@ -527,31 +526,75 @@ function safeManualResetOfdeepOutputObjectForBackend(){
         //working As Expected
         function stageOrUnstageThisPanel(event, referenceToParentPanel, stageOrUnstage){
 
+        	var indexOfThisPanel = arrayOfPanelsToPopulate.indexOf(referenceToParentPanel);
+
+        	var thisOutputObject;
+        	//baby steps
+
+        	switch(indexOfThisPanel) {
+        		case 0:
+        			thisOutputObject = OutputObjectForBackend_0;
+        			break;
+        		case 1:
+        			thisOutputObject = OutputObjectForBackend_1;
+        			break;
+        		case 2:
+        			thisOutputObject = OutputObjectForBackend_2;
+        			break;
+        		case 3:
+        			thisOutputObject = OutputObjectForBackend_3;
+        			break;
+        	}
+
+
+        	//iterating over object ideal as way to access these correctly
+
+
+
+        	//var thisOutputObject = 'OutputObjectForBackend_' +  indexOfThisPanel;
+
+
+
+        	
+        	
+        	
+
+        	
+
+        	//do i have to hand off 3 the 3
+
+        	console.log('index'+indexOfThisPanel);
+
+        	//get the index of and then populate/clear that backend objectS props
+        	//needs to be passed
+
         	if(stageOrUnstage==='stage'){
         		console.log('time To stage ' + referenceToParentPanel.id);
 
-        		//set values by product key
-        		OutputObjectForBackend_3.ProductId = '123456';
-        		OutputObjectForBackend_3.ProductName = 'Product Name From Disposable Prototype';
-        		OutputObjectForBackend_3.ComponentProductId = '987654';
-        		OutputObjectForBackend_3.ComponentProductShortName = 'Short Name!';
-        		OutputObjectForBackend_3.MemberPrice = '9.99';
+        		//grab values [from model?] by that common index and put them here
 
-        		console.log(OutputObjectForBackend_3);
+        		thisOutputObject.ProductId = mapStatusContainerDeepARRAY[indexOfThisPanel].currentProductId;
+        		thisOutputObject.ProductName = mapStatusContainerDeepARRAY[indexOfThisPanel].currentProductName;
+        		thisOutputObject.ComponentProductId = mapStatusContainerDeepARRAY[indexOfThisPanel].currentComponentProductId;
+        		thisOutputObject.ComponentProductShortName = mapStatusContainerDeepARRAY[indexOfThisPanel].currentComponentProductShortName;
+        		thisOutputObject.MemberPrice = mapStatusContainerDeepARRAY[indexOfThisPanel].currentMemberPrice;
+
+        		console.log(thisOutputObject);
 
         	}
 
+        	//for testing, currently calling the unstageALl function and not currently invoking this unstage
         	else if(stageOrUnstage==='uNstage'){
         		console.log('time To unStage this panel ' + referenceToParentPanel.id);
 
         		//manually clearing here. Will need a function
 
 
-        		OutputObjectForBackend_3.ProductId = '';
-        		OutputObjectForBackend_3.ProductName = '';
-        		OutputObjectForBackend_3.ComponentProductId = '';
-        		OutputObjectForBackend_3.ComponentProductShortName = '';
-        		OutputObjectForBackend_3.MemberPrice = '';
+        		thisOutputObject.ProductId = '';
+        		thisOutputObject.ProductName = '';
+        		thisOutputObject.ComponentProductId = '';
+        		thisOutputObject.ComponentProductShortName = '';
+        		thisOutputObject.MemberPrice = '';
         		
         		console.log('which should now be blank');
         		console.log(OutputObjectForBackend_3);
