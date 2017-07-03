@@ -18,7 +18,7 @@ var mapStatusContainerDeepARRAY = [
         ,currentComponentProductId: ''
         ,currentComponentProductShortName: ''
         ,currentMemberPrice: ''
-        ,currentZipCodes: ''
+        ,PostalCodeRange: ''
     },
     {
         currentProductId: ''
@@ -26,7 +26,7 @@ var mapStatusContainerDeepARRAY = [
         ,currentComponentProductId: ''
         ,currentComponentProductShortName: ''
         ,currentMemberPrice: ''
-        ,currentZipCodes: ''
+        ,PostalCodeRange: ''
     },
     {
         currentProductId: ''
@@ -34,7 +34,7 @@ var mapStatusContainerDeepARRAY = [
         ,currentComponentProductId: ''
         ,currentComponentProductShortName: ''
         ,currentMemberPrice: ''
-        ,currentZipCodes: ''
+        ,PostalCodeRange: ''
     },
     {
         currentProductId: ''
@@ -42,7 +42,7 @@ var mapStatusContainerDeepARRAY = [
         ,currentComponentProductId: ''
         ,currentComponentProductShortName: ''
         ,currentMemberPrice: ''
-        ,currentZipCodes: ''
+        ,PostalCodeRange: ''
     }
 ]
 //just manual for now -- improve
@@ -55,7 +55,7 @@ function safeManualResetOfmapStatusContainerDeepARRAY(){
 		item.currentComponentProductId = '';
 		item.currentComponentProductShortName = '';
 		item.currentMemberPrice = '';
-		item.currentZipCodes = '';
+		item.PostalCodeRange = '';
 	});	
 }
 
@@ -63,13 +63,14 @@ function clearHiddenInputForBackend(){
     hiddenInputForBackend.value = '';
 }
 
+
 //these can be used later to filter mapStatusContainer at queryTime
 //just using for keys, which is awkward but easier in the short term than filtering against a differently shaped thing
 var fieldsRequiredByPanelView = {
     currentProductName: ''
     ,currentMemberPrice: ''
     ,currentComponentProductShortName: ''
-    ,currentZipCodes: ''
+    ,PostalCodeRange: ''
 }
 
 var fieldsRequiredByBackend = {
@@ -110,6 +111,27 @@ var deepOutputObjectForBackend = [
 	    ,MemberPrice: ''
 	}
 ]
+
+var disposableDeepOutputObjectForBackend = Object.create(deepOutputObjectForBackend);
+console.log(disposableDeepOutputObjectForBackend);
+
+
+var SinglePanelOutputObjectProto = [
+	{
+		ProductId: ''
+	    ,ProductName: ''
+	    ,ComponentProductId: ''
+	    ,ComponentProductShortName: ''
+	    ,MemberPrice: ''
+	}
+]
+//might need to hard code these inputs since order will matter
+var OutputObjectForBackend_0 =  Object.create(SinglePanelOutputObjectProto);
+var OutputObjectForBackend_1 =  Object.create(SinglePanelOutputObjectProto);
+var OutputObjectForBackend_2 =  Object.create(SinglePanelOutputObjectProto);
+var OutputObjectForBackend_3 =  Object.create(SinglePanelOutputObjectProto);
+
+
 
 //CLEAR deepOutputObjectForBackend
 function safeManualResetOfdeepOutputObjectForBackend(){
@@ -213,6 +235,8 @@ function safeManualResetOfdeepOutputObjectForBackend(){
                 //clear dropdown list since not usState
                 stateSelectMenu.value = '';
                 removeAddActiveState();
+
+                clearCheckBoxes();
             }
 
             //OK, now display!
@@ -240,6 +264,13 @@ function safeManualResetOfdeepOutputObjectForBackend(){
 
         	//start by clearing model
         	safeManualResetOfmapStatusContainerDeepARRAY();
+
+        	//clear backendModel, as well, or else user can easily enter wrong state
+        	
+
+        	//clearCheckBoxes();
+
+
         	//then you can cheat and empty the spans as opposed to fetching from view
         	clearPanelsOfContent();
             //called without arguments becuase that function queries the model
@@ -249,8 +280,17 @@ function safeManualResetOfdeepOutputObjectForBackend(){
             var matchingSectionItems = rawSectionData.SectionItems.filter(function(sectionItem){
                 return sectionItem.StateCode === singularViewOnlyStatusContainer.currentStateCode 
             });
-            console.log('there are ' + matchingSectionItems.length + ' matching sections and here they are');
-            console.log(matchingSectionItems);
+
+            if(matchingSectionItems.length < 1){
+            	console.log('no matching sections');
+            	console.log('i should probably at minimum dislay a message of NoResults');
+            }
+            else {
+            	 console.log('there are ' + matchingSectionItems.length + ' matching sections and here they are');
+            	 console.log(matchingSectionItems);
+            }
+
+           
 
             //now, map function to that new subarray
             var iteratorNum = 0;
@@ -269,8 +309,8 @@ function safeManualResetOfdeepOutputObjectForBackend(){
 
                     mapStatusContainerDeepARRAY[iteratorNum].currentMemberPrice = rawSectionData.SectionItems[indexOfSectionItem].MemberPrice;
 
-                    //zip codes are view only right
-                    mapStatusContainerDeepARRAY[iteratorNum].currentZipCodes = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
+                    //field name is POSTALCODERANGE!!!!!
+                    mapStatusContainerDeepARRAY[iteratorNum].PostalCodeRange = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
 
                     iteratorNum++;
 
@@ -337,9 +377,10 @@ function safeManualResetOfdeepOutputObjectForBackend(){
 
         
         function clearCheckBoxes(){
-            arrayOfCheckboxes.map(function(thisCheckBox){
-                thisCheckBox.checked = false;
-            })
+            // arrayOfCheckboxes.map(function(thisCheckBox){
+            //     thisCheckBox.checked = false;
+            // })
+            console.log('uncheck checkboxes');
         }
 
        
@@ -417,6 +458,58 @@ function safeManualResetOfdeepOutputObjectForBackend(){
 
         // need another event on the CHECKBOXES to call putOutputArrayInHiddenInput() andOr emptyThat value
         // unchecking must un-store it
+
+        //conflicting references?
+        //var checkbox3Test = arrayOfCheckboxes[3];
+
+        //type error: node as opposed to array item
+        var checkbox3Test = document.getElementById('iftPanel__3__ProductName__Checkbox');
+
+        function stagePanelOfThisCheckbox(event){
+        	console.log(checkbox3Test.id);
+
+        	//make this cleaner this is dirty knowledge -- looking for closest ancestor with wrapper class
+        	var referenceToParentPanel = checkbox3Test.parentElement.parentElement;
+
+        	
+        	if(checkbox3Test.checked){        		
+        		stageOrUnstageThisPanel(event, referenceToParentPanel, 'stage');
+        	}
+        	
+        	else {
+        		stageOrUnstageThisPanel(event, referenceToParentPanel, 'uNstage');
+        	}
+
+        }
+        checkbox3Test.addEventListener('change', stagePanelOfThisCheckbox, false);
+
+        //working As Expected
+        function stageOrUnstageThisPanel(event, referenceToParentPanel, stageOrUnstage){
+
+        	console.log('the id of the panel passed to this function is :' + referenceToParentPanel.id);
+
+        	if(stageOrUnstage==='stage'){
+        		console.log('time To stage ' + referenceToParentPanel.id);
+
+        		//set values by product key
+        		OutputObjectForBackend_3.ProductId = '123456';
+        		OutputObjectForBackend_3.ProductName = 'Product Name From Disposable Prototype';
+        		OutputObjectForBackend_3.ComponentProductId = '987654';
+        		OutputObjectForBackend_3.ComponentProductShortName = 'Short Name!';
+        		OutputObjectForBackend_3.MemberPrice = '9.99';
+
+        		console.log(OutputObjectForBackend_3);
+
+
+        	}
+        	else if(stageOrUnstage==='uNstage'){
+        		console.log('time To unStage This checkboxS panel');
+        		//that means removing its values from disposalable model (which will get thrown out only sometimes)
+        	}
+
+
+        	
+        }
     
     }    
 
