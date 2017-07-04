@@ -27,7 +27,7 @@ function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProduc
 var mapStatusContainerDeepARRAY = [];
 function constructFreshMapStatusContainerModel(){
 	for(var iii = 0; iii < 4; iii++){
-		var thisConstructedThing = new MapStatusContainerDeepARRAY_CONSTRUCTOR('', '', '', '', '', '', '');
+		var thisConstructedThing = new MapStatusContainerDeepARRAY_CONSTRUCTOR(null, null, null, null, null, null, null);
 		mapStatusContainerDeepARRAY.push(thisConstructedThing);
 	}
 }
@@ -51,7 +51,7 @@ function OutputStatusContainerDeepARRAY_CONSTRUCTOR(ProductId, ProductName, Comp
 var deepOutputObjectForStaging = [];
 function constructFreshStagingContainerModel(){
 	for(var jjj = 0; jjj < 4; jjj++){
-		var thisConstructedThing = new OutputStatusContainerDeepARRAY_CONSTRUCTOR('', '', '', '', '');
+		var thisConstructedThing = new OutputStatusContainerDeepARRAY_CONSTRUCTOR(null, null, null, null, null);
 		deepOutputObjectForStaging.push(thisConstructedThing);
 	}
 }
@@ -116,9 +116,7 @@ var fieldsRequiredByBackend = {
      	var nodeListOfPanelsToPopulate = document.querySelectorAll('.iftMap__sectionData__wrapper')
         var arrayOfPanelsToPopulate = Array.prototype.slice.call(nodeListOfPanelsToPopulate);
 
-        //there must be an easier way
         var arrayOfArrayOfFieldsToPopulate = [];
-
 
         //IMPORTANT. CREATING SET OF SPANS FOR EACH PANEL
         arrayOfPanelsToPopulate.map(function(thisPanel){
@@ -189,6 +187,14 @@ var fieldsRequiredByBackend = {
         }
 
 
+        function unRevealPanels(){
+			//to preserve nodelist, must stick to for loops (foreach is buggy)
+			for(var qqq = 0; qqq < nodeListOfPanelsToPopulate.length; qqq++){
+				nodeListOfPanelsToPopulate[qqq].classList.add('iftMap__sectionData__wrapper--HIDDEN-STATE');
+			}
+			
+		}
+
 
         function removeAddActiveState(thenAdd){
             //query statecode
@@ -205,7 +211,9 @@ var fieldsRequiredByBackend = {
         }
 
 
-        function displayDataOnPage(){   
+        function displayDataOnPage(){
+
+
 
         	//start by clearing model
         	safeManualResetOfmapStatusContainerDeepARRAY();
@@ -214,10 +222,16 @@ var fieldsRequiredByBackend = {
         	safeManualResetOfOutputStatusContainerDeepARRAY();
 
 
+
+        	
+
+
         	clearCheckBoxes();
 
         	//could* cheat and empty the spans as opposed to fetching from view, but that could create bugs
         	clearPanelsOfContent();
+
+        	unRevealPanels();
 
 
             //called without arguments becuase that function queries the model
@@ -256,25 +270,84 @@ var fieldsRequiredByBackend = {
                 })();
 
                 //POPULATE REQUIRED FIELDS FROM MODEL
+                //THESE ARE JUST SPANS
                 (function populatePanels(){
                 	var slowCounter = 0;
+
+                	console.log(arrayOfArrayOfFieldsToPopulate);
+
+
+                	
+
+
 					arrayOfArrayOfFieldsToPopulate.forEach(function(arrayOfFieldsToPopulate){
+
+						
+
+
 						var cheapIterator = 0;
+
+
+
 						arrayOfFieldsToPopulate.map(function(fieldToPopulate){
+
+							
 							//this is querying model for items that the View requires
 							fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[slowCounter][Object.keys(fieldsRequiredByPanelView)[cheapIterator]];
+
+
+
 							cheapIterator++;
 						});
+
 						slowCounter++;
 					});
                 })();
                 
 
-				//activate/disable/hide THIS MANY number of panels
-                applyStatusToPanels(matchingSectionItems.length);
+                 //APPLY STATUS TO PANELS - BUT IF YOU ARE GOING TO POPULATE IT, THEN REVEAL IT
+                (function applyStatusPanels(){
+
+                	//reveal this many matchingSectionItems.length
+
+                	console.log('duh' + matchingSectionItems.length);
+
+                	//replace with more idomatic function later
+
+                	//reveal
+                	(function revealCorrectNumberOfPanels(){
+                		for(var jBjB = 0; jBjB < matchingSectionItems.length; jBjB++){
+	                		nodeListOfPanelsToPopulate[jBjB].classList.remove('iftMap__sectionData__wrapper--HIDDEN-STATE');
+	                	}
+                	})();
+                	
+                	//can this consult a view of the model? Man oh man. Otherwise I need to query the html itself
+
+
+
+        			// //what is the easiest way to tell if i'm empty? I should check the view
+
+           //      	var statusString_DISABLED = 'panelState--DISABLED';
+        			// var statusString_HIDDEN = 'iftMap__sectionData__wrapper--HIDDEN-STATE';
+
+        			// var statusString_TEST = 'panelState--AMAZING';
+
+        			// nodeListOfPanelsToPopulate[3].classList.add(statusString_DISABLED, statusString_HIDDEN);
+
+		        	// //anything hidden should ALSO ALWAYS be disabled
+
+
+
+		    	})();
+
+
+
+
 
             });
         }
+
+
 
         //works as expected
         function displayAreaName(){
@@ -289,26 +362,7 @@ var fieldsRequiredByBackend = {
             });
         }
 
-        //does nothing yet
-        function applyStatusToPanels(numberOfPanelsToActivate){
-            	 
-            console.log('activate this many panels ' + numberOfPanelsToActivate);
-           
-           //need the index of, not the raw
-
-            // matchingSectionItems.map(function(matchingSectionItem){
-            // 	console.log(matchingSectionItem);
-            // 	console.log('beep');
-            // });
-
-
-
-            //then active the correct number to get the already-in-place markup to display
-            //     1) add class of DISABLED-STATE to the iftMap__sectionData__wrapper
-            //     2) add disabled=disabled attribute to the input [so it cannot be accidentally altered by user]
-            //     3) add for component products, checked=checked attrubute to input
-            // 
-        }
+       
         
     
         //what do we do if the user chooses a different state AFTER selecting a checkbox? It should clear, i think.
@@ -418,13 +472,13 @@ var fieldsRequiredByBackend = {
         function stagePanelOfThisCheckbox(event){
 
         	//make this cleaner this is dirty knowledge -- looking for closest ancestor with wrapper class
-        	var referenceToParentPanel = event.currentTarget.parentElement.parentElement;
+        	var referenceToParentPanelOfCheckedInput = event.currentTarget.parentElement.parentElement;
 
         	if(event.currentTarget.checked){        		
-        		stageOrUnstageThisPanel(event, referenceToParentPanel, 'stage');
+        		stageOrUnstageThisPanel(event, referenceToParentPanelOfCheckedInput, 'stage');
         	}
         	else {
-        		stageOrUnstageThisPanel(event, referenceToParentPanel, 'uNstage');
+        		stageOrUnstageThisPanel(event, referenceToParentPanelOfCheckedInput, 'uNstage');
         	}
 
         }
@@ -441,9 +495,9 @@ var fieldsRequiredByBackend = {
 
 
         //working As Expected
-        function stageOrUnstageThisPanel(event, referenceToParentPanel, stageOrUnstage){
+        function stageOrUnstageThisPanel(event, referenceToParentPanelOfCheckedInput, stageOrUnstage){
 
-        	var indexOfThisPanel = arrayOfPanelsToPopulate.indexOf(referenceToParentPanel);
+        	var indexOfThisPanel = arrayOfPanelsToPopulate.indexOf(referenceToParentPanelOfCheckedInput);
         	var thisOutputObject = deepOutputObjectForStaging[indexOfThisPanel];
         	
         	
@@ -459,7 +513,7 @@ var fieldsRequiredByBackend = {
 	        		thisOutputObject.ComponentProductShortName = mapStatusContainerDeepARRAY[indexOfThisPanel].currentComponentProductShortName;
 	        		thisOutputObject.MemberPrice = mapStatusContainerDeepARRAY[indexOfThisPanel].currentMemberPrice;
 
-	        		console.log('time To stage ' + referenceToParentPanel.id);
+	        		console.log('time To stage ' + referenceToParentPanelOfCheckedInput.id);
 	        		console.log(thisOutputObject);
         		})();
         	}
@@ -469,7 +523,7 @@ var fieldsRequiredByBackend = {
         		//a key is being added
 
         		//this is a nodelist
-        		console.log('time To unStage this panel: ' + referenceToParentPanel.id);
+        		console.log('time To unStage this panel: ' + referenceToParentPanelOfCheckedInput.id);
 
 				UTILITY_clearThisObject(thisOutputObject);
         		
