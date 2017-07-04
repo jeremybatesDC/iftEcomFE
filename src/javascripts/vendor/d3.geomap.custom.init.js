@@ -200,8 +200,10 @@ var fieldsRequiredByBackend = {
 		//this also ties into functionality
 		function disablePanels(){
 			for(var qqq = 0; qqq < nodeListOfPanelsToPopulate.length; qqq++){
+				
 				nodeListOfCheckboxes[qqq].disabled = true;
-				nodeListOfPanelsToPopulate[qqq].classList.add('iftMap__sectionData__wrapper--DISABLED-STATE-STATE');
+
+				nodeListOfPanelsToPopulate[qqq].classList.add('iftMap__sectionData__wrapper--DISABLED-STATE');
 			}
 		}
 
@@ -253,8 +255,7 @@ var fieldsRequiredByBackend = {
             });
 
             if(matchingSectionItems.length < 1){
-            	console.log('no matching sections');
-            	console.log('i should probably at minimum dislay a message of NoResults');
+            	console.log('dislay a message of NoResults');
             }
 
            
@@ -284,29 +285,11 @@ var fieldsRequiredByBackend = {
                 (function populatePanels(){
                 	var slowCounter = 0;
 
-                	console.log(arrayOfArrayOfFieldsToPopulate);
-
-
-                	
-
-
 					arrayOfArrayOfFieldsToPopulate.forEach(function(arrayOfFieldsToPopulate){
-
-						
-
-
 						var cheapIterator = 0;
-
-
-
 						arrayOfFieldsToPopulate.map(function(fieldToPopulate){
-
-							
 							//this is querying model for items that the View requires
 							fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[slowCounter][Object.keys(fieldsRequiredByPanelView)[cheapIterator]];
-
-
-
 							cheapIterator++;
 						});
 
@@ -318,50 +301,38 @@ var fieldsRequiredByBackend = {
                  //APPLY STATUS TO PANELS - BUT IF YOU ARE GOING TO POPULATE IT, THEN REVEAL IT
                 (function applyStatusPanels(){
 
-                	//reveal this many matchingSectionItems.length
-
-                	console.log('duh' + matchingSectionItems.length);
-
-                	//replace with more idomatic function later
+                	//replace with more idomatic functions later
 
                 	//reveal
                 	(function revealCorrectNumberOfPanels(){
-                		for(var jBjB = 0; jBjB < matchingSectionItems.length; jBjB++){
-	                		nodeListOfPanelsToPopulate[jBjB].classList.remove('iftMap__sectionData__wrapper--HIDDEN-STATE');
+                		for(var i = 0; i < matchingSectionItems.length; i++){
+	                		nodeListOfPanelsToPopulate[i].classList.remove('iftMap__sectionData__wrapper--HIDDEN-STATE');
 	                	}
                 	})();
 
                 	//factor out -- disabling will do stuff other than css classes
-                	(function unDisableCorrectNumberOfPanels(){
-                		for(var jBjB = 0; jBjB < matchingSectionItems.length; jBjB++){
-	                		nodeListOfPanelsToPopulate[jBjB].classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
-	                		nodeListOfCheckboxes[jBjB].disabled = false;
-	                	}
+
+                	(function unDisablePanelsThatPassAFlagTest(){
+                		//if the this panelS data doesNot contain the flag
+          
+                		
+                			for(var i = 0; i < matchingSectionItems.length; i++){
+                				console.log(matchingSectionItems[i].ComponentParentProduct);
+
+                				//this is just happening in general....
+                				if(matchingSectionItems[i].ComponentParentProduct !== 'IFT'){
+                					nodeListOfPanelsToPopulate[i].classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
+		                			nodeListOfCheckboxes[i].disabled = false;
+                				}
+
+                				
+		                		
+		                	}
+                
+                		
                 	})();
 
-
-
-                	
-                	//can this consult a view of the model? Man oh man. Otherwise I need to query the html itself
-
-
-
-        			// //what is the easiest way to tell if i'm empty? I should check the view
-
-           //      	var statusString_DISABLED = 'panelState--DISABLED';
-        			// var statusString_HIDDEN = 'iftMap__sectionData__wrapper--HIDDEN-STATE';
-
-        			// var statusString_TEST = 'panelState--AMAZING';
-
-        			// nodeListOfPanelsToPopulate[3].classList.add(statusString_DISABLED, statusString_HIDDEN);
-
-		        	// //anything hidden should ALSO ALWAYS be disabled
-
-
-
 		    	})();
-
-
 
 
 
@@ -528,11 +499,15 @@ var fieldsRequiredByBackend = {
         		//grab values from model by that common index and put them here
         		// BETTER TO MAKE VIEW OF FIELDS THAT ONLY THE BACKEND NEEDS. HEN CAN MAP OVER THAT ARRAY TO SET VALUES MORE EFFICIENTLY 
         		(function grabValuesFromModel(){
+
+
         			thisOutputObject.ProductId = mapStatusContainerDeepARRAY[indexOfThisPanel].currentProductId;
 	        		thisOutputObject.ProductName = mapStatusContainerDeepARRAY[indexOfThisPanel].currentProductName;
 	        		thisOutputObject.ComponentProductId = mapStatusContainerDeepARRAY[indexOfThisPanel].currentComponentProductId;
 	        		thisOutputObject.ComponentProductShortName = mapStatusContainerDeepARRAY[indexOfThisPanel].currentComponentProductShortName;
 	        		thisOutputObject.MemberPrice = mapStatusContainerDeepARRAY[indexOfThisPanel].currentMemberPrice;
+
+
 
 	        		console.log('time To stage ' + referenceToParentPanelOfCheckedInput.id);
 	        		console.log(thisOutputObject);
@@ -545,10 +520,7 @@ var fieldsRequiredByBackend = {
 
         		//this is a nodelist
         		console.log('time To unStage this panel: ' + referenceToParentPanelOfCheckedInput.id);
-
 				UTILITY_clearThisObject(thisOutputObject);
-        		
-        		console.log('which should now be blank');
         		console.log(thisOutputObject);
         	}
         	
