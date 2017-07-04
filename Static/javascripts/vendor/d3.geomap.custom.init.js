@@ -11,7 +11,7 @@ var singularViewOnlyStatusContainer = {
 }
 
 //YES, SHOWING THE FULL MODEL IS ANNOYING. BUT IT SHOWS THE SHAPE
-var mapStatusContainerDeepARRAYProto = [
+var MapStatusContainerDeepARRAYProto = [
     {
         currentProductId: ''
         ,currentProductName: ''
@@ -55,49 +55,17 @@ var mapStatusContainerDeepARRAYProto = [
 
 //create one at the beginning, but keep it in a function to be used by clear
 
-var mapStatusContainerDeepARRAY;
-createNewmapStatusContainerDeepARRAYInGlobalSpace();
-
-function createNewmapStatusContainerDeepARRAYInGlobalSpace(){
-	mapStatusContainerDeepARRAY = Object.create(mapStatusContainerDeepARRAYProto);
-}
+var mapStatusContainerDeepARRAY = Object.create(MapStatusContainerDeepARRAYProto);
 
 //CLEAR mapStatusContainerDeepARRAY
 function safeManualResetOfmapStatusContainerDeepARRAY(){
+	//disposing and recreating the prototype here is no good. But it can be done deeper in the function and return the new array there inline
 	mapStatusContainerDeepARRAY.map(function(item){
-		item.currentProductId = '';
-		item.currentProductName = '';
-		item.currentComponentProductId = '';
-		item.currentComponentProductShortName = '';
-		item.currentMemberPrice = '';
-		item.currentPostalCodeRange = '';
-		item.currentComponentParentProduct = '';
+		clearThisObject(item);
 	});	
-
-	
-
-
-	// //below not working as expected
-	// console.log('before:');
-	// console.log(mapStatusContainerDeepARRAY);
-	
-	// //delete prototype and recreate?
-
-	// mapStatusContainerDeepARRAY = Object.create(mapStatusContainerDeepARRAYProto);
-	// console.log('after:');
-	// console.log(mapStatusContainerDeepARRAY);
 }
 
-// function safeManualResetOfmapStatusContainerDeepARRAY__NEW__TEST(){
-// 	//recreate protoype 
-// 	console.log('safeManualResetOfmapStatusContainerDeepARRAY');
-// 	//wait, this is not in correct scope;
-// 	console.log('before:');
-// 	//why doest this say undefined?
-// 	console.log(mapStatusContainerDeepARRAY);
-// 	var mapStatusContainerDeepARRAY = Object.create(mapStatusContainerDeepARRAYProto);
-// 	console.log(mapStatusContainerDeepARRAYProto);
-// }
+
 
 function clearHiddenInputForBackend(){
     hiddenInputForBackend.value = '';
@@ -175,6 +143,8 @@ var OutputObjectForBackend_1 =  Object.create(SinglePanelOutputObjectProto);
 var OutputObjectForBackend_2 =  Object.create(SinglePanelOutputObjectProto);
 var OutputObjectForBackend_3 =  Object.create(SinglePanelOutputObjectProto);
 
+var arrayOfOutputObjectsForBackend = [OutputObjectForBackend_0, OutputObjectForBackend_1, OutputObjectForBackend_2, OutputObjectForBackend_3];
+
 //recreates the output object anew (consider that for view layer, as well)
 function unStageAll(){
 	//recreate protoype 
@@ -187,13 +157,18 @@ function unStageAll(){
 //CLEAR deepOutputObjectForBackend
 function safeManualResetOfdeepOutputObjectForBackend(){
 	deepOutputObjectForBackend.map(function(item){
-		item.ProductId = '';
-		item.ProductName = '';
-		item.ComponentProductId = '';
-		item.ComponentProductShortName = '';
-		item.MemberPrice = '';
+		clearThisObject(item);
 	});	
 }
+
+function clearThisObject(objectToEnumerate){
+	for(var thisPropName in objectToEnumerate) {
+		objectToEnumerate[thisPropName] = '';
+	}
+}
+
+
+
 
 
 ;(function iftMapFunction(){
@@ -229,9 +204,6 @@ function safeManualResetOfdeepOutputObjectForBackend(){
         });
 
       
-
-     
-     
         //DRAW THE MAP
         var svg = d3.select('#iftMap');
         var path = d3.geoPath();
@@ -320,8 +292,7 @@ function safeManualResetOfdeepOutputObjectForBackend(){
 
         	clearCheckBoxes();
 
-
-        	//then you can cheat and empty the spans as opposed to fetching from view
+        	//could* cheat and empty the spans as opposed to fetching from view, but that could create bugs
         	clearPanelsOfContent();
 
 
@@ -403,7 +374,7 @@ function safeManualResetOfdeepOutputObjectForBackend(){
             console.log('activating panel -- BEEP');
             //then active the correct number to get the already-in-place markup to display
             //     1) add class of DISABLED-STATE to the iftMap__sectionData__wrapper
-            //     2) add disabled=disabled attribute to the input
+            //     2) add disabled=disabled attribute to the input [so it cannot be accidentally altered by user]
             //     3) add for component products, checked=checked attrubute to input
             // 
         }
@@ -543,60 +514,26 @@ function safeManualResetOfdeepOutputObjectForBackend(){
         function stageOrUnstageThisPanel(event, referenceToParentPanel, stageOrUnstage){
 
         	var indexOfThisPanel = arrayOfPanelsToPopulate.indexOf(referenceToParentPanel);
-
-        	var thisOutputObject;
-        	//baby steps
-
-        	switch(indexOfThisPanel) {
-        		case 0:
-        			thisOutputObject = OutputObjectForBackend_0;
-        			break;
-        		case 1:
-        			thisOutputObject = OutputObjectForBackend_1;
-        			break;
-        		case 2:
-        			thisOutputObject = OutputObjectForBackend_2;
-        			break;
-        		case 3:
-        			thisOutputObject = OutputObjectForBackend_3;
-        			break;
-        	}
-
-
-        	//iterating over object ideal as way to access these correctly
-
-
-
-        	//var thisOutputObject = 'OutputObjectForBackend_' +  indexOfThisPanel;
-
-
-
+        	var thisOutputObject = arrayOfOutputObjectsForBackend[indexOfThisPanel];
         	
-        	
-        	
-
-        	
-
-        	//do i have to hand off 3 the 3
-
-        	console.log('index'+indexOfThisPanel);
-
         	//get the index of and then populate/clear that backend objectS props
         	//needs to be passed
 
         	if(stageOrUnstage==='stage'){
-        		console.log('time To stage ' + referenceToParentPanel.id);
+        	
+        		//grab values from model by that common index and put them here
+        		// BETTER TO MAKE VIEW OF FIELDS THAT ONLY THE BACKEND.
+        		//THEN CAN MAP OVER THAT ARRAY TO SET VALUES MORE EFFICIENTLY 
+        		(function grabValuesFromModel(){
+        			thisOutputObject.ProductId = mapStatusContainerDeepARRAY[indexOfThisPanel].currentProductId;
+	        		thisOutputObject.ProductName = mapStatusContainerDeepARRAY[indexOfThisPanel].currentProductName;
+	        		thisOutputObject.ComponentProductId = mapStatusContainerDeepARRAY[indexOfThisPanel].currentComponentProductId;
+	        		thisOutputObject.ComponentProductShortName = mapStatusContainerDeepARRAY[indexOfThisPanel].currentComponentProductShortName;
+	        		thisOutputObject.MemberPrice = mapStatusContainerDeepARRAY[indexOfThisPanel].currentMemberPrice;
 
-        		//grab values [from model?] by that common index and put them here
-
-        		thisOutputObject.ProductId = mapStatusContainerDeepARRAY[indexOfThisPanel].currentProductId;
-        		thisOutputObject.ProductName = mapStatusContainerDeepARRAY[indexOfThisPanel].currentProductName;
-        		thisOutputObject.ComponentProductId = mapStatusContainerDeepARRAY[indexOfThisPanel].currentComponentProductId;
-        		thisOutputObject.ComponentProductShortName = mapStatusContainerDeepARRAY[indexOfThisPanel].currentComponentProductShortName;
-        		thisOutputObject.MemberPrice = mapStatusContainerDeepARRAY[indexOfThisPanel].currentMemberPrice;
-
-        		console.log(thisOutputObject);
-
+	        		console.log('time To stage ' + referenceToParentPanel.id);
+	        		console.log(thisOutputObject);
+        		})();
         	}
 
         	//for testing, currently calling the unstageALl function and not currently invoking this unstage
@@ -604,18 +541,18 @@ function safeManualResetOfdeepOutputObjectForBackend(){
         		console.log('time To unStage this panel ' + referenceToParentPanel.id);
 
         		//manually clearing here. Will need a function
-
-
-        		thisOutputObject.ProductId = '';
-        		thisOutputObject.ProductName = '';
-        		thisOutputObject.ComponentProductId = '';
-        		thisOutputObject.ComponentProductShortName = '';
-        		thisOutputObject.MemberPrice = '';
+    //     		for(var thisPropName in thisOutputObject) {
+				// 	thisOutputObject[thisPropName] = '';
+				// }
+				clearThisObject(thisOutputObject);
         		
         		console.log('which should now be blank');
         		console.log(OutputObjectForBackend_3);
         	}
-        	
+        	//FILTER SectionItems array to make new subarray of matching state sections (max 4)
+            var matchingSectionItems = rawSectionData.SectionItems.filter(function(sectionItem){
+                return sectionItem.StateCode === singularViewOnlyStatusContainer.currentStateCode 
+            });
         }
     
     }    
