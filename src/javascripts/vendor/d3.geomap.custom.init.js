@@ -2,56 +2,17 @@ var rawSectionData = {"InternalKey":null,"NavigationKey":null,"TotalItems":88,"o
 
 
 
-//using 'state' is the obvious word here, but that becomes confusing when dealing with a US State map... 
+function UTILITY_clearThisObject(objectToEnumerate){
+	for(var thisPropName in objectToEnumerate) {
+		objectToEnumerate[thisPropName] = '';
+	}
+}
 
 //moving singular values here allows key/value pairs of mapStatusContainer to all be of the same shape (with up to 4);
 var singularViewOnlyStatusContainer = {
     currentStateCode: ''
     ,currentStateName: ''
 }
-
-//YES, SHOWING THE FULL MODEL IS ANNOYING. BUT IT SHOWS THE SHAPE
-// var mapStatusContainerDeepARRAY = [
-//     {
-//         currentProductId: ''
-//         ,currentProductName: ''
-//         ,currentComponentProductId: ''
-//         ,currentComponentProductShortName: ''
-//         ,currentMemberPrice: ''
-//         ,currentPostalCodeRange: ''
-//         ,currentComponentParentProduct: ''
-//     },
-//     {
-//         currentProductId: ''
-//         ,currentProductName: ''
-//         ,currentComponentProductId: ''
-//         ,currentComponentProductShortName: ''
-//         ,currentMemberPrice: ''
-//         ,currentPostalCodeRange: ''
-//         ,currentComponentParentProduct: ''
-//     },
-//     {
-//         currentProductId: ''
-//         ,currentProductName: ''
-//         ,currentComponentProductId: ''
-//         ,currentComponentProductShortName: ''
-//         ,currentMemberPrice: ''
-//         ,currentPostalCodeRange: ''
-//         ,currentComponentParentProduct: ''
-//     },
-//     {
-//         currentProductId: ''
-//         ,currentProductName: ''
-//         ,currentComponentProductId: ''
-//         ,currentComponentProductShortName: ''
-//         ,currentMemberPrice: ''
-//         ,currentPostalCodeRange: ''
-//         ,currentComponentParentProduct: ''
-//     }
-// ]
-
-
-var cheapArrayOfFieldNames = ['currentProductId', 'currentProductName', 'currentComponentProductId', 'currentComponentProductShortName', 'currentMemberPrice', 'currentPostalCodeRange', 'currentComponentParentProduct']
 
 function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProductName, currentComponentProductId, currentComponentProductShortName, currentMemberPrice, currentPostalCodeRange, currentComponentParentProduct){
 	this.currentProductId = currentProductId;
@@ -61,45 +22,51 @@ function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProduc
     this.currentMemberPrice = currentMemberPrice;
     this.currentPostalCodeRange = currentPostalCodeRange;
     this.currentComponentParentProduct = currentPostalCodeRange;
-	// for(var dumbCounter = 0; dumbCounter < arrayOfFieldNames.length; dumbCounter++) {
-	// 	this.arrayOfFieldNames[dumbCounter] = arrayOfFieldNames[dumbCounter]
-	// }
-
 }
-
-//var newInstance = new MapStatusContainerDeepARRAY_CONSTRUCTOR('', '', '', '', '', '', '');
-//instantiate each 
+//MAX 4
 var mapStatusContainerDeepARRAY = [];
-console.log(typeof mapStatusContainerDeepARRAY);
-
-//max 4 right?
-for(var iii = 0; iii < 4; iii++){
-	var thisConstructedThing = new MapStatusContainerDeepARRAY_CONSTRUCTOR('', '', '', '', '', '', '');
-	mapStatusContainerDeepARRAY.push(thisConstructedThing);
-}
-
-console.log(mapStatusContainerDeepARRAY);
-
-// protypes here aren't what we want since we want a separate instance of flushable data -- NOT what is essentailly a class being inherited (so un-written-over values will still show, because prootypes are about links for behavior delegation)
-
-//just manual for now -- improve
-
-//create one at the beginning, but keep it in a function to be used by clear
-
-//CLEAR mapStatusContainerDeepARRAY
-function safeManualResetOfmapStatusContainerDeepARRAY(){
-	mapStatusContainerDeepARRAY = [];
-	console.log(mapStatusContainerDeepARRAY);
-
-	//max 4 right?
+function constructFreshMapStatusContainerModel(){
 	for(var iii = 0; iii < 4; iii++){
 		var thisConstructedThing = new MapStatusContainerDeepARRAY_CONSTRUCTOR('', '', '', '', '', '', '');
 		mapStatusContainerDeepARRAY.push(thisConstructedThing);
 	}
-
-	console.log(mapStatusContainerDeepARRAY);
-
 }
+function safeManualResetOfmapStatusContainerDeepARRAY(){
+	mapStatusContainerDeepARRAY = [];
+	constructFreshMapStatusContainerModel();
+}
+//call first time to create this model
+constructFreshMapStatusContainerModel();
+
+
+
+function OutputStatusContainerDeepARRAY_CONSTRUCTOR(ProductId, ProductName, ComponentProductId, ComponentProductShortName, MemberPrice){
+	this.ProductId = ProductId;
+	this.ProductName = ProductName;
+    this.ComponentProductId = ComponentProductId;
+    this.ComponentProductShortName = ComponentProductShortName;
+    this.MemberPrice = MemberPrice;
+}
+//max 4
+var deepOutputObjectForStaging = [];
+function constructFreshStagingContainerModel(){
+	for(var jjj = 0; jjj < 4; jjj++){
+		var thisConstructedThing = new OutputStatusContainerDeepARRAY_CONSTRUCTOR('', '', '', '', '');
+		deepOutputObjectForStaging.push(thisConstructedThing);
+	}
+}
+function safeManualResetOfOutputStatusContainerDeepARRAY(){
+	deepOutputObjectForStaging = [];
+	constructFreshStagingContainerModel();
+}
+//call first time to create this model
+constructFreshStagingContainerModel();
+
+
+//the staging container is a bit different because itS order matters and must be preserved
+
+
+
 
 
 
@@ -125,97 +92,6 @@ var fieldsRequiredByBackend = {
     ,currentMemberPrice: ''
 }
 
-
-
-
-
-var deepOutputObjectForStaging = [
-	{
-		ProductId: ''
-	    ,ProductName: ''
-	    ,ComponentProductId: ''
-	    ,ComponentProductShortName: ''
-	    ,MemberPrice: ''
-	},
-	{
-		ProductId: ''
-	    ,ProductName: ''
-	    ,ComponentProductId: ''
-	    ,ComponentProductShortName: ''
-	    ,MemberPrice: ''
-	},
-	{
-		ProductId: ''
-	    ,ProductName: ''
-	    ,ComponentProductId: ''
-	    ,ComponentProductShortName: ''
-	    ,MemberPrice: ''
-	},
-	{
-		ProductId: ''
-	    ,ProductName: ''
-	    ,ComponentProductId: ''
-	    ,ComponentProductShortName: ''
-	    ,MemberPrice: ''
-	}
-]
-
-//use constructor  not prototpye
-
-
-var SinglePanelOutputObjectProto = [
-	{
-		ProductId: ''
-	    ,ProductName: ''
-	    ,ComponentProductId: ''
-	    ,ComponentProductShortName: ''
-	    ,MemberPrice: ''
-	}
-]
-//might need to hard code these inputs since order will matter
-var OutputObjectForBackend_0 =  Object.create(SinglePanelOutputObjectProto);
-var OutputObjectForBackend_1 =  Object.create(SinglePanelOutputObjectProto);
-var OutputObjectForBackend_2 =  Object.create(SinglePanelOutputObjectProto);
-var OutputObjectForBackend_3 =  Object.create(SinglePanelOutputObjectProto);
-
-var arrayOfOutputObjectsForBackend = [OutputObjectForBackend_0, OutputObjectForBackend_1, OutputObjectForBackend_2, OutputObjectForBackend_3];
-
-
-//CLEAR deepOutputObjectForStaging
-function safeManualResetOfdeepOutputObjectForStaging(){
-
-	//i am treating an array like an object -- creating silent classic JS type error bug
-
-	console.log(deepOutputObjectForStaging);
-	for(var outPutItem in deepOutputObjectForStaging){
-
-		UTILITY_clearThisObject(outPutItem);
-	}
-	console.log(deepOutputObjectForStaging);
-
-	
-	//does a loop produce the same side effect?
-
-
-
-
-
-
-}
-
-
-//passing this an object with ALL raw data fields, and only clearing 
-function UTILITY_clearThisObject(objectToEnumerate){
-	//this more of less destroys the working instance of the prototype
-	console.log(objectToEnumerate);
-	for(var thisPropName in objectToEnumerate) {
-		//this is writing a new property
-		objectToEnumerate[thisPropName] = '';
-	}
-	//this is adding a new key to the object, which is scary and bad
-	console.log(objectToEnumerate);
-	//this could also return
-}
 
 
 ;(function iftMapFunction(){
@@ -335,7 +211,7 @@ function UTILITY_clearThisObject(objectToEnumerate){
         	safeManualResetOfmapStatusContainerDeepARRAY();
 
         	//unstage backendModel, as well, or else user can easily enter wrong state
-        	safeManualResetOfdeepOutputObjectForStaging();
+        	safeManualResetOfOutputStatusContainerDeepARRAY();
 
 
         	clearCheckBoxes();
@@ -543,7 +419,6 @@ function UTILITY_clearThisObject(objectToEnumerate){
 
         	//make this cleaner this is dirty knowledge -- looking for closest ancestor with wrapper class
         	var referenceToParentPanel = event.currentTarget.parentElement.parentElement;
-        	console.log(referenceToParentPanel);
 
         	if(event.currentTarget.checked){        		
         		stageOrUnstageThisPanel(event, referenceToParentPanel, 'stage');
@@ -569,7 +444,7 @@ function UTILITY_clearThisObject(objectToEnumerate){
         function stageOrUnstageThisPanel(event, referenceToParentPanel, stageOrUnstage){
 
         	var indexOfThisPanel = arrayOfPanelsToPopulate.indexOf(referenceToParentPanel);
-        	var thisOutputObject = arrayOfOutputObjectsForBackend[indexOfThisPanel];
+        	var thisOutputObject = deepOutputObjectForStaging[indexOfThisPanel];
         	
         	
 
