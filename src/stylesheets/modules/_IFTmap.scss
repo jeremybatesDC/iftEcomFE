@@ -268,10 +268,13 @@ a.iftMap__button--save{
   opacity: .3333;
   position: relative;
   cursor: not-allowed;
+  pointer-events:none;
+
   &:hover {
     cursor: not-allowed;
   }
   label {
+    pointer-events:none;
     cursor: not-allowed;
     &:hover {
       cursor: not-allowed;
@@ -279,7 +282,8 @@ a.iftMap__button--save{
   }
   input {
     //prevent click somehow;
-    //pointer-events:none;
+    z-index: -1;
+    pointer-events:none;
     cursor: not-allowed;
     &:hover {
       cursor: not-allowed;

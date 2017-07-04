@@ -21,7 +21,7 @@ function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProduc
     this.currentComponentProductShortName = currentComponentProductShortName;
     this.currentMemberPrice = currentMemberPrice;
     this.currentPostalCodeRange = currentPostalCodeRange;
-    this.currentComponentParentProduct = currentPostalCodeRange;
+    this.currentComponentParentProduct = currentComponentParentProduct;
 }
 //MAX 4
 var mapStatusContainerDeepARRAY = [];
@@ -81,7 +81,7 @@ var fieldsRequiredByPanelView = {
     currentProductName: ''
     ,currentMemberPrice: ''
     ,currentComponentProductShortName: ''
-    ,PostalCodeRange: ''
+    ,currentPostalCodeRange: ''
 }
 
 var fieldsRequiredByBackend = {
@@ -187,12 +187,22 @@ var fieldsRequiredByBackend = {
         }
 
 
+        //this is a css thing
         function unRevealPanels(){
 			//to preserve nodelist, must stick to for loops (foreach is buggy)
 			for(var qqq = 0; qqq < nodeListOfPanelsToPopulate.length; qqq++){
 				nodeListOfPanelsToPopulate[qqq].classList.add('iftMap__sectionData__wrapper--HIDDEN-STATE');
 			}
 			
+		}
+
+
+		//this also ties into functionality
+		function disablePanels(){
+			for(var qqq = 0; qqq < nodeListOfPanelsToPopulate.length; qqq++){
+				nodeListOfCheckboxes[qqq].disabled = true;
+				nodeListOfPanelsToPopulate[qqq].classList.add('iftMap__sectionData__wrapper--DISABLED-STATE-STATE');
+			}
 		}
 
 
@@ -232,7 +242,7 @@ var fieldsRequiredByBackend = {
         	clearPanelsOfContent();
 
         	unRevealPanels();
-
+        	disablePanels();
 
             //called without arguments becuase that function queries the model
             displayAreaName();
@@ -320,6 +330,17 @@ var fieldsRequiredByBackend = {
 	                		nodeListOfPanelsToPopulate[jBjB].classList.remove('iftMap__sectionData__wrapper--HIDDEN-STATE');
 	                	}
                 	})();
+
+                	//factor out -- disabling will do stuff other than css classes
+                	(function unDisableCorrectNumberOfPanels(){
+                		for(var jBjB = 0; jBjB < matchingSectionItems.length; jBjB++){
+	                		nodeListOfPanelsToPopulate[jBjB].classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
+	                		nodeListOfCheckboxes[jBjB].disabled = false;
+	                	}
+                	})();
+
+
+
                 	
                 	//can this consult a view of the model? Man oh man. Otherwise I need to query the html itself
 
