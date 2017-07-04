@@ -11,7 +11,6 @@ var singularViewOnlyStatusContainer = {
 }
 
 //YES, SHOWING THE FULL MODEL IS ANNOYING. BUT IT SHOWS THE SHAPE
-
 var mapStatusContainerDeepARRAYProto = [
     {
         currentProductId: ''
@@ -20,6 +19,7 @@ var mapStatusContainerDeepARRAYProto = [
         ,currentComponentProductShortName: ''
         ,currentMemberPrice: ''
         ,PostalCodeRange: ''
+        ,ComponentParentProduct: ''
     },
     {
         currentProductId: ''
@@ -28,6 +28,7 @@ var mapStatusContainerDeepARRAYProto = [
         ,currentComponentProductShortName: ''
         ,currentMemberPrice: ''
         ,PostalCodeRange: ''
+        ,ComponentParentProduct: ''
     },
     {
         currentProductId: ''
@@ -36,6 +37,7 @@ var mapStatusContainerDeepARRAYProto = [
         ,currentComponentProductShortName: ''
         ,currentMemberPrice: ''
         ,PostalCodeRange: ''
+        ,ComponentParentProduct: ''
     },
     {
         currentProductId: ''
@@ -44,11 +46,21 @@ var mapStatusContainerDeepARRAYProto = [
         ,currentComponentProductShortName: ''
         ,currentMemberPrice: ''
         ,PostalCodeRange: ''
+        ,ComponentParentProduct: ''
     }
 ]
 
-var mapStatusContainerDeepARRAY = Object.create(mapStatusContainerDeepARRAYProto);
+
 //just manual for now -- improve
+
+//create one at the beginning, but keep it in a function to be used by clear
+
+var mapStatusContainerDeepARRAY;
+createNewmapStatusContainerDeepARRAYInGlobalSpace();
+
+function createNewmapStatusContainerDeepARRAYInGlobalSpace(){
+	mapStatusContainerDeepARRAY = Object.create(mapStatusContainerDeepARRAYProto);
+}
 
 //CLEAR mapStatusContainerDeepARRAY
 function safeManualResetOfmapStatusContainerDeepARRAY(){
@@ -58,13 +70,19 @@ function safeManualResetOfmapStatusContainerDeepARRAY(){
 		item.currentComponentProductId = '';
 		item.currentComponentProductShortName = '';
 		item.currentMemberPrice = '';
-		item.PostalCodeRange = '';
+		item.currentPostalCodeRange = '';
+		item.currentComponentParentProduct = '';
 	});	
 
-	//below not working as expected
+	
+
+
+	// //below not working as expected
 	// console.log('before:');
 	// console.log(mapStatusContainerDeepARRAY);
-	// //recreate prototype
+	
+	// //delete prototype and recreate?
+
 	// mapStatusContainerDeepARRAY = Object.create(mapStatusContainerDeepARRAYProto);
 	// console.log('after:');
 	// console.log(mapStatusContainerDeepARRAY);
@@ -305,6 +323,8 @@ function safeManualResetOfdeepOutputObjectForBackend(){
 
         	//then you can cheat and empty the spans as opposed to fetching from view
         	clearPanelsOfContent();
+
+
             //called without arguments becuase that function queries the model
             displayAreaName();
 
@@ -334,15 +354,11 @@ function safeManualResetOfdeepOutputObjectForBackend(){
                     //this is hardcoded, kinda. Better to do a list operation over properties
                     mapStatusContainerDeepARRAY[iteratorNum].currentProductId = rawSectionData.SectionItems[indexOfSectionItem].ProductId;
                     mapStatusContainerDeepARRAY[iteratorNum].currentProductName = rawSectionData.SectionItems[indexOfSectionItem].ProductName;
-
                     mapStatusContainerDeepARRAY[iteratorNum].currentComponentProductId = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductId;
-
                     mapStatusContainerDeepARRAY[iteratorNum].currentComponentProductShortName = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductShortName;
-
                     mapStatusContainerDeepARRAY[iteratorNum].currentMemberPrice = rawSectionData.SectionItems[indexOfSectionItem].MemberPrice;
-
-                    //field name is POSTALCODERANGE!!!!!
-                    mapStatusContainerDeepARRAY[iteratorNum].PostalCodeRange = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
+                    mapStatusContainerDeepARRAY[iteratorNum].currentPostalCodeRange = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
+                    mapStatusContainerDeepARRAY[iteratorNum].currentComponentParentProduct = rawSectionData.SectionItems[indexOfSectionItem].ComponentParentProduct;
 
                     iteratorNum++;
 
