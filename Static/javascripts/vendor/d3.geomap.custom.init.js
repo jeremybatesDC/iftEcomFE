@@ -11,58 +11,94 @@ var singularViewOnlyStatusContainer = {
 }
 
 //YES, SHOWING THE FULL MODEL IS ANNOYING. BUT IT SHOWS THE SHAPE
-var MapStatusContainerDeepARRAYProto = [
-    {
-        currentProductId: ''
-        ,currentProductName: ''
-        ,currentComponentProductId: ''
-        ,currentComponentProductShortName: ''
-        ,currentMemberPrice: ''
-        ,PostalCodeRange: ''
-        ,ComponentParentProduct: ''
-    },
-    {
-        currentProductId: ''
-        ,currentProductName: ''
-        ,currentComponentProductId: ''
-        ,currentComponentProductShortName: ''
-        ,currentMemberPrice: ''
-        ,PostalCodeRange: ''
-        ,ComponentParentProduct: ''
-    },
-    {
-        currentProductId: ''
-        ,currentProductName: ''
-        ,currentComponentProductId: ''
-        ,currentComponentProductShortName: ''
-        ,currentMemberPrice: ''
-        ,PostalCodeRange: ''
-        ,ComponentParentProduct: ''
-    },
-    {
-        currentProductId: ''
-        ,currentProductName: ''
-        ,currentComponentProductId: ''
-        ,currentComponentProductShortName: ''
-        ,currentMemberPrice: ''
-        ,PostalCodeRange: ''
-        ,ComponentParentProduct: ''
-    }
-]
+// var mapStatusContainerDeepARRAY = [
+//     {
+//         currentProductId: ''
+//         ,currentProductName: ''
+//         ,currentComponentProductId: ''
+//         ,currentComponentProductShortName: ''
+//         ,currentMemberPrice: ''
+//         ,currentPostalCodeRange: ''
+//         ,currentComponentParentProduct: ''
+//     },
+//     {
+//         currentProductId: ''
+//         ,currentProductName: ''
+//         ,currentComponentProductId: ''
+//         ,currentComponentProductShortName: ''
+//         ,currentMemberPrice: ''
+//         ,currentPostalCodeRange: ''
+//         ,currentComponentParentProduct: ''
+//     },
+//     {
+//         currentProductId: ''
+//         ,currentProductName: ''
+//         ,currentComponentProductId: ''
+//         ,currentComponentProductShortName: ''
+//         ,currentMemberPrice: ''
+//         ,currentPostalCodeRange: ''
+//         ,currentComponentParentProduct: ''
+//     },
+//     {
+//         currentProductId: ''
+//         ,currentProductName: ''
+//         ,currentComponentProductId: ''
+//         ,currentComponentProductShortName: ''
+//         ,currentMemberPrice: ''
+//         ,currentPostalCodeRange: ''
+//         ,currentComponentParentProduct: ''
+//     }
+// ]
 
+
+var cheapArrayOfFieldNames = ['currentProductId', 'currentProductName', 'currentComponentProductId', 'currentComponentProductShortName', 'currentMemberPrice', 'currentPostalCodeRange', 'currentComponentParentProduct']
+
+function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProductName, currentComponentProductId, currentComponentProductShortName, currentMemberPrice, currentPostalCodeRange, currentComponentParentProduct){
+	this.currentProductId = currentProductId;
+	this.currentProductName = currentProductName;
+	this.currentComponentProductId = currentComponentProductId;
+    this.currentComponentProductShortName = currentComponentProductShortName;
+    this.currentMemberPrice = currentMemberPrice;
+    this.currentPostalCodeRange = currentPostalCodeRange;
+    this.currentComponentParentProduct = currentPostalCodeRange;
+	// for(var dumbCounter = 0; dumbCounter < arrayOfFieldNames.length; dumbCounter++) {
+	// 	this.arrayOfFieldNames[dumbCounter] = arrayOfFieldNames[dumbCounter]
+	// }
+
+}
+
+//var newInstance = new MapStatusContainerDeepARRAY_CONSTRUCTOR('', '', '', '', '', '', '');
+//instantiate each 
+var mapStatusContainerDeepARRAY = [];
+console.log(typeof mapStatusContainerDeepARRAY);
+
+//max 4 right?
+for(var iii = 0; iii < 4; iii++){
+	var thisConstructedThing = new MapStatusContainerDeepARRAY_CONSTRUCTOR('', '', '', '', '', '', '');
+	mapStatusContainerDeepARRAY.push(thisConstructedThing);
+}
+
+console.log(mapStatusContainerDeepARRAY);
+
+// protypes here aren't what we want since we want a separate instance of flushable data -- NOT what is essentailly a class being inherited (so un-written-over values will still show, because prootypes are about links for behavior delegation)
 
 //just manual for now -- improve
 
 //create one at the beginning, but keep it in a function to be used by clear
 
-var mapStatusContainerDeepARRAY = Object.create(MapStatusContainerDeepARRAYProto);
-
 //CLEAR mapStatusContainerDeepARRAY
 function safeManualResetOfmapStatusContainerDeepARRAY(){
-	//disposing and recreating the prototype here is no good. But it can be done deeper in the function and return the new array there inline
-	mapStatusContainerDeepARRAY.map(function(item){
-		clearThisObject(item);
-	});	
+	mapStatusContainerDeepARRAY = [];
+	console.log(mapStatusContainerDeepARRAY);
+
+	//max 4 right?
+	for(var iii = 0; iii < 4; iii++){
+		var thisConstructedThing = new MapStatusContainerDeepARRAY_CONSTRUCTOR('', '', '', '', '', '', '');
+		mapStatusContainerDeepARRAY.push(thisConstructedThing);
+	}
+
+	console.log(mapStatusContainerDeepARRAY);
+
 }
 
 
@@ -89,7 +125,11 @@ var fieldsRequiredByBackend = {
     ,currentMemberPrice: ''
 }
 
-var DeepOutputObjectForBackendPROTO = [
+
+
+
+
+var deepOutputObjectForStaging = [
 	{
 		ProductId: ''
 	    ,ProductName: ''
@@ -120,12 +160,7 @@ var DeepOutputObjectForBackendPROTO = [
 	}
 ]
 
-
-
-var deepOutputObjectForBackend = Object.create(DeepOutputObjectForBackendPROTO);
-
-var disposableDeepOutputObjectForBackend = Object.create(deepOutputObjectForBackend);
-console.log(disposableDeepOutputObjectForBackend);
+//use constructor  not prototpye
 
 
 var SinglePanelOutputObjectProto = [
@@ -145,30 +180,42 @@ var OutputObjectForBackend_3 =  Object.create(SinglePanelOutputObjectProto);
 
 var arrayOfOutputObjectsForBackend = [OutputObjectForBackend_0, OutputObjectForBackend_1, OutputObjectForBackend_2, OutputObjectForBackend_3];
 
-//recreates the output object anew (consider that for view layer, as well)
-function unStageAll(){
-	//recreate protoype 
-	console.log('unStageAll');
-	//wait, this is not in correct scope;
-	var disposableDeepOutputObjectForBackend = Object.create(deepOutputObjectForBackend);
-	console.log(disposableDeepOutputObjectForBackend);
+
+//CLEAR deepOutputObjectForStaging
+function safeManualResetOfdeepOutputObjectForStaging(){
+
+	//i am treating an array like an object -- creating silent classic JS type error bug
+
+	console.log(deepOutputObjectForStaging);
+	for(var outPutItem in deepOutputObjectForStaging){
+
+		UTILITY_clearThisObject(outPutItem);
+	}
+	console.log(deepOutputObjectForStaging);
+
+	
+	//does a loop produce the same side effect?
+
+
+
+
+
+
 }
 
-//CLEAR deepOutputObjectForBackend
-function safeManualResetOfdeepOutputObjectForBackend(){
-	deepOutputObjectForBackend.map(function(item){
-		clearThisObject(item);
-	});	
-}
 
-function clearThisObject(objectToEnumerate){
+//passing this an object with ALL raw data fields, and only clearing 
+function UTILITY_clearThisObject(objectToEnumerate){
+	//this more of less destroys the working instance of the prototype
+	console.log(objectToEnumerate);
 	for(var thisPropName in objectToEnumerate) {
+		//this is writing a new property
 		objectToEnumerate[thisPropName] = '';
 	}
+	//this is adding a new key to the object, which is scary and bad
+	console.log(objectToEnumerate);
+	//this could also return
 }
-
-
-
 
 
 ;(function iftMapFunction(){
@@ -190,14 +237,14 @@ function clearThisObject(objectToEnumerate){
 
         //already have a reference, but itS more general for etch-a-sketch reasons
 
-     
-        var arrayOfPanelsToPopulate = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper'));
+     	var nodeListOfPanelsToPopulate = document.querySelectorAll('.iftMap__sectionData__wrapper')
+        var arrayOfPanelsToPopulate = Array.prototype.slice.call(nodeListOfPanelsToPopulate);
 
         //there must be an easier way
         var arrayOfArrayOfFieldsToPopulate = [];
 
 
-        //IMPORTANT!
+        //IMPORTANT. CREATING SET OF SPANS FOR EACH PANEL
         arrayOfPanelsToPopulate.map(function(thisPanel){
         	var arrayOfSpans = Array.prototype.slice.call(thisPanel.querySelectorAll('span'));
         	arrayOfArrayOfFieldsToPopulate.push(arrayOfSpans);
@@ -287,8 +334,9 @@ function clearThisObject(objectToEnumerate){
         	//start by clearing model
         	safeManualResetOfmapStatusContainerDeepARRAY();
 
-        	//clear backendModel, as well, or else user can easily enter wrong state
-        	unStageAll();
+        	//unstage backendModel, as well, or else user can easily enter wrong state
+        	safeManualResetOfdeepOutputObjectForStaging();
+
 
         	clearCheckBoxes();
 
@@ -307,10 +355,6 @@ function clearThisObject(objectToEnumerate){
             if(matchingSectionItems.length < 1){
             	console.log('no matching sections');
             	console.log('i should probably at minimum dislay a message of NoResults');
-            }
-            else {
-            	 console.log('there are ' + matchingSectionItems.length + ' matching sections and here they are');
-            	 console.log(matchingSectionItems);
             }
 
            
@@ -335,7 +379,7 @@ function clearThisObject(objectToEnumerate){
 
                 })();
 
-                //POPULATE PANELS FROM MODEL
+                //POPULATE REQUIRED FIELDS FROM MODEL
                 (function populatePanels(){
                 	var slowCounter = 0;
 					arrayOfArrayOfFieldsToPopulate.forEach(function(arrayOfFieldsToPopulate){
@@ -350,7 +394,7 @@ function clearThisObject(objectToEnumerate){
                 })();
                 
 
-				//activate/disable/hide number of panels -- but maybe AFTER population?
+				//activate/disable/hide THIS MANY number of panels
                 applyStatusToPanels(matchingSectionItems.length);
 
             });
@@ -370,8 +414,19 @@ function clearThisObject(objectToEnumerate){
         }
 
         //does nothing yet
-        function applyStatusToPanels(numberOfPanels){
-            console.log('activating panel -- BEEP');
+        function applyStatusToPanels(numberOfPanelsToActivate){
+            	 
+            console.log('activate this many panels ' + numberOfPanelsToActivate);
+           
+           //need the index of, not the raw
+
+            // matchingSectionItems.map(function(matchingSectionItem){
+            // 	console.log(matchingSectionItem);
+            // 	console.log('beep');
+            // });
+
+
+
             //then active the correct number to get the already-in-place markup to display
             //     1) add class of DISABLED-STATE to the iftMap__sectionData__wrapper
             //     2) add disabled=disabled attribute to the input [so it cannot be accidentally altered by user]
@@ -386,7 +441,7 @@ function clearThisObject(objectToEnumerate){
 
         function putOutputArrayInHiddenInput(){
             //takes contents of outputObjectForBackend and populates #hiddenInputForBackend
-            var formattedOutput = JSON.stringify(deepOutputObjectForBackend);
+            var formattedOutput = JSON.stringify(deepOutputObjectForStaging);
             //requested formatting is very specific
             hiddenInputForBackend.value = formattedOutput;
         }
@@ -516,14 +571,12 @@ function clearThisObject(objectToEnumerate){
         	var indexOfThisPanel = arrayOfPanelsToPopulate.indexOf(referenceToParentPanel);
         	var thisOutputObject = arrayOfOutputObjectsForBackend[indexOfThisPanel];
         	
-        	//get the index of and then populate/clear that backend objectS props
-        	//needs to be passed
+        	
 
         	if(stageOrUnstage==='stage'){
         	
         		//grab values from model by that common index and put them here
-        		// BETTER TO MAKE VIEW OF FIELDS THAT ONLY THE BACKEND.
-        		//THEN CAN MAP OVER THAT ARRAY TO SET VALUES MORE EFFICIENTLY 
+        		// BETTER TO MAKE VIEW OF FIELDS THAT ONLY THE BACKEND NEEDS. HEN CAN MAP OVER THAT ARRAY TO SET VALUES MORE EFFICIENTLY 
         		(function grabValuesFromModel(){
         			thisOutputObject.ProductId = mapStatusContainerDeepARRAY[indexOfThisPanel].currentProductId;
 	        		thisOutputObject.ProductName = mapStatusContainerDeepARRAY[indexOfThisPanel].currentProductName;
@@ -536,23 +589,19 @@ function clearThisObject(objectToEnumerate){
         		})();
         	}
 
-        	//for testing, currently calling the unstageALl function and not currently invoking this unstage
         	else if(stageOrUnstage==='uNstage'){
-        		console.log('time To unStage this panel ' + referenceToParentPanel.id);
 
-        		//manually clearing here. Will need a function
-    //     		for(var thisPropName in thisOutputObject) {
-				// 	thisOutputObject[thisPropName] = '';
-				// }
-				clearThisObject(thisOutputObject);
+        		//a key is being added
+
+        		//this is a nodelist
+        		console.log('time To unStage this panel: ' + referenceToParentPanel.id);
+
+				UTILITY_clearThisObject(thisOutputObject);
         		
         		console.log('which should now be blank');
-        		console.log(OutputObjectForBackend_3);
+        		console.log(thisOutputObject);
         	}
-        	//FILTER SectionItems array to make new subarray of matching state sections (max 4)
-            var matchingSectionItems = rawSectionData.SectionItems.filter(function(sectionItem){
-                return sectionItem.StateCode === singularViewOnlyStatusContainer.currentStateCode 
-            });
+        	
         }
     
     }    
