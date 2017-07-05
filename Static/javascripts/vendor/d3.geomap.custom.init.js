@@ -66,8 +66,12 @@ constructFreshStagingContainerModel();
 //the staging container is a bit different because itS order matters and must be preserved
 
 
-
-
+function clearNoResultsMessageContainer(){
+	var noResultsMessageContainer = document.getElementById('noResultsMessageContainer');
+	if(noResultsMessageContainer !== null){
+		noResultsMessageContainer.remove();
+	}
+}
 
 
 function clearHiddenInputForBackend(){
@@ -190,8 +194,8 @@ var fieldsRequiredByBackend = {
         //this is a css thing
         function unRevealPanels(){
 			//to preserve nodelist, must stick to for loops (foreach is buggy)
-			for(var qqq = 0; qqq < nodeListOfPanelsToPopulate.length; qqq++){
-				nodeListOfPanelsToPopulate[qqq].classList.add('iftMap__sectionData__wrapper--HIDDEN-STATE');
+			for(var i = 0; i < nodeListOfPanelsToPopulate.length; i++){
+				nodeListOfPanelsToPopulate[i].classList.add('iftMap__sectionData__wrapper--HIDDEN-STATE');
 			}
 			
 		}
@@ -199,11 +203,11 @@ var fieldsRequiredByBackend = {
 
 		//this also ties into functionality
 		function disablePanels(){
-			for(var qqq = 0; qqq < nodeListOfPanelsToPopulate.length; qqq++){
+			for(var i = 0; i < nodeListOfPanelsToPopulate.length; i++){
 				
-				nodeListOfCheckboxes[qqq].disabled = true;
+				nodeListOfCheckboxes[i].disabled = true;
 
-				nodeListOfPanelsToPopulate[qqq].classList.add('iftMap__sectionData__wrapper--DISABLED-STATE');
+				nodeListOfPanelsToPopulate[i].classList.add('iftMap__sectionData__wrapper--DISABLED-STATE');
 			}
 		}
 
@@ -223,6 +227,7 @@ var fieldsRequiredByBackend = {
         }
 
 
+
         function displayDataOnPage(){
 
 
@@ -234,9 +239,7 @@ var fieldsRequiredByBackend = {
         	safeManualResetOfOutputStatusContainerDeepARRAY();
 
 
-
-        	
-
+        	clearNoResultsMessageContainer();
 
         	clearCheckBoxes();
 
@@ -256,6 +259,10 @@ var fieldsRequiredByBackend = {
 
             if(matchingSectionItems.length < 1){
             	console.log('dislay a message of NoResults');
+
+            	displayNoResultsMessage();
+            	//if append a message, would need to be overwritten. Could save it into field, but thatS hacky
+            	//where and how? Would need to be eliminated every time
             }
 
            
@@ -305,6 +312,7 @@ var fieldsRequiredByBackend = {
 
                 	//reveal
                 	(function revealCorrectNumberOfPanels(){
+                		//this is inside of a map, so donT try anything funny buster
                 		for(var i = 0; i < matchingSectionItems.length; i++){
 	                		nodeListOfPanelsToPopulate[i].classList.remove('iftMap__sectionData__wrapper--HIDDEN-STATE');
 	                	}
@@ -314,13 +322,11 @@ var fieldsRequiredByBackend = {
 
                 	(function unDisablePanelsThatPassAFlagTest(){
                 		//if the this panelS data doesNot contain the flag
-          
                 		
                 			for(var i = 0; i < matchingSectionItems.length; i++){
-                				console.log(matchingSectionItems[i].ComponentParentProduct);
 
-                				//this is just happening in general....
                 				if(matchingSectionItems[i].ComponentParentProduct !== 'IFT'){
+
                 					nodeListOfPanelsToPopulate[i].classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
 		                			nodeListOfCheckboxes[i].disabled = false;
                 				}
@@ -339,6 +345,24 @@ var fieldsRequiredByBackend = {
             });
         }
 
+
+        function displayNoResultsMessage(){
+        	var theMessageToDisplay = 'There are no sections available. Please choose another state';
+        	var messageContainer = document.createElement('div');
+        	messageContainer.id = 'noResultsMessageContainer';
+        	messageContainer.innerHTML = '<span>' + theMessageToDisplay + '</span>';
+
+
+
+        	var theReferenceElementInDoc = document.querySelectorAll('.dataDisplay__row > .col-sm-3')[0];
+        	//var parentElement = document.getElementById('parentElement');
+			
+			var theFirstChild = theReferenceElementInDoc.firstChild;
+
+
+        	theReferenceElementInDoc.insertBefore(messageContainer, theFirstChild);
+
+        }
 
 
         //works as expected
@@ -379,7 +403,7 @@ var fieldsRequiredByBackend = {
             console.log('uncheck checkboxes');
         }
 
-       
+       //going to have to create tooltips on demand
 
 
         //this must be called each time new data is put on the page to get a fresh nodelist
