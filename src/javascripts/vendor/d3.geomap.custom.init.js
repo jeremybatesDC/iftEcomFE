@@ -2,6 +2,9 @@ var rawSectionData = {"InternalKey":null,"NavigationKey":null,"TotalItems":88,"o
 
 
 
+//this is NOT running through Babel, so no ES6 (too bad, because forEach on nodelists is so nice)
+
+
 function UTILITY_clearThisObject(objectToEnumerate){
 	for(var thisPropName in objectToEnumerate) {
 		objectToEnumerate[thisPropName] = '';
@@ -36,6 +39,12 @@ function safeManualResetOfmapStatusContainerDeepARRAY(){
 	mapStatusContainerDeepARRAY = [];
 	constructFreshMapStatusContainerModel();
 }
+
+
+//hidden or not handled by iterator elsewhere
+// function PanelDisplayStatusARRAY_CONSTRUCTOR(hiddenOrNot, disabledOrNot, hasTipsOrNot){
+
+// }
 
 
 
@@ -187,7 +196,7 @@ var fieldsRequiredByBackend = {
             }
 
             //OK, now display!
-            displayDataOnPage();
+            writeDataToThePage();
         }
 
 
@@ -224,7 +233,7 @@ var fieldsRequiredByBackend = {
 
 
 
-        function displayDataOnPage(){
+        function writeDataToThePage(){
         	//start by clearing models
         	safeManualResetOfmapStatusContainerDeepARRAY();
         	safeManualResetOfOutputStatusContainerDeepARRAY();
@@ -232,9 +241,16 @@ var fieldsRequiredByBackend = {
         	//next, clear content (consult model)?
         	clearNoResultsMessageContainer();
         	clearCheckBoxes();
+
+
         	clearPanelsOfContentAndDataAttributes();
+
         	unRevealPanels();
         	disablePanels();
+
+
+        	removeAllToolTips();
+
 
             //called without arguments becuase that function queries the model
             displayAreaName();
@@ -276,77 +292,173 @@ var fieldsRequiredByBackend = {
                 //POPULATE REQUIRED FIELDS FROM MODEL
                 //THESE ARE JUST SPANS
                 var panelToAddStatusTo;
+                var valueForParentPanel;
 
                 (function populatePanels(){
                 	var slowCounter = 0;
-                	var valueForParentPanel;
                 	
-                	//for each loop
-					arrayOfArrayOfFieldsToPopulate.forEach(function(arrayOfFieldsToPopulate){
-						var i = 0;
+                	//this will always run 4 times
 
+                	//map inside a map
+                	arrayOfArrayOfFieldsToPopulate.map(function(arrayOfFieldsToPopulate){
+                	//everything in here will always run 4 times
+
+
+						var jBCounter = 0;
+
+						
 						arrayOfFieldsToPopulate.map(function(fieldToPopulate){
-
-							var valueForThisField = mapStatusContainerDeepARRAY[slowCounter][Object.keys(fieldsRequiredByPanelView)[i]];
+							//this will run for the # of fields required by view (currently 4)
+							var valueForThisField = mapStatusContainerDeepARRAY[slowCounter][Object.keys(fieldsRequiredByPanelView)[jBCounter]];
 							
-							//mark the panel with some extra data for status
-							valueForParentPanel = rawSectionData.SectionItems[indexOfSectionItem].ComponentParentProduct;
+							
 
 							//this is querying model for items that the View requires
 							fieldToPopulate.setAttribute('data-thisSpan', valueForThisField);
 							fieldToPopulate.innerHTML = valueForThisField
-							i++;
+							jBCounter++;
 						});
 
 
+
+						//mark the panel with some EXTRA DATA for status!!!
+
+						// THIS IS THE PART I THINK WAS NEEDED FOR TOOLTIPS
+
+						valueForParentPanel = rawSectionData.SectionItems[indexOfSectionItem].ComponentParentProduct;
+
+
+
+
+
+
+						// THIS IS WHERE WE CAN HOOK INTO 
+
+
+
+
+						//should USE DIFFERENT COUNTER B/C SO WE CAN MOVE THIS OUTSIDE OF THIS LOOP
 						panelToAddStatusTo = nodeListOfPanelsToPopulate[slowCounter];
 
 						//unDisable done here
-						applyStatusToThisPanel(panelToAddStatusTo, valueForParentPanel);
-							
+						//status can also be for tooltips
+						
+
+						(function addDataAttributes(){
+							panelToAddStatusTo.setAttribute('data-thispanel', valueForParentPanel);
+						})(panelToAddStatusTo);
+
+
+						console.log(panelToAddStatusTo.getAttribute('data-thispanel'));
+
+						
+					
 						slowCounter++;
-					});
 
-                })();
+                	});
+
+
+                })();//end of populate panels
+
+                //this will always be the last one
                 
-            });
-
-            revealCorrectNumberOfPanels(matchingSectionItems.length);
-
-        }
+                
+            });//end of matchingSectionItems.map
 
 
-        function applyStatusToThisPanel(thePanelInQuestion, valueOfPanelFlag){
-        	thePanelInQuestion.setAttribute('data-thispanel', valueOfPanelFlag);
-        	unDisableThisPanelIfFlag(thePanelInQuestion);
+			//PANEL STATUS STUFF HERE BECAUSE OF THE WAY THE EVENT LOOP IS
+			//QUERY THE DOM FOR THESE UNLESS PREPARED TO DO A PANEL STATE CONTAINER [hasTip, disabled, hidden]
+			revealCorrectNumberOfPanels(3);
+			decideDisabled();
+        	decideToolTip(0);
+            
+		
+			
 
-        }
+		
+        }//end of display data on the page function
 
 
-        function revealCorrectNumberOfPanels(numberOfMatchingSectionItems){
-        	if(numberOfMatchingSectionItems !== null && numberOfMatchingSectionItems > 0){
-        		for(var i = 0; i < numberOfMatchingSectionItems; i++){
+
+        function decideToolTip(indexOfSectionItem){
+        		
+        		
+    		//BIG CLUE
+
+    		console.log('this test should iterate through the panel SET once, but it is iterating through the panel set for each panel(kinda recursively)');
+    		//or vice versa. the point is itS the wrong way
+
+    		//test 1
+    		if(1 > 0) {
+
+    			var indexOfPanelInQuestion = 0;
+    			//pass this an INDEX!!!
+    			createToolTipOnDemand(indexOfPanelInQuestion);
+    			
+    		}
+
+    		
+    	}
+
+    	//does not do anything yet
+    	function decideDisabled(){
+    		if(2 > 1){
+    			console.log('decide whether disabled');
+    			//unDisableThisPanel(thePanelInQuestion);
+    		}
+
+    	}
+
+
+
+        function revealCorrectNumberOfPanels(numberOfPanelsToReveal){
+
+        	console.log('reveal this many panels' + numberOfPanelsToReveal);
+
+        	//if(numberOfMatchingSectionItems !== null && numberOfMatchingSectionItems > 0){
+        		for(var i = 0; i < numberOfPanelsToReveal; i++){
         			nodeListOfPanelsToPopulate[i].classList.remove('iftMap__sectionData__wrapper--HIDDEN-STATE');
         		}
-        	}
+        	//}
+    	}
+
+    	function unDisableThisPanel(panelToUnDisable){
+    		panelToUnDisable.classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
+    		panelToUnDisable.querySelectorAll('input')[0].disabled = false;
+    	
     	}
 
 
-    	function unDisableThisPanelIfFlag(panelToUnDisable){
-    		var dataForThisPanel = panelToUnDisable.getAttribute('data-thispanel');
-    		if(dataForThisPanel !== 'IFT'){
-    			panelToUnDisable.classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
-    			panelToUnDisable.querySelectorAll('input')[0].disabled = false;
-    		}
-    	}
+    	//this is getting called once on each matching section item PER matching section item. 
+        function createToolTipOnDemand(indexOfPanelInQuestion){
 
-        function createToolTipOnDemand(theReferenceElementInDoc){
+        	
+        	//hard Test code 
+			var theReferenceFormLabelElement = nodeListOfPanelsToPopulate[indexOfPanelInQuestion];('label')[0];
+
+        	//only show actual message on click
         	var theToolTipMessageToDisplay = 'I am am awesome tooltip';
+
         	var tooltipElement = document.createElement('i');
-        	tooltipElement.classList.add = 'niftyTooltip';
-        	tooltipElement.innerHTML = '<span>' + theToolTipMessageToDisplay + '</span>';
-        	var theFirstChild = theReferenceElementInDoc.firstChild;
-        	theReferenceElementInDoc.insertBefore(tooltipElement, theFirstChild);
+        	//cannot use classList yet bC there isnTone
+        	tooltipElement.setAttribute('class', 'niftyTooltip');
+
+        	tooltipElement.innerHTML = '<span class="tooltip__wrapper__span"><svg class="iconInfo" viewBox="0 0 32 32"><use xlink:href="#iconInfo"/></svg></span>';
+        	var theFirstChild = theReferenceFormLabelElement.firstChild;
+        	theReferenceFormLabelElement.insertBefore(tooltipElement, theFirstChild);
+        }
+
+
+        function removeAllToolTips(){
+        	var nodelistOfTooltips = document.querySelectorAll('.niftyTooltip');
+        	if(nodelistOfTooltips !== null){
+        		for(var i = 0; i < nodelistOfTooltips.length; i++){
+	        		nodelistOfTooltips[i].remove();
+	        	}
+        	}
+
+
+        	
         }
 
         function displayNoResultsMessage(){
@@ -383,6 +495,12 @@ var fieldsRequiredByBackend = {
             	nodeListOfCheckboxes[i].checked = false;
             }
         }
+        function clearDataFlags(){
+        	for(var i = 0; i < nodeListOfCheckboxes.length; i++){
+        		nodeListOfPanelsToPopulate[i].setAttribute('data-thispanel', '');
+        	}
+        }
+
 
         function stagePanelOfThisCheckbox(event){
         	//make this cleaner this is dirty knowledge -- looking for closest ancestor with wrapper class
