@@ -224,6 +224,18 @@ a.iftMap__button--save{
   @include break(max, $breakpoint-max-mobile){
     padding-bottom: $gutter-width;
   }
+
+  > label {
+    display: table;
+    input {
+      display: table-cell;
+    }
+    span {
+      display: table-cell;
+      padding-left:.5rem;
+    }
+  }
+
 }
 
 .iftMap__sectionData__detail {

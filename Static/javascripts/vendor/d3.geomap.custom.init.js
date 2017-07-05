@@ -269,7 +269,12 @@ var fieldsRequiredByBackend = {
 
             //now, map function to that new subarray
             var iteratorNum = 0;
+
+
             matchingSectionItems.map(function(matchingSectionItem){
+            //not all of these things should be in the map
+
+            	console.log(matchingSectionItem);
                 var indexOfSectionItem = rawSectionData.SectionItems.indexOf(matchingSectionItem);
                 
                 //SET PROPERTIES IN MODEL
@@ -291,58 +296,120 @@ var fieldsRequiredByBackend = {
                 //THESE ARE JUST SPANS
                 (function populatePanels(){
                 	var slowCounter = 0;
+                	var valueForParentPanel;
 
+                	//for each loop
 					arrayOfArrayOfFieldsToPopulate.forEach(function(arrayOfFieldsToPopulate){
 						var cheapIterator = 0;
+
+
 						arrayOfFieldsToPopulate.map(function(fieldToPopulate){
+
+							var valueForThisField = mapStatusContainerDeepARRAY[slowCounter][Object.keys(fieldsRequiredByPanelView)[cheapIterator]];
+							
+
+							//mark the panel with some extra data for status
+							valueForParentPanel = rawSectionData.SectionItems[indexOfSectionItem].ComponentParentProduct;
+
+
+							mapStatusContainerDeepARRAY[slowCounter][Object.keys(fieldsRequiredByPanelView)[cheapIterator]]
+
+
 							//this is querying model for items that the View requires
-							fieldToPopulate.innerHTML = mapStatusContainerDeepARRAY[slowCounter][Object.keys(fieldsRequiredByPanelView)[cheapIterator]];
+							fieldToPopulate.setAttribute('data-thisSpan', valueForThisField);
+							fieldToPopulate.innerHTML = valueForThisField
 							cheapIterator++;
 						});
+
+
+
+						var panelToAddStatusTo = nodeListOfPanelsToPopulate[slowCounter];
+
+
+						revealCorrectNumberOfPanels(matchingSectionItems.length);
+
+						applyStatusToThisPanel(panelToAddStatusTo, valueForParentPanel);
+
+						
 
 						slowCounter++;
 					});
                 })();
                 
 
+                //GET THESE OUT OF MAP -- statuses and display states can be assigned to things that arenT simply matching items
+
                  //APPLY STATUS TO PANELS - BUT IF YOU ARE GOING TO POPULATE IT, THEN REVEAL IT
-                (function applyStatusPanels(){
+       //          (function applyStatusPanels(){
 
-                	//replace with more idomatic functions later
-
-                	//reveal
-                	(function revealCorrectNumberOfPanels(){
-                		//this is inside of a map, so donT try anything funny buster
-                		for(var i = 0; i < matchingSectionItems.length; i++){
-	                		nodeListOfPanelsToPopulate[i].classList.remove('iftMap__sectionData__wrapper--HIDDEN-STATE');
-	                	}
-                	})();
-
-                	//factor out -- disabling will do stuff other than css classes
-
-                	(function unDisablePanelsThatPassAFlagTest(){
-                		//if the this panelS data doesNot contain the flag
-                		
-                			for(var i = 0; i < matchingSectionItems.length; i++){
-
-                				if(matchingSectionItems[i].ComponentParentProduct !== 'IFT'){
-
-                					nodeListOfPanelsToPopulate[i].classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
-		                			nodeListOfCheckboxes[i].disabled = false;
-                				}
-
-                				
-		                		
-		                	}
-                
-                		
-                	})();
-
-		    	})();
+                	
+        
+		    	// })();
 
 
 
             });
+
+        }
+
+
+        function applyStatusToThisPanel(panelToAddStatusTo, valueForParentPanel){
+
+        	panelToAddStatusTo.setAttribute('data-thispanel', valueForParentPanel);
+
+        	
+
+
+
+        	unDisablePanelsThatPassAFlagTest(panelToAddStatusTo);
+        }
+
+
+
+        function revealCorrectNumberOfPanels(numberOfMatchingSectionItems){
+        	console.log(numberOfMatchingSectionItems);
+
+        	if(numberOfMatchingSectionItems !== null && numberOfMatchingSectionItems > 0){
+        		for(var i = 0; i < numberOfMatchingSectionItems; i++){
+
+        			console.log(nodeListOfPanelsToPopulate[i]);
+        			nodeListOfPanelsToPopulate[i].classList.remove('iftMap__sectionData__wrapper--HIDDEN-STATE');
+        		
+        		//console.log('doh');
+        		}
+        	}
+
+    		//this is already inside of a map, so itS running on each match donT try anything funny buster
+    		
+
+    	}
+
+
+
+        
+    	function unDisablePanelsThatPassAFlagTest(panelToUnDisable){
+
+    		var dataForThisPanel = panelToUnDisable.getAttribute('data-thispanel');
+    		if(dataForThisPanel !== 'IFT'){
+    			console.log('undisable please');
+    			panelToUnDisable.classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
+
+    			panelToUnDisable.querySelectorAll('input')[0].disabled = false;
+
+    		}
+    		
+    	}
+
+
+
+
+        function createToolTipOnDemand(theReferenceElementInDoc){
+        	var theToolTipMessageToDisplay = 'I am am awesome tooltip';
+        	var tooltipElement = document.createElement('i');
+        	tooltipElement.classList.add = 'niftyTooltip';
+        	tooltipElement.innerHTML = '<span>' + theToolTipMessageToDisplay + '</span>';
+        	var theFirstChild = theReferenceElementInDoc.firstChild;
+        	theReferenceElementInDoc.insertBefore(tooltipElement, theFirstChild);
         }
 
 
@@ -351,17 +418,10 @@ var fieldsRequiredByBackend = {
         	var messageContainer = document.createElement('div');
         	messageContainer.id = 'noResultsMessageContainer';
         	messageContainer.innerHTML = '<span>' + theMessageToDisplay + '</span>';
-
-
-
         	var theReferenceElementInDoc = document.querySelectorAll('.dataDisplay__row > .col-sm-3')[0];
         	//var parentElement = document.getElementById('parentElement');
-			
 			var theFirstChild = theReferenceElementInDoc.firstChild;
-
-
         	theReferenceElementInDoc.insertBefore(messageContainer, theFirstChild);
-
         }
 
 
@@ -403,9 +463,10 @@ var fieldsRequiredByBackend = {
             console.log('uncheck checkboxes');
         }
 
+
+
+
        //going to have to create tooltips on demand
-
-
         //this must be called each time new data is put on the page to get a fresh nodelist
         (function collectTooltipsAndAttachListeners(){
             var arrayOfToolTipIcons = Array.prototype.slice.call(document.querySelectorAll('.iconInfo'));
@@ -560,3 +621,45 @@ var fieldsRequiredByBackend = {
     }
 
 })();
+
+
+
+
+            //     	(function createSetOfToolTipsOnDemand(){
+
+            //     		//reverse logic because we are creating, not un-hiding
+
+            //     		//also too many!!! one tooltip per matching section item man
+
+            //     		//var tempElementRefToPutTTon = null;
+
+            //     		var theReferenceElementInDoc = null;
+
+            //     		for(var i = 0; i < matchingSectionItems.length; i++){
+
+                			
+            // 				//example test
+            // 				if(matchingSectionItems[i].ComponentParentProduct == 'IFT'){
+            // 					//if there is a match, grab the reference to the panelS checkBoxLabel
+            // 					theReferenceElementInDoc = nodeListOfPanelsToPopulate[i].querySelectorAll('label')[0];
+            // 					//tempElementRefToPutTTon = theReferenceElementInDoc;
+            // 				}
+
+
+            				
+	           //      	}
+
+	           //      	if(theReferenceElementInDoc !== null){
+	           //      		console.log(theReferenceElementInDoc);
+        				// 	createToolTipOnDemand(theReferenceElementInDoc);
+        				// }
+
+
+	                	
+	           //      	//need a NODE
+	           //      	//createToolTipOnDemand(tempElementRefToPutTTon);
+
+
+
+            //     	})();
+
