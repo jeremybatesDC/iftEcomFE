@@ -26,17 +26,16 @@ function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProduc
 //MAX 4
 var mapStatusContainerDeepARRAY = [];
 function constructFreshMapStatusContainerModel(){
-	for(var iii = 0; iii < 4; iii++){
+	for(var i = 0; i < 4; i++){
 		var thisConstructedThing = new MapStatusContainerDeepARRAY_CONSTRUCTOR(null, null, null, null, null, null, null);
 		mapStatusContainerDeepARRAY.push(thisConstructedThing);
 	}
 }
+//doesNotNeedToBeGlobal,but itS more readable if the clear function is visually next to the model
 function safeManualResetOfmapStatusContainerDeepARRAY(){
 	mapStatusContainerDeepARRAY = [];
 	constructFreshMapStatusContainerModel();
 }
-//call first time to create this model
-constructFreshMapStatusContainerModel();
 
 
 
@@ -50,28 +49,20 @@ function OutputStatusContainerDeepARRAY_CONSTRUCTOR(ProductId, ProductName, Comp
 //max 4
 var deepOutputObjectForStaging = [];
 function constructFreshStagingContainerModel(){
-	for(var jjj = 0; jjj < 4; jjj++){
+	for(var i = 0; i < 4; i++){
 		var thisConstructedThing = new OutputStatusContainerDeepARRAY_CONSTRUCTOR(null, null, null, null, null);
 		deepOutputObjectForStaging.push(thisConstructedThing);
 	}
 }
+//doesNotNeedToBeGlobal,but itS more readable if the clear function is visually next to the model
 function safeManualResetOfOutputStatusContainerDeepARRAY(){
 	deepOutputObjectForStaging = [];
 	constructFreshStagingContainerModel();
 }
-//call first time to create this model
-constructFreshStagingContainerModel();
-
 
 //the staging container is a bit different because itS order matters and must be preserved
 
 
-function clearNoResultsMessageContainer(){
-	var noResultsMessageContainer = document.getElementById('noResultsMessageContainer');
-	if(noResultsMessageContainer !== null){
-		noResultsMessageContainer.remove();
-	}
-}
 
 
 function clearHiddenInputForBackend(){
@@ -103,6 +94,11 @@ var fieldsRequiredByBackend = {
 
     function iftMapFunctionInit(){
 
+    	//construct models
+		constructFreshMapStatusContainerModel();
+		constructFreshStagingContainerModel();
+
+
         //get reference to outermost wrapper to show/hide with modal
         var iftMapWrapperOuter = document.getElementById('iftMapWrapperOuter');
         var iftMapButtonOpen = document.getElementById('iftMapButtonOpen');
@@ -115,9 +111,13 @@ var fieldsRequiredByBackend = {
         var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
         var activeStateSting = 'iftMapWrapperOuter--ACTIVE-STATE';
 
+
+
         //already have a reference, but itS more general for etch-a-sketch reasons
 
      	var nodeListOfPanelsToPopulate = document.querySelectorAll('.iftMap__sectionData__wrapper')
+     	var nodeListOfCheckboxes = document.querySelectorAll('.iftMap__sectionData__wrapper [type="checkbox"]');
+
         var arrayOfPanelsToPopulate = Array.prototype.slice.call(nodeListOfPanelsToPopulate);
 
         var arrayOfArrayOfFieldsToPopulate = [];
@@ -229,23 +229,14 @@ var fieldsRequiredByBackend = {
 
 
         function displayDataOnPage(){
-
-
-
-        	//start by clearing model
+        	//start by clearing models
         	safeManualResetOfmapStatusContainerDeepARRAY();
-
-        	//unstage backendModel, as well, or else user can easily enter wrong state
         	safeManualResetOfOutputStatusContainerDeepARRAY();
 
-
+        	//next, clear content (consult model)?
         	clearNoResultsMessageContainer();
-
         	clearCheckBoxes();
-
-        	//could* cheat and empty the spans as opposed to fetching from view, but that could create bugs
-        	clearPanelsOfContent();
-
+        	clearPanelsOfContentAndDataAttributes();
         	unRevealPanels();
         	disablePanels();
 
@@ -257,20 +248,14 @@ var fieldsRequiredByBackend = {
                 return sectionItem.StateCode === singularViewOnlyStatusContainer.currentStateCode 
             });
 
+            //NO RESULTS
             if(matchingSectionItems.length < 1){
-            	console.log('dislay a message of NoResults');
-
             	displayNoResultsMessage();
-            	//if append a message, would need to be overwritten. Could save it into field, but thatS hacky
-            	//where and how? Would need to be eliminated every time
             }
 
-           
-
+       
             //now, map function to that new subarray
             var iteratorNum = 0;
-
-
             matchingSectionItems.map(function(matchingSectionItem){
             //not all of these things should be in the map
 
@@ -294,114 +279,70 @@ var fieldsRequiredByBackend = {
 
                 //POPULATE REQUIRED FIELDS FROM MODEL
                 //THESE ARE JUST SPANS
+                var panelToAddStatusTo;
+
                 (function populatePanels(){
                 	var slowCounter = 0;
                 	var valueForParentPanel;
-
+                	
                 	//for each loop
 					arrayOfArrayOfFieldsToPopulate.forEach(function(arrayOfFieldsToPopulate){
-						var cheapIterator = 0;
-
+						var i = 0;
 
 						arrayOfFieldsToPopulate.map(function(fieldToPopulate){
 
-							var valueForThisField = mapStatusContainerDeepARRAY[slowCounter][Object.keys(fieldsRequiredByPanelView)[cheapIterator]];
+							var valueForThisField = mapStatusContainerDeepARRAY[slowCounter][Object.keys(fieldsRequiredByPanelView)[i]];
 							
-
 							//mark the panel with some extra data for status
 							valueForParentPanel = rawSectionData.SectionItems[indexOfSectionItem].ComponentParentProduct;
-
-
-							mapStatusContainerDeepARRAY[slowCounter][Object.keys(fieldsRequiredByPanelView)[cheapIterator]]
-
 
 							//this is querying model for items that the View requires
 							fieldToPopulate.setAttribute('data-thisSpan', valueForThisField);
 							fieldToPopulate.innerHTML = valueForThisField
-							cheapIterator++;
+							i++;
 						});
 
 
+						panelToAddStatusTo = nodeListOfPanelsToPopulate[slowCounter];
 
-						var panelToAddStatusTo = nodeListOfPanelsToPopulate[slowCounter];
-
-
-						revealCorrectNumberOfPanels(matchingSectionItems.length);
-
+						//unDisable done here
 						applyStatusToThisPanel(panelToAddStatusTo, valueForParentPanel);
-
-						
-
+							
 						slowCounter++;
 					});
+
                 })();
                 
-
-                //GET THESE OUT OF MAP -- statuses and display states can be assigned to things that arenT simply matching items
-
-                 //APPLY STATUS TO PANELS - BUT IF YOU ARE GOING TO POPULATE IT, THEN REVEAL IT
-       //          (function applyStatusPanels(){
-
-                	
-        
-		    	// })();
-
-
-
             });
 
+            revealCorrectNumberOfPanels(matchingSectionItems.length);
+
         }
 
 
-        function applyStatusToThisPanel(panelToAddStatusTo, valueForParentPanel){
+        function applyStatusToThisPanel(thePanelInQuestion, valueOfPanelFlag){
+        	thePanelInQuestion.setAttribute('data-thispanel', valueOfPanelFlag);
+        	unDisableThisPanelIfFlag(thePanelInQuestion);
 
-        	panelToAddStatusTo.setAttribute('data-thispanel', valueForParentPanel);
-
-        	
-
-
-
-        	unDisablePanelsThatPassAFlagTest(panelToAddStatusTo);
         }
-
 
 
         function revealCorrectNumberOfPanels(numberOfMatchingSectionItems){
-        	console.log(numberOfMatchingSectionItems);
-
         	if(numberOfMatchingSectionItems !== null && numberOfMatchingSectionItems > 0){
         		for(var i = 0; i < numberOfMatchingSectionItems; i++){
-
-        			console.log(nodeListOfPanelsToPopulate[i]);
         			nodeListOfPanelsToPopulate[i].classList.remove('iftMap__sectionData__wrapper--HIDDEN-STATE');
-        		
-        		//console.log('doh');
         		}
         	}
-
-    		//this is already inside of a map, so itS running on each match donT try anything funny buster
-    		
-
     	}
 
 
-
-        
-    	function unDisablePanelsThatPassAFlagTest(panelToUnDisable){
-
+    	function unDisableThisPanelIfFlag(panelToUnDisable){
     		var dataForThisPanel = panelToUnDisable.getAttribute('data-thispanel');
     		if(dataForThisPanel !== 'IFT'){
-    			console.log('undisable please');
     			panelToUnDisable.classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
-
     			panelToUnDisable.querySelectorAll('input')[0].disabled = false;
-
     		}
-    		
     	}
-
-
-
 
         function createToolTipOnDemand(theReferenceElementInDoc){
         	var theToolTipMessageToDisplay = 'I am am awesome tooltip';
@@ -412,37 +353,83 @@ var fieldsRequiredByBackend = {
         	theReferenceElementInDoc.insertBefore(tooltipElement, theFirstChild);
         }
 
-
         function displayNoResultsMessage(){
         	var theMessageToDisplay = 'There are no sections available. Please choose another state';
         	var messageContainer = document.createElement('div');
         	messageContainer.id = 'noResultsMessageContainer';
         	messageContainer.innerHTML = '<span>' + theMessageToDisplay + '</span>';
         	var theReferenceElementInDoc = document.querySelectorAll('.dataDisplay__row > .col-sm-3')[0];
-        	//var parentElement = document.getElementById('parentElement');
 			var theFirstChild = theReferenceElementInDoc.firstChild;
         	theReferenceElementInDoc.insertBefore(messageContainer, theFirstChild);
         }
 
-
-        //works as expected
         function displayAreaName(){
             seletedStateDisplay.innerHTML = singularViewOnlyStatusContainer.currentStateName;
         }
 
-
-        //works as expected, but regression test this -- vue would be good for this
-        function clearPanelsOfContent(){
+        function clearPanelsOfContentAndDataAttributes(){
+        	//force clears without consulting model
             arrayOfSpansToPopulateEmpty.map(function(thisSpan){
                 thisSpan.innerHTML = '';
+                thisSpan.setAttribute('data-thisspan', '');
             });
         }
 
-       
-        
-    
-        //what do we do if the user chooses a different state AFTER selecting a checkbox? It should clear, i think.
-        //OR we could disable clicking on the map while active panel product checked
+       function clearNoResultsMessageContainer(){
+       		//query this here, not at the top
+			var noResultsMessageContainer = document.getElementById('noResultsMessageContainer');
+			if(noResultsMessageContainer !== null){
+				noResultsMessageContainer.remove();
+			}
+		}
+        function clearCheckBoxes(){
+            for(var i = 0; i < nodeListOfCheckboxes.length; i++){
+            	nodeListOfCheckboxes[i].checked = false;
+            }
+        }
+
+        function stagePanelOfThisCheckbox(event){
+        	//make this cleaner this is dirty knowledge -- looking for closest ancestor with wrapper class
+        	var referenceToParentPanelOfCheckedInput = event.currentTarget.parentElement.parentElement;
+        	if(event.currentTarget.checked){        		
+        		stageOrUnstageThisPanel(event, referenceToParentPanelOfCheckedInput, 'stage');
+        	}
+        	else {
+        		stageOrUnstageThisPanel(event, referenceToParentPanelOfCheckedInput, 'uNstage');
+        	}
+
+        }
+
+  
+        function stageOrUnstageThisPanel(event, referenceToParentPanelOfCheckedInput, stageOrUnstage){
+
+        	var indexOfThisPanel = arrayOfPanelsToPopulate.indexOf(referenceToParentPanelOfCheckedInput);
+        	var thisOutputObject = deepOutputObjectForStaging[indexOfThisPanel];
+        	
+        	if(stageOrUnstage==='stage'){
+        		//grab values from model by that common index and put them here
+        		// BETTER TO MAKE VIEW OF FIELDS THAT ONLY THE BACKEND NEEDS. THEN CAN MAP OVER THAT ARRAY TO SET VALUES MORE EFFICIENTLY 
+        		(function grabValuesFromModel(){
+
+        			thisOutputObject.ProductId = mapStatusContainerDeepARRAY[indexOfThisPanel].currentProductId;
+	        		thisOutputObject.ProductName = mapStatusContainerDeepARRAY[indexOfThisPanel].currentProductName;
+	        		thisOutputObject.ComponentProductId = mapStatusContainerDeepARRAY[indexOfThisPanel].currentComponentProductId;
+	        		thisOutputObject.ComponentProductShortName = mapStatusContainerDeepARRAY[indexOfThisPanel].currentComponentProductShortName;
+	        		thisOutputObject.MemberPrice = mapStatusContainerDeepARRAY[indexOfThisPanel].currentMemberPrice;
+
+	        		console.log('time To stage ' + referenceToParentPanelOfCheckedInput.id);
+	        		console.log(thisOutputObject);
+        		})();
+        	}
+
+        	else if(stageOrUnstage==='uNstage'){
+        		//this is a nodelist
+        		console.log('time To unStage this panel: ' + referenceToParentPanelOfCheckedInput.id);
+				UTILITY_clearThisObject(thisOutputObject);
+        		console.log(thisOutputObject);
+        	}
+        	
+        }
 
 
         function putOutputArrayInHiddenInput(){
@@ -455,13 +442,6 @@ var fieldsRequiredByBackend = {
 
 
 
-        
-        function clearCheckBoxes(){
-            for(var yahLoopIt = 0; yahLoopIt < nodeListOfCheckboxes.length; yahLoopIt++){
-            	nodeListOfCheckboxes[yahLoopIt].checked = false;
-            }
-            console.log('uncheck checkboxes');
-        }
 
 
 
@@ -499,117 +479,34 @@ var fieldsRequiredByBackend = {
         }
 
 
-
-        
-
-
-        //ON CHECK EVENT, call populateBackendObject
-        //on UNCHECK EVENT, clear the backend object
-
-        //need another event on the CHECKBOXES to call putOutputArrayInHiddenInput() andOr emptyThat value
-        // unchecking must un-store it
-
-
-        //CLOSING MODAL SHOULD CLEAR MODEL & VIEW
-
         function showHideWholeMap(event){
             if(event.currentTarget === iftMapButtonOpen) {
                 iftMapWrapperOuter.classList.add(activeStateSting);
             }
-            if(event.currentTarget === iftMapButtonClose) {
-                //this closes any open tooltip
-                closeActiveTooltip();
-                iftMapWrapperOuter.classList.remove(activeStateSting);
-            }
-            if(event.currentTarget === iftMapButtonCancel){
-                //this might be a link, so be sure to prevent default
-                event.preventDefault();
+            if(event.currentTarget === iftMapButtonClose || event.currentTarget === iftMapButtonCancel) {
+                
+            	//SHOULD CLOSING MODAL ALSO CLEAR MODEL & VIEW? NO. SELECTION SHOULD REMAIN IN CASE IT WAS ACCIDENTAL
+
                 closeActiveTooltip();
                 iftMapWrapperOuter.classList.remove(activeStateSting);
             }
         }
+
 
         //EVENTS
-        stateSelectMenu.addEventListener('change', mapHandlerFunction, false);
-        internationalSelectMenu.addEventListener('change', mapHandlerFunction, false);
-        iftMapButtonOpen.addEventListener('click', showHideWholeMap, false);
-        iftMapButtonClose.addEventListener('click', showHideWholeMap, false);
-        iftMapButtonCancel.addEventListener('click', showHideWholeMap, false);
+        (function addEventListeners(){
+        	stateSelectMenu.addEventListener('change', mapHandlerFunction, false);
+        	internationalSelectMenu.addEventListener('change', mapHandlerFunction, false);
+        	iftMapButtonOpen.addEventListener('click', showHideWholeMap, false);
+        	iftMapButtonClose.addEventListener('click', showHideWholeMap, false);
+        	iftMapButtonCancel.addEventListener('click', showHideWholeMap, false);
 
+        	for(var i = 0; i < nodeListOfCheckboxes.length; i++){
+	        	nodeListOfCheckboxes[i].addEventListener('change', stagePanelOfThisCheckbox, false);
+	        }
 
-        // need another event on the CHECKBOXES to call putOutputArrayInHiddenInput() andOr emptyThat value
-        // unchecking must un-store it
-
-
-
-
-        var nodeListOfCheckboxes = document.querySelectorAll('.iftMap__sectionData__wrapper [type="checkbox"]');
-        var arrayOfCheckboxes = Array.prototype.slice.call(nodeListOfCheckboxes);
-
-        function stagePanelOfThisCheckbox(event){
-
-        	//make this cleaner this is dirty knowledge -- looking for closest ancestor with wrapper class
-        	var referenceToParentPanelOfCheckedInput = event.currentTarget.parentElement.parentElement;
-
-        	if(event.currentTarget.checked){        		
-        		stageOrUnstageThisPanel(event, referenceToParentPanelOfCheckedInput, 'stage');
-        	}
-        	else {
-        		stageOrUnstageThisPanel(event, referenceToParentPanelOfCheckedInput, 'uNstage');
-        	}
-
-        }
-
-        //attach listeners to checkboxes
-        //want to preserve this as a nodelist, so no list operations
-        for(var jB4601counter = 0; jB4601counter < nodeListOfCheckboxes.length; jB4601counter++){
-        	nodeListOfCheckboxes[jB4601counter].addEventListener('change', stagePanelOfThisCheckbox, false);
-        }
-
-
-
-        
-
-
-        //working As Expected
-        function stageOrUnstageThisPanel(event, referenceToParentPanelOfCheckedInput, stageOrUnstage){
-
-        	var indexOfThisPanel = arrayOfPanelsToPopulate.indexOf(referenceToParentPanelOfCheckedInput);
-        	var thisOutputObject = deepOutputObjectForStaging[indexOfThisPanel];
-        	
-        	
-
-        	if(stageOrUnstage==='stage'){
-        	
-        		//grab values from model by that common index and put them here
-        		// BETTER TO MAKE VIEW OF FIELDS THAT ONLY THE BACKEND NEEDS. HEN CAN MAP OVER THAT ARRAY TO SET VALUES MORE EFFICIENTLY 
-        		(function grabValuesFromModel(){
-
-
-        			thisOutputObject.ProductId = mapStatusContainerDeepARRAY[indexOfThisPanel].currentProductId;
-	        		thisOutputObject.ProductName = mapStatusContainerDeepARRAY[indexOfThisPanel].currentProductName;
-	        		thisOutputObject.ComponentProductId = mapStatusContainerDeepARRAY[indexOfThisPanel].currentComponentProductId;
-	        		thisOutputObject.ComponentProductShortName = mapStatusContainerDeepARRAY[indexOfThisPanel].currentComponentProductShortName;
-	        		thisOutputObject.MemberPrice = mapStatusContainerDeepARRAY[indexOfThisPanel].currentMemberPrice;
-
-
-
-	        		console.log('time To stage ' + referenceToParentPanelOfCheckedInput.id);
-	        		console.log(thisOutputObject);
-        		})();
-        	}
-
-        	else if(stageOrUnstage==='uNstage'){
-
-        		//a key is being added
-
-        		//this is a nodelist
-        		console.log('time To unStage this panel: ' + referenceToParentPanelOfCheckedInput.id);
-				UTILITY_clearThisObject(thisOutputObject);
-        		console.log(thisOutputObject);
-        	}
-        	
-        }
+        })();
+       
     
     }    
 
@@ -621,45 +518,3 @@ var fieldsRequiredByBackend = {
     }
 
 })();
-
-
-
-
-            //     	(function createSetOfToolTipsOnDemand(){
-
-            //     		//reverse logic because we are creating, not un-hiding
-
-            //     		//also too many!!! one tooltip per matching section item man
-
-            //     		//var tempElementRefToPutTTon = null;
-
-            //     		var theReferenceElementInDoc = null;
-
-            //     		for(var i = 0; i < matchingSectionItems.length; i++){
-
-                			
-            // 				//example test
-            // 				if(matchingSectionItems[i].ComponentParentProduct == 'IFT'){
-            // 					//if there is a match, grab the reference to the panelS checkBoxLabel
-            // 					theReferenceElementInDoc = nodeListOfPanelsToPopulate[i].querySelectorAll('label')[0];
-            // 					//tempElementRefToPutTTon = theReferenceElementInDoc;
-            // 				}
-
-
-            				
-	           //      	}
-
-	           //      	if(theReferenceElementInDoc !== null){
-	           //      		console.log(theReferenceElementInDoc);
-        				// 	createToolTipOnDemand(theReferenceElementInDoc);
-        				// }
-
-
-	                	
-	           //      	//need a NODE
-	           //      	//createToolTipOnDemand(tempElementRefToPutTTon);
-
-
-
-            //     	})();
-

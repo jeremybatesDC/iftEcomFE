@@ -17,3 +17,46 @@
 
  var arrayOfPanelsToPopulate = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper'));
         var arrayOfSpansToPopulateEmpty = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper span'));
+
+
+        
+
+
+            //     	(function createSetOfToolTipsOnDemand(){
+
+            //     		//reverse logic because we are creating, not un-hiding
+
+            //     		//also too many!!! one tooltip per matching section item man
+
+            //     		//var tempElementRefToPutTTon = null;
+
+            //     		var theReferenceElementInDoc = null;
+
+            //     		for(var i = 0; i < matchingSectionItems.length; i++){
+
+                			
+            // 				//example test
+            // 				if(matchingSectionItems[i].ComponentParentProduct == 'IFT'){
+            // 					//if there is a match, grab the reference to the panelS checkBoxLabel
+            // 					theReferenceElementInDoc = nodeListOfPanelsToPopulate[i].querySelectorAll('label')[0];
+            // 					//tempElementRefToPutTTon = theReferenceElementInDoc;
+            // 				}
+
+
+            				
+	           //      	}
+
+	           //      	if(theReferenceElementInDoc !== null){
+	           //      		console.log(theReferenceElementInDoc);
+        				// 	createToolTipOnDemand(theReferenceElementInDoc);
+        				// }
+
+
+	                	
+	           //      	//need a NODE
+	           //      	//createToolTipOnDemand(tempElementRefToPutTTon);
+
+
+
+            //     	})();
+
