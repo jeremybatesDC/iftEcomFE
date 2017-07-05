@@ -54,7 +54,9 @@
 	font-size:1.2rem;
 	background-color:$white;
 	padding:$gutter-width $gutter-width 0 $gutter-width;
-	
+	.column-auto{
+		flex-basis: 25%;
+	}
 	@include break(max, $breakpoint-max-1023){
 		display: none;
 		.column-auto {

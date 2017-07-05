@@ -747,3 +747,9 @@ form[action$="RenewMembership"] {
 		}
 	}
 }
+
+main.membershipJoin{
+	label#ctl00_MainContent_ctl00_TMAFormRowJob_Label {
+	    display:block;
+	}
+}
