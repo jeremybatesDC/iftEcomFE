@@ -231,6 +231,7 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
     padding: 2px 8px;
     a {
       color: white;
+      border: 1px solid;
     }
   }
 }
@@ -308,4 +309,8 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 }
 .education-details .formRow .RadComboBox.RadComboBox_PersonifyDefault {
     width: 260px !important;
+}
+form[action$="contactinformation"] .ctrl-form-row:first-child .ctrl-row-action-item.ctrl-row-item-button a{
+  padding: 4px 6px;
+  border: 1px solid;
 }
