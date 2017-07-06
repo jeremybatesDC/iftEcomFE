@@ -168,7 +168,21 @@ var fieldsRequiredByBackend = {
               .attr('d', path(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; })));
         });
 
-        //(function getJSONfromHiddenInput(){})();
+
+
+
+
+        function preSelectUserHomeUSstate(){
+        	//What event can i use?
+        	//mapHandlerFunction(event, thisState);
+        }
+
+
+
+
+
+
+
 
 
         
@@ -450,15 +464,9 @@ var fieldsRequiredByBackend = {
 	    				else {
 	    					//if panel DOES CONTAIN home state, disable the input of course
 	    					thisPanelToBeInspected.querySelector('input').disabled = true;
-	    					//DONt manually CHECK this box, because that could add it again to the cart
-	    					//OR JUST HIDE IT IN CASE THE CHECK SIGNIFIES SOMETHING
+	    					//but DONt manually CHECK this box, because that could add it again to the cart
 	    				}
-	    				//make sure 
 
-	    				// else {
-
-	    				// 	thisPanelToBeInspected.classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
-	    				// }
 			    	})();
 
 			    	(function unHidePanelsWithData(){
