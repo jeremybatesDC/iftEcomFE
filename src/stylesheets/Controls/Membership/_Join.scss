@@ -756,3 +756,7 @@ main.membershipJoin{
 	    display:block;
 	}
 }
+
+form[action$="JoinSummary"] main.main.membershipJoin .emailDetails #ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel table td:last-child{
+    color: white;
+}

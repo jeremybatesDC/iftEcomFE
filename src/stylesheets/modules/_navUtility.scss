@@ -1,9 +1,8 @@
 .nav-utility {
 	//display:flex;
 	//flex-direction:row;
-	position:relative;
-	font-size:1.2rem;
-
+	position: relative;
+	font-size: 1.2rem;
 	//needs more specificity, hence extra nesting here
 	a {
 		.nav-combined--wrapper & {
@@ -13,71 +12,62 @@
 	.button {
 		min-width: auto;
 		font-size: .9rem;
-		border-width:2px;
+		border-width: 2px;
 		span {
-			position:relative;
-			bottom:-1px;
+			position: relative;
+			bottom: -1px;
 		}
-		@include break(max, $breakpoint-max-mobile){
+		@include break(max, $breakpoint-max-mobile) {
 			//temporary
 			display: none;
-			
 			.has-nav--ACTIVE & {
 				display: none;
 			}
 		}
-		
 	}
 	.social-link-group {
-		padding-left:2em;
+		padding-left: 2em;
 	}
 	&:after {
-    	content:'';
-    	display:block;
-    	clear:both;
+		content: '';
+		display: block;
+		clear: both;
 	}
-
-
-	@include break(max, $breakpoint-max-mobile){
+	@include break(max, $breakpoint-max-mobile) {
 		.button {
-			
 			font-size: 1rem;
-			position:fixed;
-			top:.6rem;
+			position: fixed;
+			top: .6rem;
 			right: 6rem;
 			padding: 1em 0em;
 			//margin-left: 1em;
-
 			//if you want it to show when mobile menu is open
 			//z-index: 5;
 			span {
-				position:relative;
+				position: relative;
 				//visibility: hidden;
 				color: transparent;
 				&:after {
-					content:'REGISTER';
+					content: 'REGISTER';
 					position: absolute;
-					width:100%;
+					width: 100%;
 					height: 100%;
 					top: 0;
 					left: 0;
-					text-align:center;
+					text-align: center;
 					color: $white;
 					text-transform: uppercase;
 					//transform:translateX(-125%);
-
 				}
 			}
-			
 		}
 	}
-
 	//can't animate height, because that alters scroll position calculations
-	@include break(min, $breakpoint-min-tablet){
+	@include break(min, $breakpoint-min-tablet) {
 		//but the hard edge looks like a mistake on homepage before scroll
 		//background:rgba($black, .033);
 		//.body-home & {
-			background: linear-gradient(to bottom, rgba($ift-grey-dark, .3333) 0%,rgba($ift-grey-dark, 0) 100%);
+		background: linear-gradient(to bottom, rgba($ift-grey-dark, .3333) 0%, rgba($ift-grey-dark, 0) 100%);
 		//}
 		.button {
 			padding: 1rem;
@@ -85,103 +75,101 @@
 			//margin-bottom: .3333em;
 			margin-left: 1em;
 		}
-
 		&.nav-utility--SCROLLED-STATE {
 			margin-top: -4em;
 			.body-home & {
 				background: rgba($black, .033);
 			}
 		}
-
 	}
-
-
 	&.contained {
 		max-width: 100%;
-		
-		@include break(min, $breakpoint-min-tablet, max, $breakpoint-max-1023){
-			padding-right:$gutter-width / 8;
-			padding-left:$gutter-width / 2;
+		@include break(min, $breakpoint-min-tablet, max, $breakpoint-max-1023) {
+			padding-right: $gutter-width / 8;
+			padding-left: $gutter-width / 2;
 		}
-		@include break(min, $breakpoint-min-md){
-			padding-right:5vw;
-			padding-left:5vw;
+		@include break(min, $breakpoint-min-md) {
+			padding-right: 5vw;
+			padding-left: 5vw;
+			padding-top: 5px;
 		}
-
 	}
 }
 
 .nav-utility__list {
-	display:inline-block;
+	display: inline-block;
 	//align-items:center;
-	list-style:none;
-	@include break(max, $breakpoint-max-1023){
+	list-style: none;
+	@include break(max, $breakpoint-max-1023) {
 		// display: none;
 		position: absolute;
 		left: 0;
 		top: 6rem;
 	}
-
 	li {
 		display: inline-block;
-		padding-right:1em;
-
+		padding-right: 1em;
 		a {
-			background-image: linear-gradient(to top,rgba($ift-blue, 0) 50%,rgba($ift-blue, 0) 50%);
-			background-size:0 2px;
-			background-position:0 95%;
-			background-repeat:no-repeat;
+			background-image: linear-gradient(to top, rgba($ift-blue, 0) 50%, rgba($ift-blue, 0) 50%);
+			background-size: 0 2px;
+			background-position: 0 95%;
+			background-repeat: no-repeat;
 			transition: $ift-timing;
 			&:hover,
 			&:active,
 			&:focus {
 				opacity: .8;
-				background-image: linear-gradient(to top,currentColor 50%,currentColor 50%);
-				background-size:100% 2px;
+				background-image: linear-gradient(to top, currentColor 50%, currentColor 50%);
+				background-size: 100% 2px;
 			}
 		}
 	}
 }
 
-
 .nav-utility__reg-search-wrapper {
-	display:inline-block;
+	display: inline-block;
 	[href^="/shopping"],
 	[href^="/Shopping"] {
 		display: inline-block;
 		vertical-align: top;
-		position:relative;
+		position: relative;
 	}
-
-	@include break(max, $breakpoint-max-1023){
-		position:absolute;
+	@include break(max, $breakpoint-max-1023) {
+		position: absolute;
 		top: 0;
 		right: 6rem;
 		padding-top: .6rem;
 	}
-	@include break(min, $breakpoint-min-md){
-		float:right;
+	@include break(min, $breakpoint-min-md) {
+		float: right;
 	}
 }
 
 .header__utility-cart {
 	&:before {
-		content:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M10%2019.5c0%20.829-.672%201.5-1.5%201.5s-1.5-.671-1.5-1.5c0-.828.672-1.5%201.5-1.5s1.5.672%201.5%201.5zm3.5-1.5c-.828%200-1.5.671-1.5%201.5s.672%201.5%201.5%201.5%201.5-.671%201.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.305-15l-3.432%2012h-10.428l-3.777-9h-2.168l4.615%2011h13.239l3.474-12h1.929l.743-2h-4.195z%22/%3E%3C/svg%3E);
+		content: "";
 		color: #fff;
-		position:absolute;
+		background-image: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M10%2019.5c0%20.829-.672%201.5-1.5%201.5s-1.5-.671-1.5-1.5c0-.828.672-1.5%201.5-1.5s1.5.672%201.5%201.5zm3.5-1.5c-.828%200-1.5.671-1.5%201.5s.672%201.5%201.5%201.5%201.5-.671%201.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.305-15l-3.432%2012h-10.428l-3.777-9h-2.168l4.615%2011h13.239l3.474-12h1.929l.743-2h-4.195z%22/%3E%3C/svg%3E);
+		position: absolute;
 		top: 6px;
+		left: -2px;
 		transform: rotateY(180deg);
+		width: 30px;
+		height: 30px;
+		background-size: contain;
+		background-repeat: no-repeat;
 	}
 }
 
 .header__utility-cart-icon {
-	display:inline-block;
-	padding-top:4px;
-	padding-left: 10px;
-	margin-right: 10px;
+	display: inline-block;
+	padding-top: 4px;
+	padding-left: 0;
+	margin-right: 0;
+	min-width: 30px;
+	text-align: center;
 	#cartcounttl {
 		color: $ift-orange;
 		font-weight: bold;
-
 	}
 }
