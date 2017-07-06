@@ -3,7 +3,9 @@
 }
 
 .footer-main {
-	
+	.footer__links-header {
+    min-height: 4rem;
+	}
 	background-color:$white;
 	.row {
 		margin-bottom: 0;
@@ -54,9 +56,6 @@
 	font-size:1.2rem;
 	background-color:$white;
 	padding:$gutter-width $gutter-width 0 $gutter-width;
-	.column-auto{
-		flex-basis: 25%;
-	}
 	@include break(max, $breakpoint-max-1023){
 		display: none;
 		.column-auto {
