@@ -303,3 +303,9 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
 .PurchaseHistory_PersonifyDefault.Profile_PersonifyDefault .exp-col-content.expanded {
   background-color: transparent;
 }
+.ctrl-form-row:first-child .ctrl-row-action-item.ctrl-row-item-button {
+    border:  none;
+}
+.education-details .formRow .RadComboBox.RadComboBox_PersonifyDefault {
+    width: 260px !important;
+}

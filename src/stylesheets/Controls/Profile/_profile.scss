@@ -100,7 +100,9 @@ form[action$="addresses"] {
       color: #fff;
       //padding-top:6px;
       //padding-right:6px;
-      border: 1px solid;
+      a{
+        border: 1px solid;
+      }
     }
     .action-hyperlink {
       color: #fff;
