@@ -17,7 +17,7 @@ var singularViewOnlyStatusContainer = {
     ,currentStateName: ''
 }
 
-function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProductName, currentComponentProductId, currentComponentProductShortName, currentMemberPrice, currentPostalCodeRange, currentComponentParentProduct){
+function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProductName, currentComponentProductId, currentComponentProductShortName, currentMemberPrice, currentPostalCodeRange, currentComponentParentProduct, currentHomeSectionFlag){
 	this.currentProductId = currentProductId;
 	this.currentProductName = currentProductName;
 	this.currentComponentProductId = currentComponentProductId;
@@ -25,6 +25,7 @@ function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProduc
     this.currentMemberPrice = currentMemberPrice;
     this.currentPostalCodeRange = currentPostalCodeRange;
     this.currentComponentParentProduct = currentComponentParentProduct;
+    this.currentHomeSectionFlag = currentHomeSectionFlag;
 }
 //MAX 4
 var mapStatusContainerDeepARRAY = [];
@@ -108,6 +109,10 @@ var fieldsRequiredByBackend = {
 		constructFreshStagingContainerModel();
 
 
+		//reference to span to check for home section
+		var spanToCheckForHomeSections = document.getElementById('ctl00_MainContent_ctl00_MembershipJoinSection_homeSectionRepeater_ctl00_LabelHomeSection');
+		//donT put text value here because it might be null and i donT want any logic in this variable declaration area.
+
         //get reference to outermost wrapper to show/hide with modal
         var iftMapWrapperOuter = document.getElementById('iftMapWrapperOuter');
         var iftMapButtonOpen = document.getElementById('iftMapButtonOpen');
@@ -126,10 +131,9 @@ var fieldsRequiredByBackend = {
 
      	var nodeListOfPanelsToPopulate = document.querySelectorAll('.iftMap__sectionData__wrapper')
      	var nodeListOfCheckboxes = document.querySelectorAll('.iftMap__sectionData__wrapper [type="checkbox"]');
-
         var arrayOfPanelsToPopulate = Array.prototype.slice.call(nodeListOfPanelsToPopulate);
-
         var arrayOfArrayOfFieldsToPopulate = [];
+
 
         //IMPORTANT. CREATING SET OF SPANS FOR EACH PANEL
         arrayOfPanelsToPopulate.map(function(thisPanel){
@@ -211,9 +215,7 @@ var fieldsRequiredByBackend = {
 		//this also ties into functionality
 		function disablePanels(){
 			for(var i = 0; i < nodeListOfPanelsToPopulate.length; i++){
-				
 				nodeListOfCheckboxes[i].disabled = true;
-
 				nodeListOfPanelsToPopulate[i].classList.add('iftMap__sectionData__wrapper--DISABLED-STATE');
 			}
 		}
@@ -242,12 +244,12 @@ var fieldsRequiredByBackend = {
         	clearNoResultsMessageContainer();
         	clearCheckBoxes();
 
+        	clearDataFlags();
 
         	clearPanelsOfContentAndDataAttributes();
 
         	unRevealPanels();
         	disablePanels();
-
 
         	removeAllToolTips();
 
@@ -276,7 +278,7 @@ var fieldsRequiredByBackend = {
                 
                 //SET PROPERTIES IN MODEL
                 (function setAllTheProperties(){
-                    //this is hardcoded, kinda. Better to do a list operation over properties
+                    //this is hardcoded, kinda. The order matters, so this should be a list operation. Or at least a forEach for ForIn loop. Better to do a list operation over properties
                     mapStatusContainerDeepARRAY[iteratorNum].currentProductId = rawSectionData.SectionItems[indexOfSectionItem].ProductId;
                     mapStatusContainerDeepARRAY[iteratorNum].currentProductName = rawSectionData.SectionItems[indexOfSectionItem].ProductName;
                     mapStatusContainerDeepARRAY[iteratorNum].currentComponentProductId = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductId;
@@ -284,6 +286,55 @@ var fieldsRequiredByBackend = {
                     mapStatusContainerDeepARRAY[iteratorNum].currentMemberPrice = rawSectionData.SectionItems[indexOfSectionItem].MemberPrice;
                     mapStatusContainerDeepARRAY[iteratorNum].currentPostalCodeRange = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
                     mapStatusContainerDeepARRAY[iteratorNum].currentComponentParentProduct = rawSectionData.SectionItems[indexOfSectionItem].ComponentParentProduct;
+
+                    //initialize as false?
+                    mapStatusContainerDeepARRAY[iteratorNum].currentHomeSectionFlag = false;
+
+
+                    //if an already-selected home section exists
+                    if(spanToCheckForHomeSections.textContent !== null){
+                    	//if it does, put textValue here
+                    	var userHomeSection = spanToCheckForHomeSections.textContent;
+
+
+
+
+
+                    	//mapStatusContainerDeepARRAY[iteratorNum].currentProductName === spanToCheckForHomeSections.textContent
+
+                    	 
+                    	
+
+				        (function actionsBasedOnUserHomeSection(){
+
+
+				        		//check whether 
+
+					        	console.log('userHomeSection');
+					        	console.log(userHomeSection);
+					        	//model value as already been set, and this is already inside a test
+
+					        	//undisable panel status function will be called later either way
+
+
+					        	if(userHomeSection === mapStatusContainerDeepARRAY[iteratorNum].currentProductName){
+					        		mapStatusContainerDeepARRAY[iteratorNum].currentHomeSectionFlag = true;
+					        		console.log('there is a value in the model that matches the userHomeSection');
+
+
+
+
+					        	}
+					        	else {
+					        		mapStatusContainerDeepARRAY[iteratorNum].currentHomeSectionFlag = false;
+					        		console.log('no value in the model matching userHomeSection');
+					        	}
+
+
+				        })(userHomeSection)
+
+
+                    }
 
                     iteratorNum++;
 
@@ -340,8 +391,6 @@ var fieldsRequiredByBackend = {
 						//should USE DIFFERENT COUNTER B/C SO WE CAN MOVE THIS OUTSIDE OF THIS LOOP
 						panelToAddStatusTo = nodeListOfPanelsToPopulate[slowCounter];
 
-						//unDisable done here
-						//status can also be for tooltips
 						
 
 						(function addDataAttributes(){
@@ -368,73 +417,69 @@ var fieldsRequiredByBackend = {
 
 			//PANEL STATUS STUFF HERE BECAUSE OF THE WAY THE EVENT LOOP IS
 			//QUERY THE DOM FOR THESE UNLESS PREPARED TO DO A PANEL STATE CONTAINER [hasTip, disabled, hidden]
-			revealCorrectNumberOfPanels(3);
-			decideDisabled();
-        	decideToolTip(0);
-            
-		
-			
 
+			(function panelStatusMasterFunction(){
+				for(var i = 0; i < nodeListOfPanelsToPopulate.length; i++){
+	
+					var thisPanelToBeInspected = nodeListOfPanelsToPopulate[i];
+
+					//test 1
+
+					//adding tooltips to all in panel... even if there is no data in it
+					(function decideToolTips(){
+						if(thisPanelToBeInspected.getAttribute('data-thispanel') === 'IFT'){
+		    				var referenceElem = thisPanelToBeInspected.querySelectorAll('label')[0];
+		    				createToolTipOnDemand(referenceElem);
+		    			}
+					})();
+
+					//only undisable
+
+					//this test might not match the tooltip test depending on requirements.
+					//check if should also uncheck its self
+
+	    			(function unDisablePanels(){
+	    				
+
+
+	    				//make sure panel does not contain user home state before unDisabling
+	    				if(mapStatusContainerDeepARRAY[i].currentHomeSectionFlag === false){
+					        thisPanelToBeInspected.classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
+			    			thisPanelToBeInspected.querySelector('input').disabled = false;
+	    				}
+	    				else {
+	    					//if panel DOES CONTAIN home state, disable the input of course
+	    					thisPanelToBeInspected.querySelector('input').disabled = true;
+	    					//DONt manually CHECK this box, because that could add it again to the cart
+	    					//OR JUST HIDE IT IN CASE THE CHECK SIGNIFIES SOMETHING
+	    				}
+	    				//make sure 
+
+	    				// else {
+
+	    				// 	thisPanelToBeInspected.classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
+	    				// }
+			    	})();
+
+			    	(function unHidePanelsWithData(){
+			    		//check the first span in the panel  to see if there is any data
+			    		var firstSpanInPanel = thisPanelToBeInspected.querySelectorAll('span')[0];
+			    		var valOfQuickRef = firstSpanInPanel.getAttribute('data-thisspan');			
+			    		//if there is any actual value here, unhide the panel
+			    		
+			    		if(valOfQuickRef !== null && valOfQuickRef !== 'null' && valOfQuickRef !== ''){
+			    			thisPanelToBeInspected.classList.remove('iftMap__sectionData__wrapper--HIDDEN-STATE');
+			    		}
+			    	})();
+	    		}
+			})();
 		
         }//end of display data on the page function
 
 
+        function createToolTipOnDemand(theReferenceFormLabelElement){
 
-        function decideToolTip(indexOfSectionItem){
-        		
-        		
-    		//BIG CLUE
-
-    		console.log('this test should iterate through the panel SET once, but it is iterating through the panel set for each panel(kinda recursively)');
-    		//or vice versa. the point is itS the wrong way
-
-    		//test 1
-    		if(1 > 0) {
-
-    			var indexOfPanelInQuestion = 0;
-    			//pass this an INDEX!!!
-    			createToolTipOnDemand(indexOfPanelInQuestion);
-    			
-    		}
-
-    		
-    	}
-
-    	//does not do anything yet
-    	function decideDisabled(){
-    		if(2 > 1){
-    			console.log('decide whether disabled');
-    			//unDisableThisPanel(thePanelInQuestion);
-    		}
-
-    	}
-
-
-
-        function revealCorrectNumberOfPanels(numberOfPanelsToReveal){
-
-        	console.log('reveal this many panels' + numberOfPanelsToReveal);
-
-        	//if(numberOfMatchingSectionItems !== null && numberOfMatchingSectionItems > 0){
-        		for(var i = 0; i < numberOfPanelsToReveal; i++){
-        			nodeListOfPanelsToPopulate[i].classList.remove('iftMap__sectionData__wrapper--HIDDEN-STATE');
-        		}
-        	//}
-    	}
-
-    	function unDisableThisPanel(panelToUnDisable){
-    		panelToUnDisable.classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
-    		panelToUnDisable.querySelectorAll('input')[0].disabled = false;
-    	
-    	}
-
-
-    	//this is getting called once on each matching section item PER matching section item. 
-        function createToolTipOnDemand(indexOfPanelInQuestion){
-
-        	
-        	//hard Test code 
-			var theReferenceFormLabelElement = nodeListOfPanelsToPopulate[indexOfPanelInQuestion];('label')[0];
+			//hard Test code 
 
         	//only show actual message on click
         	var theToolTipMessageToDisplay = 'I am am awesome tooltip';
@@ -442,8 +487,8 @@ var fieldsRequiredByBackend = {
         	var tooltipElement = document.createElement('i');
         	//cannot use classList yet bC there isnTone
         	tooltipElement.setAttribute('class', 'niftyTooltip');
-
-        	tooltipElement.innerHTML = '<span class="tooltip__wrapper__span"><svg class="iconInfo" viewBox="0 0 32 32"><use xlink:href="#iconInfo"/></svg></span>';
+        	tooltipElement.setAttribute('title', 'A nearby section ');
+        	tooltipElement.innerHTML = '<svg class="iconInfo" viewBox="0 0 32 32"><use xlink:href="#iconInfo"/></svg>';
         	var theFirstChild = theReferenceFormLabelElement.firstChild;
         	theReferenceFormLabelElement.insertBefore(tooltipElement, theFirstChild);
         }
