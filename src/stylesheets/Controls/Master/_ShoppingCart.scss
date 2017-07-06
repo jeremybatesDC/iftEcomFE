@@ -421,7 +421,7 @@ div.WizardHeaderControl_PersonifyDefault {
 main.shoppingCart {
 	.shippingAddress {
 		border: none;
-		width: auto;
+		width: 100%;
 	}
 	#ctl00_MainContent_ctl00_PanelWishList .save-for-later-bar {
 		margin-top: 6rem;
@@ -443,7 +443,8 @@ main.shoppingCart {
 		margin-top: 1rem;
 		margin-left: 2rem;
 	}
-	#ctl00_MainContent_ctl00_CheckoutAddressInformationControl_ShippingAddressChooserControl_AddAddressControl_EditAddressControl_lblZipAdditionInfo {
+	#ctl00_MainContent_ctl00_CheckoutAddressInformationControl_ShippingAddressChooserControl_AddAddressControl_EditAddressControl_lblZipAdditionInfo,
+	#ctl00_MainContent_ctl00_CheckoutAddressInformationControl_ShippingAddressChooserControl_AddAddressControlTemporary_EditAddressControl_lblZipAdditionInfo {
 		display: block;
 	}
 	.segmentsListPanel #ctl00_MainContent_ctl00_SegmentTabList_i0 {
