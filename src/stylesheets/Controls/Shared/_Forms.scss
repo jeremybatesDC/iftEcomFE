@@ -96,6 +96,12 @@ $border-radius: 3px;
   border-radius: 4px;
 }
 
+@include break(max, $breakpoint-max-xs-override) {
+  .membershipJoin .RadComboBox{
+    display: block !important;
+    margin-top: 1rem !important;
+  }
+}
 // Left
 .RadComboBox table td.rcbInputCell {
   border: 1px solid #ccc;
