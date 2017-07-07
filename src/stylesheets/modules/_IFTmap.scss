@@ -37,17 +37,30 @@
 
 
 .iftMap__svg {
-  > .iftMap__svg__g,
-  > .iftMap__svg__path--stateBorders {
-     transform:scale(.5);
-    transform-origin: 0 0;
-    @include break(max, $breakpoint-max-mobile){
-      transform:scale(.275);
-    }
-  }
+  transform:scale(.5);
+  transform-origin: 0 0;
+
+  //   transform-origin: 0 0;
+  //   @include break(max, $breakpoint-max-mobile){
+  //     transform:scale(.275);
+  //   }
+  // > .iftMap__svg__g,
+  // > .iftMap__svg__path--stateBorders {
+  //    transform:scale(.5);
+  //   transform-origin: 0 0;
+  //   @include break(max, $breakpoint-max-mobile){
+  //     transform:scale(.275);
+  //   }
+  // }
   @include break(max, $breakpoint-max-mobile){
-    width: 300px;
-    height:200px;
+    transform:scale(.5);
+    width: 100%;
+    height:auto;
+  }
+
+  @include break(min, $breakpoint-min-tablet){
+    //blame microsoft
+    margin-bottom: -300px;
   }
 }
 
@@ -117,9 +130,9 @@
 
 .iftMap__mobile__selectMenu__wrapper--outer {
 
-  @include break(min, $breakpoint-min-tablet){
-    display: none;
-  }
+  // @include break(min, $breakpoint-min-tablet){
+  //   display: none;
+  // }
   .iftMap__additionalItemsBox__wrapper--inner {
     padding-bottom:0;
   }
@@ -211,6 +224,18 @@ a.iftMap__button--save{
   @include break(max, $breakpoint-max-mobile){
     padding-bottom: $gutter-width;
   }
+
+  > label {
+    display: table;
+    input {
+      display: table-cell;
+    }
+    span {
+      display: table-cell;
+      padding-left:.5rem;
+    }
+  }
+
 }
 
 .iftMap__sectionData__detail {
@@ -246,16 +271,22 @@ a.iftMap__button--save{
   }
 }
 
+.iftMap__sectionData__wrapper--HIDDEN-STATE {
+  display: none;
+}
 
 .iftMap__sectionData__wrapper--DISABLED-STATE {
   //pointer-events:none;
   opacity: .3333;
   position: relative;
   cursor: not-allowed;
+  pointer-events:none;
+
   &:hover {
     cursor: not-allowed;
   }
   label {
+    pointer-events:none;
     cursor: not-allowed;
     &:hover {
       cursor: not-allowed;
@@ -263,7 +294,8 @@ a.iftMap__button--save{
   }
   input {
     //prevent click somehow;
-    //pointer-events:none;
+    z-index: -1;
+    pointer-events:none;
     cursor: not-allowed;
     &:hover {
       cursor: not-allowed;
@@ -278,6 +310,25 @@ a.iftMap__button--save{
 
 
 //tooltip
+
+
+.niftyTooltip {
+  &:hover,
+  &:active,
+  &:focus {
+    &:before {
+      content: attr(data-toolTipText);
+      position:absolute;
+      //that position isnT working as expected
+      //left: 2rem;
+      display: inline-block;
+      background:#fff;
+      border: 1px solid #000;
+      padding: 1rem;
+
+    }
+  }
+}
 .iftMap__sectionData__footer {
   position:absolute;
   background: $ift-grey-medium-lighter;
