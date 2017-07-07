@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	{% include "./_shared/head.html" %}
+	<body id="bodyTop">
+		{% include "./_shared/svgDefs.html" %}
+		
+
+		{% include "./fundraisingFeedingTomorrow/navFundraisingFeedingTomorrow.html" %}
+		
+		<main class="template-interior">
+			{% block content %}
+			{% endblock %}
+		</main>
+
+		{% include "./fundraisingFeedingTomorrow/footerFundraisingFeedingTomorrow.html" %}
+
+		<!--overlay-->
+		{% include "./_shared/scriptsList.html" %}
+	</body>
+</html>

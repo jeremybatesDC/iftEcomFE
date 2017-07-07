@@ -1,0 +1,142 @@
+html .alreadyLoggedIn {
+	.education-details .formRow .RadComboBox.RadComboBox_PersonifyDefault,
+	.education-details .formRow textarea,
+	.emailDetails .formRow .RadComboBox.RadComboBox_PersonifyDefault,
+	.userDetails .formRow .RadComboBox.RadComboBox_PersonifyDefault, //.formLayout .formRow label,
+	.formLayout .formRow label + div,
+	.formLayout .formRow input:not([type="button"]),
+	.formLayout .formRow select {
+		width: auto !important;
+	}
+}
+
+[action*="oinRegistration"] {
+	.formLayout .formRow label,
+	.formLayout .formRow input:not([type="button"]),
+	.formLayout .formRow select {
+		vertical-align: middle;
+	}
+	#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_frAttestation_Label {
+		display: none;
+	}
+	.formRow .RadComboBox .rcbReadOnly input[type="text"] {
+		padding-bottom: 0;
+		vertical-align: middle;
+	}
+	.RadPicker .rcCalPopup {
+		margin-top: 8px !important;
+	}
+	.ctrl-row-item .ctrl-row-item-button {
+		float: right !important;
+	}
+	.number {
+		background-color: $ift-grey-medium-light;
+	}
+}
+
+// Resets
+.RegistrationControl_PersonifyDefault.Base_PersonifyDefault.Base_PersonifyDefault,
+.MembershipJoinOptionsControl_PersonifyDefault .ctrlContent {
+	background: white;
+	padding: 20px;
+	margin: 0;
+	width: auto;
+}
+
+#ctl00_MainContent_ctl00_MembershipDetail_ContainerPanel {
+	width: 100%;
+}
+
+.step2Left,
+.step3Left {
+	float: left;
+	width: calc(100% - 250px);
+}
+
+.productDetails.ctrl-memb-prd-detail {
+	display: block;
+	margin-left: 0;
+	.productName {
+		font-size: 24px;
+		padding-top: 20px;
+	}
+}
+
+main.membershipJoin {
+	.MembershipDetailControl_PersonifyDefault .productImage.ctrl-memb-img {
+		margin: 20px;
+		position: static;
+		float: left;
+	}
+	table[summary] {
+		overflow: visible;
+	}
+	.ctrlContent {
+    padding: 0;
+    margin-bottom: 10px;
+	}
+	.alreadyLoggedIn .ctrlContent .ctrlContent {
+		background-color: white;
+	}
+	.productDetails .pricingCell.cell1 {
+		z-index: 1;
+	}
+	.productDetailDescription table tr td {
+		border: none;
+	}
+	.productDetailDescription table {
+		border: none;
+		background: transparent;
+	}
+	.productDetailDescription table #_phBody p {
+		padding: 0;
+		padding-bottom: 10px;
+	}
+	.productDetailDescription table tr {
+		background: transparent !important;
+	}
+	.MbrProdListTbl .productRow .productName.shortName {
+		font-size: 2.6rem;
+		color: #333;
+	}
+	h1.ctrlTitle {
+		color: #333;
+		font-size: 3.2rem;
+	}
+	.ctrbHeading,
+	.benefits h2,
+	.ctrlTitle {
+		font-size: 3.2rem;
+		color: #333;
+	}
+	.MembershipContributionsControl_PersonifyDefault .ctrbProdRow {
+		border-bottom: 1px solid #eee;
+		padding: 0;
+		margin: 20px 0;
+	}
+	.ctrbHeading,
+	.benefits h2,
+	.ctrlTitle {
+		font-size: 3.2rem;
+		color: #333;
+	}
+	.MyAccountContactAddress_PersonifyDefault.Base_PersonifyDefault.Base_PersonifyDefault {
+		padding-bottom: 20px;
+	}
+	.MembershipJoinSummaryControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault > .ctrlContent {
+		padding: 0;
+		margin-bottom: 20px;
+	}
+}
+
+#ctl00_MainContent_ctl00_UserRegistrationControl_UserAlreadyLoggedInPanel {
+	.memberName,
+	.regContactsTitle {
+		padding-bottom: 10px;
+	}
+	.welcomeBack {
+		display: block;
+		margin-left: 0;
+		margin-top: 0;
+	}
+}

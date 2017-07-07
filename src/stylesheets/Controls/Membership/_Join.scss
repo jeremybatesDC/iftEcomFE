@@ -1,0 +1,762 @@
+//since form actions are case sensitive, best to use these classes when possible
+main.membershipJoin,
+form[action$="Code=REG"],
+form[action$="JoinSummary"],
+form[action$="JoinSurvey"] {
+	table {
+		overflow-x: scroll;
+		//purely for readability
+		&#ctl00_MainContent_ctl00_chkDivision {
+			width: 100%;
+			margin-top: $gutter-width/2;
+			border-spacing: 0 4px;
+			border-collapse: separate;
+		}
+	}
+	.education-details {}
+	.hidden,
+	.hidden[style] {
+		width: 0 !important;
+	}
+	.ctrl-form-row {
+		display: block;
+		width: 100%;
+	}
+	.content>.RadAjaxPanel {
+		//ottherwise empty divs show up with white background
+		padding: 0;
+	}
+	//seems silly to scope IDs, but IDs are re-used on different pages :/
+	#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
+		padding: 0;
+		background: transparent;
+	}
+	.alreadyLoggedIn .ctrlContent {
+		min-height: 140px;
+		margin-bottom: 0;
+		#ctl00_MainContent_ctl00_UserRegistrationControl_TMAFormRowStudentUserAlreadyLoggedIn {
+			margin-bottom: 10px;
+		}
+		#ctl00_MainContent_ctl00_UserRegistrationControl_EducationTMAFormRowUserAlreadyLoggedIn > label {
+			font-size: 22px;
+			font-weight: bold;
+			padding: 0;
+			margin: 20px 0;
+		}
+	}
+	#ctl00_MainContent_ctl00_RegistrationPanel {
+		padding: 2rem;
+		background: #fff;
+		.formRow {
+			> label {
+				font-weight: bold;
+			}
+		}
+		#ctl00_MainContent_ctl00_RadioButtonListADA {
+			display: block;
+			padding-bottom: $gutter-width/2;
+		}
+		#ctl00_MainContent_ctl00_RadioButtonListGender {
+			display: block;
+		}
+		#ctl00_MainContent_ctl00_RadioButtonListAboutIFT {
+			display: block;
+		}
+	}
+	.EducationControl_PersonifyDefault.Base_PersonifyDefault .ctrl-form-row.ctrl-row-header-colored .ctrl-row-item.ctrl-row-item-button {
+		float: right;
+	}
+	#ctl00_MainContent_ctl00_TMAFormRowADA {
+		position: relative;
+		margin-bottom: -10px;
+		.RadComboBox.RadComboBox_PersonifyDefault {
+			position: absolute;
+			left: 60px;
+			top: 22px;
+		}
+	}
+	.step2Left,
+	.step3Left {
+		float: none;
+		width: 100%;
+	}
+	.ctrlContent {
+		.step2Left,
+		.step3Left {
+			padding: 2rem;
+			background: #fff;
+		}
+		.step3Left {
+			+ div {
+				padding: 2rem;
+				background: #fff;
+				+ div:not(.buttonRow) {
+					padding: 2rem;
+					background: #fff;
+				}
+			}
+		}
+	}
+	#iftMapButtonOpen {
+		@include button();
+		margin: 10px 0;
+	}
+	.buttonRow {
+		background: transparent !important;
+		padding: 0 !important;
+	}
+	.productDetailDescription {
+		table {
+			p {
+				padding: $gutter-width/2;
+				+ p {
+					padding-top: 0;
+				}
+			}
+		}
+	}
+	#ctl00_MainContent_ctl00_MembershipDetail_ContainerPanel {
+		float: none;
+		width: 100%;
+	}
+	#ctl00_MainContent_ctl00_MembershipDetail_ProductDetailParagraphshowLessLink {
+		margin-bottom: $gutter-width;
+	}
+	.MembershipJoinSummaryControl_PersonifyDefault {
+		.step3Left {
+			float: none;
+			width: 100%;
+			.RadAjaxPanel {
+				background: #fff;
+			}
+		}
+	}
+	.RegistrationControl_PersonifyDefault.Base_PersonifyDefault.Base_PersonifyDefault,
+	.MembershipJoinOptionsControl_PersonifyDefault .ctrlContent {
+		padding: 0;
+		background: transparent;
+	}
+	.LoginRequestControl_PersonifyDefault {
+		background: transparent;
+	}
+	#ctl00_MainContent_ctl00_MembershipDivisionControl_RefreshPanel {
+		tr {
+			&:first-child {
+				td {
+					&:last-child {
+						text-align: right;
+						vertical-align: bottom;
+						box-shadow: inset 0 -3px #eee;
+					}
+				}
+			}
+		}
+	}
+}
+
+form[action$="JoinSummary"] {
+	.ctrbName.heading4 {
+		font-size: 2rem;
+		padding-bottom: 8px;
+	}
+}
+
+.membershipJoin {
+	.step3Left fieldset.emailDetails {
+		border-top: 20px solid #f2f2f2;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		margin-left: -2rem;
+		margin-right: -2rem;
+		padding-top: 4rem;
+	}
+	#ctl00_MainContent_ctl00_UserRegistrationControl_RegistrationPanel {
+		background: #fff;
+		padding: 2rem;
+	}
+	input#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_btnSaveEducation{
+		@include unButton()
+	}
+}
+
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate,
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate[style],
+#ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdatePanel,
+#ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdatePanel[style] {
+	width: 100% !important;
+	height: auto !important;
+	max-width: 100% !important;
+	float: none;
+}
+
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_chkAttestation {
+	width: auto !important;
+}
+
+//datepicker
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dpBeginDate_wrapper {
+	//overflow:hidden !important;
+	width: 160px !important;
+}
+
+html .education-details .formRow .RadPicker .rcTable.rcSingle {
+	width: 160px !important;
+}
+
+//this thing was hidden and was breaking page
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dpBeginDate,
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dpBeginDate[style],
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_txtSaveEducationId,
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_txtSaveEducationId[style],
+[id^="#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dp"],
+[id^="#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dp"][style] {
+	display: none !important;
+	float: none !important;
+	margin: 0 !important;
+	width: 0 !important;
+	height: 0 !important;
+	clear: both;
+	line-height: 0;
+}
+
+#ctl00_MainContent_ctl00_MembershipDetail_ContainerPanel {
+	width: 100%;
+}
+
+.productDetails.ctrl-memb-prd-detail {
+	display: block;
+	margin-left: 0;
+	.productName {
+		font-size: 24px;
+		padding-top: 20px;
+	}
+}
+
+.MembershipDetailControl_PersonifyDefault .productImage.ctrl-memb-img {
+	margin: 20px;
+	position: static;
+	float: left;
+}
+
+#ctl00_MainContent_ctl00_UserRegistrationControl_UserAlreadyLoggedInPanel {
+	.memberName,
+	.regContactsTitle {
+		padding-bottom: 10px;
+	}
+	.welcomeBack {
+		display: block;
+		margin-left: 0;
+		margin-top: 0;
+	}
+}
+
+// Nav
+.WizardBannerControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
+	margin-bottom: 40px;
+	display: flex;
+	//make sure it doesNot accidentally break page widths
+	overflow: hidden;
+	span {
+		//personify override
+		display: flex;
+		span {
+			width: auto !important;
+		}
+	}
+	span.step {
+		flex-grow: 1;
+		position: relative;
+		background: transparent;
+		border-bottom: 3px solid $ift-grey-230;
+		color: $ift-grey-medium-light;
+		text-align: left;
+		padding-left: 4.5rem !important;
+		padding-bottom: 5px !important;
+		.prefix,
+		.sep,
+		.divider {
+			display: none;
+		}
+		.stepLabel {
+			font-size: 14px;
+			padding-top: 5px;
+		}
+		.number {
+			width: 30px!important;
+			display: block;
+			height: 30px!important;
+			border-radius: 100% !important;
+			border: 1px solid white;
+			box-shadow: none;
+			color: white;
+			position: absolute;
+			left: 20px;
+			text-shadow: none !important;
+			top: 9px;
+			padding: 5px 0;
+			text-align: center;
+			background-color: $ift-grey-medium-light;
+		}
+		.stepLabel {
+			color: $ift-grey-medium-light;
+		}
+		&.active {
+			background-color: $ift-green !important;
+			border-bottom-color: $ift-green !important;
+			.stepLabel {
+				color: $white;
+			}
+			.number {
+				background-color: transparent;
+			}
+		}
+	}
+}
+
+// Step 2
+.MembershipJoinOptionsControl_PersonifyDefault .ctrlContent {
+	.heading2,
+	.buyBox h3 {
+		font-size: 16px;
+	}
+	.buyBox h3 {
+		margin: 15px;
+	}
+	.totalAmountSection {
+		text-align: right;
+		min-width: 0;
+		margin-right: 15px;
+		border-bottom: none;
+	}
+}
+
+.MembershipZipLinkedChapterControl_PersonifyDefault.Membership_PersonifyDefault .chapterPanel,
+.MembershipBenefitsControl_PersonifyDefault.Membership_PersonifyDefault .memOptions {
+	border-bottom: 1px solid $ift-grey-230;
+}
+
+.buyBox {
+	margin: 0;
+	border-color: $ift-grey-230;
+	width: 230px;
+	.rateCodeItem input,
+	.rateCodes .rateCodeItem span,
+	.rateCodeItem label {
+		float: none;
+	}
+	.MembershipBuyBoxControl_PersonifyDefault .memberDetails > div {
+		border-top: none;
+	}
+	.memberDetails {
+		margin: 15px;
+	}
+}
+
+.memOptions {
+	border: 1px solid $ift-grey-230;
+}
+
+.MembershipRenewalControl_PersonifyDefault div.fillSectionBlock,
+.MembershipJoinOptionsControl_PersonifyDefault div.benefits,
+.MembershipJoinOptionsControl_PersonifyDefault .detailsPanel,
+.MembershipJoinOptionsControl_PersonifyDefault .buttonRow {
+	margin-left: 0;
+	display: block;
+}
+
+#ctl00_MainContent_ctl00_MembershipDetail_ContainerPanel {
+	.productImage.ctrl-memb-img {
+		margin: 0;
+		margin-right: 20px;
+		margin-bottom: 20px;
+	}
+	.productName {
+		padding-top: 0;
+	}
+}
+
+.MembershipBenefitsControl_PersonifyDefault.Membership_PersonifyDefault .memOptions {
+	background-color: #f7f7f7;
+	border: 1px solid #e7e7e7;
+	border-radius: 2px;
+	min-height: 8.6em;
+	margin-bottom: 2em;
+	padding: 1em;
+}
+
+.totalAmountSection {
+	min-width: 0;
+	margin: 0;
+}
+
+// Step 3
+.MembershipJoinBiggerImpactControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
+	#ctl00_MainContent_ctl00_BuyBox_AddToCartButton {
+		@include unButton()
+	}
+	#ctl00_ctl00_MainContent_ctl00_ButtonPanelPanel {
+		width: calc(100% - 230px);
+	}
+	.ctrlContent {
+		background-color: white;
+		padding: 20px;
+		margin: 0;
+		width: auto;
+	}
+	#ctl00_MainContent_ctl00_BuyBox_ButtonPanel .buttonRow {
+		margin: 15px;
+	}
+}
+
+#ctl00_ctl00_MainContent_ctl00_MembershipContributionsControl1_ContainerPanelPanel input[type="text"] {
+	@include inputText() margin-left: 10px !important;
+}
+
+.MembershipContributionsControl_PersonifyDefault .ctrbPriceOption label {
+	margin-left: 10px;
+}
+
+.MembershipSIGControl_PersonifyDefault .sigRow {
+	padding: 10px 0;
+	margin: 10px 0;
+	border-color: #eee;
+}
+
+.MembershipContributionsControl_PersonifyDefault .ctrbProdRow {
+	border-bottom: 1px solid #eee;
+}
+
+.buyBox h3 {
+	font-size: 16px;
+	margin: 15px;
+	margin-bottom: 10px;
+}
+
+.MembershipJoinBiggerImpactControl_PersonifyDefault .benefits h2 {
+	font-size: 16px;
+	margin: 15px 0;
+	margin-bottom: 10px;
+}
+
+.MembershipSIGControl_PersonifyDefault.Membership_PersonifyDefault {
+	border: none;
+}
+
+.chapterPrice,
+.sigPrice {
+	float: right;
+	margin-left: 10px;
+}
+
+@include break(max, 42em) {
+	.MembershipJoinOptionsControl_PersonifyDefault.Membership_PersonifyDefault .step2Left,
+	.MembershipJoinOptionsControl_PersonifyDefault.Membership_PersonifyDefault .step3Left {
+		padding: 12px;
+	}
+	.buyBox {
+		margin: 0;
+		border: none;
+		width: 100%;
+	}
+	.rateCodeItem {
+		padding-left: 26px;
+	}
+}
+
+#ctl00_MainContent_ctl00_ADARequiredInfo {
+	width: auto;
+}
+
+#ctl00_MainContent_ctl00_DivisionPanel h2.heading2 {
+	font-size: 3.2rem !important;
+	font-weight: bold;
+}
+
+.MainContent_ctl00_WizardBanner_ContainerPanel {
+	overflow: hidden;
+	//when there are 5, they should have less padding
+}
+
+// Join Summary; They want columns like BS
+form[action$="JoinSummary"] {
+	.MyAccountContactAddress_PersonifyDefault .ctrlContent {
+		padding: 6px;
+		border-radius: 4px;
+		margin-top: 1rem;
+		margin-bottom: 0;
+	}
+	fieldset.emailDetails h3 {
+		font-size: 3.2rem;
+		color: #333;
+		margin-bottom: 1rem;
+	}
+	.MembershipJoinSummaryControl_PersonifyDefault {
+		a#ctl00_MainContent_ctl00_MembershipJoinDetailControl_EditButton {
+			display: inline-block;
+			top: 10px;
+			position: absolute;
+			right: 0;
+		}
+		div#ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel {
+			position: relative;
+		}
+		> .ctrlContent {
+			.step3Left {
+				float: left;
+				width: calc(60% - 1rem);
+				margin-right: 1rem;
+			}
+			.step3Left+div {
+				float: left;
+				width: calc(40% - 1rem);
+				margin-left: 1rem;
+				padding-bottom: 2rem;
+				margin-bottom: 2rem;
+			}
+			.step3Left+div+div:not(.buttonRow) {
+				float: left;
+				width: calc(40% - 1rem);
+				margin-left: 1rem;
+			}
+		}
+		@include break(max, $breakpoint-max-mobile) {
+			> .ctrlContent {
+				.step3Left,
+				.step3Left+div,
+				.step3Left+div+div:not(.buttonRow) {
+					float: none;
+					width: 100%;
+					margin-left: auto;
+				}
+			}
+		}
+	}
+	#ctl00_MainContent_ctl00_PopWindow_C_popuppanel {
+		padding: 1rem;
+	}
+	.authorize-container {
+		padding: 1rem;
+		input[type="checkbox"] {
+			display: inline-block;
+			margin-right: 2rem;
+		}
+		+ .buttonRow {
+			.CancelEditButton {
+				float: left;
+				margin-left: 1rem !important;
+				@include unButton()
+			}
+			.SaveEditButton {
+				float: left;
+			}
+		}
+	}
+}
+
+form[action$="JoinSurvey"] {
+	#ctl00_MainContent_ctl00_SurveyPanel {
+		h2.heading2 {
+			color: rgb(51, 51, 51);
+			display: block;
+			font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 3.6rem;
+			font-weight: bold;
+		}
+	}
+}
+
+#ctl00_MainContent_ctl00_MembershipJoinSection_ContainerPanel h3.heading3,
+.step2Left .yourMembership.heading3 {
+	color: #333;
+	font-size: 3.2rem;
+}
+
+#ctl00_MainContent_ctl00_MembershipDivisionControl_RefreshPanel {
+	table {
+		width: 100%;
+	}
+}
+
+#ctl00_MainContent_ctl00_SurveyPanel {
+	.ctrlContent {
+		> div {
+			background: #fff;
+			padding: 10px $gutter-width;
+			table {
+				width: 100%;
+			}
+		}
+		#ctl00_MainContent_ctl00_ButtonPanel {
+			background-color: transparent;
+			padding: 0;
+		}
+	}
+}
+
+main.membershipRenewal {
+	.MembershipsRenewalControl_PersonifyDefault .ctrlContent .ctrlContent,
+	.MembershipRenewalWizardBannerControl_PersonifyDefault.Membership_PersonifyDefault .ctrlContent {
+		padding: 0;
+	}
+	.heading2,
+	.heading3.ctrlTitle,
+	{
+		color: #333;
+		display: block;
+		font-size: 2.6rem;
+		font-weight: bold;
+		margin-top: 1rem;
+	}
+	.ctrlContent {
+		padding: 0;
+	}
+	.step3Left {
+		background: white;
+		padding: 2rem;
+		width: calc(100% - 320px);
+		margin-right: 20px;
+	}
+	.fieldset {
+		padding: 2rem;
+		background: white;
+		min-height: 40rem
+	}
+	h3.customerName.heading3.h-color-primary {
+		color: #333;
+		margin: 2rem 0;
+		font-size: 2.6rem;
+	}
+	.heading3 {
+		color: #333;
+	}
+	.ctrl-row-header-colored {
+		text-shadow: none;
+	}
+	#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_AccountContactEmailControl_ContainerPanel .ctrlContent,
+	.MyAccountContactAddress_PersonifyDefault .ctrlContent {
+		margin: 2rem 0;
+		padding: 1rem !important;
+		border-radius: 3px;
+		background: white;
+	}
+	#ctl00_MainContent_ctl00_MembershipRenewalWizardBanner_ContainerPanel {
+		font-size: 1.6rem;
+		margin-bottom: 1rem;
+	}
+	.MembershipRenewalControl_PersonifyDefault .additionalBenefits {
+		margin: 0;
+		padding: 1rem;
+		background: white;
+	}
+	.MembershipRenewalControl_PersonifyDefault .membershipDetails .formRow:last-child {
+		background: white;
+		padding: 1rem;
+		margin: 0;
+	}
+	.heading3.bord-low {
+		border-bottom: 3px solid #eee;
+		border: none;
+	}
+	#ctl00_MainContent_ctl00_MembershipRenewalWizardBanner_ContainerPanel {
+		margin-bottom: 40px;
+		display: -ms-flexbox;
+		display: flex;
+		overflow: hidden;
+		min-height: 5rem;
+		@include break(max, 600px) {
+			flex-direction: column;
+		}
+		.step {
+			flex-grow: 1;
+			display: flex;
+			position: relative;
+			background: 0 0;
+			border-bottom: 3px solid #e6e6e6;
+			color: #b1b1b1;
+			text-align: left;
+			padding-left: 4.5rem!important;
+			padding-bottom: 5px!important;
+			align-items: center;
+			min-height: 5rem;
+			.stepLabel {
+				color: #b1b1b1;
+				font-size: 14px;
+			}
+			.prefix,
+			.sep,
+			.divider {
+				display: none;
+			}
+			.number {
+				width: 30px!important;
+				display: block;
+				margin-right: 1rem;
+				position: static;
+				height: 30px!important;
+				border-radius: 100%!important;
+				border: 1px solid #fff;
+				box-shadow: none;
+				color: #fff;
+				left: 20px;
+				text-shadow: none!important;
+				top: 9px;
+				padding: 5px 0;
+				text-align: center;
+				background-color: #b1b1b1;
+			}
+		}
+		.step.active {
+			background-color: #76a120!important;
+			border-bottom-color: #76a120!important;
+			.stepLabel {
+				color: white;
+			}
+			.number {
+				background: 0 0;
+			}
+		}
+	}
+}
+
+form[action$="RenewMembership"] {
+	// input#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_CancelDelButton {
+	// 	@include unButton();
+	// 	font-size: 1.4rem;
+	// }
+	// input#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_cbTermsConditions {
+	// 	margin-right: 20px;
+	// }
+	#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_lblTermsandConditions {
+		padding: 1rem;
+	}
+	#ctl00_MainContent_ctl00_PopWindow_C_popuppanel {
+		padding: 1rem;
+	}
+	.authorize-container {
+		padding: 1rem;
+		input[type="checkbox"] {
+			display: inline-block;
+			margin-right: 2rem;
+		}
+		+ .buttonRow {
+			.CancelEditButton {
+				float: left;
+				margin-left: 1rem !important;
+				@include unButton()
+			}
+			.SaveEditButton {
+				float: left;
+			}
+		}
+	}
+}
+
+main.membershipJoin{
+	label#ctl00_MainContent_ctl00_TMAFormRowJob_Label {
+	    display:block;
+	}
+}
+
+form[action$="JoinSummary"] main.main.membershipJoin .emailDetails #ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel table td:last-child{
+    color: white;
+}

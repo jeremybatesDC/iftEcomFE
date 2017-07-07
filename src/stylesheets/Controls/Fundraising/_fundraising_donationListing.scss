@@ -1,0 +1,36 @@
+.donation-listing {
+	padding-top: $gutter-width;
+	.buttonRow {
+		margin:0;
+	}
+	.full-container {
+		background: $white;
+		padding: $gutter-width/2;
+	}
+	.heading2 {
+		//same size as H5
+		font-size: 2rem;
+	}
+	//consider generalizing
+	.h-color-primary {
+		color: $ift-blue;
+	}
+	.donation-listing-info-description {
+		padding-bottom: $gutter-width / 2;
+	}
+	.donation-listing-info-long-description {
+		padding-bottom: $gutter-width / 2;
+	}
+	.action-hyperlink {
+		padding-bottom: $gutter-width / 2;
+		@include break(max, $breakpoint-max-xs-override){
+			padding-bottom: $gutter-width / 2 !important;
+		}
+	}
+	[type="submit"] {
+		//overrides strange 130% on mobile;
+		font-size: 100% !important;
+		@include button;
+	}
+
+}

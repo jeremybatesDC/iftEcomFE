@@ -1,3 +1,7 @@
+main.main.storeDetail{
+  
+}
+
 // Detail Box
 #ctl00_ctl00_MainContent_ctl00_ProductINVBuyBoxControl_ProductDetailActionButtonControl1_ContainerPanelPanel {
   .productbuttons {
@@ -19,6 +23,44 @@
 #ctl00_MainContent_ctl00_ProductINVBuyBoxControl_ProductDetailActionButtonControl1_AddWishlistButton {
   @include unButton()
 }
+
+.productbuttons {
+  .wishList {
+    @include unButton();
+    width: 100%;
+  }
+  .addToCart {
+    width: 100%;
+  }
+}
+
+#previewButton {
+  width: auto;
+}
+
+@include break(max, $breakpoint-max-xs-override) {
+    .productbuttons-mobile {
+        .productbuttons {
+            + .productbuttons {
+                &:last-child {
+                    margin-top: 0;
+                    padding-top: 0;
+                    padding-bottom: $gutter-width / 2;
+                }
+            }
+        }
+        .wishList {
+          //needed a little extra specificty
+            .ProductDetailControl_PersonifyDefault & {
+              margin-top: $gutter-width/2;
+              margin-bottom: 0;
+            }   
+        }
+    }
+}
+
+
+
 
 // Ribbon
 #ctl00_MainContent_ctl00_CartSavingsControls1_Container {

@@ -84,6 +84,21 @@
 	}
 }
 
+//selector taken stright from personfiy
+.productControlSection .linkButton, 
+.addressButtonsDiv .addressButton {
+	@include break(max, $breakpoint-max-xs-override) {
+		//very tricky overrides
+		html & {
+			@include button();
+			//shorthand is beating normal button background
+			background: linear-gradient(to bottom, rgba(174,207,67,1) 0%,rgba(118,161,32,1) 100%);
+			
+		}
+
+	}
+}
+
 .showHideAllContainer,
 .btnFilterClear {
     line-height: 1.1111 !important;
@@ -125,7 +140,16 @@
 		@include buttonBlue();
 		top:0 !important
 	}
-	
+}
+
+.segmentsListTabs {
+	+ .continueShopping {
+		font-size: 1.2rem;
+		line-height: 1;
+		@include break(min, $breakpoint-min-xs-override){
+			margin-top: 1.6rem;
+		}
+	}
 }
 
 

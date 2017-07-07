@@ -1,0 +1,354 @@
+.DonationWizMain_PersonifyDefault {
+	margin-bottom: $gutter-width / 2;
+
+	//for step 1
+	> .RadAjaxPanel {
+		//padding: $gutter-width / 2;
+		//background:#fff;
+	}
+
+
+
+	.donation-TriAckMatching-Info {
+		background: #fff;
+	}
+
+	.customer-payment-information {
+		background:#fff;
+		> .heading3 {
+			font-size: 1.4rem;
+			font-weight: bold;
+			padding:$gutter-width/2 $gutter-width/2 $gutter-width/2 $gutter-width;
+			background: #f9f9f9;
+		}
+	}
+
+	.panel-billing-address {
+		margin-right: 10px;
+	}
+
+	@include break(min, $breakpoint-min-xs-override){
+		.donation-product-info {
+			padding-left: $gutter-width;
+			padding-bottom: $gutter-width;
+			margin-top: 0;
+		}
+		.donationProductDetailBlock {
+			padding-top:0;
+		}
+		.donation-price-info {
+			padding-left: $gutter-width;
+			padding-bottom: $gutter-width;
+			.exp-col-content {
+				&:last-child {
+					padding-bottom:0;
+				}
+			}
+		}
+		.donation-TriAckMatching-Info {
+			padding-left: $gutter-width;
+			padding-bottom: $gutter-width;
+			> .exp-col-container {
+				&:last-child {
+					.exp-col-content {
+						&:last-child {
+							padding-bottom:0;
+						}
+					}
+				}
+			}
+		}
+	}
+	@include break(max, $breakpoint-max-xs-override){
+		.donation-TriAckMatching-Info {
+			.validationIssues {
+				margin-bottom: 0 
+			}
+			> .exp-col-container {
+				&:last-child {
+					.exp-col-content {
+						&:last-child {
+							padding-bottom:0;
+						}
+					}
+				}
+			}
+		}
+
+	}
+	
+
+
+	.mainCheckoutDiv {
+		margin-right: 0;
+		margin-left: 0;
+		.CheckoutItemSummaryListControl_PersonifyDefault {
+			+ .heading3 {
+				font-size: 1.4rem;
+				font-weight: bold;
+				padding:$gutter-width/2 $gutter-width/2 $gutter-width/2 $gutter-width;
+				background: #f9f9f9;
+				+ .summaryTopDiv {
+					margin-top: 0;
+				}
+			}
+		}
+
+	}
+
+	#ctl00_MainContent_ctl00_DonationWizPaymentInfo_PayNowControl_CustomerPaymentsControl_tbJustNameOnCard {
+		height: 19px;
+		border-color: #aaa;
+		padding-top: 0;
+	}
+
+	#ctl00_MainContent_ctl00_DonationWizPaymentInfo_PayNowControl_CustomerPaymentsControl_TMAFormRow2_Label {
+		@include break(min, $breakpoint-min-xs-override){
+			padding-left:0;
+		}
+	}
+
+	[for="tbJustNameOnCard"]{
+		padding-top:0;
+	}
+
+	[for="tbJustCreditCardNumber"] {
+		width: auto;
+		max-width: none;
+	}
+
+	[for="tbJustCvv2"] {
+		padding-top: 0;
+	}
+
+
+
+	.add-items-in-cart-div {
+		margin-bottom: 10px;
+	}
+
+	.section-title-question {
+		font-size:1.8rem;
+		font-family:$headlineFont;
+		font-weight: $headlineFontWeight;
+		line-height:$headline-line-height;
+		color:$ift-blue !important;
+		border: none;
+		box-shadow: 0 -1px $ift-grey-230;
+		text-shadow: none !important;
+		margin: 0 !important;
+		padding-top: $gutter-width;
+		padding-bottom: $gutter-width / 2;
+		opacity: 1 !important;
+		span {
+			color:$ift-blue !important;
+			text-shadow: none !important;
+		}
+		@include break(max, $breakpoint-max-xs-override){
+			padding: $gutter-width/2 !important;
+		}
+	}
+
+	.exp-col-content {
+		padding-bottom: $gutter-width;
+	}
+
+
+	.product-detail-box {
+		padding:0;
+		&.main {
+			padding:0;
+		}
+		> .row {
+			&:last-child {
+				padding-bottom:0;
+			}
+		}
+	}
+	.buttonRow {
+		&.donation-navigation {
+			padding-top:$gutter-width/2;
+			padding-bottom: 0;
+			margin-bottom: 0;
+			@include break(max, $breakpoint-max-xs-override) {
+				padding-right: 0;
+				padding-left:0;
+			}
+		}
+	}
+
+
+	[type="checkbox"],
+	[type="radio"]{
+		margin-right: $gutter-width/4 !important;
+	}
+	.gift-anonymous-msg {
+		padding:0;
+		@include break(max, $breakpoint-max-xs-override) {
+			padding-left:$gutter-width/4;
+			label {
+				display: inline-block;
+				vertical-align: top;
+				padding-top: $gutter-width/8;
+			}
+		}
+	}
+
+	[id$="btnPayNow"] {
+		@include break(max, $breakpoint-max-xs-override) {
+			font-size: 100% !important;
+		}
+	}
+
+
+}
+
+
+
+
+.DonationWizHeader_PersonifyDefault {
+	display:block;
+
+	&.Donations_PersonifyDefault {
+		.wiz-top-bar {
+			display: block;
+			width: 100%;
+			height: auto;
+			border:none;
+			background-color:$ift-grey-medium-light;
+			background-image:none;
+		}
+		#product_name {
+			h1 {
+				html body & {
+					font-size: 100% !important;
+					line-height: 1 !important;
+					text-shadow: none !important;
+					margin: $gutter-width/2 !important;
+					
+				}
+			}
+		}
+	}
+	
+	
+	.wiz-menu {
+		display:flex;
+		margin-bottom: $gutter-width;
+		.wiz-step {
+			display:flex;
+			position:relative;
+			float: none;
+			max-width: none;
+			padding-left:$gutter-width * 2;
+			color: $ift-grey-medium-light;
+			background-color:transparent;
+			font-size: 1.4rem;
+			font-weight: normal;
+			border-bottom: 3px solid $ift-grey-230;
+
+			[id$="_StepLabel"]{
+				//margin: 0 auto;
+			}
+			.step-number {
+				position:absolute;
+				top: 9px;
+				left: 20px;
+				width: 30px!important;
+				height: 30px!important;
+				border-radius: 100% !important;
+				border: 1px solid white;
+				box-shadow: none;
+				color: white;
+				text-shadow: none !important;
+				padding: 5px 0;
+				text-align: center;
+				background-color: $ift-grey-medium-light;
+			}
+			&.wiz-step-active {
+				color: white;
+				font-weight: bold;
+				background-color:$ift-green;
+				border-bottom: 3px solid $ift-green;
+				.step-number {
+					background-color: transparent;
+				}
+				
+			}
+		}
+	}
+	
+}
+
+.donation-navigation {
+	input[value="Add to Cart"]{
+		@include unButton;
+	}
+}
+
+
+
+// Nav
+// .WizardBannerControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
+// 	margin-bottom: 40px;
+// 	display: flex;
+// 	span {
+// 		//personify override
+// 		span {
+// 			width: auto !important;
+// 		}
+// 	}
+// 	span.step {
+// 		flex-grow: 1;
+// 		position: relative;
+// 		background: transparent;
+// 		border-bottom: 3px solid $ift-grey-230;
+// 		color: $ift-grey-medium-light;
+// 		text-align: left;
+// 		padding-left: 60px !important;
+// 		.prefix,
+// 		.sep,
+// 		.divider {
+// 			display: none;
+// 		}
+// 		.stepLabel {
+// 			font-size: 14px;
+// 		}
+		.number {
+			width: 30px!important;
+			height: 30px!important;
+			border-radius: 100% !important;
+			border: 1px solid white;
+			box-shadow: none;
+			color: white;
+			position: absolute;
+			left: 20px;
+			text-shadow: none !important;
+			top: 9px;
+			padding: 5px 0;
+			text-align: center;
+			background-color: $ift-grey-medium-light;
+		}
+// 		.stepLabel {
+// 			color: $ift-grey-medium-light;
+// 		}
+// 		&.active {
+// 			background-color: $ift-green !important;
+// 			border-bottom-color: $ift-green !important;
+// 			.stepLabel {
+// 				color: $white;
+// 			}
+// 			.number {
+// 				background-color: transparent;
+// 			}
+// 		}
+// 	}
+// }
+
+
+
+.DonationWizDonationInfo_PersonifyDefault {
+	.donation-price-info {
+		background:#fff;
+	}
+}

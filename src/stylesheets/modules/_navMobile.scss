@@ -4,6 +4,7 @@
 	#navOverlayCloseTarget {display: none;}
 	.nav-combined--wrapper{
 		box-shadow:0 1px 1px rgba($black, .1);
+		height:8.6rem;
 		&.scrolled--STATE {
 			background-color:$ift-blue;
 		}
@@ -32,6 +33,7 @@
 		//demo-only
 		padding:1em .5em;
 		width: 4.8rem;
+		min-width: auto;
 		height: 3.2rem;
 		text-align: center;
 		line-height: 1;

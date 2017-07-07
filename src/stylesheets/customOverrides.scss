@@ -7,9 +7,11 @@
 @import 'modules/icons';
 
 //Pete modules
-@import 'CustomControls/Master/Login';
-@import 'CustomControls/Master/ShoppingCart';
-@import 'CustomControls/Master/SocialMenu';
-@import 'CustomControls/Profile/profileFormsAndContent';
-@import 'CustomControls/Store/productDetail';
-@import 'CustomControls/Membership/Join';
+@import 'Controls/Master/Login';
+@import 'Controls/Master/ShoppingCart';
+@import 'Controls/Master/SocialMenu';
+@import 'Controls/Profile/profile';
+@import 'Controls/Profile/profileFormsAndContent';
+@import 'Controls/Store/productDetail';
+@import 'Controls/Membership/JoinResets';
+@import 'Controls/Membership/Join';
