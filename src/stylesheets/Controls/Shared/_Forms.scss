@@ -64,6 +64,9 @@ $border-radius: 3px;
 .RadComboBox tbody,
 .RadComboBox tr {
   display: block;
+    @include break(max, $breakpoint-max-xs-override) {
+     display: block !important;
+  }
 }
 
 .formRow .RadComboBox input[type="text"],
@@ -182,3 +185,22 @@ select {
   color: $ift-blue;
 }
 
+@include break(max, $breakpoint-max-xs-override) {
+  .myAccountProfile .row{
+    background-color: white;
+  }
+  .formRow .RadPicker_PersonifyDefault{
+    display: block !important;
+  }
+  .content>.Profile_PersonifyDefault.Base_PersonifyDefault, .content>.RadAjaxPanel,
+  .ctrlContent.formLayout{
+    padding: 0 !important;
+  }
+  .Base_PersonifyDefault{
+    font-size: 100% !important;
+  }
+  #ctl00_MainContent_ctl00_pnlUpdate {
+    height: auto!important;
+    width: auto !important;
+  }
+}
