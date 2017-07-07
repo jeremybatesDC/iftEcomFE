@@ -4,95 +4,98 @@
 //this is NOT running through Babel, so no ES6 (too bad, because forEach on nodelists is so nice)
 
 
-function UTILITY_clearThisObject(objectToEnumerate){
-	for(var thisPropName in objectToEnumerate) {
-		objectToEnumerate[thisPropName] = '';
-	}
-}
 
-//moving singular values here allows key/value pairs of mapStatusContainer to all be of the same shape (with up to 4);
-var singularViewOnlyStatusContainer = {
-    currentStateCode: ''
-    ,currentStateName: ''
-}
-
-function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProductName, currentComponentProductId, currentComponentProductShortName, currentMemberPrice, currentPostalCodeRange, currentComponentParentProduct, currentHomeSection){
-	this.currentProductId = currentProductId;
-	this.currentProductName = currentProductName;
-	this.currentComponentProductId = currentComponentProductId;
-    this.currentComponentProductShortName = currentComponentProductShortName;
-    this.currentMemberPrice = currentMemberPrice;
-    this.currentPostalCodeRange = currentPostalCodeRange;
-    this.currentComponentParentProduct = currentComponentParentProduct;
-    this.currentHomeSection = currentHomeSection;
-}
-//MAX 4
-var mapStatusContainerDeepARRAY = [];
-function constructFreshMapStatusContainerModel(){
-	for(var i = 0; i < 4; i++){
-		var thisConstructedThing = new MapStatusContainerDeepARRAY_CONSTRUCTOR(null, null, null, null, null, null, null);
-		mapStatusContainerDeepARRAY.push(thisConstructedThing);
-	}
-}
-//doesNotNeedToBeGlobal,but itS more readable if the clear function is visually next to the model
-function safeManualResetOfmapStatusContainerDeepARRAY(){
-	mapStatusContainerDeepARRAY = [];
-	constructFreshMapStatusContainerModel();
-}
-
-
-//hidden or not handled by iterator elsewhere
-// function PanelDisplayStatusARRAY_CONSTRUCTOR(hiddenOrNot, disabledOrNot, hasTipsOrNot){
-
-// }
-
-
-
-function OutputStatusContainerDeepARRAY_CONSTRUCTOR(ProductId, ProductName, ComponentProductId, ComponentProductShortName, MemberPrice){
-	this.ProductId = ProductId;
-	this.ProductName = ProductName;
-    this.ComponentProductId = ComponentProductId;
-    this.ComponentProductShortName = ComponentProductShortName;
-    this.MemberPrice = MemberPrice;
-}
-//max 4
-var deepOutputObjectForStaging = [];
-function constructFreshStagingContainerModel(){
-	for(var i = 0; i < 4; i++){
-		var thisConstructedThing = new OutputStatusContainerDeepARRAY_CONSTRUCTOR(null, null, null, null, null);
-		deepOutputObjectForStaging.push(thisConstructedThing);
-	}
-}
-//doesNotNeedToBeGlobal,but itS more readable if the clear function is visually next to the model
-function safeManualResetOfOutputStatusContainerDeepARRAY(){
-	deepOutputObjectForStaging = [];
-	constructFreshStagingContainerModel();
-}
-
-//the staging container is a bit different because itS order matters and must be preserved
-
-
-//these can be used later to filter mapStatusContainer at queryTime
-//just using for keys, which is awkward but easier in the short term than filtering against a differently shaped thing
-var fieldsRequiredByPanelView = {
-    currentProductName: ''
-    ,currentMemberPrice: ''
-    ,currentComponentProductShortName: ''
-    ,currentPostalCodeRange: ''
-}
-
-var fieldsRequiredByBackend = {
-    currentProductId: ''
-    ,currentProductName: ''
-    ,currentComponentProductId: ''
-    ,currentComponentProductShortName: ''
-    ,currentMemberPrice: ''
-}
 
 
 
 ;(function iftMapFunction(){
     "use strict";
+
+    //for in loop
+    function UTILITY_clearThisObject(objectToEnumerate){
+        for(var thisPropName in objectToEnumerate) {
+            objectToEnumerate[thisPropName] = '';
+        }
+    }
+
+    //moving singular values here allows key/value pairs of mapStatusContainer to all be of the same shape (with up to 4);
+    var singularViewOnlyStatusContainer = {
+        currentStateCode: ''
+        ,currentStateName: ''
+    }
+
+    function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProductName, currentComponentProductId, currentComponentProductShortName, currentMemberPrice, currentPostalCodeRange, currentComponentParentProduct, currentHomeSection){
+        this.currentProductId = currentProductId;
+        this.currentProductName = currentProductName;
+        this.currentComponentProductId = currentComponentProductId;
+        this.currentComponentProductShortName = currentComponentProductShortName;
+        this.currentMemberPrice = currentMemberPrice;
+        this.currentPostalCodeRange = currentPostalCodeRange;
+        this.currentComponentParentProduct = currentComponentParentProduct;
+        this.currentHomeSection = currentHomeSection;
+    }
+    //MAX 4
+    var mapStatusContainerDeepARRAY = [];
+    function constructFreshMapStatusContainerModel(){
+        for(var i = 0; i < 4; i++){
+            var thisConstructedThing = new MapStatusContainerDeepARRAY_CONSTRUCTOR(null, null, null, null, null, null, null);
+            mapStatusContainerDeepARRAY.push(thisConstructedThing);
+        }
+    }
+    //doesNotNeedToBeGlobal,but itS more readable if the clear function is visually next to the model
+    function safeManualResetOfmapStatusContainerDeepARRAY(){
+        mapStatusContainerDeepARRAY = [];
+        constructFreshMapStatusContainerModel();
+    }
+
+
+    //hidden or not handled by iterator elsewhere -- but could create a model for it
+    // function PanelDisplayStatusARRAY_CONSTRUCTOR(hiddenOrNot, disabledOrNot, hasTipsOrNot){}
+
+
+
+    function OutputStatusContainerDeepARRAY_CONSTRUCTOR(ProductId, ProductName, ComponentProductId, ComponentProductShortName, MemberPrice){
+        this.ProductId = ProductId;
+        this.ProductName = ProductName;
+        this.ComponentProductId = ComponentProductId;
+        this.ComponentProductShortName = ComponentProductShortName;
+        this.MemberPrice = MemberPrice;
+    }
+    //max 4
+    var deepOutputObjectForStaging = [];
+    function constructFreshStagingContainerModel(){
+        for(var i = 0; i < 4; i++){
+            var thisConstructedThing = new OutputStatusContainerDeepARRAY_CONSTRUCTOR(null, null, null, null, null);
+            deepOutputObjectForStaging.push(thisConstructedThing);
+        }
+    }
+    //doesNotNeedToBeGlobal,but itS more readable if the clear function is visually next to the model
+    function safeManualResetOfOutputStatusContainerDeepARRAY(){
+        deepOutputObjectForStaging = [];
+        constructFreshStagingContainerModel();
+    }
+
+    //the staging container is a bit different because itS order matters and must be preserved
+
+
+    //these can be used later to filter mapStatusContainer at queryTime
+    //just using for keys, which is awkward but easier in the short term than filtering against a differently shaped thing
+    var fieldsRequiredByPanelView = {
+        currentProductName: ''
+        ,currentMemberPrice: ''
+        ,currentComponentProductShortName: ''
+        ,currentPostalCodeRange: ''
+    }
+
+    var fieldsRequiredByBackend = {
+        currentProductId: ''
+        ,currentProductName: ''
+        ,currentComponentProductId: ''
+        ,currentComponentProductShortName: ''
+        ,currentMemberPrice: ''
+    }
+
+
 
     function iftMapFunctionInit(){
 
@@ -124,7 +127,12 @@ var fieldsRequiredByBackend = {
         //already have a reference, but itS more general for etch-a-sketch reasons
 
      	var nodeListOfPanelsToPopulate = document.querySelectorAll('.iftMap__sectionData__wrapper')
+
+
      	var nodeListOfCheckboxes = document.querySelectorAll('.iftMap__sectionData__wrapper [type="checkbox"]');
+        var arrayOfCheckboxes = Array.prototype.slice.call(nodeListOfCheckboxes);
+
+
         var arrayOfPanelsToPopulate = Array.prototype.slice.call(nodeListOfPanelsToPopulate);
         var arrayOfArrayOfFieldsToPopulate = [];
 
@@ -161,7 +169,7 @@ var fieldsRequiredByBackend = {
               .attr('class', 'state-borders iftMap__svg__path--stateBorders')
               .attr('d', path(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; })));
         });
-
+        //END DRAW MAP
 
 
 
@@ -196,7 +204,7 @@ var fieldsRequiredByBackend = {
 
             //OK, now display!
             writeDataToThePage();
-        }
+        }//end mapHandlerFunction
 
 
         //this is a css thing
@@ -624,6 +632,10 @@ var fieldsRequiredByBackend = {
         }
 
 
+
+
+
+
         function showHideWholeMap(event){
 
             //query page 
@@ -757,10 +769,6 @@ var fieldsRequiredByBackend = {
 
 
 
-
-
-
-
         //EVENTS
         (function addEventListeners(){
         	stateSelectMenu.addEventListener('change', mapHandlerFunction, false);
@@ -769,25 +777,22 @@ var fieldsRequiredByBackend = {
         	iftMapButtonClose.addEventListener('click', showHideWholeMap, false);
         	iftMapButtonCancel.addEventListener('click', showHideWholeMap, false);
 
-        	for(var i = 0; i < nodeListOfCheckboxes.length; i++){
-	        	nodeListOfCheckboxes[i].addEventListener('change', stagePanelOfThisCheckbox, false);
-	        }
+            arrayOfCheckboxes.map(function(thisCheckbox){
+
+                //name this function stageORunstage
+                thisCheckbox.addEventListener('change', stagePanelOfThisCheckbox, false);
+            })
+
 
         })();
 
 
-
-
-
-
-       
-    
     }    
 
     document.addEventListener('DOMContentLoaded', iftMapFunctionInit);
     
     if(window.hasOwnProperty('Sys')){
-        //partial postBack
+        //if partial postBack
  		//need to test this as injection point
         Sys.WebForms.PageRequestManager.getInstance().add_endRequest(iftMapFunctionInit)   
     }
