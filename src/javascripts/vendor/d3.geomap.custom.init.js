@@ -147,8 +147,8 @@
         //DRAW THE MAP
         var svg = d3.select('#iftMap');
         var path = d3.geoPath();
-        d3.json('javascripts/data/topoJSONusCustom.json', function(error, data) {
-        //d3.json('/Scripts/data/topoJSONusCustom.json', function(error, data) {
+        //d3.json('javascripts/data/topoJSONusCustom.json', function(error, data) {
+        d3.json('/Scripts/data/topoJSONusCustom.json', function(error, data) {
           if (error) throw error;
           svg.append('g')
             .attr('class', 'states iftMap__svg__g')
