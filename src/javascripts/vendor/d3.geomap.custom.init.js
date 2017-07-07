@@ -16,7 +16,7 @@ var singularViewOnlyStatusContainer = {
     ,currentStateName: ''
 }
 
-function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProductName, currentComponentProductId, currentComponentProductShortName, currentMemberPrice, currentPostalCodeRange, currentComponentParentProduct, currentHomeSectionFlag){
+function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProductName, currentComponentProductId, currentComponentProductShortName, currentMemberPrice, currentPostalCodeRange, currentComponentParentProduct, currentHomeSection){
 	this.currentProductId = currentProductId;
 	this.currentProductName = currentProductName;
 	this.currentComponentProductId = currentComponentProductId;
@@ -24,7 +24,7 @@ function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProduc
     this.currentMemberPrice = currentMemberPrice;
     this.currentPostalCodeRange = currentPostalCodeRange;
     this.currentComponentParentProduct = currentComponentParentProduct;
-    this.currentHomeSectionFlag = currentHomeSectionFlag;
+    this.currentHomeSection = currentHomeSection;
 }
 //MAX 4
 var mapStatusContainerDeepARRAY = [];
@@ -72,13 +72,6 @@ function safeManualResetOfOutputStatusContainerDeepARRAY(){
 //the staging container is a bit different because itS order matters and must be preserved
 
 
-
-
-function clearHiddenInputForBackend(){
-    hiddenInputForBackend.value = '';
-}
-
-
 //these can be used later to filter mapStatusContainer at queryTime
 //just using for keys, which is awkward but easier in the short term than filtering against a differently shaped thing
 var fieldsRequiredByPanelView = {
@@ -103,13 +96,6 @@ var fieldsRequiredByBackend = {
 
     function iftMapFunctionInit(){
 
-
-
-    	// IF THIS IS FIRED BY THE PARTIAL POSTBACK, THEN USE THAT EVENT TO POST DATA
-
-
-
-
     	//construct models
 		constructFreshMapStatusContainerModel();
 		constructFreshStagingContainerModel();
@@ -128,6 +114,8 @@ var fieldsRequiredByBackend = {
         var stateSelectMenu = document.getElementById('stateSelectMenu');
         var internationalSelectMenu = document.getElementById('internationalSelectMenu');
         var arrayOfSpansToPopulateEmpty = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper span'));
+
+        var nodeListOfHiddenInputsForBackend = document.querySelectorAll('[id^="IFTSavedSectionHiddenfield"]');
         var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
         var activeStateSting = 'iftMapWrapperOuter--ACTIVE-STATE';
 
@@ -173,19 +161,6 @@ var fieldsRequiredByBackend = {
               .attr('class', 'state-borders iftMap__svg__path--stateBorders')
               .attr('d', path(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; })));
         });
-
-
-
-
-
-        function preSelectUserHomeUSstate(){
-        	//What event can i use?
-        	//mapHandlerFunction(event, thisState);
-        }
-
-
-
-
 
 
 
@@ -253,26 +228,34 @@ var fieldsRequiredByBackend = {
             }
         }
 
+        function clearTonsOfStuffBeforeWritingDataToPage(){
+            //start by clearing models
+            safeManualResetOfmapStatusContainerDeepARRAY();
+            safeManualResetOfOutputStatusContainerDeepARRAY();
+
+            //clear the input value we are populating for the backend on section click
+
+            //THIS MUST CLEAR ALL 4
+            clearHiddenInputForBackend('all');
+            
+            //next, clear content, flags and data attributes 
+            //(consult model -- could consult model)
+            clearNoResultsMessageContainer();
+            clearCheckBoxes();
+            clearDataFlags();
+            removeAllToolTips();
+            clearPanelsOfContentAndDataAttributes();
+
+            //reset statuses of the panels themselves;
+            unRevealPanels();
+            disablePanels();
+        }
+
 
 
         function writeDataToThePage(){
-        	//start by clearing models
-        	safeManualResetOfmapStatusContainerDeepARRAY();
-        	safeManualResetOfOutputStatusContainerDeepARRAY();
-
-        	//next, clear content (consult model)?
-        	clearNoResultsMessageContainer();
-        	clearCheckBoxes();
-
-        	clearDataFlags();
-
-        	clearPanelsOfContentAndDataAttributes();
-
-        	unRevealPanels();
-        	disablePanels();
-
-        	removeAllToolTips();
-
+        	
+            clearTonsOfStuffBeforeWritingDataToPage();
 
             //called without arguments becuase that function queries the model
             displayAreaName();
@@ -307,54 +290,12 @@ var fieldsRequiredByBackend = {
                     mapStatusContainerDeepARRAY[iteratorNum].currentPostalCodeRange = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
                     mapStatusContainerDeepARRAY[iteratorNum].currentComponentParentProduct = rawSectionData.SectionItems[indexOfSectionItem].ComponentParentProduct;
 
-                    //initialize as false?
-                    mapStatusContainerDeepARRAY[iteratorNum].currentHomeSectionFlag = false;
-
-
-                    //if an already-selected home section exists
-                    if(spanToCheckForHomeSections.textContent !== null){
-                    	//if it does, put textValue here
-                    	var userHomeSection = spanToCheckForHomeSections.textContent;
+                    //initialize as null -- but is this getting overwritten 
+                    mapStatusContainerDeepARRAY[iteratorNum].currentHomeSection = null;
 
 
 
-
-
-                    	//mapStatusContainerDeepARRAY[iteratorNum].currentProductName === spanToCheckForHomeSections.textContent
-
-                    	 
-                    	
-
-				        (function actionsBasedOnUserHomeSection(){
-
-
-				        		//check whether 
-
-					        	console.log('userHomeSection');
-					        	console.log(userHomeSection);
-					        	//model value as already been set, and this is already inside a test
-
-					        	//undisable panel status function will be called later either way
-
-
-					        	if(userHomeSection === mapStatusContainerDeepARRAY[iteratorNum].currentProductName){
-					        		mapStatusContainerDeepARRAY[iteratorNum].currentHomeSectionFlag = true;
-					        		console.log('there is a value in the model that matches the userHomeSection');
-
-
-
-
-					        	}
-					        	else {
-					        		mapStatusContainerDeepARRAY[iteratorNum].currentHomeSectionFlag = false;
-					        		console.log('no value in the model matching userHomeSection');
-					        	}
-
-
-				        })(userHomeSection)
-
-
-                    }
+                   
 
                     iteratorNum++;
 
@@ -435,6 +376,66 @@ var fieldsRequiredByBackend = {
             });//end of matchingSectionItems.map
 
 
+            (function actionsBasedOnUserHomeSectionOuterMostFunction(){
+                //does it exist
+
+                //the 2nd part of this test isnT rigourous enough
+                if(spanToCheckForHomeSections !== null && spanToCheckForHomeSections.textContent !== null){
+                     //if it does, put textValue here
+                        var userHomeSectionString = spanToCheckForHomeSections.textContent;
+                        console.log('userHomeSection is ' + userHomeSectionString);
+                        actionsBasedOnUserHomeSection(userHomeSectionString);
+                }
+                else {
+                    console.log('no current homeUserSection');
+
+
+                }
+
+
+                function actionsBasedOnUserHomeSection(userHomeSectionString){
+                        
+
+                        //undisable panel status function will be called later either way
+
+                        matchingSectionItems.map(function(thisMatchingSectionItem){
+
+
+                            //using productnameKey
+                            if(userHomeSectionString !== null && userHomeSectionString === thisMatchingSectionItem.currentProductName){
+
+
+                                    thisMatchingSectionItem.currentHomeSection = userHomeSectionString;
+
+
+
+                                    console.log('there is a value in the model that matches the userHomeSection and it is ' + thisMatchingSectionItem.currentHomeSection);
+
+                                    console.log('if we are to trigger change event with dropdown then we need state code -- unless i can make the dropdown exactly match this')
+
+                                    //get a key you can send to the statedropdown menu -- statecode
+
+
+                                    //this will hopefully trigger a change event // but currentStateCode is not in model
+                                    //stateSelectMenu.value = stateCodeOfUserHomeSection;
+
+
+                            }//end if
+                            else {
+                                //this value is used outside of this function, so i needs an assignment one way or the other
+                                thisMatchingSectionItem.currentHomeSection = null;
+                            }
+
+                        });//end map
+
+
+                        
+
+                }
+
+            })();
+
+
 			//PANEL STATUS STUFF HERE BECAUSE OF THE WAY THE EVENT LOOP IS
 			//QUERY THE DOM FOR THESE UNLESS PREPARED TO DO A PANEL STATE CONTAINER [hasTip, disabled, hidden]
 
@@ -459,16 +460,22 @@ var fieldsRequiredByBackend = {
 					//check if should also uncheck its self
 
 	    			(function unDisablePanels(){
-	    				
 
+                        //something is wiping out this field
+                        console.log('why always undefined or null?');
+                        console.log(mapStatusContainerDeepARRAY[i].currentHomeSection);
 
 	    				//make sure panel does not contain user home state before unDisabling
-	    				if(mapStatusContainerDeepARRAY[i].currentHomeSectionFlag === false){
+
+                        //THIS TEST NEEDS TO WORK
+
+                        //too many things are passing. Something is clearing this value and making it always null -- or the initial value of null isn't getting properly set back in the model
+	    				if(mapStatusContainerDeepARRAY[i].currentHomeSection === null){
 					        thisPanelToBeInspected.classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
 			    			thisPanelToBeInspected.querySelector('input').disabled = false;
 	    				}
 	    				else {
-	    					//if panel DOES CONTAIN home state, disable the input of course
+	    					//if panel DOES CONTAIN home state, so disable the input of course
 	    					thisPanelToBeInspected.querySelector('input').disabled = true;
 	    					//but DONt manually CHECK this box, because that could add it again to the cart
 	    				}
@@ -501,7 +508,7 @@ var fieldsRequiredByBackend = {
         	var tooltipElement = document.createElement('i');
         	//cannot use classList yet bC there isnTone
         	tooltipElement.setAttribute('class', 'niftyTooltip');
-        	tooltipElement.setAttribute('title', 'A nearby section ');
+        	tooltipElement.setAttribute('data-toolTipText', 'Membership in a nearby section is complimentary to this section');
         	tooltipElement.innerHTML = '<svg class="iconInfo" viewBox="0 0 32 32"><use xlink:href="#iconInfo"/></svg>';
         	var theFirstChild = theReferenceFormLabelElement.firstChild;
         	theReferenceFormLabelElement.insertBefore(tooltipElement, theFirstChild);
@@ -560,6 +567,25 @@ var fieldsRequiredByBackend = {
         	}
         }
 
+        function clearHiddenInputForBackend(allOrJustThis, optionalIndexKey){
+            if(allOrJustThis === 'all'){
+                console.log('clearing all hidden outputs for backend');
+                for(var i = 0; i < nodeListOfHiddenInputsForBackend.length; i++){
+                    nodeListOfHiddenInputsForBackend[i].value = '';
+                }
+            }
+            //else just clear the one inQuestion [hardcoding this for one second] -- just setting one static input to blank
+            else if(optionalIndexKey !== null) {
+                console.log('this is running' + optionalIndexKey);
+
+                console.log('just clearing the single hidden input in question');
+                nodeListOfHiddenInputsForBackend[optionalIndexKey].value = '';
+            }
+            
+        }
+
+
+
 
         
 
@@ -599,6 +625,9 @@ var fieldsRequiredByBackend = {
 
 
         function showHideWholeMap(event){
+
+            //query page 
+
             if(event.currentTarget === iftMapButtonOpen) {
                 iftMapWrapperOuter.classList.add(activeStateSting);
             }
@@ -607,6 +636,9 @@ var fieldsRequiredByBackend = {
             	//SHOULD CLOSING MODAL ALSO CLEAR MODEL & VIEW? NO. SELECTION SHOULD REMAIN IN CASE IT WAS ACCIDENTAL
 
                 closeActiveTooltip();
+
+
+
                 iftMapWrapperOuter.classList.remove(activeStateSting);
             }
         }
@@ -626,6 +658,8 @@ var fieldsRequiredByBackend = {
 
         function stageOrUnstageThisPanel(event, referenceToParentPanelOfCheckedInput, stageOrUnstage){
 
+            //after updating the staging model, this function must then update the actual hidden inputs that this map is populating
+
         	var indexOfThisPanel = arrayOfPanelsToPopulate.indexOf(referenceToParentPanelOfCheckedInput);
         	var thisOutputObject = deepOutputObjectForStaging[indexOfThisPanel];
         	
@@ -642,6 +676,18 @@ var fieldsRequiredByBackend = {
 
 	        		console.log('time To stage ' + referenceToParentPanelOfCheckedInput.id);
 	        		console.log(thisOutputObject);
+
+
+                    //update csv
+                    //will need 4 inputs
+
+
+                    //takeTheOutputOfThisPanelAndStickInInTheInput
+                    putOutputArrayInHiddenInput(indexOfThisPanel);
+
+                    //problem with piping is that i would need to recompute the entire value string every thing based on the number
+                    //
+
         		})();
         	}
 
@@ -650,18 +696,62 @@ var fieldsRequiredByBackend = {
         		console.log('time To unStage this panel: ' + referenceToParentPanelOfCheckedInput.id);
 				UTILITY_clearThisObject(thisOutputObject);
         		console.log(thisOutputObject);
+
+                //this is separate clearing the backend model. This field gets populated by the back endmodel
+
+
+                //only clear this one!
+                clearHiddenInputForBackend('justThis', indexOfThisPanel);
+
         	}
+
+                    //update csv
+
+
+
+            //then update the outputCSV regardless o
+
    
         }
+        //when pushing values to this csv, itS going to be complex to retain order... 
 
+         function putOutputArrayInHiddenInput(indexOfHiddenInputToPopulate){
 
+            console.log('what am i getting here? Is it null sometimes?');
 
+            console.log(indexOfHiddenInputToPopulate);
 
-         function putOutputArrayInHiddenInput(){
-            //takes contents of outputObjectForBackend and populates #hiddenInputForBackend
             var formattedOutput = JSON.stringify(deepOutputObjectForStaging);
+            //this function will be called multiple times, with the particular panelS index mattering.
+            
+
+
+            console.log('NOW what am i getting here? Is it null sometimes? Not sure how/why undefined maybe because blank or something');
+
+            //
+
+
+            console.log(theHiddenInputToPopulate);
+
+            //takes contents of outputObjectForBackend and populates #hiddenInputForBackend
+           
             //requested formatting is very specific
-            hiddenInputForBackend.value = formattedOutput;
+
+            //now must filter against 
+
+
+            if(nodeListOfHiddenInputsForBackend[indexOfHiddenInputToPopulate] !== null){
+                var theHiddenInputToPopulate = nodeListOfHiddenInputsForBackend[indexOfHiddenInputToPopulate];
+                theHiddenInputToPopulate.value = formattedOutput;
+                console.log(theHiddenInputToPopulate.value);
+            }
+
+            else {
+                console.log('why does this sometimes return undefined?');
+            }
+
+
+            
         }
 
 

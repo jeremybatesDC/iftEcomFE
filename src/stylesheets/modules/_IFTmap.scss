@@ -317,7 +317,7 @@ a.iftMap__button--save{
   &:active,
   &:focus {
     &:before {
-      content: attr(title);
+      content: attr(data-toolTipText);
       position:absolute;
       //that position isnT working as expected
       //left: 2rem;
