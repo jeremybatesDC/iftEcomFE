@@ -128,8 +128,7 @@
 
 .nav-utility__reg-search-wrapper {
 	display: inline-block;
-	[href^="/shopping"],
-	[href^="/Shopping"] {
+	.header__utility-auth + a {
 		display: inline-block;
 		vertical-align: top;
 		position: relative;
