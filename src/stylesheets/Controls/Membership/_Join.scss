@@ -174,7 +174,7 @@ form[action$="JoinSummary"] {
 		background: #fff;
 		padding: 2rem;
 	}
-	input#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_btnSaveEducation{
+	input#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_btnSaveEducation {
 		@include unButton()
 	}
 }
@@ -751,12 +751,41 @@ form[action$="RenewMembership"] {
 	}
 }
 
-main.membershipJoin{
+main.membershipJoin {
 	label#ctl00_MainContent_ctl00_TMAFormRowJob_Label {
-	    display:block;
+		display: block;
+	}
+	#membershipTable {
+		border-collapse: collapse;
+		p {
+			margin: 0;
+			margin-bottom: 4px;
+		}
+		td {
+			border: 1px solid #ccc;
+			padding: 10px;
+			a {
+				padding-left: 10px;
+				font-style: italic;
+			}
+		}
+		th {
+			background: #ddd;
+			border: 1px solid #ccc;
+			&.table--text-left {
+				text-align: left;
+			}
+		}
+		[colspan] {
+			background: #ddd;
+			font-weight: bold;
+		}
+		.table--indent {
+			padding-left: 10px;
+		}
 	}
 }
 
-form[action$="JoinSummary"] main.main.membershipJoin .emailDetails #ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel table td:last-child{
-    color: white;
+form[action$="JoinSummary"] main.main.membershipJoin .emailDetails #ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel table td:last-child {
+	color: white;
 }
