@@ -479,6 +479,12 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 
 // Join Summary; They want columns like BS
 form[action$="JoinSummary"] {
+	#ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel .formRow span.caption {
+		padding-left: 1rem;
+	}
+	#ctl00_MainContent_ctl00_MembershipContributionsControl1_ContainerPanel {
+		margin-top: 2rem;
+	}
 	.MyAccountContactAddress_PersonifyDefault .ctrlContent {
 		padding: 6px;
 		border-radius: 4px;
