@@ -505,6 +505,14 @@ form[action$="JoinSummary"] {
 				float: left;
 				width: calc(60% - 1rem);
 				margin-right: 1rem;
+				.benefits + div div:first-child {
+					text-align: right;
+					padding: 1rem;
+					font-size: 1.6rem;
+					font-weight: bold;
+					border: 1px solid #eee;
+					margin-bottom: 2rem;
+				}
 			}
 			.step3Left+div {
 				float: left;
