@@ -162,13 +162,6 @@ form[action$="contactinformation"] {
 	.ctrl-row-item {
 		font-weight: bold;
 	}
-	#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel + div + div,
-	#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel + div + div + div + div {
-		background: transparent;
-		padding: 0;
-		margin: 0;
-		height: 0;
-	}
 }
 
 form[action$="usernamepassword"] {

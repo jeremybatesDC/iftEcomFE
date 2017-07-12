@@ -479,6 +479,12 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 
 // Join Summary; They want columns like BS
 form[action$="JoinSummary"] {
+	#ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel .formRow span.caption {
+		padding-left: 1rem;
+	}
+	#ctl00_MainContent_ctl00_MembershipContributionsControl1_ContainerPanel {
+		margin-top: 2rem;
+	}
 	.MyAccountContactAddress_PersonifyDefault .ctrlContent {
 		padding: 6px;
 		border-radius: 4px;
@@ -505,6 +511,14 @@ form[action$="JoinSummary"] {
 				float: left;
 				width: calc(60% - 1rem);
 				margin-right: 1rem;
+				.benefits + div div:first-child {
+					text-align: right;
+					padding: 1rem;
+					font-size: 1.6rem;
+					font-weight: bold;
+					border: 1px solid #eee;
+					margin-bottom: 2rem;
+				}
 			}
 			.step3Left+div {
 				float: left;
@@ -716,6 +730,15 @@ main.membershipRenewal {
 			}
 		}
 	}
+	fieldset.emailDetails {
+		background-color: white;
+		padding: 2rem;
+	}
+	a#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipDivisionControl_EditButton {
+		padding-top: 2rem;
+		display: block;
+		text-align: right;
+	}
 }
 
 form[action$="RenewMembership"] {
@@ -751,7 +774,8 @@ form[action$="RenewMembership"] {
 	}
 }
 
-main.membershipJoin {
+main.membershipJoin,
+main.membershipRenewal {
 	label#ctl00_MainContent_ctl00_TMAFormRowJob_Label {
 		display: block;
 	}
