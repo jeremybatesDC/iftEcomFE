@@ -716,6 +716,15 @@ main.membershipRenewal {
 			}
 		}
 	}
+	fieldset.emailDetails {
+		background-color: white;
+		padding: 2rem;
+	}
+	a#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipDivisionControl_EditButton {
+		padding-top: 2rem;
+		display: block;
+		text-align: right;
+	}
 }
 
 form[action$="RenewMembership"] {
@@ -751,7 +760,8 @@ form[action$="RenewMembership"] {
 	}
 }
 
-main.membershipJoin {
+main.membershipJoin,
+main.membershipRenewal {
 	label#ctl00_MainContent_ctl00_TMAFormRowJob_Label {
 		display: block;
 	}
