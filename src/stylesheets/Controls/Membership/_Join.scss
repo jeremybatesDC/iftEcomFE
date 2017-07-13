@@ -779,6 +779,13 @@ main.membershipRenewal {
 	label#ctl00_MainContent_ctl00_TMAFormRowJob_Label {
 		display: block;
 	}
+	#ctl00_MainContent_ctl00_UserRegistrationControl_ContainerPanel {
+		padding: 2rem;
+		background-color: white;
+	}
+	.MembershipJoinRegistrationControl_PersonifyDefault .formLayout .buttonRow {
+		margin-left: 0;
+	}
 	#membershipTable {
 		border-collapse: collapse;
 		p {
