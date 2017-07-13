@@ -162,6 +162,15 @@ form[action$="JoinSummary"] {
 }
 
 .membershipJoin {
+	a#ctl00_MainContent_ctl00_MembershipBioInfoEducation_EditButton,
+	a#ctl00_MainContent_ctl00_MembershipDivisionControl_EditButton {
+		position: absolute;
+		top: 20px;
+		right: 0;
+	}
+	.Base_PersonifyDefault {
+		position: relative;
+	}
 	.step3Left fieldset.emailDetails {
 		border-top: 20px solid #f2f2f2;
 		padding-left: 2rem;
@@ -392,7 +401,7 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 // Step 3
 .MembershipJoinBiggerImpactControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
 	#ctl00_MainContent_ctl00_BuyBox_AddToCartButton {
-		@include unButton()
+		@include unButton();
 	}
 	#ctl00_ctl00_MainContent_ctl00_ButtonPanelPanel {
 		width: calc(100% - 230px);
@@ -409,7 +418,8 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 }
 
 #ctl00_ctl00_MainContent_ctl00_MembershipContributionsControl1_ContainerPanelPanel input[type="text"] {
-	@include inputText() margin-left: 10px !important;
+	@include inputText();
+	margin-left: 10px !important;
 }
 
 .MembershipContributionsControl_PersonifyDefault .ctrbPriceOption label {
@@ -452,6 +462,10 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 	.MembershipJoinOptionsControl_PersonifyDefault.Membership_PersonifyDefault .step2Left,
 	.MembershipJoinOptionsControl_PersonifyDefault.Membership_PersonifyDefault .step3Left {
 		padding: 12px;
+	}
+	.step2Left,
+	.step3Left{
+		width: 100%;
 	}
 	.buyBox {
 		margin: 0;
@@ -779,6 +793,17 @@ main.membershipRenewal {
 	label#ctl00_MainContent_ctl00_TMAFormRowJob_Label {
 		display: block;
 	}
+	a#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_EditButton {
+		position: absolute;
+		top: 20px;
+		right: 0;
+	}
+	div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_ContainerPanel {
+		position: relative;
+	}
+	div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_ContainerPanel > div:not([class]) {
+		color: white;
+	}
 	#ctl00_MainContent_ctl00_UserRegistrationControl_ContainerPanel {
 		padding: 2rem;
 		background-color: white;
@@ -815,8 +840,17 @@ main.membershipRenewal {
 			padding-left: 10px;
 		}
 	}
+	.MembershipRenewalControl_PersonifyDefault .addressBlock {
+		width: calc(50% - 1rem);
+	}
 }
 
 form[action$="JoinSummary"] main.main.membershipJoin .emailDetails #ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel table td:last-child {
 	color: white;
+}
+@include break(max, 42em) {
+	main.membershipRenewal .step2Left,
+	main.membershipRenewal .step3Left{
+		width: 100%;
+	}
 }
