@@ -4,8 +4,7 @@ form[action$="Code=REG"],
 form[action$="JoinSummary"],
 form[action$="JoinSurvey"] {
 	table {
-		overflow-x: scroll;
-		//purely for readability
+		overflow-x: scroll; //purely for readability
 		&#ctl00_MainContent_ctl00_chkDivision {
 			width: 100%;
 			margin-top: $gutter-width/2;
@@ -25,8 +24,7 @@ form[action$="JoinSurvey"] {
 	.content>.RadAjaxPanel {
 		//ottherwise empty divs show up with white background
 		padding: 0;
-	}
-	//seems silly to scope IDs, but IDs are re-used on different pages :/
+	} //seems silly to scope IDs, but IDs are re-used on different pages :/
 	#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
 		padding: 0;
 		background: transparent;
@@ -37,7 +35,7 @@ form[action$="JoinSurvey"] {
 		#ctl00_MainContent_ctl00_UserRegistrationControl_TMAFormRowStudentUserAlreadyLoggedIn {
 			margin-bottom: 10px;
 		}
-		#ctl00_MainContent_ctl00_UserRegistrationControl_EducationTMAFormRowUserAlreadyLoggedIn > label {
+		#ctl00_MainContent_ctl00_UserRegistrationControl_EducationTMAFormRowUserAlreadyLoggedIn>label {
 			font-size: 22px;
 			font-weight: bold;
 			padding: 0;
@@ -48,7 +46,7 @@ form[action$="JoinSurvey"] {
 		padding: 2rem;
 		background: #fff;
 		.formRow {
-			> label {
+			>label {
 				font-weight: bold;
 			}
 		}
@@ -87,10 +85,10 @@ form[action$="JoinSurvey"] {
 			background: #fff;
 		}
 		.step3Left {
-			+ div {
+			+div {
 				padding: 2rem;
 				background: #fff;
-				+ div:not(.buttonRow) {
+				+div:not(.buttonRow) {
 					padding: 2rem;
 					background: #fff;
 				}
@@ -109,7 +107,7 @@ form[action$="JoinSurvey"] {
 		table {
 			p {
 				padding: $gutter-width/2;
-				+ p {
+				+p {
 					padding-top: 0;
 				}
 			}
@@ -262,8 +260,7 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 // Nav
 .WizardBannerControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
 	margin-bottom: 40px;
-	display: flex;
-	//make sure it doesNot accidentally break page widths
+	display: flex; //make sure it doesNot accidentally break page widths
 	overflow: hidden;
 	span {
 		//personify override
@@ -353,7 +350,7 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 	.rateCodeItem label {
 		float: none;
 	}
-	.MembershipBuyBoxControl_PersonifyDefault .memberDetails > div {
+	.MembershipBuyBoxControl_PersonifyDefault .memberDetails>div {
 		border-top: none;
 	}
 	.memberDetails {
@@ -464,7 +461,7 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 		padding: 12px;
 	}
 	.step2Left,
-	.step3Left{
+	.step3Left {
 		width: 100%;
 	}
 	.buyBox {
@@ -487,8 +484,7 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 }
 
 .MainContent_ctl00_WizardBanner_ContainerPanel {
-	overflow: hidden;
-	//when there are 5, they should have less padding
+	overflow: hidden; //when there are 5, they should have less padding
 }
 
 // Join Summary; They want columns like BS
@@ -520,12 +516,12 @@ form[action$="JoinSummary"] {
 		div#ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel {
 			position: relative;
 		}
-		> .ctrlContent {
+		>.ctrlContent {
 			.step3Left {
 				float: left;
 				width: calc(60% - 1rem);
 				margin-right: 1rem;
-				.benefits + div div:first-child {
+				.benefits+div div:first-child {
 					text-align: right;
 					padding: 1rem;
 					font-size: 1.6rem;
@@ -548,7 +544,7 @@ form[action$="JoinSummary"] {
 			}
 		}
 		@include break(max, $breakpoint-max-mobile) {
-			> .ctrlContent {
+			>.ctrlContent {
 				.step3Left,
 				.step3Left+div,
 				.step3Left+div+div:not(.buttonRow) {
@@ -568,7 +564,7 @@ form[action$="JoinSummary"] {
 			display: inline-block;
 			margin-right: 2rem;
 		}
-		+ .buttonRow {
+		+.buttonRow {
 			.CancelEditButton {
 				float: left;
 				margin-left: 1rem !important;
@@ -591,6 +587,9 @@ form[action$="JoinSurvey"] {
 			font-weight: bold;
 		}
 	}
+	p.heading3.h-color-secondary.requiredLegend {
+		display: inline;
+	}
 }
 
 #ctl00_MainContent_ctl00_MembershipJoinSection_ContainerPanel h3.heading3,
@@ -607,7 +606,7 @@ form[action$="JoinSurvey"] {
 
 #ctl00_MainContent_ctl00_SurveyPanel {
 	.ctrlContent {
-		> div {
+		>div {
 			background: #fff;
 			padding: 10px $gutter-width;
 			table {
@@ -775,7 +774,7 @@ form[action$="RenewMembership"] {
 			display: inline-block;
 			margin-right: 2rem;
 		}
-		+ .buttonRow {
+		+.buttonRow {
 			.CancelEditButton {
 				float: left;
 				margin-left: 1rem !important;
@@ -790,6 +789,23 @@ form[action$="RenewMembership"] {
 
 main.membershipJoin,
 main.membershipRenewal {
+	table.membershipTable {
+		width: 100%;
+		font-size: 14px;
+	}
+
+	table.membershipTable td {
+		border: 1px solid #ddd;
+		padding: 1rem;
+		vertical-align: middle;
+	}
+	table.membershipTable th,
+	table.membershipTable td+td {
+		border: 1px solid #ddd;
+		padding: 1rem;
+		vertical-align: middle;
+		text-align: center;
+	}
 	label#ctl00_MainContent_ctl00_TMAFormRowJob_Label {
 		display: block;
 	}
@@ -801,7 +817,7 @@ main.membershipRenewal {
 	div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_ContainerPanel {
 		position: relative;
 	}
-	div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_ContainerPanel > div:not([class]) {
+	div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_ContainerPanel>div:not([class]) {
 		color: white;
 	}
 	#ctl00_MainContent_ctl00_UserRegistrationControl_ContainerPanel {
@@ -848,13 +864,14 @@ main.membershipRenewal {
 form[action$="JoinSummary"] main.main.membershipJoin .emailDetails #ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel table td:last-child {
 	color: white;
 }
+
 @include break(max, 42em) {
 	main.membershipRenewal .step2Left,
-	main.membershipRenewal .step3Left{
+	main.membershipRenewal .step3Left {
 		width: 100%;
 	}
 }
 
 .membershipUserExists .userDetails h2 {
-    font-size: 2.6rem;
+	font-size: 2.6rem;
 }

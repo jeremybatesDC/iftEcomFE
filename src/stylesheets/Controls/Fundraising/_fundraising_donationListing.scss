@@ -1,7 +1,7 @@
 .donation-listing {
 	padding-top: $gutter-width;
 	.buttonRow {
-		margin:0;
+		margin: 0;
 	}
 	.full-container {
 		background: $white;
@@ -10,8 +10,7 @@
 	.heading2 {
 		//same size as H5
 		font-size: 2rem;
-	}
-	//consider generalizing
+	} //consider generalizing
 	.h-color-primary {
 		color: $ift-blue;
 	}
@@ -23,7 +22,7 @@
 	}
 	.action-hyperlink {
 		padding-bottom: $gutter-width / 2;
-		@include break(max, $breakpoint-max-xs-override){
+		@include break(max, $breakpoint-max-xs-override) {
 			padding-bottom: $gutter-width / 2 !important;
 		}
 	}
@@ -32,5 +31,25 @@
 		font-size: 100% !important;
 		@include button;
 	}
+}
 
+form[action*="DonateNow"] {
+	.Donations_PersonifyDefault.Base_PersonifyDefault .formLayout fieldset label {
+		max-width: 240px;
+		vertical-align: top;
+		display: inline-block;
+		margin-right: 2rem;
+	}
+
+	.Donations_PersonifyDefault.Base_PersonifyDefault .formLayout fieldset .formRow span {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    display: inline-block;
+	}
+
+	p#ctl00_MainContent_ctl00_DonationWizPaymentInfo_PayNowControl_pLoginLink {
+		font-size: 16px;
+		padding: 2rem;
+		font-weight: bold;
+	}
 }
