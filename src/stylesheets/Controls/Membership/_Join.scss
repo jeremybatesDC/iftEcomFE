@@ -590,6 +590,10 @@ form[action$="JoinSurvey"] {
 	p.heading3.h-color-secondary.requiredLegend {
 		display: inline;
 	}
+	div#ctl00_MainContent_ctl00_dvViewHide {
+		display: inline-block;
+		padding-left: 1rem;
+	}
 }
 
 #ctl00_MainContent_ctl00_MembershipJoinSection_ContainerPanel h3.heading3,
@@ -792,6 +796,12 @@ main.membershipRenewal {
 	table.membershipTable {
 		width: 100%;
 		font-size: 14px;
+	}
+	.formLayout fieldset.userDetails label {
+		display: inline-block;
+	}
+	#ctl00_MainContent_ctl00_MembershipJoinSection_ContainerPanel table td {
+		vertical-align: middle;
 	}
 
 	table.membershipTable td {
