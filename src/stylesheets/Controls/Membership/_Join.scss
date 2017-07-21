@@ -654,7 +654,7 @@ main.membershipRenewal {
 	}
 	h3.customerName.heading3.h-color-primary {
 		color: #333;
-		margin: 2rem 0;
+		margin: 1rem 0;
 		font-size: 2.6rem;
 	}
 	.heading3 {
@@ -663,9 +663,12 @@ main.membershipRenewal {
 	.ctrl-row-header-colored {
 		text-shadow: none;
 	}
+	div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_ContainerPanel {
+		margin-top: 2rem;
+	}
 	#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_AccountContactEmailControl_ContainerPanel .ctrlContent,
 	.MyAccountContactAddress_PersonifyDefault .ctrlContent {
-		margin: 2rem 0;
+		margin: 1rem 0 2rem 0;
 		padding: 1rem !important;
 		border-radius: 3px;
 		background: white;
@@ -796,6 +799,20 @@ main.membershipRenewal {
 	table.membershipTable {
 		width: 100%;
 		font-size: 14px;
+	}
+	input[type="radio"] {
+		margin-left: 1rem;
+	}
+	.membershipTable td[colspan="4"] {
+		/* padding: 3rem; */
+		background: #ddd;
+	}
+	a#ctl00_MainContent_ctl00_rptJobTitle_ctl00_btnViewOptions {
+		padding-left: 1rem;
+	}
+
+	a#ctl00_MainContent_ctl00_rptJobTitle_ctl01_btnViewOptions {
+		padding-left: 1rem;
 	}
 	.formLayout fieldset.userDetails label {
 		display: inline-block;
