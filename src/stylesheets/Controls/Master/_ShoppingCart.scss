@@ -57,7 +57,7 @@ main.main.storeDetail {
 			@include unButton();
 			padding: 8px;
 			margin-bottom: 0;
-			+ input {
+			+input {
 				display: block;
 				margin-top: 10px;
 				margin-left: 0;
@@ -121,8 +121,7 @@ main.main.storeDetail {
 		}
 	}
 	.summaryTopDiv {
-		float: none;
-		//this is inside of a flex element, but itself can just be a block
+		float: none; //this is inside of a flex element, but itself can just be a block
 		display: block;
 		margin: $gutter-width/2 0 $gutter-width/2 0;
 		width: 100%;
@@ -248,8 +247,7 @@ html .segmentsListPanel .continueShopping {
 		.rlbItem {
 			&:before {
 				//thereS already a display block important in default personfify css 
-				display: none !important;
-				//removes random blue dots
+				display: none !important; //removes random blue dots
 				visibility: hidden;
 			}
 		}
@@ -306,8 +304,7 @@ html .segmentsListPanel .continueShopping {
 
 div.WizardHeaderControl_PersonifyDefault {
 	display: flex;
-	margin-bottom: 40px;
-	// Remove Clearfix
+	margin-bottom: 40px; // Remove Clearfix
 	&:before,
 	&:after {
 		display: none;
@@ -363,12 +360,11 @@ div.WizardHeaderControl_PersonifyDefault {
 @include break(min, $breakpoint-min-tablet) {
 	//if 3, then 33%
 	.wizardHeader .step:nth-last-child(n+3):nth-last-child(-n+3):first-child,
-	.wizardHeader .step:nth-last-child(n+3):nth-last-child(-n+3):first-child ~ .step {
+	.wizardHeader .step:nth-last-child(n+3):nth-last-child(-n+3):first-child~.step {
 		width: 33%;
-	}
-	//if 4, then 25%
+	} //if 4, then 25%
 	.wizardHeader .step:nth-last-child(n+4):nth-last-child(-n+4):first-child,
-	.wizardHeader .step:nth-last-child(n+4):nth-last-child(-n+4):first-child ~ .step {
+	.wizardHeader .step:nth-last-child(n+4):nth-last-child(-n+4):first-child~.step {
 		width: 24%;
 	}
 }
@@ -379,8 +375,7 @@ div.WizardHeaderControl_PersonifyDefault {
 			margin-top: $gutter-width / 2;
 			background-color: $white;
 		}
-	}
-	//should generalize this style
+	} //should generalize this style
 	.buttonRow {
 		&:last-child {
 			margin-bottom: 0;
@@ -423,6 +418,7 @@ main.shoppingCart {
 		border: none;
 		width: 100%;
 	}
+
 	#ctl00_MainContent_ctl00_PanelWishList .save-for-later-bar {
 		margin-top: 6rem;
 	}
@@ -442,13 +438,17 @@ main.shoppingCart {
 	#ctl00_MainContent_ctl00_ButtonContinueShopping {
 		margin-top: 1rem;
 		margin-left: 2rem;
-		// HIDING FOR GO LIVE
+	}
+	// Hinde for GO Live
+	div#ctl00_MainContent_ctl00_CheckoutPaymentInformationControl_CustomerPaymentsControl_Cvv2Row,
+	#ctl00_MainContent_ctl00_ButtonContinueShopping {
 		display: none;
 	}
+	//^^^^^HIDE^^^^^
 	#ctl00_MainContent_ctl00_CheckoutAddressInformationControl_ShippingAddressChooserControl_AddAddressControl_EditAddressControl_lblZipAdditionInfo,
 	#ctl00_MainContent_ctl00_CheckoutAddressInformationControl_ShippingAddressChooserControl_AddAddressControlTemporary_EditAddressControl_lblZipAdditionInfo {
 		display: block;
-    clear: both;
+		clear: both;
 	}
 	.segmentsListPanel #ctl00_MainContent_ctl00_SegmentTabList_i0 {
 		text-decoration: none !important;
@@ -512,5 +512,5 @@ main.shoppingCart {
 
 // CVV
 .myAccountProfile #ctl00_MainContent_ctl00_CustomerPaymentsControl_Cvv2Row {
-    display: none;
+	display: none;
 }
