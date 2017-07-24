@@ -800,7 +800,17 @@ main.membershipRenewal {
 		width: 100%;
 		font-size: 14px;
 	}
-	input[type="radio"] {
+	label#ctl00_MainContent_ctl00_UserRegistrationControl_EducationRow_Label {
+		font-size: 2rem;
+		font-weight: bold;
+		margin-bottom: 2rem;
+	}
+
+	input#ctl00_MainContent_ctl00_UserRegistrationControl_EducationControl_btnSaveEducation {
+		@include unButton();
+	}
+	input[type="radio"],
+	input[type="checkbox"] {
 		margin-left: 1rem;
 	}
 	.membershipTable td[colspan="4"] {
