@@ -108,7 +108,11 @@
         var stateSelectMenu = document.getElementById('stateSelectMenu');
         var internationalSelectMenu = document.getElementById('internationalSelectMenu');
         var arrayOfSpansToPopulateEmpty = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper span'));
-        var hiddenInputForBackend = document.getElementById('ctl00_MainContent_ctl00_MembershipJoinSection_IFTSavedSectionHiddenfield');
+        //var hiddenInputForBackend = document.getElementById('ctl00_MainContent_ctl00_MembershipJoinSection_IFTSavedSectionHiddenfield');
+        var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
+        
+        
+        
         var nodeListOfHiddenInputsForBackend = document.querySelectorAll('[id^="ctl00_MainContent_ctl00_MembershipJoinSection_IFTSavedSectionHiddenfield"]');
         var activeStateSting = 'iftMapWrapperOuter--ACTIVE-STATE';
 
@@ -387,14 +391,25 @@
 
 
                 function actionsBasedOnUserHomeSection(userHomeSectionString){
+                        
+
                         //undisable panel status function will be called later either way
+
                         matchingSectionItems.map(function(thisMatchingSectionItem){
+
 
                             //using productnameKey
                             if(userHomeSectionString !== null && userHomeSectionString === thisMatchingSectionItem.currentProductName){
 
-                                thisMatchingSectionItem.currentHomeSection = userHomeSectionString;
-                                console.log('there is a value in the model that matches the userHomeSection and it is ' + thisMatchingSectionItem.currentHomeSection);
+
+                                    thisMatchingSectionItem.currentHomeSection = userHomeSectionString;
+
+
+
+                                    console.log('there is a value in the model that matches the userHomeSection and it is ' + thisMatchingSectionItem.currentHomeSection);
+
+                                    
+
 
                             }//end if
                             else {
@@ -403,10 +418,13 @@
                             }
 
                         });//end map
+
+
+                        
+
                 }
 
-
-            })();//end actionsBasedOnUserHomeSectionOuterMostFunction
+            })();
 
 
             //PANEL STATUS STUFF HERE BECAUSE OF THE WAY THE EVENT LOOP IS
@@ -435,12 +453,14 @@
                     (function unDisablePanels(){
 
                         //something is wiping out this field
-                        console.log('check whether home section is undefined or null');
+                        console.log('check if undefined or null');
                         console.log(mapStatusContainerDeepARRAY[i].currentHomeSection);
 
                         //make sure panel does not contain user home state before unDisabling
 
-                        //too many things are passing this test. Something is clearing this value and making it always null -- or the initial value of null isn't getting properly set back in the model
+                        //THIS TEST NEEDS TO WORK
+
+                        //too many things are passing. Something is clearing this value and making it always null -- or the initial value of null isn't getting properly set back in the model
                         if(mapStatusContainerDeepARRAY[i].currentHomeSection === null){
                             thisPanelToBeInspected.classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
                             thisPanelToBeInspected.querySelector('input').disabled = false;
@@ -454,7 +474,7 @@
                     })();
 
                     (function unHidePanelsWithData(){
-                        //check the first span in the panel to see if there is any data
+                        //check the first span in the panel  to see if there is any data
                         var firstSpanInPanel = thisPanelToBeInspected.querySelectorAll('span')[0];
                         var valOfQuickRef = firstSpanInPanel.getAttribute('data-thisspan');         
                         //if there is any actual value here, unhide the panel
@@ -470,6 +490,7 @@
 
 
         function createToolTipOnDemand(theReferenceFormLabelElement){
+
             //hard Test code 
 
             //only show actual message on click
@@ -492,6 +513,9 @@
                     nodelistOfTooltips[i].remove();
                 }
             }
+
+
+            
         }
 
         function displayNoResultsMessage(){
@@ -535,25 +559,32 @@
         }
 
         function clearHiddenInputForBackend(allOrJustThis, optionalIndexKey){
-            if(allOrJustThis === 'all'){
-                //console.log('clearing all hidden outputs for backend');
-                for(var i = 0; i < nodeListOfHiddenInputsForBackend.length; i++){
-                    nodeListOfHiddenInputsForBackend[i].value = '';
-                }
-            }
-            //else just clear the one inQuestion [hardcoding this for one second] -- just setting one static input to blank
-            else if(optionalIndexKey !== null) {
-                //console.log('this is running' + optionalIndexKey);
-                console.log('just clearing the single hidden input in question');
 
-                //only one exists currently
-                //nodeListOfHiddenInputsForBackend[optionalIndexKey].value = '';
-                nodeListOfHiddenInputsForBackend[0].value = '';
-            }
+            hiddenInputForBackend.value = '';
+            // if(allOrJustThis === 'all'){
+            //     //console.log('clearing all hidden outputs for backend');
+            //     for(var i = 0; i < nodeListOfHiddenInputsForBackend.length; i++){
+            //         nodeListOfHiddenInputsForBackend[i].value = '';
+            //     }
+            // }
+            // //else just clear the one inQuestion [hardcoding this for one second] -- just setting one static input to blank
+            // else if(optionalIndexKey !== null) {
+            //     //console.log('this is running' + optionalIndexKey);
+            //     console.log('just clearing the single hidden input in question');
+
+            //     //only one exists currently
+            //     //nodeListOfHiddenInputsForBackend[optionalIndexKey].value = '';
+            //     nodeListOfHiddenInputsForBackend[0].value = '';
+            // }
             
         }
 
 
+
+
+        
+
+       
 
        //going to have to create tooltips on demand
         //this must be called each time new data is put on the page to get a fresh nodelist
@@ -690,18 +721,12 @@
             var formattedOutput = JSON.stringify(deepOutputObjectForStaging);
             //this function will be called multiple times, with the particular panelS index mattering.
             
-            console.log('test whether null');
-            console.log(theHiddenInputToPopulate);
+           
 
-            //takes contents of outputObjectForBackend and populates #hiddenInputForBackend
-            //requested formatting is very specific
-            //now must filter against 
-
-
-            if(nodeListOfHiddenInputsForBackend[indexOfHiddenInputToPopulate] !== null){
-                var theHiddenInputToPopulate = nodeListOfHiddenInputsForBackend[indexOfHiddenInputToPopulate];
-                theHiddenInputToPopulate.value = formattedOutput;
-                console.log(theHiddenInputToPopulate.value);
+            if(hiddenInputForBackend !== null){
+                //var theHiddenInputToPopulate = nodeListOfHiddenInputsForBackend[indexOfHiddenInputToPopulate];
+                hiddenInputForBackend.value = formattedOutput;
+                console.log(hiddenInputForBackend.value);
             }
 
             else {
