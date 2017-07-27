@@ -800,6 +800,10 @@ main.membershipRenewal {
 		width: 100%;
 		font-size: 14px;
 	}
+	div#ctl00_MainContent_ctl00_UserRegistrationControl_EducationControl_pnlUpdate {
+    height: auto !important;
+    width: auto!important;
+  }
 	label#ctl00_MainContent_ctl00_UserRegistrationControl_EducationRow_Label {
 		font-size: 2rem;
 		font-weight: bold;
@@ -809,9 +813,11 @@ main.membershipRenewal {
 	input#ctl00_MainContent_ctl00_UserRegistrationControl_EducationControl_btnSaveEducation {
 		@include unButton();
 	}
-	input[type="radio"],
-	input[type="checkbox"] {
+	input[type="radio"]{
 		margin-left: 1rem;
+	}
+	input[type="checkbox"] {
+		margin-left: 2rem;
 	}
 	.membershipTable td[colspan="4"] {
 		/* padding: 3rem; */

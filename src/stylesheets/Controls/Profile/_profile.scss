@@ -218,4 +218,31 @@ form[action$="purchasehistory"] {
 	div#ctl00_MainContent_ctl04_RefreshPanel {
 		position: relative;
 	}
+
+	#ctl00_MainContent_ctl04_DivisionPanel .step3Left .heading2,
+	#ctl00_MainContent_ctl05_BioInfoPanel h4,
+	#ctl00_MainContent_ctl06_SurveyPanel {
+		font-size: 16px!important;
+		color: #5786c7;
+		font-weight: bold;
+	}
+
+	.ctrlContent {
+		input {
+			margin-right: .5rem;
+		}
+		label+span {
+			display: block;
+			margin-top: .5rem;
+		}
+	}
+
+	#ctl00_MainContent_ctl04_ContainerPanel #ctl00_MainContent_ctl04_DivisionPanel .step3Left {
+		width: 100%;
+	}
+
+	#ctl00_ctl00_MainContent_ctl04_ContainerPanelPanel .ctrlContent {
+		padding: 0;
+		margin-bottom: 2rem;
+	}
 }
