@@ -15,7 +15,12 @@
         ,currentStateName: ''
     }
 
-    function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProductName, currentComponentProductId, currentComponentProductShortName, currentMemberPrice, currentPostalCodeRange, currentComponentParentProduct, currentHomeSection){
+    var userAlreadySavedSections = {
+        userHomeSectionProductID: null
+        ,additionalAlreadySavedSections: []
+    }
+
+    function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProductName, currentComponentProductId, currentComponentProductShortName, currentMemberPrice, currentPostalCodeRange, currentComponentParentProduct){
         this.currentProductId = currentProductId;
         this.currentProductName = currentProductName;
         this.currentComponentProductId = currentComponentProductId;
@@ -23,13 +28,12 @@
         this.currentMemberPrice = currentMemberPrice;
         this.currentPostalCodeRange = currentPostalCodeRange;
         this.currentComponentParentProduct = currentComponentParentProduct;
-        this.currentHomeSection = currentHomeSection;
     }
     //MAX 4
     var mapStatusContainerDeepARRAY = [];
     function constructFreshMapStatusContainerModel(){
         for(var i = 0; i < 4; i++){
-            var thisConstructedThing = new MapStatusContainerDeepARRAY_CONSTRUCTOR(null, null, null, null, null, null, null);
+            var thisConstructedThing = new MapStatusContainerDeepARRAY_CONSTRUCTOR(null, null, null, null, null, null);
             mapStatusContainerDeepARRAY.push(thisConstructedThing);
         }
     }
@@ -96,7 +100,8 @@
 
 
         //reference to span to check for home section
-        var spanToCheckForHomeSections = document.getElementById('ctl00_MainContent_ctl00_MembershipJoinSection_homeSectionRepeater_ctl00_LabelHomeSection');
+        var hiddenInputToCheckForHomeSections = document.getElementById('IFTHomeSectionProductId');
+        var additionalSectionsInput = document.getElementById('ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater_ctl00_HiddenFieldProductId')
         //donT put text value here because it might be null and i donT want any logic in this variable declaration area.
 
         //get reference to outermost wrapper to show/hide with modal
@@ -123,6 +128,8 @@
 
         var nodeListOfCheckboxes = document.querySelectorAll('.iftMap__sectionData__wrapper [type="checkbox"]');
         var arrayOfCheckboxes = Array.prototype.slice.call(nodeListOfCheckboxes);
+
+
 
 
         var arrayOfPanelsToPopulate = Array.prototype.slice.call(nodeListOfPanelsToPopulate);
@@ -273,6 +280,10 @@
        
             //now, map function to that new subarray
             var iteratorNum = 0;
+
+            var indexOfPanelContainingHomeUserSection;
+            var indexOfPanelContainingAlreadySavedSection;
+
             matchingSectionItems.map(function(matchingSectionItem){
             //not all of these things should be in the map
 
@@ -290,8 +301,7 @@
                     mapStatusContainerDeepARRAY[iteratorNum].currentPostalCodeRange = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
                     mapStatusContainerDeepARRAY[iteratorNum].currentComponentParentProduct = rawSectionData.SectionItems[indexOfSectionItem].ComponentParentProduct;
 
-                    //initialize as null -- but is this getting overwritten 
-                    mapStatusContainerDeepARRAY[iteratorNum].currentHomeSection = null;
+                    
 
 
                     iteratorNum++;
@@ -302,6 +312,8 @@
                 //THESE ARE JUST SPANS
                 var panelToAddStatusTo;
                 var valueForParentPanel;
+
+
 
                 (function populatePanels(){
                     var slowCounter = 0;
@@ -373,58 +385,59 @@
             });//end of matchingSectionItems.map
 
 
-            (function actionsBasedOnUserHomeSectionOuterMostFunction(){
-                //does it exist
+            (function actionsBasedOnSectionsUserAlreadyHas(){
+               
+                //does home section exist
+                //does additional exist?
 
-                //the 2nd part of this test isnT rigourous enough
-                if(spanToCheckForHomeSections !== null && spanToCheckForHomeSections.textContent !== null){
-                     //if it does, put textValue here
-                        var userHomeSectionString = spanToCheckForHomeSections.textContent;
-                        //console.log('userHomeSection is ' + userHomeSectionString);
-                        actionsBasedOnUserHomeSection(userHomeSectionString);
+                //cases
+                //NO home user section, NO already saved
+                //YES home user section, NO already saved
+                //NO home user section, YES already saved
+                //YES home user section, YES already saved
+
+
+
+                if(hiddenInputToCheckForHomeSections !== null && hiddenInputToCheckForHomeSections.value !== null){
+                        //if it does exist, put textValue here and make it a number
+                        userAlreadySavedSections.userHomeSectionProductID = parseInt(hiddenInputToCheckForHomeSections.value);     
+                }
+                else {console.log('no current homeUserSection');}
+
+                if(additionalSectionsInput !== null && additionalSectionsInput.value !== null){
+                    userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(additionalSectionsInput.value));
+                    console.log('there are already saved sections and the first one is called ' + userAlreadySavedSections.additionalAlreadySavedSections[0]);
                 }
                 else {
-                    console.log('no current homeUserSection');
-
-
+                    console.log('no already saved section');
                 }
 
+                actionsBasedOnUserHomeSection();
+                
 
-                function actionsBasedOnUserHomeSection(userHomeSectionString){
+
+                function actionsBasedOnUserHomeSection(){
                         
+                    for(var i = 0; i < matchingSectionItems.length; i++){
+                        if(matchingSectionItems[i].ProductId === userAlreadySavedSections.userHomeSectionProductID){
+                                //thisMatchingSectionItem.currentHomeSection = userHomeSectionProductID;
+                                indexOfPanelContainingHomeUserSection = i;
+                                //console.log('I am the user home section and my panel index is ' + );
 
-                        //undisable panel status function will be called later either way
+                        }//end if
+                        if(matchingSectionItems[i].ProductId === userAlreadySavedSections.additionalAlreadySavedSections[i]){
+                            indexOfPanelContainingAlreadySavedSection = i;
+                        }
 
-                        matchingSectionItems.map(function(thisMatchingSectionItem){
+                    }
 
-
-                            //using productnameKey
-                            if(userHomeSectionString !== null && userHomeSectionString === thisMatchingSectionItem.currentProductName){
-
-
-                                    thisMatchingSectionItem.currentHomeSection = userHomeSectionString;
-
-
-
-                                    console.log('there is a value in the model that matches the userHomeSection and it is ' + thisMatchingSectionItem.currentHomeSection);
-
-                                    
+                    //undisable panel status function will be called later either way
 
 
-                            }//end if
-                            else {
-                                //this value is used outside of this function, so i needs an assignment one way or the other
-                                thisMatchingSectionItem.currentHomeSection = null;
-                            }
+                    
+                }//end actionsBasedOnUserHomeSection function
 
-                        });//end map
-
-
-                        
-
-                }
-
-            })();
+            })();//end actionsBasedOnUserHomeSectionOuterMostFunction
 
 
             //PANEL STATUS STUFF HERE BECAUSE OF THE WAY THE EVENT LOOP IS
@@ -452,16 +465,10 @@
 
                     (function unDisablePanels(){
 
-                        //something is wiping out this field
-                        console.log('check if undefined or null');
-                        console.log(mapStatusContainerDeepARRAY[i].currentHomeSection);
+                        
+                        //make sure record associated with the panel [using the index of the loop] does not contain user home state before unDisabling that panel
 
-                        //make sure panel does not contain user home state before unDisabling
-
-                        //THIS TEST NEEDS TO WORK
-
-                        //too many things are passing. Something is clearing this value and making it always null -- or the initial value of null isn't getting properly set back in the model
-                        if(mapStatusContainerDeepARRAY[i].currentHomeSection === null){
+                        if(i !== indexOfPanelContainingHomeUserSection && userAlreadySavedSections.userHomeSectionProductID !== null && indexOfPanelContainingAlreadySavedSection !== null && i !== indexOfPanelContainingAlreadySavedSection){
                             thisPanelToBeInspected.classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
                             thisPanelToBeInspected.querySelector('input').disabled = false;
                         }
@@ -484,7 +491,7 @@
                         }
                     })();
                 }
-            })();
+            })();//end of panelStatusMasterFunction
         
         }//end of display data on the page function
 
