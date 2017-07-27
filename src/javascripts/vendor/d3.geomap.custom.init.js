@@ -101,6 +101,7 @@
 
         //reference to span to check for home section
         var hiddenInputToCheckForHomeSections = document.getElementById('IFTHomeSectionProductId');
+        var additionalSectionsInput = document.getElementById('ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater_ctl00_HiddenFieldProductId')
         //donT put text value here because it might be null and i donT want any logic in this variable declaration area.
 
         //get reference to outermost wrapper to show/hide with modal
@@ -127,6 +128,8 @@
 
         var nodeListOfCheckboxes = document.querySelectorAll('.iftMap__sectionData__wrapper [type="checkbox"]');
         var arrayOfCheckboxes = Array.prototype.slice.call(nodeListOfCheckboxes);
+
+
 
 
         var arrayOfPanelsToPopulate = Array.prototype.slice.call(nodeListOfPanelsToPopulate);
@@ -279,6 +282,7 @@
             var iteratorNum = 0;
 
             var indexOfPanelContainingHomeUserSection;
+            var indexOfPanelContainingAlreadySavedSection;
 
             matchingSectionItems.map(function(matchingSectionItem){
             //not all of these things should be in the map
@@ -381,46 +385,56 @@
             });//end of matchingSectionItems.map
 
 
-            (function actionsBasedOnUserHomeSectionOuterMostFunction(){
-                //does it exist
+            (function actionsBasedOnSectionsUserAlreadyHas(){
+               
+                //does home section exist
+                //does additional exist?
 
-                //the 2nd part of this test isnT rigourous enough
+                //cases
+                //NO home user section, NO already saved
+                //YES home user section, NO already saved
+                //NO home user section, YES already saved
+                //YES home user section, YES already saved
+
+
+
                 if(hiddenInputToCheckForHomeSections !== null && hiddenInputToCheckForHomeSections.value !== null){
-                     //if it does, put textValue here and make it a number
-                        userAlreadySavedSections.userHomeSectionProductID = parseInt(hiddenInputToCheckForHomeSections.value);
-                        actionsBasedOnUserHomeSection();
+                        //if it does exist, put textValue here and make it a number
+                        userAlreadySavedSections.userHomeSectionProductID = parseInt(hiddenInputToCheckForHomeSections.value);     
+                }
+                else {console.log('no current homeUserSection');}
+
+                if(additionalSectionsInput !== null && additionalSectionsInput.value !== null){
+                    userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(additionalSectionsInput.value));
+                    console.log('there are already saved sections and the first one is called ' + userAlreadySavedSections.additionalAlreadySavedSections[0]);
                 }
                 else {
-                    console.log('no current homeUserSection');
-
-
+                    console.log('no already saved section');
                 }
+
+                actionsBasedOnUserHomeSection();
+                
 
 
                 function actionsBasedOnUserHomeSection(){
                         
-                        console.log('userHomeSection is ' + userAlreadySavedSections.userHomeSectionProductID);
-                        //undisable panel status function will be called later either way
-
-                        var panelIncrement = 0;
-                        matchingSectionItems.map(function(thisMatchingSectionItem){
-                           
-                        if(thisMatchingSectionItem.ProductId === userAlreadySavedSections.userHomeSectionProductID){
+                    for(var i = 0; i < matchingSectionItems.length; i++){
+                        if(matchingSectionItems[i].ProductId === userAlreadySavedSections.userHomeSectionProductID){
                                 //thisMatchingSectionItem.currentHomeSection = userHomeSectionProductID;
-                                indexOfPanelContainingHomeUserSection = panelIncrement;
+                                indexOfPanelContainingHomeUserSection = i;
                                 //console.log('I am the user home section and my panel index is ' + );
 
                         }//end if
-                        else {
-                            //this value is used outside of this function, so i needs an assignment one way or the other
-                            //thisMatchingSectionItem.currentHomeSection = null;
-                            console.log('no matching current home section in any visible panel')
+                        if(matchingSectionItems[i].ProductId === userAlreadySavedSections.additionalAlreadySavedSections[i]){
+                            indexOfPanelContainingAlreadySavedSection = i;
                         }
 
-                        panelIncrement++;
+                    }
 
-                    });//end another matchingSetcionItems map
+                    //undisable panel status function will be called later either way
 
+
+                    
                 }//end actionsBasedOnUserHomeSection function
 
             })();//end actionsBasedOnUserHomeSectionOuterMostFunction
@@ -451,12 +465,10 @@
 
                     (function unDisablePanels(){
 
-                        //something is wiping out this field
-                        console.log('check if undefined or null');
-
+                        
                         //make sure record associated with the panel [using the index of the loop] does not contain user home state before unDisabling that panel
 
-                        if(i !== indexOfPanelContainingHomeUserSection && userAlreadySavedSections.userHomeSectionProductID !== null){
+                        if(i !== indexOfPanelContainingHomeUserSection && userAlreadySavedSections.userHomeSectionProductID !== null && indexOfPanelContainingAlreadySavedSection !== null && i !== indexOfPanelContainingAlreadySavedSection){
                             thisPanelToBeInspected.classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
                             thisPanelToBeInspected.querySelector('input').disabled = false;
                         }
