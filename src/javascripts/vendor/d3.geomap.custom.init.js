@@ -117,7 +117,6 @@
         var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
         
         
-        
         var nodeListOfHiddenInputsForBackend = document.querySelectorAll('[id^="ctl00_MainContent_ctl00_MembershipJoinSection_IFTSavedSectionHiddenfield"]');
         var activeStateSting = 'iftMapWrapperOuter--ACTIVE-STATE';
 
@@ -125,12 +124,8 @@
 
         var nodeListOfPanelsToPopulate = document.querySelectorAll('.iftMap__sectionData__wrapper')
 
-
         var nodeListOfCheckboxes = document.querySelectorAll('.iftMap__sectionData__wrapper [type="checkbox"]');
         var arrayOfCheckboxes = Array.prototype.slice.call(nodeListOfCheckboxes);
-
-
-
 
         var arrayOfPanelsToPopulate = Array.prototype.slice.call(nodeListOfPanelsToPopulate);
         var arrayOfArrayOfFieldsToPopulate = [];
@@ -171,11 +166,7 @@
         //END DRAW MAP
 
 
-
-
-        
-        function mapHandlerFunction(event, statefromD3){
-            
+        function mapHandlerFunction(event, statefromD3){            
             //if a state on the map has been clicked
             if(event.currentTarget.tagName === 'path') {                
                 singularViewOnlyStatusContainer.currentStateCode = statefromD3.id;
@@ -197,7 +188,6 @@
                 //clear dropdown list since not usState
                 stateSelectMenu.value = '';
                 removeAddActiveState();
-
                 clearCheckBoxes();
             }
 
@@ -301,9 +291,6 @@
                     mapStatusContainerDeepARRAY[iteratorNum].currentPostalCodeRange = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
                     mapStatusContainerDeepARRAY[iteratorNum].currentComponentParentProduct = rawSectionData.SectionItems[indexOfSectionItem].ComponentParentProduct;
 
-                    
-
-
                     iteratorNum++;
 
                 })();
@@ -320,58 +307,27 @@
                     
                     //this will always run 4 times
 
-                    //map inside a map
                     arrayOfArrayOfFieldsToPopulate.map(function(arrayOfFieldsToPopulate){
-                    //everything in here will always run 4 times
-
-
-                        var jBCounter = 0;
-
-                        
-                        arrayOfFieldsToPopulate.map(function(fieldToPopulate){
-                            //this will run for the # of fields required by view (currently 4)
+                    // everything in here will always run 4 times
+                        //here is a loop
+                        for(var jBCounter = 0; jBCounter < arrayOfFieldsToPopulate.length; jBCounter++){
                             var valueForThisField = mapStatusContainerDeepARRAY[slowCounter][Object.keys(fieldsRequiredByPanelView)[jBCounter]];
-                            
-                            
+                            arrayOfFieldsToPopulate[jBCounter].setAttribute('data-thisSpan', valueForThisField);
+                            arrayOfFieldsToPopulate[jBCounter].innerHTML = valueForThisField
 
-                            //this is querying model for items that the View requires
-                            fieldToPopulate.setAttribute('data-thisSpan', valueForThisField);
-                            fieldToPopulate.innerHTML = valueForThisField
-                            jBCounter++;
-                        });
-
-
-
-                        //mark the panel with some EXTRA DATA for status!!!
-
-                        // THIS IS THE PART I THINK WAS NEEDED FOR TOOLTIPS
-
+                        }
+                       
                         valueForParentPanel = rawSectionData.SectionItems[indexOfSectionItem].ComponentParentProduct;
 
-
-
-
-
-
-                        // THIS IS WHERE WE CAN HOOK INTO 
-
-
-
-
-                        //should USE DIFFERENT COUNTER B/C SO WE CAN MOVE THIS OUTSIDE OF THIS LOOP
+                        //move out of loop?
                         panelToAddStatusTo = nodeListOfPanelsToPopulate[slowCounter];
 
                         
-
                         (function addDataAttributes(){
                             panelToAddStatusTo.setAttribute('data-thispanel', valueForParentPanel);
                         })(panelToAddStatusTo);
 
 
-                        //console.log(panelToAddStatusTo.getAttribute('data-thispanel'));
-
-                        
-                    
                         slowCounter++;
 
                     });
@@ -412,11 +368,8 @@
                     console.log('no already saved section');
                 }
 
-                actionsBasedOnUserHomeSection();
                 
-
-
-                function actionsBasedOnUserHomeSection(){
+                (function actionsBasedOnUserHomeSection(){
                         
                     for(var i = 0; i < matchingSectionItems.length; i++){
                         if(matchingSectionItems[i].ProductId === userAlreadySavedSections.userHomeSectionProductID){
@@ -428,14 +381,11 @@
                         if(matchingSectionItems[i].ProductId === userAlreadySavedSections.additionalAlreadySavedSections[i]){
                             indexOfPanelContainingAlreadySavedSection = i;
                         }
-
                     }
 
                     //undisable panel status function will be called later either way
 
-
-                    
-                }//end actionsBasedOnUserHomeSection function
+                })();//end actionsBasedOnUserHomeSection function
 
             })();//end actionsBasedOnUserHomeSectionOuterMostFunction
 
@@ -465,7 +415,6 @@
 
                     (function unDisablePanels(){
 
-                        
                         //make sure record associated with the panel [using the index of the loop] does not contain user home state before unDisabling that panel
 
                         if(i !== indexOfPanelContainingHomeUserSection && userAlreadySavedSections.userHomeSectionProductID !== null && indexOfPanelContainingAlreadySavedSection !== null && i !== indexOfPanelContainingAlreadySavedSection){
@@ -497,9 +446,7 @@
 
 
         function createToolTipOnDemand(theReferenceFormLabelElement){
-
             //hard Test code 
-
             //only show actual message on click
             var theToolTipMessageToDisplay = 'I am am awesome tooltip';
 
@@ -520,8 +467,6 @@
                     nodelistOfTooltips[i].remove();
                 }
             }
-
-
             
         }
 
@@ -567,13 +512,24 @@
 
         function clearHiddenInputForBackend(allOrJustThis, optionalIndexKey){
 
-            hiddenInputForBackend.value = '';
-            // if(allOrJustThis === 'all'){
-            //     //console.log('clearing all hidden outputs for backend');
-            //     for(var i = 0; i < nodeListOfHiddenInputsForBackend.length; i++){
-            //         nodeListOfHiddenInputsForBackend[i].value = '';
-            //     }
-            // }
+            
+            if(allOrJustThis === 'all'){
+                //console.log('clearing all hidden outputs for backend');
+                // for(var i = 0; i < nodeListOfHiddenInputsForBackend.length; i++){
+                //     nodeListOfHiddenInputsForBackend[i].value = '';
+                // }
+                hiddenInputForBackend.value = '';
+            }
+            else if(allOrJustThis === 'justThis'){
+
+                hiddenInputForBackend.value = '';
+                //then immediately re-populate hidden input with all other panels to be populated?
+                //or surgically clear that part of the JSON? That's not JSON--itS just a string
+
+            }
+
+            //hiddenInputForBackend.value = '';
+
             // //else just clear the one inQuestion [hardcoding this for one second] -- just setting one static input to blank
             // else if(optionalIndexKey !== null) {
             //     //console.log('this is running' + optionalIndexKey);
@@ -585,11 +541,6 @@
             // }
             
         }
-
-
-
-
-        
 
        
 
@@ -625,30 +576,15 @@
 
         }
 
-
-
-
-
-
         function showHideWholeMap(event){
-
-            //query page 
-
             if(event.currentTarget === iftMapButtonOpen) {
                 iftMapWrapperOuter.classList.add(activeStateSting);
             }
             if(event.currentTarget === iftMapButtonClose || event.currentTarget === iftMapButtonCancel) {
-                
-                //SHOULD CLOSING MODAL ALSO CLEAR MODEL & VIEW? NO. SELECTION SHOULD REMAIN IN CASE IT WAS ACCIDENTAL
-
                 closeActiveTooltip();
-
-
-
                 iftMapWrapperOuter.classList.remove(activeStateSting);
             }
         }
-
 
 
         function stagePanelOfThisCheckbox(event){
@@ -684,10 +620,6 @@
                     //console.log(thisOutputObject);
 
 
-                    //update csv
-                    //will need 4 inputs
-
-
                     //takeTheOutputOfThisPanelAndStickInInTheInput
                     //could force this to 0
                     //putOutputArrayInHiddenInput(indexOfThisPanel);
@@ -707,19 +639,9 @@
 
                 //this is separate clearing the backend model. This field gets populated by the back endmodel
 
-
-                //only clear this one!
+                //only clear this one
                 clearHiddenInputForBackend('justThis', indexOfThisPanel);
-
             }
-
-                    //update csv
-
-
-
-            //then update the outputCSV regardless o
-
-   
         }
         //when pushing values to this csv, itS going to be complex to retain order... 
 
@@ -727,24 +649,16 @@
 
             var formattedOutput = JSON.stringify(deepOutputObjectForStaging);
             //this function will be called multiple times, with the particular panelS index mattering.
-            
-           
 
             if(hiddenInputForBackend !== null){
                 //var theHiddenInputToPopulate = nodeListOfHiddenInputsForBackend[indexOfHiddenInputToPopulate];
                 hiddenInputForBackend.value = formattedOutput;
                 console.log(hiddenInputForBackend.value);
             }
-
             else {
                 console.log('test failing');
-            }
-
-
-            
+            }   
         }
-
-
 
 
         //EVENTS
@@ -756,23 +670,19 @@
             iftMapButtonCancel.addEventListener('click', showHideWholeMap, false);
 
             arrayOfCheckboxes.map(function(thisCheckbox){
-
                 //name this function stageORunstage
                 thisCheckbox.addEventListener('change', stagePanelOfThisCheckbox, false);
             })
 
-
         })();
-
-
     }    
 
     document.addEventListener('DOMContentLoaded', iftMapFunctionInit);
     
-    if(window.hasOwnProperty('Sys')){
-        //if partial postBack
-        //need to test this as injection point
-        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(iftMapFunctionInit)   
-    }
+    //we are doing full postback now, so this can be removed
+    //if partial postBack
+    // if(window.hasOwnProperty('Sys')){
+    //     Sys.WebForms.PageRequestManager.getInstance().add_endRequest(iftMapFunctionInit)   
+    // }
 
 })();
