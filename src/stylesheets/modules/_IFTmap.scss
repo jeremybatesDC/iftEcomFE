@@ -12,13 +12,16 @@
   &.iftMapWrapperOuter--ACTIVE-STATE {
     display: block;
   }
-  .iftMap__wrapper--inner{
+  
+}
+
+.iftMap__wrapper--inner{
     background-color: $white;
     padding: $gutter-width;
     margin-top: $gutter-width;
     position: relative;
+    overflow: hidden;
   }
-}
 
 .iftMap__header {
   // position:absolute;
@@ -227,8 +230,11 @@ a.iftMap__button--save{
 
   > label {
     display: table;
+    padding-bottom: 1.6rem;
     input {
       display: table-cell;
+      //tough override of other join forms
+      margin-left: 0 !important;
     }
     span {
       display: table-cell;
@@ -291,6 +297,13 @@ a.iftMap__button--save{
     &:hover {
       cursor: not-allowed;
     }
+    &:before {
+      content: '\002713';
+      position: absolute;
+      font-size: 1.2rem;
+      color:#999;
+      //box-shadow: 1px 1px inset #000;
+    }
   }
   input {
     //prevent click somehow;
@@ -300,14 +313,29 @@ a.iftMap__button--save{
     &:hover {
       cursor: not-allowed;
     }
-
-
   }
+
   //z-index: 0;
 
   //disallow highlight and actual click
+
+  //also, obscure member price and show notApplicatble message
+
+  .iftMap__memberPrice {
+    span {
+      visibility: hidden;
+    }
+  }
 }
 
+
+.iftMap__memberPrice {
+  span {
+    &:before {
+      content: '$';
+    }
+  }
+}
 
 //tooltip
 

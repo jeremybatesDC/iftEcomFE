@@ -117,7 +117,6 @@
         var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
         
         
-        
         var nodeListOfHiddenInputsForBackend = document.querySelectorAll('[id^="ctl00_MainContent_ctl00_MembershipJoinSection_IFTSavedSectionHiddenfield"]');
         var activeStateSting = 'iftMapWrapperOuter--ACTIVE-STATE';
 
@@ -125,12 +124,8 @@
 
         var nodeListOfPanelsToPopulate = document.querySelectorAll('.iftMap__sectionData__wrapper')
 
-
         var nodeListOfCheckboxes = document.querySelectorAll('.iftMap__sectionData__wrapper [type="checkbox"]');
         var arrayOfCheckboxes = Array.prototype.slice.call(nodeListOfCheckboxes);
-
-
-
 
         var arrayOfPanelsToPopulate = Array.prototype.slice.call(nodeListOfPanelsToPopulate);
         var arrayOfArrayOfFieldsToPopulate = [];
@@ -171,11 +166,7 @@
         //END DRAW MAP
 
 
-
-
-        
-        function mapHandlerFunction(event, statefromD3){
-            
+        function mapHandlerFunction(event, statefromD3){            
             //if a state on the map has been clicked
             if(event.currentTarget.tagName === 'path') {                
                 singularViewOnlyStatusContainer.currentStateCode = statefromD3.id;
@@ -197,7 +188,6 @@
                 //clear dropdown list since not usState
                 stateSelectMenu.value = '';
                 removeAddActiveState();
-
                 clearCheckBoxes();
             }
 
@@ -301,9 +291,6 @@
                     mapStatusContainerDeepARRAY[iteratorNum].currentPostalCodeRange = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
                     mapStatusContainerDeepARRAY[iteratorNum].currentComponentParentProduct = rawSectionData.SectionItems[indexOfSectionItem].ComponentParentProduct;
 
-                    
-
-
                     iteratorNum++;
 
                 })();
@@ -325,20 +312,15 @@
                     //everything in here will always run 4 times
 
 
-                        var jBCounter = 0;
+                        //var jBCounter = 0;
 
-                        
-                        arrayOfFieldsToPopulate.map(function(fieldToPopulate){
-                            //this will run for the # of fields required by view (currently 4)
+                        for(var jBCounter = 0; jBCounter < arrayOfFieldsToPopulate.length; jBCounter++){
                             var valueForThisField = mapStatusContainerDeepARRAY[slowCounter][Object.keys(fieldsRequiredByPanelView)[jBCounter]];
-                            
-                            
+                            arrayOfFieldsToPopulate[jBCounter].setAttribute('data-thisSpan', valueForThisField);
+                            arrayOfFieldsToPopulate[jBCounter].innerHTML = valueForThisField
 
-                            //this is querying model for items that the View requires
-                            fieldToPopulate.setAttribute('data-thisSpan', valueForThisField);
-                            fieldToPopulate.innerHTML = valueForThisField
-                            jBCounter++;
-                        });
+                        }
+                       
 
 
 
@@ -567,13 +549,24 @@
 
         function clearHiddenInputForBackend(allOrJustThis, optionalIndexKey){
 
-            hiddenInputForBackend.value = '';
-            // if(allOrJustThis === 'all'){
-            //     //console.log('clearing all hidden outputs for backend');
-            //     for(var i = 0; i < nodeListOfHiddenInputsForBackend.length; i++){
-            //         nodeListOfHiddenInputsForBackend[i].value = '';
-            //     }
-            // }
+            
+            if(allOrJustThis === 'all'){
+                //console.log('clearing all hidden outputs for backend');
+                // for(var i = 0; i < nodeListOfHiddenInputsForBackend.length; i++){
+                //     nodeListOfHiddenInputsForBackend[i].value = '';
+                // }
+                hiddenInputForBackend.value = '';
+            }
+            else if(allOrJustThis === 'justThis'){
+
+                hiddenInputForBackend.value = '';
+                //then immediately re-populate hidden input with all other panels to be populated?
+                //or surgically clear that part of the JSON? That's not JSON--itS just a string
+
+            }
+
+            //hiddenInputForBackend.value = '';
+
             // //else just clear the one inQuestion [hardcoding this for one second] -- just setting one static input to blank
             // else if(optionalIndexKey !== null) {
             //     //console.log('this is running' + optionalIndexKey);
