@@ -521,6 +521,10 @@ form[action$="JoinSummary"] {
 				float: left;
 				width: calc(60% - 1rem);
 				margin-right: 1rem;
+				.benefits+div div {
+					display: inline-block;
+					margin-top: 1rem;
+				}
 				.benefits+div div:first-child {
 					text-align: right;
 					padding: 1rem;
@@ -528,6 +532,14 @@ form[action$="JoinSummary"] {
 					font-weight: bold;
 					border: 1px solid #eee;
 					margin-bottom: 2rem;
+				}
+				#ctl00_MainContent_ctl00_MembershipReferralControl_TMACompany {
+					text-align: left;
+					font-size: inherit;
+					font-weight: normal;
+					border: none;
+					padding: inherit;
+					margin: 0;
 				}
 			}
 			.step3Left+div {
@@ -560,6 +572,10 @@ form[action$="JoinSummary"] {
 	}
 	.authorize-container {
 		padding: 1rem;
+		span.cbAuthorize.required+a {
+			display: block;
+			margin-left: 3.3rem;
+		}
 		input[type="checkbox"] {
 			display: inline-block;
 			margin-right: 2rem;
@@ -612,9 +628,19 @@ form[action$="JoinSurvey"] {
 	.ctrlContent {
 		>div {
 			background: #fff;
-			padding: 10px $gutter-width;
+			padding: 0 $gutter-width;
+			&:first-child {
+				padding-top: 2rem;
+			}
 			table {
 				width: 100%;
+				margin: 1rem 0;
+				td {
+					white-space: normal;
+					padding-left: 1.5em;
+					text-indent: -2em;
+					width: 50%;
+				}
 			}
 		}
 		#ctl00_MainContent_ctl00_ButtonPanel {
@@ -801,9 +827,9 @@ main.membershipRenewal {
 		font-size: 14px;
 	}
 	div#ctl00_MainContent_ctl00_UserRegistrationControl_EducationControl_pnlUpdate {
-    height: auto !important;
-    width: auto!important;
-  }
+		height: auto !important;
+		width: auto!important;
+	}
 	label#ctl00_MainContent_ctl00_UserRegistrationControl_EducationRow_Label {
 		font-size: 2rem;
 		font-weight: bold;
@@ -813,7 +839,7 @@ main.membershipRenewal {
 	input#ctl00_MainContent_ctl00_UserRegistrationControl_EducationControl_btnSaveEducation {
 		@include unButton();
 	}
-	input[type="radio"]{
+	input[type="radio"] {
 		margin-left: 1rem;
 	}
 	input[type="checkbox"] {
