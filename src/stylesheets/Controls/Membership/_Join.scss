@@ -166,6 +166,14 @@ form[action$="JoinSummary"] {
 		top: 20px;
 		right: 0;
 	}
+	label#ctl00_MainContent_ctl00_UserRegistrationControl_EducationControl_frAttestation_Label {
+		display: none;
+	}
+
+	label#ctl00_MainContent_ctl00_UserRegistrationControl_EducationControl_frAttestation_Label+input {
+		margin: 0;
+		padding: 0;
+	}
 	.Base_PersonifyDefault {
 		position: relative;
 	}
