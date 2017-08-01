@@ -19,14 +19,16 @@ main.myAccountProfile {
 .formLayout fieldset.searchContainer input[type="checkbox"] {
 	margin-left: 0;
 }
-form[action$="educationalbackground"]{
-	.EducationControl_PersonifyDefault.Base_PersonifyDefault .ctrl-form-row.ctrl-row-header-colored{
+
+form[action$="educationalbackground"] {
+	.EducationControl_PersonifyDefault.Base_PersonifyDefault .ctrl-form-row.ctrl-row-header-colored {
 		margin-top: 2rem;
-		&:first-child{
-			margin-top:0;
+		&:first-child {
+			margin-top: 0;
 		}
 	}
 }
+
 .formLayout fieldset.phoneUsage {
 	margin-left: 0;
 	.formRow {
@@ -50,6 +52,10 @@ form[action$="educationalbackground"]{
 		.buttonRow {
 			margin-left: 0;
 		}
+	}
+	div#ctl00_MainContent_ctl03_noRecordsDivDescription {
+		margin-left: 8.5rem;
+		display: block;
 	}
 	.phoneDetails {
 		label {
@@ -78,16 +84,15 @@ form[action$="purchasehistory"] {
 	}
 	#ctl00_MainContent_ctl00_KeywordSearch {
 		display: block;
-		+ br {
+		+br {
 			display: none;
 		}
 	}
 	table {
-		+ br {
+		+br {
 			display: none;
 		}
-	}
-	//table
+	} //table
 	#ctl00_MainContent_ctl00_TypeSelect {
 		max-width: 320px;
 	}
@@ -103,8 +108,7 @@ form[action$="addresses"] {
 		.addressLinkContainer {
 			top: -39px;
 			right: 5px;
-			color: #fff;
-			//padding-top:6px;
+			color: #fff; //padding-top:6px;
 			//padding-right:6px;
 			a {
 				border: 1px solid;
@@ -174,5 +178,80 @@ form[action$="purchasehistory"] {
 	.Profile_PersonifyDefault.Base_PersonifyDefault .buttonRow .btn[value="Pay Now"] {
 		@include button() margin: 0;
 		padding: 10px;
+	}
+}
+
+.myAccountProfile {
+	div#ctl00_MainContent_ctl03_ContainerPanel h3 {
+		font-size: 16px;
+	}
+	a#ctl00_MainContent_ctl06_EditButton,
+	a#ctl00_MainContent_ctl05_EditButton {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+	}
+	div#ctl00_MainContent_ctl05_ContentPanel,
+	div#ctl00_ctl00_MainContent_ctl06_ContainerPanelPanel {
+		position: relative;
+		background: white;
+		padding: 2rem;
+		margin-bottom: 2rem;
+		.heading3.bord-low {
+			font-size: 16px;
+			border: none;
+			padding-bottom: 1rem;
+		}
+	}
+	div#ctl00_MainContent_ctl04_RefreshPanel h2 {
+		font-size: 16px;
+		border: none;
+		padding-bottom: 1rem;
+	}
+
+	div#ctl00_MainContent_ctl04_RefreshPanel table {
+		width: 100%;
+		max-width: 400px;
+	}
+	#ctl00_MainContent_ctl04_DivisionPanel table {
+		width: 100%;
+		td {
+			width: 50%;
+		}
+	}
+	div#ctl00_MainContent_ctl04_RefreshPanel tbody tr:first-child td+td {
+		position: absolute;
+		right: 0;
+	}
+
+	div#ctl00_MainContent_ctl04_RefreshPanel {
+		position: relative;
+	}
+
+	#ctl00_MainContent_ctl04_DivisionPanel .step3Left .heading2,
+	#ctl00_MainContent_ctl05_BioInfoPanel h4,
+	#ctl00_MainContent_ctl06_SurveyPanel h2 {
+		font-size: 16px!important;
+		color: #5786c7;
+		font-weight: bold;
+	}
+
+	.ctrlContent {
+		input {
+			margin-right: .5rem;
+		}
+		label+span {
+			display: block;
+			margin-top: .5rem;
+		}
+	}
+
+	#ctl00_MainContent_ctl04_ContainerPanel #ctl00_MainContent_ctl04_DivisionPanel .step3Left {
+		width: 100%;
+	}
+
+	#ctl00_ctl00_MainContent_ctl04_ContainerPanelPanel .ctrlContent {
+		padding: 0;
+		margin-bottom: 2rem;
 	}
 }
