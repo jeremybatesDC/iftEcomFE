@@ -938,6 +938,20 @@ main.membershipRenewal {
 	}
 }
 
+div#ctl00_MainContent_ctl06_SurveyPanel table {
+	width: 100%;
+	margin: 1rem 0;
+}
+
+div#ctl00_MainContent_ctl06_SurveyPanel table td {
+	width: 50%;
+	white-space: normal;
+}
+
+.formRow p {
+	white-space: normal;
+}
+
 form[action$="JoinSummary"] main.main.membershipJoin .emailDetails #ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel table td:last-child {
 	color: white;
 }
