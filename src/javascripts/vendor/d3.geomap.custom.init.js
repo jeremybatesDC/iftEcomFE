@@ -156,7 +156,7 @@
             .attr('class', 'usState iftMap__svg__path')
             .attr('d', path)
             .on('click', function(thisState){
-                mapHandlerFunction(event, thisState);
+                mapHandlerFunction('click', thisState, 'isFromMap');
             });
 
             svg.append('path')
@@ -166,22 +166,22 @@
         //END DRAW MAP
 
 
-        function mapHandlerFunction(event, statefromD3){            
+        function mapHandlerFunction(event, statefromD3, isFromMap){            
             //if a state on the map has been clicked
-            if(event.currentTarget.tagName === 'path') {                
+            if(isFromMap) {                
                 singularViewOnlyStatusContainer.currentStateCode = statefromD3.id;
                 singularViewOnlyStatusContainer.currentStateName = statefromD3.properties.stateName;
                 removeAddActiveState('thenAdd');
                 stateSelectMenu.value = singularViewOnlyStatusContainer.currentStateCode;
             }
             //if a dropdown item has been selected (select menu visible only on mobile)
-            if(event.currentTarget.id === 'stateSelectMenu') {
+            else if(event.currentTarget.id === 'stateSelectMenu') {
                 singularViewOnlyStatusContainer.currentStateCode = stateSelectMenu.options[stateSelectMenu.selectedIndex].value;
                 singularViewOnlyStatusContainer.currentStateName = stateSelectMenu.options[stateSelectMenu.selectedIndex].text;
                 removeAddActiveState('thenAdd');
             }
             //if an international item has been selected
-            if(event.currentTarget.id === 'internationalSelectMenu'){
+            else if(event.currentTarget.id === 'internationalSelectMenu'){
                 singularViewOnlyStatusContainer.currentStateCode = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].value;
                 singularViewOnlyStatusContainer.currentStateName = internationalSelectMenu.options[internationalSelectMenu.selectedIndex].text;
 
@@ -358,15 +358,15 @@
                         //if it does exist, put textValue here and make it a number
                         userAlreadySavedSections.userHomeSectionProductID = parseInt(hiddenInputToCheckForHomeSections.value);     
                 }
-                else {console.log('no current homeUserSection');}
+                //else {console.log('no current homeUserSection');}
 
                 if(additionalSectionsInput !== null && additionalSectionsInput.value !== null){
                     userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(additionalSectionsInput.value));
                     console.log('there are already saved sections and the first one is called ' + userAlreadySavedSections.additionalAlreadySavedSections[0]);
                 }
-                else {
-                    console.log('no already saved section');
-                }
+                // else {
+                //     console.log('no already saved section');
+                // }
 
                 
                 (function actionsBasedOnUserHomeSection(){
@@ -633,9 +633,9 @@
 
             else if(stageOrUnstage==='uNstage'){
                 //this is a nodelist
-                console.log('time To unStage this panel: ' + referenceToParentPanelOfCheckedInput.id);
+                //console.log('time To unStage this panel: ' + referenceToParentPanelOfCheckedInput.id);
                 UTILITY_clearThisObject(thisOutputObject);
-                console.log(thisOutputObject);
+                //console.log(thisOutputObject);
 
                 //this is separate clearing the backend model. This field gets populated by the back endmodel
 
@@ -653,11 +653,11 @@
             if(hiddenInputForBackend !== null){
                 //var theHiddenInputToPopulate = nodeListOfHiddenInputsForBackend[indexOfHiddenInputToPopulate];
                 hiddenInputForBackend.value = formattedOutput;
-                console.log(hiddenInputForBackend.value);
+                //console.log(hiddenInputForBackend.value);
             }
-            else {
-                console.log('test failing');
-            }   
+            // else {
+            //     console.log('test failing');
+            // }   
         }
 
 
