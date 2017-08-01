@@ -213,7 +213,12 @@ form[action$="purchasehistory"] {
 		width: 100%;
 		max-width: 400px;
 	}
-
+	#ctl00_MainContent_ctl04_DivisionPanel table {
+		width: 100%;
+		td {
+			width: 50%;
+		}
+	}
 	div#ctl00_MainContent_ctl04_RefreshPanel tbody tr:first-child td+td {
 		position: absolute;
 		right: 0;
