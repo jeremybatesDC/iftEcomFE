@@ -16,6 +16,10 @@ main.main.storeDetail {
 	}
 }
 
+#ctl00_MainContent_ctl00_CheckoutItemSummaryControl_ShoppingCartSummaryControl_PanelShippingPreferences{
+	display: none;
+}
+
 #ctl00_MainContent_ctl00_ProductSUBBuyBoxControl_ProductDetailActionButtonControl1_AddToCartWindow_PopupWindow_C_ButtonClose,
 #ctl00_MainContent_ctl00_ProductINVBuyBoxControl_ProductDetailActionButtonControl1_AddToCartWindow_PopupWindow_C_ButtonClose {
 	@include unButton()
