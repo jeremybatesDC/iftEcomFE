@@ -4,16 +4,16 @@
 
 .footer-main {
 	.footer__links-header {
-    min-height: 4rem;
+		min-height: 4rem;
 	}
 	background-color:$white;
 	.row {
 		margin-bottom: 0;
-		padding-bottom:0;
+		padding-bottom: 0;
 	}
-	@include break(max, $breakpoint-max-1023){
+	@include break(max, $breakpoint-max-1023) {
 		.row {
-			padding-bottom:0;
+			padding-bottom: 0;
 		}
 		.card-component {
 			margin-top: $gutter-width;
@@ -28,35 +28,35 @@
 	.footer__links-headline {
 		font-size: 1.6rem;
 	}
-
 }
 
 .logo--footer {
-	@include break(max, $breakpoint-max-1023){
-		max-width:10rem;
+	@include break(max, $breakpoint-max-1023) {
+		max-width: 10rem;
 		margin-left: $gutter-width / 2;
 	}
-	
 }
 
 
 .footer__top {
-	padding-top:$gutter-width * 2;
-	padding-bottom:$gutter-width * 2;
-	background-color:$ift-grey-light;
+	padding-top: $gutter-width * 2;
+	padding-bottom: $gutter-width * 2;
+	background-color: $ift-grey-light;
 	.row {
 		//padding-bottom: $gutter-width;
 		&:last-child {
-			padding-bottom:0;
+			padding-bottom: 0;
 		}
 	}
-
 }
+
 .footer__middle {
-	font-size:1.2rem;
-	background-color:$white;
-	padding:$gutter-width $gutter-width 0 $gutter-width;
-	@include break(max, $breakpoint-max-1023){
+	font-size: 1.2rem;
+	background-color: $white;
+	padding: $gutter-width $gutter-width/2 0 $gutter-width/2;
+			margin: auto;
+		max-width: 140rem;
+	@include break(max, $breakpoint-max-1023) {
 		display: none;
 		.column-auto {
 			padding-left: $gutter-width/4;
@@ -65,7 +65,7 @@
 			}
 		}
 	}
-	@include break(min, $breakpoint-min-md){
+	@include break(min, $breakpoint-min-md) {
 		//padding-right:5vw;
 		//padding-left:5vw;
 		.column-auto {
@@ -73,40 +73,42 @@
 			&:first-child {
 				padding-left: $gutter-width/4;
 			}
-
+		}
+	}
+	@include break(min, $breakpoint-min-md, max, $breakpoint-min-lg) {
+		.column-auto {
+			padding: 0 0.4rem;
+			.footer__links-headline {
+				font-size: 1.4rem;
+			}
 		}
 	}
 
-	@include break(min, $breakpoint-min-lg){
+	@include break(min, $breakpoint-min-lg) {
 		.column-auto {
 			padding-left: $gutter-width/2;
 			&:first-child {
 				padding-left: $gutter-width/2;
 			}
-
 		}
 	}
 
-	@include break(min, $breakpoint-min-xxl){
-		
-		padding-right:0;
-		padding-left:0;
-		
-		> .row {
-			max-width: $breakpoint-min-xl;
-			margin-right:auto;
-			margin-left: auto;
-		}
+	@include break(min, $breakpoint-min-xxl) {
+
+		padding-right: 0;
+		padding-left: 0;
+
+		// >.row {
+		// 	max-width: $breakpoint-min-xl;
+		// 	margin-right: auto;
+		// 	margin-left: auto;
+		// }
 	}
 }
 
-
-
-
-
 .footer__linksList {
 	list-style: none;
-	@include break(max, $breakpoint-max-1023){
+	@include break(max, $breakpoint-max-1023) {
 		//padding-left: $gutter-width;
 		text-align: center;
 		margin-bottom: $gutter-width / 2;
@@ -116,48 +118,46 @@
 	}
 	a {
 		display: inline-block;
-		background-image: linear-gradient(to top,rgba($ift-blue, 0) 50%,rgba($ift-blue, 0) 50%);
-		background-size:0 2px;
-		background-position:0 95%;
-		background-repeat:no-repeat;
-		transition: $ift-timing;
-		// span {
+		background-image: linear-gradient(to top, rgba($ift-blue, 0) 50%, rgba($ift-blue, 0) 50%);
+		background-size: 0 2px;
+		background-position: 0 95%;
+		background-repeat: no-repeat;
+		transition: $ift-timing; // span {
 		// 	transition: $ift-timing;
 		// }
 		&:hover,
 		&:active,
 		&:focus {
 			color: $ift-blue;
-			background-image: linear-gradient(to top,currentColor 50%,currentColor 50%);
-				background-size:100% 2px;
+			background-image: linear-gradient(to top, currentColor 50%, currentColor 50%);
+			background-size: 100% 2px;
 		}
 	}
-
 }
 
 
 
 .footer__bottom {
-	font-size:1.1rem;
+	font-size: 1.1rem;
 	color: $ift-grey-light;
-	background-color:$ift-blue;
-	padding-top:$gutter-width/2;
-	
+	background-color: $ift-blue;
+	padding-top: $gutter-width/2;
+
 	.row {
-		padding-bottom:$gutter-width/2;
+		padding-bottom: $gutter-width/2;
 	}
-	[class^="col"]{
+	[class^="col"] {
 		align-self: center;
 		text-align: center;
 	}
-	
+
 	@include break(max, $breakpoint-max-1023) {
-		background-size:333%;
-		[class^="col"]{
+		background-size: 333%;
+		[class^="col"] {
 			align-self: center;
 			text-align: center;
 		}
-	}	
+	}
 }
 
 
@@ -169,9 +169,10 @@
 			display: inline-block;
 			vertical-align: middle;
 			font-size: .8rem;
-			color: rgba($white,.25);;
-			padding-right:.6666em;
-			padding-left:.5em;
+			color: rgba($white, .25);
+			;
+			padding-right: .6666em;
+			padding-left: .5em;
 		}
 		&:first-child {
 			&:before {
@@ -179,13 +180,13 @@
 			}
 		}
 		a {
-		&:hover,
-		&:active,
-		&:focus {
-			color: $white;
-			opacity: .75;
+			&:hover,
+			&:active,
+			&:focus {
+				color: $white;
+				opacity: .75;
+			}
 		}
-	}
 	}
 }
 
