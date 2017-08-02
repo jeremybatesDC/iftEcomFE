@@ -85,7 +85,7 @@
             for(var i = 0; i < nodeListOfOptionalSectionsInputs.length; i++){
                 userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(nodeListOfOptionalSectionsInputs[i].value));
             }
-            console.log(userAlreadySavedSections.additionalAlreadySavedSections);
+            //console.log(userAlreadySavedSections.additionalAlreadySavedSections);
         }
 
 
@@ -370,7 +370,7 @@
 
                         if(userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1){
 
-                            console.log('there is a match with an already saved user section');
+                            //console.log('there is a match with an already saved user section');
                             //need to refine it each time?
                             var numToPush = i;
                             indexesOfPanelsContainingAlreadySavedSections.push(numToPush);
@@ -378,7 +378,7 @@
                             
                         }
 
-                        console.log('indexesOfPanelsContainingAlreadySavedSections ' + indexesOfPanelsContainingAlreadySavedSections);
+                        //console.log('indexesOfPanelsContainingAlreadySavedSections ' + indexesOfPanelsContainingAlreadySavedSections);
                     }
                 })();//end actionsBasedOnUserHomeSection function
 
@@ -539,6 +539,8 @@
                 // }
                 hiddenInputForBackend.value = '';
             }
+
+            //so, if justThis, and can only have 1 input, then
             else if(allOrJustThis === 'justThis'){
 
                 hiddenInputForBackend.value = '';
@@ -639,13 +641,11 @@
                     //console.log(thisOutputObject);
 
 
-                    //takeTheOutputOfThisPanelAndStickInInTheInput
-                    //could force this to 0
-                    //putOutputArrayInHiddenInput(indexOfThisPanel);
+                    //HARDCODED TO FIRST ONE
+
                     putOutputArrayInHiddenInput(0);
 
-                    //problem with piping is that i would need to recompute the entire value string every thing based on the number
-                    //
+      
 
                 })();
             }
@@ -664,6 +664,7 @@
         }
         //when pushing values to this csv, itS going to be complex to retain order... 
 
+         
          function putOutputArrayInHiddenInput(indexOfHiddenInputToPopulate){
 
             var formattedOutput = JSON.stringify(deepOutputObjectForStaging);
