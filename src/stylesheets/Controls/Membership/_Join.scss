@@ -725,75 +725,82 @@ main.membershipRenewal {
 		border-bottom: 3px solid #eee;
 		border: none;
 	}
-	#ctl00_MainContent_ctl00_MembershipRenewalWizardBanner_ContainerPanel {
-		margin-bottom: 40px;
-		display: -ms-flexbox;
+}
+
+fieldset.emailDetails {
+	background-color: white;
+	padding: 2rem;
+}
+
+a#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipDivisionControl_EditButton {
+	padding-top: 2rem;
+	display: block;
+	text-align: right;
+}
+
+
+#ctl00_MainContent_ctl00_MembershipRenewalWizardBanner_ContainerPanel{
+	margin-bottom: 40px;
+	display: -ms-flexbox;
+	display: flex;
+	overflow: hidden;
+	min-height: 5rem;
+	@include break(max, 600px) {
+		flex-direction: column;
+	}
+
+	.step {
+		flex-grow: 1;
 		display: flex;
-		overflow: hidden;
+		position: relative;
+		background: 0 0;
+		border-bottom: 3px solid #e6e6e6;
+		color: #b1b1b1;
+		text-align: left;
+		padding-left: 4.5rem!important;
+		padding-bottom: 5px!important;
+		align-items: center;
 		min-height: 5rem;
-		@include break(max, 600px) {
-			flex-direction: column;
-		}
-		.step {
-			flex-grow: 1;
-			display: flex;
-			position: relative;
-			background: 0 0;
-			border-bottom: 3px solid #e6e6e6;
+		.stepLabel {
 			color: #b1b1b1;
-			text-align: left;
-			padding-left: 4.5rem!important;
-			padding-bottom: 5px!important;
-			align-items: center;
-			min-height: 5rem;
-			.stepLabel {
-				color: #b1b1b1;
-				font-size: 14px;
-			}
-			.prefix,
-			.sep,
-			.divider {
-				display: none;
-			}
-			.number {
-				width: 30px!important;
-				display: block;
-				margin-right: 1rem;
-				position: static;
-				height: 30px!important;
-				border-radius: 100%!important;
-				border: 1px solid #fff;
-				box-shadow: none;
-				color: #fff;
-				left: 20px;
-				text-shadow: none!important;
-				top: 9px;
-				padding: 5px 0;
-				text-align: center;
-				background-color: #b1b1b1;
-			}
+			font-size: 14px;
 		}
-		.step.active {
-			background-color: #76a120!important;
-			border-bottom-color: #76a120!important;
-			.stepLabel {
-				color: white;
-			}
-			.number {
-				background: 0 0;
-			}
+		.prefix,
+		.sep,
+		.divider {
+			display: none;
+		}
+		.number {
+			width: 30px!important;
+			display: block;
+			margin-right: 1rem;
+			position: static;
+			height: 30px!important;
+			border-radius: 100%!important;
+			border: 1px solid #fff;
+			box-shadow: none;
+			color: #fff;
+			left: 20px;
+			text-shadow: none!important;
+			top: 9px;
+			padding: 5px 0;
+			text-align: center;
+			background-color: #b1b1b1;
 		}
 	}
-	fieldset.emailDetails {
-		background-color: white;
-		padding: 2rem;
-	}
-	a#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipDivisionControl_EditButton {
-		padding-top: 2rem;
-		display: block;
-		text-align: right;
+
+	.step.active {
+		background-color: #76a120!important;
+		border-bottom-color: #76a120!important;
+		.stepLabel {
+			color: white;
+		}
+		.number {
+			background: 0 0;
+		}
 	}
 }
+
 
 form[action$="RenewMembership"] {
 	// input#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_CancelDelButton {
@@ -809,6 +816,7 @@ form[action$="RenewMembership"] {
 			margin-left: 1rem;
 		}
 	}
+
 	#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C .authorize-container {
 		margin-left: 1.5rem;
 		padding-top: 1rem;
@@ -816,12 +824,15 @@ form[action$="RenewMembership"] {
 		padding-left: 1.5em;
 		text-indent: -2em;
 	}
+
 	#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_lblTermsandConditions {
 		padding: 1rem;
 	}
+
 	#ctl00_MainContent_ctl00_PopWindow_C_popuppanel {
 		padding: 1rem;
 	}
+
 	.authorize-container {
 		padding: 1rem;
 		input[type="checkbox"] {
@@ -847,10 +858,12 @@ main.membershipRenewal {
 		width: 100%;
 		font-size: 14px;
 	}
+
 	div#ctl00_MainContent_ctl00_UserRegistrationControl_EducationControl_pnlUpdate {
 		height: auto !important;
 		width: auto!important;
 	}
+
 	label#ctl00_MainContent_ctl00_UserRegistrationControl_EducationRow_Label {
 		font-size: 2rem;
 		font-weight: bold;
@@ -860,16 +873,20 @@ main.membershipRenewal {
 	input#ctl00_MainContent_ctl00_UserRegistrationControl_EducationControl_btnSaveEducation {
 		@include unButton();
 	}
+
 	input[type="radio"] {
 		margin-left: 1rem;
 	}
+
 	input[type="checkbox"] {
 		margin-left: 2rem;
 	}
+
 	.membershipTable td[colspan="4"] {
 		/* padding: 3rem; */
 		background: #ddd;
 	}
+
 	a#ctl00_MainContent_ctl00_rptJobTitle_ctl00_btnViewOptions {
 		padding-left: 1rem;
 	}
@@ -877,9 +894,11 @@ main.membershipRenewal {
 	a#ctl00_MainContent_ctl00_rptJobTitle_ctl01_btnViewOptions {
 		padding-left: 1rem;
 	}
+
 	.formLayout fieldset.userDetails label {
 		display: inline-block;
 	}
+
 	#ctl00_MainContent_ctl00_MembershipJoinSection_ContainerPanel table td {
 		vertical-align: middle;
 	}
@@ -889,6 +908,7 @@ main.membershipRenewal {
 		padding: 1rem;
 		vertical-align: middle;
 	}
+
 	table.membershipTable th,
 	table.membershipTable td+td {
 		border: 1px solid #ddd;
@@ -896,27 +916,34 @@ main.membershipRenewal {
 		vertical-align: middle;
 		text-align: center;
 	}
+
 	label#ctl00_MainContent_ctl00_TMAFormRowJob_Label {
 		display: block;
 	}
+
 	a#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_EditButton {
 		position: absolute;
 		top: 20px;
 		right: 0;
 	}
+
 	div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_ContainerPanel {
 		position: relative;
 	}
+
 	div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_ContainerPanel>div:not([class]) {
 		color: white;
 	}
+
 	#ctl00_MainContent_ctl00_UserRegistrationControl_ContainerPanel {
 		padding: 2rem;
 		background-color: white;
 	}
+
 	.MembershipJoinRegistrationControl_PersonifyDefault .formLayout .buttonRow {
 		margin-left: 0;
 	}
+
 	#membershipTable {
 		border-collapse: collapse;
 		p {
@@ -946,6 +973,7 @@ main.membershipRenewal {
 			padding-left: 10px;
 		}
 	}
+
 	.MembershipRenewalControl_PersonifyDefault .addressBlock {
 		width: calc(50% - 1rem);
 	}
