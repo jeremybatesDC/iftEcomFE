@@ -803,6 +803,19 @@ form[action$="RenewMembership"] {
 	// input#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_cbTermsConditions {
 	// 	margin-right: 20px;
 	// }
+	#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C {
+		padding: 1rem;
+		.rwContentRow .buttonRow {
+			margin-left: 1rem;
+		}
+	}
+	#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C .authorize-container {
+		margin-left: 1.5rem;
+		padding-top: 1rem;
+		white-space: normal;
+		padding-left: 1.5em;
+		text-indent: -2em;
+	}
 	#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_lblTermsandConditions {
 		padding: 1rem;
 	}
