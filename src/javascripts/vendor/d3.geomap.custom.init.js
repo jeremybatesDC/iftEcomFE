@@ -361,27 +361,49 @@
                 //this runs once per state selection
                 (function actionsBasedOnUserHomeSection(){
                     for(var i = 0; i < matchingSectionItems.length; i++){
-                        if(matchingSectionItems[i].ProductId === userAlreadySavedSections.userHomeSectionProductID){       
+                        if(matchingSectionItems[i].ProductId === userAlreadySavedSections.userHomeSectionProductID){    //always just one   
                                 indexOfPanelContainingHomeUserSection = i;
                         }
+
+                        //if the product ID of the matching section item is one of the already selected sections
+
+
+                        if(userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1){
+
+                            console.log('there is a match with an already saved user section');
+                            //need to refine it each time?
+                            var numToPush = i;
+                            indexesOfPanelsContainingAlreadySavedSections.push(numToPush);
+                            
+                            
+                        }
+
+                        console.log('indexesOfPanelsContainingAlreadySavedSections ' + indexesOfPanelsContainingAlreadySavedSections);
                     }
                 })();//end actionsBasedOnUserHomeSection function
 
 
-                (function actionsBasedOnAdditionalAlreadySavedSections(){
+                // (function actionsBasedOnAdditionalAlreadySavedSections(){
+
+                //     //these indices arenT static
+
+                //     for(var ii = 0; ii < matchingSectionItems.length; ii++){
+                //         //string not number?
+                //         if(matchingSectionItems[ii].ProductId === userAlreadySavedSections.additionalAlreadySavedSections[ii]){
+
+                //             console.log('match ' + userAlreadySavedSections.additionalAlreadySavedSections[ii]);
+                //             //need to refine it each time?
+                //             indexesOfPanelsContainingAlreadySavedSections = [];
+                //             indexesOfPanelsContainingAlreadySavedSections.push(ii);
+                //             console.log(indexesOfPanelsContainingAlreadySavedSections);
+                            
+                //         }
+                //     }
+
+                //     console.log(indexesOfPanelsContainingAlreadySavedSections);
 
 
-                    for(var ii = 0; ii < matchingSectionItems.length; ii++){
-                        //string not number?
-                        if(matchingSectionItems[ii].ProductId === userAlreadySavedSections.additionalAlreadySavedSections[ii]){
-
-                            indexesOfPanelsContainingAlreadySavedSections.push(ii);
-                            console.log('match');
-                            console.log(indexesOfPanelsContainingAlreadySavedSections);
-
-                        }
-                    }
-                })();
+                // })();
 
             })();//end actionsBasedOnUserHomeSectionOuterMostFunction
 
@@ -413,11 +435,7 @@
 
                         //make sure record associated with the panel [using the index of the loop] does not contain user home state before unDisabling that panel
 
-                        // if(i !== indexOfPanelContainingHomeUserSection
-                        //     && userAlreadySavedSections.userHomeSectionProductID !== null
-                        //     && indexOfPanelContainingAlreadySavedSection !== null
-                        //     && i !== indexOfPanelContainingAlreadySavedSection)
-                        if(i !== indexOfPanelContainingHomeUserSection && indexesOfPanelsContainingAlreadySavedSections.indexOf(i) <= -1)
+                        if(i !== indexOfPanelContainingHomeUserSection && indexesOfPanelsContainingAlreadySavedSections.indexOf(i) < 0)
                         {
                             thisPanelToBeInspected.classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
                             thisPanelToBeInspected.querySelector('input').disabled = false;
@@ -443,7 +461,7 @@
                 }
             })();//end of panelStatusMasterFunction
         
-        }//end of display data on the page function
+        }//end of write data to page function
 
 
         function createToolTipOnDemand(theReferenceFormLabelElement){
