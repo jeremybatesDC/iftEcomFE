@@ -1,33 +1,38 @@
 // Side bar Nav
-.sidebar__header{
-  padding: 2rem;
-  color: white;
-  background-color: $ift-blue;
+.sidebar__header {
+	padding: 2rem;
+	color: white;
+	background-color: $ift-blue;
 }
+
 .sidebar {
-  align-self: flex-start;
-  padding: 2rem;
-  background-color: white;
-  ul {
-    list-style: none;
-    .sidebar__submenu{
-      padding-left: 2rem;
-      margin-top: .5rem;
-      margin-bottom: 2rem;
-      a.selected{
-        color: $ift-green;
-        pointer-events: none;
-      }
-    }
-  }
-  a[href="#"]{
-    pointer-events: none;
-    color: black;
-  }
+	align-self: flex-start;
+	padding: 2rem;
+	background-color: white;
+	ul {
+		list-style: none;
+		.sidebar__submenu {
+			padding-left: 2rem;
+			margin-top: .5rem;
+			margin-bottom: 2rem;
+			a.selected {
+				color: $ift-green;
+				pointer-events: none;
+			}
+			a.sidebar__submenu-link[href$="myaccount/usernamepassword"] {
+				display: none;
+			}
+		}
+	}
+	a[href="#"] {
+		pointer-events: none;
+		color: black;
+	}
 }
+
 // Hide on Print
 @media print {
-  .sidebar {
-    display: none;
-  }
+	.sidebar {
+		display: none;
+	}
 }
