@@ -739,7 +739,7 @@ a#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipDivisionCont
 }
 
 
-#ctl00_MainContent_ctl00_MembershipRenewalWizardBanner_ContainerPanel{
+#ctl00_MainContent_ctl00_MembershipRenewalWizardBanner_ContainerPanel {
 	margin-bottom: 40px;
 	display: -ms-flexbox;
 	display: flex;
@@ -1001,6 +1001,27 @@ form[action$="JoinSummary"] main.main.membershipJoin .emailDetails #ctl00_MainCo
 	main.membershipRenewal .step2Left,
 	main.membershipRenewal .step3Left {
 		width: 100%;
+	}
+}
+
+.membershipJoin {
+	#ctl00_MainContent_ctl00_lblMembershipTitle,
+	#ctl00_MainContent_ctl00_lblProfileTitle,
+	#ctl00_MainContent_ctl00_lblDivisionTitle {
+		background: #76a120!important;
+		width: 100%;
+		font-size: 14px;
+		display: block;
+		padding: 2rem;
+		padding: 2rem;
+		text-align: center;
+		color: white;
+		font-weight: normal;
+	}
+	#ctl00_MainContent_ctl00_BioInfoPanel .requiredLegend {
+    padding: 2rem;
+    background: white;
+    padding-bottom: 0;
 	}
 }
 
