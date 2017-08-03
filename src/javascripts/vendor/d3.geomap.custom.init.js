@@ -359,7 +359,6 @@
             (function actionsBasedOnSectionsUserAlreadyHas(){
                 
                 //this runs once per state selection
-                (function actionsBasedOnUserHomeSection(){
                     for(var i = 0; i < matchingSectionItems.length; i++){
                         if(matchingSectionItems[i].ProductId === userAlreadySavedSections.userHomeSectionProductID){    //always just one   
                                 indexOfPanelContainingHomeUserSection = i;
@@ -367,43 +366,16 @@
 
                         //if the product ID of the matching section item is one of the already selected sections
 
-
                         if(userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1){
 
                             //console.log('there is a match with an already saved user section');
                             //need to refine it each time?
                             var numToPush = i;
-                            indexesOfPanelsContainingAlreadySavedSections.push(numToPush);
-                            
-                            
+                            indexesOfPanelsContainingAlreadySavedSections.push(numToPush);                                                      
                         }
-
                         //console.log('indexesOfPanelsContainingAlreadySavedSections ' + indexesOfPanelsContainingAlreadySavedSections);
                     }
-                })();//end actionsBasedOnUserHomeSection function
 
-
-                // (function actionsBasedOnAdditionalAlreadySavedSections(){
-
-                //     //these indices arenT static
-
-                //     for(var ii = 0; ii < matchingSectionItems.length; ii++){
-                //         //string not number?
-                //         if(matchingSectionItems[ii].ProductId === userAlreadySavedSections.additionalAlreadySavedSections[ii]){
-
-                //             console.log('match ' + userAlreadySavedSections.additionalAlreadySavedSections[ii]);
-                //             //need to refine it each time?
-                //             indexesOfPanelsContainingAlreadySavedSections = [];
-                //             indexesOfPanelsContainingAlreadySavedSections.push(ii);
-                //             console.log(indexesOfPanelsContainingAlreadySavedSections);
-                            
-                //         }
-                //     }
-
-                //     console.log(indexesOfPanelsContainingAlreadySavedSections);
-
-
-                // })();
 
             })();//end actionsBasedOnUserHomeSectionOuterMostFunction
 
@@ -472,7 +444,7 @@
             var tooltipElement = document.createElement('i');
             //cannot use classList yet bC there isnTone
             tooltipElement.setAttribute('class', 'niftyTooltip');
-            tooltipElement.setAttribute('data-toolTipText', 'Membership in a nearby section is complimentary to this section');
+            tooltipElement.setAttribute('data-toolTipText', 'Additional sections listed below are complimentary with this selection.');
             tooltipElement.innerHTML = '<svg class="iconInfo" viewBox="0 0 32 32"><use xlink:href="#iconInfo"/></svg>';
             var theFirstChild = theReferenceFormLabelElement.firstChild;
             theReferenceFormLabelElement.insertBefore(tooltipElement, theFirstChild);
@@ -548,18 +520,6 @@
                 //or surgically clear that part of the JSON? That's not JSON--itS just a string
 
             }
-
-            //hiddenInputForBackend.value = '';
-
-            // //else just clear the one inQuestion [hardcoding this for one second] -- just setting one static input to blank
-            // else if(optionalIndexKey !== null) {
-            //     //console.log('this is running' + optionalIndexKey);
-            //     console.log('just clearing the single hidden input in question');
-
-            //     //only one exists currently
-            //     //nodeListOfHiddenInputsForBackend[optionalIndexKey].value = '';
-            //     nodeListOfHiddenInputsForBackend[0].value = '';
-            // }
             
         }
 
