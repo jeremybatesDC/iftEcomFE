@@ -12,6 +12,12 @@ form[action$="JoinSurvey"] {
 			border-collapse: separate;
 		}
 	}
+	#ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel .ctrl-form-row {
+		display: block;
+		width: 100%;
+		background: 0 0;
+		color: #333;
+	}
 	.education-details {}
 	.hidden,
 	.hidden[style] {
@@ -165,6 +171,31 @@ form[action$="JoinSummary"] {
 		position: absolute;
 		top: 20px;
 		right: 0;
+	}
+	span#ctl00_MainContent_ctl00_MembershipJoinSection_homeSectionRepeater_ctl00_LabelHomeSection,
+	input#IFTHomeSectionProductId,
+	span#ctl00_MainContent_ctl00_MembershipJoinSection_homeSectionRepeater_ctl00_PriceLabel {
+		font-weight: bold;
+	}
+	[id^="ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater"] {
+		display: block;
+		font-weight: bold;
+		&a {
+			font-weight: normal;
+		}
+	}
+	a[id$="LinkButtonRemove"]{
+		font-weight: normal;
+	}
+
+	a#ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater_ctl00_LinkButtonRemove {}
+	span#ctl00_MainContent_ctl00_MembershipJoinSection_homeSectionRepeater_ctl00_LabelHomeSection {
+		font-weight: bold;
+	}
+
+	.benefits h2.heading2.h-color-secondary {
+		font-size: 3.2rem;
+		margin-top: 2rem;
 	}
 	label#ctl00_MainContent_ctl00_UserRegistrationControl_EducationControl_frAttestation_Label {
 		display: none;
@@ -1019,9 +1050,9 @@ form[action$="JoinSummary"] main.main.membershipJoin .emailDetails #ctl00_MainCo
 		font-weight: normal;
 	}
 	#ctl00_MainContent_ctl00_BioInfoPanel .requiredLegend {
-    padding: 2rem;
-    background: white;
-    padding-bottom: 0;
+		padding: 2rem;
+		background: white;
+		padding-bottom: 0;
 	}
 }
 
