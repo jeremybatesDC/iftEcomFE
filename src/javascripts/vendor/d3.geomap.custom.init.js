@@ -324,9 +324,8 @@
                         arrayOfSpansInThisPanel[zz].innerHTML = valueForThisField;
                     }
 
-                    //using currentComponentParentProduct as flag. May need to change tests
+                    //using currentComponentParentProduct as flag. May need to change test
                     var valueForParentPanel = mapStatusContainerDeepARRAY[z].currentComponentParentProduct;
-                    
                     if(valueForParentPanel === 'IFT'){
                         nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel', valueForParentPanel);
                         indexesOfPanelsContainingComponentSection.push(z);
@@ -336,62 +335,42 @@
 
             })();
             
-
+            //this runs once per state selection
             (function actionsBasedOnSectionsUserAlreadyHas(){
-                
-                //this runs once per state selection
-                    for(var i = 0; i < matchingSectionItems.length; i++){
-                        if(matchingSectionItems[i].ProductId === userAlreadySavedSections.userHomeSectionProductID){    //always just one   
-                                indexOfPanelContainingHomeUserSection = i;
-                        }
-
-                        //if the product ID of the matching section item is one of the already selected sections
-
-                        if(userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1){
-
-                            //console.log('there is a match with an already saved user section');
-                            //need to refine it each time?
-                            var numToPush = i;
-                            indexesOfPanelsContainingAlreadySavedSections.push(numToPush);                                                      
-                        }
-                        //console.log('indexesOfPanelsContainingAlreadySavedSections ' + indexesOfPanelsContainingAlreadySavedSections);
+                for(var i = 0; i < matchingSectionItems.length; i++){
+                    if(matchingSectionItems[i].ProductId === userAlreadySavedSections.userHomeSectionProductID){  //always just one
+                        indexOfPanelContainingHomeUserSection = i;
                     }
 
-
+                    //if the product ID of the matching section item is one of the already selected sections
+                    if(userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1){
+                        var numToPush = i;
+                        indexesOfPanelsContainingAlreadySavedSections.push(numToPush);                                                      
+                    }
+                }
             })();//end actionsBasedOnUserHomeSectionOuterMostFunction
 
 
-            //PANEL STATUS STUFF HERE BECAUSE OF THE WAY THE EVENT LOOP IS
+            
             //QUERY THE DOM FOR THESE UNLESS PREPARED TO DO A PANEL STATE CONTAINER [hasTip, disabled, hidden]
 
+            //this runs once per state selection
             (function panelStatusMasterFunction(){
                 for(var i = 0; i < nodeListOfPanelsToPopulate.length; i++){
     
                     var thisPanelToBeInspected = nodeListOfPanelsToPopulate[i];
+ 
+                    (function decideWhetherSectionIsComponent(){
 
-                    //test 1
+                        (function decideTooltips(){
+                            if(thisPanelToBeInspected.getAttribute('data-thispanel') === 'IFT'){
+                                var referenceElem = thisPanelToBeInspected.querySelectorAll('label')[0];
+                                createToolTipOnDemand(referenceElem);
+                            }
+                        })();
 
-                    //adding tooltips to all in panel... even if there is no data in it
-                    (function decideToolTips(){
-                        if(thisPanelToBeInspected.getAttribute('data-thispanel') === 'IFT'){
-                            var referenceElem = thisPanelToBeInspected.querySelectorAll('label')[0];
-                            createToolTipOnDemand(referenceElem);
-                        }
-                    })();
-
-                    //only undisable
-
-                    //this test might not match the tooltip test depending on requirements.
-                    //check if should also uncheck its self
-
-
-                    /*
-
-                    indexesOfPanelsContainingComponentSection.indexOf(i) < 0
-
-
-                    */
-
+                        //here can go other decisions based on whether section is component product
+                    })();//end decideWhetherSectionIsComponent
 
                     (function unDisablePanels(){
 
@@ -420,19 +399,15 @@
                             thisPanelToBeInspected.classList.remove('iftMap__sectionData__wrapper--HIDDEN-STATE');
                         }
                     })();
-                }
+
+                }//end for loop
             })();//end of panelStatusMasterFunction
         
         }//end of write data to page function
 
 
         function createToolTipOnDemand(theReferenceFormLabelElement){
-            //hard Test code 
-            //only show actual message on click
-            var theToolTipMessageToDisplay = 'I am am awesome tooltip';
-
             var tooltipElement = document.createElement('i');
-            //cannot use classList yet bC there isnTone
             tooltipElement.setAttribute('class', 'niftyTooltip');
             tooltipElement.setAttribute('data-toolTipText', 'Additional sections listed below are complimentary with this selection.');
             tooltipElement.innerHTML = '<svg class="iconInfo" viewBox="0 0 32 32"><use xlink:href="#iconInfo"/></svg>';
@@ -447,8 +422,7 @@
                 for(var i = 0; i < nodelistOfTooltips.length; i++){
                     nodelistOfTooltips[i].remove();
                 }
-            }
-            
+            }  
         }
 
         function displayNoResultsMessage(){
@@ -508,44 +482,9 @@
                 hiddenInputForBackend.value = '';
                 //then immediately re-populate hidden input with all other panels to be populated?
                 //or surgically clear that part of the JSON? That's not JSON--itS just a string
-
-            }
-            
-        }
-
-       
-
-       //going to have to create tooltips on demand
-        //this must be called each time new data is put on the page to get a fresh nodelist
-        (function collectTooltipsAndAttachListeners(){
-            var arrayOfToolTipIcons = Array.prototype.slice.call(document.querySelectorAll('.iconInfo'));
-            var arrayOfToolTipsCloseButtons = Array.prototype.slice.call(document.querySelectorAll('.iftMap__tooltip__closeButton__wrapper'));
-            //add listeners
-            arrayOfToolTipIcons.map(function(tooltipIcon){
-                tooltipIcon.addEventListener('click', openThisTooltip, false);
-            });
-            arrayOfToolTipsCloseButtons.map(function(toolTipCloseButton){
-                toolTipCloseButton.addEventListener('click', closeActiveTooltip, false);
-            });
-        })();
-
-
-        function closeActiveTooltip(event){
-            var nodeListOfHiddenTooltipContent = document.querySelectorAll('.iftMap__sectionData__footer');
-            var visibleTooltip = document.querySelector('.iftMap__sectionData__footer--VISIBLE-STATE');
-            if (visibleTooltip !== null) {
-                visibleTooltip.classList.remove('iftMap__sectionData__footer--VISIBLE-STATE');
-                visibleTooltip.classList.add('iftMap__sectionData__footer--HIDDEN-STATE');
             }
         }
 
-        function openThisTooltip(event){
-            var theContentToReveal = event.currentTarget.parentNode.querySelector('.iftMap__sectionData__footer');
-            closeActiveTooltip(event);
-            theContentToReveal.classList.remove('iftMap__sectionData__footer--HIDDEN-STATE');
-            theContentToReveal.classList.add('iftMap__sectionData__footer--VISIBLE-STATE');
-
-        }
 
         function showHideWholeMap(event){
             if(event.currentTarget === iftMapButtonOpen) {
@@ -558,7 +497,6 @@
         }
 
 
-
         function reDisableOrEnableComponentProductOfCheckedItem(nodeListOfPanelsToRelate, reDisableOrEnable){
             if(reDisableOrEnable === 'reDisable'){
                 nodeListOfPanelsToRelate[1].classList.add('iftMap__sectionData__wrapper--DISABLED-STATE');
@@ -567,7 +505,6 @@
                 nodeListOfPanelsToRelate[1].classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
             }
         }
-
 
 
         function checkBoxHandler(event){
@@ -583,7 +520,6 @@
             //first look into whether checkbox belongs to a panel with a component product
             var valueOfComponentProduct = referenceToParentPanelOfCheckedInput.getAttribute('data-thispanel')
             if(valueOfComponentProduct === 'IFT'){
-
                 console.log('the section displayed in the panel containining this checkbox is a component product');
                 
                 //so here, check and disable peer component product
@@ -597,17 +533,12 @@
                 else {
                     reDisableOrEnableComponentProductOfCheckedItem(nodeListOfPanelsToPopulate, 'enable');
                 }
-                
             }
 
             stagePanelOfThisCheckbox(event, referenceToParentPanelOfCheckedInput);
         }
 
-
-
-
         function stagePanelOfThisCheckbox(event, referenceToParentPanelOfCheckedInput){
-            //make this cleaner this is dirty knowledge -- looking for closest ancestor with wrapper class
             if(event.currentTarget.checked){                
                 stageOrUnstageThisPanel(event, referenceToParentPanelOfCheckedInput, 'stage');
             }
@@ -619,7 +550,6 @@
         function stageOrUnstageThisPanel(event, referenceToParentPanelOfCheckedInput, stageOrUnstage){
 
             //after updating the staging model, this function must then update the actual hidden inputs that this map is populating
-
             var indexOfThisPanel = arrayOfPanelsToPopulate.indexOf(referenceToParentPanelOfCheckedInput);
             var thisOutputObject = deepOutputObjectForStaging[indexOfThisPanel];
             
@@ -639,11 +569,7 @@
 
 
                     //HARDCODED TO FIRST ONE
-
                     putOutputArrayInHiddenInput(0);
-
-      
-
                 })();
             }
 
@@ -652,14 +578,11 @@
                 //console.log('time To unStage this panel: ' + referenceToParentPanelOfCheckedInput.id);
                 UTILITY_clearThisObject(thisOutputObject);
                 //console.log(thisOutputObject);
-
                 //this is separate clearing the backend model. This field gets populated by the back endmodel
-
                 //only clear this one
                 clearHiddenInputForBackend('justThis', indexOfThisPanel);
             }
         }
-        //when pushing values to this csv, itS going to be complex to retain order... 
 
          
          function putOutputArrayInHiddenInput(indexOfHiddenInputToPopulate){
@@ -671,10 +594,7 @@
                 //var theHiddenInputToPopulate = nodeListOfHiddenInputsForBackend[indexOfHiddenInputToPopulate];
                 hiddenInputForBackend.value = formattedOutput;
                 //console.log(hiddenInputForBackend.value);
-            }
-            // else {
-            //     console.log('test failing');
-            // }   
+            } 
         }
 
 
@@ -687,8 +607,6 @@
             iftMapButtonCancel.addEventListener('click', showHideWholeMap, false);
 
             arrayOfCheckboxes.map(function(thisCheckbox){
-                //name this function stageORunstage
-                //this needs an init function because the checking of the box must trigger the greying out of a related one
                 thisCheckbox.addEventListener('change', checkBoxHandler, false);
             })
 

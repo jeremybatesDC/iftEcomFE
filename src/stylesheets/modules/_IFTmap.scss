@@ -210,6 +210,7 @@ a.iftMap__button--save{
 }
 
 .iftMap__sectionData__wrapper {
+  position:relative;
   font-size: 1.2rem;
   line-height: 1;
   padding-right:$gutter-width;
@@ -274,7 +275,6 @@ a.iftMap__button--save{
 .iftMap__sectionData__wrapper--DISABLED-STATE {
   //pointer-events:none;
   opacity: .3333;
-  position: relative;
   cursor: not-allowed;
   pointer-events:none;
 
@@ -336,16 +336,19 @@ a.iftMap__button--save{
   &:hover,
   &:active,
   &:focus {
-    &:before {
+    &:after {
       content: attr(data-toolTipText);
       position:absolute;
+      top: 2rem;
+      right: 0;
       //that position isnT working as expected
       //left: 2rem;
       display: inline-block;
+      min-width: 100px;
       background:#fff;
       border: 1px solid #000;
       padding: 1rem;
-
+      z-index: 1;
     }
   }
 }
