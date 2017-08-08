@@ -219,6 +219,7 @@ a.iftMap__button--save{
 
   > label {
     display: table;
+    position:relative;
     padding-bottom: 1.6rem;
     input {
       display: table-cell;
@@ -330,6 +331,8 @@ a.iftMap__button--save{
 
 
 .niftyTooltip {
+  position:absolute;
+  right: 0;
   &:hover,
   &:active,
   &:focus {
