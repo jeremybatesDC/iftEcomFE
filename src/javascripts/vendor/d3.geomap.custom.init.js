@@ -289,6 +289,7 @@
 
             var indexOfPanelContainingHomeUserSection;
             var indexesOfPanelsContainingAlreadySavedSections = [];
+            var indexesOfPanelsContainingComponentSection = [];
 
             matchingSectionItems.map(function(matchingSectionItem){
             //not all of these things should be in the map
@@ -314,8 +315,7 @@
             });//end of matchingSectionItems.map
 
 
-            (function populatePanelsOuterMostFunction(){
-
+            (function populatePanels(){
                 for(var z = 0; z < nodeListOfPanelsToPopulate.length; z++){
                     var arrayOfSpansInThisPanel = arrayOfArrayOfFieldsToPopulate[z];
                     //4 spans per panel, so the function in the loop below will run 16 times
@@ -324,50 +324,18 @@
                         arrayOfSpansInThisPanel[zz].innerHTML = valueForThisField;
                     }
 
+                    //using currentComponentParentProduct as flag. May need to change tests
                     var valueForParentPanel = mapStatusContainerDeepARRAY[z].currentComponentParentProduct;
-
-                    //rawSectionData.SectionItems[z].ComponentParentProduct;
-                    console.log('value for parent panel ' + z + 'is: ' + valueForParentPanel);
+                    
+                    if(valueForParentPanel === 'IFT'){
+                        nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel', valueForParentPanel);
+                        indexesOfPanelsContainingComponentSection.push(z);
+                    }
                 }
+                console.log('these panels have component sections ' + indexesOfPanelsContainingComponentSection);
 
             })();
             
-
-
-
-            //this is called once per matching section item
-            function populatePanels(){
-                var slowCounter = 0;
-                    
-                //for each matching section item, this is running once per each arrayOfArrayOfFieldsToPopulate, which is 4 times per matching section item.
-                //This needs to run only once per matching section item.
-
-                //arrayOfArrayOfFieldsToPopulate.map(function(arrayOfFieldsToPopulate){
-                // everything in here will always run 4 times (once per panel)
-                //here is a loop
-                
-                var valueForParentPanel = rawSectionData.SectionItems[slowCounter].ComponentParentProduct;
-
-                console.log('value for parent panel is: ' + valueForParentPanel);
-  
-                var panelToAddStatusTo = nodeListOfPanelsToPopulate[slowCounter];
-
-            
-                //});
-                //'stain' the panel
-                (function addDataAttributes(){
-                    if(valueForParentPanel === 'IFT'){
-                        console.log('how many times is this addDataAttributes function running')
-                        panelToAddStatusTo.setAttribute('data-thispanel', valueForParentPanel);
-                    }
-                })(panelToAddStatusTo);
-
-                slowCounter++;
-
-            }//end of populate panels
-
-            //stain panel function here?
-
 
             (function actionsBasedOnSectionsUserAlreadyHas(){
                 
@@ -416,9 +384,18 @@
                     //this test might not match the tooltip test depending on requirements.
                     //check if should also uncheck its self
 
+
+                    /*
+
+                    indexesOfPanelsContainingComponentSection.indexOf(i) < 0
+
+
+                    */
+
+
                     (function unDisablePanels(){
 
-                        //make sure record associated with the panel [using the index of the loop] does not contain user home state before unDisabling that panel
+                        //make sure record associated with the panel [using the index of the loop] does not contain user home section or already added sections before unDisabling a panel
 
                         if(i !== indexOfPanelContainingHomeUserSection && indexesOfPanelsContainingAlreadySavedSections.indexOf(i) < 0)
                         {
@@ -581,9 +558,56 @@
         }
 
 
-        function stagePanelOfThisCheckbox(event){
-            //make this cleaner this is dirty knowledge -- looking for closest ancestor with wrapper class
+
+        function reDisableOrEnableComponentProductOfCheckedItem(nodeListOfPanelsToRelate, reDisableOrEnable){
+            if(reDisableOrEnable === 'reDisable'){
+                nodeListOfPanelsToRelate[1].classList.add('iftMap__sectionData__wrapper--DISABLED-STATE');
+            }
+            else if (reDisableOrEnable === 'enable'){
+                nodeListOfPanelsToRelate[1].classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
+            }
+        }
+
+
+
+        function checkBoxHandler(event){
+
+            var indexOfCheckboxSelected = arrayOfCheckboxes.indexOf(event.currentTarget);
+
+            //not really looking for the next one. Looking for all component sections that areNOT the current one
+            var indexONextCheckbox = indexOfCheckboxSelected + 1;
+
+            console.log(indexOfCheckboxSelected);
+
             var referenceToParentPanelOfCheckedInput = event.currentTarget.parentElement.parentElement;
+            //first look into whether checkbox belongs to a panel with a component product
+            var valueOfComponentProduct = referenceToParentPanelOfCheckedInput.getAttribute('data-thispanel')
+            if(valueOfComponentProduct === 'IFT'){
+
+                console.log('the section displayed in the panel containining this checkbox is a component product');
+                
+                //so here, check and disable peer component product
+                //if checked, reDisable, if unchecked enable.
+                if(event.currentTarget.checked === true) {
+
+                    //make a refined nodelist of all component sections OTHER than current
+
+                    reDisableOrEnableComponentProductOfCheckedItem(nodeListOfPanelsToPopulate, 'reDisable');
+                }
+                else {
+                    reDisableOrEnableComponentProductOfCheckedItem(nodeListOfPanelsToPopulate, 'enable');
+                }
+                
+            }
+
+            stagePanelOfThisCheckbox(event, referenceToParentPanelOfCheckedInput);
+        }
+
+
+
+
+        function stagePanelOfThisCheckbox(event, referenceToParentPanelOfCheckedInput){
+            //make this cleaner this is dirty knowledge -- looking for closest ancestor with wrapper class
             if(event.currentTarget.checked){                
                 stageOrUnstageThisPanel(event, referenceToParentPanelOfCheckedInput, 'stage');
             }
@@ -664,18 +688,13 @@
 
             arrayOfCheckboxes.map(function(thisCheckbox){
                 //name this function stageORunstage
-                thisCheckbox.addEventListener('change', stagePanelOfThisCheckbox, false);
+                //this needs an init function because the checking of the box must trigger the greying out of a related one
+                thisCheckbox.addEventListener('change', checkBoxHandler, false);
             })
 
         })();
     }    
 
     document.addEventListener('DOMContentLoaded', iftMapFunctionInit);
-    
-    //we are doing full postback now, so this can be removed
-    //if partial postBack
-    // if(window.hasOwnProperty('Sys')){
-    //     Sys.WebForms.PageRequestManager.getInstance().add_endRequest(iftMapFunctionInit)   
-    // }
 
 })();
