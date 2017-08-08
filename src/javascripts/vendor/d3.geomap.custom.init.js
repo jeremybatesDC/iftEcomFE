@@ -147,13 +147,13 @@
         var arrayOfArrayOfFieldsToPopulate = [];
 
 
-        //IMPORTANT. CREATING SET OF SPANS FOR EACH PANEL
+        //IMPORTANT. CREATING SET OF EMPTY SPANS FOR EACH PANEL
         arrayOfPanelsToPopulate.map(function(thisPanel){
             var arrayOfSpans = Array.prototype.slice.call(thisPanel.querySelectorAll('span'));
             arrayOfArrayOfFieldsToPopulate.push(arrayOfSpans);
+
         });
 
-      
         //DRAW THE MAP
         var svg = d3.select('#iftMap');
         var path = d3.geoPath();
@@ -311,49 +311,62 @@
 
                 })();
 
-                //POPULATE SPANS WITH REQUIRED FIELDS FROM MODEL
-                var panelToAddStatusTo;
-                var valueForParentPanel;
-
-
-
-                (function populatePanels(){
-                    var slowCounter = 0;
-                    
-                    //this will always run 4 times
-
-                    arrayOfArrayOfFieldsToPopulate.map(function(arrayOfFieldsToPopulate){
-                    // everything in here will always run 4 times
-                        //here is a loop
-                        for(var jBCounter = 0; jBCounter < arrayOfFieldsToPopulate.length; jBCounter++){
-                            var valueForThisField = mapStatusContainerDeepARRAY[slowCounter][Object.keys(fieldsRequiredByPanelView)[jBCounter]];
-                            arrayOfFieldsToPopulate[jBCounter].setAttribute('data-thisSpan', valueForThisField);
-                            arrayOfFieldsToPopulate[jBCounter].innerHTML = valueForThisField
-
-                        }
-                       
-                        valueForParentPanel = rawSectionData.SectionItems[indexOfSectionItem].ComponentParentProduct;
-
-                        //move out of loop?
-                        panelToAddStatusTo = nodeListOfPanelsToPopulate[slowCounter];
-
-                        
-                        (function addDataAttributes(){
-                            panelToAddStatusTo.setAttribute('data-thispanel', valueForParentPanel);
-                        })(panelToAddStatusTo);
-
-
-                        slowCounter++;
-
-                    });
-
-
-                })();//end of populate panels
-
-                //
-                
-                
             });//end of matchingSectionItems.map
+
+
+            (function populatePanelsOuterMostFunction(){
+
+                for(var z = 0; z < nodeListOfPanelsToPopulate.length; z++){
+                    var arrayOfSpansInThisPanel = arrayOfArrayOfFieldsToPopulate[z];
+                    //4 spans per panel, so the function in the loop below will run 16 times
+                    for(var zz = 0; zz < arrayOfSpansInThisPanel.length; zz++){
+                        var valueForThisField = mapStatusContainerDeepARRAY[z][Object.keys(fieldsRequiredByPanelView)[zz]];
+                        arrayOfSpansInThisPanel[zz].innerHTML = valueForThisField;
+                    }
+
+                    var valueForParentPanel = mapStatusContainerDeepARRAY[z].currentComponentParentProduct;
+
+                    //rawSectionData.SectionItems[z].ComponentParentProduct;
+                    console.log('value for parent panel ' + z + 'is: ' + valueForParentPanel);
+                }
+
+            })();
+            
+
+
+
+            //this is called once per matching section item
+            function populatePanels(){
+                var slowCounter = 0;
+                    
+                //for each matching section item, this is running once per each arrayOfArrayOfFieldsToPopulate, which is 4 times per matching section item.
+                //This needs to run only once per matching section item.
+
+                //arrayOfArrayOfFieldsToPopulate.map(function(arrayOfFieldsToPopulate){
+                // everything in here will always run 4 times (once per panel)
+                //here is a loop
+                
+                var valueForParentPanel = rawSectionData.SectionItems[slowCounter].ComponentParentProduct;
+
+                console.log('value for parent panel is: ' + valueForParentPanel);
+  
+                var panelToAddStatusTo = nodeListOfPanelsToPopulate[slowCounter];
+
+            
+                //});
+                //'stain' the panel
+                (function addDataAttributes(){
+                    if(valueForParentPanel === 'IFT'){
+                        console.log('how many times is this addDataAttributes function running')
+                        panelToAddStatusTo.setAttribute('data-thispanel', valueForParentPanel);
+                    }
+                })(panelToAddStatusTo);
+
+                slowCounter++;
+
+            }//end of populate panels
+
+            //stain panel function here?
 
 
             (function actionsBasedOnSectionsUserAlreadyHas(){
@@ -423,9 +436,9 @@
                     (function unHidePanelsWithData(){
                         //check the first span in the panel  to see if there is any data
                         var firstSpanInPanel = thisPanelToBeInspected.querySelectorAll('span')[0];
-                        var valOfQuickRef = firstSpanInPanel.getAttribute('data-thisspan');         
-                        //if there is any actual value here, unhide the panel
+                        var valOfQuickRef = firstSpanInPanel.innerHTML;        
                         
+                        //if there is any actual value here, unhide the panel
                         if(valOfQuickRef !== null && valOfQuickRef !== 'null' && valOfQuickRef !== ''){
                             thisPanelToBeInspected.classList.remove('iftMap__sectionData__wrapper--HIDDEN-STATE');
                         }
