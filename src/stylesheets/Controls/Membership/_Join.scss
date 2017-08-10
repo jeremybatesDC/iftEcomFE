@@ -172,6 +172,13 @@ form[action$="JoinSummary"] {
 		top: 20px;
 		right: 0;
 	}
+	div#ctl00_MainContent_ctl00_ContainerPanel div#ctl00_ctl00_MainContent_ctl00_MembershipContributionsControl1_ContainerPanelPanel {
+		border-top: 2rem solid #f2f2f2;
+		margin-left: -2rem;
+		margin-right: -2rem;
+		padding: 0 2rem;
+		padding-top: 2rem;
+	}
 	span#ctl00_MainContent_ctl00_MembershipJoinSection_homeSectionRepeater_ctl00_LabelHomeSection,
 	input#IFTHomeSectionProductId,
 	span#ctl00_MainContent_ctl00_MembershipJoinSection_homeSectionRepeater_ctl00_PriceLabel {
@@ -184,7 +191,7 @@ form[action$="JoinSummary"] {
 			font-weight: normal;
 		}
 	}
-	a[id$="LinkButtonRemove"]{
+	a[id$="LinkButtonRemove"] {
 		font-weight: normal;
 	}
 
