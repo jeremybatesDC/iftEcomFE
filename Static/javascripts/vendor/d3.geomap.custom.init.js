@@ -9,7 +9,7 @@
         }
     }
 
-    //moving singular values here allows key/value pairs of mapStatusContainer to all be of the same shape (with up to 4);
+    //moving singular values here allows key/value pairs of mapStatusContainer to all be of the same shape (max 8);
     var singularViewOnlyStatusContainer = {
         currentStateCode: ''
         ,currentStateName: ''
@@ -29,10 +29,10 @@
         this.currentPostalCodeRange = currentPostalCodeRange;
         this.currentComponentParentProduct = currentComponentParentProduct;
     }
-    //MAX 4
+    //MAX 8
     var mapStatusContainerDeepARRAY = [];
     function constructFreshMapStatusContainerModel(){
-        for(var i = 0; i < 4; i++){
+        for(var i = 0; i < 8; i++){
             var thisConstructedThing = new MapStatusContainerDeepARRAY_CONSTRUCTOR(null, null, null, null, null, null);
             mapStatusContainerDeepARRAY.push(thisConstructedThing);
         }
@@ -43,11 +43,8 @@
         constructFreshMapStatusContainerModel();
     }
 
-
     //hidden or not handled by iterator elsewhere -- but could create a model for it
-    // function PanelDisplayStatusARRAY_CONSTRUCTOR(hiddenOrNot, disabledOrNot, hasTipsOrNot){}
-
-
+    // function PanelDisplayStatusARRAY_CONSTRUCTOR(hiddenOrNot, disabledOrNot, isComponentOrNot){}
 
     function OutputStatusContainerDeepARRAY_CONSTRUCTOR(ProductId, ProductName, ComponentProductId, ComponentProductShortName, MemberPrice){
         this.ProductId = ProductId;
@@ -56,10 +53,10 @@
         this.ComponentProductShortName = ComponentProductShortName;
         this.MemberPrice = MemberPrice;
     }
-    //max 4
+    //max 8
     var deepOutputObjectForStaging = [];
     function constructFreshStagingContainerModel(){
-        for(var i = 0; i < 4; i++){
+        for(var i = 0; i < 8; i++){
             var thisConstructedThing = new OutputStatusContainerDeepARRAY_CONSTRUCTOR(null, null, null, null, null);
             deepOutputObjectForStaging.push(thisConstructedThing);
         }
@@ -85,14 +82,10 @@
             for(var i = 0; i < nodeListOfOptionalSectionsInputs.length; i++){
                 userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(nodeListOfOptionalSectionsInputs[i].value));
             }
-            //console.log(userAlreadySavedSections.additionalAlreadySavedSections);
         }
-
-
     }
 
-    //these can be used later to filter mapStatusContainer at queryTime
-    //just using for keys, which is awkward but easier in the short term than filtering against a differently shaped thing
+    //these keys can be used later to filter mapStatusContainer at queryTime
     var fieldsRequiredByPanelView = {
         currentProductName: ''
         ,currentMemberPrice: ''
@@ -100,15 +93,13 @@
         ,currentPostalCodeRange: ''
     }
 
-    var fieldsRequiredByBackend = {
-        currentProductId: ''
-        ,currentProductName: ''
-        ,currentComponentProductId: ''
-        ,currentComponentProductShortName: ''
-        ,currentMemberPrice: ''
-    }
-
-
+    // var fieldsRequiredByBackend = {
+    //     currentProductId: ''
+    //     ,currentProductName: ''
+    //     ,currentComponentProductId: ''
+    //     ,currentComponentProductShortName: ''
+    //     ,currentMemberPrice: ''
+    // }
 
     function iftMapFunctionInit(){
 
@@ -129,29 +120,24 @@
         var stateSelectMenu = document.getElementById('stateSelectMenu');
         var internationalSelectMenu = document.getElementById('internationalSelectMenu');
         var arrayOfSpansToPopulateEmpty = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper span'));
-        //var hiddenInputForBackend = document.getElementById('ctl00_MainContent_ctl00_MembershipJoinSection_IFTSavedSectionHiddenfield');
         var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
         
-        
-        var nodeListOfHiddenInputsForBackend = document.querySelectorAll('[id^="ctl00_MainContent_ctl00_MembershipJoinSection_IFTSavedSectionHiddenfield"]');
-        var activeStateSting = 'iftMapWrapperOuter--ACTIVE-STATE';
+        var activeStateString = 'iftMapWrapperOuter--ACTIVE-STATE';
+        var disabledStateString = 'iftMap__sectionData__wrapper--DISABLED-STATE';
+        var hiddenStateString = 'iftMap__sectionData__wrapper--HIDDEN-STATE';
 
         //already have a reference, but itS more general for etch-a-sketch reasons
 
-        var nodeListOfPanelsToPopulate = document.querySelectorAll('.iftMap__sectionData__wrapper')
-
-        var nodeListOfCheckboxes = document.querySelectorAll('.iftMap__sectionData__wrapper [type="checkbox"]');
-        var arrayOfCheckboxes = Array.prototype.slice.call(nodeListOfCheckboxes);
-
+        var nodeListOfPanelsToPopulate = document.querySelectorAll('.iftMap__sectionData__wrapper');
         var arrayOfPanelsToPopulate = Array.prototype.slice.call(nodeListOfPanelsToPopulate);
         var arrayOfArrayOfFieldsToPopulate = [];
-
+        var nodeListOfCheckboxes = document.querySelectorAll('.iftMap__sectionData__wrapper [type="checkbox"]');
+        var arrayOfCheckboxes = Array.prototype.slice.call(nodeListOfCheckboxes);
 
         //IMPORTANT. CREATING SET OF EMPTY SPANS FOR EACH PANEL
         arrayOfPanelsToPopulate.map(function(thisPanel){
             var arrayOfSpans = Array.prototype.slice.call(thisPanel.querySelectorAll('span'));
             arrayOfArrayOfFieldsToPopulate.push(arrayOfSpans);
-
         });
 
         //DRAW THE MAP
@@ -174,13 +160,11 @@
             .on('click', function(thisState){
                 mapHandlerFunction('click', thisState, 'isFromMap');
             });
-
             svg.append('path')
               .attr('class', 'state-borders iftMap__svg__path--stateBorders')
               .attr('d', path(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; })));
         });
         //END DRAW MAP
-
 
         function mapHandlerFunction(event, statefromD3, isFromMap){            
             //if a state on the map has been clicked
@@ -211,12 +195,11 @@
             writeDataToThePage();
         }//end mapHandlerFunction
 
-
         //this is a css thing
         function unRevealPanels(){
-            //to preserve nodelist, must stick to for loops (foreach is buggy)
+            //preserve nodelist & stick to For loops here (foreach not fully supported)
             for(var i = 0; i < nodeListOfPanelsToPopulate.length; i++){
-                nodeListOfPanelsToPopulate[i].classList.add('iftMap__sectionData__wrapper--HIDDEN-STATE');
+                nodeListOfPanelsToPopulate[i].classList.add(hiddenStateString);
             }
         }
 
@@ -224,15 +207,14 @@
         function disablePanels(){
             for(var i = 0; i < nodeListOfPanelsToPopulate.length; i++){
                 nodeListOfCheckboxes[i].disabled = true;
-                nodeListOfPanelsToPopulate[i].classList.add('iftMap__sectionData__wrapper--DISABLED-STATE');
+                nodeListOfPanelsToPopulate[i].classList.add(disabledStateString);
             }
         }
-
 
         function removeAddActiveState(thenAdd){
             //query statecode            
             var selectedItem = document.querySelector('.usState--SELECTED');
-            //if there is an active item, remove itS active class. Why not just strip all? Oh, because it was causing a timing issue
+            //if there is an active item, remove itS active class.
             if (selectedItem !== null){
                 selectedItem.classList.remove('usState--SELECTED');
             }
@@ -247,12 +229,10 @@
             safeManualResetOfOutputStatusContainerDeepARRAY();
 
             //clear the input value we are populating for the backend on section click
-
-            //THIS MUST CLEAR ALL 4
-            clearHiddenInputForBackend('all');
+            clearHiddenInputForBackend();
             
             //next, clear content, flags and data attributes 
-            //(consult model -- could consult model)
+            //(could consult model)
             clearNoResultsMessageContainer();
             clearCheckBoxes();
             clearDataFlags();
@@ -265,15 +245,13 @@
         }
 
 
-
         function writeDataToThePage(){
             
             clearTonsOfStuffBeforeWritingDataToPage();
-
             //called without arguments becuase that function queries the model
             displayAreaName();
 
-            //FILTER SectionItems array to make new subarray of matching state sections (max 4)
+            //FILTER SectionItems array to make new subarray of matching state sections (max 8)
             var matchingSectionItems = rawSectionData.SectionItems.filter(function(sectionItem){
                 return sectionItem.StateCode === singularViewOnlyStatusContainer.currentStateCode 
             });
@@ -283,20 +261,17 @@
                 displayNoResultsMessage();
             }
 
-       
             //now, map function to that new subarray
             var iteratorNum = 0;
-
             var indexOfPanelContainingHomeUserSection;
             var indexesOfPanelsContainingAlreadySavedSections = [];
-            var indexesOfPanelsContainingComponentSection = [];
 
+
+            //if doing a map method with a counter, might be more idiomatic to use for loop
             matchingSectionItems.map(function(matchingSectionItem){
             //not all of these things should be in the map
-
                 //console.log(matchingSectionItem);
                 var indexOfSectionItem = rawSectionData.SectionItems.indexOf(matchingSectionItem);
-                
                 //SET PROPERTIES IN MODEL
                 (function setAllTheProperties(){
                     //this is hardcoded, kinda. The order matters, so this should be a list operation. Or at least a forEach for ForIn loop. Better to do a list operation over properties
@@ -309,9 +284,7 @@
                     mapStatusContainerDeepARRAY[iteratorNum].currentComponentParentProduct = rawSectionData.SectionItems[indexOfSectionItem].ComponentParentProduct;
 
                     iteratorNum++;
-
                 })();
-
             });//end of matchingSectionItems.map
 
 
@@ -324,115 +297,82 @@
                         arrayOfSpansInThisPanel[zz].innerHTML = valueForThisField;
                     }
 
-                    //using currentComponentParentProduct as flag. May need to change tests
+                    //using currentComponentParentProduct as flag. May need to change test
                     var valueForParentPanel = mapStatusContainerDeepARRAY[z].currentComponentParentProduct;
-                    
                     if(valueForParentPanel === 'IFT'){
-                        nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel', valueForParentPanel);
-                        indexesOfPanelsContainingComponentSection.push(z);
+                        nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel', 'thisPanelHasComponentSection');
                     }
                 }
-                console.log('these panels have component sections ' + indexesOfPanelsContainingComponentSection);
-
             })();
             
-
+            //this runs once per state selection
             (function actionsBasedOnSectionsUserAlreadyHas(){
-                
-                //this runs once per state selection
-                    for(var i = 0; i < matchingSectionItems.length; i++){
-                        if(matchingSectionItems[i].ProductId === userAlreadySavedSections.userHomeSectionProductID){    //always just one   
-                                indexOfPanelContainingHomeUserSection = i;
-                        }
-
-                        //if the product ID of the matching section item is one of the already selected sections
-
-                        if(userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1){
-
-                            //console.log('there is a match with an already saved user section');
-                            //need to refine it each time?
-                            var numToPush = i;
-                            indexesOfPanelsContainingAlreadySavedSections.push(numToPush);                                                      
-                        }
-                        //console.log('indexesOfPanelsContainingAlreadySavedSections ' + indexesOfPanelsContainingAlreadySavedSections);
+                for(var i = 0; i < matchingSectionItems.length; i++){
+                    if(matchingSectionItems[i].ProductId === userAlreadySavedSections.userHomeSectionProductID){  //always just one
+                        indexOfPanelContainingHomeUserSection = i;
                     }
 
-
+                    //if the product ID of the matching section item is one of the already selected sections
+                    if(userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1){
+                        var numToPush = i;
+                        indexesOfPanelsContainingAlreadySavedSections.push(numToPush);                                                      
+                    }
+                }
             })();//end actionsBasedOnUserHomeSectionOuterMostFunction
 
 
-            //PANEL STATUS STUFF HERE BECAUSE OF THE WAY THE EVENT LOOP IS
             //QUERY THE DOM FOR THESE UNLESS PREPARED TO DO A PANEL STATE CONTAINER [hasTip, disabled, hidden]
 
-            (function panelStatusMasterFunction(){
+            //this runs once per state selection
+            (function panelStatusFunctionAfterStateChoice(){
                 for(var i = 0; i < nodeListOfPanelsToPopulate.length; i++){
     
                     var thisPanelToBeInspected = nodeListOfPanelsToPopulate[i];
+ 
+                    (function decideWhetherSectionIsComponent(){
 
-                    //test 1
+                        (function decideTooltips(){
+                            if(thisPanelToBeInspected.getAttribute('data-thispanel') === 'thisPanelHasComponentSection'){
+                                var referenceElem = thisPanelToBeInspected.querySelectorAll('label')[0];
+                                createToolTipOnDemand(referenceElem);
+                            }
+                        })();
+                        //here can go other decisions based on whether section is component product
+                    })();//end decideWhetherSectionIsComponent
 
-                    //adding tooltips to all in panel... even if there is no data in it
-                    (function decideToolTips(){
-                        if(thisPanelToBeInspected.getAttribute('data-thispanel') === 'IFT'){
-                            var referenceElem = thisPanelToBeInspected.querySelectorAll('label')[0];
-                            createToolTipOnDemand(referenceElem);
-                        }
-                    })();
-
-                    //only undisable
-
-                    //this test might not match the tooltip test depending on requirements.
-                    //check if should also uncheck its self
-
-
-                    /*
-
-                    indexesOfPanelsContainingComponentSection.indexOf(i) < 0
-
-
-                    */
-
-
-                    (function unDisablePanels(){
+                    (function unDisablePanelsAfterStateChoice(){
 
                         //make sure record associated with the panel [using the index of the loop] does not contain user home section or already added sections before unDisabling a panel
-
                         if(i !== indexOfPanelContainingHomeUserSection && indexesOfPanelsContainingAlreadySavedSections.indexOf(i) < 0)
                         {
-                            thisPanelToBeInspected.classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
+                            thisPanelToBeInspected.classList.remove(disabledStateString);
                             thisPanelToBeInspected.querySelector('input').disabled = false;
                         }
                         else {
                             //if panel DOES CONTAIN home state, so disable the input of course
                             thisPanelToBeInspected.querySelector('input').disabled = true;
-                            //but DONt manually CHECK this box, because that could add it again to the cart
+                            
                         }
-
                     })();
 
-                    (function unHidePanelsWithData(){
+                    (function unHidePanelsWithDataAfterStateChoice(){
                         //check the first span in the panel  to see if there is any data
                         var firstSpanInPanel = thisPanelToBeInspected.querySelectorAll('span')[0];
                         var valOfQuickRef = firstSpanInPanel.innerHTML;        
                         
                         //if there is any actual value here, unhide the panel
                         if(valOfQuickRef !== null && valOfQuickRef !== 'null' && valOfQuickRef !== ''){
-                            thisPanelToBeInspected.classList.remove('iftMap__sectionData__wrapper--HIDDEN-STATE');
+                            thisPanelToBeInspected.classList.remove(hiddenStateString);
                         }
                     })();
-                }
-            })();//end of panelStatusMasterFunction
-        
+
+                }//end for loop
+            })();//end of panelStatusFunctionPerStateChoice
         }//end of write data to page function
 
 
         function createToolTipOnDemand(theReferenceFormLabelElement){
-            //hard Test code 
-            //only show actual message on click
-            var theToolTipMessageToDisplay = 'I am am awesome tooltip';
-
             var tooltipElement = document.createElement('i');
-            //cannot use classList yet bC there isnTone
             tooltipElement.setAttribute('class', 'niftyTooltip');
             tooltipElement.setAttribute('data-toolTipText', 'Additional sections listed below are complimentary with this selection.');
             tooltipElement.innerHTML = '<svg class="iconInfo" viewBox="0 0 32 32"><use xlink:href="#iconInfo"/></svg>';
@@ -447,8 +387,7 @@
                 for(var i = 0; i < nodelistOfTooltips.length; i++){
                     nodelistOfTooltips[i].remove();
                 }
-            }
-            
+            }  
         }
 
         function displayNoResultsMessage(){
@@ -491,193 +430,120 @@
             }
         }
 
-        function clearHiddenInputForBackend(allOrJustThis, optionalIndexKey){
-
-            
-            if(allOrJustThis === 'all'){
-                //console.log('clearing all hidden outputs for backend');
-                // for(var i = 0; i < nodeListOfHiddenInputsForBackend.length; i++){
-                //     nodeListOfHiddenInputsForBackend[i].value = '';
-                // }
-                hiddenInputForBackend.value = '';
-            }
-
-            //so, if justThis, and can only have 1 input, then
-            else if(allOrJustThis === 'justThis'){
-
-                hiddenInputForBackend.value = '';
-                //then immediately re-populate hidden input with all other panels to be populated?
-                //or surgically clear that part of the JSON? That's not JSON--itS just a string
-
-            }
-            
+        function clearHiddenInputForBackend(){
+            hiddenInputForBackend.value = '';
         }
 
-       
-
-       //going to have to create tooltips on demand
-        //this must be called each time new data is put on the page to get a fresh nodelist
-        (function collectTooltipsAndAttachListeners(){
-            var arrayOfToolTipIcons = Array.prototype.slice.call(document.querySelectorAll('.iconInfo'));
-            var arrayOfToolTipsCloseButtons = Array.prototype.slice.call(document.querySelectorAll('.iftMap__tooltip__closeButton__wrapper'));
-            //add listeners
-            arrayOfToolTipIcons.map(function(tooltipIcon){
-                tooltipIcon.addEventListener('click', openThisTooltip, false);
-            });
-            arrayOfToolTipsCloseButtons.map(function(toolTipCloseButton){
-                toolTipCloseButton.addEventListener('click', closeActiveTooltip, false);
-            });
-        })();
-
-
-        function closeActiveTooltip(event){
-            var nodeListOfHiddenTooltipContent = document.querySelectorAll('.iftMap__sectionData__footer');
-            var visibleTooltip = document.querySelector('.iftMap__sectionData__footer--VISIBLE-STATE');
-            if (visibleTooltip !== null) {
-                visibleTooltip.classList.remove('iftMap__sectionData__footer--VISIBLE-STATE');
-                visibleTooltip.classList.add('iftMap__sectionData__footer--HIDDEN-STATE');
-            }
-        }
-
-        function openThisTooltip(event){
-            var theContentToReveal = event.currentTarget.parentNode.querySelector('.iftMap__sectionData__footer');
-            closeActiveTooltip(event);
-            theContentToReveal.classList.remove('iftMap__sectionData__footer--HIDDEN-STATE');
-            theContentToReveal.classList.add('iftMap__sectionData__footer--VISIBLE-STATE');
-
-        }
 
         function showHideWholeMap(event){
             if(event.currentTarget === iftMapButtonOpen) {
-                iftMapWrapperOuter.classList.add(activeStateSting);
+                iftMapWrapperOuter.classList.add(activeStateString);
             }
             if(event.currentTarget === iftMapButtonClose || event.currentTarget === iftMapButtonCancel) {
-                closeActiveTooltip();
-                iftMapWrapperOuter.classList.remove(activeStateSting);
+                iftMapWrapperOuter.classList.remove(activeStateString);
             }
         }
-
-
-
-        function reDisableOrEnableComponentProductOfCheckedItem(nodeListOfPanelsToRelate, reDisableOrEnable){
-            if(reDisableOrEnable === 'reDisable'){
-                nodeListOfPanelsToRelate[1].classList.add('iftMap__sectionData__wrapper--DISABLED-STATE');
-            }
-            else if (reDisableOrEnable === 'enable'){
-                nodeListOfPanelsToRelate[1].classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
-            }
-        }
-
 
 
         function checkBoxHandler(event){
 
-            var indexOfCheckboxSelected = arrayOfCheckboxes.indexOf(event.currentTarget);
-
-            //not really looking for the next one. Looking for all component sections that areNOT the current one
-            var indexONextCheckbox = indexOfCheckboxSelected + 1;
-
-            console.log(indexOfCheckboxSelected);
-
             var referenceToParentPanelOfCheckedInput = event.currentTarget.parentElement.parentElement;
-            //first look into whether checkbox belongs to a panel with a component product
-            var valueOfComponentProduct = referenceToParentPanelOfCheckedInput.getAttribute('data-thispanel')
-            if(valueOfComponentProduct === 'IFT'){
-
-                console.log('the section displayed in the panel containining this checkbox is a component product');
-                
-                //so here, check and disable peer component product
-                //if checked, reDisable, if unchecked enable.
-                if(event.currentTarget.checked === true) {
-
-                    //make a refined nodelist of all component sections OTHER than current
-
-                    reDisableOrEnableComponentProductOfCheckedItem(nodeListOfPanelsToPopulate, 'reDisable');
-                }
-                else {
-                    reDisableOrEnableComponentProductOfCheckedItem(nodeListOfPanelsToPopulate, 'enable');
-                }
-                
-            }
-
-            stagePanelOfThisCheckbox(event, referenceToParentPanelOfCheckedInput);
+            //first clear the model & inputForBackend
+            safeManualResetOfOutputStatusContainerDeepARRAY();            
+            clearHiddenInputForBackend();
+            //then adjust with panel status & stage stuff
+            adjustPanelStatusesBasedOnCurrentSelections(referenceToParentPanelOfCheckedInput);
+            stageSectionsBasedOnCurrentSelections(referenceToParentPanelOfCheckedInput);
         }
 
-
-
-
-        function stagePanelOfThisCheckbox(event, referenceToParentPanelOfCheckedInput){
-            //make this cleaner this is dirty knowledge -- looking for closest ancestor with wrapper class
-            if(event.currentTarget.checked){                
-                stageOrUnstageThisPanel(event, referenceToParentPanelOfCheckedInput, 'stage');
-            }
-            else {
-                stageOrUnstageThisPanel(event, referenceToParentPanelOfCheckedInput, 'uNstage');
-            }
-        }
-
-        function stageOrUnstageThisPanel(event, referenceToParentPanelOfCheckedInput, stageOrUnstage){
-
-            //after updating the staging model, this function must then update the actual hidden inputs that this map is populating
-
-            var indexOfThisPanel = arrayOfPanelsToPopulate.indexOf(referenceToParentPanelOfCheckedInput);
-            var thisOutputObject = deepOutputObjectForStaging[indexOfThisPanel];
+        function adjustPanelStatusesBasedOnCurrentSelections(referenceToParentPanelOfCheckedInput){
+            //map over panels to disable panels containing component products of the chosen section
             
-            if(stageOrUnstage==='stage'){
-                //grab values from model by that common index and put them here
-                // BETTER TO MAKE VIEW OF FIELDS THAT ONLY THE BACKEND NEEDS. THEN CAN MAP OVER THAT ARRAY TO SET VALUES MORE EFFICIENTLY 
-                (function grabValuesFromModel(){
+            var indexOfParentPanel = arrayOfPanelsToPopulate.indexOf(referenceToParentPanelOfCheckedInput);
+            
+            //use FILTER to create an array of all panels that are NOT the one being interacted with
+            var arrayOfPanelsToAdjustMINUStheOnejustChosen = arrayOfPanelsToPopulate.filter(function(thisPanel){
 
-                    thisOutputObject.ProductId = mapStatusContainerDeepARRAY[indexOfThisPanel].currentProductId;
-                    thisOutputObject.ProductName = mapStatusContainerDeepARRAY[indexOfThisPanel].currentProductName;
-                    thisOutputObject.ComponentProductId = mapStatusContainerDeepARRAY[indexOfThisPanel].currentComponentProductId;
-                    thisOutputObject.ComponentProductShortName = mapStatusContainerDeepARRAY[indexOfThisPanel].currentComponentProductShortName;
-                    thisOutputObject.MemberPrice = mapStatusContainerDeepARRAY[indexOfThisPanel].currentMemberPrice;
+                //narrow that array so that it only includes components of currently interacted with thing
+                if(arrayOfPanelsToPopulate.indexOf(thisPanel) !== indexOfParentPanel){
+                    return thisPanel;
+                }
+            });
+            
+            //am i a component? 
+            if(referenceToParentPanelOfCheckedInput.getAttribute('data-thispanel') === 'thisPanelHasComponentSection') {
 
-                    //console.log('time To stage ' + referenceToParentPanelOfCheckedInput.id);
-                    //console.log(thisOutputObject);
-
-
-                    //HARDCODED TO FIRST ONE
-
-                    putOutputArrayInHiddenInput(0);
-
-      
-
-                })();
+                //If so, map over the other panels to find fellow(s)
+                arrayOfPanelsToAdjustMINUStheOnejustChosen.map(function(thisPanelThatIsnTtheChosenOne){
+                    if(thisPanelThatIsnTtheChosenOne.getAttribute('data-thispanel') === 'thisPanelHasComponentSection'){
+                        if(event.currentTarget.checked === true){
+                            reDisableOrEnableComponentProductOfCheckedItem(thisPanelThatIsnTtheChosenOne, 'reDisable');
+                                //STAGE thisPanelThatIsnTtheChosenOne
+                                thisPanelThatIsnTtheChosenOne.setAttribute('data-componentOfSelected', 'componentOfSelected');
+                        }
+                        else {
+                            reDisableOrEnableComponentProductOfCheckedItem(thisPanelThatIsnTtheChosenOne, 'enable');
+                                //UNSTAGE thisPanelThatIsnTtheChosenOne
+                                thisPanelThatIsnTtheChosenOne.setAttribute('data-componentOfSelected', '');
+                        }
+                    }
+                });
             }
 
-            else if(stageOrUnstage==='uNstage'){
-                //this is a nodelist
-                //console.log('time To unStage this panel: ' + referenceToParentPanelOfCheckedInput.id);
-                UTILITY_clearThisObject(thisOutputObject);
-                //console.log(thisOutputObject);
+            function reDisableOrEnableComponentProductOfCheckedItem(thisPanelThatIsnTtheChosenOne, reDisableOrEnable){
+                if(reDisableOrEnable === 'reDisable'){
+                    thisPanelThatIsnTtheChosenOne.classList.add(disabledStateString);
+                    thisPanelThatIsnTtheChosenOne.querySelector('input').disabled = true;
 
-                //this is separate clearing the backend model. This field gets populated by the back endmodel
+                }
+                else if (reDisableOrEnable === 'enable'){
+                    thisPanelThatIsnTtheChosenOne.classList.remove(disabledStateString);
+                    thisPanelThatIsnTtheChosenOne.querySelector('input').disabled = false;
 
-                //only clear this one
-                clearHiddenInputForBackend('justThis', indexOfThisPanel);
+                }
             }
         }
-        //when pushing values to this csv, itS going to be complex to retain order... 
 
-         
-         function putOutputArrayInHiddenInput(indexOfHiddenInputToPopulate){
+//need to ensure this runs AFTER previous function is complete (so consider calling from end of previous function)
 
-            var formattedOutput = JSON.stringify(deepOutputObjectForStaging);
-            //this function will be called multiple times, with the particular panelS index mattering.
+        function stageSectionsBasedOnCurrentSelections(referenceToParentPanelOfCheckedInput){
+            
+             var indexesOfSelectedSections = [];
+             var indexesOfPanelsContainingComponentSection = [];
 
-            if(hiddenInputForBackend !== null){
-                //var theHiddenInputToPopulate = nodeListOfHiddenInputsForBackend[indexOfHiddenInputToPopulate];
-                hiddenInputForBackend.value = formattedOutput;
-                //console.log(hiddenInputForBackend.value);
-            }
-            // else {
-            //     console.log('test failing');
-            // }   
+             for (var abc = 0; abc < nodeListOfCheckboxes.length; abc++){
+                //test must include things checked AND things marked as components
+                if(nodeListOfCheckboxes[abc].checked === true || nodeListOfPanelsToPopulate[abc].getAttribute('data-componentOfSelected') === 'componentOfSelected'){
+                    indexesOfSelectedSections.push(abc);
+                }
+             }
+             console.log('the following panels are selected ' + indexesOfSelectedSections);
+
+            //the checkbox handler clears the model and checkboxes, but maybe that should go here
+            (function grabValuesFromMapStatusContainerDeepARRAY(){
+
+                //this model can be 8
+                for(var i = 0; i < mapStatusContainerDeepARRAY.length; i++){
+                    
+                    //stage checked AND components of checked
+                    if(indexesOfSelectedSections.indexOf(i) > -1){
+                        deepOutputObjectForStaging[i].ProductId = mapStatusContainerDeepARRAY[i].currentProductId;
+                        deepOutputObjectForStaging[i].ProductName = mapStatusContainerDeepARRAY[i].currentProductName;
+                        deepOutputObjectForStaging[i].ComponentProductId = mapStatusContainerDeepARRAY[i].currentComponentProductId;
+                        deepOutputObjectForStaging[i].ComponentProductShortName = mapStatusContainerDeepARRAY[i].currentComponentProductShortName;
+                        deepOutputObjectForStaging[i].MemberPrice = mapStatusContainerDeepARRAY[i].currentMemberPrice;
+                    }
+                }
+                console.log(deepOutputObjectForStaging);
+            })();
+
+            (function putOutputArrayInHiddenInput(){
+                hiddenInputForBackend.value = JSON.stringify(deepOutputObjectForStaging);
+            })(); 
+
         }
 
-
+        
         //EVENTS
         (function addEventListeners(){
             stateSelectMenu.addEventListener('change', mapHandlerFunction, false);
@@ -687,8 +553,6 @@
             iftMapButtonCancel.addEventListener('click', showHideWholeMap, false);
 
             arrayOfCheckboxes.map(function(thisCheckbox){
-                //name this function stageORunstage
-                //this needs an init function because the checking of the box must trigger the greying out of a related one
                 thisCheckbox.addEventListener('change', checkBoxHandler, false);
             })
 
@@ -696,5 +560,4 @@
     }    
 
     document.addEventListener('DOMContentLoaded', iftMapFunctionInit);
-
 })();
