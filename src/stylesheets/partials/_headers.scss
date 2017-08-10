@@ -1,33 +1,30 @@
-.logo-container--main{
+.logo-container--main {
 	position: fixed;
-	top:2rem;
-	z-index:9;
-	//link
-	> .header__logo {
+	top: 2rem;
+	z-index: 9; //link
+	>.header__logo {
 		display: block;
-		> img {
+		>img {
 			width: 7.2rem;
 			height: auto;
 			margin-top: 6px;
 		}
 	}
 
-	
-	
-	@include break(max, $breakpoint-max-1023){
-		top:.25rem;
+
+
+	@include break(max, $breakpoint-max-1023) {
+		top: .25rem;
 		width: 6rem;
-		height:4.4rem;
-		left:.5rem;
+		height: 4.4rem;
+		left: .5rem;
 		svg {
 			width: 10rem;
-			height:4.5rem;
+			height: 4.5rem;
 			opacity: 1;
 			transition: .3333s opacity ease;
 		}
-	}
-
-	// @include break(max, $breakpoint-max-1023) {
+	} // @include break(max, $breakpoint-max-1023) {
 	// 	background-image:url(/images/ift_logo_NOTAG_mobile.svg);
 	// 	background-size:contain;
 	// 	background-repeat: no-repeat;
@@ -35,32 +32,33 @@
 	// 		visibility: hidden;
 	// 	}
 	// }
-	
 	@include break(min, $breakpoint-min-md) {
-		left:$gutter-width / 2;
+		left: $gutter-width / 2;
 	}
 	@include break(min, $breakpoint-min-md) {
-		left:5vw;
+		left: 5vw;
 	}
-	
-	&.logo-container--main--SCROLLED-STATE {
-		@include break(min, $breakpoint-min-md){
-			transform:translateY(-2.5em);
 
+	&.logo-container--main--SCROLLED-STATE {
+		@include break(min, $breakpoint-min-md) {
+			transform: translateY(-2.5em);
 		}
-		
 	}
 }
 
 .header__utility-auth {
-	display:inline-block;
-	padding-right:$gutter-width / 2;
-	> .btn {
+	display: inline-flex;
+	padding-right: $gutter-width / 2;
+	align-items: center;
+	.welcomemessage {
+		padding-right: 2rem;
+	}
+	>.btn {
 		//font-weight: normal;
 		background: transparent !important;
-		border:2px solid $white !important;
+		border: 2px solid $white !important;
 		padding: .5rem 1rem;
-		height:3.2rem;
+		height: 3.2rem;
 		min-width: auto;
 		line-height: 1.5;
 		&:before,
@@ -70,7 +68,7 @@
 		&:hover,
 		&:active,
 		&:focus {
-			background-image:none;
+			background-image: none;
 			background-color: $white !important;
 			color: $ift-blue-dark;
 			&:before,
@@ -82,25 +80,25 @@
 }
 
 .header__utility-cart {
-	display:inline-block;
+	display: inline-block;
 }
 
 .header__utility-cart-label {
-	@include break(max, $breakpoint-max-1023){
+	@include break(max, $breakpoint-max-1023) {
 		display: none;
 	}
 }
 
 .headline--top-line {
-	text-transform:uppercase;
-	@include break(min, $breakpoint-min-tablet){
+	text-transform: uppercase;
+	@include break(min, $breakpoint-min-tablet) {
 		&:before,
 		&:after {
 			display: inline-block;
 			height: 100%;
 			width: 1em;
-			border-color:$white;
-			box-shadow:0 -1px rgba($white, .05);
+			border-color: $white;
+			box-shadow: 0 -1px rgba($white, .05);
 			content: "-";
 			color: transparent;
 		}
@@ -112,88 +110,78 @@
 			transform: translateX(25%) translateY(50%);
 		}
 	}
-	@include break(max, $breakpoint-max-mobile){
-
-	}
+	@include break(max, $breakpoint-max-mobile) {}
 }
 
 .rowHasHeroButtons {
 	.column-auto {
-		padding-right:0;
+		padding-right: 0;
 		padding-left: 0;
 	}
 }
 
 
 .page-header {
-	position:relative;
-	color: $white;
-	//this needs to at least match the height of the nav
+	position: relative;
+	color: $white; //this needs to at least match the height of the nav
 	padding-top: 9em;
-	padding-bottom:3em;
-	text-align: center;
-	// @include break(min, $breakpoint-min-lg){
+	padding-bottom: 3em;
+	text-align: center; // @include break(min, $breakpoint-min-lg){
 	// }
 	// .row-wrapper {
 	// 	padding-bottom:3em;
 	// }
-
-
 }
 
 //.header-homepage {}
 //.header-interior {}
-
 .ift-overlay {
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	z-index:0;
-	// @include break(max, $breakpoint-max-mobile) {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0; // @include break(max, $breakpoint-max-mobile) {
 	// 	display: none;
-
 	// }
 }
 
 .ift-overlay--black {
-	background:rgba($black, .5);
+	background: rgba($black, .5);
 }
 
 .ift-overlay--orangeToBlue {
-	background:$gradient--orangeToBlue;
-	pointer-events:none;
+	background: $gradient--orangeToBlue;
+	pointer-events: none;
 }
 
-.ift-overlay--blueToOrange{
-	background:$gradient--blueToOrange;
+.ift-overlay--blueToOrange {
+	background: $gradient--blueToOrange;
 }
 
 //using this separate element approach to get fixed behavior while allowing cover to work as well
 //best of both worlds
-.header-background-image{
-	position:fixed;
-	top:0;
-	right:0;
-	bottom:0;
-	left:0;
-	width:100%;
-	background-size:cover;
+.header-background-image {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background-size: cover;
 	background-position: top;
-	z-index:-1;
+	z-index: -1;
 }
 
 .page-header__content {
 	//position is needed to get z-indexing right
-	position:relative;
+	position: relative;
 	padding-bottom: 2em;
 	.event-detail {
-		font-family:$headlineFont;
-		//font-weight:$headlineFontWeight;
+		font-family: $headlineFont; //font-weight:$headlineFontWeight;
 		display: inline-block;
 		font-size: 2.2rem;
-		@include break(max, $breakpoint-max-mobile){
+		@include break(max, $breakpoint-max-mobile) {
 			display: block;
 			font-size: 1.8rem;
 			&:first-child {
@@ -205,36 +193,35 @@
 
 
 .sublayout__header {
-	position:relative;
+	position: relative;
 }
 
 
 .header-homepage {
 	//add specificity
 	&.page-header {
-		@include break(max, $breakpoint-max-mobile){
-			padding-top:5em;
+		@include break(max, $breakpoint-max-mobile) {
+			padding-top: 5em;
 		}
-	}
-	//only the buttons are in a column auto
+	} //only the buttons are in a column auto
 	.row {
-		padding-bottom:0;
+		padding-bottom: 0;
 	}
 	.rowHasCounters {
 		.row {
-			@include break(max, $breakpoint-max-mobile){
+			@include break(max, $breakpoint-max-mobile) {
 				display: flex;
 			}
 		}
 	}
-	.column-auto {	
-		padding-top:$gutter-width / 4;
-		padding-bottom:$gutter-width / 4;
-		@include break(min, $breakpoint-min-tablet){
-			padding-top:$gutter-width / 2;
-			padding-bottom:$gutter-width / 2;
-			padding-top:$gutter-width;
-			padding-bottom:$gutter-width;
+	.column-auto {
+		padding-top: $gutter-width / 4;
+		padding-bottom: $gutter-width / 4;
+		@include break(min, $breakpoint-min-tablet) {
+			padding-top: $gutter-width / 2;
+			padding-bottom: $gutter-width / 2;
+			padding-top: $gutter-width;
+			padding-bottom: $gutter-width;
 		}
 	}
 	.button {
@@ -243,27 +230,24 @@
 }
 
 .event-detail__wrapper {
-	display:inline-block;
-	@include break(min, $breakpoint-min-tablet){
-		padding-bottom:2rem;
+	display: inline-block;
+	@include break(min, $breakpoint-min-tablet) {
+		padding-bottom: 2rem;
 		box-shadow: 0 1px rgba($white, .2);
 	}
-	
 }
+
 .event-detail__separator {
-	display:inline-block;
-	font-size:3.2rem;
-	line-height:1;
-	vertical-align:middle;
-	padding:0 .25em;
-	@include break(max, $breakpoint-max-mobile){
+	display: inline-block;
+	font-size: 3.2rem;
+	line-height: 1;
+	vertical-align: middle;
+	padding: 0 .25em;
+	@include break(max, $breakpoint-max-mobile) {
 		display: none;
 	}
 }
 
 .page-title__header {
-	padding-bottom:$gutter-width / 2;
+	padding-bottom: $gutter-width / 2;
 }
-
-
-
