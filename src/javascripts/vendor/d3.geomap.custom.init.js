@@ -44,7 +44,7 @@
     }
 
     //hidden or not handled by iterator elsewhere -- but could create a model for it
-    // function PanelDisplayStatusARRAY_CONSTRUCTOR(hiddenOrNot, disabledOrNot, hasTipsOrNot){}
+    // function PanelDisplayStatusARRAY_CONSTRUCTOR(hiddenOrNot, disabledOrNot, isComponentOrNot){}
 
     function OutputStatusContainerDeepARRAY_CONSTRUCTOR(ProductId, ProductName, ComponentProductId, ComponentProductShortName, MemberPrice){
         this.ProductId = ProductId;
@@ -93,14 +93,13 @@
         ,currentPostalCodeRange: ''
     }
 
-    var fieldsRequiredByBackend = {
-        currentProductId: ''
-        ,currentProductName: ''
-        ,currentComponentProductId: ''
-        ,currentComponentProductShortName: ''
-        ,currentMemberPrice: ''
-    }
-
+    // var fieldsRequiredByBackend = {
+    //     currentProductId: ''
+    //     ,currentProductName: ''
+    //     ,currentComponentProductId: ''
+    //     ,currentComponentProductShortName: ''
+    //     ,currentMemberPrice: ''
+    // }
 
     function iftMapFunctionInit(){
 
@@ -121,7 +120,6 @@
         var stateSelectMenu = document.getElementById('stateSelectMenu');
         var internationalSelectMenu = document.getElementById('internationalSelectMenu');
         var arrayOfSpansToPopulateEmpty = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper span'));
-        //var hiddenInputForBackend = document.getElementById('ctl00_MainContent_ctl00_MembershipJoinSection_IFTSavedSectionHiddenfield');
         var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
         
         var activeStateString = 'iftMapWrapperOuter--ACTIVE-STATE';
@@ -131,19 +129,15 @@
         //already have a reference, but itS more general for etch-a-sketch reasons
 
         var nodeListOfPanelsToPopulate = document.querySelectorAll('.iftMap__sectionData__wrapper');
-
-        var nodeListOfCheckboxes = document.querySelectorAll('.iftMap__sectionData__wrapper [type="checkbox"]');
-        var arrayOfCheckboxes = Array.prototype.slice.call(nodeListOfCheckboxes);
-
         var arrayOfPanelsToPopulate = Array.prototype.slice.call(nodeListOfPanelsToPopulate);
         var arrayOfArrayOfFieldsToPopulate = [];
-
+        var nodeListOfCheckboxes = document.querySelectorAll('.iftMap__sectionData__wrapper [type="checkbox"]');
+        var arrayOfCheckboxes = Array.prototype.slice.call(nodeListOfCheckboxes);
 
         //IMPORTANT. CREATING SET OF EMPTY SPANS FOR EACH PANEL
         arrayOfPanelsToPopulate.map(function(thisPanel){
             var arrayOfSpans = Array.prototype.slice.call(thisPanel.querySelectorAll('span'));
             arrayOfArrayOfFieldsToPopulate.push(arrayOfSpans);
-
         });
 
         //DRAW THE MAP
@@ -166,13 +160,11 @@
             .on('click', function(thisState){
                 mapHandlerFunction('click', thisState, 'isFromMap');
             });
-
             svg.append('path')
               .attr('class', 'state-borders iftMap__svg__path--stateBorders')
               .attr('d', path(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; })));
         });
         //END DRAW MAP
-
 
         function mapHandlerFunction(event, statefromD3, isFromMap){            
             //if a state on the map has been clicked
@@ -203,10 +195,9 @@
             writeDataToThePage();
         }//end mapHandlerFunction
 
-
         //this is a css thing
         function unRevealPanels(){
-            //to preserve nodelist, must stick to for loops (foreach is buggy)
+            //preserve nodelist & stick to For loops here (foreach not fully supported)
             for(var i = 0; i < nodeListOfPanelsToPopulate.length; i++){
                 nodeListOfPanelsToPopulate[i].classList.add(hiddenStateString);
             }
@@ -220,11 +211,10 @@
             }
         }
 
-
         function removeAddActiveState(thenAdd){
             //query statecode            
             var selectedItem = document.querySelector('.usState--SELECTED');
-            //if there is an active item, remove itS active class. Why not just strip all? Oh, because it was causing a timing issue
+            //if there is an active item, remove itS active class.
             if (selectedItem !== null){
                 selectedItem.classList.remove('usState--SELECTED');
             }
@@ -239,12 +229,10 @@
             safeManualResetOfOutputStatusContainerDeepARRAY();
 
             //clear the input value we are populating for the backend on section click
-
-            //THIS MUST CLEAR ALL
             clearHiddenInputForBackend();
             
             //next, clear content, flags and data attributes 
-            //(consult model -- could consult model)
+            //(could consult model)
             clearNoResultsMessageContainer();
             clearCheckBoxes();
             clearDataFlags();
@@ -257,11 +245,9 @@
         }
 
 
-
         function writeDataToThePage(){
             
             clearTonsOfStuffBeforeWritingDataToPage();
-
             //called without arguments becuase that function queries the model
             displayAreaName();
 
@@ -275,14 +261,13 @@
                 displayNoResultsMessage();
             }
 
-       
             //now, map function to that new subarray
             var iteratorNum = 0;
-
             var indexOfPanelContainingHomeUserSection;
             var indexesOfPanelsContainingAlreadySavedSections = [];
-            
 
+
+            //if doing a map method with a counter, might be more idiomatic to use for loop
             matchingSectionItems.map(function(matchingSectionItem){
             //not all of these things should be in the map
                 //console.log(matchingSectionItem);
@@ -461,17 +446,19 @@
 
 
         function checkBoxHandler(event){
+
+            var referenceToParentPanelOfCheckedInput = event.currentTarget.parentElement.parentElement;
             //first clear the model & inputForBackend
             safeManualResetOfOutputStatusContainerDeepARRAY();            
             clearHiddenInputForBackend();
             //then adjust with panel status & stage stuff
-            adjustPanelStatusesBasedOnCurrentSelections(event);
-            stageSectionsBasedOnCurrentSelections();
+            adjustPanelStatusesBasedOnCurrentSelections(referenceToParentPanelOfCheckedInput);
+            stageSectionsBasedOnCurrentSelections(referenceToParentPanelOfCheckedInput);
         }
 
-        function adjustPanelStatusesBasedOnCurrentSelections(event){
+        function adjustPanelStatusesBasedOnCurrentSelections(referenceToParentPanelOfCheckedInput){
             //map over panels to disable panels containing component products of the chosen section
-            var referenceToParentPanelOfCheckedInput = event.currentTarget.parentElement.parentElement;
+            
             var indexOfParentPanel = arrayOfPanelsToPopulate.indexOf(referenceToParentPanelOfCheckedInput);
             
             //use FILTER to create an array of all panels that are NOT the one being interacted with
@@ -491,9 +478,13 @@
                     if(thisPanelThatIsnTtheChosenOne.getAttribute('data-thispanel') === 'thisPanelHasComponentSection'){
                         if(event.currentTarget.checked === true){
                             reDisableOrEnableComponentProductOfCheckedItem(thisPanelThatIsnTtheChosenOne, 'reDisable');
+                                //STAGE thisPanelThatIsnTtheChosenOne
+                                thisPanelThatIsnTtheChosenOne.setAttribute('data-componentOfSelected', 'componentOfSelected');
                         }
                         else {
                             reDisableOrEnableComponentProductOfCheckedItem(thisPanelThatIsnTtheChosenOne, 'enable');
+                                //UNSTAGE thisPanelThatIsnTtheChosenOne
+                                thisPanelThatIsnTtheChosenOne.setAttribute('data-componentOfSelected', '');
                         }
                     }
                 });
@@ -503,43 +494,39 @@
                 if(reDisableOrEnable === 'reDisable'){
                     thisPanelThatIsnTtheChosenOne.classList.add(disabledStateString);
                     thisPanelThatIsnTtheChosenOne.querySelector('input').disabled = true;
+
                 }
                 else if (reDisableOrEnable === 'enable'){
                     thisPanelThatIsnTtheChosenOne.classList.remove(disabledStateString);
                     thisPanelThatIsnTtheChosenOne.querySelector('input').disabled = false;
+
                 }
             }
         }
 
 //need to ensure this runs AFTER previous function is complete (so consider calling from end of previous function)
 
-        function stageSectionsBasedOnCurrentSelections(){
+        function stageSectionsBasedOnCurrentSelections(referenceToParentPanelOfCheckedInput){
             
              var indexesOfSelectedSections = [];
-             //var indexOfComponentProductsOfSelectedSections = [];
              var indexesOfPanelsContainingComponentSection = [];
-
 
              for (var abc = 0; abc < nodeListOfCheckboxes.length; abc++){
                 //test must include things checked AND things marked as components
-                if(nodeListOfCheckboxes[abc].checked === true){
+                if(nodeListOfCheckboxes[abc].checked === true || nodeListOfPanelsToPopulate[abc].getAttribute('data-componentOfSelected') === 'componentOfSelected'){
                     indexesOfSelectedSections.push(abc);
-                    //if i am checked, am i a component product? And if I am a component product, add my fellows to an array
-                    if(nodeListOfPanelsToPopulate[abc].getAttribute('data-thispanel') === 'thisPanelHasComponentSection'){
-                        console.log('i am checked and am also a component');
-                    }
                 }
              }
              console.log('the following panels are selected ' + indexesOfSelectedSections);
-
 
             //the checkbox handler clears the model and checkboxes, but maybe that should go here
             (function grabValuesFromMapStatusContainerDeepARRAY(){
 
                 //this model can be 8
                 for(var i = 0; i < mapStatusContainerDeepARRAY.length; i++){
-                    //ONLY STAGE SELECTED, which is a combo of checked and components of checked
-                    if(indexesOfSelectedSections.indexOf(i) > -1 || indexesOfPanelsContainingComponentSection.indexOf(i) > -1){
+                    
+                    //stage checked AND components of checked
+                    if(indexesOfSelectedSections.indexOf(i) > -1){
                         deepOutputObjectForStaging[i].ProductId = mapStatusContainerDeepARRAY[i].currentProductId;
                         deepOutputObjectForStaging[i].ProductName = mapStatusContainerDeepARRAY[i].currentProductName;
                         deepOutputObjectForStaging[i].ComponentProductId = mapStatusContainerDeepARRAY[i].currentComponentProductId;
@@ -547,7 +534,6 @@
                         deepOutputObjectForStaging[i].MemberPrice = mapStatusContainerDeepARRAY[i].currentMemberPrice;
                     }
                 }
-                console.log('here is the staging model');
                 console.log(deepOutputObjectForStaging);
             })();
 
@@ -574,5 +560,4 @@
     }    
 
     document.addEventListener('DOMContentLoaded', iftMapFunctionInit);
-
 })();
