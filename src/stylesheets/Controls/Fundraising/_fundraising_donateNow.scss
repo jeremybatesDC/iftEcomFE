@@ -5,14 +5,14 @@
 	.formLayout {
 		fieldset {
 			label {
-				@include break(min, $breakpoint-min-xs-override){
+				@include break(min, $breakpoint-min-xs-override) {
 					//max-width: 120px !important;
 					font-weight: bold;
 					padding-top: 1rem;
-					&[for="cmbTributesType"]{
+					&[for="cmbTributesType"] {
 						padding-top: .5rem !important;
 					}
-				}	
+				}
 			}
 		}
 		.rcbInput {
@@ -25,30 +25,38 @@
 		padding-right: $gutter-width;
 	}
 	.donationProductDetailImageCell {
-		@include break(min, $breakpoint-min-xs-override){
-			width:29.9999%;
+		@include break(min, $breakpoint-min-xs-override) {
+			width: 29.9999%;
 		}
-		
 	}
 	.ShareControl_PersonifyDefault {
 		margin-left: 0;
 		padding-top: $gutter-width/2;
 		width: 100%;
 		text-align: right;
-
 	}
 }
 
-form[action^="./DonateNow"]{
+@media only screen and (min-width: 64em) {
+	div#ctl00_MainContent_ctl00_DonationWizPaymentInfo_PayNowControl_pnlInnerMain .summaryControl {
+		float: right;
+		display: block;
+	}
+}
+
+form[action^="./DonateNow"] {
+	div#ctl00_MainContent_ctl00_DonationWizPaymentInfo_PayNowControl_CustomerPaymentsControl_Cvv2Row {
+		display: none;
+	}
 	.multi-cc-row {
 		&.divTable {
 			display: table;
 			width: 100%;
-			> .divTableRow {
+			>.divTableRow {
 				display: table-row;
 				width: 100%;
-				> div {
-					@include break(min, $breakpoint-min-xs-override){
+				>div {
+					@include break(min, $breakpoint-min-xs-override) {
 						display: table-cell;
 						width: 50%;
 					}
@@ -72,21 +80,20 @@ fieldset {
 		img {
 			width: 3rem;
 			height: auto;
-			&[alt="Security Code"]{
+			&[alt="Security Code"] {
 				width: 3rem;
 				height: auto;
 			}
 		}
-		> div {
-			> label {
-				padding-top:0 !important;
+		>div {
+			>label {
+				padding-top: 0 !important;
 				padding-left: 0 !important;
-				+ input {
+				+input {
 					margin-top: 0 !important;
 				}
 			}
-		}
-		//needed?
+		} //needed?
 		.sec-type {
 			display: none;
 		}
