@@ -43,7 +43,6 @@
         constructFreshMapStatusContainerModel();
     }
 
-
     //hidden or not handled by iterator elsewhere -- but could create a model for it
     // function PanelDisplayStatusARRAY_CONSTRUCTOR(hiddenOrNot, disabledOrNot, hasTipsOrNot){}
 
@@ -83,14 +82,10 @@
             for(var i = 0; i < nodeListOfOptionalSectionsInputs.length; i++){
                 userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(nodeListOfOptionalSectionsInputs[i].value));
             }
-            //console.log(userAlreadySavedSections.additionalAlreadySavedSections);
         }
-
-
     }
 
-    //these can be used later to filter mapStatusContainer at queryTime
-    //just using for keys, which is awkward but easier in the short term than filtering against a differently shaped thing
+    //these keys can be used later to filter mapStatusContainer at queryTime
     var fieldsRequiredByPanelView = {
         currentProductName: ''
         ,currentMemberPrice: ''
@@ -105,7 +100,6 @@
         ,currentComponentProductShortName: ''
         ,currentMemberPrice: ''
     }
-
 
 
     function iftMapFunctionInit(){
@@ -131,6 +125,8 @@
         var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
         
         var activeStateString = 'iftMapWrapperOuter--ACTIVE-STATE';
+        var disabledStateString = 'iftMap__sectionData__wrapper--DISABLED-STATE';
+        var hiddenStateString = 'iftMap__sectionData__wrapper--HIDDEN-STATE';
 
         //already have a reference, but itS more general for etch-a-sketch reasons
 
@@ -212,7 +208,7 @@
         function unRevealPanels(){
             //to preserve nodelist, must stick to for loops (foreach is buggy)
             for(var i = 0; i < nodeListOfPanelsToPopulate.length; i++){
-                nodeListOfPanelsToPopulate[i].classList.add('iftMap__sectionData__wrapper--HIDDEN-STATE');
+                nodeListOfPanelsToPopulate[i].classList.add(hiddenStateString);
             }
         }
 
@@ -220,7 +216,7 @@
         function disablePanels(){
             for(var i = 0; i < nodeListOfPanelsToPopulate.length; i++){
                 nodeListOfCheckboxes[i].disabled = true;
-                nodeListOfPanelsToPopulate[i].classList.add('iftMap__sectionData__wrapper--DISABLED-STATE');
+                nodeListOfPanelsToPopulate[i].classList.add(disabledStateString);
             }
         }
 
@@ -364,7 +360,7 @@
                         //make sure record associated with the panel [using the index of the loop] does not contain user home section or already added sections before unDisabling a panel
                         if(i !== indexOfPanelContainingHomeUserSection && indexesOfPanelsContainingAlreadySavedSections.indexOf(i) < 0)
                         {
-                            thisPanelToBeInspected.classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
+                            thisPanelToBeInspected.classList.remove(disabledStateString);
                             thisPanelToBeInspected.querySelector('input').disabled = false;
                         }
                         else {
@@ -381,7 +377,7 @@
                         
                         //if there is any actual value here, unhide the panel
                         if(valOfQuickRef !== null && valOfQuickRef !== 'null' && valOfQuickRef !== ''){
-                            thisPanelToBeInspected.classList.remove('iftMap__sectionData__wrapper--HIDDEN-STATE');
+                            thisPanelToBeInspected.classList.remove(hiddenStateString);
                         }
                     })();
 
@@ -492,7 +488,6 @@
 
                 //If so, map over the other panels to find fellow(s)
                 arrayOfPanelsToAdjustMINUStheOnejustChosen.map(function(thisPanelThatIsnTtheChosenOne){
-
                     if(thisPanelThatIsnTtheChosenOne.getAttribute('data-thispanel') === 'thisPanelHasComponentSection'){
                         if(event.currentTarget.checked === true){
                             reDisableOrEnableComponentProductOfCheckedItem(thisPanelThatIsnTtheChosenOne, 'reDisable');
@@ -501,52 +496,29 @@
                             reDisableOrEnableComponentProductOfCheckedItem(thisPanelThatIsnTtheChosenOne, 'enable');
                         }
                     }
-                    
-
-                    // //is the panel being checked or is it being unchecked?
-
-                    // if(thisPanelThatIsnTtheChosenOne.getAttribute('data-thispanel') === 'thisPanelHasComponentSection'){
-                    //     //console.log(thisPanelThatIsnTtheChosenOne);
-                    //     //console.log('do stuff to this panel containing this component product');
-
-                    //     reDisableOrEnableComponentProductOfCheckedItem(thisPanelThatIsnTtheChosenOne, 'reDisable');
-
-                    //     // 
-
-                    //     //reDisableOrEnableComponentProductOfCheckedItem(event, thisPanelThatIsnTtheChosenOne);
-                    // }
                 });
-
-
             }
-            //reDisableOrEnableComponentProductOfCheckedItem();
 
-            //don't call this yet
-            // also need to touch checkboxes
             function reDisableOrEnableComponentProductOfCheckedItem(thisPanelThatIsnTtheChosenOne, reDisableOrEnable){
                 if(reDisableOrEnable === 'reDisable'){
-                    thisPanelThatIsnTtheChosenOne.classList.add('iftMap__sectionData__wrapper--DISABLED-STATE');
+                    thisPanelThatIsnTtheChosenOne.classList.add(disabledStateString);
+                    thisPanelThatIsnTtheChosenOne.querySelector('input').disabled = true;
                 }
                 else if (reDisableOrEnable === 'enable'){
-                    thisPanelThatIsnTtheChosenOne.classList.remove('iftMap__sectionData__wrapper--DISABLED-STATE');
+                    thisPanelThatIsnTtheChosenOne.classList.remove(disabledStateString);
+                    thisPanelThatIsnTtheChosenOne.querySelector('input').disabled = false;
                 }
             }
         }
 
-        function stageSectionsBasedOnCurrentSelections(){
-            // USE THE STATUSES SET BY THE PREVIOUS FUNCTION
+//need to ensure this runs AFTER previous function is complete (so consider calling from end of previous function)
 
-            //this must combine things that are checked with component products
+        function stageSectionsBasedOnCurrentSelections(){
+            
              var indexesOfSelectedSections = [];
              //var indexOfComponentProductsOfSelectedSections = [];
              var indexesOfPanelsContainingComponentSection = [];
 
-
-             //COMBINE THESE
-
-             //indexesOfPanelsContainingComponentSection.push(z);
-
-             //there is another reference to the ind
 
              for (var abc = 0; abc < nodeListOfCheckboxes.length; abc++){
                 //test must include things checked AND things marked as components
