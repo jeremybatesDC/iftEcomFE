@@ -30,19 +30,11 @@
   width: 100%;
   // background:$ift-grey-medium-lighter; 
 }
-// .iftMap__wrapper--inner {
-//   position:relative;
-// }
-
-.iftMap__headline {
-  
-}
 
 
 .iftMap__svg {
   transform:scale(.5);
   transform-origin: 0 0;
-
 
   @include break(max, $breakpoint-max-mobile){
     //width: 100%;
@@ -54,6 +46,14 @@
     //blame microsoft
     margin-bottom: -300px;
   }
+
+
+  @include break(max, 399px){
+    transform:scale(.3);
+    margin-bottom: -400px;
+  }
+
+
 }
 
 
@@ -387,17 +387,9 @@ a.iftMap__button--save{
   
 }
 
-// .iftMap__tooltip__closeButton__wrapper {
-//   .iconInfo {
-//     width:12px;
-//     he
-//   }
-// }
-
 .iftMap__sectionData__footer__column--label {
   font-weight: bold;
 }
-
 
 .iftMap__tooltip__closeButton__wrapper {
   position:absolute;
@@ -420,7 +412,7 @@ a.iftMap__button--save{
 }
 
 .iftMap__wrapper--outer__closeButton__wrapper {
-      position: absolute;
+    position: absolute;
     top: 1rem;
     right: 1rem;
     width: 3.2rem;
@@ -430,10 +422,9 @@ a.iftMap__button--save{
     background: #000;
     overflow: hidden;
     border-radius: 100%;
-  &:hover {
-    cursor: pointer;
-  }
-
+    &:hover {
+      cursor: pointer;
+    }
 }
 
 .iftMap__wrapper--outer__closeButton__svg {
@@ -442,21 +433,3 @@ a.iftMap__button--save{
       stroke: #fff;
   stroke-width:4px;
 }
-
-
-
-// .iftMap__svg__rect--background {
-//   fill: none;
-//   pointer-events: all;
-// }
-
-// .usState {
-//   cursor: pointer;
-//   fill: #dddddd;
-//   stroke: #666666;
-//   stroke-width: 0.4px;
-// }
-
-// .usState.activeState {
-//   fill:rgba(87,134,199,1);
-// }
