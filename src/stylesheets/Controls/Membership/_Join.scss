@@ -562,23 +562,38 @@ form[action$="JoinSummary"] {
 		div#ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel {
 			position: relative;
 		}
+		span#ctl00_MainContent_ctl00_lblTotalAmount,
+		span#ctl00_MainContent_ctl00_lblTotalAmountValue {
+			font-size: 2rem;
+			margin: 1rem 0 2rem;
+			display: inline-block;
+		}
+		div#ctl00_MainContent_ctl00_MembershipContributionsControl1_ctrbRepeater_ctl00_ctrbOptionsWithRatesPanel {
+			.ctrbProdOptionRow,
+			.ctrbPriceOption {
+				padding: 1rem 0;
+			}
+			.ctrbPriceOption.enterAmount{
+				width: 100%;
+			}
+		}
+
 		>.ctrlContent {
 			.step3Left {
 				float: left;
 				width: calc(60% - 1rem);
 				margin-right: 1rem;
 				.benefits+div div {
-					display: inline-block;
-					margin-top: 1rem;
-				}
-				.benefits+div div:first-child {
-					text-align: right;
-					padding: 1rem;
-					font-size: 1.6rem;
-					font-weight: bold;
-					border: 1px solid #eee;
-					margin-bottom: 2rem;
-				}
+					// display: inline-block;
+					// margin-top: 1rem;
+				} // .benefits+div div:first-child {
+				// 	text-align: right;
+				// 	padding: 1rem;
+				// 	font-size: 1.6rem;
+				// 	font-weight: bold;
+				// 	border: 1px solid #eee;
+				// 	margin-bottom: 2rem;
+				// }
 				#ctl00_MainContent_ctl00_MembershipReferralControl_TMACompany {
 					text-align: left;
 					font-size: inherit;
