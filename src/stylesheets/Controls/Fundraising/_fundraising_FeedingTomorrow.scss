@@ -1,112 +1,110 @@
 main.donation-fundraising {
-	padding-top:0;
+	padding-top: 0;
+	label#ctl00_MainContent_ctl00_frBillingAddr_Label {
+		float: left;
+	}
 }
 
 .navFeedTmrw__wrapper--outer {
 	background-color: #000;
 	position: relative;
 	overflow: visible;
-	+ .main {
-    padding-top: 20px;
+	+.main {
+		padding-top: 20px;
 	}
 }
 
 .logoFeedTmrw__wrapper {
 	text-align: center;
-	@include break(min, $breakpoint-min-tablet){
-		position:absolute;
-		top:0;
+	@include break(min, $breakpoint-min-tablet) {
+		position: absolute;
+		top: 0;
 		left: 0;
-		width:100%;
+		width: 100%;
 	}
 }
 
 .logoFeedTmrw {
 	width: auto;
-	max-width:167px;
+	max-width: 167px;
 	height: auto;
 }
 
 //only on mobile
 .navFeedTmrw__menuToggle__wrapper--outer {
-	color:#fff;
-	background-color:#333;
-	//position:absolute;
-	left:0;
+	color: #fff;
+	background-color: #333; //position:absolute;
+	left: 0;
 	bottom: -32px;
-	width:95%;
+	width: 95%;
 	margin: 0 auto;
-	z-index:1;
-	text-align:center;
-	@include break(min, $breakpoint-min-tablet){
+	z-index: 1;
+	text-align: center;
+	@include break(min, $breakpoint-min-tablet) {
 		display: none;
 	}
 }
 
-.navFeedTmrw__menuToggle__wrapper--inner {
-
-}
+.navFeedTmrw__menuToggle__wrapper--inner {}
 
 .navFeedTmrw__menuToggle__label {
-	display:inline-block;
-	vertical-align:top;
-	line-height:1;
-	padding-top:2px;
+	display: inline-block;
+	vertical-align: top;
+	line-height: 1;
+	padding-top: 2px;
 }
 
 .navFeedTmrw__menuToggle__button {
-	font-size:1.8rem;
-	padding-top:5px;
+	font-size: 1.8rem;
+	padding-top: 5px;
 	cursor: pointer;
 	-webkit-font-smoothing: antialiased;
 }
 
 .hamburger {
-	width:20px;
-	height:20px;
+	width: 20px;
+	height: 20px;
 	stroke: #fff;
 	stroke-width: 3px;
 }
 
 .navFeedTmrw {
-	width:100%;
-	@include break(max, $breakpoint-max-mobile){
-		position:relative;
+	width: 100%;
+	@include break(max, $breakpoint-max-mobile) {
+		position: relative;
 	}
-	@include break(min, $breakpoint-min-tablet){
-		padding-top:6rem;
-		padding-bottom:$gutter-width/2;
+	@include break(min, $breakpoint-min-tablet) {
+		padding-top: 6rem;
+		padding-bottom: $gutter-width/2;
 	}
-	
-
 }
 
 .navFeedTmrw__row {
-	padding-bottom:0;
-	@include break(max, $breakpoint-max-mobile){}
+	padding-bottom: 0;
+	@include break(max, $breakpoint-max-mobile) {}
 }
 
 .navFeedTmrw__list {
-	
-	list-style:none;
-	margin:0;
-	padding:0;
 
-	@include break(max, $breakpoint-max-mobile){
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	@include break(max, $breakpoint-max-mobile) {
 		display: none;
-		position:absolute;
+		position: absolute;
 		width: 100%;
 		left: 0;
-		top:0;
+		top: 0;
 		z-index: 1;
 		background-color: #333;
-		box-shadow:2px 2px 2px #000;
+		box-shadow: 2px 2px 2px #000;
 		&.navFeedTmrw__list--ACTIVE {
 			display: block;
 		}
 	}
-	@include break(min, $breakpoint-min-tablet){
-		position:relative;
+	@include break(min, $breakpoint-min-tablet) {
+		position: relative;
 	}
 }
 
@@ -114,69 +112,65 @@ main.donation-fundraising {
 
 .navFeedTmrw__item {
 
-	font-size:1.3rem;
+	font-size: 1.3rem;
 	text-transform: uppercase;
 	-webkit-font-smoothing: antialiased;
 
-	@include break(max, $breakpoint-max-mobile){
+	@include break(max, $breakpoint-max-mobile) {
 		display: block;
 		font-family: $bodyFont
 	}
 
 
-	@include break(min, $breakpoint-min-tablet){
-		display:inline-block;
+	@include break(min, $breakpoint-min-tablet) {
+		display: inline-block;
 		font-family: $headlineFont;
-	
+
 		&:first-child {
 			margin-right: 100px;
 		}
-		&:nth-child(3){
-			position:absolute;
+		&:nth-child(3) {
+			position: absolute;
 			top: 0;
 			right: 200px;
 		}
 		&:last-child {
-			position:absolute;
+			position: absolute;
 			top: 0;
 			right: 0;
 		}
 	}
-	
-
-
 }
 
 .navFeedTmrw__link {
-	color:#fff;
+	color: #fff;
 
-	@include break(min, $breakpoint-min-tablet){
+	@include break(min, $breakpoint-min-tablet) {
 		&:hover,
 		&:active,
 		&:focus {
 			text-decoration: underline;
 		}
 	}
-	
-	@include break(max, $breakpoint-max-mobile){
+
+	@include break(max, $breakpoint-max-mobile) {
 		display: block;
-		padding:1em 1em 1em 2em;
+		padding: 1em 1em 1em 2em;
 		box-shadow: inset 0 1px rgba(white, .5);
 	}
-
 }
 
 
 .footerFeedTmrw {
 	background-color: #a6a6a6;
 	.footerFeedTmrw__row {
-		padding-bottom:0;
+		padding-bottom: 0;
 	}
 }
 
 .footerFeedTmrw__text {
 	font-size: 1.1rem;
-	color:#fff;
+	color: #fff;
 	padding-top: $gutter-width / 2;
 	padding-bottom: $gutter-width / 2;
 	a {
