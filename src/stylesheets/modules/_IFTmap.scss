@@ -48,7 +48,7 @@
   }
 
 
-  @include break(max, $breakpoint-max-xs-override){
+  @include break(max, 399px){
     transform:scale(.3);
     margin-bottom: -400px;
   }
