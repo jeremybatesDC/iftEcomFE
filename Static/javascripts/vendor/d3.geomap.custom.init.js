@@ -216,10 +216,13 @@
             var selectedItem = document.querySelector('.usState--SELECTED');
             //if there is an active item, remove itS active class.
             if (selectedItem !== null){
-                selectedItem.classList.remove('usState--SELECTED');
+                //selectedItem.classList.remove('usState--SELECTED');
+                selectedItem.setAttribute('class', 'usState iftMap__svg__path')
             }
             if(thenAdd){
-                document.getElementById(singularViewOnlyStatusContainer.currentStateCode).classList.add('usState--SELECTED');
+                //IE11 isn't handling classlist correctly here
+                //document.getElementById(singularViewOnlyStatusContainer.currentStateCode).classList.add('usState--SELECTED');
+                document.getElementById(singularViewOnlyStatusContainer.currentStateCode).setAttribute('class', 'usState iftMap__svg__path usState--SELECTED');
             }
         }
 
@@ -452,11 +455,11 @@
             safeManualResetOfOutputStatusContainerDeepARRAY();            
             clearHiddenInputForBackend();
             //then adjust with panel status & stage stuff
-            adjustPanelStatusesBasedOnCurrentSelections(referenceToParentPanelOfCheckedInput);
+            adjustPanelStatusesBasedOnCurrentSelections(event, referenceToParentPanelOfCheckedInput);
             stageSectionsBasedOnCurrentSelections(referenceToParentPanelOfCheckedInput);
         }
 
-        function adjustPanelStatusesBasedOnCurrentSelections(referenceToParentPanelOfCheckedInput){
+        function adjustPanelStatusesBasedOnCurrentSelections(event, referenceToParentPanelOfCheckedInput){
             //map over panels to disable panels containing component products of the chosen section
             
             var indexOfParentPanel = arrayOfPanelsToPopulate.indexOf(referenceToParentPanelOfCheckedInput);
