@@ -29,6 +29,18 @@ form[action$="educationalbackground"] {
 	}
 }
 
+.totalPaymentContainer,.ctrl-pay-open-oder.balanceContainer {
+    font-size: 1.6rem;
+    line-height: 1.6;
+}
+
+#div#ctl00_MainContent_ctl00_pnlPaymentInfo{
+	.heading3{
+		    margin-top: 3rem;
+    font-size: 1.6rem;
+	}
+}
+
 .formLayout fieldset.phoneUsage {
 	margin-left: 0;
 	.formRow {

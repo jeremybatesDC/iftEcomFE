@@ -222,7 +222,7 @@ form[action$="JoinSummary"] {
 	}
 
 	.benefits h2.heading2.h-color-secondary {
-		font-size: 3.2rem;
+		font-size: 2.6rem;
 		margin-top: 2rem;
 	}
 	label#ctl00_MainContent_ctl00_UserRegistrationControl_EducationControl_frAttestation_Label {
@@ -569,7 +569,7 @@ form[action$="JoinSummary"] {
 		margin-bottom: 0;
 	}
 	fieldset.emailDetails h3 {
-		font-size: 3.2rem;
+		font-size: 2.6rem;
 		color: #333;
 		margin-bottom: 1rem;
 	}
@@ -686,7 +686,17 @@ form[action$="JoinSurvey"] {
 		}
 	}
 	p.heading3.h-color-secondary.requiredLegend {
-		display: inline;
+		display: inline-block;
+		font-size: 2rem;
+		margin: 1.5rem 0;
+		font-weight: bold;
+		margin-left: -1rem;
+		span {
+			font-style: normal;
+		}
+	}
+	.formRow {
+		padding: 1rem 2rem;
 	}
 	div#ctl00_MainContent_ctl00_dvViewHide {
 		display: inline-block;
@@ -697,7 +707,7 @@ form[action$="JoinSurvey"] {
 #ctl00_MainContent_ctl00_MembershipJoinSection_ContainerPanel h3.heading3,
 .step2Left .yourMembership.heading3 {
 	color: #333;
-	font-size: 3.2rem;
+	font-size: 2.6rem;
 }
 
 #ctl00_MainContent_ctl00_MembershipDivisionControl_RefreshPanel {
@@ -737,8 +747,15 @@ main.membershipRenewal {
 	.MembershipRenewalWizardBannerControl_PersonifyDefault.Membership_PersonifyDefault .ctrlContent {
 		padding: 0;
 	}
+	div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipDivisionControl_RefreshPanel table {
+		width: 100%;
+	}
+	.MembershipRenewalControl_PersonifyDefault .caption {
+
+		font-weight: normal;
+	}
 	.heading2,
-	.heading3.ctrlTitle,
+	.heading3,
 	{
 		color: #333;
 		display: block;
@@ -752,7 +769,7 @@ main.membershipRenewal {
 	.step3Left {
 		background: white;
 		padding: 2rem;
-		width: calc(100% - 320px);
+		width: calc(100% - 40rem);
 		margin-right: 20px;
 	}
 	.fieldset {
@@ -813,7 +830,8 @@ a#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipDivisionCont
 }
 
 
-#ctl00_MainContent_ctl00_MembershipRenewalWizardBanner_ContainerPanel {
+#ctl00_MainContent_ctl00_MembershipRenewalWizardBanner_ContainerPanel,
+#ctl00_MainContent_ctl00_MembershipRenewalStudentWizardBannerControl_ContainerPanel {
 	margin-bottom: 40px;
 	display: -ms-flexbox;
 	display: flex;
@@ -931,10 +949,9 @@ main.membershipRenewal {
 	table.membershipTable {
 		width: 100%;
 		font-size: 14px;
-		img[src$="check.png"]{
+		img[src$="check.png"] {
 			width: auto;
-		}
-		//easier than asking backend to correct the markup
+		} //easier than asking backend to correct the markup
 		br {
 			display: none;
 		}
@@ -987,6 +1004,12 @@ main.membershipRenewal {
 		}
 	}
 
+	div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_ContainerPanel {
+		margin-left: -2rem;
+		margin-right: -2rem;
+		padding: 2rem;
+		border-top: 2rem solid #f2f2f2;
+	}
 
 	table.membershipTable td {
 		border: 1px solid #ddd;
@@ -1008,8 +1031,8 @@ main.membershipRenewal {
 
 	a#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_EditButton {
 		position: absolute;
-		top: 20px;
-		right: 0;
+		top: 2rem;
+		right: 2rem;
 	}
 
 	div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_ContainerPanel {
@@ -1114,4 +1137,4 @@ form[action$="JoinSummary"] main.main.membershipJoin .emailDetails #ctl00_MainCo
 	font-size: 2.6rem;
 }
 
-//optional sections 
+//optional sections
