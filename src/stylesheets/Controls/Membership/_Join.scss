@@ -163,6 +163,27 @@ form[action$="JoinSummary"] {
 		font-size: 2rem;
 		padding-bottom: 8px;
 	}
+	label#ctl00_MainContent_ctl00_MembershipReferralControl_tbCompanyLabel {
+		min-width: 250px;
+		display: inline-block;
+	}
+
+	label#ctl00_MainContent_ctl00_MembershipReferralControl_tbCityLabel {
+		min-width: 250px;
+		display: inline-block;
+	}
+
+	label#ctl00_MainContent_ctl00_MembershipReferralControl_tbIndividualLabel {
+		min-width: 250px;
+		display: inline-block;
+	}
+
+	div#ctl00_MainContent_ctl00_MembershipReferralControl_ContainerPanel {
+		border-top: 20px solid #eee;
+		margin-left: -20px;
+		margin-right: -20px;
+		padding: 20px;
+	}
 }
 
 .membershipJoin {
@@ -573,7 +594,7 @@ form[action$="JoinSummary"] {
 			.ctrbPriceOption {
 				padding: 1rem 0;
 			}
-			.ctrbPriceOption.enterAmount{
+			.ctrbPriceOption.enterAmount {
 				width: 100%;
 			}
 		}
