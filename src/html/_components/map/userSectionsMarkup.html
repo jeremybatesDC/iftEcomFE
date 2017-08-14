@@ -1,0 +1,75 @@
+<div id="ctl00_MainContent_ctl00_MembershipJoinSection_ContainerPanel" class="MembershipJoinSection_PersonifyDefault Profile_PersonifyDefault Base_PersonifyDefault">		
+    <h3 class="heading3 ctrlTitle h-color-primary">Sections</h3>
+    <div>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <span id="ctl00_MainContent_ctl00_MembershipJoinSection_lblHome"> Home Section : </span>
+                    </td>
+                    <td>
+
+                        <input type="hidden" name="ctl00$MainContent$ctl00$MembershipJoinSection$homeSectionRepeater$ctl00$IFTHomeSectionProductId" id="IFTHomeSectionProductId" value="99">
+
+                        <span id="ctl00_MainContent_ctl00_MembershipJoinSection_homeSectionRepeater_ctl00_LabelHomeSection">Washington D.C. Section - Unified Membership</span>
+                        
+                        <span id="ctl00_MainContent_ctl00_MembershipJoinSection_homeSectionRepeater_ctl00_PriceLabel" class="priceLabel">$5.00 </span>
+
+                        <!--please remove br -->
+                        <!--<br>-->
+                    </td>
+                    <td>
+                        <!--any additional description text goes here -->
+                        <p></p>
+                    </td>
+                </tr> 
+            </tbody>
+        </table>
+
+        <table>         
+            <tbody>
+                <tr>
+                    <td>
+                    <!-- please remove this wrapping p element and have the table structure match the table above-->
+                    <!-- <p> -->
+                        <span id="ctl00_MainContent_ctl00_MembershipJoinSection_lblAddress"> Optional Sections: </span>
+                    </td>
+
+                    <td>
+                    <!-- each optional section should have the same HTML so frontend can style this area correctly.
+                        a) hidden input with that sectionS product ID
+                        b) span showing title
+                        c) span showing price
+                        d) the 'remove' action link
+                     -->
+                        <input type="hidden" name="ctl00$MainContent$ctl00$MembershipJoinSection$SectionRepeater$ctl00$HiddenFieldProductId" id="ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater_ctl00_HiddenFieldProductId" value="57">
+                        
+                        <span id="ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater_ctl00_LabelSection">Central Valley Sub-Section - Unified Membership</span>
+                        
+                        <span id="ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater_ctl00_lblPrice">$20.00 </span>
+                        
+                        <a id="ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater_ctl00_LinkButtonRemove" href="javascript:__doPostBack('ctl00$MainContent$ctl00$MembershipJoinSection$SectionRepeater$ctl00$LinkButtonRemove','')">Remove</a>
+
+
+                    <!--this needs to provide the frontend with the actual productID for the included subsection (donT need or want component info here-->
+                        <input type="hidden" name="ctl00$MainContent$ctl00$MembershipJoinSection$SectionRepeater$ctl00$HiddenFieldComponentProductId" id="ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater_ctl00_HiddenFieldComponentProductId" value="149">
+                        <!--the IDs must be unique. They arenT repeating correctly -->
+                        
+                        <span id="ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater_ctl00_LabelSubSection">Northern California Section</span>
+
+                        <span id="ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater_ctl02_lblPrice">Included</span>
+
+                        <a id="ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater_ctl00_LinkButtonRemove" href="javascript:__doPostBack('ctl00$MainContent$ctl00$MembershipJoinSection$SectionRepeater$ctl00$LinkButtonRemove','')">Remove</a>
+                    </td>
+                    <td>
+                        <!--any additional description text goes here -->
+                        <p></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="iftMapButtonOpen__wrapper">
+        <a id="iftMapButtonOpen" class="iftMap__button--open">Add Section</a></div>
+	</div>
+</div>

@@ -910,6 +910,13 @@ main.membershipRenewal {
 	table.membershipTable {
 		width: 100%;
 		font-size: 14px;
+		img[src$="check.png"]{
+			width: auto;
+		}
+		//easier than asking backend to correct the markup
+		br {
+			display: none;
+		}
 	}
 
 	div#ctl00_MainContent_ctl00_UserRegistrationControl_EducationControl_pnlUpdate {
@@ -952,9 +959,13 @@ main.membershipRenewal {
 		display: inline-block;
 	}
 
-	#ctl00_MainContent_ctl00_MembershipJoinSection_ContainerPanel table td {
-		vertical-align: middle;
+	#ctl00_MainContent_ctl00_MembershipJoinSection_ContainerPanel table {
+		width: 100%;
+		td {
+			vertical-align: middle;
+		}
 	}
+
 
 	table.membershipTable td {
 		border: 1px solid #ddd;
@@ -1081,3 +1092,5 @@ form[action$="JoinSummary"] main.main.membershipJoin .emailDetails #ctl00_MainCo
 .membershipUserExists .userDetails h2 {
 	font-size: 2.6rem;
 }
+
+//optional sections 
