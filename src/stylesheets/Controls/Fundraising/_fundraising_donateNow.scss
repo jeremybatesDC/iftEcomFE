@@ -1,3 +1,10 @@
+// IE11 Bug
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	.mainDivCheck{
+		display: block;
+	}
+}
+
 .DonationWizMain_PersonifyDefault {
 	.recurringGiftFlag {
 		font-weight: bold;
