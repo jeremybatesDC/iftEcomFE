@@ -1,0 +1,222 @@
+
+
+<table class="membershipTable" border="0">
+    <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>
+                <p><font><font>Price</font></font>
+                </p>
+            </th>
+            <th class="table--text-left">
+                <p><font><font>Monthly Online Access</font></font>
+                </p>
+                <p><font><font>(12 per year)</font></font>
+                </p>
+            </th>
+            <th class="table--text-left">
+                <p><font><font>Print Copy</font></font>
+                </p>
+                <p><font><font>(Free Shipping)</font></font>
+                </p>
+            </th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        <tr>
+            <td>
+                <p>
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterBenefit$ctl00$ProductIdHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit_ctl00_ProductIdHiddenField">
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterBenefit$ctl00$BenefitProductIdHiddenField1" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit_ctl00_BenefitProductIdHiddenField1" value="26">
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterBenefit$ctl00$BenefitRateCodeHiddenField1" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit_ctl00_BenefitRateCodeHiddenField1" value="BENEFIT">
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterBenefit$ctl00$BenefitPriceHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit_ctl00_BenefitPriceHiddenField" value="0.00">
+                    <br>
+                </p>
+                <p><span style="font-weight:bold;"><input id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit_ctl00_BenefitRadioButton" type="radio" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterBenefit$ctl00$Benefit" value="BenefitRadioButton" checked="checked"><label for="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit_ctl00_BenefitRadioButton"><font><font>Food Technology Magazine (Print Version)</font></font></label></span>
+                    <a id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit_ctl00_LinkButtonSeeSampleBenefit" href="http://dnjeiu.axshare.com/jfs__sample_only_.html" target="_blank"><font><font>See Sample</font></font></a>
+                </p>
+                <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterBenefit$ctl00$SeeSampleLinkHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit_ctl00_SeeSampleLinkHiddenField" value="http://dnjeiu.axshare.com/jfs__sample_only_.html">
+                <p></p>
+            </td>
+            <td>
+                <br>
+                <span id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit_ctl00_LabelIncluded" class="priceLabel"><font><font>Free</font></font></span>
+            </td>
+        </tr>
+
+        <tr id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit_ctl00_benefit1Airmail">
+            <td>
+                <p class="table--indent">
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterBenefit$ctl00$AirmailProductCodeHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit_ctl00_AirmailProductCodeHiddenField" value="FMAIR">
+                </p>
+            </td>
+            <td>
+                <p>
+                    <span id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit_ctl00_PriceLabel" class="priceLabel"></span>
+                </p>
+                <p>
+                </p>
+            </td>
+            <td>
+                <p>
+
+                </p>
+            </td>
+            <td>
+                <p><img id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit_ctl00_QuarterlyImage" src="../Themes/PersonifyDefault/Images/check.png" style="width:20%">
+                </p>
+            </td>
+        </tr>
+
+
+
+
+
+        <tr class="HideJFSHead">
+            <td colspan="4">
+                <span id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl00_LabelAdditional">Select Additional Publications:</span><span id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl00_PublicationNameLabel" style="font-weight:bold;display: block;">Journal of Food Science</span><span id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl00_LabelOptional"> (Optional)</span>
+                <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl00$AdditionalProductIdHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl00_AdditionalProductIdHiddenField" value="165">
+            </td>
+        </tr>
+
+
+        <tr class="HideJFSHead">
+
+            <td>
+                <p>
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl01$ProductIdHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl01_ProductIdHiddenField">
+
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl01$ProductCodeHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl01_ProductCodeHiddenField" value="JFS">
+
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl01$AdditionalProductIdHiddenField1" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl01_AdditionalProductIdHiddenField1" value="165">
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl01$AdditionalRateCodeHiddenField1" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl01_AdditionalRateCodeHiddenField1" value="ONLINE">
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl01$AdditionalPriceHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl01_AdditionalPriceHiddenField" value="25.00">
+                </p>
+                <p>
+                    <input id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl01_AdditionalRadioButton" type="radio" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl01$Additional" value="AdditionalRadioButton" onclick="javascript:setTimeout('__doPostBack(\'ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl01$AdditionalRadioButton\',\'\')', 0)">
+                    <label for="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl01_AdditionalRadioButton">JFS Online version</label>
+                </p>
+                <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl01$SeeSampleLinkHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl01_SeeSampleLinkHiddenField" value="http://dnjeiu.axshare.com/jfs__sample_only_.html">
+                <p></p>
+                <p class="table--indent"></p>
+                <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl01$AirmailProductCodeHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl01_AirmailProductCodeHiddenField">
+            </td>
+            <td>
+                <p></p>
+                <p><span id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl01_PriceLabel" class="priceLabel"><font><font>$25.00 USD</font></font></span>
+                </p>
+                <p></p>
+            </td>
+            <td>
+                <p>
+                    <img id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl01_MonthlyImage" src="../Themes/PersonifyDefault/Images/check.png" style="width:20%">
+                </p>
+            </td>
+            <td>
+                <p>
+
+                </p>
+            </td>
+
+
+
+        </tr>
+
+
+
+        <tr class="HideJFSHead">
+
+            <td>
+                <p>
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl02$ProductIdHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl02_ProductIdHiddenField">
+
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl02$ProductCodeHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl02_ProductCodeHiddenField" value="JFS">
+
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl02$AdditionalProductIdHiddenField1" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl02_AdditionalProductIdHiddenField1" value="165">
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl02$AdditionalRateCodeHiddenField1" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl02_AdditionalRateCodeHiddenField1" value="REG">
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl02$AdditionalPriceHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl02_AdditionalPriceHiddenField" value="170.00">
+                </p>
+                <p>
+                    <input id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl02_AdditionalRadioButton" type="radio" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl02$Additional" value="AdditionalRadioButton" onclick="javascript:setTimeout('__doPostBack(\'ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl02$AdditionalRadioButton\',\'\')', 0)">
+                    <label for="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl02_AdditionalRadioButton">JFS both print (quarterly) and online versions</label>
+                    <a id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl02_LinkButtonSeeSampleAdditional" href="http://dnjeiu.axshare.com/jfs__sample_only_.html" target="_blank">See Sample</a>
+                </p>
+                <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl02$SeeSampleLinkHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl02_SeeSampleLinkHiddenField" value="http://dnjeiu.axshare.com/jfs__sample_only_.html">
+                <p></p>
+                <p class="table--indent"></p>
+                <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl02$AirmailProductCodeHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl02_AirmailProductCodeHiddenField" value="FMAIR">
+            </td>
+            <td>
+                <p></p>
+                <p><span id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl02_PriceLabel" class="priceLabel">$170.00 USD</span>
+                </p>
+                <p></p>
+            </td>
+            <td>
+                <p>
+
+                </p>
+            </td>
+            <td>
+                <p>
+                    <img id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl02_QuarterlyImage" src="../Themes/PersonifyDefault/Images/check.png" style="width:20%">
+                </p>
+            </td>
+
+
+
+        </tr>
+
+
+        <tr class="HideJFSHead">
+            <td>
+                <input id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl03_AdditionalRadioButtonNone" type="radio" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl03$Additional" value="AdditionalRadioButtonNone" onclick="javascript:setTimeout('__doPostBack(\'ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterAdditional$ctl03$AdditionalRadioButtonNone\',\'\')', 0)">
+                <label for="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl03_AdditionalRadioButtonNone"><font><font>None</font></font>
+                </label>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+
+
+        <tr>
+            <td>
+                <p>
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterBenefit2$ctl00$ProductIdHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit2_ctl00_ProductIdHiddenField">
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterBenefit2$ctl00$BenefitProductIdHiddenField1" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit2_ctl00_BenefitProductIdHiddenField1" value="27">
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterBenefit2$ctl00$BenefitRateCodeHiddenField1" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit2_ctl00_BenefitRateCodeHiddenField1" value="BENEFIT">
+                    <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterBenefit2$ctl00$BenefitPriceHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit2_ctl00_BenefitPriceHiddenField" value="0.00">
+                    <br>
+                </p>
+                <p><span style="font-weight:bold;"><input id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit2_ctl00_BenefitJFSRadioButton" type="radio" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterBenefit2$ctl00$Benefit" value="BenefitJFSRadioButton" onclick="javascript:setTimeout('__doPostBack(\'ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterBenefit2$ctl00$BenefitJFSRadioButton\',\'\')', 0)"><label for="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit2_ctl00_BenefitJFSRadioButton"><font><font>Journal of Food Science (Print Version)</font></font></label></span>
+                    <a id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit2_ctl00_LinkButtonSeeSampleBenefit" href="http://dnjeiu.axshare.com/jfs__sample_only_.html" target="_blank"><font><font>See Sample</font></font></a>
+                </p>
+                <input type="hidden" name="ctl00$MainContent$ctl00$StudentBenefitsControl$OptionsRepeaterBenefit2$ctl00$SeeSampleLinkHiddenField" id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit2_ctl00_SeeSampleLinkHiddenField" value="http://dnjeiu.axshare.com/jfs__sample_only_.html">
+                <p></p>
+            </td>
+            <td>
+                <br>
+                <span id="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterBenefit2_ctl00_LabelIncluded" class="priceLabel"><font><font>Free</font></font></span>
+            </td>
+        </tr>
+
+
+
+
+
+        <tr>
+            <td>
+                <input id="ctl00_MainContent_ctl00_StudentBenefitsControl_RadioButtonNone" type="radio" name="ctl00$MainContent$ctl00$StudentBenefitsControl$Benefit" value="RadioButtonNone" onclick="javascript:setTimeout('__doPostBack(\'ctl00$MainContent$ctl00$StudentBenefitsControl$RadioButtonNone\',\'\')', 0)">
+                <label for="ctl00_MainContent_ctl00_StudentBenefitsControl_RadioButtonNone"><font><font>None</font></font>
+                </label>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
