@@ -951,6 +951,9 @@ main.membershipRenewal {
 		font-size: 14px;
 		img[src$="check.png"] {
 			width: auto !important;
+			&[style] {
+				width: auto !important;
+			}
 		} //easier than asking backend to correct the markup
 		br {
 			display: none;
