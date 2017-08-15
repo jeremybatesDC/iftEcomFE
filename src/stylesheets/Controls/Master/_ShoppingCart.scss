@@ -424,6 +424,17 @@ main.shoppingCart {
 		width: 100%;
 	}
 
+	.panel-add-card-form {
+		.panel-add-card-expire {
+			.expire-dates-container {
+				//contains month
+				+ .expire-dates-container {
+					margin-right: 0;
+				}
+			}
+		}
+	}
+
 	#ctl00_MainContent_ctl00_PanelWishList .save-for-later-bar {
 		margin-top: 6rem;
 	}
