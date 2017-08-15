@@ -115,7 +115,7 @@ form[action$="JoinSurvey"] {
 		@include button();
 		//overrides
 		font-size: 1rem;
-		margin: 1rem 0 2rem 22rem;
+		margin: 0 0 2rem 22rem;
 		padding:1rem 2rem;
 		line-height: 1;
 	}
@@ -1021,6 +1021,9 @@ main.membershipRenewal {
 		margin-left: 2rem;
 		margin-bottom: 2rem;
 		vertical-align: top;
+		&:last-child {
+			margin-bottom: 0;
+		}
 		tbody {
 			vertical-align: top;
 		}
