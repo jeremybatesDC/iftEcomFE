@@ -115,7 +115,7 @@ form[action$="JoinSurvey"] {
 		@include button();
 		//overrides
 		font-size: 1rem;
-		margin: 1rem 0 2rem 2rem;
+		margin: 0 0 2rem 22rem;
 		padding:1rem 2rem;
 		line-height: 1;
 	}
@@ -220,7 +220,7 @@ form[action$="JoinSummary"] {
 		font-weight: bold;
 	}
 	[id^="ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater"] {
-		display: block;
+		//display: block;
 		font-weight: bold;
 		&a {
 			font-weight: normal;
@@ -1020,8 +1020,18 @@ main.membershipRenewal {
 		width: 100%;
 		margin-left: 2rem;
 		margin-bottom: 2rem;
+		vertical-align: top;
+		&:last-child {
+			margin-bottom: 0;
+		}
+		tbody {
+			vertical-align: top;
+		}
+		tr {
+			vertical-align: top;
+		}
 		td {
-			vertical-align: middle;
+			vertical-align: top;
 			&:first-child {
 				width: 200px;
 			}
@@ -1235,7 +1245,25 @@ main.membershipJoin {
 		}
 	}
 
+	span[id$="_lblPrice"]{
+		padding-left:.5rem;
+		&:after {
+			content: '';
+			display: table;
+		}
+	}
 
+	span[id$="_LabelSection"] {
+		display: inline-block;
+
+	}
+
+	a[id$="_LinkButtonRemove"]{
+		display: inline-block;
+		margin-left: 1rem;
+		margin-bottom: 1rem;
+		font-size: .9em;
+	}
 
 	.benefits {
 		.heading2 {
@@ -1264,6 +1292,7 @@ main.membershipJoin {
 	#ctl00_MainContent_ctl00_MembershipReferralControl_tbReferredLabel {
 		padding-right:1rem;
 	}
+
 
 	@include break(min, $breakpoint-min-xs-override){
 		#ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl00_LabelAdditional,

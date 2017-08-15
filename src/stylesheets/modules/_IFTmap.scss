@@ -290,6 +290,8 @@ a.iftMap__button--save{
     &:before {
       content: '\002713';
       position: absolute;
+      top: -3px;
+      left: 2px;
       font-size: 1.2rem;
       color:#999;
       //box-shadow: 1px 1px inset #000;
