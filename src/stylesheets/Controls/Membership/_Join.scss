@@ -1143,6 +1143,57 @@ form[action$="JoinSummary"] main.main.membershipJoin .emailDetails #ctl00_MainCo
 
 //membership join radio button indentation
 main.membershipJoin {
+
+	#ctl00_MainContent_ctl00_BuyBox_RateCodeRepeater_ctl01_lblRatePrice {
+		font-weight: bold;
+	}
+
+	.ctl00_MainContent_ctl00_BuyBox_RateCodeRepeater_ctl01_MembershipLabel {
+		width:100px;
+	}
+
+	.ctl00_MainContent_ctl00_BuyBox_MessageLabel {
+		padding-left:100px;
+		font-style: italic;
+	}
+
+	.MembershipBuyBoxControl_PersonifyDefault .memberDetails > .effectiveDates,
+	.MembershipBuyBoxControl_PersonifyDefault .memberDetails > div {
+		border-top:none !important;
+		border-bottom: none !important;
+		padding-bottom:0;
+		margin-left: 0;
+	}
+	.MembershipBuyBoxControl_PersonifyDefault .memberDetails > div {
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	.memberDetails {
+		padding-left:1rem;
+	}
+	ul.rateCodes {
+		padding-top:0;
+		padding-bottom:0;
+		li {
+			margin: 0;
+		}
+	}
+	ul.rateCodes,
+	.rateCodeItem {
+		overflow: hidden;
+		&:after {
+			content: '';
+			display: table;
+			clear: both;
+			height: 0;
+			width: 0;
+		}
+	}
+
+
+
 	@include break(min, $breakpoint-min-xs-override){
 		#ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl00_LabelAdditional,
 		#ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl01_AdditionalRadioButton,
