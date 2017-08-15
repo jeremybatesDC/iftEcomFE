@@ -54,6 +54,16 @@ form[action$="JoinSurvey"] {
 		.formRow {
 			>label {
 				font-weight: bold;
+				+ span {
+					padding-top: .5rem;
+				}
+				+ #ctl00_MainContent_ctl00_cmbYear {
+					padding-top: .5rem;
+					padding-left:1rem;
+				}
+			}
+			#ctl00_MainContent_ctl00_TMAFormRowJob_Label {
+				margin-bottom: .5rem;
 			}
 		}
 		#ctl00_MainContent_ctl00_RadioButtonListADA {
@@ -1155,7 +1165,9 @@ form[action$="JoinSummary"] main.main.membershipJoin .emailDetails #ctl00_MainCo
 
 //membership join radio button indentation
 main.membershipJoin {
-
+	#ctl00_MainContent_ctl00_cmbYear {
+		display: block;
+	}
 	#ctl00_MainContent_ctl00_BuyBox_RateCodeRepeater_ctl01_lblRatePrice {
 		font-weight: bold;
 	}
@@ -1249,6 +1261,9 @@ main.membershipJoin {
 		}
 	}
 
+	#ctl00_MainContent_ctl00_MembershipReferralControl_tbReferredLabel {
+		padding-right:1rem;
+	}
 
 	@include break(min, $breakpoint-min-xs-override){
 		#ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl00_LabelAdditional,
