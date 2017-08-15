@@ -103,7 +103,11 @@ form[action$="JoinSurvey"] {
 	}
 	#iftMapButtonOpen {
 		@include button();
-		margin: 10px 0;
+		//overrides
+		font-size: 1rem;
+		margin: 1rem 0 2rem 2rem;
+		padding:1rem 2rem;
+		line-height: 1;
 	}
 	.buttonRow {
 		background: transparent !important;
@@ -708,6 +712,7 @@ form[action$="JoinSurvey"] {
 .step2Left .yourMembership.heading3 {
 	color: #333;
 	font-size: 2.6rem;
+
 }
 
 #ctl00_MainContent_ctl00_MembershipDivisionControl_RefreshPanel {
@@ -977,6 +982,7 @@ main.membershipRenewal {
 
 	input[type="radio"] {
 		margin-left: 1rem;
+		margin-right: .5rem;
 	}
 
 	input[type="checkbox"] {
@@ -1002,9 +1008,15 @@ main.membershipRenewal {
 
 	#ctl00_MainContent_ctl00_MembershipJoinSection_ContainerPanel table {
 		width: 100%;
+		margin-left: 2rem;
+		margin-bottom: 2rem;
 		td {
 			vertical-align: middle;
+			&:first-child {
+				width: 200px;
+			}
 		}
+
 	}
 
 	div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_ContainerPanel {
@@ -1148,13 +1160,18 @@ main.membershipJoin {
 		font-weight: bold;
 	}
 
-	.ctl00_MainContent_ctl00_BuyBox_RateCodeRepeater_ctl01_MembershipLabel {
-		width:100px;
+	#ctl00_MainContent_ctl00_BuyBox_RateCodeRepeater_ctl01_MembershipLabel {
+		width:200px;
 	}
 
-	.ctl00_MainContent_ctl00_BuyBox_MessageLabel {
-		padding-left:100px;
+	#ctl00_MainContent_ctl00_BuyBox_MessageLabel {
+		padding-left:200px;
 		font-style: italic;
+	}
+
+	#ctl00_MainContent_ctl00_BuyBox_EffectiveDateLabel {
+		display: inline-block;
+		width: 200px;
 	}
 
 	.MembershipBuyBoxControl_PersonifyDefault .memberDetails > .effectiveDates,
@@ -1171,11 +1188,14 @@ main.membershipJoin {
 	}
 
 	.memberDetails {
-		padding-left:1rem;
+		padding-left:2rem;
 	}
 	ul.rateCodes {
+		margin-top: 0;
 		padding-top:0;
 		padding-bottom:0;
+		padding-left: 2rem;
+
 		li {
 			margin: 0;
 		}
@@ -1192,6 +1212,42 @@ main.membershipJoin {
 		}
 	}
 
+	#ctl00_MainContent_ctl00_BuyBox_ContainerPanel {
+		margin-bottom: 4.8rem;
+		.heading3 {
+			&.yourMembership,
+			&.ctrlTitle {
+				padding-bottom: 1.8rem;
+			}
+			
+		}
+	}
+
+
+
+	.benefits {
+		.heading2 {
+			padding-bottom: 1.8rem;
+		}
+		.memOptions {
+			border: none !important;
+		}
+	}
+
+	#ctl00_MainContent_ctl00_StudentBenefitsControl_memOptionPanel {
+		margin-top: 0;
+		* {
+			font-size: 1.2rem;
+		}
+	}
+
+	#ctl00_ctl00_MainContent_ctl00_MembershipJoinSection_ContainerPanelPanel {
+		.heading3 {
+			&.ctrlTitle {
+				padding-bottom: 1.8rem;
+			}
+		}
+	}
 
 
 	@include break(min, $breakpoint-min-xs-override){
