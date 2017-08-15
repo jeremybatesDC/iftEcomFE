@@ -950,7 +950,10 @@ main.membershipRenewal {
 		width: 100%;
 		font-size: 14px;
 		img[src$="check.png"] {
-			width: auto;
+			width: auto !important;
+			&[style] {
+				width: auto !important;
+			}
 		} //easier than asking backend to correct the markup
 		br {
 			display: none;
@@ -1137,4 +1140,20 @@ form[action$="JoinSummary"] main.main.membershipJoin .emailDetails #ctl00_MainCo
 	font-size: 2.6rem;
 }
 
+
+//membership join radio button indentation
+main.membershipJoin {
+	@include break(min, $breakpoint-min-xs-override){
+		#ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl00_LabelAdditional,
+		#ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl01_AdditionalRadioButton,
+		#ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl02_AdditionalRadioButton,
+		#ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl03_AdditionalRadioButtonNone,
+		#ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional2_ctl00_LabelAdditional,
+		#ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional2_ctl01_AdditionalRadioButton,
+		#ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional2_ctl02_Additional2RadioButtonNone {
+			margin-left: 4.8rem !important;
+		}
+	}
+
+}
 //optional sections
