@@ -61,10 +61,29 @@
             deepOutputObjectForStaging.push(thisConstructedThing);
         }
     }
+
+    function OutputStatusContainerDeepARRAY_CONSTRUCTOR__COMPONENTS(ProductId, ProductName, ComponentProductId, ComponentProductShortName, MemberPrice){
+        this.ProductId = ProductId;
+        this.ProductName = ProductName;
+        this.ComponentProductId = ComponentProductId;
+        this.ComponentProductShortName = ComponentProductShortName;
+        this.MemberPrice = MemberPrice;
+    }
+
+    var deepOutPutOjectForStagingCOMPONENTS = [];
+    function constructFreshStagingContainerModelCOMPONENTS(){
+        for(var i = 0; i < 8; i++){
+            var thisConstructedThing = new OutputStatusContainerDeepARRAY_CONSTRUCTOR__COMPONENTS(null, null, null, null, null);
+            deepOutPutOjectForStagingCOMPONENTS.push(thisConstructedThing);
+        }
+    }
+
     //doesNotNeedToBeGlobal,but itS more readable if the clear function is visually next to the model
     function safeManualResetOfOutputStatusContainerDeepARRAY(){
         deepOutputObjectForStaging = [];
+        deepOutPutOjectForStagingCOMPONENTS = [];
         constructFreshStagingContainerModel();
+        constructFreshStagingContainerModelCOMPONENTS();
     }
 
     //the staging container is a bit different because itS order matters and must be preserved
@@ -106,6 +125,8 @@
         //construct models
         constructFreshMapStatusContainerModel();
         constructFreshStagingContainerModel();
+        constructFreshStagingContainerModelCOMPONENTS();
+
 
         setUserPreselections();
 
@@ -121,6 +142,8 @@
         var internationalSelectMenu = document.getElementById('internationalSelectMenu');
         var arrayOfSpansToPopulateEmpty = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper span'));
         var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
+
+        var hiddenInputForBackendCOMPONENTS = document.getElementById('IFTSavedSectionHiddenfieldCOMPONENTS');
         
         var activeStateString = 'iftMapWrapperOuter--ACTIVE-STATE';
         var disabledStateString = 'iftMap__sectionData__wrapper--DISABLED-STATE';
@@ -233,6 +256,7 @@
 
             //clear the input value we are populating for the backend on section click
             clearHiddenInputForBackend();
+            clearHiddenInputForBackendCOMPONENTS();
             
             //next, clear content, flags and data attributes 
             //(could consult model)
@@ -437,6 +461,11 @@
             hiddenInputForBackend.value = '';
         }
 
+        function clearHiddenInputForBackendCOMPONENTS(){
+            if(hiddenInputForBackendCOMPONENTS !== null){
+                hiddenInputForBackendCOMPONENTS.value = '';
+            }
+        }
 
         function showHideWholeMap(event){
             if(event.currentTarget === iftMapButtonOpen) {
@@ -454,6 +483,7 @@
             //first clear the model & inputForBackend
             safeManualResetOfOutputStatusContainerDeepARRAY();            
             clearHiddenInputForBackend();
+            clearHiddenInputForBackendCOMPONENTS();
             //then adjust with panel status & stage stuff
             adjustPanelStatusesBasedOnCurrentSelections(event, referenceToParentPanelOfCheckedInput);
             stageSectionsBasedOnCurrentSelections(referenceToParentPanelOfCheckedInput);
@@ -516,11 +546,15 @@
 
              for (var abc = 0; abc < nodeListOfCheckboxes.length; abc++){
                 //test must include things checked AND things marked as components
-                if(nodeListOfCheckboxes[abc].checked === true || nodeListOfPanelsToPopulate[abc].getAttribute('data-componentOfSelected') === 'componentOfSelected'){
+                if(nodeListOfCheckboxes[abc].checked === true ){
                     indexesOfSelectedSections.push(abc);
+                }
+                if(nodeListOfPanelsToPopulate[abc].getAttribute('data-componentOfSelected') === 'componentOfSelected'){
+                    indexesOfPanelsContainingComponentSection.push(abc)
                 }
              }
              console.log('the following panels are selected ' + indexesOfSelectedSections);
+             console.log('the following panels are components of selected ' + indexesOfPanelsContainingComponentSection);
 
             //the checkbox handler clears the model and checkboxes, but maybe that should go here
             (function grabValuesFromMapStatusContainerDeepARRAY(){
@@ -528,7 +562,7 @@
                 //this model can be 8
                 for(var i = 0; i < mapStatusContainerDeepARRAY.length; i++){
                     
-                    //stage checked AND components of checked
+                    //stage checked
                     if(indexesOfSelectedSections.indexOf(i) > -1){
                         deepOutputObjectForStaging[i].ProductId = mapStatusContainerDeepARRAY[i].currentProductId;
                         deepOutputObjectForStaging[i].ProductName = mapStatusContainerDeepARRAY[i].currentProductName;
@@ -536,12 +570,28 @@
                         deepOutputObjectForStaging[i].ComponentProductShortName = mapStatusContainerDeepARRAY[i].currentComponentProductShortName;
                         deepOutputObjectForStaging[i].MemberPrice = mapStatusContainerDeepARRAY[i].currentMemberPrice;
                     }
+                    //stage components
+                    if(indexesOfPanelsContainingComponentSection.indexOf(i) > -1){
+                        deepOutPutOjectForStagingCOMPONENTS[i].ProductId = mapStatusContainerDeepARRAY[i].currentProductId;
+                        deepOutPutOjectForStagingCOMPONENTS[i].ProductName = mapStatusContainerDeepARRAY[i].currentProductName;
+                        deepOutPutOjectForStagingCOMPONENTS[i].ComponentProductId = mapStatusContainerDeepARRAY[i].currentComponentProductId;
+                        deepOutPutOjectForStagingCOMPONENTS[i].ComponentProductShortName = mapStatusContainerDeepARRAY[i].currentComponentProductShortName;
+                        deepOutPutOjectForStagingCOMPONENTS[i].MemberPrice = mapStatusContainerDeepARRAY[i].currentMemberPrice;
+                    }
+
                 }
                 console.log(deepOutputObjectForStaging);
+                console.log(deepOutPutOjectForStagingCOMPONENTS)
             })();
 
-            (function putOutputArrayInHiddenInput(){
+            (function putOutputArraysInHiddenInputs(){
+                                //insert value here.
+
                 hiddenInputForBackend.value = JSON.stringify(deepOutputObjectForStaging);
+                //backend hasnT added this yet and i want to avoid errors
+                if(hiddenInputForBackendCOMPONENTS !== null){
+                    hiddenInputForBackendCOMPONENTS.value = JSON.stringify(deepOutputObjectForStagingCOMPONENTS);
+                }
             })(); 
 
         }
