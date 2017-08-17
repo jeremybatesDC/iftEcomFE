@@ -70,18 +70,18 @@
         this.MemberPrice = MemberPrice;
     }
 
-    var deepOutPutOjectForStagingCOMPONENTS = [];
+    var deepOutputObjectForStagingCOMPONENTS = [];
     function constructFreshStagingContainerModelCOMPONENTS(){
         for(var i = 0; i < 8; i++){
             var thisConstructedThing = new OutputStatusContainerDeepARRAY_CONSTRUCTOR__COMPONENTS(null, null, null, null, null);
-            deepOutPutOjectForStagingCOMPONENTS.push(thisConstructedThing);
+            deepOutputObjectForStagingCOMPONENTS.push(thisConstructedThing);
         }
     }
 
     //doesNotNeedToBeGlobal,but itS more readable if the clear function is visually next to the model
     function safeManualResetOfOutputStatusContainerDeepARRAY(){
         deepOutputObjectForStaging = [];
-        deepOutPutOjectForStagingCOMPONENTS = [];
+        deepOutputObjectForStagingCOMPONENTS = [];
         constructFreshStagingContainerModel();
         constructFreshStagingContainerModelCOMPONENTS();
     }
@@ -143,7 +143,7 @@
         var arrayOfSpansToPopulateEmpty = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper span'));
         var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
 
-        var hiddenInputForBackendCOMPONENTS = document.getElementById('IFTSavedSectionHiddenfieldCOMPONENTS');
+        var hiddenInputForBackendCOMPONENTS = document.getElementById('ctl00_MainContent_ctl00_MembershipJoinSection_IFTSavedSectionHiddenfieldCOMPONENTS');
         
         var activeStateString = 'iftMapWrapperOuter--ACTIVE-STATE';
         var disabledStateString = 'iftMap__sectionData__wrapper--DISABLED-STATE';
@@ -572,16 +572,16 @@
                     }
                     //stage components
                     if(indexesOfPanelsContainingComponentSection.indexOf(i) > -1){
-                        deepOutPutOjectForStagingCOMPONENTS[i].ProductId = mapStatusContainerDeepARRAY[i].currentProductId;
-                        deepOutPutOjectForStagingCOMPONENTS[i].ProductName = mapStatusContainerDeepARRAY[i].currentProductName;
-                        deepOutPutOjectForStagingCOMPONENTS[i].ComponentProductId = mapStatusContainerDeepARRAY[i].currentComponentProductId;
-                        deepOutPutOjectForStagingCOMPONENTS[i].ComponentProductShortName = mapStatusContainerDeepARRAY[i].currentComponentProductShortName;
-                        deepOutPutOjectForStagingCOMPONENTS[i].MemberPrice = mapStatusContainerDeepARRAY[i].currentMemberPrice;
+                        deepOutputObjectForStagingCOMPONENTS[i].ProductId = mapStatusContainerDeepARRAY[i].currentProductId;
+                        deepOutputObjectForStagingCOMPONENTS[i].ProductName = mapStatusContainerDeepARRAY[i].currentProductName;
+                        deepOutputObjectForStagingCOMPONENTS[i].ComponentProductId = mapStatusContainerDeepARRAY[i].currentComponentProductId;
+                        deepOutputObjectForStagingCOMPONENTS[i].ComponentProductShortName = mapStatusContainerDeepARRAY[i].currentComponentProductShortName;
+                        deepOutputObjectForStagingCOMPONENTS[i].MemberPrice = mapStatusContainerDeepARRAY[i].currentMemberPrice;
                     }
 
                 }
                 console.log(deepOutputObjectForStaging);
-                console.log(deepOutPutOjectForStagingCOMPONENTS)
+                console.log(deepOutputObjectForStagingCOMPONENTS)
             })();
 
             (function putOutputArraysInHiddenInputs(){
@@ -590,6 +590,7 @@
                 hiddenInputForBackend.value = JSON.stringify(deepOutputObjectForStaging);
                 //backend hasnT added this yet and i want to avoid errors
                 if(hiddenInputForBackendCOMPONENTS !== null){
+                    console.log(JSON.stringify(deepOutputObjectForStagingCOMPONENTS));
                     hiddenInputForBackendCOMPONENTS.value = JSON.stringify(deepOutputObjectForStagingCOMPONENTS);
                 }
             })(); 
