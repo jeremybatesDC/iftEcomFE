@@ -61,10 +61,29 @@
             deepOutputObjectForStaging.push(thisConstructedThing);
         }
     }
+
+    function OutputStatusContainerDeepARRAY_CONSTRUCTOR__COMPONENTS(ProductId, ProductName, ComponentProductId, ComponentProductShortName, MemberPrice){
+        this.ProductId = ProductId;
+        this.ProductName = ProductName;
+        this.ComponentProductId = ComponentProductId;
+        this.ComponentProductShortName = ComponentProductShortName;
+        this.MemberPrice = MemberPrice;
+    }
+
+    var deepOutputObjectForStagingCOMPONENTS = [];
+    function constructFreshStagingContainerModelCOMPONENTS(){
+        for(var i = 0; i < 8; i++){
+            var thisConstructedThing = new OutputStatusContainerDeepARRAY_CONSTRUCTOR__COMPONENTS(null, null, null, null, null);
+            deepOutputObjectForStagingCOMPONENTS.push(thisConstructedThing);
+        }
+    }
+
     //doesNotNeedToBeGlobal,but itS more readable if the clear function is visually next to the model
     function safeManualResetOfOutputStatusContainerDeepARRAY(){
         deepOutputObjectForStaging = [];
+        deepOutputObjectForStagingCOMPONENTS = [];
         constructFreshStagingContainerModel();
+        constructFreshStagingContainerModelCOMPONENTS();
     }
 
     //the staging container is a bit different because itS order matters and must be preserved
@@ -73,6 +92,7 @@
          //reference to span to check for home section
         var hiddenInputToCheckForHomeSections = document.getElementById('IFTHomeSectionProductId');
         var nodeListOfOptionalSectionsInputs = document.querySelectorAll('input[id^="ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater"]');
+        var componentSectionHiddenInput = document.getElementById('IFTSectionProductIdComponent');
 
         if(hiddenInputToCheckForHomeSections !== null && hiddenInputToCheckForHomeSections.value !== null){
                 userAlreadySavedSections.userHomeSectionProductID = parseInt(hiddenInputToCheckForHomeSections.value);     
@@ -82,6 +102,10 @@
             for(var i = 0; i < nodeListOfOptionalSectionsInputs.length; i++){
                 userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(nodeListOfOptionalSectionsInputs[i].value));
             }
+        }
+
+        if(componentSectionHiddenInput !== null){
+            userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(componentSectionHiddenInput.value));
         }
     }
 
@@ -106,6 +130,8 @@
         //construct models
         constructFreshMapStatusContainerModel();
         constructFreshStagingContainerModel();
+        constructFreshStagingContainerModelCOMPONENTS();
+
 
         setUserPreselections();
 
@@ -121,6 +147,8 @@
         var internationalSelectMenu = document.getElementById('internationalSelectMenu');
         var arrayOfSpansToPopulateEmpty = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper span'));
         var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
+
+        var hiddenInputForBackendCOMPONENTS = document.getElementById('ctl00_MainContent_ctl00_MembershipJoinSection_IFTSavedSectionHiddenfieldCOMPONENTS');
         
         var activeStateString = 'iftMapWrapperOuter--ACTIVE-STATE';
         var disabledStateString = 'iftMap__sectionData__wrapper--DISABLED-STATE';
@@ -233,6 +261,7 @@
 
             //clear the input value we are populating for the backend on section click
             clearHiddenInputForBackend();
+            clearHiddenInputForBackendCOMPONENTS();
             
             //next, clear content, flags and data attributes 
             //(could consult model)
@@ -318,7 +347,7 @@
                     //if the product ID of the matching section item is one of the already selected sections
                     if(userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1){
                         var numToPush = i;
-                        indexesOfPanelsContainingAlreadySavedSections.push(numToPush);                                                      
+                        indexesOfPanelsContainingAlreadySavedSections.push(numToPush);                                                     
                     }
                 }
             })();//end actionsBasedOnUserHomeSectionOuterMostFunction
@@ -437,6 +466,11 @@
             hiddenInputForBackend.value = '';
         }
 
+        function clearHiddenInputForBackendCOMPONENTS(){
+            if(hiddenInputForBackendCOMPONENTS !== null){
+                hiddenInputForBackendCOMPONENTS.value = '';
+            }
+        }
 
         function showHideWholeMap(event){
             if(event.currentTarget === iftMapButtonOpen) {
@@ -454,6 +488,7 @@
             //first clear the model & inputForBackend
             safeManualResetOfOutputStatusContainerDeepARRAY();            
             clearHiddenInputForBackend();
+            clearHiddenInputForBackendCOMPONENTS();
             //then adjust with panel status & stage stuff
             adjustPanelStatusesBasedOnCurrentSelections(event, referenceToParentPanelOfCheckedInput);
             stageSectionsBasedOnCurrentSelections(referenceToParentPanelOfCheckedInput);
@@ -516,11 +551,15 @@
 
              for (var abc = 0; abc < nodeListOfCheckboxes.length; abc++){
                 //test must include things checked AND things marked as components
-                if(nodeListOfCheckboxes[abc].checked === true || nodeListOfPanelsToPopulate[abc].getAttribute('data-componentOfSelected') === 'componentOfSelected'){
+                if(nodeListOfCheckboxes[abc].checked === true ){
                     indexesOfSelectedSections.push(abc);
                 }
+                if(nodeListOfPanelsToPopulate[abc].getAttribute('data-componentOfSelected') === 'componentOfSelected'){
+                    indexesOfPanelsContainingComponentSection.push(abc)
+                }
              }
-             console.log('the following panels are selected ' + indexesOfSelectedSections);
+             //console.log('the following panels are selected ' + indexesOfSelectedSections);
+             //console.log('the following panels are components of selected ' + indexesOfPanelsContainingComponentSection);
 
             //the checkbox handler clears the model and checkboxes, but maybe that should go here
             (function grabValuesFromMapStatusContainerDeepARRAY(){
@@ -528,7 +567,7 @@
                 //this model can be 8
                 for(var i = 0; i < mapStatusContainerDeepARRAY.length; i++){
                     
-                    //stage checked AND components of checked
+                    //stage checked
                     if(indexesOfSelectedSections.indexOf(i) > -1){
                         deepOutputObjectForStaging[i].ProductId = mapStatusContainerDeepARRAY[i].currentProductId;
                         deepOutputObjectForStaging[i].ProductName = mapStatusContainerDeepARRAY[i].currentProductName;
@@ -536,12 +575,29 @@
                         deepOutputObjectForStaging[i].ComponentProductShortName = mapStatusContainerDeepARRAY[i].currentComponentProductShortName;
                         deepOutputObjectForStaging[i].MemberPrice = mapStatusContainerDeepARRAY[i].currentMemberPrice;
                     }
+                    //stage components
+                    if(indexesOfPanelsContainingComponentSection.indexOf(i) > -1){
+                        deepOutputObjectForStagingCOMPONENTS[i].ProductId = mapStatusContainerDeepARRAY[i].currentProductId;
+                        deepOutputObjectForStagingCOMPONENTS[i].ProductName = mapStatusContainerDeepARRAY[i].currentProductName;
+                        deepOutputObjectForStagingCOMPONENTS[i].ComponentProductId = mapStatusContainerDeepARRAY[i].currentComponentProductId;
+                        deepOutputObjectForStagingCOMPONENTS[i].ComponentProductShortName = mapStatusContainerDeepARRAY[i].currentComponentProductShortName;
+                        deepOutputObjectForStagingCOMPONENTS[i].MemberPrice = mapStatusContainerDeepARRAY[i].currentMemberPrice;
+                    }
+
                 }
-                console.log(deepOutputObjectForStaging);
+                //console.log(deepOutputObjectForStaging);
+                //console.log(deepOutputObjectForStagingCOMPONENTS)
             })();
 
-            (function putOutputArrayInHiddenInput(){
+            (function putOutputArraysInHiddenInputs(){
+                                //insert value here.
+
                 hiddenInputForBackend.value = JSON.stringify(deepOutputObjectForStaging);
+                //backend hasnT added this yet and i want to avoid errors
+                if(hiddenInputForBackendCOMPONENTS !== null){
+                    console.log(JSON.stringify(deepOutputObjectForStagingCOMPONENTS));
+                    hiddenInputForBackendCOMPONENTS.value = JSON.stringify(deepOutputObjectForStagingCOMPONENTS);
+                }
             })(); 
 
         }
