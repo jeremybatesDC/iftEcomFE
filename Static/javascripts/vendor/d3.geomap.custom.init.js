@@ -92,6 +92,11 @@
          //reference to span to check for home section
         var hiddenInputToCheckForHomeSections = document.getElementById('IFTHomeSectionProductId');
         var nodeListOfOptionalSectionsInputs = document.querySelectorAll('input[id^="ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater"]');
+        var nodeListOfComponentProductsAlreadySelected = document.querySelectorAll('[id$="IFTSectionProductIdComponent"');
+
+            
+
+        var componentSectionHiddenInput = document.getElementById('ctl00_MainContent_ctl00_MembershipJoinSection_componentRepeater_ctl00_IFTSectionProductIdComponent');
 
         if(hiddenInputToCheckForHomeSections !== null && hiddenInputToCheckForHomeSections.value !== null){
                 userAlreadySavedSections.userHomeSectionProductID = parseInt(hiddenInputToCheckForHomeSections.value);     
@@ -101,6 +106,16 @@
             for(var i = 0; i < nodeListOfOptionalSectionsInputs.length; i++){
                 userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(nodeListOfOptionalSectionsInputs[i].value));
             }
+        }
+
+        if(nodeListOfComponentProductsAlreadySelected !== null){
+            //console.log('there is an already saved component section with ID ' + componentSectionHiddenInput.value);
+            
+            for(var ii = 0; ii < nodeListOfComponentProductsAlreadySelected.length; ii++){
+                userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(nodeListOfComponentProductsAlreadySelected[ii].value));
+            }
+           
+            //console.log(userAlreadySavedSections.additionalAlreadySavedSections);
         }
     }
 
@@ -342,7 +357,7 @@
                     //if the product ID of the matching section item is one of the already selected sections
                     if(userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1){
                         var numToPush = i;
-                        indexesOfPanelsContainingAlreadySavedSections.push(numToPush);                                                      
+                        indexesOfPanelsContainingAlreadySavedSections.push(numToPush);                                                     
                     }
                 }
             })();//end actionsBasedOnUserHomeSectionOuterMostFunction
@@ -553,8 +568,8 @@
                     indexesOfPanelsContainingComponentSection.push(abc)
                 }
              }
-             console.log('the following panels are selected ' + indexesOfSelectedSections);
-             console.log('the following panels are components of selected ' + indexesOfPanelsContainingComponentSection);
+             //console.log('the following panels are selected ' + indexesOfSelectedSections);
+             //console.log('the following panels are components of selected ' + indexesOfPanelsContainingComponentSection);
 
             //the checkbox handler clears the model and checkboxes, but maybe that should go here
             (function grabValuesFromMapStatusContainerDeepARRAY(){
@@ -580,8 +595,8 @@
                     }
 
                 }
-                console.log(deepOutputObjectForStaging);
-                console.log(deepOutputObjectForStagingCOMPONENTS)
+                //console.log(deepOutputObjectForStaging);
+                //console.log(deepOutputObjectForStagingCOMPONENTS)
             })();
 
             (function putOutputArraysInHiddenInputs(){

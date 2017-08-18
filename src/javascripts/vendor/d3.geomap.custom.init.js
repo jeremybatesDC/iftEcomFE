@@ -92,7 +92,11 @@
          //reference to span to check for home section
         var hiddenInputToCheckForHomeSections = document.getElementById('IFTHomeSectionProductId');
         var nodeListOfOptionalSectionsInputs = document.querySelectorAll('input[id^="ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater"]');
-        var componentSectionHiddenInput = document.getElementById('IFTSectionProductIdComponent');
+        var nodeListOfComponentProductsAlreadySelected = document.querySelectorAll('[id$="IFTSectionProductIdComponent"');
+
+            
+
+        var componentSectionHiddenInput = document.getElementById('ctl00_MainContent_ctl00_MembershipJoinSection_componentRepeater_ctl00_IFTSectionProductIdComponent');
 
         if(hiddenInputToCheckForHomeSections !== null && hiddenInputToCheckForHomeSections.value !== null){
                 userAlreadySavedSections.userHomeSectionProductID = parseInt(hiddenInputToCheckForHomeSections.value);     
@@ -104,8 +108,14 @@
             }
         }
 
-        if(componentSectionHiddenInput !== null){
-            userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(componentSectionHiddenInput.value));
+        if(nodeListOfComponentProductsAlreadySelected !== null){
+            //console.log('there is an already saved component section with ID ' + componentSectionHiddenInput.value);
+            
+            for(var ii = 0; ii < nodeListOfComponentProductsAlreadySelected.length; ii++){
+                userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(nodeListOfComponentProductsAlreadySelected[ii].value));
+            }
+           
+            //console.log(userAlreadySavedSections.additionalAlreadySavedSections);
         }
     }
 
