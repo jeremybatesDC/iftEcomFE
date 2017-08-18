@@ -91,7 +91,9 @@
          //sets property userAlreadySavedSections.userHomeSectionProductID
          //reference to span to check for home section
         var hiddenInputToCheckForHomeSections = document.getElementById('IFTHomeSectionProductId');
-        var nodeListOfOptionalSectionsInputs = document.querySelectorAll('input[id^="ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater"]');
+
+        //global asterisk selector in case this is prefixed or suffexed in some way
+        var nodeListOfOptionalSectionsInputs = document.querySelectorAll('input[id*="MembershipJoinSection_SectionRepeater"]');
         var nodeListOfComponentProductsAlreadySelected = document.querySelectorAll('[id$="IFTSectionProductIdComponent"');
 
             
