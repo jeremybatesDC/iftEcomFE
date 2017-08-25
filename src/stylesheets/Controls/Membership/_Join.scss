@@ -319,13 +319,26 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 		padding-top: 20px;
 	}
 }
+#ctl00_ctl00_MainContent_ctl02_ContainerPanelPanel a.btn.btn-link.details {
+	@include unButton();
+	display: inline;
+	text-decoration: none !important;
+	padding: 0;
+	margin: 0;
+	float: right;
 
+}
 .MembershipDetailControl_PersonifyDefault .productImage.ctrl-memb-img {
 	margin: 20px;
 	position: static;
 	float: left;
 }
 
+#ctl00_MainContent_ctl00_MyAccountContactEmail_EditContainerPanel fieldset.emailDetails {
+   padding: inherit;
+   margin:inherit;
+   border:none
+}
 #ctl00_MainContent_ctl00_UserRegistrationControl_UserAlreadyLoggedInPanel {
 	.memberName,
 	.regContactsTitle {
@@ -338,9 +351,18 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 	}
 }
 
+div#ctl00_MainContent_ctl00_divRenewalHeading,
+div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_divRenewalHeading {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 3px solid #e6e6e6;
+}
+
 // Nav
 .WizardBannerControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
-	margin-bottom: 40px;
+	margin-bottom: 2rem;
 	display: flex; //make sure it doesNot accidentally break page widths
 	overflow: hidden;
 	span {
@@ -1153,9 +1175,9 @@ form[action$="JoinSummary"] main.main.membershipJoin .emailDetails #ctl00_MainCo
 	#ctl00_MainContent_ctl00_lblDivisionTitle {
 		background: #76a120!important;
 		width: 100%;
-		font-size: 14px;
+		font-size: 2.2rem;
+		font-family: Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
 		display: block;
-		padding: 2rem;
 		padding: 2rem;
 		text-align: center;
 		color: white;
