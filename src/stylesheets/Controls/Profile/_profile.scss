@@ -65,6 +65,9 @@ form[action$="educationalbackground"] {
 			margin-left: 0;
 		}
 	}
+	div#ctl00_MainContent_ctl00_pnlOpenOrders .ctrl-form-row.ctrl-row-header-colored {
+    background: $ift-blue !important;
+}
 	div#ctl00_MainContent_ctl03_noRecordsDivDescription {
 		margin-left: 8.5rem;
 		display: block;
