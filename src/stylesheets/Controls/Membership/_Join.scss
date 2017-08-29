@@ -12,6 +12,11 @@ form[action$="JoinSurvey"] {
 			border-collapse: separate;
 		}
 	}
+	div#ctl00_MainContent_ctl00_BioInfoPanel h4 {
+		padding: 2rem 2rem 0 2rem;
+		background: #fff;
+		font-size: 2.2rem;
+	}
 	#ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel .ctrl-form-row {
 		display: block;
 		width: 100%;
