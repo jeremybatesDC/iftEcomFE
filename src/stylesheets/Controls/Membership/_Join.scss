@@ -175,7 +175,14 @@ form[action$="JoinSurvey"] {
 		}
 	}
 }
-
+#ctl00_MainContent_ctl00_BioInfoPanel .ctrlContent h4 {
+	background: white;
+	font-size: 2.6rem;
+	padding: 0 2rem;
+}
+#ctl00_MainContent_ctl00_TMAFormRowPrimaryJobTitle table td {
+	text-indent: -1.5rem !important;
+}
 form[action$="JoinSummary"] {
 	.ctrbName.heading4 {
 		font-size: 2rem;
