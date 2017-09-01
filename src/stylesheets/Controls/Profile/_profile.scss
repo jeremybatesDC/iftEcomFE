@@ -16,6 +16,17 @@ main.myAccountProfile {
 	}
 }
 
+div#ctl00_MainContent_ctl00_EditAddressControl_ContainerPanel {
+	a#ctl00_MainContent_ctl00_EditAddressControl_ChangeCountryButton {
+		display: inline;
+	}
+
+	span#ctl00_MainContent_ctl00_EditAddressControl_CountryLabel {
+		display: inline-block;
+		width: auto;
+	}
+}
+
 .formLayout fieldset.searchContainer input[type="checkbox"] {
 	margin-left: 0;
 }
@@ -29,15 +40,16 @@ form[action$="educationalbackground"] {
 	}
 }
 
-.totalPaymentContainer,.ctrl-pay-open-oder.balanceContainer {
-    font-size: 1.6rem;
-    line-height: 1.6;
+.totalPaymentContainer,
+.ctrl-pay-open-oder.balanceContainer {
+	font-size: 1.6rem;
+	line-height: 1.6;
 }
 
-#div#ctl00_MainContent_ctl00_pnlPaymentInfo{
-	.heading3{
-		    margin-top: 3rem;
-    font-size: 1.6rem;
+#div#ctl00_MainContent_ctl00_pnlPaymentInfo {
+	.heading3 {
+		margin-top: 3rem;
+		font-size: 1.6rem;
 	}
 }
 
@@ -66,8 +78,8 @@ form[action$="educationalbackground"] {
 		}
 	}
 	div#ctl00_MainContent_ctl00_pnlOpenOrders .ctrl-form-row.ctrl-row-header-colored {
-    background: $ift-blue !important;
-}
+		background: $ift-blue !important;
+	}
 	div#ctl00_MainContent_ctl03_noRecordsDivDescription {
 		margin-left: 8.5rem;
 		display: block;
