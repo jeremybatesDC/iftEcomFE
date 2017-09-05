@@ -15,7 +15,9 @@ main.myAccountProfile {
 		display: block;
 	}
 }
-
+#ctl00_MainContent_ctl00_EditAddressControl_CountryLabel {
+    display: inline;
+}
 div#ctl00_MainContent_ctl00_EditAddressControl_ContainerPanel {
 	a#ctl00_MainContent_ctl00_EditAddressControl_ChangeCountryButton {
 		display: inline;
