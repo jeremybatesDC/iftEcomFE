@@ -543,6 +543,12 @@ div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_divRenewalHeading {
 #ctl00_ctl00_MainContent_ctl00_MembershipContributionsControl1_ContainerPanelPanel input[type="text"] {
 	@include inputText();
 	margin-left: 10px !important;
+	&:focus {
+		margin-left: 10px !important;
+		html body main & {
+			margin-left: 10px !important;
+		}
+	}
 }
 
 .MembershipContributionsControl_PersonifyDefault .ctrbPriceOption label {
