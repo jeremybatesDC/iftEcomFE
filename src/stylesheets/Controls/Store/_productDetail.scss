@@ -1,7 +1,12 @@
 main.main.storeDetail{
   
 }
-
+.OrderSummaryControl_PersonifyDefault .cellProductName {
+    width: 25%;
+    vertical-align: top;
+    text-align: left;
+    padding: 4px;
+}
 // Detail Box
 #ctl00_ctl00_MainContent_ctl00_ProductINVBuyBoxControl_ProductDetailActionButtonControl1_ContainerPanelPanel {
   .productbuttons {

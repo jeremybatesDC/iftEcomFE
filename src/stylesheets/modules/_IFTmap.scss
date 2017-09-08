@@ -30,41 +30,30 @@
   width: 100%;
   // background:$ift-grey-medium-lighter; 
 }
-// .iftMap__wrapper--inner {
-//   position:relative;
-// }
-
-.iftMap__headline {
-  
-}
 
 
 .iftMap__svg {
   transform:scale(.5);
   transform-origin: 0 0;
 
-  //   transform-origin: 0 0;
-  //   @include break(max, $breakpoint-max-mobile){
-  //     transform:scale(.275);
-  //   }
-  // > .iftMap__svg__g,
-  // > .iftMap__svg__path--stateBorders {
-  //    transform:scale(.5);
-  //   transform-origin: 0 0;
-  //   @include break(max, $breakpoint-max-mobile){
-  //     transform:scale(.275);
-  //   }
-  // }
   @include break(max, $breakpoint-max-mobile){
-    transform:scale(.5);
-    width: 100%;
-    height:auto;
+    //width: 100%;
+    //height:auto;
+    margin-bottom: -250px;
   }
 
   @include break(min, $breakpoint-min-tablet){
     //blame microsoft
     margin-bottom: -300px;
   }
+
+
+  @include break(max, 399px){
+    transform:scale(.3);
+    margin-bottom: -400px;
+  }
+
+
 }
 
 
@@ -221,6 +210,7 @@ a.iftMap__button--save{
 }
 
 .iftMap__sectionData__wrapper {
+  position:relative;
   font-size: 1.2rem;
   line-height: 1;
   padding-right:$gutter-width;
@@ -230,6 +220,7 @@ a.iftMap__button--save{
 
   > label {
     display: table;
+    position:relative;
     padding-bottom: 1.6rem;
     input {
       display: table-cell;
@@ -284,7 +275,6 @@ a.iftMap__button--save{
 .iftMap__sectionData__wrapper--DISABLED-STATE {
   //pointer-events:none;
   opacity: .3333;
-  position: relative;
   cursor: not-allowed;
   pointer-events:none;
 
@@ -300,6 +290,8 @@ a.iftMap__button--save{
     &:before {
       content: '\002713';
       position: absolute;
+      top: -3px;
+      left: 2px;
       font-size: 1.2rem;
       color:#999;
       //box-shadow: 1px 1px inset #000;
@@ -341,19 +333,24 @@ a.iftMap__button--save{
 
 
 .niftyTooltip {
+  position:absolute;
+  right: -1.4rem;
   &:hover,
   &:active,
   &:focus {
-    &:before {
+    &:after {
       content: attr(data-toolTipText);
       position:absolute;
+      top: 2rem;
+      right: 0;
       //that position isnT working as expected
       //left: 2rem;
       display: inline-block;
+      min-width: 100px;
       background:#fff;
       border: 1px solid #000;
       padding: 1rem;
-
+      z-index: 1;
     }
   }
 }
@@ -392,17 +389,9 @@ a.iftMap__button--save{
   
 }
 
-// .iftMap__tooltip__closeButton__wrapper {
-//   .iconInfo {
-//     width:12px;
-//     he
-//   }
-// }
-
 .iftMap__sectionData__footer__column--label {
   font-weight: bold;
 }
-
 
 .iftMap__tooltip__closeButton__wrapper {
   position:absolute;
@@ -425,7 +414,7 @@ a.iftMap__button--save{
 }
 
 .iftMap__wrapper--outer__closeButton__wrapper {
-      position: absolute;
+    position: absolute;
     top: 1rem;
     right: 1rem;
     width: 3.2rem;
@@ -435,10 +424,9 @@ a.iftMap__button--save{
     background: #000;
     overflow: hidden;
     border-radius: 100%;
-  &:hover {
-    cursor: pointer;
-  }
-
+    &:hover {
+      cursor: pointer;
+    }
 }
 
 .iftMap__wrapper--outer__closeButton__svg {
@@ -447,21 +435,3 @@ a.iftMap__button--save{
       stroke: #fff;
   stroke-width:4px;
 }
-
-
-
-// .iftMap__svg__rect--background {
-//   fill: none;
-//   pointer-events: all;
-// }
-
-// .usState {
-//   cursor: pointer;
-//   fill: #dddddd;
-//   stroke: #666666;
-//   stroke-width: 0.4px;
-// }
-
-// .usState.activeState {
-//   fill:rgba(87,134,199,1);
-// }

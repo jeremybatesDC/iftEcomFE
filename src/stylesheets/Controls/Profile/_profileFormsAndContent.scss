@@ -252,7 +252,10 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
     color: #777 !important;
   }
 }
-
+div#ctl00_MainContent_ctl03_ContainerPanel table td {
+    min-width: 12rem;
+    line-height: 1.6;
+}
 // Ad Space on Right
 #ctl00_MainContent_ctl05_NextButton {
   border: none;

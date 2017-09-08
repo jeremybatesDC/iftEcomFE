@@ -15,6 +15,12 @@ main.main.storeDetail {
 		border: 1px solid #ccc;
 	}
 }
+#ctl00_MainContent_ctl00_CheckoutItemSummaryControl_ShoppingCartSummaryControl_LabelCouponsEditHeader,
+#ctl00_MainContent_ctl00_CheckoutItemSummaryControl_ShoppingCartSummaryControl_PanelEditCoupons {
+    font-weight: bold;
+    margin-bottom: -1rem;
+    display: block;
+}
 
 #ctl00_MainContent_ctl00_CheckoutItemSummaryControl_ShoppingCartSummaryControl_PanelShippingPreferences,
 #ctl00_MainContent_ctl00_CheckoutPaymentInformationControl_ShoppingCartSummaryControl_PanelShippingPreferences{
@@ -424,6 +430,17 @@ main.shoppingCart {
 		width: 100%;
 	}
 
+	.panel-add-card-form {
+		.panel-add-card-expire {
+			.expire-dates-container {
+				//contains month
+				+ .expire-dates-container {
+					margin-right: 0;
+				}
+			}
+		}
+	}
+
 	#ctl00_MainContent_ctl00_PanelWishList .save-for-later-bar {
 		margin-top: 6rem;
 	}
@@ -488,6 +505,10 @@ main.shoppingCart {
 		color: #333;
 		font-size: 2.6rem;
 		margin-top: 2rem;
+	}
+	h3.checkoutHeader.orderNumber{
+		font-size: inherit;
+		margin-top: 1rem;
 	}
 	.addressesPanel {
 		float: left;
