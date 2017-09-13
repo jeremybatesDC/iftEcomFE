@@ -286,6 +286,7 @@ form[action$="JoinSummary"] {
 	input#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_btnSaveEducation {
 		@include unButton()
 	}
+
 }
 
 #ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate,
@@ -818,6 +819,10 @@ main.membershipRenewal {
 	.MembershipRenewalControl_PersonifyDefault .caption {
 
 		font-weight: normal;
+		color: #000;
+	}
+	[id$="lblSecMemberDate"] {
+		color: #000;
 	}
 	.heading2,
 	.heading3,
@@ -1380,6 +1385,15 @@ main.membershipJoin {
 			margin-left: 4.8rem !important;
 		}
 	}
+}
+
+#ctl00_MainContent_ctl00_UserRegistrationControl_MyAccountContactAddress_EditAddressControl_lblZipWarning {
+	p {
+		border: 1px solid #76a120;
+		padding: 1rem;
+		margin-top: 1rem;
+	}
+	
 }
 
 //optional sections
