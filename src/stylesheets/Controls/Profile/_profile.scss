@@ -42,6 +42,55 @@ form[action$="educationalbackground"] {
 	}
 }
 
+.myAccountProfile {
+
+	.billingAddress.mobile-way {
+		display: inline;
+	    //float: left;
+	    padding: 10px;
+	    border: 1px solid #eee;
+	    margin: 10px 0;
+	}
+
+	.checkoutHeader.orderNumber.heading3 {
+		color: #333;
+		font-size: 12px;
+		font-weight: normal;
+		margin-top:1rem;
+		margin-bottom: 1rem;
+	}
+
+	#ctl00_MainContent_ctl00_pnlContainerMain {
+		> .heading2 {
+			display: none;
+		}
+		//you would think you wouldnT need nested ID selectors, but sometimes...
+		#ctl00_MainContent_ctl00_lblOrderNumbers {
+			display: block;
+			color: #333;
+    		font-size: 2.6rem;
+    		font-weight: bold;
+    		margin-top: 2rem;
+    		margin-bottom: 2rem;
+		}
+		
+	}
+	.ReceiptSummaryControl_PersonifyDefault .productImageSection {
+		padding:0 !important;
+	}
+	[id$="QuantityCaption"],
+	[id$="UnitPriceCaption"],
+	[id$="TotalCaption"] {
+		font-weight: bold;
+	}
+	
+	#ctl00_MainContent_ctl00_AddressControl_EditAddressControl_CountryLabel {
+		display: inline;
+	}
+	    
+}
+
+
 .totalPaymentContainer,
 .ctrl-pay-open-oder.balanceContainer {
 	font-size: 1.6rem;
@@ -72,6 +121,7 @@ form[action$="educationalbackground"] {
 		}
 	}
 }
+
 
 .myAccountProfile {
 	.profile-control-edit-mode {

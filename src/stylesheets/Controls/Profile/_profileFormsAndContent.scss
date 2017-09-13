@@ -124,8 +124,20 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
   }
   ul.membershipValues li {
     border: none;
+    &.memType {
+      letter-spacing: -1px;
+    }
   }
 }
+
+.myAccountProfile {
+  span[id$="Categories"],
+  span[id$="LabelBuyingInfluence"]{
+    font-weight: bold;
+    line-height: 2;
+  }
+}
+
 
 .ctrl-form-row.ctrl-emergency-contacts-form-row-priority {
   margin-bottom: 2em;
