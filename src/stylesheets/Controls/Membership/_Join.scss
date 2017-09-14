@@ -671,9 +671,9 @@ form[action$="JoinSummary"] {
 	#ctl00_MainContent_ctl00_MembershipContributionsControl1_ContainerPanel {
 		margin-top: 2rem;
 		> .heading2 {
-			font-family: $headlineFont;
-			font-size: 2.6rem;
-			font-weight: bold;
+			font-family: $headlineFont !important;
+			font-size: 2.6rem !important;
+			font-weight: bold !important;
 		}
 	}
 	.MyAccountContactAddress_PersonifyDefault .ctrlContent {
