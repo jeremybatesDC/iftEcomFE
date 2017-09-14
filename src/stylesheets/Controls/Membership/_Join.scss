@@ -222,16 +222,16 @@ form[action$="JoinSummary"] {
 		margin-right: -20px;
 		padding: 20px;
 		> .heading2 {
-			font-size: 2.6rem;
-			font-family: $headlineFont;
-			font-weight: bold;
+			font-size: 2.6rem !important;
+			font-family: $headlineFont !important;
+			font-weight: bold !important;
 		}
 	}
 	#ctl00_MainContent_ctl00_MembershipBioInfoEducation_EditContainerPanel {
 		.heading3 {
-			font-size: 2.6rem;
-			font-family: $headlineFont;
-			font-weight: bold;
+			font-size: 2.6rem !important;
+			font-family: $headlineFont !important;
+			font-weight: bold !important;
 		}
 	}
 }
