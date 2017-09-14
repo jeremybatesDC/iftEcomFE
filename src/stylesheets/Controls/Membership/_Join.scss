@@ -221,6 +221,18 @@ form[action$="JoinSummary"] {
 		margin-left: -20px;
 		margin-right: -20px;
 		padding: 20px;
+		> .heading2 {
+			font-size: 2.6rem;
+			font-family: $headlineFont;
+			font-weight: bold;
+		}
+	}
+	#ctl00_MainContent_ctl00_MembershipBioInfoEducation_EditContainerPanel {
+		.heading3 {
+			font-size: 2.6rem;
+			font-family: $headlineFont;
+			font-weight: bold;
+		}
 	}
 }
 
@@ -285,6 +297,10 @@ form[action$="JoinSummary"] {
 	#ctl00_MainContent_ctl00_UserRegistrationControl_RegistrationPanel {
 		background: #fff;
 		padding: 2rem;
+		@include break(max, $breakpoint-max-xs-override){
+			padding-left:0 !important;
+			padding-right:0 !important;
+		}
 	}
 	input#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_btnSaveEducation {
 		@include unButton()
@@ -386,6 +402,27 @@ div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_divRenewalHeading {
 	margin-bottom: 2rem;
 	border-bottom: 3px solid #e6e6e6;
 }
+
+div#ctl00_MainContent_ctl00_divRenewalHeading {
+	display:none !important;
+}
+
+.membershipRenewal {
+	.customerName.heading3 {
+		font-size: 1em;
+	}
+
+	.heading4 {
+		font-family: $headlineFont;
+		font-size: 2.6rem;
+		font-weight: bold;
+
+	}
+
+}
+
+
+
 
 // Nav
 .WizardBannerControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
@@ -630,6 +667,11 @@ form[action$="JoinSummary"] {
 	}
 	#ctl00_MainContent_ctl00_MembershipContributionsControl1_ContainerPanel {
 		margin-top: 2rem;
+		> .heading2 {
+			font-family: $headlineFont;
+			font-size: 2.6rem;
+			font-weight: bold;
+		}
 	}
 	.MyAccountContactAddress_PersonifyDefault .ctrlContent {
 		padding: 6px;
@@ -782,6 +824,11 @@ form[action$="JoinSurvey"] {
 #ctl00_MainContent_ctl00_MembershipDivisionControl_RefreshPanel {
 	table {
 		width: 100%;
+	}
+	.heading3 {
+		font-size: 2.6rem !important;
+		font-family: $headlineFont !important;
+		font-weight: bold !important;
 	}
 }
 
@@ -1273,8 +1320,11 @@ main.membershipJoin {
 	}
 
 	#ctl00_MainContent_ctl00_BuyBox_MessageLabel {
-		padding-left: 200px;
+		
 		font-style: italic;
+		@include break(min, $breakpoint-min-xs-override){
+			padding-left: 200px;
+		}
 	}
 
 	#ctl00_MainContent_ctl00_BuyBox_EffectiveDateLabel {
@@ -1390,13 +1440,21 @@ main.membershipJoin {
 	}
 }
 
-#ctl00_MainContent_ctl00_UserRegistrationControl_MyAccountContactAddress_EditAddressControl_lblZipWarning {
+
+[id$="lblZipWarning"] {
 	p {
 		border: 1px solid #76a120;
 		padding: 1rem;
 		margin-top: 1rem;
 	}
-	
 }
 
-//optional sections
+#ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_PhoneControl_ContainerPanelPanel,
+#ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_PhoneControl_ContainerPanelPanel[style]{
+	display:inline-block !important;
+}
+
+
+#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_divRenewalHeading {
+	display: none !important;
+}
