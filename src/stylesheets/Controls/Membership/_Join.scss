@@ -395,9 +395,12 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 }
 
 div#ctl00_MainContent_ctl00_divRenewalHeading,
-div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_divRenewalHeading {
-	font-size: 2rem;
-	font-weight: bold;
+div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_LabelRenewalHeading,
+div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_divRenewalHeading,
+div[id$="RenewalHeading"]{
+	font-family:$headlineFont !important;
+	font-size: 2.6rem !important;
+	font-weight: bold !important;
 	padding-bottom: 2rem;
 	margin-bottom: 2rem;
 	border-bottom: 3px solid #e6e6e6;
@@ -1455,6 +1458,6 @@ main.membershipJoin {
 }
 
 
-#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_divRenewalHeading {
-	display: none !important;
-}
+// #ctl00_MainContent_ctl00_membershipRenewalDetailsControl_divRenewalHeading {
+// 	display: none !important;
+// }
