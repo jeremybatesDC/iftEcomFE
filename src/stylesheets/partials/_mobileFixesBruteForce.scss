@@ -1,0 +1,101 @@
+
+
+@include break(max, $breakpoint-max-xs-override) {
+
+	.header__utility-auth {
+		padding-right: 0 !important;
+		align-items: flex-start;
+		.btn {
+			font-size: 1rem !important;
+			padding-top: .7rem !important;
+			padding-right: .5rem !important;
+			padding-left: .5rem !important;
+			letter-spacing: -.025rem !important;
+		}
+	}
+
+	.welcomemessage {
+		font-size: 1rem !important;
+		line-height: 1 !important;
+		padding-right: 1rem !important;
+	}
+	label,
+	label[style] {
+		white-space: normal !important;
+	}
+
+	.popUpWindow,
+	.popUpWindow[style]{
+		overflow: scroll !important;
+	}
+
+	.memOptions,
+	.memOptions[style] {
+		overflow: scroll !important
+	}
+
+	div.segmentsListPanel .RadListBox .rlbGroup ul li .rlbText {
+		top: 0 !important;
+		padding-top: .5rem !important;
+	}
+	.shippingEstimates .estimateCountry {
+		min-width: auto !important;
+	}
+
+	#ctl00_MainContent_ctl00_CheckoutAddressInformationControl_pnlInnerMain {
+		.billingAddress{
+			display: none !important;
+		}
+	}
+	.divTableCell.panel-add-card-form {
+		padding-right: 0 !important;
+		padding-left: 0 !important;
+	}
+	.validatedMessage {
+		font-size: 1rem !important;
+		padding: 1rem !important;
+		top: 0 !important;
+		z-index: 1 !important;
+	}
+	.breadcrumbs__item {
+		font-size: 1.2rem !important;
+		&:after {
+			background-repeat: no-repeat !important;
+			top: 5px !important;
+			background-size: 1rem !important;
+		}
+
+	}
+
+	html body main div.WizardHeaderControl_PersonifyDefault span.step {
+		padding-left:0 !important;
+	}
+
+	.validationIssues .validatedMessage ul {
+		padding-left:1.6rem;
+	}
+
+	.ChangeLinkButton {
+		top: 0 !important;
+		font-size: 1rem !important;
+	}
+
+	#ctl00_MainContent_ctl00_UserRegistrationControl_TMAFormRowStudent_Label {
+		+ div {
+			span {
+				margin-left: 0;
+				+ span {
+					margin-left: 0;
+				}
+			}
+		}
+	}
+
+	label[for="ctl00_MainContent_ctl00_UserRegistrationControl_RadioButtonYes"],
+	label[for="ctl00_MainContent_ctl00_UserRegistrationControl_RadioButtonNo"]{
+		width: auto;
+		padding-left:0;
+	}
+
+}
+

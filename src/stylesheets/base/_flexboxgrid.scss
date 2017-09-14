@@ -45,6 +45,24 @@
 	
 // }
 
+@include break(max, $breakpoint-max-xs-override) {
+	main {
+		.container {
+			.breadcrumbs {
+				padding-right:0;
+				padding-left:0;	
+				+ .row {
+					[class$="12"]{
+						padding-right:0;
+						padding-left:0;	
+					}
+				}
+			}
+			
+		}
+	}
+}
+
 
 
 [class^="col-sm"],

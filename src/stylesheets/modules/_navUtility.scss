@@ -3,6 +3,12 @@
 	//flex-direction:row;
 	position: relative;
 	font-size: 1.2rem;
+
+	@include break(max, $breakpoint-max-mobile) {
+		.has-nav--ACTIVE & {
+			display: none;
+		}
+	}
 	//needs more specificity, hence extra nesting here
 	a {
 		.nav-combined--wrapper & {
@@ -93,6 +99,11 @@
 			padding-left: 5vw;
 			padding-top: 5px;
 		}
+		@include break(max, $breakpoint-max-xs-override){
+			width: 100%;
+			margin-right: 0 !important;
+			margin-left: 0 !important;
+		}
 	}
 }
 
@@ -103,7 +114,7 @@
 	@include break(max, $breakpoint-max-1023) {
 		// display: none;
 		position: absolute;
-		left: 0;
+		left: .5rem;
 		top: 6rem;
 	}
 	li {
@@ -126,6 +137,19 @@
 	}
 }
 
+
+
+.header__utility-auth {
+	+ a {
+		@include break(max, $breakpoint-max-xs-override) {
+			transform: scale(.75);
+			top: 5px;
+			left: 2px;
+		}
+	}
+	
+}
+
 .nav-utility__reg-search-wrapper {
 	display: inline-block;
 	.header__utility-auth + a {
@@ -137,7 +161,12 @@
 		position: absolute;
 		top: 0;
 		right: 6rem;
-		padding-top: .6rem;
+		width: 100%;
+		padding-top: 0;
+		text-align: right;
+		// .nav-utility__reg-search-wrapper--inner {
+		// 	padding-left: 12rem;
+		// }
 	}
 	@include break(min, $breakpoint-min-md) {
 		float: right;

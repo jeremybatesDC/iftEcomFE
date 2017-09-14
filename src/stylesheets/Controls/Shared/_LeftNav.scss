@@ -36,3 +36,12 @@
 		display: none;
 	}
 }
+
+//this grid is off
+@include break(max, $breakpoint-max-1023){
+	.myAccountProfile {
+		.sidebar {
+			width: 100%;
+		}
+	}
+}
