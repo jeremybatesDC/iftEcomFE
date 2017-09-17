@@ -240,7 +240,7 @@ form[action$="JoinSummary"] {
 	a#ctl00_MainContent_ctl00_MembershipBioInfoEducation_EditButton,
 	a#ctl00_MainContent_ctl00_MembershipDivisionControl_EditButton {
 		position: absolute;
-		top: 20px;
+		top: 10px;
 		right: 0;
 	}
 	div#ctl00_MainContent_ctl00_ContainerPanel div#ctl00_ctl00_MainContent_ctl00_MembershipContributionsControl1_ContainerPanelPanel {
@@ -947,7 +947,7 @@ fieldset.emailDetails {
 }
 
 a#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipDivisionControl_EditButton {
-	padding-top: 2rem;
+	padding-top: 1.6rem;
 	display: block;
 	text-align: right;
 }
@@ -1181,7 +1181,7 @@ main.membershipRenewal {
 
 	a#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_EditButton {
 		position: absolute;
-		top: 2rem;
+		top: 4rem;
 		right: 2rem;
 	}
 
@@ -1233,7 +1233,9 @@ main.membershipRenewal {
 	}
 
 	.MembershipRenewalControl_PersonifyDefault .addressBlock {
-		width: calc(50% - 1rem);
+		@include break(min, $breakpoint-min-xs-override){
+			width: calc(50% - 1rem);
+		}	
 	}
 }
 
@@ -1455,6 +1457,15 @@ main.membershipJoin {
 #ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_PhoneControl_ContainerPanelPanel,
 #ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_PhoneControl_ContainerPanelPanel[style]{
 	display:inline-block !important;
+}
+
+#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_ContainerPanel {
+	> br {
+		display: none !important;
+		height:0;
+		width: 0;
+
+	}
 }
 
 
