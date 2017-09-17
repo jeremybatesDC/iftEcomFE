@@ -1233,7 +1233,9 @@ main.membershipRenewal {
 	}
 
 	.MembershipRenewalControl_PersonifyDefault .addressBlock {
-		width: calc(50% - 1rem);
+		@include break(min, $breakpoint-min-xs-override){
+			width: calc(50% - 1rem);
+		}	
 	}
 }
 

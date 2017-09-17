@@ -37,6 +37,14 @@ main.main.storeDetail {
 	@include inputText()
 }
 
+
+.summaryData {
+	.appliedCouponsTable {
+		margin-top: 10px;
+	}
+}
+
+
 .segmentsListTabs .rlbSelected {
 	background-color: $ift-blue !important;
 	&:hover,

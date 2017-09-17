@@ -47,6 +47,15 @@
 	left: -4px!important;
 }
 
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	html body .RadWindow_PersonifyDefault .rwControlButtons a.rwCloseButton {
+ 		background-image: url("http://ebiz-ift.brightfind.com/Ecommerce/Themes/PersonifyDefault/images/closeico.png") !important;
+ 	}
+}
+
+
+
 .rwWindowContent .buttonRow input[type="button"] {
 	padding: .4rem 1rem;
 	display: inline-block;

@@ -92,10 +92,25 @@
 	}
 
 	label[for="ctl00_MainContent_ctl00_UserRegistrationControl_RadioButtonYes"],
-	label[for="ctl00_MainContent_ctl00_UserRegistrationControl_RadioButtonNo"]{
+	label[for="ctl00_MainContent_ctl00_UserRegistrationControl_RadioButtonNo"],
+	label[for="ctl00_MainContent_ctl00_UserRegistrationControl_RadioButtonYesUserAlreadyLoggedIn"] {
 		width: auto;
 		padding-left:0;
 	}
 
+
+	div#ctl00_MainContent_ctl00_MyAccountContactEmail_PhoneEditControl_ContainerPanel input {
+		font-size: 11px !important;
+	}
+
+	#ctl00_MainContent_ctl00_UserRegistrationControl_TMAFormRowStudentUserAlreadyLoggedIn_Label {
+		+ div {
+			> span {
+				+ span {
+					display: block;
+				}
+			}
+		}
+	}
 }
 
