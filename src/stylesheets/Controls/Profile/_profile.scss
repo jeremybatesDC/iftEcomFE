@@ -334,3 +334,10 @@ form[action$="purchasehistory"] {
 		margin-bottom: 2rem;
 	}
 }
+
+
+.exp-col-title-text {
+	&.expanded {
+		color: $body-text-color !important;
+	}
+}

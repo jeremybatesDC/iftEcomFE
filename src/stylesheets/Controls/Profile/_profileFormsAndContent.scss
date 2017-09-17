@@ -130,11 +130,23 @@ h3.heading3.ctrlTitle.h-color-primary.bord-low {
   }
 }
 
+
 .myAccountProfile {
   span[id$="Categories"],
   span[id$="LabelBuyingInfluence"]{
     font-weight: bold;
     line-height: 2;
+  }
+  .memType {
+    letter-spacing: -1px;
+    .label {
+      padding-right: 0 !important;
+    }
+    .value {
+      //shrink
+      font-size: .9em !important;
+      padding-left: 0 !important;
+    }
   }
 }
 
