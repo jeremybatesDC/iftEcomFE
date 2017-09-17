@@ -94,8 +94,8 @@
 	label[for="ctl00_MainContent_ctl00_UserRegistrationControl_RadioButtonYes"],
 	label[for="ctl00_MainContent_ctl00_UserRegistrationControl_RadioButtonNo"],
 	label[for="ctl00_MainContent_ctl00_UserRegistrationControl_RadioButtonYesUserAlreadyLoggedIn"] {
-		width: auto;
-		padding-left:0;
+		width: auto !important;
+		padding-left:0 !important;
 	}
 
 
