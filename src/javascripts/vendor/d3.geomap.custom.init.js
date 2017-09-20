@@ -424,12 +424,13 @@
             theReferenceFormLabelElement.insertBefore(tooltipElement, theFirstChild);
         }
 
-
+        //IE doesNt support remove. Must target parent and remove child
         function removeAllToolTips(){
             var nodelistOfTooltips = document.querySelectorAll('.niftyTooltip');
             if(nodelistOfTooltips !== null){
                 for(var i = 0; i < nodelistOfTooltips.length; i++){
-                    nodelistOfTooltips[i].remove();
+                    //nodelistOfTooltips[i].remove();
+                    nodelistOfTooltips[i].parentNode.removeChild(nodelistOfTooltips[i]);
                 }
             }  
         }
@@ -460,7 +461,9 @@
             //query this here, not at the top
             var noResultsMessageContainer = document.getElementById('noResultsMessageContainer');
             if(noResultsMessageContainer !== null){
-                noResultsMessageContainer.remove();
+                //noResultsMessageContainer.remove();
+                //for IE 11
+                noResultsMessageContainer.parentNode.removeChild(noResultsMessageContainer);
             }
         }
         function clearCheckBoxes(){

@@ -1469,6 +1469,18 @@ main.membershipJoin {
 }
 
 
+[id$="_memOptionPanel"] {
+	table.membershipTable {
+		span.priceLabel {
+			width: 100%;
+			text-align: right;
+			&:empty {
+				display: none;
+			}
+		}
+	}
+}
+
 // #ctl00_MainContent_ctl00_membershipRenewalDetailsControl_divRenewalHeading {
 // 	display: none !important;
 // }
