@@ -176,6 +176,22 @@ form[action$="JoinSurvey"] {
 	}
 }
 
+@include break(min, $breakpoint-min-md){
+	div#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dpEndDate_wrapper {
+	    position: absolute;
+	    left: 203px;
+	    top: 0;
+	}
+}
+div#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_frEndDate {
+    position: relative;
+}
+
+img#ctl00_MainContent_ctl00_UserRegistrationControl_YesDegreeInfo,
+img#ctl00_MainContent_ctl00_UserRegistrationControl_Image1 {
+  width: 1.4rem;
+}
+
 #ctl00_MainContent_ctl00_StudentBenefitsControl_memOptionPanel label[for="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl02_AirmailCheckBox"] {
 	margin-left: 0rem;
 }
@@ -184,7 +200,17 @@ form[action$="JoinSurvey"] {
   margin-left: 7rem;
 }
 
+div#ctl00_MainContent_ctl00_UserRegistrationControl_TMAFormRowStudentUserAlreadyLoggedIn td,
+div#ctl00_MainContent_ctl00_UserRegistrationControl_TMAFormRowNoAlreadyLoggin td,
+div#ctl00_MainContent_ctl00_UserRegistrationControl_TMAFormRowStudent td,
+div#ctl00_MainContent_ctl00_UserRegistrationControl_TMAFormRowNo td {
+    width: 140px;
+}
 
+input#ctl00_MainContent_ctl00_UserRegistrationControl_PasswordTextBox,
+input#ctl00_MainContent_ctl00_UserRegistrationControl_ConfirmPasswordTextBox {
+	@include inputText();
+}
 
 #ctl00_MainContent_ctl00_BioInfoPanel .ctrlContent h4 {
 	background: white;
