@@ -3,6 +3,9 @@ main.membershipJoin,
 form[action$="Code=REG"],
 form[action$="JoinSummary"],
 form[action$="JoinSurvey"] {
+	a#ctl00_MainContent_ctl00_UserRegistrationControl_MyAccountContactAddress_EditButton {
+		display: none;
+	}
 	table {
 		overflow-x: scroll; //purely for readability
 		&#ctl00_MainContent_ctl00_chkDivision {
