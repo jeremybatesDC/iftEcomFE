@@ -3,9 +3,6 @@ main.membershipJoin,
 form[action$="Code=REG"],
 form[action$="JoinSummary"],
 form[action$="JoinSurvey"] {
-	a#ctl00_MainContent_ctl00_UserRegistrationControl_MyAccountContactAddress_EditButton {
-		display: none;
-	}
 	table {
 		overflow-x: scroll; //purely for readability
 		&#ctl00_MainContent_ctl00_chkDivision {
@@ -186,6 +183,10 @@ form[action$="JoinSurvey"] {
 	    top: 0;
 	}
 }
+// Will need this soon 9-21s
+// a#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_AccountContactAddressControl_EditButton {
+//     display: none;
+// }
 div#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_frEndDate {
     position: relative;
 }
