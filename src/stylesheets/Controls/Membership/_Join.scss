@@ -176,6 +176,14 @@ form[action$="JoinSurvey"] {
 	}
 }
 
+#ctl00_MainContent_ctl00_MembershipMemberTypeControl_pnlStudentHeadingText #ctl00_MainContent_ctl00_MembershipMemberTypeControl_lblPrice {
+    display: inherit;
+}
+
+#ctl00_MainContent_ctl00_MembershipMemberTypeControl_pnlStudentHeadingText {
+    padding: 1rem 0;
+}
+
 @include break(min, $breakpoint-min-md){
 	div#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dpEndDate_wrapper {
 	    position: absolute;
