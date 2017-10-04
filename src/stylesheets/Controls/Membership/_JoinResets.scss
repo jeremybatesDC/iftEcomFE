@@ -3,7 +3,7 @@ html .alreadyLoggedIn {
 	.education-details .formRow textarea,
 	.emailDetails .formRow .RadComboBox.RadComboBox_PersonifyDefault,
 	.userDetails .formRow .RadComboBox.RadComboBox_PersonifyDefault, //.formLayout .formRow label,
-	.formLayout .formRow label + div,
+	.formLayout .formRow label+div,
 	.formLayout .formRow input:not([type="button"]),
 	.formLayout .formRow select {
 		width: auto !important;
@@ -72,8 +72,8 @@ main.membershipJoin {
 		overflow: visible;
 	}
 	.ctrlContent {
-    padding: 0;
-    margin-bottom: 10px;
+		padding: 0;
+		margin-bottom: 10px;
 	}
 	.alreadyLoggedIn .ctrlContent .ctrlContent {
 		background-color: white;
@@ -123,13 +123,46 @@ main.membershipJoin {
 	.MyAccountContactAddress_PersonifyDefault.Base_PersonifyDefault.Base_PersonifyDefault {
 		padding-bottom: 20px;
 	}
-	.MembershipJoinSummaryControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault > .ctrlContent {
+	.MembershipJoinSummaryControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault>.ctrlContent {
 		padding: 0;
 		margin-bottom: 20px;
 	}
 }
 
-#ctl00_MainContent_ctl00_UserRegistrationControl_UserAlreadyLoggedInPanel {
+
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationControl_frEndDate,
+#ctl00_MainContent_ctl00_frEndDate {
+	position: relative;
+	br {
+		display: none!important;
+	}
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+	span {
+		float: left;
+		width: 154px;
+		left: 0;
+		clear: both;
+		margin-top: 15px;
+	}
+	span.riSingle.RadInput.RadInput_PersonifyDefault{
+		float: none;
+		margin: 0;
+	}
+	label {
+		float: left;
+		margin-top: 15px;
+	}
+}
+
+
+#ctl00_MainContent_ctl00_UserRegistrationControl_EducationControl_frEndDate #ctl00_MainContent_ctl00_UserRegistrationControl_UserAlreadyLoggedInPanel {
 	.memberName,
 	.regContactsTitle {
 		padding-bottom: 10px;
