@@ -20,10 +20,12 @@
         ,additionalAlreadySavedSections: []
     }
 
-    function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProductName, currentComponentProductId, currentComponentProductShortName, currentMemberPrice, currentPostalCodeRange, currentComponentParentProduct){
+    function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProductCode, currentProductName, currentComponentProductId, currentComponentProductCode, currentComponentProductShortName, currentMemberPrice, currentPostalCodeRange, currentComponentParentProduct){
         this.currentProductId = currentProductId;
+        this.currentProductCode = currentProductCode;
         this.currentProductName = currentProductName;
         this.currentComponentProductId = currentComponentProductId;
+        this.currentComponentProductCode = currentComponentProductCode;
         this.currentComponentProductShortName = currentComponentProductShortName;
         this.currentMemberPrice = currentMemberPrice;
         this.currentPostalCodeRange = currentPostalCodeRange;
@@ -33,7 +35,7 @@
     var mapStatusContainerDeepARRAY = [];
     function constructFreshMapStatusContainerModel(){
         for(var i = 0; i < 8; i++){
-            var thisConstructedThing = new MapStatusContainerDeepARRAY_CONSTRUCTOR(null, null, null, null, null, null);
+            var thisConstructedThing = new MapStatusContainerDeepARRAY_CONSTRUCTOR(null, null, null, null, null, null, null, null);
             mapStatusContainerDeepARRAY.push(thisConstructedThing);
         }
     }
@@ -96,7 +98,7 @@
         var nodeListOfOptionalSectionsInputs = document.querySelectorAll('input[id*="MembershipJoinSection_SectionRepeater"]');
         var nodeListOfComponentProductsAlreadySelected = document.querySelectorAll('[id$="IFTSectionProductIdComponent"');
 
-            
+            //ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater_ctl00_HiddenFieldComponentProductId
 
         var componentSectionHiddenInput = document.getElementById('ctl00_MainContent_ctl00_MembershipJoinSection_componentRepeater_ctl00_IFTSectionProductIdComponent');
 
@@ -106,8 +108,51 @@
         
         if(nodeListOfOptionalSectionsInputs !== null){
             for(var i = 0; i < nodeListOfOptionalSectionsInputs.length; i++){
-                userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(nodeListOfOptionalSectionsInputs[i].value));
+                
+                var valueOfInput = parseInt(nodeListOfOptionalSectionsInputs[i].value)
+                userAlreadySavedSections.additionalAlreadySavedSections.push(valueOfInput);
+
+                    console.log('here is where i can also do a lookup to include component sections in this already-selected nodelist');
+
+
+
+
+
+
+
+
             }
+
+            //now, map over the already saved sections in order to add their fellows in the raw section data
+            // userAlreadySavedSections.additionalAlreadySavedSections.map(function(thisAdditional){
+
+            //     console.log(thisAdditional);
+
+            // });
+
+           
+            var additionalComponentSectionBasedOnLookup = rawSectionData.SectionItems.filter(function(sectionItem){
+
+                //return only the ones that pass the test // NOT this hardcoded test
+                return sectionItem.ComponentProductCode === 'SEC06A' + 'C';
+            });
+
+            // additionalComponentSectionBasedOnLookup.map(function(){
+
+            // });
+
+
+            additionalComponentSectionBasedOnLookup.map(function(thisAdditionalSection){
+                console.log(thisAdditionalSection.ComponentProductId);
+                userAlreadySavedSections.additionalAlreadySavedSections.push(thisAdditionalSection.ComponentProductId);
+
+
+            });
+            
+
+            console.log(userAlreadySavedSections);
+
+
         }
 
         if(nodeListOfComponentProductsAlreadySelected !== null){
@@ -117,7 +162,7 @@
                 userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(nodeListOfComponentProductsAlreadySelected[ii].value));
             }
            
-            //console.log(userAlreadySavedSections.additionalAlreadySavedSections);
+            console.log(userAlreadySavedSections.additionalAlreadySavedSections);
         }
     }
 
@@ -129,13 +174,6 @@
         ,currentPostalCodeRange: ''
     }
 
-    // var fieldsRequiredByBackend = {
-    //     currentProductId: ''
-    //     ,currentProductName: ''
-    //     ,currentComponentProductId: ''
-    //     ,currentComponentProductShortName: ''
-    //     ,currentMemberPrice: ''
-    // }
 
     function iftMapFunctionInit(){
 
@@ -320,8 +358,10 @@
                 (function setAllTheProperties(){
                     //this is hardcoded, kinda. The order matters, so this should be a list operation. Or at least a forEach for ForIn loop. Better to do a list operation over properties
                     mapStatusContainerDeepARRAY[iteratorNum].currentProductId = rawSectionData.SectionItems[indexOfSectionItem].ProductId;
+                        mapStatusContainerDeepARRAY[iteratorNum].currentProductCode = rawSectionData.SectionItems[indexOfSectionItem].ProductCode;
                     mapStatusContainerDeepARRAY[iteratorNum].currentProductName = rawSectionData.SectionItems[indexOfSectionItem].ProductName;
                     mapStatusContainerDeepARRAY[iteratorNum].currentComponentProductId = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductId;
+                    mapStatusContainerDeepARRAY[iteratorNum].currentComponentProductCode = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductCode;
                     mapStatusContainerDeepARRAY[iteratorNum].currentComponentProductShortName = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductShortName;
                     mapStatusContainerDeepARRAY[iteratorNum].currentMemberPrice = rawSectionData.SectionItems[indexOfSectionItem].MemberPrice;
                     mapStatusContainerDeepARRAY[iteratorNum].currentPostalCodeRange = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
@@ -343,6 +383,15 @@
 
                     //using currentComponentParentProduct as flag. May need to change test
                     var valueForParentPanel = mapStatusContainerDeepARRAY[z].currentComponentParentProduct;
+                    
+                    nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel-productId', mapStatusContainerDeepARRAY[z].currentProductId);
+                    nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel-productCode', mapStatusContainerDeepARRAY[z].currentProductCode);
+
+
+                    nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel-componentProductId', mapStatusContainerDeepARRAY[z].currentComponentProductId);
+                    nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel-componentProductCode', mapStatusContainerDeepARRAY[z].currentComponentProductCode);
+
+
                     if(valueForParentPanel === 'IFT'){
                         nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel', 'thisPanelHasComponentSection');
                     }
@@ -357,7 +406,9 @@
                     }
 
                     //if the product ID of the matching section item is one of the already selected sections
-                    if(userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1){
+                    if(userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1 
+                        || userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ComponentProductId) > -1
+                        ){
                         var numToPush = i;
                         indexesOfPanelsContainingAlreadySavedSections.push(numToPush);                                                     
                     }
@@ -473,7 +524,10 @@
         }
         function clearDataFlags(){
             for(var i = 0; i < nodeListOfCheckboxes.length; i++){
-                nodeListOfPanelsToPopulate[i].setAttribute('data-thispanel', '');
+                nodeListOfPanelsToPopulate[i].setAttribute('data-thispanel-productId', '');
+                nodeListOfPanelsToPopulate[i].setAttribute('data-thispanel-productCode', '');
+                nodeListOfPanelsToPopulate[i].setAttribute('data-thispanel-componentProductId', '');
+                nodeListOfPanelsToPopulate[i].setAttribute('data-thispanel-componentProductCode', '');
             }
         }
 
