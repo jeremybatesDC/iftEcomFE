@@ -177,39 +177,41 @@ form[action$="JoinSurvey"] {
 }
 
 #ctl00_MainContent_ctl00_MembershipMemberTypeControl_pnlStudentHeadingText #ctl00_MainContent_ctl00_MembershipMemberTypeControl_lblPrice {
-    display: inherit;
+	display: inherit;
 }
 
 #ctl00_MainContent_ctl00_MembershipMemberTypeControl_pnlStudentHeadingText {
-    padding: 1rem 0;
+	padding: 1rem 0;
 }
 
-@include break(min, $breakpoint-min-md){
+@include break(min, $breakpoint-min-md) {
 	div#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_dpEndDate_wrapper {
-	    position: absolute;
-	    left: 203px;
-	    top: 0;
+		position: absolute;
+		left: 203px;
+		top: 0;
 	}
 }
 
 a#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_AccountContactAddressControl_EditButton {
-    display: none;
+	display: none;
 }
+
 div#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_frEndDate {
-    position: relative;
+	position: relative;
 }
 
 img#ctl00_MainContent_ctl00_UserRegistrationControl_YesDegreeInfo,
 img#ctl00_MainContent_ctl00_UserRegistrationControl_Image1 {
-  width: 1.4rem;
+	width: 1.4rem;
 }
 
 #ctl00_MainContent_ctl00_StudentBenefitsControl_memOptionPanel label[for="ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl02_AirmailCheckBox"] {
 	margin-left: 0rem;
 }
+
 #ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional2_ctl01_AirmailCheckBox,
 #ctl00_MainContent_ctl00_StudentBenefitsControl_OptionsRepeaterAdditional_ctl02_AirmailCheckBox {
-  margin-left: 7rem;
+	margin-left: 7rem;
 }
 
 #ctl00_MainContent_ctl00_UserRegistrationControl_TMAFormRowStudentUserAlreadyLoggedIn td,
@@ -218,7 +220,7 @@ img#ctl00_MainContent_ctl00_UserRegistrationControl_Image1 {
 #ctl00_MainContent_ctl00_UserRegistrationControl_TMAFormRowNo td,
 #ctl00_MainContent_ctl00_UserRegistrationControl_TMAFormRowDegree td,
 #ctl00_MainContent_ctl00_UserRegistrationControl_TMAFormRowDegreeAlreadyLoggedIn td {
-    width: 140px;
+	width: 140px;
 }
 
 input#ctl00_MainContent_ctl00_UserRegistrationControl_PasswordTextBox,
@@ -261,7 +263,7 @@ form[action$="JoinSummary"] {
 		margin-left: -20px;
 		margin-right: -20px;
 		padding: 20px;
-		> .heading2 {
+		>.heading2 {
 			font-size: 2.6rem !important;
 			font-family: $headlineFont !important;
 			font-weight: bold !important;
@@ -337,15 +339,14 @@ form[action$="JoinSummary"] {
 	#ctl00_MainContent_ctl00_UserRegistrationControl_RegistrationPanel {
 		background: #fff;
 		padding: 2rem;
-		@include break(max, $breakpoint-max-xs-override){
-			padding-left:0 !important;
-			padding-right:0 !important;
+		@include break(max, $breakpoint-max-xs-override) {
+			padding-left: 0 !important;
+			padding-right: 0 !important;
 		}
 	}
 	input#ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_btnSaveEducation {
 		@include unButton()
 	}
-
 }
 
 #ctl00_MainContent_ctl00_UserRegistrationControl_EducationUserAlreadyLoggedIn_pnlUpdate,
@@ -437,8 +438,8 @@ html .education-details .formRow .RadPicker .rcTable.rcSingle {
 div#ctl00_MainContent_ctl00_divRenewalHeading,
 div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_LabelRenewalHeading,
 div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_divRenewalHeading,
-div[id$="RenewalHeading"]{
-	font-family:$headlineFont !important;
+div[id$="RenewalHeading"] {
+	font-family: $headlineFont !important;
 	font-size: 2.6rem !important;
 	font-weight: bold !important;
 	padding-bottom: 2rem;
@@ -447,7 +448,7 @@ div[id$="RenewalHeading"]{
 }
 
 div#ctl00_MainContent_ctl00_divRenewalHeading {
-	display:none !important;
+	display: none !important;
 }
 
 .membershipRenewal {
@@ -459,9 +460,7 @@ div#ctl00_MainContent_ctl00_divRenewalHeading {
 		font-family: $headlineFont;
 		font-size: 2.6rem;
 		font-weight: bold;
-
 	}
-
 }
 
 
@@ -710,7 +709,7 @@ form[action$="JoinSummary"] {
 	}
 	#ctl00_MainContent_ctl00_MembershipContributionsControl1_ContainerPanel {
 		margin-top: 2rem;
-		> .heading2 {
+		>.heading2 {
 			font-family: $headlineFont !important;
 			font-size: 2.6rem !important;
 			font-weight: bold !important;
@@ -1273,9 +1272,9 @@ main.membershipRenewal {
 	}
 
 	.MembershipRenewalControl_PersonifyDefault .addressBlock {
-		@include break(min, $breakpoint-min-xs-override){
+		@include break(min, $breakpoint-min-xs-override) {
 			width: calc(50% - 1rem);
-		}	
+		}
 	}
 }
 
@@ -1365,9 +1364,9 @@ main.membershipJoin {
 	}
 
 	#ctl00_MainContent_ctl00_BuyBox_MessageLabel {
-		
+
 		font-style: italic;
-		@include break(min, $breakpoint-min-xs-override){
+		@include break(min, $breakpoint-min-xs-override) {
 			padding-left: 200px;
 		}
 	}
@@ -1495,16 +1494,15 @@ main.membershipJoin {
 }
 
 #ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_PhoneControl_ContainerPanelPanel,
-#ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_PhoneControl_ContainerPanelPanel[style]{
-	display:inline-block !important;
+#ctl00_ctl00_MainContent_ctl00_UserRegistrationControl_PhoneControl_ContainerPanelPanel[style] {
+	display: inline-block !important;
 }
 
 #ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalDetails_ContainerPanel {
-	> br {
+	>br {
 		display: none !important;
-		height:0;
+		height: 0;
 		width: 0;
-
 	}
 }
 
@@ -1521,6 +1519,145 @@ main.membershipJoin {
 	}
 }
 
-// #ctl00_MainContent_ctl00_membershipRenewalDetailsControl_divRenewalHeading {
-// 	display: none !important;
-// }
+#ctl00_MainContent_ctl00_BioInfoPanel {
+	margin-top: 2rem;
+}
+
+#ctl00_MainContent_ctl00_MembershipMemberTypeControl_pnlPremier {
+	table td {
+		display: block;
+		margin-left: 4rem;
+	}
+	table td input[type="radio"] {
+		margin-left: -3rem;
+		width: 3rem;
+	}
+}
+
+.table__container{
+	overflow-x: auto;
+	margin-bottom: 4rem;
+}
+table.membership__table {
+	font-size: 1.4rem;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 0;
+  min-width: 48rem;
+	th,
+	td {
+		border: 1px solid #ddd;
+	}
+	tr.table__row:nth-child(even) {
+		background: #eee;
+	}
+	td:nth-child(3),
+	th:nth-child(3) {
+		width: 20%;
+	}
+	td:nth-child(2),
+	th:nth-child(2) {
+		position: relative;
+		width: 20%;
+		&:before,
+		&:after {
+			position: absolute;
+			z-index: 2;
+			top: -4px;
+			opacity: 0.2;
+			content: "";
+			width: 1rem;
+			height: calc(100% + 1px);
+			background-image: $border-gradient;
+			background-repeat: repeat-y;
+		}
+		&:before {
+			left: -6px;
+		}
+		&:after {
+			right: -6px;
+			transform: rotate(180deg);
+		}
+	}
+	.col--top {
+		border-top: 6px solid #86b624;
+	}
+	.col--bottom {
+		border-bottom: 3px solid #eee;
+		// box-shadow: 0px 4px 5px 2px rgba(0, 0, 0, 0.2);
+		margin-bottom: -3rem;
+		min-height: 5rem;
+		// display: block;
+		// background: white;
+		border-top: none;
+		// border-left: 1px solid white;
+		// border-right: 1px solid white;
+		&:before,
+		&:after {
+			height: calc(100% + 6px)!important;
+			top: -4px !important;
+		}
+	}
+	.table__row {
+		h2,
+		p {
+			margin: 0;
+			padding: 0;
+		}
+		h2 {
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+		p {
+			font-weight: normal;
+		}
+		th:first-child,
+		td:first-child {
+			text-align: left;
+		}
+	}
+	.table__cell {
+		padding: 1rem;
+		sup {
+			font-size: 2rem;
+			font-weight: 100;
+			display: inline-block;
+			vertical-align: top;
+		}
+		&.cell--empty {
+			border-top: none;
+			border-left: none;
+		}
+		&.cell--blue-light {
+			background-color: lighten($ift-blue, 5);
+			border-color: lighten($ift-blue, 5);
+			color: #fff;
+		}
+		&.cell--sky {
+			background-color: #e3edf7
+		}
+		&.cell--blue {
+			background-color: $ift-blue;
+			border-color: $ift-blue;
+			color: #fff;
+		}
+		&.cell--green {
+			background-color: $ift-green;
+			border-color: $ift-green;
+			color: #fff;
+		}
+		&.cell--green-light {
+			background-color: lighten($ift-green, 5);
+			border-color: lighten($ift-green, 5);
+			color: #fff;
+		}
+		&.cell--center {
+			text-align: center;
+		}
+	}
+	.table__row {
+		.table__heading {
+			background-color: #DEE8F3;
+		}
+	}
+}
