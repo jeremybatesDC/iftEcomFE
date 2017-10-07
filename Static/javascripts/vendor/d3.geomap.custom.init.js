@@ -134,7 +134,8 @@
             var additionalComponentSectionBasedOnLookup = rawSectionData.SectionItems.filter(function(sectionItem){
 
                 //return only the ones that pass the test // NOT this hardcoded test
-                return sectionItem.ComponentProductCode === 'SEC06A' + 'C';
+                return sectionItem.ComponentProductCode.indexOf('SEC06A' + 'C') > -1;
+
             });
 
             // additionalComponentSectionBasedOnLookup.map(function(){

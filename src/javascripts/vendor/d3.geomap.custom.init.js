@@ -112,46 +112,61 @@
                 var valueOfInput = parseInt(nodeListOfOptionalSectionsInputs[i].value)
                 userAlreadySavedSections.additionalAlreadySavedSections.push(valueOfInput);
 
-                    console.log('here is where i can also do a lookup to include component sections in this already-selected nodelist');
-
-
-
-
-
-
-
-
             }
 
+
+            // userAlreadySavedSections.additionalAlreadySavedSections.map(function(thisAleadySavedProductID){
+
+
+
+
+                
+            // });
+
             //now, map over the already saved sections in order to add their fellows in the raw section data
-            // userAlreadySavedSections.additionalAlreadySavedSections.map(function(thisAdditional){
-
-            //     console.log(thisAdditional);
-
-            // });
-
            
-            var additionalComponentSectionBasedOnLookup = rawSectionData.SectionItems.filter(function(sectionItem){
 
-                //return only the ones that pass the test // NOT this hardcoded test
-                return sectionItem.ComponentProductCode === 'SEC06A' + 'C';
-            });
-
-            // additionalComponentSectionBasedOnLookup.map(function(){
-
-            // });
+            //userAlreadySavedSections.additionalAlreadySavedSections.map(function(thisAlreadySavedSectionProductID){
 
 
-            additionalComponentSectionBasedOnLookup.map(function(thisAdditionalSection){
-                console.log(thisAdditionalSection.ComponentProductId);
-                userAlreadySavedSections.additionalAlreadySavedSections.push(thisAdditionalSection.ComponentProductId);
+            //var theseAdditionalSubComponentProdIDs;
 
 
-            });
+//Does this call for a REDUCE?
+
+            console.log(userAlreadySavedSections.additionalAlreadySavedSections.length);
+
+
+            var rawSectionItemsBelongingToPageProvidedIDs = rawSectionData.SectionItems.filter(function(thisRawSectionItem){
+
+
+
+
+            })
             
 
-            console.log(userAlreadySavedSections);
 
+
+            var relatedSubComponents = rawSectionData.SectionItems.filter(function(thisRawSectionItem){
+
+                //this is the key test.
+           
+
+                return thisRawSectionItem.ComponentProductCode === 'SEC06A' + 'C';
+            });
+
+
+
+
+            relatedSubComponents.map(function(thisAdditionalSection){
+                console.log(thisAdditionalSection.ComponentProductId);
+
+
+                userAlreadySavedSections.additionalAlreadySavedSections.push(thisAdditionalSection.ComponentProductId);
+                
+
+            });
+        
 
         }
 
