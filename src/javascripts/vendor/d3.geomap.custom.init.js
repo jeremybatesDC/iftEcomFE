@@ -115,23 +115,13 @@
 
             }
 
-
-            //there may be a few
-
-            //the max counter here is because i kept adding to the length of the array of i was measuring
-
             console.log(userAlreadySavedSections.additionalAlreadySavedSections);
 
-            var batchOfAssociatedComponentProductIDs = [];
 
-            for(var zzTop = 0; zzTop < 5; zzTop++){
+            for(var zzTop = 0; zzTop < userAlreadySavedSections.additionalAlreadySavedSections.length; zzTop++){
 
                 var prodCodePlusC;
-                //userAlreadySavedSections.additionalAlreadySavedSections.filter
-
-                //get reference to records with product IDs AND component product IDs 
-
-                //need to filter INSIDE of the loop
+            
                 var theRawSectionItemBelongingToThisPageProvidedValues = rawSectionData.SectionItems.filter(function(thisRawSectionItem){
                     return thisRawSectionItem.ComponentProductId === userAlreadySavedSections.additionalAlreadySavedSections[zzTop];
                 });
@@ -145,27 +135,9 @@
                     });
 
                 theRawSectionItemsOfAssociatedComponentProducts.map(function(thisAssociatedComponentProduct){
-                    
-                    //batchOfAssociatedComponentProductIDs.push(thisAssociatedComponentProduct.ComponentProductId);
-
                     userAlreadySavedSections.additionalComponentSavedSections.push(thisAssociatedComponentProduct.ComponentProductId);
-
-
                 });
 
-                // userAlreadySavedSections.additionalComponentSavedSections.push(batchOfAssociatedComponentProductIDs)
-                
-
-            
-                theRawSectionItemBelongingToThisPageProvidedValues.map(function(thisAdditionalSection){
-                    // console.log(thisAdditionalSection);
-                    // console.log(thisAdditionalSection.ComponentProductId);
-
-
-                    //we shouldn't be adding to an object that we're measuring
-                    // userAlreadySavedSections.additionalComponentSavedSections.push(thisAdditionalSection.ComponentProductId);
-                
-                });
 
             }
 
@@ -179,7 +151,6 @@
                 userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(nodeListOfComponentProductsAlreadySelected[ii].value));
             }
            
-            console.log(userAlreadySavedSections.additionalAlreadySavedSections);
         }
     }
 
