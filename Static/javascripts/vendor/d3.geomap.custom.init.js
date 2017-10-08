@@ -18,6 +18,7 @@
     var userAlreadySavedSections = {
         userHomeSectionProductID: null
         ,additionalAlreadySavedSections: []
+        ,additionalComponentSavedSections: []
     }
 
     function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProductCode, currentProductName, currentComponentProductId, currentComponentProductCode, currentComponentProductShortName, currentMemberPrice, currentPostalCodeRange, currentComponentParentProduct){
@@ -112,52 +113,67 @@
                 var valueOfInput = parseInt(nodeListOfOptionalSectionsInputs[i].value)
                 userAlreadySavedSections.additionalAlreadySavedSections.push(valueOfInput);
 
-                    console.log('here is where i can also do a lookup to include component sections in this already-selected nodelist');
+            }
 
 
+            //there may be a few
+
+            //the max counter here is because i kept adding to the length of the array of i was measuring
+
+            console.log(userAlreadySavedSections.additionalAlreadySavedSections);
+
+            var batchOfAssociatedComponentProductIDs = [];
+
+            for(var zzTop = 0; zzTop < 5; zzTop++){
+
+                var prodCodePlusC;
+                //userAlreadySavedSections.additionalAlreadySavedSections.filter
+
+                //get reference to records with product IDs AND component product IDs 
+
+                //need to filter INSIDE of the loop
+                var theRawSectionItemBelongingToThisPageProvidedValues = rawSectionData.SectionItems.filter(function(thisRawSectionItem){
+                    return thisRawSectionItem.ComponentProductId === userAlreadySavedSections.additionalAlreadySavedSections[zzTop];
+                });
+
+                theRawSectionItemBelongingToThisPageProvidedValues.map(function(x){
+                    prodCodePlusC = x.ProductCode + 'C';
+                });
+
+                var theRawSectionItemsOfAssociatedComponentProducts = rawSectionData.SectionItems.filter(function(thisRwSctItm){
+                        return thisRwSctItm.ComponentProductCode === prodCodePlusC
+                    });
+
+                theRawSectionItemsOfAssociatedComponentProducts.map(function(thisAssociatedComponentProduct){
+                    
+                    //batchOfAssociatedComponentProductIDs.push(thisAssociatedComponentProduct.ComponentProductId);
+
+                    userAlreadySavedSections.additionalComponentSavedSections.push(thisAssociatedComponentProduct.ComponentProductId);
 
 
+                });
+
+                // userAlreadySavedSections.additionalComponentSavedSections.push(batchOfAssociatedComponentProductIDs)
+                
+
+            
+                theRawSectionItemBelongingToThisPageProvidedValues.map(function(thisAdditionalSection){
+                    // console.log(thisAdditionalSection);
+                    // console.log(thisAdditionalSection.ComponentProductId);
 
 
-
+                    //we shouldn't be adding to an object that we're measuring
+                    // userAlreadySavedSections.additionalComponentSavedSections.push(thisAdditionalSection.ComponentProductId);
+                
+                });
 
             }
 
-            //now, map over the already saved sections in order to add their fellows in the raw section data
-            // userAlreadySavedSections.additionalAlreadySavedSections.map(function(thisAdditional){
-
-            //     console.log(thisAdditional);
-
-            // });
-
-           
-            var additionalComponentSectionBasedOnLookup = rawSectionData.SectionItems.filter(function(sectionItem){
-
-                //return only the ones that pass the test // NOT this hardcoded test
-                return sectionItem.ComponentProductCode.indexOf('SEC06A' + 'C') > -1;
-
-            });
-
-            // additionalComponentSectionBasedOnLookup.map(function(){
-
-            // });
-
-
-            additionalComponentSectionBasedOnLookup.map(function(thisAdditionalSection){
-                console.log(thisAdditionalSection.ComponentProductId);
-                userAlreadySavedSections.additionalAlreadySavedSections.push(thisAdditionalSection.ComponentProductId);
-
-
-            });
-            
-
-            console.log(userAlreadySavedSections);
-
-
         }
 
+        console.log(userAlreadySavedSections.additionalComponentSavedSections);
+
         if(nodeListOfComponentProductsAlreadySelected !== null){
-            //console.log('there is an already saved component section with ID ' + componentSectionHiddenInput.value);
             
             for(var ii = 0; ii < nodeListOfComponentProductsAlreadySelected.length; ii++){
                 userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(nodeListOfComponentProductsAlreadySelected[ii].value));
@@ -409,6 +425,7 @@
                     //if the product ID of the matching section item is one of the already selected sections
                     if(userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1 
                         || userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ComponentProductId) > -1
+                        || userAlreadySavedSections.additionalComponentSavedSections.indexOf(matchingSectionItems[i].ComponentProductId) > -1
                         ){
                         var numToPush = i;
                         indexesOfPanelsContainingAlreadySavedSections.push(numToPush);                                                     
