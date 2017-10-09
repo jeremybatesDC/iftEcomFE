@@ -48,7 +48,6 @@
 
     //hidden or not handled by iterator elsewhere -- but could create a model for it
     // function PanelDisplayStatusARRAY_CONSTRUCTOR(hiddenOrNot, disabledOrNot, isComponentOrNot){}
-
     function OutputStatusContainerDeepARRAY_CONSTRUCTOR(ProductId, ProductName, ComponentProductId, ComponentProductShortName, MemberPrice){
         this.ProductId = ProductId;
         this.ProductName = ProductName;
@@ -110,12 +109,15 @@
         if(nodeListOfOptionalSectionsInputs !== null){
             for(var i = 0; i < nodeListOfOptionalSectionsInputs.length; i++){
                 
-                var valueOfInput = parseInt(nodeListOfOptionalSectionsInputs[i].value)
-                userAlreadySavedSections.additionalAlreadySavedSections.push(valueOfInput);
+                var valueOfInput = parseInt(nodeListOfOptionalSectionsInputs[i].value);
 
+                //data has some stray 0s
+                if (valueOfInput !== 0){
+                    userAlreadySavedSections.additionalAlreadySavedSections.push(valueOfInput);
+                }
             }
 
-            console.log(userAlreadySavedSections.additionalAlreadySavedSections);
+            //console.log(userAlreadySavedSections.additionalAlreadySavedSections);
 
 
             for(var zzTop = 0; zzTop < userAlreadySavedSections.additionalAlreadySavedSections.length; zzTop++){
@@ -125,7 +127,6 @@
                 var theRawSectionItemBelongingToThisPageProvidedValues = rawSectionData.SectionItems.filter(function(thisRawSectionItem){
                     return thisRawSectionItem.ComponentProductId === userAlreadySavedSections.additionalAlreadySavedSections[zzTop];
                 });
-
                 theRawSectionItemBelongingToThisPageProvidedValues.map(function(x){
                     prodCodePlusC = x.ProductCode + 'C';
                 });
@@ -133,24 +134,18 @@
                 var theRawSectionItemsOfAssociatedComponentProducts = rawSectionData.SectionItems.filter(function(thisRwSctItm){
                         return thisRwSctItm.ComponentProductCode === prodCodePlusC
                     });
-
                 theRawSectionItemsOfAssociatedComponentProducts.map(function(thisAssociatedComponentProduct){
                     userAlreadySavedSections.additionalComponentSavedSections.push(thisAssociatedComponentProduct.ComponentProductId);
                 });
-
-
             }
-
         }
 
-        console.log(userAlreadySavedSections.additionalComponentSavedSections);
+        //console.log(userAlreadySavedSections.additionalComponentSavedSections);
 
         if(nodeListOfComponentProductsAlreadySelected !== null){
-            
             for(var ii = 0; ii < nodeListOfComponentProductsAlreadySelected.length; ii++){
                 userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(nodeListOfComponentProductsAlreadySelected[ii].value));
             }
-           
         }
     }
 
@@ -170,9 +165,7 @@
         constructFreshStagingContainerModel();
         constructFreshStagingContainerModelCOMPONENTS();
 
-
         setUserPreselections();
-
         //donT put text value here because it might be null and i donT want any logic in this variable declaration area.
 
         //get reference to outermost wrapper to show/hide with modal
@@ -185,15 +178,11 @@
         var internationalSelectMenu = document.getElementById('internationalSelectMenu');
         var arrayOfSpansToPopulateEmpty = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper span'));
         var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
-
         var hiddenInputForBackendCOMPONENTS = document.getElementById('ctl00_MainContent_ctl00_MembershipJoinSection_IFTSavedSectionHiddenfieldCOMPONENTS');
-        
         var activeStateString = 'iftMapWrapperOuter--ACTIVE-STATE';
         var disabledStateString = 'iftMap__sectionData__wrapper--DISABLED-STATE';
         var hiddenStateString = 'iftMap__sectionData__wrapper--HIDDEN-STATE';
-
         //already have a reference, but itS more general for etch-a-sketch reasons
-
         var nodeListOfPanelsToPopulate = document.querySelectorAll('.iftMap__sectionData__wrapper');
         var arrayOfPanelsToPopulate = Array.prototype.slice.call(nodeListOfPanelsToPopulate);
         var arrayOfArrayOfFieldsToPopulate = [];
@@ -256,7 +245,6 @@
                 removeAddActiveState();
                 clearCheckBoxes();
             }
-
             //OK, now display!
             writeDataToThePage();
         }//end mapHandlerFunction
@@ -336,7 +324,6 @@
             var indexOfPanelContainingHomeUserSection;
             var indexesOfPanelsContainingAlreadySavedSections = [];
 
-
             //if doing a map method with a counter, might be more idiomatic to use for loop
             matchingSectionItems.map(function(matchingSectionItem){
             //not all of these things should be in the map
@@ -374,11 +361,8 @@
                     
                     nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel-productId', mapStatusContainerDeepARRAY[z].currentProductId);
                     nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel-productCode', mapStatusContainerDeepARRAY[z].currentProductCode);
-
-
                     nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel-componentProductId', mapStatusContainerDeepARRAY[z].currentComponentProductId);
                     nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel-componentProductCode', mapStatusContainerDeepARRAY[z].currentComponentProductCode);
-
 
                     if(valueForParentPanel === 'IFT'){
                         nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel', 'thisPanelHasComponentSection');
@@ -404,7 +388,6 @@
                 }
             })();//end actionsBasedOnUserHomeSectionOuterMostFunction
 
-
             //QUERY THE DOM FOR THESE UNLESS PREPARED TO DO A PANEL STATE CONTAINER [hasTip, disabled, hidden]
 
             //this runs once per state selection
@@ -425,7 +408,6 @@
                     })();//end decideWhetherSectionIsComponent
 
                     (function unDisablePanelsAfterStateChoice(){
-
                         //make sure record associated with the panel [using the index of the loop] does not contain user home section or already added sections before unDisabling a panel
                         if(i !== indexOfPanelContainingHomeUserSection && indexesOfPanelsContainingAlreadySavedSections.indexOf(i) < 0)
                         {
@@ -435,7 +417,6 @@
                         else {
                             //if panel DOES CONTAIN home state, so disable the input of course
                             thisPanelToBeInspected.querySelector('input').disabled = true;
-                            
                         }
                     })();
 
@@ -453,7 +434,6 @@
                 }//end for loop
             })();//end of panelStatusFunctionPerStateChoice
         }//end of write data to page function
-
 
         function createToolTipOnDemand(theReferenceFormLabelElement){
             var tooltipElement = document.createElement('i');
@@ -506,11 +486,13 @@
                 noResultsMessageContainer.parentNode.removeChild(noResultsMessageContainer);
             }
         }
+        
         function clearCheckBoxes(){
             for(var i = 0; i < nodeListOfCheckboxes.length; i++){
                 nodeListOfCheckboxes[i].checked = false;
             }
         }
+
         function clearDataFlags(){
             for(var i = 0; i < nodeListOfCheckboxes.length; i++){
                 nodeListOfPanelsToPopulate[i].setAttribute('data-thispanel-productId', '');
@@ -538,7 +520,6 @@
                 iftMapWrapperOuter.classList.remove(activeStateString);
             }
         }
-
 
         function checkBoxHandler(event){
 
@@ -590,12 +571,10 @@
                 if(reDisableOrEnable === 'reDisable'){
                     thisPanelThatIsnTtheChosenOne.classList.add(disabledStateString);
                     thisPanelThatIsnTtheChosenOne.querySelector('input').disabled = true;
-
                 }
                 else if (reDisableOrEnable === 'enable'){
                     thisPanelThatIsnTtheChosenOne.classList.remove(disabledStateString);
                     thisPanelThatIsnTtheChosenOne.querySelector('input').disabled = false;
-
                 }
             }
         }
@@ -624,7 +603,6 @@
 
                 //this model can be 8
                 for(var i = 0; i < mapStatusContainerDeepARRAY.length; i++){
-                    
                     //stage checked
                     if(indexesOfSelectedSections.indexOf(i) > -1){
                         deepOutputObjectForStaging[i].ProductId = mapStatusContainerDeepARRAY[i].currentProductId;
@@ -641,26 +619,22 @@
                         deepOutputObjectForStagingCOMPONENTS[i].ComponentProductShortName = mapStatusContainerDeepARRAY[i].currentComponentProductShortName;
                         deepOutputObjectForStagingCOMPONENTS[i].MemberPrice = mapStatusContainerDeepARRAY[i].currentMemberPrice;
                     }
-
                 }
                 //console.log(deepOutputObjectForStaging);
                 //console.log(deepOutputObjectForStagingCOMPONENTS)
             })();
 
             (function putOutputArraysInHiddenInputs(){
-                                //insert value here.
-
+                //insert value here.
                 hiddenInputForBackend.value = JSON.stringify(deepOutputObjectForStaging);
                 //backend hasnT added this yet and i want to avoid errors
                 if(hiddenInputForBackendCOMPONENTS !== null){
-                    console.log(JSON.stringify(deepOutputObjectForStagingCOMPONENTS));
+                    //console.log(JSON.stringify(deepOutputObjectForStagingCOMPONENTS));
                     hiddenInputForBackendCOMPONENTS.value = JSON.stringify(deepOutputObjectForStagingCOMPONENTS);
                 }
             })(); 
-
         }
 
-        
         //EVENTS
         (function addEventListeners(){
             stateSelectMenu.addEventListener('change', mapHandlerFunction, false);
@@ -672,7 +646,6 @@
             arrayOfCheckboxes.map(function(thisCheckbox){
                 thisCheckbox.addEventListener('change', checkBoxHandler, false);
             })
-
         })();
     }    
 
