@@ -452,6 +452,9 @@ div#ctl00_MainContent_ctl00_divRenewalHeading {
 }
 
 .membershipRenewal {
+	div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalTypeDiv {
+		margin-bottom: 2rem;
+	}
 	.customerName.heading3 {
 		font-size: 1em;
 	}
@@ -462,9 +465,6 @@ div#ctl00_MainContent_ctl00_divRenewalHeading {
 		font-weight: bold;
 	}
 }
-
-
-
 
 // Nav
 .WizardBannerControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
@@ -1534,16 +1534,17 @@ main.membershipJoin {
 	}
 }
 
-.table__container{
+.table__container {
 	overflow-x: auto;
 	margin-bottom: 4rem;
 }
+
 table.membership__table {
 	font-size: 1.4rem;
 	width: 100%;
 	text-align: center;
 	margin-bottom: 0;
-  min-width: 48rem;
+	min-width: 48rem;
 	th,
 	td {
 		border: 1px solid #ddd;
@@ -1583,14 +1584,11 @@ table.membership__table {
 		border-top: 6px solid #86b624;
 	}
 	.col--bottom {
-		border-bottom: 3px solid #eee;
-		// box-shadow: 0px 4px 5px 2px rgba(0, 0, 0, 0.2);
+		border-bottom: 3px solid #eee; // box-shadow: 0px 4px 5px 2px rgba(0, 0, 0, 0.2);
 		margin-bottom: -3rem;
-		min-height: 5rem;
-		// display: block;
+		min-height: 5rem; // display: block;
 		// background: white;
-		border-top: none;
-		// border-left: 1px solid white;
+		border-top: none; // border-left: 1px solid white;
 		// border-right: 1px solid white;
 		&:before,
 		&:after {
