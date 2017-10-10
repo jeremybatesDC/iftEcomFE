@@ -243,6 +243,13 @@ form[action$="JoinSummary"] {
 		font-size: 2rem;
 		padding-bottom: 8px;
 	}
+	div#ctl00_MainContent_ctl00_MyAccountContactAddress_ContainerPanel .ctrlContent {
+		border: none;
+	}
+
+	div#ctl00_MainContent_ctl00_MyAccountContactAddress_ContainerPanel .emailDetails {
+		border: none;
+	}
 	label#ctl00_MainContent_ctl00_MembershipReferralControl_tbCompanyLabel {
 		min-width: 250px;
 		display: inline-block;
@@ -452,9 +459,20 @@ div#ctl00_MainContent_ctl00_divRenewalHeading {
 }
 
 .membershipRenewal {
-	div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalTypeDiv {
-		margin-bottom: 2rem;
+	div#ctl00_ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MainContainerPanel {
+		div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalTypeDiv {
+			margin-bottom: 2rem;
+		}
+		span#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_Title {
+			margin: 2rem 0;
+			display: block;
+		}
+
+		div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalTypeDiv {
+			margin: 2rem 0;
+		}
 	}
+
 	.customerName.heading3 {
 		font-size: 1em;
 	}
