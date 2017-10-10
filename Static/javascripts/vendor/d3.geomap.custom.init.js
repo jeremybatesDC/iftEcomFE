@@ -364,6 +364,7 @@
                     nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel-componentProductId', mapStatusContainerDeepARRAY[z].currentComponentProductId);
                     nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel-componentProductCode', mapStatusContainerDeepARRAY[z].currentComponentProductCode);
 
+                    //console.log(valueForParentPanel);
                     if(valueForParentPanel === 'IFT'){
                         nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel', 'thisPanelHasComponentSection');
                     }
@@ -495,6 +496,7 @@
 
         function clearDataFlags(){
             for(var i = 0; i < nodeListOfCheckboxes.length; i++){
+                nodeListOfPanelsToPopulate[i].setAttribute('data-thispanel', '');
                 nodeListOfPanelsToPopulate[i].setAttribute('data-thispanel-productId', '');
                 nodeListOfPanelsToPopulate[i].setAttribute('data-thispanel-productCode', '');
                 nodeListOfPanelsToPopulate[i].setAttribute('data-thispanel-componentProductId', '');
