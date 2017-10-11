@@ -1553,16 +1553,21 @@ main.membershipJoin {
 }
 
 .table__container {
-	overflow-x: auto;
+	// overflow-x: auto;
 	margin-bottom: 4rem;
 }
 
 table.membership__table {
 	font-size: 1.4rem;
+	min-width: 48rem;
 	width: 100%;
 	text-align: center;
 	margin-bottom: 0;
-	min-width: 48rem;
+	@include break(max, $breakpoint-max-mobile){
+		font-size: 1rem;
+		min-width: auto;
+		line-height: 1;
+	}
 	th,
 	td {
 		border: 1px solid #ddd;
@@ -1602,12 +1607,10 @@ table.membership__table {
 		border-top: 6px solid #86b624;
 	}
 	.col--bottom {
-		border-bottom: 3px solid #eee; // box-shadow: 0px 4px 5px 2px rgba(0, 0, 0, 0.2);
+		border-bottom: 3px solid #eee;
 		margin-bottom: -3rem;
-		min-height: 5rem; // display: block;
-		// background: white;
-		border-top: none; // border-left: 1px solid white;
-		// border-right: 1px solid white;
+		min-height: 5rem;
+		border-top: none;
 		&:before,
 		&:after {
 			height: calc(100% + 6px)!important;
@@ -1655,11 +1658,13 @@ table.membership__table {
 		&.cell--blue {
 			background-color: $ift-blue;
 			border-color: $ift-blue;
+			text-align: center;
 			color: #fff;
 		}
 		&.cell--green {
 			background-color: $ift-green;
 			border-color: $ift-green;
+			text-align: center;
 			color: #fff;
 		}
 		&.cell--green-light {
