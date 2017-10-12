@@ -123,13 +123,24 @@
             for(var zzTop = 0; zzTop < userAlreadySavedSections.additionalAlreadySavedSections.length; zzTop++){
 
                 var prodCodePlusC;
-            
+                var quirkVar = [];
+
                 var theRawSectionItemBelongingToThisPageProvidedValues = rawSectionData.SectionItems.filter(function(thisRawSectionItem){
-                    return thisRawSectionItem.ComponentProductId === userAlreadySavedSections.additionalAlreadySavedSections[zzTop];
+                        return thisRawSectionItem.ComponentProductId === userAlreadySavedSections.additionalAlreadySavedSections[zzTop];
                 });
+
+                console.log(theRawSectionItemBelongingToThisPageProvidedValues);
+
+                //there can be multiple
                 theRawSectionItemBelongingToThisPageProvidedValues.map(function(x){
                     prodCodePlusC = x.ProductCode + 'C';
+                    console.log(prodCodePlusC);
                 });
+
+
+
+
+               
 
                 var theRawSectionItemsOfAssociatedComponentProducts = rawSectionData.SectionItems.filter(function(thisRwSctItm){
                         return thisRwSctItm.ComponentProductCode === prodCodePlusC
@@ -137,6 +148,15 @@
                 theRawSectionItemsOfAssociatedComponentProducts.map(function(thisAssociatedComponentProduct){
                     userAlreadySavedSections.additionalComponentSavedSections.push(thisAssociatedComponentProduct.ComponentProductId);
                 });
+
+                console.log(userAlreadySavedSections.additionalComponentSavedSections);
+
+      
+                console.log(userAlreadySavedSections.additionalComponentSavedSections);
+
+
+
+
             }
         }
 
@@ -381,7 +401,9 @@
                     //if the product ID of the matching section item is one of the already selected sections
                     if(userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1 
                         || userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ComponentProductId) > -1
+                        || userAlreadySavedSections.additionalComponentSavedSections.indexOf(matchingSectionItems[i].ProductId) > -1
                         || userAlreadySavedSections.additionalComponentSavedSections.indexOf(matchingSectionItems[i].ComponentProductId) > -1
+
                         ){
                         var numToPush = i;
                         indexesOfPanelsContainingAlreadySavedSections.push(numToPush);                                                     
