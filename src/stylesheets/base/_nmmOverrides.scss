@@ -50,9 +50,9 @@
 		.stepLabel {
 			color: $ift-blue;
 		}
-		&.aspNetDisabled{
+		&.aspNetDisabled {
 			pointer-events: none;
-			.stepLabel{
+			.stepLabel {
 				color: $ift-grey-medium-light;
 			}
 		}
@@ -67,4 +67,17 @@
 			}
 		}
 	}
+}
+.membershipJoin #ctl00_MainContent_ctl00_MembershipMemberTypeControl_ContainerPanel {
+	padding: 2rem;
+	background: white;
+}
+table.membership__table {
+	td.table__cell {
+		display: table-cell !important;
+	}
+	tr.table__row {
+		display: table-row !important;
+	}
+
 }
