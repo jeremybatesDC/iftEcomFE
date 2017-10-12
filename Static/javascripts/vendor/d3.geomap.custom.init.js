@@ -120,6 +120,31 @@
             //console.log(userAlreadySavedSections.additionalAlreadySavedSections);
 
 
+            (function getDataQuirkValues(){
+                 var theCompProdCodeToMatch;
+
+                 var theRawSectionItemBelongingToHomeUserSelection = rawSectionData.SectionItems.filter(function(thisRawSectionItem){
+
+                     return thisRawSectionItem.ProductId === userAlreadySavedSections.userHomeSectionProductID;
+                 });
+
+                 theRawSectionItemBelongingToHomeUserSelection.map(function(thisRawSect){
+                    theCompProdCodeToMatch = thisRawSect.ProductCode + 'C';
+                    //console.log('heyYo' + thisRawSect.ProductCode);
+                    //console.log(thisRawSect);
+                 });
+
+                 var theRawSectionItemsBelongingToQuirkyOnPageValues = rawSectionData.SectionItems.filter(function(thisRawSectionItem){
+                        return thisRawSectionItem.ComponentProductCode === theCompProdCodeToMatch;
+                    });
+
+                 //console.log(theRawSectionItemsBelongingToQuirkyOnPageValues);
+                 theRawSectionItemsBelongingToQuirkyOnPageValues.map(function(thisRawSectItm){
+                     userAlreadySavedSections.additionalComponentSavedSections.push(thisRawSectItm.ProductId);
+                 });
+            })();
+
+
             for(var zzTop = 0; zzTop < userAlreadySavedSections.additionalAlreadySavedSections.length; zzTop++){
 
                 var prodCodePlusC;
@@ -128,15 +153,21 @@
                     return thisRawSectionItem.ComponentProductId === userAlreadySavedSections.additionalAlreadySavedSections[zzTop];
                 });
                 theRawSectionItemBelongingToThisPageProvidedValues.map(function(x){
+                    //console.log(x);
                     prodCodePlusC = x.ProductCode + 'C';
                 });
 
+               
                 var theRawSectionItemsOfAssociatedComponentProducts = rawSectionData.SectionItems.filter(function(thisRwSctItm){
                         return thisRwSctItm.ComponentProductCode === prodCodePlusC
                     });
                 theRawSectionItemsOfAssociatedComponentProducts.map(function(thisAssociatedComponentProduct){
+                    //console.log(thisAssociatedComponentProduct);
                     userAlreadySavedSections.additionalComponentSavedSections.push(thisAssociatedComponentProduct.ComponentProductId);
                 });
+
+
+
             }
         }
 
@@ -377,10 +408,13 @@
                     if(matchingSectionItems[i].ProductId === userAlreadySavedSections.userHomeSectionProductID){  //always just one
                         indexOfPanelContainingHomeUserSection = i;
                     }
+                    //console.log(userAlreadySavedSections);
 
                     //if the product ID of the matching section item is one of the already selected sections
-                    if(userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1 
+                    if(
+                        userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1 
                         || userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ComponentProductId) > -1
+                        || userAlreadySavedSections.additionalComponentSavedSections.indexOf(matchingSectionItems[i].ProductId) > -1
                         || userAlreadySavedSections.additionalComponentSavedSections.indexOf(matchingSectionItems[i].ComponentProductId) > -1
                         ){
                         var numToPush = i;
