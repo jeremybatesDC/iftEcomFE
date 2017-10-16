@@ -1,0 +1,83 @@
+.WizardBannerControl_PersonifyDefault.Membership_PersonifyDefault.Base_PersonifyDefault {
+	position: relative;
+	margin-bottom: 2rem;
+	display: flex; //make sure it doesNot accidentally break page widths
+	overflow: hidden;
+	a {
+		color: $ift-blue;
+		display: flex;
+		span {
+			width: auto !important;
+		}
+	}
+	.step {
+		flex-grow: 1;
+		position: relative;
+		background: transparent;
+		border-bottom: 3px solid $ift-grey-230;
+		color: $ift-blue;
+		min-height: 5rem;
+		align-items: center;
+		text-align: left;
+		padding-left: 1rem !important;
+		padding-bottom: 0 !important;
+		.prefix,
+		.sep,
+		.divider {
+			display: none;
+		}
+		.stepLabel {
+			font-size: 14px;
+			padding: 0;
+			padding-left: 10px;
+		}
+		.number {
+			width: 30px!important;
+			display: flex;
+			position: relative;
+			left: inherit;
+			top: inherit;
+			height: 30px!important;
+			border-radius: 100% !important;
+			border: 1px solid white;
+			box-shadow: none;
+			color: white;
+			text-shadow: none !important;
+			align-items: center;
+			justify-content: center;
+			background-color: $ift-grey-medium-light;
+		}
+		.stepLabel {
+			color: $ift-blue;
+		}
+		&.aspNetDisabled {
+			pointer-events: none;
+			.stepLabel {
+				color: $ift-grey-medium-light;
+			}
+		}
+		&.active {
+			background-color: $ift-green !important;
+			border-bottom-color: $ift-green !important;
+			.stepLabel {
+				color: $white;
+			}
+			.number {
+				background-color: transparent;
+			}
+		}
+	}
+}
+.membershipJoin #ctl00_MainContent_ctl00_MembershipMemberTypeControl_ContainerPanel {
+	padding: 2rem;
+	background: white;
+}
+table.membership__table {
+	td.table__cell {
+		display: table-cell !important;
+	}
+	tr.table__row {
+		display: table-row !important;
+	}
+
+}

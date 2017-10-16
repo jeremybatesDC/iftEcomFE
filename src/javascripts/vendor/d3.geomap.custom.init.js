@@ -18,12 +18,15 @@
     var userAlreadySavedSections = {
         userHomeSectionProductID: null
         ,additionalAlreadySavedSections: []
+        ,additionalComponentSavedSections: []
     }
 
-    function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProductName, currentComponentProductId, currentComponentProductShortName, currentMemberPrice, currentPostalCodeRange, currentComponentParentProduct){
+    function MapStatusContainerDeepARRAY_CONSTRUCTOR(currentProductId, currentProductCode, currentProductName, currentComponentProductId, currentComponentProductCode, currentComponentProductShortName, currentMemberPrice, currentPostalCodeRange, currentComponentParentProduct){
         this.currentProductId = currentProductId;
+        this.currentProductCode = currentProductCode;
         this.currentProductName = currentProductName;
         this.currentComponentProductId = currentComponentProductId;
+        this.currentComponentProductCode = currentComponentProductCode;
         this.currentComponentProductShortName = currentComponentProductShortName;
         this.currentMemberPrice = currentMemberPrice;
         this.currentPostalCodeRange = currentPostalCodeRange;
@@ -33,7 +36,7 @@
     var mapStatusContainerDeepARRAY = [];
     function constructFreshMapStatusContainerModel(){
         for(var i = 0; i < 8; i++){
-            var thisConstructedThing = new MapStatusContainerDeepARRAY_CONSTRUCTOR(null, null, null, null, null, null);
+            var thisConstructedThing = new MapStatusContainerDeepARRAY_CONSTRUCTOR(null, null, null, null, null, null, null, null);
             mapStatusContainerDeepARRAY.push(thisConstructedThing);
         }
     }
@@ -45,7 +48,6 @@
 
     //hidden or not handled by iterator elsewhere -- but could create a model for it
     // function PanelDisplayStatusARRAY_CONSTRUCTOR(hiddenOrNot, disabledOrNot, isComponentOrNot){}
-
     function OutputStatusContainerDeepARRAY_CONSTRUCTOR(ProductId, ProductName, ComponentProductId, ComponentProductShortName, MemberPrice){
         this.ProductId = ProductId;
         this.ProductName = ProductName;
@@ -96,7 +98,7 @@
         var nodeListOfOptionalSectionsInputs = document.querySelectorAll('input[id*="MembershipJoinSection_SectionRepeater"]');
         var nodeListOfComponentProductsAlreadySelected = document.querySelectorAll('[id$="IFTSectionProductIdComponent"');
 
-            
+            //ctl00_MainContent_ctl00_MembershipJoinSection_SectionRepeater_ctl00_HiddenFieldComponentProductId
 
         var componentSectionHiddenInput = document.getElementById('ctl00_MainContent_ctl00_MembershipJoinSection_componentRepeater_ctl00_IFTSectionProductIdComponent');
 
@@ -106,18 +108,75 @@
         
         if(nodeListOfOptionalSectionsInputs !== null){
             for(var i = 0; i < nodeListOfOptionalSectionsInputs.length; i++){
-                userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(nodeListOfOptionalSectionsInputs[i].value));
+                
+                var valueOfInput = parseInt(nodeListOfOptionalSectionsInputs[i].value);
+
+                //data has some stray 0s
+                if (valueOfInput !== 0){
+                    userAlreadySavedSections.additionalAlreadySavedSections.push(valueOfInput);
+                }
+            }
+
+            //console.log(userAlreadySavedSections.additionalAlreadySavedSections);
+
+
+            (function getDataQuirkValues(){
+                 var theCompProdCodeToMatch;
+
+                 var theRawSectionItemBelongingToHomeUserSelection = rawSectionData.SectionItems.filter(function(thisRawSectionItem){
+
+                     return thisRawSectionItem.ProductId === userAlreadySavedSections.userHomeSectionProductID;
+                 });
+
+                 theRawSectionItemBelongingToHomeUserSelection.map(function(thisRawSect){
+                    theCompProdCodeToMatch = thisRawSect.ProductCode + 'C';
+                    //console.log('heyYo' + thisRawSect.ProductCode);
+                    //console.log(thisRawSect);
+                 });
+
+                 var theRawSectionItemsBelongingToQuirkyOnPageValues = rawSectionData.SectionItems.filter(function(thisRawSectionItem){
+                        return thisRawSectionItem.ComponentProductCode === theCompProdCodeToMatch;
+                    });
+
+                 //console.log(theRawSectionItemsBelongingToQuirkyOnPageValues);
+                 theRawSectionItemsBelongingToQuirkyOnPageValues.map(function(thisRawSectItm){
+                     userAlreadySavedSections.additionalComponentSavedSections.push(thisRawSectItm.ProductId);
+                 });
+            })();
+
+
+            for(var zzTop = 0; zzTop < userAlreadySavedSections.additionalAlreadySavedSections.length; zzTop++){
+
+                var prodCodePlusC;
+            
+                var theRawSectionItemBelongingToThisPageProvidedValues = rawSectionData.SectionItems.filter(function(thisRawSectionItem){
+                    return thisRawSectionItem.ComponentProductId === userAlreadySavedSections.additionalAlreadySavedSections[zzTop];
+                });
+                theRawSectionItemBelongingToThisPageProvidedValues.map(function(x){
+                    //console.log(x);
+                    prodCodePlusC = x.ProductCode + 'C';
+                });
+
+               
+                var theRawSectionItemsOfAssociatedComponentProducts = rawSectionData.SectionItems.filter(function(thisRwSctItm){
+                        return thisRwSctItm.ComponentProductCode === prodCodePlusC
+                    });
+                theRawSectionItemsOfAssociatedComponentProducts.map(function(thisAssociatedComponentProduct){
+                    //console.log(thisAssociatedComponentProduct);
+                    userAlreadySavedSections.additionalComponentSavedSections.push(thisAssociatedComponentProduct.ComponentProductId);
+                });
+
+
+
             }
         }
 
+        //console.log(userAlreadySavedSections.additionalComponentSavedSections);
+
         if(nodeListOfComponentProductsAlreadySelected !== null){
-            //console.log('there is an already saved component section with ID ' + componentSectionHiddenInput.value);
-            
             for(var ii = 0; ii < nodeListOfComponentProductsAlreadySelected.length; ii++){
                 userAlreadySavedSections.additionalAlreadySavedSections.push(parseInt(nodeListOfComponentProductsAlreadySelected[ii].value));
             }
-           
-            //console.log(userAlreadySavedSections.additionalAlreadySavedSections);
         }
     }
 
@@ -129,13 +188,6 @@
         ,currentPostalCodeRange: ''
     }
 
-    // var fieldsRequiredByBackend = {
-    //     currentProductId: ''
-    //     ,currentProductName: ''
-    //     ,currentComponentProductId: ''
-    //     ,currentComponentProductShortName: ''
-    //     ,currentMemberPrice: ''
-    // }
 
     function iftMapFunctionInit(){
 
@@ -144,9 +196,7 @@
         constructFreshStagingContainerModel();
         constructFreshStagingContainerModelCOMPONENTS();
 
-
         setUserPreselections();
-
         //donT put text value here because it might be null and i donT want any logic in this variable declaration area.
 
         //get reference to outermost wrapper to show/hide with modal
@@ -159,15 +209,11 @@
         var internationalSelectMenu = document.getElementById('internationalSelectMenu');
         var arrayOfSpansToPopulateEmpty = Array.prototype.slice.call(document.querySelectorAll('.iftMap__sectionData__wrapper span'));
         var hiddenInputForBackend = document.getElementById('IFTSavedSectionHiddenfield');
-
         var hiddenInputForBackendCOMPONENTS = document.getElementById('ctl00_MainContent_ctl00_MembershipJoinSection_IFTSavedSectionHiddenfieldCOMPONENTS');
-        
         var activeStateString = 'iftMapWrapperOuter--ACTIVE-STATE';
         var disabledStateString = 'iftMap__sectionData__wrapper--DISABLED-STATE';
         var hiddenStateString = 'iftMap__sectionData__wrapper--HIDDEN-STATE';
-
         //already have a reference, but itS more general for etch-a-sketch reasons
-
         var nodeListOfPanelsToPopulate = document.querySelectorAll('.iftMap__sectionData__wrapper');
         var arrayOfPanelsToPopulate = Array.prototype.slice.call(nodeListOfPanelsToPopulate);
         var arrayOfArrayOfFieldsToPopulate = [];
@@ -230,7 +276,6 @@
                 removeAddActiveState();
                 clearCheckBoxes();
             }
-
             //OK, now display!
             writeDataToThePage();
         }//end mapHandlerFunction
@@ -310,7 +355,6 @@
             var indexOfPanelContainingHomeUserSection;
             var indexesOfPanelsContainingAlreadySavedSections = [];
 
-
             //if doing a map method with a counter, might be more idiomatic to use for loop
             matchingSectionItems.map(function(matchingSectionItem){
             //not all of these things should be in the map
@@ -320,8 +364,10 @@
                 (function setAllTheProperties(){
                     //this is hardcoded, kinda. The order matters, so this should be a list operation. Or at least a forEach for ForIn loop. Better to do a list operation over properties
                     mapStatusContainerDeepARRAY[iteratorNum].currentProductId = rawSectionData.SectionItems[indexOfSectionItem].ProductId;
+                        mapStatusContainerDeepARRAY[iteratorNum].currentProductCode = rawSectionData.SectionItems[indexOfSectionItem].ProductCode;
                     mapStatusContainerDeepARRAY[iteratorNum].currentProductName = rawSectionData.SectionItems[indexOfSectionItem].ProductName;
                     mapStatusContainerDeepARRAY[iteratorNum].currentComponentProductId = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductId;
+                    mapStatusContainerDeepARRAY[iteratorNum].currentComponentProductCode = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductCode;
                     mapStatusContainerDeepARRAY[iteratorNum].currentComponentProductShortName = rawSectionData.SectionItems[indexOfSectionItem].ComponentProductShortName;
                     mapStatusContainerDeepARRAY[iteratorNum].currentMemberPrice = rawSectionData.SectionItems[indexOfSectionItem].MemberPrice;
                     mapStatusContainerDeepARRAY[iteratorNum].currentPostalCodeRange = rawSectionData.SectionItems[indexOfSectionItem].PostalCodeRange;
@@ -343,6 +389,13 @@
 
                     //using currentComponentParentProduct as flag. May need to change test
                     var valueForParentPanel = mapStatusContainerDeepARRAY[z].currentComponentParentProduct;
+                    
+                    nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel-productId', mapStatusContainerDeepARRAY[z].currentProductId);
+                    nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel-productCode', mapStatusContainerDeepARRAY[z].currentProductCode);
+                    nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel-componentProductId', mapStatusContainerDeepARRAY[z].currentComponentProductId);
+                    nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel-componentProductCode', mapStatusContainerDeepARRAY[z].currentComponentProductCode);
+
+                    //console.log(valueForParentPanel);
                     if(valueForParentPanel === 'IFT'){
                         nodeListOfPanelsToPopulate[z].setAttribute('data-thispanel', 'thisPanelHasComponentSection');
                     }
@@ -355,15 +408,20 @@
                     if(matchingSectionItems[i].ProductId === userAlreadySavedSections.userHomeSectionProductID){  //always just one
                         indexOfPanelContainingHomeUserSection = i;
                     }
+                    //console.log(userAlreadySavedSections);
 
                     //if the product ID of the matching section item is one of the already selected sections
-                    if(userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1){
+                    if(
+                        userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ProductId) > -1 
+                        || userAlreadySavedSections.additionalAlreadySavedSections.indexOf(matchingSectionItems[i].ComponentProductId) > -1
+                        || userAlreadySavedSections.additionalComponentSavedSections.indexOf(matchingSectionItems[i].ProductId) > -1
+                        || userAlreadySavedSections.additionalComponentSavedSections.indexOf(matchingSectionItems[i].ComponentProductId) > -1
+                        ){
                         var numToPush = i;
                         indexesOfPanelsContainingAlreadySavedSections.push(numToPush);                                                     
                     }
                 }
             })();//end actionsBasedOnUserHomeSectionOuterMostFunction
-
 
             //QUERY THE DOM FOR THESE UNLESS PREPARED TO DO A PANEL STATE CONTAINER [hasTip, disabled, hidden]
 
@@ -385,7 +443,6 @@
                     })();//end decideWhetherSectionIsComponent
 
                     (function unDisablePanelsAfterStateChoice(){
-
                         //make sure record associated with the panel [using the index of the loop] does not contain user home section or already added sections before unDisabling a panel
                         if(i !== indexOfPanelContainingHomeUserSection && indexesOfPanelsContainingAlreadySavedSections.indexOf(i) < 0)
                         {
@@ -395,7 +452,6 @@
                         else {
                             //if panel DOES CONTAIN home state, so disable the input of course
                             thisPanelToBeInspected.querySelector('input').disabled = true;
-                            
                         }
                     })();
 
@@ -414,7 +470,6 @@
             })();//end of panelStatusFunctionPerStateChoice
         }//end of write data to page function
 
-
         function createToolTipOnDemand(theReferenceFormLabelElement){
             var tooltipElement = document.createElement('i');
             tooltipElement.setAttribute('class', 'niftyTooltip');
@@ -424,12 +479,13 @@
             theReferenceFormLabelElement.insertBefore(tooltipElement, theFirstChild);
         }
 
-
+        //IE doesNt support remove. Must target parent and remove child
         function removeAllToolTips(){
             var nodelistOfTooltips = document.querySelectorAll('.niftyTooltip');
             if(nodelistOfTooltips !== null){
                 for(var i = 0; i < nodelistOfTooltips.length; i++){
-                    nodelistOfTooltips[i].remove();
+                    //nodelistOfTooltips[i].remove();
+                    nodelistOfTooltips[i].parentNode.removeChild(nodelistOfTooltips[i]);
                 }
             }  
         }
@@ -460,17 +516,25 @@
             //query this here, not at the top
             var noResultsMessageContainer = document.getElementById('noResultsMessageContainer');
             if(noResultsMessageContainer !== null){
-                noResultsMessageContainer.remove();
+                //noResultsMessageContainer.remove();
+                //for IE 11
+                noResultsMessageContainer.parentNode.removeChild(noResultsMessageContainer);
             }
         }
+        
         function clearCheckBoxes(){
             for(var i = 0; i < nodeListOfCheckboxes.length; i++){
                 nodeListOfCheckboxes[i].checked = false;
             }
         }
+
         function clearDataFlags(){
             for(var i = 0; i < nodeListOfCheckboxes.length; i++){
                 nodeListOfPanelsToPopulate[i].setAttribute('data-thispanel', '');
+                nodeListOfPanelsToPopulate[i].setAttribute('data-thispanel-productId', '');
+                nodeListOfPanelsToPopulate[i].setAttribute('data-thispanel-productCode', '');
+                nodeListOfPanelsToPopulate[i].setAttribute('data-thispanel-componentProductId', '');
+                nodeListOfPanelsToPopulate[i].setAttribute('data-thispanel-componentProductCode', '');
             }
         }
 
@@ -492,7 +556,6 @@
                 iftMapWrapperOuter.classList.remove(activeStateString);
             }
         }
-
 
         function checkBoxHandler(event){
 
@@ -544,12 +607,10 @@
                 if(reDisableOrEnable === 'reDisable'){
                     thisPanelThatIsnTtheChosenOne.classList.add(disabledStateString);
                     thisPanelThatIsnTtheChosenOne.querySelector('input').disabled = true;
-
                 }
                 else if (reDisableOrEnable === 'enable'){
                     thisPanelThatIsnTtheChosenOne.classList.remove(disabledStateString);
                     thisPanelThatIsnTtheChosenOne.querySelector('input').disabled = false;
-
                 }
             }
         }
@@ -578,7 +639,6 @@
 
                 //this model can be 8
                 for(var i = 0; i < mapStatusContainerDeepARRAY.length; i++){
-                    
                     //stage checked
                     if(indexesOfSelectedSections.indexOf(i) > -1){
                         deepOutputObjectForStaging[i].ProductId = mapStatusContainerDeepARRAY[i].currentProductId;
@@ -595,26 +655,22 @@
                         deepOutputObjectForStagingCOMPONENTS[i].ComponentProductShortName = mapStatusContainerDeepARRAY[i].currentComponentProductShortName;
                         deepOutputObjectForStagingCOMPONENTS[i].MemberPrice = mapStatusContainerDeepARRAY[i].currentMemberPrice;
                     }
-
                 }
                 //console.log(deepOutputObjectForStaging);
                 //console.log(deepOutputObjectForStagingCOMPONENTS)
             })();
 
             (function putOutputArraysInHiddenInputs(){
-                                //insert value here.
-
+                //insert value here.
                 hiddenInputForBackend.value = JSON.stringify(deepOutputObjectForStaging);
                 //backend hasnT added this yet and i want to avoid errors
                 if(hiddenInputForBackendCOMPONENTS !== null){
-                    console.log(JSON.stringify(deepOutputObjectForStagingCOMPONENTS));
+                    //console.log(JSON.stringify(deepOutputObjectForStagingCOMPONENTS));
                     hiddenInputForBackendCOMPONENTS.value = JSON.stringify(deepOutputObjectForStagingCOMPONENTS);
                 }
             })(); 
-
         }
 
-        
         //EVENTS
         (function addEventListeners(){
             stateSelectMenu.addEventListener('change', mapHandlerFunction, false);
@@ -626,7 +682,6 @@
             arrayOfCheckboxes.map(function(thisCheckbox){
                 thisCheckbox.addEventListener('change', checkBoxHandler, false);
             })
-
         })();
     }    
 

@@ -34,3 +34,10 @@ button::-moz-focus-inner,input::-moz-focus-inner {border: 0;padding: 0;}
 textarea {display: block; overflow: auto;vertical-align: top;}
 table {border-collapse: collapse;border-spacing: 0;}
 .clearfix:after{content: "";display: table;float: none;clear: both;}
+input::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
