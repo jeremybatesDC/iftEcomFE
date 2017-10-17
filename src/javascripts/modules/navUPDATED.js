@@ -31,10 +31,14 @@
 		const arrayOftheL2NavSVGS = [...document.querySelectorAll('.chevronDown')];
 
 		const arrayOfNavTopLevelItems = [...document.querySelectorAll('.nav-list-top-level > li')];
-		const arrayOfL2items = [...document.querySelectorAll('.nav-list-level-2 > li')];
-
+		//better to search within already-collected var
 		const arrayOfNavTopLevelItemLinks = [...document.querySelectorAll('.nav-list-top-level > li > a')];
+
+		//better to search within already-collected var
+		const arrayOfL2items = [...document.querySelectorAll('.nav-list-level-2 > li')];
 		const arrayOfSecondLevelItemLinks = [...document.querySelectorAll('.nav-list-level-2 > li > a')];
+
+
 		const arrayOfL2subnavs = [...document.querySelectorAll(`.${navListLevel2ClassString}`)];
 		const arrayOfTertiaryNavs = [...document.querySelectorAll('.nav-list-level-3')];
 
@@ -104,13 +108,13 @@
 			//greensock timeline
 			var level2NavsTimeline = new TimelineMax({paused:true});
 			var theLIinQuestion = theSubnavOfTheItemThatHasBeenClicked.parentNode;
-			level2NavsTimeline.to(theLIinQuestion, .1, {
+			level2NavsTimeline.to(theLIinQuestion, .025, {
 					className: '+=nav-list-level-1--ACTIVE',
 					ease: Power1.easeInOut
-				}).to(theSVGOfTheItemThatHasBeenClicked, .1, {
+				}).to(theSVGOfTheItemThatHasBeenClicked, .025, {
 					className: '+=caretMorphed',
 					ease: Power1.easeInOut
-				}).to(theSubnavOfTheItemThatHasBeenClicked, .1, {
+				}).to(theSubnavOfTheItemThatHasBeenClicked, .025, {
 					className: '+=nav-list-level-2--ACTIVE',
 					ease: Power1.easeInOut
 				})
@@ -147,12 +151,12 @@
 		}
 		
 		var overlayTimeline = new TimelineMax({paused:true});
-		overlayTimeline.to(navOverlayCloseTarget, .25, {
+		overlayTimeline.to(navOverlayCloseTarget, .025, {
 			className: '+=overlayACTIVE',
 			ease: Power4.easeInOut
 		});
 		var showHideCloseTimeline = new TimelineMax({paused:true});
-		showHideCloseTimeline.to(navLevel2CloseButton, .3333, {
+		showHideCloseTimeline.to(navLevel2CloseButton, .025, {
 			className: '+=navLevel2CloseButton--ACTIVE',
 			ease: Power4.easeInOut
 		});
@@ -175,7 +179,7 @@
 		}
 
 		function unMorphAllL2Chevrons(){
-			TweenMax.to(arrayOftheL2NavSVGS, .1, {
+			TweenMax.to(arrayOftheL2NavSVGS, .025, {
 				className: '-=chevronMorphed',
 				ease: Power1.easeInOut
 			})
@@ -189,7 +193,7 @@
 		}
 
 		function closeAllLevel2Navs(){
-			TweenMax.to(arrayOfL2subnavs, .1, {
+			TweenMax.to(arrayOfL2subnavs, .025, {
 				className: '-=nav-list-level-2--ACTIVE',
 				ease: Power1.easeOut
 			});
@@ -212,29 +216,29 @@
 				//console.log('i was NOT open when clicked');
 				//on complete timing wasNot working for some reason, so doing manually sequenced tweens here
 
-				TweenMax.to(arrayOftheL2NavSVGS, .4, {
+				TweenMax.to(arrayOftheL2NavSVGS, .025, {
 					className: '-=chevronMorphed',
 					ease: Power1.easeInOut
 				});
-				TweenMax.to(theSVGOfTheL2ItemThatHasBeenClicked, .4, {
+				TweenMax.to(theSVGOfTheL2ItemThatHasBeenClicked, .025, {
 					className: '+=chevronMorphed',
 					ease: Power1.easeInOut
 				});
 
-				TweenMax.to(arrayOfTertiaryNavs, .4, {
+				TweenMax.to(arrayOfTertiaryNavs, .025, {
 					className: '-=nav-list-level-3--ACTIVE',
 					ease: Power1.easeInOut
 				});
-				TweenMax.to(the3rdLevelNavOfTheItemThatHasBeenClicked, .4, {
+				TweenMax.to(the3rdLevelNavOfTheItemThatHasBeenClicked, .025, {
 					className: '+=nav-list-level-3--ACTIVE',
 					ease: Power1.easeInOut
 				});
 
-				TweenMax.to(arrayOfL2items, .4, {
+				TweenMax.to(arrayOfL2items, .025, {
 					className: '-=nav-list-level-2-item-ACTIVE',
 					ease: Power1.easeInOut
 				});
-				TweenMax.to(the2ndLevelItemThatHasBeenClicked, .4, {
+				TweenMax.to(the2ndLevelItemThatHasBeenClicked, .025, {
 					className: '+=nav-list-level-2-item-ACTIVE',
 					ease: Power1.easeInOut
 				});
@@ -247,11 +251,11 @@
 				className: '-=chevronMorphed',
 				ease: Power1.easeInOut
 			});
-			TweenMax.to(arrayOfTertiaryNavs, .1, {
+			TweenMax.to(arrayOfTertiaryNavs, .025, {
 				className: '-=nav-list-level-3--ACTIVE',
 				ease: Power1.easeInOut
 			});
-			TweenMax.to(arrayOfL2items, .1, {
+			TweenMax.to(arrayOfL2items, .025, {
 				className: '-=nav-list-level-2-item-ACTIVE',
 				ease: Power1.easeInOut
 			});
@@ -259,14 +263,14 @@
 		
 		function closeAllTopLevelNavs(caseSibilingOpenOnCompleteFunction){
 			if(caseSibilingOpenOnCompleteFunction){
-				TweenMax.to(arrayOfNavTopLevelItems, .1, {
+				TweenMax.to(arrayOfNavTopLevelItems, .025, {
 					className: '-=nav-list-level-1--ACTIVE',
 					ease: Power1.easeOut,
 					onComplete: caseSibilingOpenOnCompleteFunction
 				});
 			}
 			else {
-				TweenMax.to(arrayOfNavTopLevelItems, .1, {
+				TweenMax.to(arrayOfNavTopLevelItems, .025, {
 					className: '-=nav-list-level-1--ACTIVE',
 					ease: Power1.easeOut
 				});
