@@ -68,10 +68,12 @@
 		}
 	}
 }
+
 .membershipJoin #ctl00_MainContent_ctl00_MembershipMemberTypeControl_ContainerPanel {
 	padding: 2rem;
 	background: white;
 }
+
 table.membership__table {
 	td.table__cell {
 		display: table-cell !important;
@@ -79,5 +81,27 @@ table.membership__table {
 	tr.table__row {
 		display: table-row !important;
 	}
+}
 
+form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
+	background: white;
+	#ctl00_MainContent_ctl00_LeftFilters_SegmentTabList {
+		width: auto;
+		.rlbList {
+			display: flex;
+		}
+		.rlbGroup {
+			border: none;
+		}
+		.rlbList li {
+			flex-grow: 1;
+			border: 1px solid #eee;
+		}
+		.ProductListItemControlCell {
+			border: 1px solid #ddd;
+		}
+		.rlbList .rlbSelected {
+			background-color: white !important;
+		}
+	}
 }
