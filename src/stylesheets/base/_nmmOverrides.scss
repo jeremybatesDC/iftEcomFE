@@ -84,7 +84,6 @@ table.membership__table {
 }
 
 form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
-	background: white;
 	#ctl00_MainContent_ctl00_LeftFilters_SegmentTabList {
 		width: auto;
 		.rlbList {
@@ -96,12 +95,46 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 		.rlbList li {
 			flex-grow: 1;
 			border: 1px solid #eee;
-		}
-		.ProductListItemControlCell {
-			border: 1px solid #ddd;
+			background-color: #e0e0e0;
 		}
 		.rlbList .rlbSelected {
-			background-color: white !important;
+			background-color: $ift-green !important;
 		}
+		.rlbList .rlbHovered {
+			background-color: $white !important;
+			cursor: pointer;
+		}
+		.rlbList .rlbSelected .rlbText {
+			color: white !important;
+		}
+	}
+	#ctl00_MainContent_ctl00_LeftFilters_LabelDescription {
+		display: block;
+		background: #fff;
+		font-size: 2rem;
+		padding: 1rem 2.5rem;
+		line-height: 1;
+	}
+	#ctl00_MainContent_ctl00_LeftFilters_ContainerPanel br {
+		display: none;
+	}
+
+	#ctl00_MainContent_ctl00_filtersAndEvents {
+		background-color: white;
+		padding-top: 1rem;
+	}
+	.MainCalendar {
+		background-color: white;
+		padding: 1rem;
+	}
+	#ctl00_MainContent_ctl00_Events_ContainerPanel .ProductListItemControlCell {
+		border: 1px solid #ddd;
+	}
+	#ctl00_MainContent_ctl00_filtersAndEvents form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel #ctl00_MainContent_ctl00_PagerControl_ContainerPanel {
+		background-color: 0 0;
+	}
+	.RadTreeView .rtHover .rtIn,
+	.RadTreeView .rtSelected .rtIn {
+		border-color: transparent;
 	}
 }
