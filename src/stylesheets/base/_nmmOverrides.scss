@@ -138,3 +138,46 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 		border-color: transparent;
 	}
 }
+
+#ctl00_MainContent_ctl01_ContainerPanelProducts {
+	.ControlPanel_PromtionalProductListControl .scrollable {
+		background-color: transparent;
+	}
+	.ControlPanel_PromtionalProductListControl .PromotionProductListItem {
+		background-color: white;
+	}
+}
+
+#ctl00_MainContent_ctl00_dvEventDetails {
+	.RadTabStripTop_PersonifyDefault .rtsLevel .rtsLink,
+	.RadTabStripTop_PersonifyDefault .rtsLevel .rtsOut,
+	.RadTabStripBottom_PersonifyDefault .rtsLevel .rtsLink,
+	.RadTabStripBottom_PersonifyDefault .rtsLevel .rtsOut,
+	.RadTabStripTop_PersonifyDefault_Baseline .rtsLevel,
+	.RadTabStripBottom_PersonifyDefault_Baseline .rtsLevel {
+		background: none;
+	}
+	.RadTabStripTop_PersonifyDefault .rtsLevel .rtsOut {
+		padding: 1rem;
+		border: 1px solid #eee;
+		background-color: #e0e0e0;
+		color: $ift-blue;
+	}
+	.RadTabStripTop_PersonifyDefault .rtsLevel .rtsSelected .rtsOut {
+		background-color: $ift-green;
+		color: white;
+	}
+
+	.RadTabStrip .rtsLink,
+	.RadTabStripVertical .rtsLink,
+	.MTGDetailContent#ctl00_MainContent_ctl00_dvMainContent {
+		padding: 0;
+	}
+}
+
+#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel .ShoppingCartSavingsControl_PersonifyDefault {
+	background: white !important;
+	border: 1px solid #eee;
+	color: inherit;
+	margin-top: 1rem;
+}
