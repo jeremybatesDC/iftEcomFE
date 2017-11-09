@@ -148,7 +148,50 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 	}
 }
 
+#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
+	display: block;
+	padding: 0;
+	background: 0 0;
+	#ctl00_MainContent_ctl00_divCourse,
+	#ctl00_MainContent_ctl00_dvMeetingInfo,
+	#ctl00_MainContent_ctl00_dvMeetingShortDescription,
+	#ctl00_MainContent_ctl00_dvBottom {
+		padding: 20px !important;
+		padding-top: 0 !important;
+		background: white;
+	}
+	#ctl00_MainContent_ctl00_divCourse,
+	#ctl00_MainContent_ctl00_dvBottom{
+		padding-top: 20px !important;
+	}
+	#ctl00_MainContent_ctl00_dvMainContent {
+		background: 0 0;
+	}
+}
+
 #ctl00_MainContent_ctl00_dvEventDetails {
+	#ctl00_MainContent_ctl00_btnInPerson,
+	#ctl00_MainContent_ctl00_btnOnline {
+		color: $ift-blue;
+		border: none;
+		border-right: 1px solid #ddd;
+		border-radius: 0;
+		padding-right: 6px;
+	}
+	#ctl00_MainContent_ctl00_mtgDetailAddToCalendar_addToCalendar {
+		@include unButton();
+	}
+	#ctl00_MainContent_ctl00_btnOnline {
+		border: none;
+		padding-left: 6px;
+	}
+	#ctl00_MainContent_ctl00_btnInPerson[disabled],
+	#ctl00_MainContent_ctl00_btnOnline[disabled] {
+		color: grey;
+	}
+	#ctl00_MainContent_ctl00_dvMeetingInfo {
+		line-height: 2;
+	}
 	.RadTabStripTop_PersonifyDefault .rtsLevel .rtsLink,
 	.RadTabStripTop_PersonifyDefault .rtsLevel .rtsOut,
 	.RadTabStripBottom_PersonifyDefault .rtsLevel .rtsLink,
@@ -167,7 +210,6 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 		background-color: $ift-green;
 		color: white;
 	}
-
 	.RadTabStrip .rtsLink,
 	.RadTabStripVertical .rtsLink,
 	.MTGDetailContent#ctl00_MainContent_ctl00_dvMainContent {
