@@ -161,7 +161,7 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 		background: white;
 	}
 	#ctl00_MainContent_ctl00_divCourse,
-	#ctl00_MainContent_ctl00_dvBottom{
+	#ctl00_MainContent_ctl00_dvBottom {
 		padding-top: 20px !important;
 	}
 	#ctl00_MainContent_ctl00_dvMainContent {
@@ -222,4 +222,100 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 	border: 1px solid #eee;
 	color: inherit;
 	margin-top: 1rem;
+}
+
+.MtgWizStepTitle {
+	color: inherit;
+}
+
+
+// Course Summary
+#ctl00_MainContent_ctl00_ContainerPanel {
+	#ctl00_MainContent_ctl00_cMtgRegWizRegInfo_MtgRegWizStepTitle_ContainerPanel {
+		background: white;
+		padding: 20px;
+		padding-bottom: 0;
+	}
+	#ctl00_MainContent_ctl00_cMtgRegWizRegInfo_cMtgRegWizContactInfo_ContainerPanel {
+		padding: 20px;
+		background: white;
+	}
+
+	.MtgWizStepTitleContainer {
+		margin: 0;
+	}
+	.buttonRow {
+		margin: 0;
+		margin-top: 20px;
+	}
+	.MtgRegWizSummaryInstructionAndPrintFriendly.clearfix {
+		padding: 0 20px;
+		background: white;
+	}
+	.ctrlContent.mtgSelectRate.formLayout,
+	#divPrintAreaMtgRegWizSummary {
+		background: white;
+		padding: 20px;
+	}
+	#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_dvMtgBadge {
+		padding: 20px;
+		background: white;
+	}
+	#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_MtgRegWizStepTitle_ContainerPanel .MtgWizStepTitleContainer,
+	#ctl00_MainContent_ctl00_cMtgRegWizSummary_MtgRegWizStepTitle_ContainerPanel,
+	#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_MtgRegWizStepTitle_ContainerPanel,
+	#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_pnlSearchResults {
+		background: #fff;
+		padding: 20px;
+		margin: 0;
+		padding-bottom: 0;
+	}
+	#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_ContainerPanel .heading3 {
+		background: white;
+		padding: 0 20px;
+	}
+	#divPrintAreaMtgRegWizSummary,
+	#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_pnlSearchResults,
+	#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_pnlSearchRegistrant .lblEmailText,
+	#ctl00_MainContent_ctl00_cMtgRegWizRegInfo_pnlCreateRegistrant{
+		background: white;
+		padding: 20px;
+	}
+	.MtgRegWizSummaryInstructionAndPrintFriendly.clearfix {
+		padding: 0 20px;
+		background: white;
+	}
+	#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_EmailRow {
+		padding: 20px;
+		padding-top: 0;
+		margin: 0;
+		background: white;
+	}
+	.MtgRegWizRegisterSomeoneElse_PersonifyDefault .tblCustomers th {
+		background: #eee !important;
+	}
+	.MtgRegWizSummarySideHeading {
+		border-bottom: none;
+		color: inherit;
+	}
+	#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_btnAddRegistrant {
+		@include unButton();
+		margin-top: 10px;
+	}
+}
+#ctl00_MainContent_ctl00_cMtgRegWizSummary_MtgRegSmryAddlInfo_freeMtgBadges_dvMeetingBadges,
+#ctl00_MainContent_ctl00_cMtgRegWizSummary_MtgRegSmryAddlInfo_freeMtgBadges_dvMeetingBadges #dvBadgeDetail,
+#ctl00_MainContent_ctl00_cMtgRegWizSummary_MtgRegSmryAddlInfo_freeMtgBadges_dvMeetingBadges #dvBadgeDetail *{
+    padding: 0 !important;
+}
+.MtgRegWizard_PersonifyDefault .MTGBadgeCaption, .MtgRegWizard_PersonifyDefault .ProductRelatedProductsTitle {
+    color: inherit;
+}
+#ctl00_MainContent_ctl00_cMtgRegWizSummary_dvMtgVerticalDividor .choice-or-text {
+    background: 0 0;
+}
+#ctl00_MainContent_ctl00_OrderItemList_ShoppingCartItemsRepeaterContainer .addressesSection {
+	border: #ccc;
+	background: #e4e4e4;
+	padding: 4px;
 }
