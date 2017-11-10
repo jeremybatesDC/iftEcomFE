@@ -256,28 +256,34 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 	#divPrintAreaMtgRegWizSummary {
 		background: white;
 		padding: 20px;
-	}
-	#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_dvMtgBadge {
+	} //Full [  ]
+	#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_dvMtgBadge,
+	#ctl00_ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_MtgRegSpecialNeeds_CustomerSpecialNeedControl_ContainerPanelPanel {
+		background: #fff;
 		padding: 20px;
-		background: white;
-	}
+	} // Top    .------.
 	#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_MtgRegWizStepTitle_ContainerPanel .MtgWizStepTitleContainer,
 	#ctl00_MainContent_ctl00_cMtgRegWizSummary_MtgRegWizStepTitle_ContainerPanel,
 	#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_MtgRegWizStepTitle_ContainerPanel,
-	#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_pnlSearchResults {
+	#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_pnlSearchResults,
+	#ctl00_MainContent_ctl00_cMtgRegWizSession_MtgRegWizStepTitle_ContainerPanel,
+	#ctl00_MainContent_ctl00_cMtgRegWizAddlInfoTravelQues_MtgRegWizStepTitle_ContainerPanel {
 		background: #fff;
 		padding: 20px;
 		margin: 0;
 		padding-bottom: 0;
-	}
-	#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_ContainerPanel .heading3 {
+	} // Middle |      |
+	#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_ContainerPanel .heading3,
+	#ctl00_ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_MtgRegEmergencyContactInfo_EmergencyContact_ContainerPanelPanel {
 		background: white;
 		padding: 0 20px;
-	}
+	} // Bottom .______.
 	#divPrintAreaMtgRegWizSummary,
 	#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_pnlSearchResults,
 	#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_pnlSearchRegistrant .lblEmailText,
-	#ctl00_MainContent_ctl00_cMtgRegWizRegInfo_pnlCreateRegistrant{
+	#ctl00_MainContent_ctl00_cMtgRegWizRegInfo_pnlCreateRegistrant,
+	#ctl00_MainContent_ctl00_cMtgRegWizSession_dvMtgSesContainer,
+	.ctrlContent.formLayout.QuestionnaireControl {
 		background: white;
 		padding: 20px;
 	}
@@ -295,27 +301,146 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 		background: #eee !important;
 	}
 	.MtgRegWizSummarySideHeading {
-		border-bottom: none;
 		color: inherit;
+		border-bottom: 1px solid #ddd;
+		padding-bottom: 4px;
 	}
-	#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_btnAddRegistrant {
+	#ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_btnAddRegistrant,
+	#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_MtgRegEmergencyContactInfo_EmergencyContact_AddNew {
 		@include unButton();
 		margin-top: 10px;
 	}
+	#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_MtgRegEmergencyContactInfo_EmergencyContact_AddNew {
+		margin: 5px;
+	}
+	.RadGrid_PersonifyDefault .rgHeader {
+		background: none;
+	}
+	#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_MtgRegWizRelatedProductsControl_grdProductRelatedProducts_ctl00 * {
+		border-color: #ccc;
+	}
+	#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_MtgRegWizRelatedProductsControl_RelatedProductsContainerPanel {
+		margin: 0;
+		background: white;
+		padding: 20px;
+	}
+
+	#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_MtgRegWizRelatedProductsControl_grdProductRelatedProducts_ctl00 {
+		border: none;
+	}
+
+	#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_MtgRegWizRelatedProductsControl_grdProductRelatedProducts {
+		margin-top: 20px;
+	}
+	.dvQuestionnaireTitle,
+	.dvQuestionCategory {
+		padding: 10px 0;
+		color: inherit;
+	}
 }
+
 #ctl00_MainContent_ctl00_cMtgRegWizSummary_MtgRegSmryAddlInfo_freeMtgBadges_dvMeetingBadges,
 #ctl00_MainContent_ctl00_cMtgRegWizSummary_MtgRegSmryAddlInfo_freeMtgBadges_dvMeetingBadges #dvBadgeDetail,
-#ctl00_MainContent_ctl00_cMtgRegWizSummary_MtgRegSmryAddlInfo_freeMtgBadges_dvMeetingBadges #dvBadgeDetail *{
-    padding: 0 !important;
+#ctl00_MainContent_ctl00_cMtgRegWizSummary_MtgRegSmryAddlInfo_freeMtgBadges_dvMeetingBadges #dvBadgeDetail * {
+	padding: 0 !important;
 }
-.MtgRegWizard_PersonifyDefault .MTGBadgeCaption, .MtgRegWizard_PersonifyDefault .ProductRelatedProductsTitle {
-    color: inherit;
+
+.MtgRegWizard_PersonifyDefault .MTGBadgeCaption,
+.MtgRegWizard_PersonifyDefault .ProductRelatedProductsTitle {
+	color: inherit;
 }
+
 #ctl00_MainContent_ctl00_cMtgRegWizSummary_dvMtgVerticalDividor .choice-or-text {
-    background: 0 0;
+	background: 0 0;
 }
+
 #ctl00_MainContent_ctl00_OrderItemList_ShoppingCartItemsRepeaterContainer .addressesSection {
 	border: #ccc;
 	background: #e4e4e4;
 	padding: 4px;
+}
+
+#ctl00_MainContent_ctl00_ContainerPanel {
+	#dvRate {
+		display: inherit;
+		width: auto;
+		padding: 0;
+	}
+	#dvmtgProductInformation {
+		border: none;
+	}
+	#dvmtgProductInformation td {
+		vertical-align: top;
+		padding-right: 10px;
+	}
+	#ctl00_MainContent_ctl00_cMtgRegWizRegInfo_mtgRegWizRegInfoValidationSummary+div {
+		font-size: 1.4rem;
+		font-weight: bold;
+		margin-bottom: 2rem;
+		border-bottom: 1px solid #ddd;
+		padding-bottom: 1rem;
+	}
+	#ctl00_MainContent_ctl00_cMtgRegWizSession_dvMtgSesItems {
+		background-color: transparent;
+	}
+	#ctl00_MainContent_ctl00_cMtgRegWizSession_lbtnMtgSesItems {
+		text-align: right;
+		color: $ift-blue !important;
+	}
+	.dvMtgSesRateCodeAndPriceDetail {
+		font-size: 1.6rem;
+	}
+}
+
+#ctl00_ctl00_MainContent_ctl00_cMtgRegWizRegInfo_ContainerPanelPanel {
+	#dvProductName,
+	#dvProductNameAndTime {
+		display: none;
+	}
+}
+
+#ctl00_MainContent_ctl00_cMtgRegWizSession_dvMtgSesContainer {
+	td.tdSesItems {
+		vertical-align: center;
+	}
+	.buttonRow {
+		margin-top: 0;
+	}
+	.dvMtgSesFilter {
+		background: 0 0;
+	}
+	.dvMtgSesInfoRightCell {
+		border-left: 1px solid #ddd;
+	}
+	.btnMtgSesShowHideGroup {
+		display: none;
+	}
+	.dvMtgSesFilterOuterDiv {
+		background: #f4f4f4;
+	}
+	.lblMtgSesDate {
+		font-size: 1.4rem;
+		font-weight: bold;
+	}
+	.lblMtgSesRateCodeDesc {
+		padding: 0
+	}
+	.dvMtgSesDate {
+		margin: 0;
+		margin-bottom: 2rem;
+	}
+	.dvMtgSesHeader {
+		background: 0 0;
+		background-color: #f4f4f4;
+		border: none;
+		display: flex;
+		flex-basis: 100%;
+		align-items: baseline;
+		justify-content: space-between;
+		input[type="button"].btn:only-child,
+		input[type="submit"].btn:only-child,
+		input.btn:only-child {
+			// @include unButton();
+		}
+	}
 }
