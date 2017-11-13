@@ -367,6 +367,37 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 		width: auto;
 		padding: 0;
 	}
+	#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_freeMtgBadges_repeaterMeetingBadges_ctl00_dvCompanyName {
+		margin-bottom: 0;
+	}
+	.meetingBadgeField {
+		height: auto;
+	}
+	.meetingBadgeMtgBadge {
+		min-width: 0;
+	}
+	#divSaveField {
+		margin-top: 0;
+	}
+	#dvCompanyNameControl {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_freeMtgBadges_repeaterMeetingBadges_ctl00_cboState {
+		min-width: 250px;
+	}
+	#dvCompanyNameControl>.meetingBadgeReadOnlyField {
+		padding-left: 1rem;
+	}
+	input#ctl00_MainContent_ctl00_cMtgRegWizSession_btnFilter {
+		@include unButton();
+		padding-right: 2rem !important;
+		border-right: 1px solid #ddd;
+	}
+	#ctl00_MainContent_ctl00_cMtgRegWizSession_lbtnMtgSesClearAll {
+		display: inline;
+	}
 	#dvmtgProductInformation {
 		border: none;
 	}
@@ -406,6 +437,8 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 	}
 	.buttonRow {
 		margin-top: 0;
+		text-align: center;
+		flex-basis: 10%;
 	}
 	.dvMtgSesFilter {
 		background: 0 0;
@@ -438,10 +471,14 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 		flex-basis: 100%;
 		align-items: baseline;
 		justify-content: space-between;
+		>div {
+			flex-basis: 30%;
+			width: 30%;
+		}
 		input[type="button"].btn:only-child,
 		input[type="submit"].btn:only-child,
 		input.btn:only-child {
-			// @include unButton();
+			@include unButton();
 		}
 	}
 }
