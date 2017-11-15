@@ -180,7 +180,7 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 	}
 	#ctl00_MainContent_ctl00_mtgDetailAddToCalendar_addToCalendar {
 		@include unButton();
-	}
+		margin-top: 0 !important;	}
 	#ctl00_MainContent_ctl00_btnOnline {
 		border: none;
 		padding-left: 6px;
@@ -480,5 +480,61 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 		input.btn:only-child {
 			@include unButton();
 		}
+	}
+}
+
+@include break(max, $breakpoint-max-mobile) {
+	#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
+		div#ctl00_MainContent_ctl00_dvRightContent {
+			float: none;
+			width: 100%;
+			position: static;
+		}
+
+		.meeting-detail-control .MTGDetailContent#ctl00_MainContent_ctl00_dvMainContent {
+			float: none;
+			width: 100%;
+		}
+
+		.meeting-detail-control .MTGDetailBottom {
+			width: 100% !important;
+			float: none;
+		}
+	}
+	div#ctl00_MainContent_ctl00_EventsContent {
+		width: auto;
+		float: left;
+		padding-left: 0;
+	}
+	.box-product-info {
+		max-width: none;
+	}
+	.ProductListItemControlCell {
+		padding: 10px;
+		margin: 0;
+		width: 100%;
+	}
+	#ctl00_MainContent_ctl00_OrderItemList_ShoppingCartItemsRepeaterContainer .addressesSection {
+		height: auto;
+	}
+
+	#ctl00_MainContent_ctl00_OrderItemList_ShoppingCartItemsRepeater_ctl00_PanelRecipientView {
+		height: unset;
+	}
+
+	.ShoppingCartItemListControl_PersonifyDefault.ShoppingCart_PersonifyDefault.Base_PersonifyDefault .borderTop,
+	.ShoppingCartItemListControl_PersonifyDefault.ShoppingCart_PersonifyDefault.Base_PersonifyDefault .centerSection {
+		width: 100%;
+		float: none;
+		max-width: none;
+		height: auto;
+	}
+	div#ctl00_MainContent_ctl00_Container{
+		.productControlSection [type=button]{
+			@include button();
+		}
+	}
+	div#ctl00_MainContent_ctl01_ContainerPanelProducts {
+    display: none;
 	}
 }
