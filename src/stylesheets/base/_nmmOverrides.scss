@@ -180,7 +180,8 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 	}
 	#ctl00_MainContent_ctl00_mtgDetailAddToCalendar_addToCalendar {
 		@include unButton();
-		margin-top: 0 !important;	}
+		margin-top: 0 !important;
+	}
 	#ctl00_MainContent_ctl00_btnOnline {
 		border: none;
 		padding-left: 6px;
@@ -529,12 +530,46 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 		max-width: none;
 		height: auto;
 	}
-	div#ctl00_MainContent_ctl00_Container{
-		.productControlSection [type=button]{
+	div#ctl00_MainContent_ctl00_Container {
+		.productControlSection [type=button] {
 			@include button();
 		}
 	}
 	div#ctl00_MainContent_ctl01_ContainerPanelProducts {
-    display: none;
+		display: none;
+	}
+}
+
+.OrderSummaryControl_PersonifyDefault {
+	.cellAdditionalInfo {
+		width: 0px;
+		opacity: 0;
+	}
+
+	.cellProductName {
+		width: 70%;
+	}
+}
+
+#ctl00_MainContent_ctl00_SurveyPanel #ctl00_MainContent_ctl00_TMAFormRowPrimaryJobTitle table a {
+	padding-left: 1rem
+}
+
+// Membership Renewal
+div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalType_pnlPremier {
+	position: relative;
+	input[type="radio"] {
+		position: absolute;
+		left: 0;
+	}
+	input[type="radio"]+span {
+		margin-left: 0;
+		display: inline;
+		text-indent: 4rem;
+		padding-left: 0rem;
+	}
+	table tr {
+		margin-left: 3rem;
+		display: block;
 	}
 }
