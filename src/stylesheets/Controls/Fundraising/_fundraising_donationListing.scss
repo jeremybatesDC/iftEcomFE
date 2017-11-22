@@ -33,30 +33,28 @@
 	}
 }
 
-form[action*="DonateNow"] {
-	#ctl00_ctl00_MainContent_ctl00_DonationWizPaymentInfo_PayNowControl_BillingAddressChooserControl_ContainerPanelPanel #ctl00_MainContent_ctl00_DonationWizPaymentInfo_PayNowControl_BillingAddressChooserControl_LinkButtonTemporaryAddress {
-		display: block;
-	}
-	.Donations_PersonifyDefault.Base_PersonifyDefault .formLayout fieldset label {
-		max-width: 240px;
-		vertical-align: top;
-		display: inline-block;
-		margin-right: 2rem;
-	}
-	div#ctl00_MainContent_ctl00_DonationWizPaymentInfo_PayNowControl_CreateCustomerControl_ContainerPanel {
-		background-color: white;
-	}
+#ctl00_ctl00_MainContent_ctl00_DonationWizPaymentInfo_PayNowControl_BillingAddressChooserControl_ContainerPanelPanel #ctl00_MainContent_ctl00_DonationWizPaymentInfo_PayNowControl_BillingAddressChooserControl_LinkButtonTemporaryAddress {
+	display: block;
+}
+.Donations_PersonifyDefault.Base_PersonifyDefault .formLayout fieldset label {
+	max-width: 240px;
+	vertical-align: top;
+	display: inline-block;
+	margin-right: 2rem;
+}
+div#ctl00_MainContent_ctl00_DonationWizPaymentInfo_PayNowControl_CreateCustomerControl_ContainerPanel {
+	background-color: white;
+}
 
-	.Donations_PersonifyDefault.Base_PersonifyDefault .formLayout fieldset .formRow span {
-		padding-top: 1rem;
-		padding-left: 1rem;
-		display: inline-block;
-	}
+.Donations_PersonifyDefault.Base_PersonifyDefault .formLayout fieldset .formRow span {
+	padding-top: 1rem;
+	padding-left: 1rem;
+	display: inline-block;
+}
 
-	p#ctl00_MainContent_ctl00_DonationWizPaymentInfo_PayNowControl_pLoginLink {
-		font-size: 16px;
-		padding: 2rem;
-		font-weight: bold;
-		background: white;
-	}
+p#ctl00_MainContent_ctl00_DonationWizPaymentInfo_PayNowControl_pLoginLink {
+	font-size: 16px;
+	padding: 2rem;
+	font-weight: bold;
+	background: white;
 }
