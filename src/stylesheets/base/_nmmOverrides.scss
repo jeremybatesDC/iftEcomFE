@@ -83,7 +83,7 @@ table.membership__table {
 	}
 }
 
-form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
+#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
 	#ctl00_MainContent_ctl00_LeftFilters_SegmentTabList {
 		width: auto;
 		.rlbList {
@@ -130,7 +130,7 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 	#ctl00_MainContent_ctl00_Events_ContainerPanel .ProductListItemControlCell {
 		border: 1px solid #ddd;
 	}
-	#ctl00_MainContent_ctl00_filtersAndEvents form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel #ctl00_MainContent_ctl00_PagerControl_ContainerPanel {
+	#ctl00_MainContent_ctl00_filtersAndEvents #ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel #ctl00_MainContent_ctl00_PagerControl_ContainerPanel {
 		background-color: 0 0;
 	}
 	.RadTreeView .rtHover .rtIn,
