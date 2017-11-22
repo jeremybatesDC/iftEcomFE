@@ -1,7 +1,13 @@
 //since form actions are case sensitive, best to use these classes when possible
 main.membershipJoin,
 form[action$="Code=REG"],
+form[action$="Joinsummary"],
+form[action$="joinSummary"],
 form[action$="JoinSummary"],
+form[action$="joinsummary"],
+form[action$="Joinsurvey"],
+form[action$="joinsurvey"],
+form[action$="joinSurvey"],
 form[action$="JoinSurvey"] {
 	table {
 		overflow-x: scroll; //purely for readability
@@ -238,7 +244,11 @@ input#ctl00_MainContent_ctl00_UserRegistrationControl_ConfirmPasswordTextBox {
 	text-indent: -1.5rem !important;
 }
 
-form[action$="JoinSummary"] {
+form[action$="Joinsummary"],
+form[action$="joinSummary"],
+form[action$="joinsummary"],
+form[action$="JoinSummary"],
+ {
 	.ctrbName.heading4 {
 		font-size: 2rem;
 		padding-bottom: 8px;
@@ -1074,55 +1084,55 @@ a#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipDivisionCont
 }
 
 
-form[action$="RenewMembership"] {
-	// input#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_CancelDelButton {
-	// 	@include unButton();
-	// 	font-size: 1.4rem;
-	// }
-	// input#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_cbTermsConditions {
-	// 	margin-right: 20px;
-	// }
-	#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C {
-		padding: 1rem;
-		.rwContentRow .buttonRow {
-			margin-left: 1rem;
+
+// input#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_CancelDelButton {
+// 	@include unButton();
+// 	font-size: 1.4rem;
+// }
+// input#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_cbTermsConditions {
+// 	margin-right: 20px;
+// }
+#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C {
+	padding: 1rem;
+	.rwContentRow .buttonRow {
+		margin-left: 1rem;
+	}
+}
+
+#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C .authorize-container {
+	margin-left: 1.5rem;
+	padding-top: 1rem;
+	white-space: normal;
+	padding-left: 1.5em;
+	text-indent: -2em;
+}
+
+#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_lblTermsandConditions {
+	padding: 1rem;
+}
+
+#ctl00_MainContent_ctl00_PopWindow_C_popuppanel {
+	padding: 1rem;
+}
+
+.authorize-container {
+	padding: 1rem;
+	input[type="checkbox"] {
+		display: inline-block;
+		margin-right: 2rem;
+	}
+	+.buttonRow {
+		.CancelEditButton {
+			float: left;
+			margin-left: 1rem !important;
+			@include unButton()
 		}
-	}
-
-	#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C .authorize-container {
-		margin-left: 1.5rem;
-		padding-top: 1rem;
-		white-space: normal;
-		padding-left: 1.5em;
-		text-indent: -2em;
-	}
-
-	#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_PopWindow_C_lblTermsandConditions {
-		padding: 1rem;
-	}
-
-	#ctl00_MainContent_ctl00_PopWindow_C_popuppanel {
-		padding: 1rem;
-	}
-
-	.authorize-container {
-		padding: 1rem;
-		input[type="checkbox"] {
-			display: inline-block;
-			margin-right: 2rem;
-		}
-		+.buttonRow {
-			.CancelEditButton {
-				float: left;
-				margin-left: 1rem !important;
-				@include unButton()
-			}
-			.SaveEditButton {
-				float: left;
-			}
+		.SaveEditButton {
+			float: left;
 		}
 	}
 }
+
 
 main.membershipJoin,
 main.membershipRenewal {
@@ -1310,7 +1320,7 @@ div#ctl00_MainContent_ctl06_SurveyPanel table td {
 	white-space: normal;
 }
 
-form[action$="JoinSummary"] main.main.membershipJoin .emailDetails #ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel table td:last-child {
+main.main.membershipJoin .emailDetails #ctl00_MainContent_ctl00_MembershipJoinDetailControl_ContainerPanel table td:last-child {
 	color: white;
 }
 

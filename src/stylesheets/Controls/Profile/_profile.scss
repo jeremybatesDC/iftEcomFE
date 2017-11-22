@@ -153,7 +153,8 @@ form[action$="educationalbackground"] {
 	}
 }
 
-form[action$="purchasehistory"] {
+form[action$="urchasehistory"],
+form[action$="urchaseHistory"]{
 	.PurchaseHistory_PersonifyDefault.Profile_PersonifyDefault .searchContainer label {
 		display: inline;
 	}
@@ -177,7 +178,7 @@ form[action$="purchasehistory"] {
 	}
 }
 
-form[action$="addresses"] {
+form[action$="ddresses"]{
 	.address_PersonifyDefault {
 		//padding-left: $gutter-width/2;
 		.ctrlTitle {
@@ -241,23 +242,21 @@ form[action$="addresses"] {
 	}
 }
 
-form[action$="contactinformation"] {
+form[action$="nformation"] {
 	.ctrl-row-item {
 		font-weight: bold;
 	}
 }
 
-form[action$="usernamepassword"] {
-	.UserNamePasswordControl_PersonifyDefault .formLayout fieldset .formRow input.ChangeLinkButton {
-		text-decoration: none;
-	}
+
+.UserNamePasswordControl_PersonifyDefault .formLayout fieldset .formRow input.ChangeLinkButton {
+	text-decoration: none;
 }
 
-form[action$="purchasehistory"] {
-	.Profile_PersonifyDefault.Base_PersonifyDefault .buttonRow .btn[value="Pay Now"] {
-		@include button() margin: 0;
-		padding: 10px;
-	}
+
+.Profile_PersonifyDefault.Base_PersonifyDefault .buttonRow .btn[value="Pay Now"] {
+	@include button() margin: 0;
+	padding: 10px;
 }
 
 .myAccountProfile {
