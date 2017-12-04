@@ -373,13 +373,19 @@ table.membership__table {
 	}
 	.meetingBadgeField {
 		height: auto;
+		margin: 0;
 	}
 	.meetingBadgeMtgBadge {
 		min-width: 0;
 	}
+	#divSave {
+		margin: 1px;
+	}
 	#divSaveField {
 		margin-top: 0;
+		margin-bottom: 0.6rem;
 	}
+
 	#dvCompanyNameControl {
 		display: flex;
 		align-items: center;
@@ -574,6 +580,10 @@ div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalTyp
 	}
 }
 
+#ctl00_MainContent_ctl00_ContainerPanel .meetingBadgeField {
+	@include clearfix();
+}
+
 form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel #ctl00_MainContent_ctl00_LeftFilters_SegmentTabList .rlbList .rlbSelected.rlbHovered .rlbText {
 	color: #5786c7!important;
 }
@@ -585,6 +595,11 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 	div#ctl00_MainContent_ctl00_dvRotatingImage {
 		margin-bottom: 2rem;
 	}
+}
+
+#ctl00_MainContent_ctl00_ContainerPanel .meetingBadgeFieldInputControlCombo {
+	min-width: 250px;
+	margin: 0.6rem 0;
 }
 
 #ctl00_MainContent_ctl01_ContainerPanel.PromotionalProductsCrossSellControl_PersonifyDefault.Store_PersonifyDefault {
