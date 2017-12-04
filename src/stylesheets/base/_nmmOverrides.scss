@@ -573,6 +573,29 @@ div#ctl00_MainContent_ctl00_membershipRenewalDetailsControl_MembershipRenewalTyp
 		display: block;
 	}
 }
+
 form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel #ctl00_MainContent_ctl00_LeftFilters_SegmentTabList .rlbList .rlbSelected.rlbHovered .rlbText {
-    color: #5786c7!important;
+	color: #5786c7!important;
+}
+
+#ctl00_MainContent_ctl00_ContainerPanel {
+	div#ctl00_MainContent_ctl00_dvMeetingShortDescription {
+		width: 100% !important;
+	}
+	div#ctl00_MainContent_ctl00_dvRotatingImage {
+		margin-bottom: 2rem;
+	}
+}
+
+#ctl00_MainContent_ctl01_ContainerPanel.PromotionalProductsCrossSellControl_PersonifyDefault.Store_PersonifyDefault {
+	margin: auto;
+	background: transparent;
+	.ControlPanel_PromtionalProductListControl {
+		#ctl00_MainContent_ctl01_ScrollingPanel {
+			background: transparent;
+		}
+		.PromotionProductListItem.mobile-way {
+			background: white;
+		}
+	}
 }
