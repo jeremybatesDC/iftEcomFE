@@ -15,6 +15,19 @@
 		clear: both;
 		@include betterClearFix;
 	}
+	.MTGDetailCaption {
+		float: left;
+		clear: none;
+		width: 16rem;
+	}
+	.MTGDetailValue {
+		float: left;
+		clear: none;
+		width: calc(100% - 16rem) !important;
+	}
+	#ctl00_MainContent_ctl00_dvCredits {
+		clear: both;
+	}
 	.MTGDetailLeftNav {
 		display: none;
 		float: none;
@@ -103,7 +116,7 @@
 	float: right;
 }
 
-.MtgRegWizard_PersonifyDefault div.badgeFields > div {
+.MtgRegWizard_PersonifyDefault div.badgeFields>div {
 	overflow: inherit;
 	margin: 20px 0;
 }
@@ -185,9 +198,12 @@
 		padding: 10px 20px;
 	}
 }
+
 #ctl00_MainContent_ctl00_SearchControl_AdvancedLink {
 	@include unButton()
-}#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
+}
+
+#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel {
 	background: transparent;
 	input#ctl00_MainContent_ctl00_SearchControl_SearchBox {
 		background: white !important;
@@ -202,6 +218,7 @@
 		padding: 10px 20px;
 	}
 }
+
 #ctl00_MainContent_ctl00_SearchControl_AdvancedLink {
 	@include unButton()
 }
@@ -215,7 +232,7 @@
 	border: none;
 }
 
-#ctl00_MainContent_ctl00_cMtgRegWizContactInfo_MtgRegWizStepTitle_ContainerPanel + .ctrlContent.mtgRegContacts {
+#ctl00_MainContent_ctl00_cMtgRegWizContactInfo_MtgRegWizStepTitle_ContainerPanel+.ctrlContent.mtgRegContacts {
 	background: white;
 	padding: 20px;
 }
@@ -229,8 +246,7 @@ div#ctl00_MainContent_ctl00_dvAttendeeList {
 .MtgRegWizContainer {
 	[class^="WizardWith"] {
 		display: flex;
-		margin-bottom: 40px;
-		// Remove Clearfix
+		margin-bottom: 40px; // Remove Clearfix
 		&:before,
 		&:after {
 			display: none;
@@ -278,4 +294,13 @@ div#ctl00_MainContent_ctl00_dvAttendeeList {
 			}
 		}
 	}
+}
+#ctl00_MainContent_ctl00_Events_ContainerPanel .ProductDetailCERibbon{
+    background: $ift-green;
+    padding: .4rem;
+    right: 0;
+    bottom: 0;
+}
+div.MtgCalendarControl_PersonifyDefault {
+    margin: 0;
 }
