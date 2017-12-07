@@ -614,3 +614,78 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 		}
 	}
 }
+
+#RadWindowWrapper_ctl00_MainContent_ctl00_OverlappingDatesWindow em {
+	margin-left: -2rem;
+}
+
+input#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_MtgRegWizRelatedProductsControl_grdProductRelatedProducts_ctl00_ctl04_btnAddItemToRegSummary {
+	margin-bottom: 2rem;
+}
+
+// Hide "You might Like" on Phone
+@include break(max, $breakpoint-max-mobile) {
+	div#ctl00_MainContent_ctl01_ContainerPanel.PromotionalProductsCrossSellControl_PersonifyDefault.Store_PersonifyDefault.Base_PersonifyDefault {
+		display: none;
+	}
+	.ShoppingCartItemControl_Container .addressesSection {
+		height: auto;
+		padding: 0 .6rem;
+	}
+	.meeting-detail-control #ctl00_MainContent_ctl00_ProductDetailParagraphFullLabel{
+		max-width: none;
+		widths: 100%;
+	}
+	.ShoppingCartItemListControl_PersonifyDefault .ShoppingCartItemControl_Container .contentSection .lineItemTotals table.totals td.quantity,
+	.ShoppingCartItemListControl_PersonifyDefault .ShoppingCartItemControl_Container .contentSection .lineItemTotals table.totals td.unitPrice,
+	.ShoppingCartItemListControl_PersonifyDefault .ShoppingCartItemControl_Container .contentSection .lineItemTotals table.totals td.total,
+	.CheckoutItemListControl_PersonifyDefault .ShoppingCartItemControl_Container .contentSection .lineItemTotals table.totals td.quantity,
+	.CheckoutItemListControl_PersonifyDefault .ShoppingCartItemControl_Container .contentSection .lineItemTotals table.totals td.unitPrice,
+	.CheckoutItemListControl_PersonifyDefault .ShoppingCartItemControl_Container .contentSection .lineItemTotals table.totals td.total {
+		max-width: none !important;
+	}
+	.ShoppingCartItemListControl_PersonifyDefault .ShoppingCartItemControl_Container .contentSection .lineItemTotals table.totals,
+	.CheckoutItemListControl_PersonifyDefault .ShoppingCartItemControl_Container .contentSection .lineItemTotals table.totals {
+		float: none;
+	}
+	#ctl00_MainContent_ctl00_ContainerPanel .buttonRow input[type="button"],
+	#ctl00_MainContent_ctl00_ContainerPanel #ctl00_MainContent_ctl00_CheckoutAddressInformationControl_ShippingAddressChooserControl_LinkButtonTemporaryAddress {
+		font-size: 1.6rem;
+		text-align: center !important;
+		width: 100%;
+		margin: 1rem auto;
+	}
+	div#ctl00_MainContent_ctl00_Container .productControlSection [type=button] {
+		background: none !important;
+		text-align: center !important;
+	}
+	.MtgRegWizContainer.ctrlContent ul,
+	.MtgRegWizContainer [class^=WizardWith] li,
+	#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel #ctl00_MainContent_ctl00_LeftFilters_SegmentTabList .rlbList {
+		display: block;
+		width: 100%;
+	}
+	.ctrl-form-row:first-child .ctrl-row-action-item.ctrl-row-item-button a {
+		border: none;
+	}
+	.ctrlContent.mtgSelectRate.formLayout {
+		padding: 1rem !important;
+		display: block;
+	}
+	fieldset.emailDetails {
+		padding: 0;
+	}
+	.MtgRegWizard_PersonifyDefault .mtgRegContacts .ctrlContent,
+	.MtgRegWizSummary_PersonifyDefault .MyAccountContactAddress_PersonifyDefault .ctrlContent,
+	.MtgRegWizSummary_PersonifyDefault .MyAccountContactEmail_PersonifyDefault .ctrlContent {
+		margin: .6rem 0;
+		padding: .6rem;
+		width: 100%;
+		min-height: 0;
+	}
+
+	.MtgRegWizard_PersonifyDefault .contactsBlock,
+	.MtgRegWizard_PersonifyDefault .addressesBlock {
+		float: none;
+	}
+}
