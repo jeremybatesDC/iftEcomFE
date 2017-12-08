@@ -623,16 +623,59 @@ input#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_MtgRegWizRelatedProductsControl
 	margin-bottom: 2rem;
 }
 
-// Hide "You might Like" on Phone
+// Mobile
 @include break(max, $breakpoint-max-mobile) {
 	div#ctl00_MainContent_ctl01_ContainerPanel.PromotionalProductsCrossSellControl_PersonifyDefault.Store_PersonifyDefault.Base_PersonifyDefault {
 		display: none;
+	}
+	.CustomerSpecialNeedControl_PersonifyDefault .ctrlContent .fieldLabel {
+		position: static;
+		margin: 0;
+		display: block;
+		padding: 0;
+	}
+	input#ctl00_MainContent_ctl00_cMtgRegWizSummary_btnRegisterSomeoneElse {
+		overflow: hidden;
+		white-space: normal;
+	}
+	.ctrlContent.formLayout.QuestionnaireControl {
+		padding: 1rem !important;
+	}
+	div#ctl00_MainContent_ctl00_cMtgRegWizSummary_MtgRegSmryAddlInfo_emrgncyContactsContent {
+		overflow-x: scroll;
+	}
+	div#ctl00_MainContent_ctl00_cMtgRegWizSummary_dvMtgVerticalDividor {
+		display: block;
+		height: auto;
+		width: 100%;
+		.vertical-divider-inner {
+			position: static;
+			margin: 0;
+			height: auto;
+		}
+
+		.choice-or-line {
+			display: none;
+		}
+	}
+	#ctl00_MainContent_ctl00_ContainerPanel #ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_MtgRegWizStepTitle_ContainerPanel,
+	#ctl00_MainContent_ctl00_ContainerPanel #ctl00_MainContent_ctl00_MtgRegWizRegisterSomeoneElse_pnlSearchResults,
+	#ctl00_MainContent_ctl00_ContainerPanel #ctl00_MainContent_ctl00_cMtgRegWizAddlInfoTravelQues_MtgRegWizStepTitle_ContainerPanel,
+	#ctl00_MainContent_ctl00_ContainerPanel #ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_MtgRegWizStepTitle_ContainerPanel .MtgWizStepTitleContainer,
+	#ctl00_MainContent_ctl00_ContainerPanel #ctl00_MainContent_ctl00_cMtgRegWizSession_MtgRegWizStepTitle_ContainerPanel,
+	#ctl00_MainContent_ctl00_ContainerPanel #ctl00_MainContent_ctl00_cMtgRegWizSummary_MtgRegWizStepTitle_ContainerPanel {
+		padding: 1rem;
+		padding-bottom: 0;
+	}
+	.MtgRegWizard_PersonifyDefault .CustomerSpecialNeedControl_PersonifyDefault .ctrlContent {
+		display: block;
+		border: none !important;
 	}
 	.ShoppingCartItemControl_Container .addressesSection {
 		height: auto;
 		padding: 0 .6rem;
 	}
-	.meeting-detail-control #ctl00_MainContent_ctl00_ProductDetailParagraphFullLabel{
+	.meeting-detail-control #ctl00_MainContent_ctl00_ProductDetailParagraphFullLabel {
 		max-width: none;
 		widths: 100%;
 	}
@@ -687,5 +730,47 @@ input#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_MtgRegWizRelatedProductsControl
 	.MtgRegWizard_PersonifyDefault .contactsBlock,
 	.MtgRegWizard_PersonifyDefault .addressesBlock {
 		float: none;
+	}
+	img#ctl00_MainContent_ctl00_MtgRegRegistrantInfo_imgWorkflowNote {
+		width: 30px;
+	}
+	.MtgRegWizard_PersonifyDefault div div.dvMtgSesInfoLeftCell {
+		float: none;
+		width: 100%;
+	}
+
+	#ctl00_MainContent_ctl00_cMtgRegWizSession_dvMtgSesContainer .dvMtgSesInfoRightCell {
+		float: none;
+		width: 100%;
+		border: none;
+		border-top: 1px solid #ddd;
+		border-bottom: 3px solid #eee;
+	}
+
+	.MtgRegWizard_PersonifyDefault div div.dvMtgSesShortDescRow {
+		padding: 0;
+	}
+
+	#ctl00_MainContent_ctl00_cMtgRegWizSession_dvMtgSesContainer .dvMtgSesHeader>div {
+		display: block;
+		width: 100%;
+		padding: 0 1rem;
+	}
+
+	#ctl00_MainContent_ctl00_cMtgRegWizSession_dvMtgSesContainer .dvMtgSesHeader {
+		display: block;
+		border: none;
+	}
+
+	#ctl00_MainContent_ctl00_cMtgRegWizSession_dvMtgSesContainer .lblMtgSesDate {
+		padding: 0 1rem;
+	}
+
+	div#ctl00_MainContent_ctl00_cMtgRegWizSession_MtgRegWizStepTitle_ContainerPanel {
+		padding: 1rem !important;
+	}
+
+	div#dvMtgSesRateCodeAndPriceDetail {
+		padding-left: 1rem;
 	}
 }
