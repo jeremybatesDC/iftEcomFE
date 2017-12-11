@@ -619,9 +619,11 @@ form[action="./LearningProductsListing"] #ctl00_ctl00_MainContent_ctl00_Containe
 	margin-left: -2rem;
 }
 
-input#ctl00_MainContent_ctl00_cMtgRegWizAddlInfo_MtgRegWizRelatedProductsControl_grdProductRelatedProducts_ctl00_ctl04_btnAddItemToRegSummary {
-	margin-bottom: 2rem;
+.meeting-name-and-image .MTGDetailMeetingCategoryImage {
+    padding-right: 1rem;
+    padding-left: 1rem;
 }
+
 
 // Mobile
 @include break(max, $breakpoint-max-mobile) {

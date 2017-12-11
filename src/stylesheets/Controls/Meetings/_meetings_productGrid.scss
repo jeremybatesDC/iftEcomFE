@@ -4,7 +4,12 @@
 		background: transparent !important;
 	}
 }
-
+.ProductChldQtyAddGrd .RadGrid.RadGrid_PersonifyDefault {
+    margin: 0;
+}
+.ProductRelatedProducts_PersonifyDefault .btnAddItemToRegSummary{
+    margin-bottom: 2rem;
+}
 .FullProductListControl_PersonifyDefault {
 	.items-table {
 		width: 100%;
