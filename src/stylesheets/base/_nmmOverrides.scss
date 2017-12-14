@@ -223,6 +223,10 @@ table.membership__table {
 	border: 1px solid #eee;
 	color: inherit;
 	margin-top: 1rem;
+	.savingsHeader{
+		background: $ift-green;
+		color: white;
+	}
 }
 
 .MtgWizStepTitle {
