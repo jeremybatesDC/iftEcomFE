@@ -45,13 +45,6 @@
 	.dvAdditionalInformation {
 		clear: both;
 	}
-	.MTGDetailRibbonBadgeCredit {
-		position: absolute;
-		top: 0;
-		right: 0;
-		float: none !important;
-		z-index: 1;
-	}
 	.MTGDetailPresenter {
 		font-weight: bold;
 		.relatedCustomerDisplayName {
@@ -95,6 +88,10 @@
 	}
 }
 
+.meeting-detail-control .MTGDetailRibbonBadgeCredit,
+.ProductDetailCERibbon{
+	@include ribbon();
+}
 .ControlPanel_PromtionalProductListControl {
 	.scrollable {
 		background: white;
@@ -295,12 +292,7 @@ div#ctl00_MainContent_ctl00_dvAttendeeList {
 		}
 	}
 }
-#ctl00_MainContent_ctl00_Events_ContainerPanel .ProductDetailCERibbon{
-    background: $ift-green;
-    padding: .4rem;
-    right: 0;
-    bottom: 0;
-}
+
 div.MtgCalendarControl_PersonifyDefault {
-    margin: 0;
+	margin: 0;
 }
