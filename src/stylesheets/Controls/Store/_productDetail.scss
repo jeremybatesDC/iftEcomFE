@@ -154,14 +154,14 @@ main.main.storeDetail{
 // Savings Block
 .savingsHeader {
   position: relative;
-  color: white;
+  background-color: white;
   margin: 1rem auto;
   padding: 1rem;
   height: 4rem;
   max-width: 20rem;
-  background-color: #333;
+  color: #333;
   .savingsLink {
-    color: white;
+    color: #333;
   }
   // &:before,&:after{
   //   content: "";
