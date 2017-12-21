@@ -169,6 +169,37 @@ table.membership__table {
 	}
 }
 
+#ctl00_MainContent_ctl00_dvRightContent #ctl00_MainContent_ctl00_ShoppingCartSavingsControl_PanelHeader {
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+#ctl00_MainContent_ctl00_ShoppingCartSavingsControl_PanelMembersCanSave {
+	background: white;
+}
+
+#ctl00_MainContent_ctl00_dvSaveMore {
+	margin: -2rem;
+	margin-top: 2rem;
+}
+
+td.savingsMembers {
+	color: #333;
+}
+
+#ctl00_MainContent_ctl00_dvEventDetails.meeting-event-details {
+	#ctl00_MainContent_ctl00_linkRelatedCustomers_ContainerPanel {
+		background: #fff;
+		padding: 20px;
+		margin: 0;
+		padding-bottom: 0;
+	}
+	#ctl00_MainContent_ctl00_dvAdditionalInformation {
+		background: white;
+		padding: 20px;
+	}
+}
+
 #ctl00_MainContent_ctl00_dvEventDetails {
 	#ctl00_MainContent_ctl00_btnInPerson,
 	#ctl00_MainContent_ctl00_btnOnline {
@@ -177,6 +208,7 @@ table.membership__table {
 		border-right: 1px solid #ddd;
 		border-radius: 0;
 		padding-right: 6px;
+		background: transparent;
 	}
 	#ctl00_MainContent_ctl00_mtgDetailAddToCalendar_addToCalendar {
 		@include unButton();
@@ -218,17 +250,16 @@ table.membership__table {
 	}
 }
 
-#ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel .ShoppingCartSavingsControl_PersonifyDefault {
-	background: white !important;
-	border: 1px solid #eee;
-	color: inherit;
-	margin-top: 1rem;
-	.savingsHeader{
-		background: $ift-green;
-		color: white;
-	}
-}
-
+// #ctl00_ctl00_MainContent_ctl00_ContainerPanelPanel .ShoppingCartSavingsControl_PersonifyDefault {
+// 	background: white !important;
+// 	border: 1px solid #eee;
+// 	color: inherit;
+// 	margin-top: 1rem;
+// 	.savingsHeader{
+// 		background: $ift-green;
+// 		color: white;
+// 	}
+// }
 .MtgWizStepTitle {
 	color: inherit;
 }
