@@ -1692,3 +1692,15 @@ table.membership__table {
 		}
 	}
 }
+.demog-months label, .demog-day label, .demog-year label {
+    width: 12rem;
+    display: inline-block;
+}
+
+.demog-months, .demog-day, .demog-year {
+    margin: 0;
+    margin-top: 1rem
+}
+.demog-months select, .demog-day select, .demog-year select {
+    width  : 12rem;
+}
