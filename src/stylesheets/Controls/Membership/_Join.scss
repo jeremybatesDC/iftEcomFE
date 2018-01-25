@@ -248,7 +248,7 @@ form[action$="Joinsummary"],
 form[action$="joinSummary"],
 form[action$="joinsummary"],
 form[action$="JoinSummary"],
- {
+{
 	.ctrbName.heading4 {
 		font-size: 2rem;
 		padding-bottom: 8px;
@@ -1573,7 +1573,7 @@ table.membership__table {
 	width: 100%;
 	text-align: center;
 	margin-bottom: 0;
-	@include break(max, $breakpoint-max-mobile){
+	@include break(max, $breakpoint-max-mobile) {
 		font-size: 1rem;
 		min-width: auto;
 		line-height: 1;
@@ -1692,15 +1692,55 @@ table.membership__table {
 		}
 	}
 }
-.demog-months label, .demog-day label, .demog-year label {
-    width: 12rem;
-    display: inline-block;
+
+.demog-months label,
+.demog-day label,
+.demog-year label {
+	width: 12rem;
+	display: inline-block;
 }
 
-.demog-months, .demog-day, .demog-year {
-    margin: 0;
-    margin-top: 1rem
+.demog-months,
+.demog-day,
+.demog-year {
+	margin: 0;
+	margin-top: 1rem
 }
-.demog-months select, .demog-day select, .demog-year select {
-    width  : 12rem;
+
+.demog-months select,
+.demog-day select,
+.demog-year select {
+	width: 12rem;
+}
+
+#ctl00_MainContent_ctl00_ShoppingCartSavingsControl_PanelMembersCanSave{
+	font-weight: bold;
+}
+#ctl00_MainContent_ctl00_ShoppingCartSavingsControl_PanelMembersCanSave td.savingsValue {
+	font-size: 1em;
+	display: inline;
+	width: auto;
+}
+
+#ctl00_MainContent_ctl00_ShoppingCartSavingsControl_Button1 {
+	color: white;
+	text-decoration: underline;
+}
+
+#ctl00_MainContent_ctl00_ShoppingCartSavingsControl_PanelLogIn {
+	font-weight: bold;
+	font-size: 12px;
+}
+
+#ctl00_MainContent_ctl00_ShoppingCartSavingsControl_PanelMembersCanSave td.savingsMembers {
+	display: inline;
+	width: auto;
+	color:#009900;
+}
+
+#ctl00_MainContent_ctl00_ShoppingCartSavingsControl_PanelMembersCanSave td.savingsJoin {
+	display: block;
+	width: auto;
+	text-align: left;
+	text-decoration: underline;
 }
