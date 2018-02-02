@@ -15,9 +15,11 @@ main.myAccountProfile {
 		display: block;
 	}
 }
+
 #ctl00_MainContent_ctl00_EditAddressControl_CountryLabel {
-    display: inline;
+	display: inline;
 }
+
 div#ctl00_MainContent_ctl00_EditAddressControl_ContainerPanel {
 	a#ctl00_MainContent_ctl00_EditAddressControl_ChangeCountryButton {
 		display: inline;
@@ -45,49 +47,45 @@ form[action$="educationalbackground"] {
 .myAccountProfile {
 
 	.billingAddress.mobile-way {
-		display: inline;
-	    //float: left;
-	    padding: 10px;
-	    border: 1px solid #eee;
-	    margin: 10px 0;
+		display: inline; //float: left;
+		padding: 10px;
+		border: 1px solid #eee;
+		margin: 10px 0;
 	}
 
 	.checkoutHeader.orderNumber.heading3 {
 		color: #333;
 		font-size: 12px;
 		font-weight: normal;
-		margin-top:1rem;
+		margin-top: 1rem;
 		margin-bottom: 1rem;
 	}
 
 	#ctl00_MainContent_ctl00_pnlContainerMain {
-		> .heading2 {
+		>.heading2 {
 			display: none;
-		}
-		//you would think you wouldnT need nested ID selectors, but sometimes...
+		} //you would think you wouldnT need nested ID selectors, but sometimes...
 		#ctl00_MainContent_ctl00_lblOrderNumbers {
 			display: block;
 			color: #333;
-    		font-size: 2.6rem;
-    		font-weight: bold;
-    		margin-top: 2rem;
-    		margin-bottom: 2rem;
+			font-size: 2.6rem;
+			font-weight: bold;
+			margin-top: 2rem;
+			margin-bottom: 2rem;
 		}
-		
 	}
 	.ReceiptSummaryControl_PersonifyDefault .productImageSection {
-		padding:0 !important;
+		padding: 0 !important;
 	}
 	[id$="QuantityCaption"],
 	[id$="UnitPriceCaption"],
 	[id$="TotalCaption"] {
 		font-weight: bold;
 	}
-	
+
 	#ctl00_MainContent_ctl00_AddressControl_EditAddressControl_CountryLabel {
 		display: inline;
 	}
-	    
 }
 
 
@@ -154,7 +152,7 @@ form[action$="educationalbackground"] {
 }
 
 form[action$="urchasehistory"],
-form[action$="urchaseHistory"]{
+form[action$="urchaseHistory"] {
 	.PurchaseHistory_PersonifyDefault.Profile_PersonifyDefault .searchContainer label {
 		display: inline;
 	}
@@ -178,7 +176,7 @@ form[action$="urchaseHistory"]{
 	}
 }
 
-form[action$="ddresses"]{
+form[action$="ddresses"] {
 	.address_PersonifyDefault {
 		//padding-left: $gutter-width/2;
 		.ctrlTitle {
@@ -338,5 +336,14 @@ form[action$="nformation"] {
 .exp-col-title-text {
 	&.expanded {
 		color: $body-text-color !important;
+	}
+}
+
+
+#ctl00_MainContent_ctl01_pnlContainer.MyMeetingsControl_PersonifyDefault.Profile_PersonifyDefault.Base_PersonifyDefault .ctrl-row-item.ctrl-row-label {
+	white-space: normal !important;
+	a {
+		color: #58c!important;
+		word-wrap: normal!important;
 	}
 }
