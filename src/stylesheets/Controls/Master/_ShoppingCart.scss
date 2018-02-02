@@ -470,8 +470,8 @@ main.shoppingCart {
 		margin-left: 2rem;
 	}
 	// Hinde for GO Live
-	div#ctl00_MainContent_ctl00_CheckoutPaymentInformationControl_CustomerPaymentsControl_Cvv2Row,
-	#ctl00_MainContent_ctl00_ButtonContinueShopping {
+		// #ctl00_MainContent_ctl00_ButtonContinueShopping 
+	div#ctl00_MainContent_ctl00_CheckoutPaymentInformationControl_CustomerPaymentsControl_Cvv2Row{
 		display: none;
 	}
 	//^^^^^HIDE^^^^^
